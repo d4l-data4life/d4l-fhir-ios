@@ -1,0 +1,157 @@
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 3
+:icons: font
+:source-highlighter: prettify
+//:numbered:
+:stylesdir: styles/
+:imagesdir: images/
+:linkcss:
+// Variables
+:icons: font
+:compname-short: D4L
+:compname-legal: D4L data4life gGmbH
+:compname: data4life
+:email-contact: contact@data4life.care
+:email-docs: docs@data4life.care
+:url-company: https://www.data4life.care
+:url-docs: https://d4l.io
+:prod-name: data4life
+:app-name: data4life
+:sdk-name: data4life FHIR framework
+:app-plat: iOS
+:phdp-plat: Personal Health Data Platform
+:page-platform: iOS
+:sw-name: {compname} {prod-name}
+:sw-version: {project-version}
+:pub-type: Internal
+:pub-version: 1.00
+:pub-status: draft
+:pub-title: {software-name} {pub-type}
+:copyright-year: 2019
+:copyright-statement: (C) {copyright-year} {compname-legal}. All rights reserved.
+
+== Interoperability, FHIR, and helper functions
+
+To ensure a high level of interoperability, {compname} internally uses FHIR JSON resources to model the data. FHIR (Fast Healthcare Interoperability Resources) is a very elaborate standard.
+The {sdk-name} supports the FHIR standard and additionally offer developers simplified custom models.
+You can use them to abstract away much of the complexity of the FHIR standard.
+These custom models automatically handle data conversion to and from FHIR.
+They also provide a number of other tasks relevant to the proper handling of data.
+
+=== About FHIR helpers
+
+FHIR models (Fast Healthcare Interoperability Resources) are used with generic methods to create resources.
+Each supported data model has helper methods to more easily create and fetch data.
+
+=== List of FHIR helpers in the {app-plat} {sdk-name}
+
+This section describes some of the FHIR helpers available in the framework.
+
+
+==== Dosage
+FHIR reference: icon:external-link[] https://hl7.org/fhir/dosage.html[Dosage]
+
+To create a medication dosage, use the `Dosage` resource.
+
+[source,swift]
+----
+static func with(value: Float, unit: String, when: String) -> Dosage
+----
+
+To access data stored in the `Dosage` resource more easily, use the following.
+
+[source, swift]
+----
+func getValue() -> Float?
+func getUnit() -> String?
+func getWhen() -> String?
+----
+
+==== ObservationReferenceRange
+FHIR reference: icon:external-link[] https://www.hl7.org/fhir/observation.html[ObservationReferenceRange]
+
+To store observation reference range information, use the `ObservationReferenceRange` resource.
+
+[source,swift]
+----
+static func with(type: CodeableConcept, lowValue: Float?, highValue: Float?, unit: String) -> ObservationReferenceRange
+----
+[source,swift]
+----
+static func with(type: CodeableConcept, lowQuantity: Data4LifeFHIR.Quantity?, highQuantity: Data4LifeFHIR.Quantity?) -> ObservationReferenceRange
+----
+
+To access data stored in the `ObservationReferenceRange` resource more easily, use the following.
+
+[source,swift]
+----
+func getHighQuantity() -> Quantity?
+func getLowQuantity() -> Quantity?
+func getLowValue() -> Float?
+func getHighValue() -> Float?
+func getUnit() -> String?
+----
+
+==== Attachment
+FHIR reference: icon:external-link[] https://www.hl7.org/fhir/datatypes.html#Attachment[Attachment]
+
+To create an attachment element, use the `Attachment` resource.
+
+[source,swift]
+----
+static func with(title: String, creationDate: DateTime, contentType: String, data: Data) throws -> Data4LifeFHIR.Attachment
+----
+
+To access data stored in the `Attachment` resource more easily, use the following.
+
+[source,swift]
+----
+func getTitle() -> String?
+func getCreationDate() -> DateTime?
+func getContentType() -> String?
+func getData() -> Data?
+----
+
+== FHIR helper examples
+
+This section shows you examples for FHIR helpers (Fast Healthcare Interoperability Resources).
+
+=== Example: DocumentReference
+
+Creating a document with attachments provided by an author.
+
+==== Creating an attachment
+
+To create an attachment, use the following.
+
+[source,swift]
+----
+let attachment = try Attachment.with(title: "Image", creationDate: .now, contentType: "image/png", data: image.pngData())
+----
+
+==== Creating a CodeableConcept.
+
+[source,swift]
+----
+let practiceSpeciality = CodeableConcept(code: "394612005", display: "Urology", system: "http://loinc.org")
+let documentType = CodeableConcept(code: "18782-3", display: "Radiology Study observation (findings)", system: "http://loinc.org")
+----
+
+==== Creating an Address
+
+[source,swift]
+----
+let patient = Patient.with(firstname: "John", lastname: "Doe")
+let doctor = Practitioner.with(text: "Dr. John Miller, Practice for general medicine")
+----
+
+==== Creating a dosage
+
+[source,swift]
+----
+let morningDosage = Dosage.with(value: 2, unit: "Piece", when: "morning")
+let eveningDosage = Dosage.with(value: 2, unit: "Piece", when: "evening")
+
+----

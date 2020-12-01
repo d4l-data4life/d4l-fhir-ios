@@ -1,0 +1,184 @@
+default_platform :ios
+
+project = "Data4LifeFHIR"
+repository = "d4l-data4life/d4l-fhir-ios"
+framework_binary_path = "build/" + project + ".framework.zip"
+podspec_path = '../Data4LifeFHIR.podspec'
+private_podspec_repo_name = 'd4l-data4life'
+private_podspect_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
+device = "iPhone X (12.0)"
+
+platform :ios do
+  desc "Run unit tests"
+  lane :test do
+    Dir.chdir("..") do
+       sh "./wcarthage.sh bootstrap --platform ios --cache-builds"
+    end
+    scan(
+      scheme: project,
+      derived_data_path: "build/DerivedData",
+      devices: device,
+      clean: true
+    )
+  end
+
+  desc "Run linter and autocorrect issues"
+  lane :lint do
+      swiftlint(
+        mode: :autocorrect,
+        config_file: ".swiftlint.yml"
+      )
+  end
+
+  desc "Generate FHIR models"
+  desc "#### Options"
+  desc " * **`embed`** (optional): Should embed newly generated models into Xcode project? defaults to true"
+  lane :generate_models do | options |
+      embed = options[:embed] ||= true
+      fhir xcode:embed
+      lint
+  end
+
+  desc "Package and release framework"
+  desc "#### Options"
+  desc " * **`version`** (required): The new version of the framework"
+  desc " * **`api_token`** (required): Github API token"
+  desc " * **`allow_dirty_branch`**: Allows the git branch to be dirty before continuing. Defaults to false"
+  desc " * **`remote`**: The name of the git remote. Defaults to `origin`. (`DEPLOY_REMOTE`)"
+  desc " * **`allow_branch`**: The name of the branch to build from. Defaults to `main`. (`DEPLOY_BRANCH`)"
+  desc " * **`skip_git_pull`**: Skips pulling the git remote. Defaults to false"
+  desc " * **`is_prerelease`**: Marks GitHub release as Pre-release. Defaults to false"
+  lane :release_framework do | options |
+    if options[:allow_dirty_branch] != true
+      ensure_git_status_clean
+    end
+
+    # Update the version
+    if !options[:version]
+      raise "No version specified!".red
+    end
+
+    if !options[:api_token]
+      raise "No api_token specified!".red
+    end
+
+    version = options[:version]
+    is_prerelease = options[:is_prerelease] ||= false
+
+    remote = options[:remote] ? options[:remote] : (ENV["DEPLOY_REMOTE"] ? ENV["DEPLOY_REMOTE"] : "origin")
+    allowed_branch = options[:allow_branch] ? options[:allow_branch] : (ENV["DEPLOY_BRANCH"] ? ENV["DEPLOY_BRANCH"] : "release/#{version}")
+    ensure_git_branch(branch: allowed_branch)
+
+    if options[:skip_git_pull] != true
+      sh("git pull #{remote} #{allowed_branch}")
+    end
+
+    # Parse changelog data
+    changelog_path = options[:changelog_path] ? options[:changelog_path] : "../CHANGELOG.md"
+    changelog_data = File.read(changelog_path)
+    # Try to find all markdown headers and split
+    changelog_sections = changelog_data.split(/\#{2,3}\s/)
+    # Look out for new section of the newest version
+    current_changelog_index = changelog_sections.index { |h| h.start_with?("[#{version}]")}
+
+    unless current_changelog_index
+      UI.error("Please add all changes of the version to the CHANGELOG.md file")
+    end
+
+    # Get all split for this version and combine them again to one text
+    changelog_header_indices = changelog_sections.each_with_index.select {|s, _| s.match(/^\[([0-9]+)\.([0-9]+)\.([0-9]+)\]/) }.map(&:last)
+    next_changelog_index = changelog_header_indices.index { |h| h == current_changelog_index } + 1
+    changelog = "### " + changelog_sections[current_changelog_index + 1...changelog_header_indices[next_changelog_index]].join("### ")
+
+    if prompt(text: "#{version} has been prepped for release. If you have any additional changes you would like to make to the README or CHANGELOG, please do those before continuing. Would you like to commit, tag, and push #{version} to #{remote}?".green, boolean: true, ci_input:"y")
+      increment_version_number(
+        xcodeproj: "#{project}.xcodeproj",
+        version_number: version
+      )
+
+      update_podspec_version(version: version)
+
+      git_commit(
+        path: ".",
+        message: "Preparing for the #{version} release"
+      )
+
+      push_to_git_remote(
+        remote: remote,
+        tags: false
+      )
+
+      add_git_tag(
+        tag: "#{version}"
+      )
+    else
+      Helper.log.info "When finished, commit your changes and create your tag.".red
+    end
+
+    build_framework_binary
+
+    set_github_release(
+      repository_name: repository,
+      api_token: options[:api_token],
+      name: "#{version}",
+      tag_name: version,
+      description: changelog,
+      is_prerelease: is_prerelease,
+      upload_assets: [framework_binary_path]
+    )
+  end
+
+  desc "Build universal binary"
+  lane :build_framework_binary do
+    Dir.chdir("..") do
+      sh "rm -rf ./build"
+      sh "./wcarthage.sh build --platform ios --no-skip-current --cache-builds --configuration Release"
+      sh "./wcarthage.sh archive --output #{framework_binary_path}"
+    end
+  end
+
+  desc "Update podspec version"
+  lane :update_podspec_version do | options |
+    UI.user_error!("Could not find podspec file at path #{podspec_path}") unless File.exist?(podspec_path)
+
+    if !options[:version]
+      raise "No version specified!".red
+    end
+
+    new_version = options[:version]
+
+    podspec_content = File.read(podspec_path)
+    updated = podspec_content.gsub(/"([0-9]+)\.([0-9]+)\.([0-9]+)\-?([0-9a-zA-Z]*)\.?([0-9a-zA-Z]*)"/, "\"#{new_version}\"")
+    File.write(podspec_path, updated)
+  end
+
+  desc "Push new podspec to repo"
+  lane :push_podspec do
+    # pod_push fastlane action does not support private switch
+    # pod_push(path: "./Data4LifeFHIR.podspec", repo: "gesundheitscloud", allow_warnings: true)
+    repo_list = sh "bundle exec pod repo list"
+    if !repo_list.include? private_podspec_repo_name
+     sh "bundle exec pod repo add #{private_podspec_repo_name} #{private_podspect_repo_url}"
+    end
+
+    sh "bundle exec pod repo push #{private_podspec_repo_name} #{podspec_path} --private --allow-warnings"
+  end
+
+  desc "Generate docs per version using Asciidoctor"
+  lane :generate_docs do | options |
+    if options[:version] == nil
+        raise "Missing version".red
+    end
+
+    version = options[:version]
+    arguments = "project-version=" + version
+    input_path = "../asciidoc/index.adoc"
+    output_folder_path = "../docs/" + version
+    output_filename_path = "index.html"
+    output_final_path = output_folder_path + "/" + output_filename_path
+
+    sh "rm -rf #{output_folder_path}"
+    sh "mkdir #{output_folder_path}"
+    sh "bundle exec asciidoctor -b html5 -d book -o #{output_final_path} -a #{arguments} #{input_path} "
+  end
+end

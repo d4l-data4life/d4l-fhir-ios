@@ -1,0 +1,44 @@
+disabled_rules: # rule identifiers to exclude from running
+  - colon
+  - comma
+  - control_statement
+  - redundant_string_enum_value
+  - identifier_name
+  - file_length
+  - implicit_getter
+  - type_name
+  - todo
+  - operator_whitespace
+  - cyclomatic_complexity
+  - type_body_length
+opt_in_rules: # some rules are only opt-in
+  - empty_count
+  # Find all the available rules by running:
+  # swiftlint rules
+included: # paths to include during linting. `--path` is ignored if present.
+  - FhirStu3/Sources
+  - FhirStu3/Tests
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+force_cast: warning # implicitly
+#force_try: warning # explicitly
+# rules that have both warning and error levels, can set just the warning level
+# implicitly
+line_length: 300
+# they can set both implicitly with an array
+function_body_length:
+  warning: 600
+  error: 800
+large_tuple:
+  warning: 3
+  error: 4
+# naming rules can set warnings/errors for min_length and max_length
+# additionally they can set excluded names
+type_name:
+  min_length: 4 # only warning
+  max_length: # warning and error
+    warning: 40
+    error: 50
+  excluded: iPhone # excluded via string
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
