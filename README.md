@@ -15,13 +15,13 @@ Minimal FHIR standard models and data types for iOS
 ### Installation
 #### Carthage
 ```
-github "gesundheitscloud/hc-fhir-ios"
+github "d4l-data4life/d4l-fhir-ios"
 ```
 
 #### CocoaPods
-Add private CocoaPods specs repository
+Add CocoaPods specs repository
 ```
-source 'git@github.com:gesundheitscloud/cocoapods-specs.git'
+source 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
 ```
 Add FHIR Stu3 framework to the `Podfile`
 ```
@@ -32,7 +32,7 @@ Or alternatively add FHIR R4 framework to the `Podfile`
 pod 'ModelsR4'
 ```
 
-**Note**: For more info check [README](https://github.com/gesundheitscloud/cocoapods-specs/blob/master/README.md).
+**Note**: For more info check [README](https://github.com/d4l-data4life/d4l-cocoapods-specs/blob/master/README.md).
 
 ## Build
 ### Description
@@ -48,7 +48,6 @@ Required resources include:
 * Settings with custom profiles and build targets
 
 **Note**: Check [parser-resources](parser-resources/) for more info
-
 
 ### Requirements
 * [Python 3.3 - 3.7.x](https://www.python.org/)

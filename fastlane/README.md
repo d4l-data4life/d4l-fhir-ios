@@ -51,7 +51,7 @@ Package and release framework
 
  * **`remote`**: The name of the git remote. Defaults to `origin`. (`DEPLOY_REMOTE`)
 
- * **`allow_branch`**: The name of the branch to build from. Defaults to `master`. (`DEPLOY_BRANCH`)
+ * **`allow_branch`**: The name of the branch to build from. Defaults to `main`. (`DEPLOY_BRANCH`)
 
  * **`skip_git_pull`**: Skips pulling the git remote. Defaults to false
 
