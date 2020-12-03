@@ -3,7 +3,8 @@ default_platform :ios
 project = "Data4LifeFHIR"
 repository = "d4l-data4life/d4l-fhir-ios"
 framework_binary_path = "build/" + project + ".framework.zip"
-podspec_path = '../Data4LifeFHIR.podspec'
+podspec_stu3_path = '../Data4LifeFHIR.podspec'
+podspec_r4_path = '../ModelsR4.podspec'
 private_podspec_repo_name = 'd4l-data4life'
 private_podspect_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
 device = "iPhone X (12.0)"
@@ -137,9 +138,10 @@ platform :ios do
     end
   end
 
-  desc "Update podspec version"
+  desc "Update podspecs version"
   lane :update_podspec_version do | options |
-    UI.user_error!("Could not find podspec file at path #{podspec_path}") unless File.exist?(podspec_path)
+    UI.user_error!("Could not find podspec file at path #{podspec_stu3_path}") unless File.exist?(podspec_stu3_path)
+    UI.user_error!("Could not find podspec file at path #{podspec_r4_path}") unless File.exist?(podspec_r4_path)
 
     if !options[:version]
       raise "No version specified!".red
@@ -147,21 +149,33 @@ platform :ios do
 
     new_version = options[:version]
 
-    podspec_content = File.read(podspec_path)
-    updated = podspec_content.gsub(/"([0-9]+)\.([0-9]+)\.([0-9]+)\-?([0-9a-zA-Z]*)\.?([0-9a-zA-Z]*)"/, "\"#{new_version}\"")
-    File.write(podspec_path, updated)
+    podspec_stu3_content = File.read(podspec_stu3_path)
+    updated = podspec_stu3_content.gsub(/"([0-9]+)\.([0-9]+)\.([0-9]+)\-?([0-9a-zA-Z]*)\.?([0-9a-zA-Z]*)"/, "\"#{new_version}\"")
+    File.write(podspec_stu3_path, updated)
+
+    podspec_r4_content = File.read(podspec_r4_path)
+    updated = podspec_r4_content.gsub(/"([0-9]+)\.([0-9]+)\.([0-9]+)\-?([0-9a-zA-Z]*)\.?([0-9a-zA-Z]*)"/, "\"#{new_version}\"")
+    File.write(podspec_r4_path, updated)
   end
 
   desc "Push new podspec to repo"
-  lane :push_podspec do
-    # pod_push fastlane action does not support private switch
-    # pod_push(path: "./Data4LifeFHIR.podspec", repo: "gesundheitscloud", allow_warnings: true)
+  lane :push_stu3_podspec do
     repo_list = sh "bundle exec pod repo list"
     if !repo_list.include? private_podspec_repo_name
      sh "bundle exec pod repo add #{private_podspec_repo_name} #{private_podspect_repo_url}"
     end
 
-    sh "bundle exec pod repo push #{private_podspec_repo_name} #{podspec_path} --private --allow-warnings"
+    sh "bundle exec pod repo push #{private_podspec_repo_name} #{podspec_stu3_path} --private --allow-warnings"
+  end
+
+  desc "Push new podspec to repo"
+  lane :push_r4_podspec do
+    repo_list = sh "bundle exec pod repo list"
+    if !repo_list.include? private_podspec_repo_name
+     sh "bundle exec pod repo add #{private_podspec_repo_name} #{private_podspect_repo_url}"
+    end
+
+    sh "bundle exec pod repo push #{private_podspec_repo_name} #{podspec_r4_path} --private --allow-warnings"
   end
 
   desc "Generate docs per version using Asciidoctor"
