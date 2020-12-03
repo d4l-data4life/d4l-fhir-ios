@@ -65,10 +65,15 @@ Build universal binary
 ```
 fastlane ios update_podspec_version
 ```
-Update podspec version
-### ios push_podspec
+Update podspecs version
+### ios push_stu3_podspec
 ```
-fastlane ios push_podspec
+fastlane ios push_stu3_podspec
+```
+Push new podspec to repo
+### ios push_r4_podspec
+```
+fastlane ios push_r4_podspec
 ```
 Push new podspec to repo
 ### ios generate_docs
