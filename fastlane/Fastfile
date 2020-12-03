@@ -13,7 +13,7 @@ platform :ios do
   desc "Run unit tests"
   lane :test do
     Dir.chdir("..") do
-       sh "./wcarthage.sh bootstrap --platform ios --cache-builds"
+       sh "./wcarthage.sh bootstrap --platform ios --use-ssh --cache-builds"
     end
     scan(
       scheme: project,
