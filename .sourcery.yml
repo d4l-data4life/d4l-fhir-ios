@@ -1,0 +1,10 @@
+sources:
+  - FhirR4/Sources/ModelsR4
+templates:
+  - FhirR4/Templates/
+output:
+  path: FhirR4/Sources/Generated
+  link:
+    project: Data4LifeFHIR.xcodeproj
+    target: ModelsR4
+    group: FhirR4/Sources/Generated
