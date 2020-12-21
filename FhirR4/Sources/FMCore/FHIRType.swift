@@ -24,7 +24,6 @@ public protocol FHIRType: Codable, Hashable {
 }
 
 extension FHIRType {
-	
 	public init<K>(from parentContainer: KeyedDecodingContainer<K>, forKey key: K) throws {
 		self = try parentContainer.decode(Self.self, forKey: key)
 	}

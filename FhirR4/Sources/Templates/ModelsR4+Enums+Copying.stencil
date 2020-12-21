@@ -1,0 +1,21 @@
+{% macro addOptionalMark variable %}{% if variable.isOptional %}?{% endif %}{% endmacro %}
+{% macro addOptionalCast variable %} as{% if variable.isOptional %}?{% else %}!{% endif %} {{ variable.typeName.unwrappedTypeName }}{% endmacro %}
+// swiftlint:disable file_length
+
+// MARK: Enums
+
+{% for enum in types.enums where enum.hasAssociatedValues %}
+// MARK: {{ enum.name }}
+extension ModelsR4.{{ enum.name }} {
+
+    public func copy() -> Any {
+        switch self {
+          {% for case in enum.cases %}
+          case .{{ case.name }}{% if case.hasAssociatedValues %}({% for value in case.associatedValues %}let value{{ forloop.counter }}{% if not forloop.last %},{% endif %}{% endfor %}){% endif %}:
+              return ModelsR4.{{ enum.name }}.{{ case.name }}({% for value in case.associatedValues %}value{{ forloop.counter }}{% if value.type.kind == "class" or ( value.typeName.isArray and value.typeName.array.elementType.kind == "class" ) or ( value.type.kind == "enum" and value.typeName.enum.hasAssociatedValues ) %}{% call addOptionalMark value %}{% if value.typeName.isArray %}.compactMap { $0.copy() as? {{ value.typeName.array.elementType.name }} } {% else %}.copy(){% call addOptionalCast value %}{% endif %}{% endif %}{% if not forloop.last %},{% endif %}{% endfor %})
+          {% endfor %}
+        }
+    }
+}
+
+{% endfor %}

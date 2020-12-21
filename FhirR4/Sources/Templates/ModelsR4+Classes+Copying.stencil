@@ -1,0 +1,35 @@
+{% macro addOptionalMark variable %}{% if variable.isOptional %}?{% endif %}{% endmacro %}
+{% macro addOptionalCast variable %} as{% if variable.isOptional %}?{% else %}!{% endif %} {{ variable.typeName.unwrappedTypeName }}{% endmacro %}
+// swiftlint:disable file_length
+
+// MARK: - {{ type.name }} NSCopying
+{% for type in types.classes %}
+
+// MARK: - {{ type.name }}
+extension ModelsR4.{{ type.name }}{% if not type.supertype %}: NSCopying{% endif %} {
+
+    {% if type.supertype %}override {% else %}@objc {% endif %}func copied(on subClassInstance: Any? = nil) -> Any {
+        let resourceToCopy = subClassInstance ?? ModelsR4.{{ type.name }}({% for parameter in type.initializers.first.parameters %}{{ parameter.name }}: self.{{ parameter.name }}{% if not forloop.last %}, {% endif %}{% endfor %})
+        guard let resource = {% if type.supertype %}super.copied(on: resourceToCopy) {% else %}resourceToCopy {% endif %}as? ModelsR4.{{ type.name }} else {
+            return self
+        }
+        {% for variable in type.variables where not variable.isStatic and not variable.name == "description" %}
+        {% set variableKind variable.type.kind %}
+        {% set variableUnwrappedType variable.typeName.unwrappedTypeName %}
+        {% set variableArrayElementKind variable.typeName.array.elementType.kind %}
+        {% set variableArrayElementType variable.typeName.array.elementType.name %}
+        {% set isVariableArray variable.typeName.isArray %}
+        {% set isVariableEnumWithAssociatedValues variable.typeName.enum.hasAssociatedValues %}
+        {% set isVariableOptional variable.isOptional %}
+        resource.{{ variable.name }} = self.{{ variable.name }}{% if variableKind == "class" or ( isVariableArray and variableArrayElementKind == "class" ) or ( variableKind == "enum" and isVariableEnumWithAssociatedValues ) %}{% call addOptionalMark variable %}{% if isVariableArray %}.compactMap { $0.copy() as? {{ variableArrayElementType }} } {% else %}.copy(){% call addOptionalCast variable %}{% endif %}{% endif %}
+        {% endfor %}
+
+        return resource
+    }
+
+    {% if type.supertype %}override {% else %}@objc {% endif %}public func copy(with zone: NSZone? = nil) -> Any {
+        return self.copied()
+    }
+}
+
+{% endfor %}

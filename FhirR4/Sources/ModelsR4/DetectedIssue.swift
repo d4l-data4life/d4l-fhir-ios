@@ -78,7 +78,7 @@ open class DetectedIssue: DomainResource {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							author: Reference? = nil,

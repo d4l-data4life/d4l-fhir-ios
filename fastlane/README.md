@@ -35,6 +35,11 @@ Generate FHIR models
 #### Options
 
  * **`embed`** (optional): Should embed newly generated models into Xcode project? defaults to true
+### ios generate_r4_tests
+```
+fastlane ios generate_r4_tests
+```
+
 ### ios release_framework
 ```
 fastlane ios release_framework
