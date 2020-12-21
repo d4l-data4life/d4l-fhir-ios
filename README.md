@@ -76,6 +76,13 @@ brew install carthage
 ```
 *Note*: For other installation methods check [README](https://github.com/Carthage/Carthage#installing-carthage).
 
+#### Install Sourcery
+
+```sh
+brew install sourcery
+```
+*Note*: For other installation methods check [README](https://github.com/krzysztofzablocki/Sourcery).
+
 #### Build frameworks
 *Note*: Since from XCode 12 Carthage packaging does not work anymore, please use the script.
 ```sh
