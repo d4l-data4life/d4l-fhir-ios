@@ -1097,7 +1097,7 @@ extension ModelsR4.CapabilityStatementMessaging {
 extension ModelsR4.CapabilityStatementMessagingEndpoint {
 
     override func copied(on subClassInstance: Any? = nil) -> Any {
-        let resourceToCopy = subClassInstance ?? ModelsR4.CapabilityStatementMessagingEndpoint(address: self.address, `protocol`: self.`protocol`)
+        let resourceToCopy = subClassInstance ?? ModelsR4.CapabilityStatementMessagingEndpoint(address: self.address, protocol: self.`protocol`)
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CapabilityStatementMessagingEndpoint else {
             return self
         }
@@ -2537,7 +2537,7 @@ extension ModelsR4.CodeSystemConceptProperty {
 extension ModelsR4.CodeSystemFilter {
 
     override func copied(on subClassInstance: Any? = nil) -> Any {
-        let resourceToCopy = subClassInstance ?? ModelsR4.CodeSystemFilter(code: self.code, `operator`: self.`operator`, value: self.value)
+        let resourceToCopy = subClassInstance ?? ModelsR4.CodeSystemFilter(code: self.code, operator: self.`operator`, value: self.value)
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CodeSystemFilter else {
             return self
         }
@@ -5487,7 +5487,7 @@ extension ModelsR4.ElementDefinitionType {
 extension ModelsR4.Encounter {
 
     override func copied(on subClassInstance: Any? = nil) -> Any {
-        let resourceToCopy = subClassInstance ?? ModelsR4.Encounter(`class`: self.`class`, status: self.status)
+        let resourceToCopy = subClassInstance ?? ModelsR4.Encounter(class: self.`class`, status: self.status)
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Encounter else {
             return self
         }
@@ -5528,7 +5528,7 @@ extension ModelsR4.Encounter {
 extension ModelsR4.EncounterClassHistory {
 
     override func copied(on subClassInstance: Any? = nil) -> Any {
-        let resourceToCopy = subClassInstance ?? ModelsR4.EncounterClassHistory(`class`: self.`class`, period: self.period)
+        let resourceToCopy = subClassInstance ?? ModelsR4.EncounterClassHistory(class: self.`class`, period: self.period)
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.EncounterClassHistory else {
             return self
         }
@@ -12479,7 +12479,7 @@ extension ModelsR4.QuestionnaireItemAnswerOption {
 extension ModelsR4.QuestionnaireItemEnableWhen {
 
     override func copied(on subClassInstance: Any? = nil) -> Any {
-        let resourceToCopy = subClassInstance ?? ModelsR4.QuestionnaireItemEnableWhen(answer: self.answer, `operator`: self.`operator`, question: self.question)
+        let resourceToCopy = subClassInstance ?? ModelsR4.QuestionnaireItemEnableWhen(answer: self.answer, operator: self.`operator`, question: self.question)
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.QuestionnaireItemEnableWhen else {
             return self
         }

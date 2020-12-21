@@ -8,7 +8,7 @@
 extension ModelsR4.{{ type.name }}{% if not type.supertype %}: NSCopying{% endif %} {
 
     {% if type.supertype %}override {% else %}@objc {% endif %}func copied(on subClassInstance: Any? = nil) -> Any {
-        let resourceToCopy = subClassInstance ?? ModelsR4.{{ type.name }}({% for parameter in type.initializers.first.parameters %}{{ parameter.name }}: self.{{ parameter.name }}{% if not forloop.last %}, {% endif %}{% endfor %})
+        let resourceToCopy = subClassInstance ?? ModelsR4.{{ type.name }}({% for parameter in type.initializers.first.parameters %}{{ parameter.name|replace:"`","" }}: self.{{ parameter.name }}{% if not forloop.last %}, {% endif %}{% endfor %})
         guard let resource = {% if type.supertype %}super.copied(on: resourceToCopy) {% else %}resourceToCopy {% endif %}as? ModelsR4.{{ type.name }} else {
             return self
         }
