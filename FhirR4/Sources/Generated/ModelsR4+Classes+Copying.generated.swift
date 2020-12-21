@@ -17,6 +17,8 @@
 // contact D4L by email to help@data4life.care.
 
 // swiftlint:disable file_length
+import Foundation
+
 // MARK: - NSCopying
 // MARK: - Account
 extension ModelsR4.Account {
