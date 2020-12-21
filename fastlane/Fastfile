@@ -7,7 +7,7 @@ podspec_stu3_path = '../Data4LifeFHIR.podspec'
 podspec_r4_path = '../ModelsR4.podspec'
 private_podspec_repo_name = 'd4l-data4life'
 private_podspect_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
-device = "iPhone X (12.0)"
+device = "iPhone 11"
 
 platform :ios do
   desc "Run unit tests"
@@ -20,6 +20,12 @@ platform :ios do
       derived_data_path: "build/DerivedData",
       devices: device,
       clean: true
+    )
+    scan(
+      scheme: "ModelsR4",
+      derived_data_path: "build/DerivedData",
+      devices: device,
+      clean: false
     )
   end
 
