@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes for the assessment of whether the entity caused the event.
  
@@ -26,30 +24,30 @@
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-causality-assess
  */
 public enum AdverseEventCausalityAssessment: String, FHIRPrimitiveType {
-	
+
 	/// i) Event or laboratory test abnormality, with plausible time relationship to drug intake; ii) Cannot be
 	/// explained by disease or other drugs; iii) Response to withdrawal plausible (pharmacologically, pathologically);
 	/// iv) Event definitive pharmacologically or phenomenologically (i.e. an objective and specific medical disorder or
 	/// a recognized pharmacological phenomenon); or v) Re-challenge satisfactory, if necessary.
 	case certain = "Certain"
-	
+
 	/// i) Event or laboratory test abnormality, with reasonable time relationship to drug intake; ii) Unlikely to be
 	/// attributed to disease or other drugs; iii) Response to withdrawal clinically reasonable; or iv) Re-challenge not
 	/// required.
 	case probablyLikely = "Probably-Likely"
-	
+
 	/// i) Event or laboratory test abnormality, with reasonable time relationship to drug intake; ii) Could also be
 	/// explained by disease or other drugs; or iii) Information on drug withdrawal may be lacking or unclear.
 	case possible = "Possible"
-	
+
 	/// i) Event or laboratory test abnormality, with a time to drug intake that makes a relationship improbable (but
 	/// not impossible); or ii) Disease or other drugs provide plausible explanations.
 	case unlikely = "Unlikely"
-	
+
 	/// i) Event or laboratory test abnormality; ii) More data for proper assessment needed; or iii) Additional data
 	/// under examination.
 	case conditionalClassified = "Conditional-Classified"
-	
+
 	/// i) Report suggesting an adverse reaction; ii) Cannot be judged because information is insufficient or
 	/// contradictory; or iii) Data cannot be supplemented or verified.
 	case unassessableUnclassifiable = "Unassessable-Unclassifiable"

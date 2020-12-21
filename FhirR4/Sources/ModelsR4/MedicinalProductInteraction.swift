@@ -17,43 +17,41 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  MedicinalProductInteraction.
  
  The interactions of the medicinal product with other medicinal products, or other forms of interactions.
  */
 open class MedicinalProductInteraction: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .medicinalProductInteraction }
-	
+
 	/// The medication for which this is a described interaction
 	public var subject: [Reference]?
-	
+
 	/// The interaction described
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The specific medication, food or laboratory test that interacts
 	public var interactant: [MedicinalProductInteractionInteractant]?
-	
+
 	/// The type of the interaction e.g. drug-drug interaction, drug-food interaction, drug-lab test interaction
 	public var type: CodeableConcept?
-	
+
 	/// The effect of the interaction, for example "reduced gastric absorption of primary medication"
 	public var effect: CodeableConcept?
-	
+
 	/// The incidence of the interaction, e.g. theoretical, observed
 	public var incidence: CodeableConcept?
-	
+
 	/// Actions for managing the interaction
 	public var management: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contained: [ResourceProxy]? = nil,
@@ -70,8 +68,7 @@ open class MedicinalProductInteraction: DomainResource {
 							modifierExtension: [Extension]? = nil,
 							subject: [Reference]? = nil,
 							text: Narrative? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.contained = contained
 		self.description_fhir = description_fhir
@@ -89,9 +86,9 @@ open class MedicinalProductInteraction: DomainResource {
 		self.text = text
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case effect
@@ -101,11 +98,11 @@ open class MedicinalProductInteraction: DomainResource {
 		case subject
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.effect = try CodeableConcept(from: _container, forKeyIfPresent: .effect)
@@ -116,11 +113,11 @@ open class MedicinalProductInteraction: DomainResource {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
 		try effect?.encode(on: &_container, forKey: .effect)
@@ -131,9 +128,9 @@ open class MedicinalProductInteraction: DomainResource {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductInteraction else {
 			return false
@@ -149,7 +146,7 @@ open class MedicinalProductInteraction: DomainResource {
 		    && subject == _other.subject
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(description_fhir)
@@ -166,54 +163,53 @@ open class MedicinalProductInteraction: DomainResource {
  The specific medication, food or laboratory test that interacts.
  */
 open class MedicinalProductInteractionInteractant: BackboneElement {
-	
+
 	/// All possible types for "item[x]"
 	public enum ItemX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// The specific medication, food or laboratory test that interacts
 	/// One of `item[x]`
 	public var item: ItemX
-	
+
 	/// Designated initializer taking all required properties
 	public init(item: ItemX) {
 		self.item = item
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							item: ItemX,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(item: item)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case itemCodeableConcept
 		case itemReference
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.itemCodeableConcept) || _container.contains(CodingKeys.itemReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.itemCodeableConcept, CodingKeys.itemReference], debugDescription: "Must have at least one value for \"item\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_item: ItemX? = nil
+		var _t_item: ItemX?
 		if let itemReference = try Reference(from: _container, forKeyIfPresent: .itemReference) {
 			if _t_item != nil {
 				throw DecodingError.dataCorruptedError(forKey: .itemReference, in: _container, debugDescription: "More than one value provided for \"item\"")
@@ -229,25 +225,25 @@ open class MedicinalProductInteractionInteractant: BackboneElement {
 		self.item = _t_item!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch item {
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .itemReference)
 			case .codeableConcept(let _value):
 				try _value.encode(on: &_container, forKey: .itemCodeableConcept)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductInteractionInteractant else {
 			return false
@@ -257,7 +253,7 @@ open class MedicinalProductInteractionInteractant: BackboneElement {
 		}
 		return item == _other.item
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(item)

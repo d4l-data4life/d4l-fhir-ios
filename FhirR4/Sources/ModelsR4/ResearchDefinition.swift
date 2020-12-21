@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A research context or question.
  
@@ -26,125 +24,125 @@
  population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about.
  */
 open class ResearchDefinition: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .researchDefinition }
-	
+
 	/// All possible types for "subject[x]"
 	public enum SubjectX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Canonical identifier for this research definition, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Additional identifier for the research definition
 	public var identifier: [Identifier]?
-	
+
 	/// Business version of the research definition
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this research definition (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this research definition (human friendly)
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// Title for use in informal contexts
 	public var shortTitle: FHIRPrimitive<FHIRString>?
-	
+
 	/// Subordinate title of the ResearchDefinition
 	public var subtitle: FHIRPrimitive<FHIRString>?
-	
+
 	/// The status of this research definition. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// For testing purposes, not real usage
 	public var experimental: FHIRPrimitive<FHIRBool>?
-	
+
 	/// E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device
 	/// One of `subject[x]`
 	public var subject: SubjectX?
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the research definition
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Used for footnotes or explanatory notes
 	public var comment: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for research definition (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Why this research definition is defined
 	public var purpose: FHIRPrimitive<FHIRString>?
-	
+
 	/// Describes the clinical usage of the ResearchDefinition
 	public var usage: FHIRPrimitive<FHIRString>?
-	
+
 	/// Use and/or publishing restrictions
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// When the research definition was approved by publisher
 	public var approvalDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the research definition was last reviewed
 	public var lastReviewDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the research definition is expected to be used
 	public var effectivePeriod: Period?
-	
+
 	/// The category of the ResearchDefinition, such as Education, Treatment, Assessment, etc.
 	public var topic: [CodeableConcept]?
-	
+
 	/// Who authored the content
 	public var author: [ContactDetail]?
-	
+
 	/// Who edited the content
 	public var editor: [ContactDetail]?
-	
+
 	/// Who reviewed the content
 	public var reviewer: [ContactDetail]?
-	
+
 	/// Who endorsed the content
 	public var endorser: [ContactDetail]?
-	
+
 	/// Additional documentation, citations, etc.
 	public var relatedArtifact: [RelatedArtifact]?
-	
+
 	/// Logic used by the ResearchDefinition
 	public var library: [FHIRPrimitive<Canonical>]?
-	
+
 	/// What population?
 	public var population: Reference
-	
+
 	/// What exposure?
 	public var exposure: Reference?
-	
+
 	/// What alternative exposure state?
 	public var exposureAlternative: Reference?
-	
+
 	/// What outcome?
 	public var outcome: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	public init(population: Reference, status: FHIRPrimitive<PublicationStatus>) {
 		self.population = population
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							approvalDate: FHIRPrimitive<FHIRDate>? = nil,
@@ -188,8 +186,7 @@ open class ResearchDefinition: DomainResource {
 							url: FHIRPrimitive<FHIRURI>? = nil,
 							usage: FHIRPrimitive<FHIRString>? = nil,
 							useContext: [UsageContext]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(population: population, status: status)
 		self.approvalDate = approvalDate
 		self.author = author
@@ -232,9 +229,9 @@ open class ResearchDefinition: DomainResource {
 		self.useContext = useContext
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case approvalDate; case _approvalDate
 		case author
@@ -272,11 +269,11 @@ open class ResearchDefinition: DomainResource {
 		case useContext
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.approvalDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .approvalDate, auxiliaryKey: ._approvalDate)
 		self.author = try [ContactDetail](from: _container, forKeyIfPresent: .author)
@@ -304,7 +301,7 @@ open class ResearchDefinition: DomainResource {
 		self.reviewer = try [ContactDetail](from: _container, forKeyIfPresent: .reviewer)
 		self.shortTitle = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .shortTitle, auxiliaryKey: ._shortTitle)
 		self.status = try FHIRPrimitive<PublicationStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
-		var _t_subject: SubjectX? = nil
+		var _t_subject: SubjectX?
 		if let subjectCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .subjectCodeableConcept) {
 			if _t_subject != nil {
 				throw DecodingError.dataCorruptedError(forKey: .subjectCodeableConcept, in: _container, debugDescription: "More than one value provided for \"subject\"")
@@ -327,11 +324,11 @@ open class ResearchDefinition: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try approvalDate?.encode(on: &_container, forKey: .approvalDate, auxiliaryKey: ._approvalDate)
 		try author?.encode(on: &_container, forKey: .author)
@@ -376,9 +373,9 @@ open class ResearchDefinition: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ResearchDefinition else {
 			return false
@@ -421,7 +418,7 @@ open class ResearchDefinition: DomainResource {
 		    && useContext == _other.useContext
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(approvalDate)

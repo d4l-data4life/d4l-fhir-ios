@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Immunization event information.
  
@@ -26,101 +24,101 @@
  a clinician or another party.
  */
 open class Immunization: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .immunization }
-	
+
 	/// All possible types for "occurrence[x]"
 	public enum OccurrenceX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Business identifier
 	public var identifier: [Identifier]?
-	
+
 	/// Indicates the current status of the immunization event.
 	/// Restricted to: ['completed', 'entered-in-error', 'not-done']
 	public var status: FHIRPrimitive<EventStatus>
-	
+
 	/// Reason not done
 	public var statusReason: CodeableConcept?
-	
+
 	/// Vaccine product administered
 	public var vaccineCode: CodeableConcept
-	
+
 	/// Who was immunized
 	public var patient: Reference
-	
+
 	/// Encounter immunization was part of
 	public var encounter: Reference?
-	
+
 	/// Vaccine administration date
 	/// One of `occurrence[x]`
 	public var occurrence: OccurrenceX
-	
+
 	/// When the immunization was first captured in the subject's record
 	public var recorded: FHIRPrimitive<DateTime>?
-	
+
 	/// Indicates context the data was recorded in
 	public var primarySource: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Indicates the source of a secondarily reported record
 	public var reportOrigin: CodeableConcept?
-	
+
 	/// Where immunization occurred
 	public var location: Reference?
-	
+
 	/// Vaccine manufacturer
 	public var manufacturer: Reference?
-	
+
 	/// Vaccine lot number
 	public var lotNumber: FHIRPrimitive<FHIRString>?
-	
+
 	/// Vaccine expiration date
 	public var expirationDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// Body site vaccine  was administered
 	public var site: CodeableConcept?
-	
+
 	/// How vaccine entered body
 	public var route: CodeableConcept?
-	
+
 	/// Amount of vaccine administered
 	public var doseQuantity: Quantity?
-	
+
 	/// Who performed event
 	public var performer: [ImmunizationPerformer]?
-	
+
 	/// Additional immunization notes
 	public var note: [Annotation]?
-	
+
 	/// Why immunization occurred
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// Why immunization occurred
 	public var reasonReference: [Reference]?
-	
+
 	/// Dose potency
 	public var isSubpotent: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Reason for being subpotent
 	public var subpotentReason: [CodeableConcept]?
-	
+
 	/// Educational material presented to patient
 	public var education: [ImmunizationEducation]?
-	
+
 	/// Patient eligibility for a vaccination program
 	public var programEligibility: [CodeableConcept]?
-	
+
 	/// Funding source for the vaccine
 	public var fundingSource: CodeableConcept?
-	
+
 	/// Details of a reaction that follows immunization
 	public var reaction: [ImmunizationReaction]?
-	
+
 	/// Protocol followed by the provider
 	public var protocolApplied: [ImmunizationProtocolApplied]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(occurrence: OccurrenceX, patient: Reference, status: FHIRPrimitive<EventStatus>, vaccineCode: CodeableConcept) {
 		self.occurrence = occurrence
@@ -129,7 +127,7 @@ open class Immunization: DomainResource {
 		self.vaccineCode = vaccineCode
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contained: [ResourceProxy]? = nil,
@@ -167,8 +165,7 @@ open class Immunization: DomainResource {
 							statusReason: CodeableConcept? = nil,
 							subpotentReason: [CodeableConcept]? = nil,
 							text: Narrative? = nil,
-							vaccineCode: CodeableConcept)
-	{
+							vaccineCode: CodeableConcept) {
 		self.init(occurrence: occurrence, patient: patient, status: status, vaccineCode: vaccineCode)
 		self.contained = contained
 		self.doseQuantity = doseQuantity
@@ -203,9 +200,9 @@ open class Immunization: DomainResource {
 		self.subpotentReason = subpotentReason
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case doseQuantity
 		case education
@@ -237,16 +234,16 @@ open class Immunization: DomainResource {
 		case subpotentReason
 		case vaccineCode
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.occurrenceDateTime) || _container.contains(CodingKeys.occurrenceString) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.occurrenceDateTime, CodingKeys.occurrenceString], debugDescription: "Must have at least one value for \"occurrence\" but have none"))
 		}
-		
+
 		// Decode all our properties
 		self.doseQuantity = try Quantity(from: _container, forKeyIfPresent: .doseQuantity)
 		self.education = try [ImmunizationEducation](from: _container, forKeyIfPresent: .education)
@@ -259,7 +256,7 @@ open class Immunization: DomainResource {
 		self.lotNumber = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .lotNumber, auxiliaryKey: ._lotNumber)
 		self.manufacturer = try Reference(from: _container, forKeyIfPresent: .manufacturer)
 		self.note = try [Annotation](from: _container, forKeyIfPresent: .note)
-		var _t_occurrence: OccurrenceX? = nil
+		var _t_occurrence: OccurrenceX?
 		if let occurrenceDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .occurrenceDateTime, auxiliaryKey: ._occurrenceDateTime) {
 			if _t_occurrence != nil {
 				throw DecodingError.dataCorruptedError(forKey: .occurrenceDateTime, in: _container, debugDescription: "More than one value provided for \"occurrence\"")
@@ -291,11 +288,11 @@ open class Immunization: DomainResource {
 		self.vaccineCode = try CodeableConcept(from: _container, forKey: .vaccineCode)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try doseQuantity?.encode(on: &_container, forKey: .doseQuantity)
 		try education?.encode(on: &_container, forKey: .education)
@@ -308,14 +305,14 @@ open class Immunization: DomainResource {
 		try lotNumber?.encode(on: &_container, forKey: .lotNumber, auxiliaryKey: ._lotNumber)
 		try manufacturer?.encode(on: &_container, forKey: .manufacturer)
 		try note?.encode(on: &_container, forKey: .note)
-		
+
 			switch occurrence {
 			case .dateTime(let _value):
 				try _value.encode(on: &_container, forKey: .occurrenceDateTime, auxiliaryKey: ._occurrenceDateTime)
 			case .string(let _value):
 				try _value.encode(on: &_container, forKey: .occurrenceString, auxiliaryKey: ._occurrenceString)
 			}
-		
+
 		try patient.encode(on: &_container, forKey: .patient)
 		try performer?.encode(on: &_container, forKey: .performer)
 		try primarySource?.encode(on: &_container, forKey: .primarySource, auxiliaryKey: ._primarySource)
@@ -334,9 +331,9 @@ open class Immunization: DomainResource {
 		try vaccineCode.encode(on: &_container, forKey: .vaccineCode)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Immunization else {
 			return false
@@ -373,7 +370,7 @@ open class Immunization: DomainResource {
 		    && subpotentReason == _other.subpotentReason
 		    && vaccineCode == _other.vaccineCode
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(doseQuantity)
@@ -413,24 +410,24 @@ open class Immunization: DomainResource {
  Educational material presented to the patient (or guardian) at the time of vaccine administration.
  */
 open class ImmunizationEducation: BackboneElement {
-	
+
 	/// Educational material document identifier
 	public var documentType: FHIRPrimitive<FHIRString>?
-	
+
 	/// Educational material reference pointer
 	public var reference: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Educational material publication date
 	public var publicationDate: FHIRPrimitive<DateTime>?
-	
+
 	/// Educational material presentation date
 	public var presentationDate: FHIRPrimitive<DateTime>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							documentType: FHIRPrimitive<FHIRString>? = nil,
@@ -439,8 +436,7 @@ open class ImmunizationEducation: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							presentationDate: FHIRPrimitive<DateTime>? = nil,
 							publicationDate: FHIRPrimitive<DateTime>? = nil,
-							reference: FHIRPrimitive<FHIRURI>? = nil)
-	{
+							reference: FHIRPrimitive<FHIRURI>? = nil) {
 		self.init()
 		self.documentType = documentType
 		self.`extension` = `extension`
@@ -450,20 +446,20 @@ open class ImmunizationEducation: BackboneElement {
 		self.publicationDate = publicationDate
 		self.reference = reference
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case documentType; case _documentType
 		case presentationDate; case _presentationDate
 		case publicationDate; case _publicationDate
 		case reference; case _reference
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.documentType = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .documentType, auxiliaryKey: ._documentType)
 		self.presentationDate = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .presentationDate, auxiliaryKey: ._presentationDate)
@@ -471,11 +467,11 @@ open class ImmunizationEducation: BackboneElement {
 		self.reference = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .reference, auxiliaryKey: ._reference)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try documentType?.encode(on: &_container, forKey: .documentType, auxiliaryKey: ._documentType)
 		try presentationDate?.encode(on: &_container, forKey: .presentationDate, auxiliaryKey: ._presentationDate)
@@ -483,9 +479,9 @@ open class ImmunizationEducation: BackboneElement {
 		try reference?.encode(on: &_container, forKey: .reference, auxiliaryKey: ._reference)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ImmunizationEducation else {
 			return false
@@ -498,7 +494,7 @@ open class ImmunizationEducation: BackboneElement {
 		    && publicationDate == _other.publicationDate
 		    && reference == _other.reference
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(documentType)
@@ -514,63 +510,62 @@ open class ImmunizationEducation: BackboneElement {
  Indicates who performed the immunization event.
  */
 open class ImmunizationPerformer: BackboneElement {
-	
+
 	/// What type of performance was done
 	public var function: CodeableConcept?
-	
+
 	/// Individual or organization who was performing
 	public var actor: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(actor: Reference) {
 		self.actor = actor
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							actor: Reference,
 							`extension`: [Extension]? = nil,
 							function: CodeableConcept? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(actor: actor)
 		self.`extension` = `extension`
 		self.function = function
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case actor
 		case function
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.actor = try Reference(from: _container, forKey: .actor)
 		self.function = try CodeableConcept(from: _container, forKeyIfPresent: .function)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try actor.encode(on: &_container, forKey: .actor)
 		try function?.encode(on: &_container, forKey: .function)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ImmunizationPerformer else {
 			return false
@@ -581,7 +576,7 @@ open class ImmunizationPerformer: BackboneElement {
 		return actor == _other.actor
 		    && function == _other.function
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(actor)
@@ -595,42 +590,42 @@ open class ImmunizationPerformer: BackboneElement {
  The protocol (set of recommendations) being followed by the provider who administered the dose.
  */
 open class ImmunizationProtocolApplied: BackboneElement {
-	
+
 	/// All possible types for "doseNumber[x]"
 	public enum DoseNumberX: Hashable {
 		case positiveInt(FHIRPrimitive<FHIRPositiveInteger>)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// All possible types for "seriesDoses[x]"
 	public enum SeriesDosesX: Hashable {
 		case positiveInt(FHIRPrimitive<FHIRPositiveInteger>)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Name of vaccine series
 	public var series: FHIRPrimitive<FHIRString>?
-	
+
 	/// Who is responsible for publishing the recommendations
 	public var authority: Reference?
-	
+
 	/// Vaccine preventatable disease being targetted
 	public var targetDisease: [CodeableConcept]?
-	
+
 	/// Dose number within series
 	/// One of `doseNumber[x]`
 	public var doseNumber: DoseNumberX
-	
+
 	/// Recommended number of doses for immunity
 	/// One of `seriesDoses[x]`
 	public var seriesDoses: SeriesDosesX?
-	
+
 	/// Designated initializer taking all required properties
 	public init(doseNumber: DoseNumberX) {
 		self.doseNumber = doseNumber
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							authority: Reference? = nil,
@@ -640,8 +635,7 @@ open class ImmunizationProtocolApplied: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							series: FHIRPrimitive<FHIRString>? = nil,
 							seriesDoses: SeriesDosesX? = nil,
-							targetDisease: [CodeableConcept]? = nil)
-	{
+							targetDisease: [CodeableConcept]? = nil) {
 		self.init(doseNumber: doseNumber)
 		self.authority = authority
 		self.`extension` = `extension`
@@ -651,9 +645,9 @@ open class ImmunizationProtocolApplied: BackboneElement {
 		self.seriesDoses = seriesDoses
 		self.targetDisease = targetDisease
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case authority
 		case doseNumberPositiveInt; case _doseNumberPositiveInt
@@ -663,19 +657,19 @@ open class ImmunizationProtocolApplied: BackboneElement {
 		case seriesDosesString; case _seriesDosesString
 		case targetDisease
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.doseNumberPositiveInt) || _container.contains(CodingKeys.doseNumberString) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.doseNumberPositiveInt, CodingKeys.doseNumberString], debugDescription: "Must have at least one value for \"doseNumber\" but have none"))
 		}
-		
+
 		// Decode all our properties
 		self.authority = try Reference(from: _container, forKeyIfPresent: .authority)
-		var _t_doseNumber: DoseNumberX? = nil
+		var _t_doseNumber: DoseNumberX?
 		if let doseNumberPositiveInt = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKeyIfPresent: .doseNumberPositiveInt, auxiliaryKey: ._doseNumberPositiveInt) {
 			if _t_doseNumber != nil {
 				throw DecodingError.dataCorruptedError(forKey: .doseNumberPositiveInt, in: _container, debugDescription: "More than one value provided for \"doseNumber\"")
@@ -690,7 +684,7 @@ open class ImmunizationProtocolApplied: BackboneElement {
 		}
 		self.doseNumber = _t_doseNumber!
 		self.series = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .series, auxiliaryKey: ._series)
-		var _t_seriesDoses: SeriesDosesX? = nil
+		var _t_seriesDoses: SeriesDosesX?
 		if let seriesDosesPositiveInt = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKeyIfPresent: .seriesDosesPositiveInt, auxiliaryKey: ._seriesDosesPositiveInt) {
 			if _t_seriesDoses != nil {
 				throw DecodingError.dataCorruptedError(forKey: .seriesDosesPositiveInt, in: _container, debugDescription: "More than one value provided for \"seriesDoses\"")
@@ -707,21 +701,21 @@ open class ImmunizationProtocolApplied: BackboneElement {
 		self.targetDisease = try [CodeableConcept](from: _container, forKeyIfPresent: .targetDisease)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try authority?.encode(on: &_container, forKey: .authority)
-		
+
 			switch doseNumber {
 			case .positiveInt(let _value):
 				try _value.encode(on: &_container, forKey: .doseNumberPositiveInt, auxiliaryKey: ._doseNumberPositiveInt)
 			case .string(let _value):
 				try _value.encode(on: &_container, forKey: .doseNumberString, auxiliaryKey: ._doseNumberString)
 			}
-		
+
 		try series?.encode(on: &_container, forKey: .series, auxiliaryKey: ._series)
 		if let _enum = seriesDoses {
 			switch _enum {
@@ -734,9 +728,9 @@ open class ImmunizationProtocolApplied: BackboneElement {
 		try targetDisease?.encode(on: &_container, forKey: .targetDisease)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ImmunizationProtocolApplied else {
 			return false
@@ -750,7 +744,7 @@ open class ImmunizationProtocolApplied: BackboneElement {
 		    && seriesDoses == _other.seriesDoses
 		    && targetDisease == _other.targetDisease
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(authority)
@@ -767,21 +761,21 @@ open class ImmunizationProtocolApplied: BackboneElement {
  Categorical data indicating that an adverse event is associated in time to an immunization.
  */
 open class ImmunizationReaction: BackboneElement {
-	
+
 	/// When reaction started
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Additional information on reaction
 	public var detail: Reference?
-	
+
 	/// Indicates self-reported reaction
 	public var reported: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							date: FHIRPrimitive<DateTime>? = nil,
@@ -789,8 +783,7 @@ open class ImmunizationReaction: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							reported: FHIRPrimitive<FHIRBool>? = nil)
-	{
+							reported: FHIRPrimitive<FHIRBool>? = nil) {
 		self.init()
 		self.date = date
 		self.detail = detail
@@ -799,39 +792,39 @@ open class ImmunizationReaction: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.reported = reported
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case date; case _date
 		case detail
 		case reported; case _reported
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.date = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
 		self.detail = try Reference(from: _container, forKeyIfPresent: .detail)
 		self.reported = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .reported, auxiliaryKey: ._reported)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
 		try detail?.encode(on: &_container, forKey: .detail)
 		try reported?.encode(on: &_container, forKey: .reported, auxiliaryKey: ._reported)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ImmunizationReaction else {
 			return false
@@ -843,7 +836,7 @@ open class ImmunizationReaction: BackboneElement {
 		    && detail == _other.detail
 		    && reported == _other.reported
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(date)

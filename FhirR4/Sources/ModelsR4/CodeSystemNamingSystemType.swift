@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Identifies the purpose of the naming system.
  
@@ -26,14 +24,14 @@
  ValueSet: http://hl7.org/fhir/ValueSet/namingsystem-type
  */
 public enum NamingSystemType: String, FHIRPrimitiveType {
-	
+
 	/// The naming system is used to define concepts and symbols to represent those concepts; e.g. UCUM, LOINC, NDC
 	/// code, local lab codes, etc.
 	case codesystem = "codesystem"
-	
+
 	/// The naming system is used to manage identifiers (e.g. license numbers, order numbers, etc.).
 	case identifier = "identifier"
-	
+
 	/// The naming system is used as the root for other identifiers and naming systems.
 	case root = "root"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Example codes for grouping goals to use for filtering or presentation.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/goal-category
  */
 public enum GoalCategory: String, FHIRPrimitiveType {
-	
+
 	/// Goals related to the consumption of food and/or beverages.
 	case dietary = "dietary"
-	
+
 	/// Goals related to the personal protection of the subject.
 	case safety = "safety"
-	
+
 	/// Goals related to the manner in which the subject acts.
 	case behavioral = "behavioral"
-	
+
 	/// Goals related to the practice of nursing or established by nurses.
 	case nursing = "nursing"
-	
+
 	/// Goals related to the mobility and/or motor capability of the subject.
 	case physiotherapy = "physiotherapy"
 }

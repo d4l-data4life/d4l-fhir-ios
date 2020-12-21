@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set contract specific codes for status.
  
@@ -26,7 +24,7 @@
  ValueSet: http://hl7.org/fhir/ValueSet/contract-expiration-type
  */
 public enum ContractResourceExpirationTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// To be completed
 	case breach = "breach"
 }

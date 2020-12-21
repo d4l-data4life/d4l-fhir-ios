@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A set codes that define the functional status of an implanted device.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/implantStatus
  */
 public enum ImplantStatus: String, FHIRPrimitiveType {
-	
+
 	/// The implanted device is working normally.
 	case functional = "functional"
-	
+
 	/// The implanted device is not working.
 	case nonFunctional = "non-functional"
-	
+
 	/// The implanted device has been turned off.
 	case disabled = "disabled"
-	
+
 	/// the functional status of the implant has not been determined.
 	case unknown = "unknown"
 }

@@ -19,7 +19,7 @@
 import Foundation
 
 public protocol ExpressibleAsNSDate {
-	
+
 	func asNSDate() throws -> Date
 }
 

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The gender of a person used for administrative purposes.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/administrative-gender
  */
 public enum AdministrativeGender: String, FHIRPrimitiveType {
-	
+
 	/// Male.
 	case male = "male"
-	
+
 	/// Female.
 	case female = "female"
-	
+
 	/// Other.
 	case other = "other"
-	
+
 	/// Unknown.
 	case unknown = "unknown"
 }

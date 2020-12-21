@@ -17,48 +17,46 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A medicinal product in a container or package.
  */
 open class MedicinalProductPackaged: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .medicinalProductPackaged }
-	
+
 	/// Unique identifier
 	public var identifier: [Identifier]?
-	
+
 	/// The product with this is a pack for
 	public var subject: [Reference]?
-	
+
 	/// Textual description
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The legal status of supply of the medicinal product as classified by the regulator
 	public var legalStatusOfSupply: CodeableConcept?
-	
+
 	/// Marketing information
 	public var marketingStatus: [MarketingStatus]?
-	
+
 	/// Manufacturer of this Package Item
 	public var marketingAuthorization: Reference?
-	
+
 	/// Manufacturer of this Package Item
 	public var manufacturer: [Reference]?
-	
+
 	/// Batch numbering
 	public var batchIdentifier: [MedicinalProductPackagedBatchIdentifier]?
-	
+
 	/// A packaging item, as a contained for medicine, possibly with other packaging items within
 	public var packageItem: [MedicinalProductPackagedPackageItem]
-	
+
 	/// Designated initializer taking all required properties
 	public init(packageItem: [MedicinalProductPackagedPackageItem]) {
 		self.packageItem = packageItem
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							batchIdentifier: [MedicinalProductPackagedBatchIdentifier]? = nil,
@@ -77,8 +75,7 @@ open class MedicinalProductPackaged: DomainResource {
 							modifierExtension: [Extension]? = nil,
 							packageItem: [MedicinalProductPackagedPackageItem],
 							subject: [Reference]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(packageItem: packageItem)
 		self.batchIdentifier = batchIdentifier
 		self.contained = contained
@@ -97,9 +94,9 @@ open class MedicinalProductPackaged: DomainResource {
 		self.subject = subject
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case batchIdentifier
 		case description_fhir = "description"; case _description_fhir = "_description"
@@ -111,11 +108,11 @@ open class MedicinalProductPackaged: DomainResource {
 		case packageItem
 		case subject
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.batchIdentifier = try [MedicinalProductPackagedBatchIdentifier](from: _container, forKeyIfPresent: .batchIdentifier)
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -128,11 +125,11 @@ open class MedicinalProductPackaged: DomainResource {
 		self.subject = try [Reference](from: _container, forKeyIfPresent: .subject)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try batchIdentifier?.encode(on: &_container, forKey: .batchIdentifier)
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -145,9 +142,9 @@ open class MedicinalProductPackaged: DomainResource {
 		try subject?.encode(on: &_container, forKey: .subject)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductPackaged else {
 			return false
@@ -165,7 +162,7 @@ open class MedicinalProductPackaged: DomainResource {
 		    && packageItem == _other.packageItem
 		    && subject == _other.subject
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(batchIdentifier)
@@ -184,63 +181,62 @@ open class MedicinalProductPackaged: DomainResource {
  Batch numbering.
  */
 open class MedicinalProductPackagedBatchIdentifier: BackboneElement {
-	
+
 	/// A number appearing on the outer packaging of a specific batch
 	public var outerPackaging: Identifier
-	
+
 	/// A number appearing on the immediate packaging (and not the outer packaging)
 	public var immediatePackaging: Identifier?
-	
+
 	/// Designated initializer taking all required properties
 	public init(outerPackaging: Identifier) {
 		self.outerPackaging = outerPackaging
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							immediatePackaging: Identifier? = nil,
 							modifierExtension: [Extension]? = nil,
-							outerPackaging: Identifier)
-	{
+							outerPackaging: Identifier) {
 		self.init(outerPackaging: outerPackaging)
 		self.`extension` = `extension`
 		self.id = id
 		self.immediatePackaging = immediatePackaging
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case immediatePackaging
 		case outerPackaging
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.immediatePackaging = try Identifier(from: _container, forKeyIfPresent: .immediatePackaging)
 		self.outerPackaging = try Identifier(from: _container, forKey: .outerPackaging)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try immediatePackaging?.encode(on: &_container, forKey: .immediatePackaging)
 		try outerPackaging.encode(on: &_container, forKey: .outerPackaging)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductPackagedBatchIdentifier else {
 			return false
@@ -251,7 +247,7 @@ open class MedicinalProductPackagedBatchIdentifier: BackboneElement {
 		return immediatePackaging == _other.immediatePackaging
 		    && outerPackaging == _other.outerPackaging
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(immediatePackaging)
@@ -263,51 +259,51 @@ open class MedicinalProductPackagedBatchIdentifier: BackboneElement {
  A packaging item, as a contained for medicine, possibly with other packaging items within.
  */
 open class MedicinalProductPackagedPackageItem: BackboneElement {
-	
+
 	/// Including possibly Data Carrier Identifier
 	public var identifier: [Identifier]?
-	
+
 	/// The physical type of the container of the medicine
 	public var type: CodeableConcept
-	
+
 	/// The quantity of this package in the medicinal product, at the current level of packaging. The outermost is
 	/// always 1
 	public var quantity: Quantity
-	
+
 	/// Material type of the package item
 	public var material: [CodeableConcept]?
-	
+
 	/// A possible alternate material for the packaging
 	public var alternateMaterial: [CodeableConcept]?
-	
+
 	/// A device accompanying a medicinal product
 	public var device: [Reference]?
-	
+
 	/// The manufactured item as contained in the packaged medicinal product
 	public var manufacturedItem: [Reference]?
-	
+
 	/// Allows containers within containers
 	public var packageItem: [MedicinalProductPackagedPackageItem]?
-	
+
 	/// Dimensions, color etc.
 	public var physicalCharacteristics: ProdCharacteristic?
-	
+
 	/// Other codeable characteristics
 	public var otherCharacteristics: [CodeableConcept]?
-	
+
 	/// Shelf Life and storage information
 	public var shelfLifeStorage: [ProductShelfLife]?
-	
+
 	/// Manufacturer of this Package Item
 	public var manufacturer: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(quantity: Quantity, type: CodeableConcept) {
 		self.quantity = quantity
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							alternateMaterial: [CodeableConcept]? = nil,
@@ -324,8 +320,7 @@ open class MedicinalProductPackagedPackageItem: BackboneElement {
 							physicalCharacteristics: ProdCharacteristic? = nil,
 							quantity: Quantity,
 							shelfLifeStorage: [ProductShelfLife]? = nil,
-							type: CodeableConcept)
-	{
+							type: CodeableConcept) {
 		self.init(quantity: quantity, type: type)
 		self.alternateMaterial = alternateMaterial
 		self.device = device
@@ -341,9 +336,9 @@ open class MedicinalProductPackagedPackageItem: BackboneElement {
 		self.physicalCharacteristics = physicalCharacteristics
 		self.shelfLifeStorage = shelfLifeStorage
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case alternateMaterial
 		case device
@@ -358,11 +353,11 @@ open class MedicinalProductPackagedPackageItem: BackboneElement {
 		case shelfLifeStorage
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.alternateMaterial = try [CodeableConcept](from: _container, forKeyIfPresent: .alternateMaterial)
 		self.device = try [Reference](from: _container, forKeyIfPresent: .device)
@@ -378,11 +373,11 @@ open class MedicinalProductPackagedPackageItem: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKey: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try alternateMaterial?.encode(on: &_container, forKey: .alternateMaterial)
 		try device?.encode(on: &_container, forKey: .device)
@@ -398,9 +393,9 @@ open class MedicinalProductPackagedPackageItem: BackboneElement {
 		try type.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductPackagedPackageItem else {
 			return false
@@ -421,7 +416,7 @@ open class MedicinalProductPackagedPackageItem: BackboneElement {
 		    && shelfLifeStorage == _other.shelfLifeStorage
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(alternateMaterial)

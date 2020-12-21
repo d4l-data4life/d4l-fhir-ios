@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Describes the category of the metric.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/metric-category
  */
 public enum DeviceMetricCategory: String, FHIRPrimitiveType {
-	
+
 	/// DeviceObservations generated for this DeviceMetric are measured.
 	case measurement = "measurement"
-	
+
 	/// DeviceObservations generated for this DeviceMetric is a setting that will influence the behavior of the Device.
 	case setting = "setting"
-	
+
 	/// DeviceObservations generated for this DeviceMetric are calculated.
 	case calculation = "calculation"
-	
+
 	/// The category of this DeviceMetric is unspecified.
 	case unspecified = "unspecified"
 }

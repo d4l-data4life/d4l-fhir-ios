@@ -17,70 +17,67 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Human-readable summary of the resource (essential clinical and business information).
  
  A human-readable summary of the resource conveying the essential clinical and business information for the resource.
  */
 open class Narrative: Element {
-	
+
 	/// The status of the narrative - whether it's entirely generated (from just the defined data or the extensions
 	/// too), or whether a human authored it and it may contain additional data.
 	public var status: FHIRPrimitive<NarrativeStatus>
-	
+
 	/// Limited xhtml content
 	public var div: FHIRPrimitive<FHIRString>
-	
+
 	/// Designated initializer taking all required properties
 	public init(div: FHIRPrimitive<FHIRString>, status: FHIRPrimitive<NarrativeStatus>) {
 		self.div = div
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							div: FHIRPrimitive<FHIRString>,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							status: FHIRPrimitive<NarrativeStatus>)
-	{
+							status: FHIRPrimitive<NarrativeStatus>) {
 		self.init(div: div, status: status)
 		self.`extension` = `extension`
 		self.id = id
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case div; case _div
 		case status; case _status
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.div = try FHIRPrimitive<FHIRString>(from: _container, forKey: .div, auxiliaryKey: ._div)
 		self.status = try FHIRPrimitive<NarrativeStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try div.encode(on: &_container, forKey: .div, auxiliaryKey: ._div)
 		try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Narrative else {
 			return false
@@ -91,7 +88,7 @@ open class Narrative: Element {
 		return div == _other.div
 		    && status == _other.status
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(div)

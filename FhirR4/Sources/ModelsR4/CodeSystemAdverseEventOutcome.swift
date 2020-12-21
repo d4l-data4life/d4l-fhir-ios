@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  TODO (and should this be required?).
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-outcome
  */
 public enum AdverseEventOutcome: String, FHIRPrimitiveType {
-	
+
 	/// resolved
 	case resolved = "resolved"
-	
+
 	/// recovering
 	case recovering = "recovering"
-	
+
 	/// ongoing
 	case ongoing = "ongoing"
-	
+
 	/// resolvedWithSequelae
 	case resolvedWithSequelae = "resolvedWithSequelae"
-	
+
 	/// fatal
 	case fatal = "fatal"
-	
+
 	/// unknown
 	case unknown = "unknown"
 }

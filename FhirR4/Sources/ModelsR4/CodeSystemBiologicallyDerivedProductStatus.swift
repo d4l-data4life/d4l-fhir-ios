@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Biologically Derived Product Status.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/product-status
  */
 public enum BiologicallyDerivedProductStatus: String, FHIRPrimitiveType {
-	
+
 	/// Product is currently available for use.
 	case available = "available"
-	
+
 	/// Product is not currently available for use.
 	case unavailable = "unavailable"
 }

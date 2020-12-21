@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Defines the kinds of conditions that can appear on actions.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/action-condition-kind
  */
 public enum ActionConditionKind: String, FHIRPrimitiveType {
-	
+
 	/// The condition describes whether or not a given action is applicable.
 	case applicability = "applicability"
-	
+
 	/// The condition is a starting condition for the action.
 	case start = "start"
-	
+
 	/// The condition is a stop, or exit condition for the action.
 	case stop = "stop"
 }

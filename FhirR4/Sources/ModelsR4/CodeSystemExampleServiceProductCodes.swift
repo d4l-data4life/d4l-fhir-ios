@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes a smattering of Service/Product codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/service-product
  */
 public enum ExampleServiceProductCodes: String, FHIRPrimitiveType {
-	
+
 	/// Exam
 	case exam = "exam"
-	
+
 	/// Flu shot
 	case flushot = "flushot"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Whether the results by exposure is describing the results for the primary exposure of interest (exposure) or the
  alternative state (exposureAlternative).
@@ -27,10 +25,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/exposure-state
  */
 public enum ExposureState: String, FHIRPrimitiveType {
-	
+
 	/// used when the results by exposure is describing the results for the primary exposure of interest.
 	case exposure = "exposure"
-	
+
 	/// used when the results by exposure is describing the results for the alternative exposure state, control state or
 	/// comparator state.
 	case exposureAlternative = "exposure-alternative"

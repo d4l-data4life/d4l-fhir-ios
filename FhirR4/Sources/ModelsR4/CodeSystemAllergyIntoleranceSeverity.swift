@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Clinical assessment of the severity of a reaction event as a whole, potentially considering multiple different
  manifestations.
@@ -27,13 +25,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/reaction-event-severity
  */
 public enum AllergyIntoleranceSeverity: String, FHIRPrimitiveType {
-	
+
 	/// Causes mild physiological effects.
 	case mild = "mild"
-	
+
 	/// Causes moderate physiological effects.
 	case moderate = "moderate"
-	
+
 	/// Causes severe physiological effects.
 	case severe = "severe"
 }

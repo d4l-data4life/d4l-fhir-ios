@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Used for results by exposure in variant states such as low-risk, medium-risk and high-risk states.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/evidence-variant-state
  */
 public enum EvidenceVariantState: String, FHIRPrimitiveType {
-	
+
 	/// low risk estimate.
 	case lowRisk = "low-risk"
-	
+
 	/// medium risk estimate.
 	case mediumRisk = "medium-risk"
-	
+
 	/// high risk estimate.
 	case highRisk = "high-risk"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How a type relates to its baseDefinition.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/type-derivation-rule
  */
 public enum TypeDerivationRule: String, FHIRPrimitiveType {
-	
+
 	/// This definition defines a new type that adds additional elements to the base type.
 	case specialization = "specialization"
-	
+
 	/// This definition adds additional rules to an existing concrete type.
 	case constraint = "constraint"
 }

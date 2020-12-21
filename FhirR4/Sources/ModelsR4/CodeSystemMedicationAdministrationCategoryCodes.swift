@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  MedicationAdministration Category Codes
  
@@ -26,14 +24,14 @@
  ValueSet: http://hl7.org/fhir/ValueSet/medication-admin-category
  */
 public enum MedicationAdministrationCategoryCodes: String, FHIRPrimitiveType {
-	
+
 	/// Includes administrations in an inpatient or acute care setting
 	case inpatient = "inpatient"
-	
+
 	/// Includes administrations in an outpatient setting (for example, Emergency Department, Outpatient Clinic,
 	/// Outpatient Surgery, Doctor's office)
 	case outpatient = "outpatient"
-	
+
 	/// Includes administrations by the patient in their home (this would include long term care or nursing homes,
 	/// hospices, etc.)
 	case community = "community"

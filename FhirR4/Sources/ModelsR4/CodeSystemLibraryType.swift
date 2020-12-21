@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of knowledge asset this library contains.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/library-type
  */
 public enum LibraryType: String, FHIRPrimitiveType {
-	
+
 	/// The resource is a shareable library of formalized knowledge.
 	case logicLibrary = "logic-library"
-	
+
 	/// The resource is a definition of an information model.
 	case modelDefinition = "model-definition"
-	
+
 	/// The resource is a collection of knowledge assets.
 	case assetCollection = "asset-collection"
-	
+
 	/// The resource defines the dependencies, parameters, and data requirements for a particular module or evaluation
 	/// context.
 	case moduleDefinition = "module-definition"

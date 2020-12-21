@@ -17,67 +17,64 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Text node with attribution.
  
  A  text note which also  contains information about who made the statement and when.
  */
 open class Annotation: Element {
-	
+
 	/// All possible types for "author[x]"
 	public enum AuthorX: Hashable {
 		case reference(Reference)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Individual responsible for the annotation
 	/// One of `author[x]`
 	public var author: AuthorX?
-	
+
 	/// When the annotation was made
 	public var time: FHIRPrimitive<DateTime>?
-	
+
 	/// The annotation  - text content (as markdown)
 	public var text: FHIRPrimitive<FHIRString>
-	
+
 	/// Designated initializer taking all required properties
 	public init(text: FHIRPrimitive<FHIRString>) {
 		self.text = text
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							author: AuthorX? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							text: FHIRPrimitive<FHIRString>,
-							time: FHIRPrimitive<DateTime>? = nil)
-	{
+							time: FHIRPrimitive<DateTime>? = nil) {
 		self.init(text: text)
 		self.author = author
 		self.`extension` = `extension`
 		self.id = id
 		self.time = time
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case authorReference
 		case authorString; case _authorString
 		case text; case _text
 		case time; case _time
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
-		var _t_author: AuthorX? = nil
+		var _t_author: AuthorX?
 		if let authorReference = try Reference(from: _container, forKeyIfPresent: .authorReference) {
 			if _t_author != nil {
 				throw DecodingError.dataCorruptedError(forKey: .authorReference, in: _container, debugDescription: "More than one value provided for \"author\"")
@@ -95,11 +92,11 @@ open class Annotation: Element {
 		self.time = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .time, auxiliaryKey: ._time)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		if let _enum = author {
 			switch _enum {
@@ -113,9 +110,9 @@ open class Annotation: Element {
 		try time?.encode(on: &_container, forKey: .time, auxiliaryKey: ._time)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Annotation else {
 			return false
@@ -127,7 +124,7 @@ open class Annotation: Element {
 		    && text == _other.text
 		    && time == _other.time
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(author)

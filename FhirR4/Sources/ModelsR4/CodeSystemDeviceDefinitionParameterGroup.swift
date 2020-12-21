@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes identifying groupings of parameters; e.g. Cardiovascular.
  
@@ -26,31 +24,31 @@
  ValueSet: http://hl7.org/fhir/ValueSet/parameter-group
  */
 public enum DeviceDefinitionParameterGroup: String, FHIRPrimitiveType {
-	
+
 	/// Haemodynamic Parameter Group - MDC_PGRP_HEMO.
 	case haemodynamic = "haemodynamic"
-	
+
 	/// ECG Parameter Group - MDC_PGRP_ECG.
 	case ecg = "ecg"
-	
+
 	/// Respiratory Parameter Group - MDC_PGRP_RESP.
 	case respiratory = "respiratory"
-	
+
 	/// Ventilation Parameter Group - MDC_PGRP_VENT.
 	case ventilation = "ventilation"
-	
+
 	/// Neurological Parameter Group - MDC_PGRP_NEURO.
 	case neurological = "neurological"
-	
+
 	/// Drug Delivery Parameter Group - MDC_PGRP_DRUG.
 	case drugDelivery = "drug-delivery"
-	
+
 	/// Fluid Chemistry Parameter Group - MDC_PGRP_FLUID.
 	case fluidChemistry = "fluid-chemistry"
-	
+
 	/// Blood Chemistry Parameter Group - MDC_PGRP_BLOOD_CHEM.
 	case bloodChemistry = "blood-chemistry"
-	
+
 	/// Miscellaneous Parameter Group - MDC_PGRP_MISC.
 	case miscellaneous = "miscellaneous"
 }

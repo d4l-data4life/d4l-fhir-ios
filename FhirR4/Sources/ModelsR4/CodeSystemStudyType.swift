@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Types of research studies (types of research methods).
  
@@ -26,25 +24,25 @@
  ValueSet: http://hl7.org/fhir/ValueSet/study-type
  */
 public enum StudyType: String, FHIRPrimitiveType {
-	
+
 	/// randomized controlled trial.
 	case RCT = "RCT"
-	
+
 	/// controlled (but not randomized) trial.
 	case CCT = "CCT"
-	
+
 	/// observational study comparing cohorts.
 	case cohort = "cohort"
-	
+
 	/// case-control study.
 	case caseControl = "case-control"
-	
+
 	/// uncontrolled cohort or case series.
 	case series = "series"
-	
+
 	/// a single case report.
 	case caseReport = "case-report"
-	
+
 	/// a combination of 1 or more types of studies.
 	case mixed = "mixed"
 }

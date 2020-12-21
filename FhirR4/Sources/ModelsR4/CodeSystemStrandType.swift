@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Type for strand.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/strand-type
  */
 public enum StrandType: String, FHIRPrimitiveType {
-	
+
 	/// Watson strand of reference sequence.
 	case watson = "watson"
-	
+
 	/// Crick strand of reference sequence.
 	case crick = "crick"
 }

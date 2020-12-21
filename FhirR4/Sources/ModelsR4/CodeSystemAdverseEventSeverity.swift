@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The severity of the adverse event itself, in direct relation to the subject.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-severity
  */
 public enum AdverseEventSeverity: String, FHIRPrimitiveType {
-	
+
 	/// mild
 	case mild = "mild"
-	
+
 	/// moderate
 	case moderate = "moderate"
-	
+
 	/// severe
 	case severe = "severe"
 }

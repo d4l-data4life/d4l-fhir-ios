@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Overall nature of the adverse event, e.g. real or potential.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-actuality
  */
 public enum AdverseEventActuality: String, FHIRPrimitiveType {
-	
+
 	/// The adverse event actually happened regardless of whether anyone was affected or harmed.
 	case actual = "actual"
-	
+
 	/// A potential adverse event.
 	case potential = "potential"
 }

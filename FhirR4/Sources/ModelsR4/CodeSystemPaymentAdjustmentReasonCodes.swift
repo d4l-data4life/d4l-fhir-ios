@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes smattering of Payment Adjustment Reason codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/payment-adjustment-reason
  */
 public enum PaymentAdjustmentReasonCodes: String, FHIRPrimitiveType {
-	
+
 	/// Prior Payment Reversal
 	case A001 = "a001"
-	
+
 	/// Prior Overpayment
 	case A002 = "a002"
 }

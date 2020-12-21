@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes Claim Type codes.
  
@@ -26,20 +24,20 @@
  ValueSet: http://hl7.org/fhir/ValueSet/claim-type
  */
 public enum ClaimTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// Hospital, clinic and typically inpatient claims.
 	case institutional = "institutional"
-	
+
 	/// Dental, Denture and Hygiene claims.
 	case oral = "oral"
-	
+
 	/// Pharmacy claims for goods and services.
 	case pharmacy = "pharmacy"
-	
+
 	/// Typically, outpatient claims from Physician, Psychological, Chiropractor, Physiotherapy, Speech Pathology,
 	/// rehabilitative, consulting.
 	case professional = "professional"
-	
+
 	/// Vision claims for professional services and products such as glasses and contact lenses.
 	case vision = "vision"
 }

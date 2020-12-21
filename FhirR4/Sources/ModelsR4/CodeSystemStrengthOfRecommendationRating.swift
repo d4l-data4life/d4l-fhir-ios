@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A rating system that describes the strength of the recommendation, such as the GRADE, DynaMed, or HGPS systems.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/recommendation-strength
  */
 public enum StrengthOfRecommendationRating: String, FHIRPrimitiveType {
-	
+
 	/// Strong recommendation.
 	case strong = "strong"
-	
+
 	/// Weak recommendation.
 	case weak = "weak"
 }

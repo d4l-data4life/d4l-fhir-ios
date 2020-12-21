@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The status of a subscription.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/subscription-status
  */
 public enum SubscriptionStatus: String, FHIRPrimitiveType {
-	
+
 	/// The client has requested the subscription, and the server has not yet set it up.
 	case requested = "requested"
-	
+
 	/// The subscription is active.
 	case active = "active"
-	
+
 	/// The server has an error executing the notification.
 	case error = "error"
-	
+
 	/// Too many errors have occurred or the subscription has expired.
 	case off = "off"
 }

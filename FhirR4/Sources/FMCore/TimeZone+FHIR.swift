@@ -19,13 +19,13 @@
 import Foundation
 
 public extension TimeZone {
-	
+
 	init(_ originalString: String) throws {
 		let scanner = Scanner(string: originalString)
 		let (seconds, _) = try TimeZone.hs_parseComponents(from: scanner, expectAtEnd: true)
 		self.init(secondsFromGMT: seconds)!
 	}
-	
+
 	var fhirDescription: String {
 		if secondsFromGMT() == 0 {
 			return "Z"
@@ -37,18 +37,18 @@ public extension TimeZone {
 		let prefix = ahead ? "+" : "-"
 		return String(format: "\(prefix)%02d:%02d", hours, minutes)
 	}
-	
+
 	static func hs_parseComponents(from scanner: Scanner, expectAtEnd: Bool = true) throws -> (secondsFromGMT: Int, timeZoneString: String) {
 		let originalCharactersToBeSkipped = scanner.charactersToBeSkipped
 		defer { scanner.charactersToBeSkipped = originalCharactersToBeSkipped }
 		scanner.charactersToBeSkipped = nil
-		
+
 		let plusMinusZ = CharacterSet(charactersIn: "+-Z")
 		var scanLocation = scanner.scanLocation
 		guard let tzPrefix = scanner.hs_scanCharacters(from: plusMinusZ) else {
 			throw FHIRDateParserError.invalidTimeZonePrefix(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
 		}
-		
+
 		let secondsFromGMT: Int
 		let timeZoneString: String
 		if "Z" == tzPrefix {
@@ -66,12 +66,12 @@ public extension TimeZone {
 			guard let hour = Int(hourString), hour <= 14 else {
 				throw FHIRDateParserError.invalidTimeZoneHour(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
 			}
-			
+
 			scanLocation = scanner.scanLocation
 			guard scanner.scanString(":", into: nil) else {
 				throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
 			}
-			
+
 			scanLocation = scanner.scanLocation
 			guard let minuteString = scanner.hs_scanCharacters(from: numbers) else {
 				throw FHIRDateParserError.invalidTimeZoneMinute(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
@@ -85,11 +85,11 @@ public extension TimeZone {
 			guard hour < 14 || minute == 0 else {
 				throw FHIRDateParserError.invalidTimeZoneMinute(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
 			}
-			
+
 			secondsFromGMT = (("-" == tzPrefix) ? -1 : 1) * ((3600 * hour) + (60 * minute))
 			timeZoneString = "\(tzPrefix)\(hourString):\(minuteString)"
 		}
-		
+
 		return (secondsFromGMT, timeZoneString)
 	}
 }

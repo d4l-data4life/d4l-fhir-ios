@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes Financial Task codes.
  
@@ -26,21 +24,21 @@
  ValueSet: http://hl7.org/fhir/ValueSet/financial-taskcode
  */
 public enum FinancialTaskCodes: String, FHIRPrimitiveType {
-	
+
 	/// Cancel or reverse a resource, such as a claim or preauthorization, which is in-process or complete.
 	case cancel = "cancel"
-	
+
 	/// Retrieve selected or all queued resources or messages.
 	case poll = "poll"
-	
+
 	/// Release any reserved funds or material obligations associated with a resource. For example, any unused but
 	/// reserved funds or treatment allowance associated with a preauthorization once treatment is complete.
 	case release = "release"
-	
+
 	/// Indication that the processing of a resource, such as a claim, for some or all of the required work is now being
 	/// requested.
 	case reprocess = "reprocess"
-	
+
 	/// Check on the processing status of a resource such as the adjudication of a claim.
 	case status = "status"
 }

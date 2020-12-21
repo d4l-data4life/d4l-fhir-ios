@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes example Onset Type codes which are used to identify the event for which the onset, starting
  date, is required.
@@ -27,13 +25,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/ex-onsettype
  */
 public enum ExampleOnsetTypeReasonCodes: String, FHIRPrimitiveType {
-	
+
 	/// Date of last examination.
 	case lxm = "lxm"
-	
+
 	/// Date when symptoms were first noticed.
 	case sym = "sym"
-	
+
 	/// Start date of last menstruation.
 	case lmn = "lmn"
 }

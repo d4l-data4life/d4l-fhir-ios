@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set defines a set of codes that can be used to indicate dietary preferences or restrictions a patient may
  have.
@@ -27,25 +25,25 @@
  ValueSet: http://hl7.org/fhir/ValueSet/encounter-diet
  */
 public enum Diet: String, FHIRPrimitiveType {
-	
+
 	/// Food without meat, poultry or seafood.
 	case vegetarian = "vegetarian"
-	
+
 	/// Excludes dairy products.
 	case dairyFree = "dairy-free"
-	
+
 	/// Excludes ingredients containing nuts.
 	case nutFree = "nut-free"
-	
+
 	/// Excludes ingredients containing gluten.
 	case glutenFree = "gluten-free"
-	
+
 	/// Food without meat, poultry, seafood, eggs, dairy products and other animal-derived substances.
 	case vegan = "vegan"
-	
+
 	/// Foods that conform to Islamic law.
 	case halal = "halal"
-	
+
 	/// Foods that conform to Jewish dietary law.
 	case kosher = "kosher"
 }

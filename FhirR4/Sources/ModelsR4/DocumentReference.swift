@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A reference to a document.
  
@@ -27,64 +25,64 @@
  centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.
  */
 open class DocumentReference: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .documentReference }
-	
+
 	/// Master Version Specific Identifier
 	public var masterIdentifier: Identifier?
-	
+
 	/// Other identifiers for the document
 	public var identifier: [Identifier]?
-	
+
 	/// The status of this document reference.
 	public var status: FHIRPrimitive<DocumentReferenceStatus>
-	
+
 	/// The status of the underlying document.
 	public var docStatus: FHIRPrimitive<CompositionStatus>?
-	
+
 	/// Kind of document (LOINC if possible)
 	public var type: CodeableConcept?
-	
+
 	/// Categorization of document
 	public var category: [CodeableConcept]?
-	
+
 	/// Who/what is the subject of the document
 	public var subject: Reference?
-	
+
 	/// When this document reference was created
 	public var date: FHIRPrimitive<Instant>?
-	
+
 	/// Who and/or what authored the document
 	public var author: [Reference]?
-	
+
 	/// Who/what authenticated the document
 	public var authenticator: Reference?
-	
+
 	/// Organization which maintains the document
 	public var custodian: Reference?
-	
+
 	/// Relationships to other documents
 	public var relatesTo: [DocumentReferenceRelatesTo]?
-	
+
 	/// Human-readable description
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Document security-tags
 	public var securityLabel: [CodeableConcept]?
-	
+
 	/// Document referenced
 	public var content: [DocumentReferenceContent]
-	
+
 	/// Clinical context of document
 	public var context: DocumentReferenceContext?
-	
+
 	/// Designated initializer taking all required properties
 	public init(content: [DocumentReferenceContent], status: FHIRPrimitive<DocumentReferenceStatus>) {
 		self.content = content
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							authenticator: Reference? = nil,
@@ -110,8 +108,7 @@ open class DocumentReference: DomainResource {
 							status: FHIRPrimitive<DocumentReferenceStatus>,
 							subject: Reference? = nil,
 							text: Narrative? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init(content: content, status: status)
 		self.authenticator = authenticator
 		self.author = author
@@ -136,9 +133,9 @@ open class DocumentReference: DomainResource {
 		self.text = text
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case authenticator
 		case author
@@ -157,11 +154,11 @@ open class DocumentReference: DomainResource {
 		case subject
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.authenticator = try Reference(from: _container, forKeyIfPresent: .authenticator)
 		self.author = try [Reference](from: _container, forKeyIfPresent: .author)
@@ -181,11 +178,11 @@ open class DocumentReference: DomainResource {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try authenticator?.encode(on: &_container, forKey: .authenticator)
 		try author?.encode(on: &_container, forKey: .author)
@@ -205,9 +202,9 @@ open class DocumentReference: DomainResource {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DocumentReference else {
 			return false
@@ -232,7 +229,7 @@ open class DocumentReference: DomainResource {
 		    && subject == _other.subject
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(authenticator)
@@ -260,63 +257,62 @@ open class DocumentReference: DomainResource {
  The document and format referenced. There may be multiple content element repetitions, each with a different format.
  */
 open class DocumentReferenceContent: BackboneElement {
-	
+
 	/// Where to access the document
 	public var attachment: Attachment
-	
+
 	/// Format/content rules for the document
 	public var format: Coding?
-	
+
 	/// Designated initializer taking all required properties
 	public init(attachment: Attachment) {
 		self.attachment = attachment
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							attachment: Attachment,
 							`extension`: [Extension]? = nil,
 							format: Coding? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(attachment: attachment)
 		self.`extension` = `extension`
 		self.format = format
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case attachment
 		case format
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.attachment = try Attachment(from: _container, forKey: .attachment)
 		self.format = try Coding(from: _container, forKeyIfPresent: .format)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try attachment.encode(on: &_container, forKey: .attachment)
 		try format?.encode(on: &_container, forKey: .format)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DocumentReferenceContent else {
 			return false
@@ -327,7 +323,7 @@ open class DocumentReferenceContent: BackboneElement {
 		return attachment == _other.attachment
 		    && format == _other.format
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(attachment)
@@ -341,33 +337,33 @@ open class DocumentReferenceContent: BackboneElement {
  The clinical context in which the document was prepared.
  */
 open class DocumentReferenceContext: BackboneElement {
-	
+
 	/// Context of the document  content
 	public var encounter: [Reference]?
-	
+
 	/// Main clinical acts documented
 	public var event: [CodeableConcept]?
-	
+
 	/// Time of service that is being documented
 	public var period: Period?
-	
+
 	/// Kind of facility where patient was seen
 	public var facilityType: CodeableConcept?
-	
+
 	/// Additional details about where the content was created (e.g. clinical specialty)
 	public var practiceSetting: CodeableConcept?
-	
+
 	/// Patient demographics from source
 	public var sourcePatientInfo: Reference?
-	
+
 	/// Related identifiers or resources
 	public var related: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							encounter: [Reference]? = nil,
@@ -379,8 +375,7 @@ open class DocumentReferenceContext: BackboneElement {
 							period: Period? = nil,
 							practiceSetting: CodeableConcept? = nil,
 							related: [Reference]? = nil,
-							sourcePatientInfo: Reference? = nil)
-	{
+							sourcePatientInfo: Reference? = nil) {
 		self.init()
 		self.encounter = encounter
 		self.event = event
@@ -393,9 +388,9 @@ open class DocumentReferenceContext: BackboneElement {
 		self.related = related
 		self.sourcePatientInfo = sourcePatientInfo
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case encounter
 		case event
@@ -405,11 +400,11 @@ open class DocumentReferenceContext: BackboneElement {
 		case related
 		case sourcePatientInfo
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.encounter = try [Reference](from: _container, forKeyIfPresent: .encounter)
 		self.event = try [CodeableConcept](from: _container, forKeyIfPresent: .event)
@@ -420,11 +415,11 @@ open class DocumentReferenceContext: BackboneElement {
 		self.sourcePatientInfo = try Reference(from: _container, forKeyIfPresent: .sourcePatientInfo)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try encounter?.encode(on: &_container, forKey: .encounter)
 		try event?.encode(on: &_container, forKey: .event)
@@ -435,9 +430,9 @@ open class DocumentReferenceContext: BackboneElement {
 		try sourcePatientInfo?.encode(on: &_container, forKey: .sourcePatientInfo)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DocumentReferenceContext else {
 			return false
@@ -453,7 +448,7 @@ open class DocumentReferenceContext: BackboneElement {
 		    && related == _other.related
 		    && sourcePatientInfo == _other.sourcePatientInfo
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(encounter)
@@ -472,63 +467,62 @@ open class DocumentReferenceContext: BackboneElement {
  Relationships that this document has with other document references that already exist.
  */
 open class DocumentReferenceRelatesTo: BackboneElement {
-	
+
 	/// The type of relationship that this document has with anther document.
 	public var code: FHIRPrimitive<DocumentRelationshipType>
-	
+
 	/// Target of the relationship
 	public var target: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: FHIRPrimitive<DocumentRelationshipType>, target: Reference) {
 		self.code = code
 		self.target = target
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: FHIRPrimitive<DocumentRelationshipType>,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							target: Reference)
-	{
+							target: Reference) {
 		self.init(code: code, target: target)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code; case _code
 		case target
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try FHIRPrimitive<DocumentRelationshipType>(from: _container, forKey: .code, auxiliaryKey: ._code)
 		self.target = try Reference(from: _container, forKey: .target)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
 		try target.encode(on: &_container, forKey: .target)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DocumentReferenceRelatesTo else {
 			return false
@@ -539,7 +533,7 @@ open class DocumentReferenceRelatesTo: BackboneElement {
 		return code == _other.code
 		    && target == _other.target
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)

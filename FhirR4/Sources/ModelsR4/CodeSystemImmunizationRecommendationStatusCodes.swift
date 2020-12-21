@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of
  or contains concepts to support describing the status of the patient towards perceived immunity against a vaccine
@@ -28,20 +26,20 @@
  ValueSet: http://hl7.org/fhir/ValueSet/immunization-recommendation-status
  */
 public enum ImmunizationRecommendationStatusCodes: String, FHIRPrimitiveType {
-	
+
 	/// The patient is due for their next vaccination.
 	case due = "due"
-	
+
 	/// The patient is considered overdue for their next vaccination.
 	case overdue = "overdue"
-	
+
 	/// The patient is immune to the target disease and further immunization against the disease is not likely to
 	/// provide benefit.
 	case immune = "immune"
-	
+
 	/// The patient is contraindicated for futher doses.
 	case contraindicated = "contraindicated"
-	
+
 	/// The patient is fully protected and no further doses are recommended.
 	case complete = "complete"
 }

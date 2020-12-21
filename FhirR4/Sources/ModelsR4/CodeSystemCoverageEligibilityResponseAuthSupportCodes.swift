@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes CoverageEligibilityResponse Auth Support codes.
  
@@ -26,28 +24,28 @@
  ValueSet: http://hl7.org/fhir/ValueSet/coverageeligibilityresponse-ex-auth-support
  */
 public enum CoverageEligibilityResponseAuthSupportCodes: String, FHIRPrimitiveType {
-	
+
 	/// A request or authorization for laboratory diagnostic tests.
 	case laborder = "laborder"
-	
+
 	/// A report on laboratory diagnostic test(s).
 	case labreport = "labreport"
-	
+
 	/// A request or authorization for diagnostic imaging.
 	case diagnosticimageorder = "diagnosticimageorder"
-	
+
 	/// A report on diagnostic image(s).
 	case diagnosticimagereport = "diagnosticimagereport"
-	
+
 	/// A report from a licensed professional regarding the siutation, condition or proposed treatment.
 	case professionalreport = "professionalreport"
-	
+
 	/// A formal accident report as would be filed with police or a simlar official body.
 	case accidentreport = "accidentreport"
-	
+
 	/// A physical model of the affected area.
 	case model = "model"
-	
+
 	/// A photograph of the affected area.
 	case picture = "picture"
 }

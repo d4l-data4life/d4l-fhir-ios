@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The definition of a plan for a series of actions, independent of any specific patient or context.
  
@@ -27,115 +25,115 @@
  decision support rules, order sets and protocols.
  */
 open class PlanDefinition: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .planDefinition }
-	
+
 	/// All possible types for "subject[x]"
 	public enum SubjectX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Canonical identifier for this plan definition, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Additional identifier for the plan definition
 	public var identifier: [Identifier]?
-	
+
 	/// Business version of the plan definition
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this plan definition (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this plan definition (human friendly)
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// Subordinate title of the plan definition
 	public var subtitle: FHIRPrimitive<FHIRString>?
-	
+
 	/// order-set | clinical-protocol | eca-rule | workflow-definition
 	public var type: CodeableConcept?
-	
+
 	/// The status of this plan definition. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// For testing purposes, not real usage
 	public var experimental: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Type of individual the plan definition is focused on
 	/// One of `subject[x]`
 	public var subject: SubjectX?
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the plan definition
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for plan definition (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Why this plan definition is defined
 	public var purpose: FHIRPrimitive<FHIRString>?
-	
+
 	/// Describes the clinical usage of the plan
 	public var usage: FHIRPrimitive<FHIRString>?
-	
+
 	/// Use and/or publishing restrictions
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// When the plan definition was approved by publisher
 	public var approvalDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the plan definition was last reviewed
 	public var lastReviewDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the plan definition is expected to be used
 	public var effectivePeriod: Period?
-	
+
 	/// E.g. Education, Treatment, Assessment
 	public var topic: [CodeableConcept]?
-	
+
 	/// Who authored the content
 	public var author: [ContactDetail]?
-	
+
 	/// Who edited the content
 	public var editor: [ContactDetail]?
-	
+
 	/// Who reviewed the content
 	public var reviewer: [ContactDetail]?
-	
+
 	/// Who endorsed the content
 	public var endorser: [ContactDetail]?
-	
+
 	/// Additional documentation, citations
 	public var relatedArtifact: [RelatedArtifact]?
-	
+
 	/// Logic used by the plan definition
 	public var library: [FHIRPrimitive<Canonical>]?
-	
+
 	/// What the plan is trying to accomplish
 	public var goal: [PlanDefinitionGoal]?
-	
+
 	/// Action defined by the plan
 	public var action: [PlanDefinitionAction]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(status: FHIRPrimitive<PublicationStatus>) {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							action: [PlanDefinitionAction]? = nil,
@@ -176,8 +174,7 @@ open class PlanDefinition: DomainResource {
 							url: FHIRPrimitive<FHIRURI>? = nil,
 							usage: FHIRPrimitive<FHIRString>? = nil,
 							useContext: [UsageContext]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(status: status)
 		self.action = action
 		self.approvalDate = approvalDate
@@ -218,9 +215,9 @@ open class PlanDefinition: DomainResource {
 		self.useContext = useContext
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case action
 		case approvalDate; case _approvalDate
@@ -255,11 +252,11 @@ open class PlanDefinition: DomainResource {
 		case useContext
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.action = try [PlanDefinitionAction](from: _container, forKeyIfPresent: .action)
 		self.approvalDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .approvalDate, auxiliaryKey: ._approvalDate)
@@ -283,7 +280,7 @@ open class PlanDefinition: DomainResource {
 		self.relatedArtifact = try [RelatedArtifact](from: _container, forKeyIfPresent: .relatedArtifact)
 		self.reviewer = try [ContactDetail](from: _container, forKeyIfPresent: .reviewer)
 		self.status = try FHIRPrimitive<PublicationStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
-		var _t_subject: SubjectX? = nil
+		var _t_subject: SubjectX?
 		if let subjectCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .subjectCodeableConcept) {
 			if _t_subject != nil {
 				throw DecodingError.dataCorruptedError(forKey: .subjectCodeableConcept, in: _container, debugDescription: "More than one value provided for \"subject\"")
@@ -307,11 +304,11 @@ open class PlanDefinition: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try action?.encode(on: &_container, forKey: .action)
 		try approvalDate?.encode(on: &_container, forKey: .approvalDate, auxiliaryKey: ._approvalDate)
@@ -353,9 +350,9 @@ open class PlanDefinition: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PlanDefinition else {
 			return false
@@ -395,7 +392,7 @@ open class PlanDefinition: DomainResource {
 		    && useContext == _other.useContext
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(action)
@@ -438,19 +435,19 @@ open class PlanDefinition: DomainResource {
  An action or group of actions to be taken as part of the plan.
  */
 open class PlanDefinitionAction: BackboneElement {
-	
+
 	/// All possible types for "definition[x]"
 	public enum DefinitionX: Hashable {
 		case canonical(FHIRPrimitive<Canonical>)
 		case uri(FHIRPrimitive<FHIRURI>)
 	}
-	
+
 	/// All possible types for "subject[x]"
 	public enum SubjectX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// All possible types for "timing[x]"
 	public enum TimingX: Hashable {
 		case age(Age)
@@ -460,96 +457,96 @@ open class PlanDefinitionAction: BackboneElement {
 		case range(Range)
 		case timing(Timing)
 	}
-	
+
 	/// User-visible prefix for the action (e.g. 1. or A.)
 	public var prefix: FHIRPrimitive<FHIRString>?
-	
+
 	/// User-visible title
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// Brief description of the action
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system
 	public var textEquivalent: FHIRPrimitive<FHIRString>?
-	
+
 	/// Indicates how quickly the action should be addressed with respect to other actions.
 	public var priority: FHIRPrimitive<RequestPriority>?
-	
+
 	/// Code representing the meaning of the action or sub-actions
 	public var code: [CodeableConcept]?
-	
+
 	/// Why the action should be performed
 	public var reason: [CodeableConcept]?
-	
+
 	/// Supporting documentation for the intended performer of the action
 	public var documentation: [RelatedArtifact]?
-	
+
 	/// What goals this action supports
 	public var goalId: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Type of individual the action is focused on
 	/// One of `subject[x]`
 	public var subject: SubjectX?
-	
+
 	/// When the action should be triggered
 	public var trigger: [TriggerDefinition]?
-	
+
 	/// Whether or not the action is applicable
 	public var condition: [PlanDefinitionActionCondition]?
-	
+
 	/// Input data requirements
 	public var input: [DataRequirement]?
-	
+
 	/// Output data definition
 	public var output: [DataRequirement]?
-	
+
 	/// Relationship to another action
 	public var relatedAction: [PlanDefinitionActionRelatedAction]?
-	
+
 	/// When the action should take place
 	/// One of `timing[x]`
 	public var timing: TimingX?
-	
+
 	/// Who should participate in the action
 	public var participant: [PlanDefinitionActionParticipant]?
-	
+
 	/// create | update | remove | fire-event
 	public var type: CodeableConcept?
-	
+
 	/// Defines the grouping behavior for the action and its children.
 	public var groupingBehavior: FHIRPrimitive<ActionGroupingBehavior>?
-	
+
 	/// Defines the selection behavior for the action and its children.
 	public var selectionBehavior: FHIRPrimitive<ActionSelectionBehavior>?
-	
+
 	/// Defines the required behavior for the action.
 	public var requiredBehavior: FHIRPrimitive<ActionRequiredBehavior>?
-	
+
 	/// Defines whether the action should usually be preselected.
 	public var precheckBehavior: FHIRPrimitive<ActionPrecheckBehavior>?
-	
+
 	/// Defines whether the action can be selected multiple times.
 	public var cardinalityBehavior: FHIRPrimitive<ActionCardinalityBehavior>?
-	
+
 	/// Description of the activity to be performed
 	/// One of `definition[x]`
 	public var definition: DefinitionX?
-	
+
 	/// Transform to apply the template
 	public var transform: FHIRPrimitive<Canonical>?
-	
+
 	/// Dynamic aspects of the definition
 	public var dynamicValue: [PlanDefinitionActionDynamicValue]?
-	
+
 	/// A sub-action
 	public var action: [PlanDefinitionAction]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							action: [PlanDefinitionAction]? = nil,
@@ -581,8 +578,7 @@ open class PlanDefinitionAction: BackboneElement {
 							title: FHIRPrimitive<FHIRString>? = nil,
 							transform: FHIRPrimitive<Canonical>? = nil,
 							trigger: [TriggerDefinition]? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.action = action
 		self.cardinalityBehavior = cardinalityBehavior
@@ -615,9 +611,9 @@ open class PlanDefinitionAction: BackboneElement {
 		self.trigger = trigger
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case action
 		case cardinalityBehavior; case _cardinalityBehavior
@@ -654,17 +650,17 @@ open class PlanDefinitionAction: BackboneElement {
 		case trigger
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.action = try [PlanDefinitionAction](from: _container, forKeyIfPresent: .action)
 		self.cardinalityBehavior = try FHIRPrimitive<ActionCardinalityBehavior>(from: _container, forKeyIfPresent: .cardinalityBehavior, auxiliaryKey: ._cardinalityBehavior)
 		self.code = try [CodeableConcept](from: _container, forKeyIfPresent: .code)
 		self.condition = try [PlanDefinitionActionCondition](from: _container, forKeyIfPresent: .condition)
-		var _t_definition: DefinitionX? = nil
+		var _t_definition: DefinitionX?
 		if let definitionCanonical = try FHIRPrimitive<Canonical>(from: _container, forKeyIfPresent: .definitionCanonical, auxiliaryKey: ._definitionCanonical) {
 			if _t_definition != nil {
 				throw DecodingError.dataCorruptedError(forKey: .definitionCanonical, in: _container, debugDescription: "More than one value provided for \"definition\"")
@@ -693,7 +689,7 @@ open class PlanDefinitionAction: BackboneElement {
 		self.relatedAction = try [PlanDefinitionActionRelatedAction](from: _container, forKeyIfPresent: .relatedAction)
 		self.requiredBehavior = try FHIRPrimitive<ActionRequiredBehavior>(from: _container, forKeyIfPresent: .requiredBehavior, auxiliaryKey: ._requiredBehavior)
 		self.selectionBehavior = try FHIRPrimitive<ActionSelectionBehavior>(from: _container, forKeyIfPresent: .selectionBehavior, auxiliaryKey: ._selectionBehavior)
-		var _t_subject: SubjectX? = nil
+		var _t_subject: SubjectX?
 		if let subjectCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .subjectCodeableConcept) {
 			if _t_subject != nil {
 				throw DecodingError.dataCorruptedError(forKey: .subjectCodeableConcept, in: _container, debugDescription: "More than one value provided for \"subject\"")
@@ -708,7 +704,7 @@ open class PlanDefinitionAction: BackboneElement {
 		}
 		self.subject = _t_subject
 		self.textEquivalent = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .textEquivalent, auxiliaryKey: ._textEquivalent)
-		var _t_timing: TimingX? = nil
+		var _t_timing: TimingX?
 		if let timingDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .timingDateTime, auxiliaryKey: ._timingDateTime) {
 			if _t_timing != nil {
 				throw DecodingError.dataCorruptedError(forKey: .timingDateTime, in: _container, debugDescription: "More than one value provided for \"timing\"")
@@ -752,11 +748,11 @@ open class PlanDefinitionAction: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try action?.encode(on: &_container, forKey: .action)
 		try cardinalityBehavior?.encode(on: &_container, forKey: .cardinalityBehavior, auxiliaryKey: ._cardinalityBehavior)
@@ -816,9 +812,9 @@ open class PlanDefinitionAction: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PlanDefinitionAction else {
 			return false
@@ -854,7 +850,7 @@ open class PlanDefinitionAction: BackboneElement {
 		    && trigger == _other.trigger
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(action)
@@ -893,63 +889,62 @@ open class PlanDefinitionAction: BackboneElement {
  An expression that describes applicability criteria or start/stop conditions for the action.
  */
 open class PlanDefinitionActionCondition: BackboneElement {
-	
+
 	/// The kind of condition.
 	public var kind: FHIRPrimitive<ActionConditionKind>
-	
+
 	/// Boolean-valued expression
 	public var expression: Expression?
-	
+
 	/// Designated initializer taking all required properties
 	public init(kind: FHIRPrimitive<ActionConditionKind>) {
 		self.kind = kind
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							expression: Expression? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							kind: FHIRPrimitive<ActionConditionKind>,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(kind: kind)
 		self.expression = expression
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case expression
 		case kind; case _kind
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.expression = try Expression(from: _container, forKeyIfPresent: .expression)
 		self.kind = try FHIRPrimitive<ActionConditionKind>(from: _container, forKey: .kind, auxiliaryKey: ._kind)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try expression?.encode(on: &_container, forKey: .expression)
 		try kind.encode(on: &_container, forKey: .kind, auxiliaryKey: ._kind)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PlanDefinitionActionCondition else {
 			return false
@@ -960,7 +955,7 @@ open class PlanDefinitionActionCondition: BackboneElement {
 		return expression == _other.expression
 		    && kind == _other.kind
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(expression)
@@ -976,26 +971,25 @@ open class PlanDefinitionActionCondition: BackboneElement {
  the weight, and the path on the resource that would contain the result.
  */
 open class PlanDefinitionActionDynamicValue: BackboneElement {
-	
+
 	/// The path to the element to be set dynamically
 	public var path: FHIRPrimitive<FHIRString>?
-	
+
 	/// An expression that provides the dynamic value for the customization
 	public var expression: Expression?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							expression: Expression? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							path: FHIRPrimitive<FHIRString>? = nil)
-	{
+							path: FHIRPrimitive<FHIRString>? = nil) {
 		self.init()
 		self.expression = expression
 		self.`extension` = `extension`
@@ -1003,36 +997,36 @@ open class PlanDefinitionActionDynamicValue: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.path = path
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case expression
 		case path; case _path
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.expression = try Expression(from: _container, forKeyIfPresent: .expression)
 		self.path = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .path, auxiliaryKey: ._path)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try expression?.encode(on: &_container, forKey: .expression)
 		try path?.encode(on: &_container, forKey: .path, auxiliaryKey: ._path)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PlanDefinitionActionDynamicValue else {
 			return false
@@ -1043,7 +1037,7 @@ open class PlanDefinitionActionDynamicValue: BackboneElement {
 		return expression == _other.expression
 		    && path == _other.path
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(expression)
@@ -1057,63 +1051,62 @@ open class PlanDefinitionActionDynamicValue: BackboneElement {
  Indicates who should participate in performing the action described.
  */
 open class PlanDefinitionActionParticipant: BackboneElement {
-	
+
 	/// The type of participant in the action.
 	public var type: FHIRPrimitive<ActionParticipantType>
-	
+
 	/// E.g. Nurse, Surgeon, Parent
 	public var role: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: FHIRPrimitive<ActionParticipantType>) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							role: CodeableConcept? = nil,
-							type: FHIRPrimitive<ActionParticipantType>)
-	{
+							type: FHIRPrimitive<ActionParticipantType>) {
 		self.init(type: type)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.role = role
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case role
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.role = try CodeableConcept(from: _container, forKeyIfPresent: .role)
 		self.type = try FHIRPrimitive<ActionParticipantType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try role?.encode(on: &_container, forKey: .role)
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PlanDefinitionActionParticipant else {
 			return false
@@ -1124,7 +1117,7 @@ open class PlanDefinitionActionParticipant: BackboneElement {
 		return role == _other.role
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(role)
@@ -1138,30 +1131,30 @@ open class PlanDefinitionActionParticipant: BackboneElement {
  A relationship to another action such as "before" or "30-60 minutes after start of".
  */
 open class PlanDefinitionActionRelatedAction: BackboneElement {
-	
+
 	/// All possible types for "offset[x]"
 	public enum OffsetX: Hashable {
 		case duration(Duration)
 		case range(Range)
 	}
-	
+
 	/// What action is this related to
 	public var actionId: FHIRPrimitive<FHIRString>
-	
+
 	/// The relationship of this action to the related action.
 	public var relationship: FHIRPrimitive<ActionRelationshipType>
-	
+
 	/// Time offset for the relationship
 	/// One of `offset[x]`
 	public var offset: OffsetX?
-	
+
 	/// Designated initializer taking all required properties
 	public init(actionId: FHIRPrimitive<FHIRString>, relationship: FHIRPrimitive<ActionRelationshipType>) {
 		self.actionId = actionId
 		self.relationship = relationship
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							actionId: FHIRPrimitive<FHIRString>,
@@ -1169,31 +1162,30 @@ open class PlanDefinitionActionRelatedAction: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							offset: OffsetX? = nil,
-							relationship: FHIRPrimitive<ActionRelationshipType>)
-	{
+							relationship: FHIRPrimitive<ActionRelationshipType>) {
 		self.init(actionId: actionId, relationship: relationship)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.offset = offset
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case actionId; case _actionId
 		case offsetDuration
 		case offsetRange
 		case relationship; case _relationship
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.actionId = try FHIRPrimitive<FHIRString>(from: _container, forKey: .actionId, auxiliaryKey: ._actionId)
-		var _t_offset: OffsetX? = nil
+		var _t_offset: OffsetX?
 		if let offsetDuration = try Duration(from: _container, forKeyIfPresent: .offsetDuration) {
 			if _t_offset != nil {
 				throw DecodingError.dataCorruptedError(forKey: .offsetDuration, in: _container, debugDescription: "More than one value provided for \"offset\"")
@@ -1210,11 +1202,11 @@ open class PlanDefinitionActionRelatedAction: BackboneElement {
 		self.relationship = try FHIRPrimitive<ActionRelationshipType>(from: _container, forKey: .relationship, auxiliaryKey: ._relationship)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try actionId.encode(on: &_container, forKey: .actionId, auxiliaryKey: ._actionId)
 		if let _enum = offset {
@@ -1228,9 +1220,9 @@ open class PlanDefinitionActionRelatedAction: BackboneElement {
 		try relationship.encode(on: &_container, forKey: .relationship, auxiliaryKey: ._relationship)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PlanDefinitionActionRelatedAction else {
 			return false
@@ -1242,7 +1234,7 @@ open class PlanDefinitionActionRelatedAction: BackboneElement {
 		    && offset == _other.offset
 		    && relationship == _other.relationship
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(actionId)
@@ -1258,34 +1250,34 @@ open class PlanDefinitionActionRelatedAction: BackboneElement {
  activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
  */
 open class PlanDefinitionGoal: BackboneElement {
-	
+
 	/// E.g. Treatment, dietary, behavioral
 	public var category: CodeableConcept?
-	
+
 	/// Code or text describing the goal
 	public var description_fhir: CodeableConcept
-	
+
 	/// high-priority | medium-priority | low-priority
 	public var priority: CodeableConcept?
-	
+
 	/// When goal pursuit begins
 	public var start: CodeableConcept?
-	
+
 	/// What does the goal address
 	public var addresses: [CodeableConcept]?
-	
+
 	/// Supporting documentation for the goal
 	public var documentation: [RelatedArtifact]?
-	
+
 	/// Target outcome for the goal
 	public var target: [PlanDefinitionGoalTarget]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(description_fhir: CodeableConcept) {
 		self.description_fhir = description_fhir
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							addresses: [CodeableConcept]? = nil,
@@ -1297,8 +1289,7 @@ open class PlanDefinitionGoal: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							priority: CodeableConcept? = nil,
 							start: CodeableConcept? = nil,
-							target: [PlanDefinitionGoalTarget]? = nil)
-	{
+							target: [PlanDefinitionGoalTarget]? = nil) {
 		self.init(description_fhir: description_fhir)
 		self.addresses = addresses
 		self.category = category
@@ -1310,9 +1301,9 @@ open class PlanDefinitionGoal: BackboneElement {
 		self.start = start
 		self.target = target
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case addresses
 		case category
@@ -1322,11 +1313,11 @@ open class PlanDefinitionGoal: BackboneElement {
 		case start
 		case target
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.addresses = try [CodeableConcept](from: _container, forKeyIfPresent: .addresses)
 		self.category = try CodeableConcept(from: _container, forKeyIfPresent: .category)
@@ -1337,11 +1328,11 @@ open class PlanDefinitionGoal: BackboneElement {
 		self.target = try [PlanDefinitionGoalTarget](from: _container, forKeyIfPresent: .target)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try addresses?.encode(on: &_container, forKey: .addresses)
 		try category?.encode(on: &_container, forKey: .category)
@@ -1352,9 +1343,9 @@ open class PlanDefinitionGoal: BackboneElement {
 		try target?.encode(on: &_container, forKey: .target)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PlanDefinitionGoal else {
 			return false
@@ -1370,7 +1361,7 @@ open class PlanDefinitionGoal: BackboneElement {
 		    && start == _other.start
 		    && target == _other.target
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(addresses)
@@ -1389,29 +1380,29 @@ open class PlanDefinitionGoal: BackboneElement {
  Indicates what should be done and within what timeframe.
  */
 open class PlanDefinitionGoalTarget: BackboneElement {
-	
+
 	/// All possible types for "detail[x]"
 	public enum DetailX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case quantity(Quantity)
 		case range(Range)
 	}
-	
+
 	/// The parameter whose value is to be tracked
 	public var measure: CodeableConcept?
-	
+
 	/// The target value to be achieved
 	/// One of `detail[x]`
 	public var detail: DetailX?
-	
+
 	/// Reach goal within
 	public var due: Duration?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							detail: DetailX? = nil,
@@ -1419,8 +1410,7 @@ open class PlanDefinitionGoalTarget: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							measure: CodeableConcept? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init()
 		self.detail = detail
 		self.due = due
@@ -1429,9 +1419,9 @@ open class PlanDefinitionGoalTarget: BackboneElement {
 		self.measure = measure
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case detailCodeableConcept
 		case detailQuantity
@@ -1439,13 +1429,13 @@ open class PlanDefinitionGoalTarget: BackboneElement {
 		case due
 		case measure
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
-		var _t_detail: DetailX? = nil
+		var _t_detail: DetailX?
 		if let detailQuantity = try Quantity(from: _container, forKeyIfPresent: .detailQuantity) {
 			if _t_detail != nil {
 				throw DecodingError.dataCorruptedError(forKey: .detailQuantity, in: _container, debugDescription: "More than one value provided for \"detail\"")
@@ -1469,11 +1459,11 @@ open class PlanDefinitionGoalTarget: BackboneElement {
 		self.measure = try CodeableConcept(from: _container, forKeyIfPresent: .measure)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		if let _enum = detail {
 			switch _enum {
@@ -1489,9 +1479,9 @@ open class PlanDefinitionGoalTarget: BackboneElement {
 		try measure?.encode(on: &_container, forKey: .measure)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PlanDefinitionGoalTarget else {
 			return false
@@ -1503,7 +1493,7 @@ open class PlanDefinitionGoalTarget: BackboneElement {
 		    && due == _other.due
 		    && measure == _other.measure
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(detail)

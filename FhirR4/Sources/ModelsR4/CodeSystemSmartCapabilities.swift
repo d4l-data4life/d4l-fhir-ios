@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes that define what the server is capable of.
  
@@ -26,50 +24,50 @@
  ValueSet: http://hl7.org/fhir/ValueSet/smart-capabilities
  */
 public enum SmartCapabilities: String, FHIRPrimitiveType {
-	
+
 	/// support for SMART’s EHR Launch mode.
 	case launchEhr = "launch-ehr"
-	
+
 	/// support for SMART’s Standalone Launch mode.
 	case launchStandalone = "launch-standalone"
-	
+
 	/// support for SMART’s public client profile (no client authentication).
 	case clientPublic = "client-public"
-	
+
 	/// support for SMART’s confidential client profile (symmetric client secret authentication).
 	case clientConfidentialSymmetric = "client-confidential-symmetric"
-	
+
 	/// support for SMART’s OpenID Connect profile.
 	case ssoOpenidConnect = "sso-openid-connect"
-	
+
 	/// support for “need patient banner” launch context (conveyed via need_patient_banner token parameter).
 	case contextPassthroughBanner = "context-passthrough-banner"
-	
+
 	/// support for “SMART style URL” launch context (conveyed via smart_style_url token parameter).
 	case contextPassthroughStyle = "context-passthrough-style"
-	
+
 	/// support for patient-level launch context (requested by launch/patient scope, conveyed via patient token
 	/// parameter).
 	case contextEhrPatient = "context-ehr-patient"
-	
+
 	/// support for encounter-level launch context (requested by launch/encounter scope, conveyed via encounter token
 	/// parameter).
 	case contextEhrEncounter = "context-ehr-encounter"
-	
+
 	/// support for patient-level launch context (requested by launch/patient scope, conveyed via patient token
 	/// parameter).
 	case contextStandalonePatient = "context-standalone-patient"
-	
+
 	/// support for encounter-level launch context (requested by launch/encounter scope, conveyed via encounter token
 	/// parameter).
 	case contextStandaloneEncounter = "context-standalone-encounter"
-	
+
 	/// support for refresh tokens (requested by offline_access scope).
 	case permissionOffline = "permission-offline"
-	
+
 	/// support for patient-level scopes (e.g. patient/Observation.read).
 	case permissionPatient = "permission-patient"
-	
+
 	/// support for user-level scopes (e.g. user/Appointment.read).
 	case permissionUser = "permission-user"
 }

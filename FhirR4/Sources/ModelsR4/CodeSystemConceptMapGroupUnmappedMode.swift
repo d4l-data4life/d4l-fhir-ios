@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Defines which action to take if there is no match in the group.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/conceptmap-unmapped-mode
  */
 public enum ConceptMapGroupUnmappedMode: String, FHIRPrimitiveType {
-	
+
 	/// Use the code as provided in the $translate request.
 	case provided = "provided"
-	
+
 	/// Use the code explicitly provided in the group.unmapped.
 	case fixed = "fixed"
-	
+
 	/// Use the map identified by the canonical URL in the url element.
 	case otherMap = "other-map"
 }

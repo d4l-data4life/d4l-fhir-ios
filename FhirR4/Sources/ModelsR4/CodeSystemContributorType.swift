@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of contributor.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/contributor-type
  */
 public enum ContributorType: String, FHIRPrimitiveType {
-	
+
 	/// An author of the content of the module.
 	case author = "author"
-	
+
 	/// An editor of the content of the module.
 	case editor = "editor"
-	
+
 	/// A reviewer of the content of the module.
 	case reviewer = "reviewer"
-	
+
 	/// An endorser of the content of the module.
 	case endorser = "endorser"
 }

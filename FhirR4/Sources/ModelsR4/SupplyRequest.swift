@@ -17,84 +17,82 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Request for a medication, substance or device.
  
  A record of a request for a medication, substance or device used in the healthcare setting.
  */
 open class SupplyRequest: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .supplyRequest }
-	
+
 	/// All possible types for "item[x]"
 	public enum ItemX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// All possible types for "occurrence[x]"
 	public enum OccurrenceX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
 		case period(Period)
 		case timing(Timing)
 	}
-	
+
 	/// Business Identifier for SupplyRequest
 	public var identifier: [Identifier]?
-	
+
 	/// Status of the supply request.
 	public var status: FHIRPrimitive<SupplyRequestStatus>?
-	
+
 	/// The kind of supply (central, non-stock, etc.)
 	public var category: CodeableConcept?
-	
+
 	/// Indicates how quickly this SupplyRequest should be addressed with respect to other requests.
 	public var priority: FHIRPrimitive<RequestPriority>?
-	
+
 	/// Medication, Substance, or Device requested to be supplied
 	/// One of `item[x]`
 	public var item: ItemX
-	
+
 	/// The requested amount of the item indicated
 	public var quantity: Quantity
-	
+
 	/// Ordered item details
 	public var parameter: [SupplyRequestParameter]?
-	
+
 	/// When the request should be fulfilled
 	/// One of `occurrence[x]`
 	public var occurrence: OccurrenceX?
-	
+
 	/// When the request was made
 	public var authoredOn: FHIRPrimitive<DateTime>?
-	
+
 	/// Individual making the request
 	public var requester: Reference?
-	
+
 	/// Who is intended to fulfill the request
 	public var supplier: [Reference]?
-	
+
 	/// The reason why the supply item was requested
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// The reason why the supply item was requested
 	public var reasonReference: [Reference]?
-	
+
 	/// The origin of the supply
 	public var deliverFrom: Reference?
-	
+
 	/// The destination of the supply
 	public var deliverTo: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	public init(item: ItemX, quantity: Quantity) {
 		self.item = item
 		self.quantity = quantity
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							authoredOn: FHIRPrimitive<DateTime>? = nil,
@@ -119,8 +117,7 @@ open class SupplyRequest: DomainResource {
 							requester: Reference? = nil,
 							status: FHIRPrimitive<SupplyRequestStatus>? = nil,
 							supplier: [Reference]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(item: item, quantity: quantity)
 		self.authoredOn = authoredOn
 		self.category = category
@@ -144,9 +141,9 @@ open class SupplyRequest: DomainResource {
 		self.supplier = supplier
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case authoredOn; case _authoredOn
 		case category
@@ -167,23 +164,23 @@ open class SupplyRequest: DomainResource {
 		case status; case _status
 		case supplier
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.itemCodeableConcept) || _container.contains(CodingKeys.itemReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.itemCodeableConcept, CodingKeys.itemReference], debugDescription: "Must have at least one value for \"item\" but have none"))
 		}
-		
+
 		// Decode all our properties
 		self.authoredOn = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .authoredOn, auxiliaryKey: ._authoredOn)
 		self.category = try CodeableConcept(from: _container, forKeyIfPresent: .category)
 		self.deliverFrom = try Reference(from: _container, forKeyIfPresent: .deliverFrom)
 		self.deliverTo = try Reference(from: _container, forKeyIfPresent: .deliverTo)
 		self.identifier = try [Identifier](from: _container, forKeyIfPresent: .identifier)
-		var _t_item: ItemX? = nil
+		var _t_item: ItemX?
 		if let itemCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .itemCodeableConcept) {
 			if _t_item != nil {
 				throw DecodingError.dataCorruptedError(forKey: .itemCodeableConcept, in: _container, debugDescription: "More than one value provided for \"item\"")
@@ -197,7 +194,7 @@ open class SupplyRequest: DomainResource {
 			_t_item = .reference(itemReference)
 		}
 		self.item = _t_item!
-		var _t_occurrence: OccurrenceX? = nil
+		var _t_occurrence: OccurrenceX?
 		if let occurrenceDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .occurrenceDateTime, auxiliaryKey: ._occurrenceDateTime) {
 			if _t_occurrence != nil {
 				throw DecodingError.dataCorruptedError(forKey: .occurrenceDateTime, in: _container, debugDescription: "More than one value provided for \"occurrence\"")
@@ -227,25 +224,25 @@ open class SupplyRequest: DomainResource {
 		self.supplier = try [Reference](from: _container, forKeyIfPresent: .supplier)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try authoredOn?.encode(on: &_container, forKey: .authoredOn, auxiliaryKey: ._authoredOn)
 		try category?.encode(on: &_container, forKey: .category)
 		try deliverFrom?.encode(on: &_container, forKey: .deliverFrom)
 		try deliverTo?.encode(on: &_container, forKey: .deliverTo)
 		try identifier?.encode(on: &_container, forKey: .identifier)
-		
+
 			switch item {
 			case .codeableConcept(let _value):
 				try _value.encode(on: &_container, forKey: .itemCodeableConcept)
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .itemReference)
 			}
-		
+
 		if let _enum = occurrence {
 			switch _enum {
 			case .dateTime(let _value):
@@ -266,9 +263,9 @@ open class SupplyRequest: DomainResource {
 		try supplier?.encode(on: &_container, forKey: .supplier)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SupplyRequest else {
 			return false
@@ -292,7 +289,7 @@ open class SupplyRequest: DomainResource {
 		    && status == _other.status
 		    && supplier == _other.supplier
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(authoredOn)
@@ -319,7 +316,7 @@ open class SupplyRequest: DomainResource {
  Specific parameters for the ordered item.  For example, the size of the indicated item.
  */
 open class SupplyRequestParameter: BackboneElement {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case boolean(FHIRPrimitive<FHIRBool>)
@@ -327,27 +324,26 @@ open class SupplyRequestParameter: BackboneElement {
 		case quantity(Quantity)
 		case range(Range)
 	}
-	
+
 	/// Item detail
 	public var code: CodeableConcept?
-	
+
 	/// Value of detail
 	/// One of `value[x]`
 	public var value: ValueX?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							value: ValueX? = nil)
-	{
+							value: ValueX? = nil) {
 		self.init()
 		self.code = code
 		self.`extension` = `extension`
@@ -355,9 +351,9 @@ open class SupplyRequestParameter: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case valueBoolean; case _valueBoolean
@@ -365,14 +361,14 @@ open class SupplyRequestParameter: BackboneElement {
 		case valueQuantity
 		case valueRange
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKeyIfPresent: .code)
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .valueCodeableConcept) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueCodeableConcept, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -400,11 +396,11 @@ open class SupplyRequestParameter: BackboneElement {
 		self.value = _t_value
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code?.encode(on: &_container, forKey: .code)
 		if let _enum = value {
@@ -421,9 +417,9 @@ open class SupplyRequestParameter: BackboneElement {
 		}
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SupplyRequestParameter else {
 			return false
@@ -434,7 +430,7 @@ open class SupplyRequestParameter: BackboneElement {
 		return code == _other.code
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)

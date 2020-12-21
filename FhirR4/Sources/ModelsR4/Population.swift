@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A definition of a set of people that apply to some clinically related context, for example people contraindicated for a
  certain medication.
@@ -26,31 +24,31 @@
  A populatioof people with some set of grouping criteria.
  */
 open class Population: BackboneElement {
-	
+
 	/// All possible types for "age[x]"
 	public enum AgeX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case range(Range)
 	}
-	
+
 	/// The age of the specific population
 	/// One of `age[x]`
 	public var age: AgeX?
-	
+
 	/// The gender of the specific population
 	public var gender: CodeableConcept?
-	
+
 	/// Race of the specific population
 	public var race: CodeableConcept?
-	
+
 	/// The existing physiological conditions of the specific population to which this applies
 	public var physiologicalCondition: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							age: AgeX? = nil,
@@ -59,8 +57,7 @@ open class Population: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							physiologicalCondition: CodeableConcept? = nil,
-							race: CodeableConcept? = nil)
-	{
+							race: CodeableConcept? = nil) {
 		self.init()
 		self.age = age
 		self.`extension` = `extension`
@@ -70,9 +67,9 @@ open class Population: BackboneElement {
 		self.physiologicalCondition = physiologicalCondition
 		self.race = race
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case ageCodeableConcept
 		case ageRange
@@ -80,13 +77,13 @@ open class Population: BackboneElement {
 		case physiologicalCondition
 		case race
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
-		var _t_age: AgeX? = nil
+		var _t_age: AgeX?
 		if let ageRange = try Range(from: _container, forKeyIfPresent: .ageRange) {
 			if _t_age != nil {
 				throw DecodingError.dataCorruptedError(forKey: .ageRange, in: _container, debugDescription: "More than one value provided for \"age\"")
@@ -105,11 +102,11 @@ open class Population: BackboneElement {
 		self.race = try CodeableConcept(from: _container, forKeyIfPresent: .race)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		if let _enum = age {
 			switch _enum {
@@ -124,9 +121,9 @@ open class Population: BackboneElement {
 		try race?.encode(on: &_container, forKey: .race)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Population else {
 			return false
@@ -139,7 +136,7 @@ open class Population: BackboneElement {
 		    && physiologicalCondition == _other.physiologicalCondition
 		    && race == _other.race
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(age)

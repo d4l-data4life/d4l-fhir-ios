@@ -17,105 +17,103 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A population, intervention, or exposure definition.
  
  The EvidenceVariable resource describes a "PICO" element that knowledge (evidence, assertion, recommendation) is about.
  */
 open class EvidenceVariable: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .evidenceVariable }
-	
+
 	/// Canonical identifier for this evidence variable, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Additional identifier for the evidence variable
 	public var identifier: [Identifier]?
-	
+
 	/// Business version of the evidence variable
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this evidence variable (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this evidence variable (human friendly)
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// Title for use in informal contexts
 	public var shortTitle: FHIRPrimitive<FHIRString>?
-	
+
 	/// Subordinate title of the EvidenceVariable
 	public var subtitle: FHIRPrimitive<FHIRString>?
-	
+
 	/// The status of this evidence variable. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the evidence variable
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Used for footnotes or explanatory notes
 	public var note: [Annotation]?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for evidence variable (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Use and/or publishing restrictions
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// When the evidence variable was approved by publisher
 	public var approvalDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the evidence variable was last reviewed
 	public var lastReviewDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the evidence variable is expected to be used
 	public var effectivePeriod: Period?
-	
+
 	/// The category of the EvidenceVariable, such as Education, Treatment, Assessment, etc.
 	public var topic: [CodeableConcept]?
-	
+
 	/// Who authored the content
 	public var author: [ContactDetail]?
-	
+
 	/// Who edited the content
 	public var editor: [ContactDetail]?
-	
+
 	/// Who reviewed the content
 	public var reviewer: [ContactDetail]?
-	
+
 	/// Who endorsed the content
 	public var endorser: [ContactDetail]?
-	
+
 	/// Additional documentation, citations, etc.
 	public var relatedArtifact: [RelatedArtifact]?
-	
+
 	/// The type of evidence element, a population, an exposure, or an outcome.
 	public var type: FHIRPrimitive<EvidenceVariableType>?
-	
+
 	/// What defines the members of the evidence element
 	public var characteristic: [EvidenceVariableCharacteristic]
-	
+
 	/// Designated initializer taking all required properties
 	public init(characteristic: [EvidenceVariableCharacteristic], status: FHIRPrimitive<PublicationStatus>) {
 		self.characteristic = characteristic
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							approvalDate: FHIRPrimitive<FHIRDate>? = nil,
@@ -152,8 +150,7 @@ open class EvidenceVariable: DomainResource {
 							type: FHIRPrimitive<EvidenceVariableType>? = nil,
 							url: FHIRPrimitive<FHIRURI>? = nil,
 							useContext: [UsageContext]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(characteristic: characteristic, status: status)
 		self.approvalDate = approvalDate
 		self.author = author
@@ -189,9 +186,9 @@ open class EvidenceVariable: DomainResource {
 		self.useContext = useContext
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case approvalDate; case _approvalDate
 		case author
@@ -221,11 +218,11 @@ open class EvidenceVariable: DomainResource {
 		case useContext
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.approvalDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .approvalDate, auxiliaryKey: ._approvalDate)
 		self.author = try [ContactDetail](from: _container, forKeyIfPresent: .author)
@@ -256,11 +253,11 @@ open class EvidenceVariable: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try approvalDate?.encode(on: &_container, forKey: .approvalDate, auxiliaryKey: ._approvalDate)
 		try author?.encode(on: &_container, forKey: .author)
@@ -291,9 +288,9 @@ open class EvidenceVariable: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EvidenceVariable else {
 			return false
@@ -329,7 +326,7 @@ open class EvidenceVariable: DomainResource {
 		    && useContext == _other.useContext
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(approvalDate)
@@ -369,7 +366,7 @@ open class EvidenceVariable: DomainResource {
  semantics.
  */
 open class EvidenceVariableCharacteristic: BackboneElement {
-	
+
 	/// All possible types for "definition[x]"
 	public enum DefinitionX: Hashable {
 		case canonical(FHIRPrimitive<Canonical>)
@@ -379,7 +376,7 @@ open class EvidenceVariableCharacteristic: BackboneElement {
 		case reference(Reference)
 		case triggerDefinition(TriggerDefinition)
 	}
-	
+
 	/// All possible types for "participantEffective[x]"
 	public enum ParticipantEffectiveX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
@@ -387,36 +384,36 @@ open class EvidenceVariableCharacteristic: BackboneElement {
 		case period(Period)
 		case timing(Timing)
 	}
-	
+
 	/// Natural language description of the characteristic
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// What code or expression defines members?
 	/// One of `definition[x]`
 	public var definition: DefinitionX
-	
+
 	/// What code/value pairs define members?
 	public var usageContext: [UsageContext]?
-	
+
 	/// Whether the characteristic includes or excludes members
 	public var exclude: FHIRPrimitive<FHIRBool>?
-	
+
 	/// What time period do participants cover
 	/// One of `participantEffective[x]`
 	public var participantEffective: ParticipantEffectiveX?
-	
+
 	/// Observation time from study start
 	public var timeFromStart: Duration?
-	
+
 	/// Indicates how elements are aggregated within the study effective period.
 	public var groupMeasure: FHIRPrimitive<GroupMeasure>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(definition: DefinitionX) {
 		self.definition = definition
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							definition: DefinitionX,
@@ -428,8 +425,7 @@ open class EvidenceVariableCharacteristic: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							participantEffective: ParticipantEffectiveX? = nil,
 							timeFromStart: Duration? = nil,
-							usageContext: [UsageContext]? = nil)
-	{
+							usageContext: [UsageContext]? = nil) {
 		self.init(definition: definition)
 		self.description_fhir = description_fhir
 		self.exclude = exclude
@@ -441,9 +437,9 @@ open class EvidenceVariableCharacteristic: BackboneElement {
 		self.timeFromStart = timeFromStart
 		self.usageContext = usageContext
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case definitionCanonical; case _definitionCanonical
 		case definitionCodeableConcept
@@ -461,18 +457,18 @@ open class EvidenceVariableCharacteristic: BackboneElement {
 		case timeFromStart
 		case usageContext
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.definitionCanonical) || _container.contains(CodingKeys.definitionCodeableConcept) || _container.contains(CodingKeys.definitionDataRequirement) || _container.contains(CodingKeys.definitionExpression) || _container.contains(CodingKeys.definitionReference) || _container.contains(CodingKeys.definitionTriggerDefinition) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.definitionCanonical, CodingKeys.definitionCodeableConcept, CodingKeys.definitionDataRequirement, CodingKeys.definitionExpression, CodingKeys.definitionReference, CodingKeys.definitionTriggerDefinition], debugDescription: "Must have at least one value for \"definition\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_definition: DefinitionX? = nil
+		var _t_definition: DefinitionX?
 		if let definitionReference = try Reference(from: _container, forKeyIfPresent: .definitionReference) {
 			if _t_definition != nil {
 				throw DecodingError.dataCorruptedError(forKey: .definitionReference, in: _container, debugDescription: "More than one value provided for \"definition\"")
@@ -513,7 +509,7 @@ open class EvidenceVariableCharacteristic: BackboneElement {
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.exclude = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .exclude, auxiliaryKey: ._exclude)
 		self.groupMeasure = try FHIRPrimitive<GroupMeasure>(from: _container, forKeyIfPresent: .groupMeasure, auxiliaryKey: ._groupMeasure)
-		var _t_participantEffective: ParticipantEffectiveX? = nil
+		var _t_participantEffective: ParticipantEffectiveX?
 		if let participantEffectiveDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .participantEffectiveDateTime, auxiliaryKey: ._participantEffectiveDateTime) {
 			if _t_participantEffective != nil {
 				throw DecodingError.dataCorruptedError(forKey: .participantEffectiveDateTime, in: _container, debugDescription: "More than one value provided for \"participantEffective\"")
@@ -543,13 +539,13 @@ open class EvidenceVariableCharacteristic: BackboneElement {
 		self.usageContext = try [UsageContext](from: _container, forKeyIfPresent: .usageContext)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch definition {
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .definitionReference)
@@ -564,7 +560,7 @@ open class EvidenceVariableCharacteristic: BackboneElement {
 			case .triggerDefinition(let _value):
 				try _value.encode(on: &_container, forKey: .definitionTriggerDefinition)
 			}
-		
+
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
 		try exclude?.encode(on: &_container, forKey: .exclude, auxiliaryKey: ._exclude)
 		try groupMeasure?.encode(on: &_container, forKey: .groupMeasure, auxiliaryKey: ._groupMeasure)
@@ -584,9 +580,9 @@ open class EvidenceVariableCharacteristic: BackboneElement {
 		try usageContext?.encode(on: &_container, forKey: .usageContext)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EvidenceVariableCharacteristic else {
 			return false
@@ -602,7 +598,7 @@ open class EvidenceVariableCharacteristic: BackboneElement {
 		    && timeFromStart == _other.timeFromStart
 		    && usageContext == _other.usageContext
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(definition)

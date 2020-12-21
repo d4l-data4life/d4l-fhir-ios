@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How the Quantity should be understood and represented.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/quantity-comparator
  */
 public enum QuantityComparator: String, FHIRPrimitiveType {
-	
+
 	/// The actual value is less than the given value.
 	case lessThan = "<"
-	
+
 	/// The actual value is less than or equal to the given value.
 	case lessThanOrEqual = "<="
-	
+
 	/// The actual value is greater than or equal to the given value.
 	case greaterThanOrEqual = ">="
-	
+
 	/// The actual value is greater than the given value.
 	case greaterThan = ">"
 }

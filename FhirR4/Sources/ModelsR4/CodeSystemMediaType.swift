@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes for high level media categories.
  
@@ -26,14 +24,14 @@
  ValueSet: http://hl7.org/fhir/ValueSet/media-type
  */
 public enum MediaType: String, FHIRPrimitiveType {
-	
+
 	/// The media consists of one or more unmoving images, including photographs, computer-generated graphs and charts,
 	/// and scanned documents
 	case image = "image"
-	
+
 	/// The media consists of a series of frames that capture a moving image
 	case video = "video"
-	
+
 	/// The media consists of a sound recording
 	case audio = "audio"
 }

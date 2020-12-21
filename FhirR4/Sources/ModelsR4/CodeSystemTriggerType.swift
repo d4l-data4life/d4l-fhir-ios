@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of trigger.
  
@@ -26,31 +24,31 @@
  ValueSet: http://hl7.org/fhir/ValueSet/trigger-type
  */
 public enum TriggerType: String, FHIRPrimitiveType {
-	
+
 	/// The trigger occurs in response to a specific named event, and no other information about the trigger is
 	/// specified. Named events are completely pre-coordinated, and the formal semantics of the trigger are not
 	/// provided.
 	case namedEvent = "named-event"
-	
+
 	/// The trigger occurs at a specific time or periodically as described by a timing or schedule. A periodic event
 	/// cannot have any data elements, but may have a name assigned as a shorthand for the event.
 	case periodic = "periodic"
-	
+
 	/// The trigger occurs whenever data of a particular type is changed in any way, either added, modified, or removed.
 	case dataChanged = "data-changed"
-	
+
 	/// The trigger occurs whenever data of a particular type is added.
 	case dataAdded = "data-added"
-	
+
 	/// The trigger occurs whenever data of a particular type is modified.
 	case dataModified = "data-modified"
-	
+
 	/// The trigger occurs whenever data of a particular type is removed.
 	case dataRemoved = "data-removed"
-	
+
 	/// The trigger occurs whenever data of a particular type is accessed.
 	case dataAccessed = "data-accessed"
-	
+
 	/// The trigger occurs whenever access to data of a particular type is completed.
 	case dataAccessEnded = "data-access-ended"
 }

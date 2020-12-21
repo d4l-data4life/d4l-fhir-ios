@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This example value set defines a set of codes that can be used to indicate the current state of the animal's
  reproductive organs.
@@ -27,13 +25,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/animal-genderstatus
  */
 public enum GenderStatus: String, FHIRPrimitiveType {
-	
+
 	/// The animal has been sterilized, castrated or otherwise made infertile.
 	case neutered = "neutered"
-	
+
 	/// The animal's reproductive organs are intact.
 	case intact = "intact"
-	
+
 	/// Unable to determine whether the animal has been neutered.
 	case unknown = "unknown"
 }

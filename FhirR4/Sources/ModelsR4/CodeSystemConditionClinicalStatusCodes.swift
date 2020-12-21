@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Preferred value set for Condition Clinical Status.
  
@@ -26,27 +24,27 @@
  ValueSet: http://hl7.org/fhir/ValueSet/condition-clinical
  */
 public enum ConditionClinicalStatusCodes: String, FHIRPrimitiveType {
-	
+
 	/// The subject is currently experiencing the symptoms of the condition or there is evidence of the condition.
 	case active = "active"
-	
+
 	/// The subject is experiencing a re-occurence or repeating of a previously resolved condition, e.g. urinary tract
 	/// infection, pancreatitis, cholangitis, conjunctivitis.
 	case recurrence = "recurrence"
-	
+
 	/// The subject is experiencing a return of a condition, or signs and symptoms after a period of improvement or
 	/// remission, e.g. relapse of cancer, multiple sclerosis, rheumatoid arthritis, systemic lupus erythematosus,
 	/// bipolar disorder, [psychotic relapse of] schizophrenia, etc.
 	case relapse = "relapse"
-	
+
 	/// The subject is no longer experiencing the symptoms of the condition or there is no longer evidence of the
 	/// condition.
 	case inactive = "inactive"
-	
+
 	/// The subject is no longer experiencing the symptoms of the condition, but there is a risk of the symptoms
 	/// returning.
 	case remission = "remission"
-	
+
 	/// The subject is no longer experiencing the symptoms of the condition and there is a negligible perceived risk of
 	/// the symptoms returning.
 	case resolved = "resolved"

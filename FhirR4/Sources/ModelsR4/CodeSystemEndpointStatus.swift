@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The status of the endpoint.
  
@@ -26,23 +24,23 @@
  ValueSet: http://hl7.org/fhir/ValueSet/endpoint-status
  */
 public enum EndpointStatus: String, FHIRPrimitiveType {
-	
+
 	/// This endpoint is expected to be active and can be used.
 	case active = "active"
-	
+
 	/// This endpoint is temporarily unavailable.
 	case suspended = "suspended"
-	
+
 	/// This endpoint has exceeded connectivity thresholds and is considered in an error state and should no longer be
 	/// attempted to connect to until corrective action is taken.
 	case error = "error"
-	
+
 	/// This endpoint is no longer to be used.
 	case off = "off"
-	
+
 	/// This instance should not have been part of this patient's medical record.
 	case enteredInError = "entered-in-error"
-	
+
 	/// This endpoint is not intended for production usage.
 	case test = "test"
 }

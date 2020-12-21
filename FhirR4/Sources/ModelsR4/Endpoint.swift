@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The technical details of an endpoint that can be used for electronic services.
  
@@ -26,43 +24,43 @@
  or a REST endpoint for another FHIR server. This may include any security context information.
  */
 open class Endpoint: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .endpoint }
-	
+
 	/// Identifies this endpoint across multiple systems
 	public var identifier: [Identifier]?
-	
+
 	/// active | suspended | error | off | test.
 	public var status: FHIRPrimitive<EndpointStatus>
-	
+
 	/// Protocol/Profile/Standard to be used with this endpoint connection
 	public var connectionType: Coding
-	
+
 	/// A name that this endpoint can be identified by
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Organization that manages this endpoint (might not be the organization that exposes the endpoint)
 	public var managingOrganization: Reference?
-	
+
 	/// Contact details for source (e.g. troubleshooting)
 	public var contact: [ContactPoint]?
-	
+
 	/// Interval the endpoint is expected to be operational
 	public var period: Period?
-	
+
 	/// The type of content that may be used at this endpoint (e.g. XDS Discharge summaries)
 	public var payloadType: [CodeableConcept]
-	
+
 	/// Mimetype to send. If not specified, the content could be anything (including no payload, if the connectionType
 	/// defined this)
 	public var payloadMimeType: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// The technical base address for connecting to this endpoint
 	public var address: FHIRPrimitive<FHIRURI>
-	
+
 	/// Usage depends on the channel type
 	public var header: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(address: FHIRPrimitive<FHIRURI>, connectionType: Coding, payloadType: [CodeableConcept], status: FHIRPrimitive<EndpointStatus>) {
 		self.address = address
@@ -71,7 +69,7 @@ open class Endpoint: DomainResource {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							address: FHIRPrimitive<FHIRURI>,
@@ -92,8 +90,7 @@ open class Endpoint: DomainResource {
 							payloadType: [CodeableConcept],
 							period: Period? = nil,
 							status: FHIRPrimitive<EndpointStatus>,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(address: address, connectionType: connectionType, payloadType: payloadType, status: status)
 		self.contact = contact
 		self.contained = contained
@@ -111,9 +108,9 @@ open class Endpoint: DomainResource {
 		self.period = period
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case address; case _address
 		case connectionType
@@ -127,11 +124,11 @@ open class Endpoint: DomainResource {
 		case period
 		case status; case _status
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.address = try FHIRPrimitive<FHIRURI>(from: _container, forKey: .address, auxiliaryKey: ._address)
 		self.connectionType = try Coding(from: _container, forKey: .connectionType)
@@ -146,11 +143,11 @@ open class Endpoint: DomainResource {
 		self.status = try FHIRPrimitive<EndpointStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try address.encode(on: &_container, forKey: .address, auxiliaryKey: ._address)
 		try connectionType.encode(on: &_container, forKey: .connectionType)
@@ -165,9 +162,9 @@ open class Endpoint: DomainResource {
 		try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Endpoint else {
 			return false
@@ -187,7 +184,7 @@ open class Endpoint: DomainResource {
 		    && period == _other.period
 		    && status == _other.status
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(address)

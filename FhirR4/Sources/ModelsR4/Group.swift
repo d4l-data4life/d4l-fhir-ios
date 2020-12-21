@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Group of multiple entities.
  
@@ -27,46 +25,46 @@
  Organization.
  */
 open class Group: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .group }
-	
+
 	/// Unique id
 	public var identifier: [Identifier]?
-	
+
 	/// Whether this group's record is in active use
 	public var active: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Identifies the broad classification of the kind of resources the group includes.
 	public var type: FHIRPrimitive<GroupType>
-	
+
 	/// Descriptive or actual
 	public var actual: FHIRPrimitive<FHIRBool>
-	
+
 	/// Kind of Group members
 	public var code: CodeableConcept?
-	
+
 	/// Label for Group
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Number of members
 	public var quantity: FHIRPrimitive<FHIRUnsignedInteger>?
-	
+
 	/// Entity that is the custodian of the Group's definition
 	public var managingEntity: Reference?
-	
+
 	/// Include / Exclude group members by Trait
 	public var characteristic: [GroupCharacteristic]?
-	
+
 	/// Who or what is in group
 	public var member: [GroupMember]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(actual: FHIRPrimitive<FHIRBool>, type: FHIRPrimitive<GroupType>) {
 		self.actual = actual
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							active: FHIRPrimitive<FHIRBool>? = nil,
@@ -86,8 +84,7 @@ open class Group: DomainResource {
 							name: FHIRPrimitive<FHIRString>? = nil,
 							quantity: FHIRPrimitive<FHIRUnsignedInteger>? = nil,
 							text: Narrative? = nil,
-							type: FHIRPrimitive<GroupType>)
-	{
+							type: FHIRPrimitive<GroupType>) {
 		self.init(actual: actual, type: type)
 		self.active = active
 		self.characteristic = characteristic
@@ -106,9 +103,9 @@ open class Group: DomainResource {
 		self.quantity = quantity
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case active; case _active
 		case actual; case _actual
@@ -121,11 +118,11 @@ open class Group: DomainResource {
 		case quantity; case _quantity
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.active = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .active, auxiliaryKey: ._active)
 		self.actual = try FHIRPrimitive<FHIRBool>(from: _container, forKey: .actual, auxiliaryKey: ._actual)
@@ -139,11 +136,11 @@ open class Group: DomainResource {
 		self.type = try FHIRPrimitive<GroupType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try active?.encode(on: &_container, forKey: .active, auxiliaryKey: ._active)
 		try actual.encode(on: &_container, forKey: .actual, auxiliaryKey: ._actual)
@@ -157,9 +154,9 @@ open class Group: DomainResource {
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Group else {
 			return false
@@ -178,7 +175,7 @@ open class Group: DomainResource {
 		    && quantity == _other.quantity
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(active)
@@ -200,7 +197,7 @@ open class Group: DomainResource {
  Identifies traits whose presence r absence is shared by members of the group.
  */
 open class GroupCharacteristic: BackboneElement {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case boolean(FHIRPrimitive<FHIRBool>)
@@ -209,20 +206,20 @@ open class GroupCharacteristic: BackboneElement {
 		case range(Range)
 		case reference(Reference)
 	}
-	
+
 	/// Kind of characteristic
 	public var code: CodeableConcept
-	
+
 	/// Value held by characteristic
 	/// One of `value[x]`
 	public var value: ValueX
-	
+
 	/// Group includes or excludes
 	public var exclude: FHIRPrimitive<FHIRBool>
-	
+
 	/// Period over which characteristic is tested
 	public var period: Period?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept, exclude: FHIRPrimitive<FHIRBool>, value: ValueX) {
 		self.code = code
@@ -230,7 +227,7 @@ open class GroupCharacteristic: BackboneElement {
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept,
@@ -239,17 +236,16 @@ open class GroupCharacteristic: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							period: Period? = nil,
-							value: ValueX)
-	{
+							value: ValueX) {
 		self.init(code: code, exclude: exclude, value: value)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.period = period
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case exclude; case _exclude
@@ -260,21 +256,21 @@ open class GroupCharacteristic: BackboneElement {
 		case valueRange
 		case valueReference
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.valueBoolean) || _container.contains(CodingKeys.valueCodeableConcept) || _container.contains(CodingKeys.valueQuantity) || _container.contains(CodingKeys.valueRange) || _container.contains(CodingKeys.valueReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.valueBoolean, CodingKeys.valueCodeableConcept, CodingKeys.valueQuantity, CodingKeys.valueRange, CodingKeys.valueReference], debugDescription: "Must have at least one value for \"value\" but have none"))
 		}
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKey: .code)
 		self.exclude = try FHIRPrimitive<FHIRBool>(from: _container, forKey: .exclude, auxiliaryKey: ._exclude)
 		self.period = try Period(from: _container, forKeyIfPresent: .period)
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .valueCodeableConcept) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueCodeableConcept, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -308,16 +304,16 @@ open class GroupCharacteristic: BackboneElement {
 		self.value = _t_value!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code)
 		try exclude.encode(on: &_container, forKey: .exclude, auxiliaryKey: ._exclude)
 		try period?.encode(on: &_container, forKey: .period)
-		
+
 			switch value {
 			case .codeableConcept(let _value):
 				try _value.encode(on: &_container, forKey: .valueCodeableConcept)
@@ -330,12 +326,12 @@ open class GroupCharacteristic: BackboneElement {
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .valueReference)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? GroupCharacteristic else {
 			return false
@@ -348,7 +344,7 @@ open class GroupCharacteristic: BackboneElement {
 		    && period == _other.period
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -364,22 +360,22 @@ open class GroupCharacteristic: BackboneElement {
  Identifies the resource instances that are members of the group.
  */
 open class GroupMember: BackboneElement {
-	
+
 	/// Reference to the group member
 	public var entity: Reference
-	
+
 	/// Period member belonged to the group
 	public var period: Period?
-	
+
 	/// If member is no longer in group
 	public var inactive: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(entity: Reference) {
 		self.entity = entity
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							entity: Reference,
@@ -387,8 +383,7 @@ open class GroupMember: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							inactive: FHIRPrimitive<FHIRBool>? = nil,
 							modifierExtension: [Extension]? = nil,
-							period: Period? = nil)
-	{
+							period: Period? = nil) {
 		self.init(entity: entity)
 		self.`extension` = `extension`
 		self.id = id
@@ -396,39 +391,39 @@ open class GroupMember: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.period = period
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case entity
 		case inactive; case _inactive
 		case period
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.entity = try Reference(from: _container, forKey: .entity)
 		self.inactive = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .inactive, auxiliaryKey: ._inactive)
 		self.period = try Period(from: _container, forKeyIfPresent: .period)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try entity.encode(on: &_container, forKey: .entity)
 		try inactive?.encode(on: &_container, forKey: .inactive, auxiliaryKey: ._inactive)
 		try period?.encode(on: &_container, forKey: .period)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? GroupMember else {
 			return false
@@ -440,7 +435,7 @@ open class GroupMember: BackboneElement {
 		    && inactive == _other.inactive
 		    && period == _other.period
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(entity)

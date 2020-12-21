@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Definition of an observation.
  
@@ -26,55 +24,55 @@
  health care service.
  */
 open class ObservationDefinition: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .observationDefinition }
-	
+
 	/// Category of observation
 	public var category: [CodeableConcept]?
-	
+
 	/// Type of observation (code / type)
 	public var code: CodeableConcept
-	
+
 	/// Business identifier for this ObservationDefinition instance
 	public var identifier: [Identifier]?
-	
+
 	/// The data types allowed for the value element of the instance observations conforming to this
 	/// ObservationDefinition.
 	public var permittedDataType: [FHIRPrimitive<ObservationDataType>]?
-	
+
 	/// Multiple results allowed
 	public var multipleResultsAllowed: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Method used to produce the observation
 	public var method: CodeableConcept?
-	
+
 	/// Preferred report name
 	public var preferredReportName: FHIRPrimitive<FHIRString>?
-	
+
 	/// Characteristics of quantitative results
 	public var quantitativeDetails: ObservationDefinitionQuantitativeDetails?
-	
+
 	/// Qualified range for continuous and ordinal observation results
 	public var qualifiedInterval: [ObservationDefinitionQualifiedInterval]?
-	
+
 	/// Value set of valid coded values for the observations conforming to this ObservationDefinition
 	public var validCodedValueSet: Reference?
-	
+
 	/// Value set of normal coded values for the observations conforming to this ObservationDefinition
 	public var normalCodedValueSet: Reference?
-	
+
 	/// Value set of abnormal coded values for the observations conforming to this ObservationDefinition
 	public var abnormalCodedValueSet: Reference?
-	
+
 	/// Value set of critical coded values for the observations conforming to this ObservationDefinition
 	public var criticalCodedValueSet: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							abnormalCodedValueSet: Reference? = nil,
@@ -97,8 +95,7 @@ open class ObservationDefinition: DomainResource {
 							qualifiedInterval: [ObservationDefinitionQualifiedInterval]? = nil,
 							quantitativeDetails: ObservationDefinitionQuantitativeDetails? = nil,
 							text: Narrative? = nil,
-							validCodedValueSet: Reference? = nil)
-	{
+							validCodedValueSet: Reference? = nil) {
 		self.init(code: code)
 		self.abnormalCodedValueSet = abnormalCodedValueSet
 		self.category = category
@@ -121,9 +118,9 @@ open class ObservationDefinition: DomainResource {
 		self.text = text
 		self.validCodedValueSet = validCodedValueSet
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case abnormalCodedValueSet
 		case category
@@ -139,11 +136,11 @@ open class ObservationDefinition: DomainResource {
 		case quantitativeDetails
 		case validCodedValueSet
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.abnormalCodedValueSet = try Reference(from: _container, forKeyIfPresent: .abnormalCodedValueSet)
 		self.category = try [CodeableConcept](from: _container, forKeyIfPresent: .category)
@@ -160,11 +157,11 @@ open class ObservationDefinition: DomainResource {
 		self.validCodedValueSet = try Reference(from: _container, forKeyIfPresent: .validCodedValueSet)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try abnormalCodedValueSet?.encode(on: &_container, forKey: .abnormalCodedValueSet)
 		try category?.encode(on: &_container, forKey: .category)
@@ -181,9 +178,9 @@ open class ObservationDefinition: DomainResource {
 		try validCodedValueSet?.encode(on: &_container, forKey: .validCodedValueSet)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ObservationDefinition else {
 			return false
@@ -205,7 +202,7 @@ open class ObservationDefinition: DomainResource {
 		    && quantitativeDetails == _other.quantitativeDetails
 		    && validCodedValueSet == _other.validCodedValueSet
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(abnormalCodedValueSet)
@@ -231,37 +228,37 @@ open class ObservationDefinition: DomainResource {
  ObservationDefinition.
  */
 open class ObservationDefinitionQualifiedInterval: BackboneElement {
-	
+
 	/// The category of interval of values for continuous or ordinal observations conforming to this
 	/// ObservationDefinition.
 	public var category: FHIRPrimitive<ObservationRangeCategory>?
-	
+
 	/// The interval itself, for continuous or ordinal observations
 	public var range: Range?
-	
+
 	/// Range context qualifier
 	public var context: CodeableConcept?
-	
+
 	/// Targetted population of the range
 	public var appliesTo: [CodeableConcept]?
-	
+
 	/// Sex of the population the range applies to.
 	public var gender: FHIRPrimitive<AdministrativeGender>?
-	
+
 	/// Applicable age range, if relevant
 	public var age: Range?
-	
+
 	/// Applicable gestational age range, if relevant
 	public var gestationalAge: Range?
-	
+
 	/// Condition associated with the reference range
 	public var condition: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							age: Range? = nil,
@@ -274,8 +271,7 @@ open class ObservationDefinitionQualifiedInterval: BackboneElement {
 							gestationalAge: Range? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							range: Range? = nil)
-	{
+							range: Range? = nil) {
 		self.init()
 		self.age = age
 		self.appliesTo = appliesTo
@@ -289,9 +285,9 @@ open class ObservationDefinitionQualifiedInterval: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.range = range
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case age
 		case appliesTo
@@ -302,11 +298,11 @@ open class ObservationDefinitionQualifiedInterval: BackboneElement {
 		case gestationalAge
 		case range
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.age = try Range(from: _container, forKeyIfPresent: .age)
 		self.appliesTo = try [CodeableConcept](from: _container, forKeyIfPresent: .appliesTo)
@@ -318,11 +314,11 @@ open class ObservationDefinitionQualifiedInterval: BackboneElement {
 		self.range = try Range(from: _container, forKeyIfPresent: .range)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try age?.encode(on: &_container, forKey: .age)
 		try appliesTo?.encode(on: &_container, forKey: .appliesTo)
@@ -334,9 +330,9 @@ open class ObservationDefinitionQualifiedInterval: BackboneElement {
 		try range?.encode(on: &_container, forKey: .range)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ObservationDefinitionQualifiedInterval else {
 			return false
@@ -353,7 +349,7 @@ open class ObservationDefinitionQualifiedInterval: BackboneElement {
 		    && gestationalAge == _other.gestationalAge
 		    && range == _other.range
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(age)
@@ -373,24 +369,24 @@ open class ObservationDefinitionQualifiedInterval: BackboneElement {
  Characteristics for quantitative results of this observation.
  */
 open class ObservationDefinitionQuantitativeDetails: BackboneElement {
-	
+
 	/// Customary unit for quantitative results
 	public var customaryUnit: CodeableConcept?
-	
+
 	/// SI unit for quantitative results
 	public var unit: CodeableConcept?
-	
+
 	/// SI to Customary unit conversion factor
 	public var conversionFactor: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Decimal precision of observation quantitative results
 	public var decimalPrecision: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							conversionFactor: FHIRPrimitive<FHIRDecimal>? = nil,
@@ -399,8 +395,7 @@ open class ObservationDefinitionQuantitativeDetails: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							unit: CodeableConcept? = nil)
-	{
+							unit: CodeableConcept? = nil) {
 		self.init()
 		self.conversionFactor = conversionFactor
 		self.customaryUnit = customaryUnit
@@ -410,20 +405,20 @@ open class ObservationDefinitionQuantitativeDetails: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.unit = unit
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case conversionFactor; case _conversionFactor
 		case customaryUnit
 		case decimalPrecision; case _decimalPrecision
 		case unit
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.conversionFactor = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .conversionFactor, auxiliaryKey: ._conversionFactor)
 		self.customaryUnit = try CodeableConcept(from: _container, forKeyIfPresent: .customaryUnit)
@@ -431,11 +426,11 @@ open class ObservationDefinitionQuantitativeDetails: BackboneElement {
 		self.unit = try CodeableConcept(from: _container, forKeyIfPresent: .unit)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try conversionFactor?.encode(on: &_container, forKey: .conversionFactor, auxiliaryKey: ._conversionFactor)
 		try customaryUnit?.encode(on: &_container, forKey: .customaryUnit)
@@ -443,9 +438,9 @@ open class ObservationDefinitionQuantitativeDetails: BackboneElement {
 		try unit?.encode(on: &_container, forKey: .unit)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ObservationDefinitionQuantitativeDetails else {
 			return false
@@ -458,7 +453,7 @@ open class ObservationDefinitionQuantitativeDetails: BackboneElement {
 		    && decimalPrecision == _other.decimalPrecision
 		    && unit == _other.unit
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(conversionFactor)

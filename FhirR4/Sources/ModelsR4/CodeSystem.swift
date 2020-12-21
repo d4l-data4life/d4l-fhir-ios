@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Declares the existence of and describes a code system or code system supplement.
  
@@ -26,95 +24,95 @@
  its key properties, and optionally define a part or all of its content.
  */
 open class CodeSystem: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .codeSystem }
-	
+
 	/// Canonical identifier for this code system, represented as a URI (globally unique) (Coding.system)
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Additional identifier for the code system (business identifier)
 	public var identifier: [Identifier]?
-	
+
 	/// Business version of the code system (Coding.version)
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this code system (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this code system (human friendly)
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// The date (and optionally time) when the code system resource was created or revised.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// For testing purposes, not real usage
 	public var experimental: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the code system
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for code system (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Why this code system is defined
 	public var purpose: FHIRPrimitive<FHIRString>?
-	
+
 	/// Use and/or publishing restrictions
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// If code comparison is case sensitive
 	public var caseSensitive: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Canonical reference to the value set with entire code system
 	public var valueSet: FHIRPrimitive<Canonical>?
-	
+
 	/// The meaning of the hierarchy of concepts as represented in this resource.
 	public var hierarchyMeaning: FHIRPrimitive<CodeSystemHierarchyMeaning>?
-	
+
 	/// If code system defines a compositional grammar
 	public var compositional: FHIRPrimitive<FHIRBool>?
-	
+
 	/// If definitions are not stable
 	public var versionNeeded: FHIRPrimitive<FHIRBool>?
-	
+
 	/// The extent of the content of the code system (the concepts and codes it defines) are represented in this
 	/// resource instance.
 	public var content: FHIRPrimitive<CodeSystemContentMode>
-	
+
 	/// Canonical URL of Code System this adds designations and properties to
 	public var supplements: FHIRPrimitive<Canonical>?
-	
+
 	/// Total concepts in the code system
 	public var count: FHIRPrimitive<FHIRUnsignedInteger>?
-	
+
 	/// Filter that can be used in a value set
 	public var filter: [CodeSystemFilter]?
-	
+
 	/// Additional information supplied about each concept
 	public var property: [CodeSystemProperty]?
-	
+
 	/// Concepts in the code system
 	public var concept: [CodeSystemConcept]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(content: FHIRPrimitive<CodeSystemContentMode>, status: FHIRPrimitive<PublicationStatus>) {
 		self.content = content
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							caseSensitive: FHIRPrimitive<FHIRBool>? = nil,
@@ -150,8 +148,7 @@ open class CodeSystem: DomainResource {
 							useContext: [UsageContext]? = nil,
 							valueSet: FHIRPrimitive<Canonical>? = nil,
 							version: FHIRPrimitive<FHIRString>? = nil,
-							versionNeeded: FHIRPrimitive<FHIRBool>? = nil)
-	{
+							versionNeeded: FHIRPrimitive<FHIRBool>? = nil) {
 		self.init(content: content, status: status)
 		self.caseSensitive = caseSensitive
 		self.compositional = compositional
@@ -186,9 +183,9 @@ open class CodeSystem: DomainResource {
 		self.version = version
 		self.versionNeeded = versionNeeded
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case caseSensitive; case _caseSensitive
 		case compositional; case _compositional
@@ -217,11 +214,11 @@ open class CodeSystem: DomainResource {
 		case version; case _version
 		case versionNeeded; case _versionNeeded
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.caseSensitive = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .caseSensitive, auxiliaryKey: ._caseSensitive)
 		self.compositional = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .compositional, auxiliaryKey: ._compositional)
@@ -251,11 +248,11 @@ open class CodeSystem: DomainResource {
 		self.versionNeeded = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .versionNeeded, auxiliaryKey: ._versionNeeded)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try caseSensitive?.encode(on: &_container, forKey: .caseSensitive, auxiliaryKey: ._caseSensitive)
 		try compositional?.encode(on: &_container, forKey: .compositional, auxiliaryKey: ._compositional)
@@ -285,9 +282,9 @@ open class CodeSystem: DomainResource {
 		try versionNeeded?.encode(on: &_container, forKey: .versionNeeded, auxiliaryKey: ._versionNeeded)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? CodeSystem else {
 			return false
@@ -322,7 +319,7 @@ open class CodeSystem: DomainResource {
 		    && version == _other.version
 		    && versionNeeded == _other.versionNeeded
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(caseSensitive)
@@ -361,31 +358,31 @@ open class CodeSystem: DomainResource {
  consulted to determine what the meanings of the hierarchical relationships are.
  */
 open class CodeSystemConcept: BackboneElement {
-	
+
 	/// Code that identifies concept
 	public var code: FHIRPrimitive<FHIRString>
-	
+
 	/// Text to display to the user
 	public var display: FHIRPrimitive<FHIRString>?
-	
+
 	/// Formal definition
 	public var definition: FHIRPrimitive<FHIRString>?
-	
+
 	/// Additional representations for the concept
 	public var designation: [CodeSystemConceptDesignation]?
-	
+
 	/// Property value for the concept
 	public var property: [CodeSystemConceptProperty]?
-	
+
 	/// Child Concepts (is-a/contains/categorizes)
 	public var concept: [CodeSystemConcept]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: FHIRPrimitive<FHIRString>) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: FHIRPrimitive<FHIRString>,
@@ -396,8 +393,7 @@ open class CodeSystemConcept: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							property: [CodeSystemConceptProperty]? = nil)
-	{
+							property: [CodeSystemConceptProperty]? = nil) {
 		self.init(code: code)
 		self.concept = concept
 		self.definition = definition
@@ -408,9 +404,9 @@ open class CodeSystemConcept: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.property = property
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code; case _code
 		case concept
@@ -419,11 +415,11 @@ open class CodeSystemConcept: BackboneElement {
 		case display; case _display
 		case property
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try FHIRPrimitive<FHIRString>(from: _container, forKey: .code, auxiliaryKey: ._code)
 		self.concept = try [CodeSystemConcept](from: _container, forKeyIfPresent: .concept)
@@ -433,11 +429,11 @@ open class CodeSystemConcept: BackboneElement {
 		self.property = try [CodeSystemConceptProperty](from: _container, forKeyIfPresent: .property)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
 		try concept?.encode(on: &_container, forKey: .concept)
@@ -447,9 +443,9 @@ open class CodeSystemConcept: BackboneElement {
 		try property?.encode(on: &_container, forKey: .property)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? CodeSystemConcept else {
 			return false
@@ -464,7 +460,7 @@ open class CodeSystemConcept: BackboneElement {
 		    && display == _other.display
 		    && property == _other.property
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -483,22 +479,22 @@ open class CodeSystemConcept: BackboneElement {
  purposes, etc.
  */
 open class CodeSystemConceptDesignation: BackboneElement {
-	
+
 	/// Human language of the designation
 	public var language: FHIRPrimitive<FHIRString>?
-	
+
 	/// Details how this designation would be used
 	public var use: Coding?
-	
+
 	/// The text value for this designation
 	public var value: FHIRPrimitive<FHIRString>
-	
+
 	/// Designated initializer taking all required properties
 	public init(value: FHIRPrimitive<FHIRString>) {
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -506,8 +502,7 @@ open class CodeSystemConceptDesignation: BackboneElement {
 							language: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							use: Coding? = nil,
-							value: FHIRPrimitive<FHIRString>)
-	{
+							value: FHIRPrimitive<FHIRString>) {
 		self.init(value: value)
 		self.`extension` = `extension`
 		self.id = id
@@ -515,39 +510,39 @@ open class CodeSystemConceptDesignation: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.use = use
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case language; case _language
 		case use
 		case value; case _value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.language = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .language, auxiliaryKey: ._language)
 		self.use = try Coding(from: _container, forKeyIfPresent: .use)
 		self.value = try FHIRPrimitive<FHIRString>(from: _container, forKey: .value, auxiliaryKey: ._value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try language?.encode(on: &_container, forKey: .language, auxiliaryKey: ._language)
 		try use?.encode(on: &_container, forKey: .use)
 		try value.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? CodeSystemConceptDesignation else {
 			return false
@@ -559,7 +554,7 @@ open class CodeSystemConceptDesignation: BackboneElement {
 		    && use == _other.use
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(language)
@@ -574,7 +569,7 @@ open class CodeSystemConceptDesignation: BackboneElement {
  A property value for this concept.
  */
 open class CodeSystemConceptProperty: BackboneElement {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case boolean(FHIRPrimitive<FHIRBool>)
@@ -585,37 +580,36 @@ open class CodeSystemConceptProperty: BackboneElement {
 		case integer(FHIRPrimitive<FHIRInteger>)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Reference to CodeSystem.property.code
 	public var code: FHIRPrimitive<FHIRString>
-	
+
 	/// Value of the property for this concept
 	/// One of `value[x]`
 	public var value: ValueX
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: FHIRPrimitive<FHIRString>, value: ValueX) {
 		self.code = code
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: FHIRPrimitive<FHIRString>,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							value: ValueX)
-	{
+							value: ValueX) {
 		self.init(code: code, value: value)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code; case _code
 		case valueBoolean; case _valueBoolean
@@ -626,19 +620,19 @@ open class CodeSystemConceptProperty: BackboneElement {
 		case valueInteger; case _valueInteger
 		case valueString; case _valueString
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.valueBoolean) || _container.contains(CodingKeys.valueCode) || _container.contains(CodingKeys.valueCoding) || _container.contains(CodingKeys.valueDateTime) || _container.contains(CodingKeys.valueDecimal) || _container.contains(CodingKeys.valueInteger) || _container.contains(CodingKeys.valueString) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.valueBoolean, CodingKeys.valueCode, CodingKeys.valueCoding, CodingKeys.valueDateTime, CodingKeys.valueDecimal, CodingKeys.valueInteger, CodingKeys.valueString], debugDescription: "Must have at least one value for \"value\" but have none"))
 		}
-		
+
 		// Decode all our properties
 		self.code = try FHIRPrimitive<FHIRString>(from: _container, forKey: .code, auxiliaryKey: ._code)
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueCode = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .valueCode, auxiliaryKey: ._valueCode) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueCode, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -684,14 +678,14 @@ open class CodeSystemConceptProperty: BackboneElement {
 		self.value = _t_value!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
-		
+
 			switch value {
 			case .code(let _value):
 				try _value.encode(on: &_container, forKey: .valueCode, auxiliaryKey: ._valueCode)
@@ -708,12 +702,12 @@ open class CodeSystemConceptProperty: BackboneElement {
 			case .decimal(let _value):
 				try _value.encode(on: &_container, forKey: .valueDecimal, auxiliaryKey: ._valueDecimal)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? CodeSystemConceptProperty else {
 			return false
@@ -724,7 +718,7 @@ open class CodeSystemConceptProperty: BackboneElement {
 		return code == _other.code
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -738,19 +732,19 @@ open class CodeSystemConceptProperty: BackboneElement {
  A filter that can be used in a value set compose statement when selecting concepts using a filter.
  */
 open class CodeSystemFilter: BackboneElement {
-	
+
 	/// Code that identifies the filter
 	public var code: FHIRPrimitive<FHIRString>
-	
+
 	/// How or why the filter is used
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// A list of operators that can be used with the filter.
 	public var `operator`: [FHIRPrimitive<FilterOperator>]
-	
+
 	/// What to use for the value
 	public var value: FHIRPrimitive<FHIRString>
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: FHIRPrimitive<FHIRString>, `operator`: [FHIRPrimitive<FilterOperator>], value: FHIRPrimitive<FHIRString>) {
 		self.code = code
@@ -758,7 +752,7 @@ open class CodeSystemFilter: BackboneElement {
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: FHIRPrimitive<FHIRString>,
@@ -767,28 +761,27 @@ open class CodeSystemFilter: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							`operator`: [FHIRPrimitive<FilterOperator>],
-							value: FHIRPrimitive<FHIRString>)
-	{
+							value: FHIRPrimitive<FHIRString>) {
 		self.init(code: code, operator: `operator`, value: value)
 		self.description_fhir = description_fhir
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code; case _code
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case `operator` = "operator"; case _operator = "_operator"
 		case value; case _value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try FHIRPrimitive<FHIRString>(from: _container, forKey: .code, auxiliaryKey: ._code)
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -796,11 +789,11 @@ open class CodeSystemFilter: BackboneElement {
 		self.value = try FHIRPrimitive<FHIRString>(from: _container, forKey: .value, auxiliaryKey: ._value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -808,9 +801,9 @@ open class CodeSystemFilter: BackboneElement {
 		try value.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? CodeSystemFilter else {
 			return false
@@ -823,7 +816,7 @@ open class CodeSystemFilter: BackboneElement {
 		    && `operator` == _other.`operator`
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -839,27 +832,27 @@ open class CodeSystemFilter: BackboneElement {
  A property defines an additional slot through which additional information can be provided about a concept.
  */
 open class CodeSystemProperty: BackboneElement {
-	
+
 	/// Identifies the property on the concepts, and when referred to in operations
 	public var code: FHIRPrimitive<FHIRString>
-	
+
 	/// Formal identifier for the property
 	public var uri: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Why the property is defined, and/or what it conveys
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The type of the property value. Properties of type "code" contain a code defined by the code system (e.g. a
 	/// reference to another defined concept).
 	public var type: FHIRPrimitive<PropertyType>
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: FHIRPrimitive<FHIRString>, type: FHIRPrimitive<PropertyType>) {
 		self.code = code
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: FHIRPrimitive<FHIRString>,
@@ -868,8 +861,7 @@ open class CodeSystemProperty: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							type: FHIRPrimitive<PropertyType>,
-							uri: FHIRPrimitive<FHIRURI>? = nil)
-	{
+							uri: FHIRPrimitive<FHIRURI>? = nil) {
 		self.init(code: code, type: type)
 		self.description_fhir = description_fhir
 		self.`extension` = `extension`
@@ -877,20 +869,20 @@ open class CodeSystemProperty: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.uri = uri
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code; case _code
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case type; case _type
 		case uri; case _uri
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try FHIRPrimitive<FHIRString>(from: _container, forKey: .code, auxiliaryKey: ._code)
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -898,11 +890,11 @@ open class CodeSystemProperty: BackboneElement {
 		self.uri = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .uri, auxiliaryKey: ._uri)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -910,9 +902,9 @@ open class CodeSystemProperty: BackboneElement {
 		try uri?.encode(on: &_container, forKey: .uri, auxiliaryKey: ._uri)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? CodeSystemProperty else {
 			return false
@@ -925,7 +917,7 @@ open class CodeSystemProperty: BackboneElement {
 		    && type == _other.type
 		    && uri == _other.uri
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)

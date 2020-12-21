@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This example value set defines a set of codes that can be used to express the usage type of an EpisodeOfCare record.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/episodeofcare-type
  */
 public enum EpisodeOfCareType: String, FHIRPrimitiveType {
-	
+
 	/// hacc
 	case hacc = "hacc"
-	
+
 	/// pac
 	case pac = "pac"
-	
+
 	/// diab
 	case diab = "diab"
-	
+
 	/// da
 	case da = "da"
-	
+
 	/// cacp
 	case cacp = "cacp"
 }

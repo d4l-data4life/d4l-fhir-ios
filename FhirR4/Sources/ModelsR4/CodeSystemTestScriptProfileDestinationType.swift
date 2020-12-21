@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set defines a set of codes that are used to indicate the profile type of a test system when acting as the
  destination within a TestScript.
@@ -27,16 +25,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/testscript-profile-destination-types
  */
 public enum TestScriptProfileDestinationType: String, FHIRPrimitiveType {
-	
+
 	/// General FHIR server used to respond to operations sent from a FHIR client.
 	case fHIRServer = "FHIR-Server"
-	
+
 	/// A FHIR server acting as a Structured Data Capture Form Manager.
 	case fHIRSDCFormManager = "FHIR-SDC-FormManager"
-	
+
 	/// A FHIR server acting as a Structured Data Capture Form Processor.
 	case fHIRSDCFormProcessor = "FHIR-SDC-FormProcessor"
-	
+
 	/// A FHIR server acting as a Structured Data Capture Form Receiver.
 	case fHIRSDCFormReceiver = "FHIR-SDC-FormReceiver"
 }

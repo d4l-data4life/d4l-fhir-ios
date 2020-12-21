@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of
  or contains concepts to support describing the source of the data when the report of the immunization event is not
@@ -28,20 +26,20 @@
  URL: http://terminology.hl7.org/CodeSystem/immunization-origin
  */
 public enum ImmunizationOriginCodes: String, FHIRPrimitiveType {
-	
+
 	/// The data for the immunization event originated with another provider.
 	case provider = "provider"
-	
+
 	/// The data for the immunization event originated with a written record for the patient.
 	case record = "record"
-	
+
 	/// The data for the immunization event originated from the recollection of the patient or parent/guardian of the
 	/// patient.
 	case recall = "recall"
-	
+
 	/// The data for the immunization event originated with a school record for the patient.
 	case school = "school"
-	
+
 	/// The data for the immunization event originated with an immunization information system (IIS) or registry
 	/// operating within the jurisdiction.
 	case jurisdiction = "jurisdiction"

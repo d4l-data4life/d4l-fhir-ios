@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Invoice containing ChargeItems from an Account.
  
@@ -26,63 +24,63 @@
  purpose.
  */
 open class Invoice: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .invoice }
-	
+
 	/// Business Identifier for item
 	public var identifier: [Identifier]?
-	
+
 	/// The current state of the Invoice.
 	public var status: FHIRPrimitive<InvoiceStatus>
-	
+
 	/// Reason for cancellation of this Invoice
 	public var cancelledReason: FHIRPrimitive<FHIRString>?
-	
+
 	/// Type of Invoice
 	public var type: CodeableConcept?
-	
+
 	/// Recipient(s) of goods and services
 	public var subject: Reference?
-	
+
 	/// Recipient of this invoice
 	public var recipient: Reference?
-	
+
 	/// Invoice date / posting date
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Participant in creation of this Invoice
 	public var participant: [InvoiceParticipant]?
-	
+
 	/// Issuing Organization of Invoice
 	public var issuer: Reference?
-	
+
 	/// Account that is being balanced
 	public var account: Reference?
-	
+
 	/// Line items of this Invoice
 	public var lineItem: [InvoiceLineItem]?
-	
+
 	/// Components of Invoice total
 	public var totalPriceComponent: [InvoiceLineItemPriceComponent]?
-	
+
 	/// Net total of this Invoice
 	public var totalNet: Money?
-	
+
 	/// Gross total of this Invoice
 	public var totalGross: Money?
-	
+
 	/// Payment details
 	public var paymentTerms: FHIRPrimitive<FHIRString>?
-	
+
 	/// Comments made about the invoice
 	public var note: [Annotation]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(status: FHIRPrimitive<InvoiceStatus>) {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							account: Reference? = nil,
@@ -108,8 +106,7 @@ open class Invoice: DomainResource {
 							totalGross: Money? = nil,
 							totalNet: Money? = nil,
 							totalPriceComponent: [InvoiceLineItemPriceComponent]? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init(status: status)
 		self.account = account
 		self.cancelledReason = cancelledReason
@@ -135,9 +132,9 @@ open class Invoice: DomainResource {
 		self.totalPriceComponent = totalPriceComponent
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case account
 		case cancelledReason; case _cancelledReason
@@ -156,11 +153,11 @@ open class Invoice: DomainResource {
 		case totalPriceComponent
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.account = try Reference(from: _container, forKeyIfPresent: .account)
 		self.cancelledReason = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .cancelledReason, auxiliaryKey: ._cancelledReason)
@@ -180,11 +177,11 @@ open class Invoice: DomainResource {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try account?.encode(on: &_container, forKey: .account)
 		try cancelledReason?.encode(on: &_container, forKey: .cancelledReason, auxiliaryKey: ._cancelledReason)
@@ -204,9 +201,9 @@ open class Invoice: DomainResource {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Invoice else {
 			return false
@@ -231,7 +228,7 @@ open class Invoice: DomainResource {
 		    && totalPriceComponent == _other.totalPriceComponent
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(account)
@@ -260,29 +257,29 @@ open class Invoice: DomainResource {
  in the referenced ChargeItem resource.
  */
 open class InvoiceLineItem: BackboneElement {
-	
+
 	/// All possible types for "chargeItem[x]"
 	public enum ChargeItemX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Sequence number of line item
 	public var sequence: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// Reference to ChargeItem containing details of this line item or an inline billing code
 	/// One of `chargeItem[x]`
 	public var chargeItem: ChargeItemX
-	
+
 	/// Components of total line item price
 	public var priceComponent: [InvoiceLineItemPriceComponent]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(chargeItem: ChargeItemX) {
 		self.chargeItem = chargeItem
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							chargeItem: ChargeItemX,
@@ -290,8 +287,7 @@ open class InvoiceLineItem: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							priceComponent: [InvoiceLineItemPriceComponent]? = nil,
-							sequence: FHIRPrimitive<FHIRPositiveInteger>? = nil)
-	{
+							sequence: FHIRPrimitive<FHIRPositiveInteger>? = nil) {
 		self.init(chargeItem: chargeItem)
 		self.`extension` = `extension`
 		self.id = id
@@ -299,27 +295,27 @@ open class InvoiceLineItem: BackboneElement {
 		self.priceComponent = priceComponent
 		self.sequence = sequence
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case chargeItemCodeableConcept
 		case chargeItemReference
 		case priceComponent
 		case sequence; case _sequence
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.chargeItemCodeableConcept) || _container.contains(CodingKeys.chargeItemReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.chargeItemCodeableConcept, CodingKeys.chargeItemReference], debugDescription: "Must have at least one value for \"chargeItem\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_chargeItem: ChargeItemX? = nil
+		var _t_chargeItem: ChargeItemX?
 		if let chargeItemReference = try Reference(from: _container, forKeyIfPresent: .chargeItemReference) {
 			if _t_chargeItem != nil {
 				throw DecodingError.dataCorruptedError(forKey: .chargeItemReference, in: _container, debugDescription: "More than one value provided for \"chargeItem\"")
@@ -337,27 +333,27 @@ open class InvoiceLineItem: BackboneElement {
 		self.sequence = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKeyIfPresent: .sequence, auxiliaryKey: ._sequence)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch chargeItem {
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .chargeItemReference)
 			case .codeableConcept(let _value):
 				try _value.encode(on: &_container, forKey: .chargeItemCodeableConcept)
 			}
-		
+
 		try priceComponent?.encode(on: &_container, forKey: .priceComponent)
 		try sequence?.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InvoiceLineItem else {
 			return false
@@ -369,7 +365,7 @@ open class InvoiceLineItem: BackboneElement {
 		    && priceComponent == _other.priceComponent
 		    && sequence == _other.sequence
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(chargeItem)
@@ -387,25 +383,25 @@ open class InvoiceLineItem: BackboneElement {
  the Invoice as to how the prices have been calculated.
  */
 open class InvoiceLineItemPriceComponent: BackboneElement {
-	
+
 	/// This code identifies the type of the component.
 	public var type: FHIRPrimitive<InvoicePriceComponentType>
-	
+
 	/// Code identifying the specific component
 	public var code: CodeableConcept?
-	
+
 	/// Factor used for calculating this component
 	public var factor: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Monetary amount associated with this component
 	public var amount: Money?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: FHIRPrimitive<InvoicePriceComponentType>) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							amount: Money? = nil,
@@ -414,8 +410,7 @@ open class InvoiceLineItemPriceComponent: BackboneElement {
 							factor: FHIRPrimitive<FHIRDecimal>? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							type: FHIRPrimitive<InvoicePriceComponentType>)
-	{
+							type: FHIRPrimitive<InvoicePriceComponentType>) {
 		self.init(type: type)
 		self.amount = amount
 		self.code = code
@@ -424,20 +419,20 @@ open class InvoiceLineItemPriceComponent: BackboneElement {
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case amount
 		case code
 		case factor; case _factor
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.amount = try Money(from: _container, forKeyIfPresent: .amount)
 		self.code = try CodeableConcept(from: _container, forKeyIfPresent: .code)
@@ -445,11 +440,11 @@ open class InvoiceLineItemPriceComponent: BackboneElement {
 		self.type = try FHIRPrimitive<InvoicePriceComponentType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try amount?.encode(on: &_container, forKey: .amount)
 		try code?.encode(on: &_container, forKey: .code)
@@ -457,9 +452,9 @@ open class InvoiceLineItemPriceComponent: BackboneElement {
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InvoiceLineItemPriceComponent else {
 			return false
@@ -472,7 +467,7 @@ open class InvoiceLineItemPriceComponent: BackboneElement {
 		    && factor == _other.factor
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(amount)
@@ -488,63 +483,62 @@ open class InvoiceLineItemPriceComponent: BackboneElement {
  Indicates who or what performed or participated in the charged service.
  */
 open class InvoiceParticipant: BackboneElement {
-	
+
 	/// Type of involvement in creation of this Invoice
 	public var role: CodeableConcept?
-	
+
 	/// Individual who was involved
 	public var actor: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(actor: Reference) {
 		self.actor = actor
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							actor: Reference,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							role: CodeableConcept? = nil)
-	{
+							role: CodeableConcept? = nil) {
 		self.init(actor: actor)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.role = role
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case actor
 		case role
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.actor = try Reference(from: _container, forKey: .actor)
 		self.role = try CodeableConcept(from: _container, forKeyIfPresent: .role)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try actor.encode(on: &_container, forKey: .actor)
 		try role?.encode(on: &_container, forKey: .role)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InvoiceParticipant else {
 			return false
@@ -555,7 +549,7 @@ open class InvoiceParticipant: BackboneElement {
 		return actor == _other.actor
 		    && role == _other.role
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(actor)

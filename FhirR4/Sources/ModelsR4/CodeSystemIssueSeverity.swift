@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How the issue affects the success of the action.
  
@@ -26,17 +24,17 @@
  ValueSet: http://hl7.org/fhir/ValueSet/issue-severity
  */
 public enum IssueSeverity: String, FHIRPrimitiveType {
-	
+
 	/// The issue caused the action to fail and no further checking could be performed.
 	case fatal = "fatal"
-	
+
 	/// The issue is sufficiently important to cause the action to fail.
 	case error = "error"
-	
+
 	/// The issue is not important enough to cause the action to fail but may cause it to be performed suboptimally or
 	/// in a way that is not as desired.
 	case warning = "warning"
-	
+
 	/// The issue has no relation to the degree of success of the action.
 	case information = "information"
 }

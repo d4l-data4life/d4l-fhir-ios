@@ -17,65 +17,63 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Describes validation requirements, source(s), status and dates for one or more elements.
  */
 open class VerificationResult: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .verificationResult }
-	
+
 	/// A resource that was validated
 	public var target: [Reference]?
-	
+
 	/// The fhirpath location(s) within the resource that was validated
 	public var targetLocation: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// none | initial | periodic
 	public var need: CodeableConcept?
-	
+
 	/// The validation status of the target (attested; validated; in process; requires revalidation; validation failed;
 	/// revalidation failed).
 	public var status: FHIRPrimitive<Status>
-	
+
 	/// When the validation status was updated
 	public var statusDate: FHIRPrimitive<DateTime>?
-	
+
 	/// nothing | primary | multiple
 	public var validationType: CodeableConcept?
-	
+
 	/// The primary process by which the target is validated (edit check; value set; primary source; multiple sources;
 	/// standalone; in context)
 	public var validationProcess: [CodeableConcept]?
-	
+
 	/// Frequency of revalidation
 	public var frequency: Timing?
-	
+
 	/// The date/time validation was last completed (including failed validations)
 	public var lastPerformed: FHIRPrimitive<DateTime>?
-	
+
 	/// The date when target is next validated, if appropriate
 	public var nextScheduled: FHIRPrimitive<FHIRDate>?
-	
+
 	/// fatal | warn | rec-only | none
 	public var failureAction: CodeableConcept?
-	
+
 	/// Information about the primary source(s) involved in validation
 	public var primarySource: [VerificationResultPrimarySource]?
-	
+
 	/// Information about the entity attesting to information
 	public var attestation: VerificationResultAttestation?
-	
+
 	/// Information about the entity validating information
 	public var validator: [VerificationResultValidator]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(status: FHIRPrimitive<Status>) {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							attestation: VerificationResultAttestation? = nil,
@@ -99,8 +97,7 @@ open class VerificationResult: DomainResource {
 							text: Narrative? = nil,
 							validationProcess: [CodeableConcept]? = nil,
 							validationType: CodeableConcept? = nil,
-							validator: [VerificationResultValidator]? = nil)
-	{
+							validator: [VerificationResultValidator]? = nil) {
 		self.init(status: status)
 		self.attestation = attestation
 		self.contained = contained
@@ -124,9 +121,9 @@ open class VerificationResult: DomainResource {
 		self.validationType = validationType
 		self.validator = validator
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case attestation
 		case failureAction
@@ -143,11 +140,11 @@ open class VerificationResult: DomainResource {
 		case validationType
 		case validator
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.attestation = try VerificationResultAttestation(from: _container, forKeyIfPresent: .attestation)
 		self.failureAction = try CodeableConcept(from: _container, forKeyIfPresent: .failureAction)
@@ -165,11 +162,11 @@ open class VerificationResult: DomainResource {
 		self.validator = try [VerificationResultValidator](from: _container, forKeyIfPresent: .validator)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try attestation?.encode(on: &_container, forKey: .attestation)
 		try failureAction?.encode(on: &_container, forKey: .failureAction)
@@ -187,9 +184,9 @@ open class VerificationResult: DomainResource {
 		try validator?.encode(on: &_container, forKey: .validator)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? VerificationResult else {
 			return false
@@ -212,7 +209,7 @@ open class VerificationResult: DomainResource {
 		    && validationType == _other.validationType
 		    && validator == _other.validator
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(attestation)
@@ -236,37 +233,37 @@ open class VerificationResult: DomainResource {
  Information about the entity attesting to information.
  */
 open class VerificationResultAttestation: BackboneElement {
-	
+
 	/// The individual or organization attesting to information
 	public var who: Reference?
-	
+
 	/// When the who is asserting on behalf of another (organization or individual)
 	public var onBehalfOf: Reference?
-	
+
 	/// The method by which attested information was submitted/retrieved
 	public var communicationMethod: CodeableConcept?
-	
+
 	/// The date the information was attested to
 	public var date: FHIRPrimitive<FHIRDate>?
-	
+
 	/// A digital identity certificate associated with the attestation source
 	public var sourceIdentityCertificate: FHIRPrimitive<FHIRString>?
-	
+
 	/// A digital identity certificate associated with the proxy entity submitting attested information on behalf of the
 	/// attestation source
 	public var proxyIdentityCertificate: FHIRPrimitive<FHIRString>?
-	
+
 	/// Proxy signature
 	public var proxySignature: Signature?
-	
+
 	/// Attester signature
 	public var sourceSignature: Signature?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							communicationMethod: CodeableConcept? = nil,
@@ -279,8 +276,7 @@ open class VerificationResultAttestation: BackboneElement {
 							proxySignature: Signature? = nil,
 							sourceIdentityCertificate: FHIRPrimitive<FHIRString>? = nil,
 							sourceSignature: Signature? = nil,
-							who: Reference? = nil)
-	{
+							who: Reference? = nil) {
 		self.init()
 		self.communicationMethod = communicationMethod
 		self.date = date
@@ -294,9 +290,9 @@ open class VerificationResultAttestation: BackboneElement {
 		self.sourceSignature = sourceSignature
 		self.who = who
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case communicationMethod
 		case date; case _date
@@ -307,11 +303,11 @@ open class VerificationResultAttestation: BackboneElement {
 		case sourceSignature
 		case who
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.communicationMethod = try CodeableConcept(from: _container, forKeyIfPresent: .communicationMethod)
 		self.date = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
@@ -323,11 +319,11 @@ open class VerificationResultAttestation: BackboneElement {
 		self.who = try Reference(from: _container, forKeyIfPresent: .who)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try communicationMethod?.encode(on: &_container, forKey: .communicationMethod)
 		try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
@@ -339,9 +335,9 @@ open class VerificationResultAttestation: BackboneElement {
 		try who?.encode(on: &_container, forKey: .who)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? VerificationResultAttestation else {
 			return false
@@ -358,7 +354,7 @@ open class VerificationResultAttestation: BackboneElement {
 		    && sourceSignature == _other.sourceSignature
 		    && who == _other.who
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(communicationMethod)
@@ -376,34 +372,34 @@ open class VerificationResultAttestation: BackboneElement {
  Information about the primary source(s) involved in validation.
  */
 open class VerificationResultPrimarySource: BackboneElement {
-	
+
 	/// Reference to the primary source
 	public var who: Reference?
-	
+
 	/// Type of primary source (License Board; Primary Education; Continuing Education; Postal Service; Relationship
 	/// owner; Registration Authority; legal source; issuing source; authoritative source)
 	public var type: [CodeableConcept]?
-	
+
 	/// Method for exchanging information with the primary source
 	public var communicationMethod: [CodeableConcept]?
-	
+
 	/// successful | failed | unknown
 	public var validationStatus: CodeableConcept?
-	
+
 	/// When the target was validated against the primary source
 	public var validationDate: FHIRPrimitive<DateTime>?
-	
+
 	/// yes | no | undetermined
 	public var canPushUpdates: CodeableConcept?
-	
+
 	/// specific | any | source
 	public var pushTypeAvailable: [CodeableConcept]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							canPushUpdates: CodeableConcept? = nil,
@@ -415,8 +411,7 @@ open class VerificationResultPrimarySource: BackboneElement {
 							type: [CodeableConcept]? = nil,
 							validationDate: FHIRPrimitive<DateTime>? = nil,
 							validationStatus: CodeableConcept? = nil,
-							who: Reference? = nil)
-	{
+							who: Reference? = nil) {
 		self.init()
 		self.canPushUpdates = canPushUpdates
 		self.communicationMethod = communicationMethod
@@ -429,9 +424,9 @@ open class VerificationResultPrimarySource: BackboneElement {
 		self.validationStatus = validationStatus
 		self.who = who
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case canPushUpdates
 		case communicationMethod
@@ -441,11 +436,11 @@ open class VerificationResultPrimarySource: BackboneElement {
 		case validationStatus
 		case who
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.canPushUpdates = try CodeableConcept(from: _container, forKeyIfPresent: .canPushUpdates)
 		self.communicationMethod = try [CodeableConcept](from: _container, forKeyIfPresent: .communicationMethod)
@@ -456,11 +451,11 @@ open class VerificationResultPrimarySource: BackboneElement {
 		self.who = try Reference(from: _container, forKeyIfPresent: .who)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try canPushUpdates?.encode(on: &_container, forKey: .canPushUpdates)
 		try communicationMethod?.encode(on: &_container, forKey: .communicationMethod)
@@ -471,9 +466,9 @@ open class VerificationResultPrimarySource: BackboneElement {
 		try who?.encode(on: &_container, forKey: .who)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? VerificationResultPrimarySource else {
 			return false
@@ -489,7 +484,7 @@ open class VerificationResultPrimarySource: BackboneElement {
 		    && validationStatus == _other.validationStatus
 		    && who == _other.who
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(canPushUpdates)
@@ -506,22 +501,22 @@ open class VerificationResultPrimarySource: BackboneElement {
  Information about the entity validating information.
  */
 open class VerificationResultValidator: BackboneElement {
-	
+
 	/// Reference to the organization validating information
 	public var organization: Reference
-	
+
 	/// A digital identity certificate associated with the validator
 	public var identityCertificate: FHIRPrimitive<FHIRString>?
-	
+
 	/// Validator signature
 	public var attestationSignature: Signature?
-	
+
 	/// Designated initializer taking all required properties
 	public init(organization: Reference) {
 		self.organization = organization
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							attestationSignature: Signature? = nil,
@@ -529,8 +524,7 @@ open class VerificationResultValidator: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							identityCertificate: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							organization: Reference)
-	{
+							organization: Reference) {
 		self.init(organization: organization)
 		self.attestationSignature = attestationSignature
 		self.`extension` = `extension`
@@ -538,39 +532,39 @@ open class VerificationResultValidator: BackboneElement {
 		self.identityCertificate = identityCertificate
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case attestationSignature
 		case identityCertificate; case _identityCertificate
 		case organization
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.attestationSignature = try Signature(from: _container, forKeyIfPresent: .attestationSignature)
 		self.identityCertificate = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .identityCertificate, auxiliaryKey: ._identityCertificate)
 		self.organization = try Reference(from: _container, forKey: .organization)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try attestationSignature?.encode(on: &_container, forKey: .attestationSignature)
 		try identityCertificate?.encode(on: &_container, forKey: .identityCertificate, auxiliaryKey: ._identityCertificate)
 		try organization.encode(on: &_container, forKey: .organization)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? VerificationResultValidator else {
 			return false
@@ -582,7 +576,7 @@ open class VerificationResultValidator: BackboneElement {
 		    && identityCertificate == _other.identityCertificate
 		    && organization == _other.organization
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(attestationSignature)

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How a search parameter relates to the set of elements returned by evaluating its xpath query.
  
@@ -26,20 +24,20 @@
  ValueSet: http://hl7.org/fhir/ValueSet/search-xpath-usage
  */
 public enum XPathUsageType: String, FHIRPrimitiveType {
-	
+
 	/// The search parameter is derived directly from the selected nodes based on the type definitions.
 	case normal = "normal"
-	
+
 	/// The search parameter is derived by a phonetic transform from the selected nodes.
 	case phonetic = "phonetic"
-	
+
 	/// The search parameter is based on a spatial transform of the selected nodes.
 	case nearby = "nearby"
-	
+
 	/// The search parameter is based on a spatial transform of the selected nodes, using physical distance from the
 	/// middle.
 	case distance = "distance"
-	
+
 	/// The interpretation of the xpath statement is unknown (and can't be automated).
 	case other = "other"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A rating system that describes the quality of evidence such as the GRADE, DynaMed, or Oxford CEBM systems.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/evidence-quality
  */
 public enum QualityOfEvidenceRating: String, FHIRPrimitiveType {
-	
+
 	/// High quality evidence.
 	case high = "high"
-	
+
 	/// Moderate quality evidence.
 	case moderate = "moderate"
-	
+
 	/// Low quality evidence.
 	case low = "low"
-	
+
 	/// Very low quality evidence.
 	case veryLow = "very-low"
 }

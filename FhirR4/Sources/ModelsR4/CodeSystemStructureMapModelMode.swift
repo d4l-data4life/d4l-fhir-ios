@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How the referenced structure is used in this mapping.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/map-model-mode
  */
 public enum StructureMapModelMode: String, FHIRPrimitiveType {
-	
+
 	/// This structure describes an instance passed to the mapping engine that is used a source of data.
 	case source = "source"
-	
+
 	/// This structure describes an instance that the mapping engine may ask for that is used a source of data.
 	case queried = "queried"
-	
+
 	/// This structure describes an instance passed to the mapping engine that is used a target of data.
 	case target = "target"
-	
+
 	/// This structure describes an instance that the mapping engine may ask to create that is used a target of data.
 	case produced = "produced"
 }

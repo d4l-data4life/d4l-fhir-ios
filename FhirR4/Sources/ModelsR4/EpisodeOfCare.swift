@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  An association of a Patient with an Organization and  Healthcare Provider(s) for a period of time that the Organization
  assumes some level of responsibility.
@@ -27,52 +25,52 @@
  The managing organization assumes a level of responsibility for the patient during this time.
  */
 open class EpisodeOfCare: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .episodeOfCare }
-	
+
 	/// Business Identifier(s) relevant for this EpisodeOfCare
 	public var identifier: [Identifier]?
-	
+
 	/// planned | waitlist | active | onhold | finished | cancelled.
 	public var status: FHIRPrimitive<EpisodeOfCareStatus>
-	
+
 	/// Past list of status codes (the current status may be included to cover the start date of the status)
 	public var statusHistory: [EpisodeOfCareStatusHistory]?
-	
+
 	/// Type/class  - e.g. specialist referral, disease management
 	public var type: [CodeableConcept]?
-	
+
 	/// The list of diagnosis relevant to this episode of care
 	public var diagnosis: [EpisodeOfCareDiagnosis]?
-	
+
 	/// The patient who is the focus of this episode of care
 	public var patient: Reference
-	
+
 	/// Organization that assumes care
 	public var managingOrganization: Reference?
-	
+
 	/// Interval during responsibility is assumed
 	public var period: Period?
-	
+
 	/// Originating Referral Request(s)
 	public var referralRequest: [Reference]?
-	
+
 	/// Care manager/care coordinator for the patient
 	public var careManager: Reference?
-	
+
 	/// Other practitioners facilitating this episode of care
 	public var team: [Reference]?
-	
+
 	/// The set of accounts that may be used for billing for this EpisodeOfCare
 	public var account: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(patient: Reference, status: FHIRPrimitive<EpisodeOfCareStatus>) {
 		self.patient = patient
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							account: [Reference]? = nil,
@@ -94,8 +92,7 @@ open class EpisodeOfCare: DomainResource {
 							statusHistory: [EpisodeOfCareStatusHistory]? = nil,
 							team: [Reference]? = nil,
 							text: Narrative? = nil,
-							type: [CodeableConcept]? = nil)
-	{
+							type: [CodeableConcept]? = nil) {
 		self.init(patient: patient, status: status)
 		self.account = account
 		self.careManager = careManager
@@ -116,9 +113,9 @@ open class EpisodeOfCare: DomainResource {
 		self.text = text
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case account
 		case careManager
@@ -133,11 +130,11 @@ open class EpisodeOfCare: DomainResource {
 		case team
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.account = try [Reference](from: _container, forKeyIfPresent: .account)
 		self.careManager = try Reference(from: _container, forKeyIfPresent: .careManager)
@@ -153,11 +150,11 @@ open class EpisodeOfCare: DomainResource {
 		self.type = try [CodeableConcept](from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try account?.encode(on: &_container, forKey: .account)
 		try careManager?.encode(on: &_container, forKey: .careManager)
@@ -173,9 +170,9 @@ open class EpisodeOfCare: DomainResource {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EpisodeOfCare else {
 			return false
@@ -196,7 +193,7 @@ open class EpisodeOfCare: DomainResource {
 		    && team == _other.team
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(account)
@@ -218,22 +215,22 @@ open class EpisodeOfCare: DomainResource {
  The list of diagnosis relevant to this episode of care.
  */
 open class EpisodeOfCareDiagnosis: BackboneElement {
-	
+
 	/// Conditions/problems/diagnoses this episode of care is for
 	public var condition: Reference
-	
+
 	/// Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge …)
 	public var role: CodeableConcept?
-	
+
 	/// Ranking of the diagnosis (for each role type)
 	public var rank: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(condition: Reference) {
 		self.condition = condition
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							condition: Reference,
@@ -241,8 +238,7 @@ open class EpisodeOfCareDiagnosis: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							rank: FHIRPrimitive<FHIRPositiveInteger>? = nil,
-							role: CodeableConcept? = nil)
-	{
+							role: CodeableConcept? = nil) {
 		self.init(condition: condition)
 		self.`extension` = `extension`
 		self.id = id
@@ -250,39 +246,39 @@ open class EpisodeOfCareDiagnosis: BackboneElement {
 		self.rank = rank
 		self.role = role
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case condition
 		case rank; case _rank
 		case role
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.condition = try Reference(from: _container, forKey: .condition)
 		self.rank = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKeyIfPresent: .rank, auxiliaryKey: ._rank)
 		self.role = try CodeableConcept(from: _container, forKeyIfPresent: .role)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try condition.encode(on: &_container, forKey: .condition)
 		try rank?.encode(on: &_container, forKey: .rank, auxiliaryKey: ._rank)
 		try role?.encode(on: &_container, forKey: .role)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EpisodeOfCareDiagnosis else {
 			return false
@@ -294,7 +290,7 @@ open class EpisodeOfCareDiagnosis: BackboneElement {
 		    && rank == _other.rank
 		    && role == _other.role
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(condition)
@@ -310,63 +306,62 @@ open class EpisodeOfCareDiagnosis: BackboneElement {
  resource).
  */
 open class EpisodeOfCareStatusHistory: BackboneElement {
-	
+
 	/// planned | waitlist | active | onhold | finished | cancelled.
 	public var status: FHIRPrimitive<EpisodeOfCareStatus>
-	
+
 	/// Duration the EpisodeOfCare was in the specified status
 	public var period: Period
-	
+
 	/// Designated initializer taking all required properties
 	public init(period: Period, status: FHIRPrimitive<EpisodeOfCareStatus>) {
 		self.period = period
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							period: Period,
-							status: FHIRPrimitive<EpisodeOfCareStatus>)
-	{
+							status: FHIRPrimitive<EpisodeOfCareStatus>) {
 		self.init(period: period, status: status)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case period
 		case status; case _status
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.period = try Period(from: _container, forKey: .period)
 		self.status = try FHIRPrimitive<EpisodeOfCareStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try period.encode(on: &_container, forKey: .period)
 		try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EpisodeOfCareStatusHistory else {
 			return false
@@ -377,7 +372,7 @@ open class EpisodeOfCareStatusHistory: BackboneElement {
 		return period == _other.period
 		    && status == _other.status
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(period)

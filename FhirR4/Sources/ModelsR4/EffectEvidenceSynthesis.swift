@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A quantified estimate of effect based on a body of evidence.
  
@@ -26,108 +24,108 @@
  where the effect estimate is derived from a combination of research studies.
  */
 open class EffectEvidenceSynthesis: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .effectEvidenceSynthesis }
-	
+
 	/// Canonical identifier for this effect evidence synthesis, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Additional identifier for the effect evidence synthesis
 	public var identifier: [Identifier]?
-	
+
 	/// Business version of the effect evidence synthesis
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this effect evidence synthesis (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this effect evidence synthesis (human friendly)
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// The status of this effect evidence synthesis. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the effect evidence synthesis
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Used for footnotes or explanatory notes
 	public var note: [Annotation]?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for effect evidence synthesis (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Use and/or publishing restrictions
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// When the effect evidence synthesis was approved by publisher
 	public var approvalDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the effect evidence synthesis was last reviewed
 	public var lastReviewDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the effect evidence synthesis is expected to be used
 	public var effectivePeriod: Period?
-	
+
 	/// The category of the EffectEvidenceSynthesis, such as Education, Treatment, Assessment, etc.
 	public var topic: [CodeableConcept]?
-	
+
 	/// Who authored the content
 	public var author: [ContactDetail]?
-	
+
 	/// Who edited the content
 	public var editor: [ContactDetail]?
-	
+
 	/// Who reviewed the content
 	public var reviewer: [ContactDetail]?
-	
+
 	/// Who endorsed the content
 	public var endorser: [ContactDetail]?
-	
+
 	/// Additional documentation, citations, etc.
 	public var relatedArtifact: [RelatedArtifact]?
-	
+
 	/// Type of synthesis
 	public var synthesisType: CodeableConcept?
-	
+
 	/// Type of study
 	public var studyType: CodeableConcept?
-	
+
 	/// What population?
 	public var population: Reference
-	
+
 	/// What exposure?
 	public var exposure: Reference
-	
+
 	/// What comparison exposure?
 	public var exposureAlternative: Reference
-	
+
 	/// What outcome?
 	public var outcome: Reference
-	
+
 	/// What sample size was involved?
 	public var sampleSize: EffectEvidenceSynthesisSampleSize?
-	
+
 	/// What was the result per exposure?
 	public var resultsByExposure: [EffectEvidenceSynthesisResultsByExposure]?
-	
+
 	/// What was the estimated effect
 	public var effectEstimate: [EffectEvidenceSynthesisEffectEstimate]?
-	
+
 	/// How certain is the effect
 	public var certainty: [EffectEvidenceSynthesisCertainty]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(exposure: Reference, exposureAlternative: Reference, outcome: Reference, population: Reference, status: FHIRPrimitive<PublicationStatus>) {
 		self.exposure = exposure
@@ -137,7 +135,7 @@ open class EffectEvidenceSynthesis: DomainResource {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							approvalDate: FHIRPrimitive<FHIRDate>? = nil,
@@ -180,8 +178,7 @@ open class EffectEvidenceSynthesis: DomainResource {
 							topic: [CodeableConcept]? = nil,
 							url: FHIRPrimitive<FHIRURI>? = nil,
 							useContext: [UsageContext]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(exposure: exposure, exposureAlternative: exposureAlternative, outcome: outcome, population: population, status: status)
 		self.approvalDate = approvalDate
 		self.author = author
@@ -220,9 +217,9 @@ open class EffectEvidenceSynthesis: DomainResource {
 		self.useContext = useContext
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case approvalDate; case _approvalDate
 		case author
@@ -258,11 +255,11 @@ open class EffectEvidenceSynthesis: DomainResource {
 		case useContext
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.approvalDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .approvalDate, auxiliaryKey: ._approvalDate)
 		self.author = try [ContactDetail](from: _container, forKeyIfPresent: .author)
@@ -299,11 +296,11 @@ open class EffectEvidenceSynthesis: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try approvalDate?.encode(on: &_container, forKey: .approvalDate, auxiliaryKey: ._approvalDate)
 		try author?.encode(on: &_container, forKey: .author)
@@ -340,9 +337,9 @@ open class EffectEvidenceSynthesis: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EffectEvidenceSynthesis else {
 			return false
@@ -384,7 +381,7 @@ open class EffectEvidenceSynthesis: DomainResource {
 		    && useContext == _other.useContext
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(approvalDate)
@@ -429,21 +426,21 @@ open class EffectEvidenceSynthesis: DomainResource {
  A description of the certainty of the effect estimate.
  */
 open class EffectEvidenceSynthesisCertainty: BackboneElement {
-	
+
 	/// Certainty rating
 	public var rating: [CodeableConcept]?
-	
+
 	/// Used for footnotes or explanatory notes
 	public var note: [Annotation]?
-	
+
 	/// A component that contributes to the overall certainty
 	public var certaintySubcomponent: [EffectEvidenceSynthesisCertaintyCertaintySubcomponent]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							certaintySubcomponent: [EffectEvidenceSynthesisCertaintyCertaintySubcomponent]? = nil,
@@ -451,8 +448,7 @@ open class EffectEvidenceSynthesisCertainty: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							note: [Annotation]? = nil,
-							rating: [CodeableConcept]? = nil)
-	{
+							rating: [CodeableConcept]? = nil) {
 		self.init()
 		self.certaintySubcomponent = certaintySubcomponent
 		self.`extension` = `extension`
@@ -461,39 +457,39 @@ open class EffectEvidenceSynthesisCertainty: BackboneElement {
 		self.note = note
 		self.rating = rating
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case certaintySubcomponent
 		case note
 		case rating
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.certaintySubcomponent = try [EffectEvidenceSynthesisCertaintyCertaintySubcomponent](from: _container, forKeyIfPresent: .certaintySubcomponent)
 		self.note = try [Annotation](from: _container, forKeyIfPresent: .note)
 		self.rating = try [CodeableConcept](from: _container, forKeyIfPresent: .rating)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try certaintySubcomponent?.encode(on: &_container, forKey: .certaintySubcomponent)
 		try note?.encode(on: &_container, forKey: .note)
 		try rating?.encode(on: &_container, forKey: .rating)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EffectEvidenceSynthesisCertainty else {
 			return false
@@ -505,7 +501,7 @@ open class EffectEvidenceSynthesisCertainty: BackboneElement {
 		    && note == _other.note
 		    && rating == _other.rating
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(certaintySubcomponent)
@@ -520,21 +516,21 @@ open class EffectEvidenceSynthesisCertainty: BackboneElement {
  A description of a component of the overall certainty.
  */
 open class EffectEvidenceSynthesisCertaintyCertaintySubcomponent: BackboneElement {
-	
+
 	/// Type of subcomponent of certainty rating
 	public var type: CodeableConcept?
-	
+
 	/// Subcomponent certainty rating
 	public var rating: [CodeableConcept]?
-	
+
 	/// Used for footnotes or explanatory notes
 	public var note: [Annotation]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -542,8 +538,7 @@ open class EffectEvidenceSynthesisCertaintyCertaintySubcomponent: BackboneElemen
 							modifierExtension: [Extension]? = nil,
 							note: [Annotation]? = nil,
 							rating: [CodeableConcept]? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.id = id
@@ -552,39 +547,39 @@ open class EffectEvidenceSynthesisCertaintyCertaintySubcomponent: BackboneElemen
 		self.rating = rating
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case note
 		case rating
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.note = try [Annotation](from: _container, forKeyIfPresent: .note)
 		self.rating = try [CodeableConcept](from: _container, forKeyIfPresent: .rating)
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try note?.encode(on: &_container, forKey: .note)
 		try rating?.encode(on: &_container, forKey: .rating)
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EffectEvidenceSynthesisCertaintyCertaintySubcomponent else {
 			return false
@@ -596,7 +591,7 @@ open class EffectEvidenceSynthesisCertaintyCertaintySubcomponent: BackboneElemen
 		    && rating == _other.rating
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(note)
@@ -611,30 +606,30 @@ open class EffectEvidenceSynthesisCertaintyCertaintySubcomponent: BackboneElemen
  The estimated effect of the exposure variant.
  */
 open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
-	
+
 	/// Description of effect estimate
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Type of efffect estimate
 	public var type: CodeableConcept?
-	
+
 	/// Variant exposure states
 	public var variantState: CodeableConcept?
-	
+
 	/// Point estimate
 	public var value: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// What unit is the outcome described in?
 	public var unitOfMeasure: CodeableConcept?
-	
+
 	/// How precise the estimate is
 	public var precisionEstimate: [EffectEvidenceSynthesisEffectEstimatePrecisionEstimate]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							description_fhir: FHIRPrimitive<FHIRString>? = nil,
@@ -645,8 +640,7 @@ open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
 							type: CodeableConcept? = nil,
 							unitOfMeasure: CodeableConcept? = nil,
 							value: FHIRPrimitive<FHIRDecimal>? = nil,
-							variantState: CodeableConcept? = nil)
-	{
+							variantState: CodeableConcept? = nil) {
 		self.init()
 		self.description_fhir = description_fhir
 		self.`extension` = `extension`
@@ -658,9 +652,9 @@ open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
 		self.value = value
 		self.variantState = variantState
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case precisionEstimate
@@ -669,11 +663,11 @@ open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
 		case value; case _value
 		case variantState
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.precisionEstimate = try [EffectEvidenceSynthesisEffectEstimatePrecisionEstimate](from: _container, forKeyIfPresent: .precisionEstimate)
@@ -683,11 +677,11 @@ open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
 		self.variantState = try CodeableConcept(from: _container, forKeyIfPresent: .variantState)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
 		try precisionEstimate?.encode(on: &_container, forKey: .precisionEstimate)
@@ -697,9 +691,9 @@ open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
 		try variantState?.encode(on: &_container, forKey: .variantState)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EffectEvidenceSynthesisEffectEstimate else {
 			return false
@@ -714,7 +708,7 @@ open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
 		    && value == _other.value
 		    && variantState == _other.variantState
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(description_fhir)
@@ -732,24 +726,24 @@ open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
  A description of the precision of the estimate for the effect.
  */
 open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneElement {
-	
+
 	/// Type of precision estimate
 	public var type: CodeableConcept?
-	
+
 	/// Level of confidence interval
 	public var level: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Lower bound
 	public var from: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Upper bound
 	public var to: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -758,8 +752,7 @@ open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneEleme
 							level: FHIRPrimitive<FHIRDecimal>? = nil,
 							modifierExtension: [Extension]? = nil,
 							to: FHIRPrimitive<FHIRDecimal>? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.from = from
@@ -769,20 +762,20 @@ open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneEleme
 		self.to = to
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case from; case _from
 		case level; case _level
 		case to; case _to
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.from = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .from, auxiliaryKey: ._from)
 		self.level = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .level, auxiliaryKey: ._level)
@@ -790,11 +783,11 @@ open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneEleme
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try from?.encode(on: &_container, forKey: .from, auxiliaryKey: ._from)
 		try level?.encode(on: &_container, forKey: .level, auxiliaryKey: ._level)
@@ -802,9 +795,9 @@ open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneEleme
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EffectEvidenceSynthesisEffectEstimatePrecisionEstimate else {
 			return false
@@ -817,7 +810,7 @@ open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneEleme
 		    && to == _other.to
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(from)
@@ -833,25 +826,25 @@ open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneEleme
  A description of the results for each exposure considered in the effect estimate.
  */
 open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
-	
+
 	/// Description of results by exposure
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Whether these results are for the exposure state or alternative exposure state.
 	public var exposureState: FHIRPrimitive<ExposureState>?
-	
+
 	/// Variant exposure states
 	public var variantState: CodeableConcept?
-	
+
 	/// Risk evidence synthesis
 	public var riskEvidenceSynthesis: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(riskEvidenceSynthesis: Reference) {
 		self.riskEvidenceSynthesis = riskEvidenceSynthesis
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							description_fhir: FHIRPrimitive<FHIRString>? = nil,
@@ -860,8 +853,7 @@ open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							riskEvidenceSynthesis: Reference,
-							variantState: CodeableConcept? = nil)
-	{
+							variantState: CodeableConcept? = nil) {
 		self.init(riskEvidenceSynthesis: riskEvidenceSynthesis)
 		self.description_fhir = description_fhir
 		self.exposureState = exposureState
@@ -870,20 +862,20 @@ open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.variantState = variantState
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case exposureState; case _exposureState
 		case riskEvidenceSynthesis
 		case variantState
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.exposureState = try FHIRPrimitive<ExposureState>(from: _container, forKeyIfPresent: .exposureState, auxiliaryKey: ._exposureState)
@@ -891,11 +883,11 @@ open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
 		self.variantState = try CodeableConcept(from: _container, forKeyIfPresent: .variantState)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
 		try exposureState?.encode(on: &_container, forKey: .exposureState, auxiliaryKey: ._exposureState)
@@ -903,9 +895,9 @@ open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
 		try variantState?.encode(on: &_container, forKey: .variantState)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EffectEvidenceSynthesisResultsByExposure else {
 			return false
@@ -918,7 +910,7 @@ open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
 		    && riskEvidenceSynthesis == _other.riskEvidenceSynthesis
 		    && variantState == _other.variantState
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(description_fhir)
@@ -934,21 +926,21 @@ open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
  A description of the size of the sample involved in the synthesis.
  */
 open class EffectEvidenceSynthesisSampleSize: BackboneElement {
-	
+
 	/// Description of sample size
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// How many studies?
 	public var numberOfStudies: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// How many participants?
 	public var numberOfParticipants: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							description_fhir: FHIRPrimitive<FHIRString>? = nil,
@@ -956,8 +948,7 @@ open class EffectEvidenceSynthesisSampleSize: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							numberOfParticipants: FHIRPrimitive<FHIRInteger>? = nil,
-							numberOfStudies: FHIRPrimitive<FHIRInteger>? = nil)
-	{
+							numberOfStudies: FHIRPrimitive<FHIRInteger>? = nil) {
 		self.init()
 		self.description_fhir = description_fhir
 		self.`extension` = `extension`
@@ -966,39 +957,39 @@ open class EffectEvidenceSynthesisSampleSize: BackboneElement {
 		self.numberOfParticipants = numberOfParticipants
 		self.numberOfStudies = numberOfStudies
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case numberOfParticipants; case _numberOfParticipants
 		case numberOfStudies; case _numberOfStudies
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.numberOfParticipants = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .numberOfParticipants, auxiliaryKey: ._numberOfParticipants)
 		self.numberOfStudies = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .numberOfStudies, auxiliaryKey: ._numberOfStudies)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
 		try numberOfParticipants?.encode(on: &_container, forKey: .numberOfParticipants, auxiliaryKey: ._numberOfParticipants)
 		try numberOfStudies?.encode(on: &_container, forKey: .numberOfStudies, auxiliaryKey: ._numberOfStudies)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EffectEvidenceSynthesisSampleSize else {
 			return false
@@ -1010,7 +1001,7 @@ open class EffectEvidenceSynthesisSampleSize: BackboneElement {
 		    && numberOfParticipants == _other.numberOfParticipants
 		    && numberOfStudies == _other.numberOfStudies
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(description_fhir)

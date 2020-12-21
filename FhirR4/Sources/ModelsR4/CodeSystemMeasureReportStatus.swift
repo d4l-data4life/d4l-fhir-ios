@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The status of the measure report.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/measure-report-status
  */
 public enum MeasureReportStatus: String, FHIRPrimitiveType {
-	
+
 	/// The report is complete and ready for use.
 	case complete = "complete"
-	
+
 	/// The report is currently being generated.
 	case pending = "pending"
-	
+
 	/// An error occurred attempting to generate the report.
 	case error = "error"
 }

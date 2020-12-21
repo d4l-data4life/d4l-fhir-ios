@@ -17,18 +17,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set defines a set of codes that can be used to indicate how an individual participates in an encounter.
  
  URL: http://terminology.hl7.org/CodeSystem/participant-type
  */
 public enum ParticipantType: String, FHIRPrimitiveType {
-	
+
 	/// A translator who is facilitating communication with the patient during the encounter.
 	case translator = "translator"
-	
+
 	/// A person to be contacted in case of an emergency during the encounter.
 	case emergency = "emergency"
 }

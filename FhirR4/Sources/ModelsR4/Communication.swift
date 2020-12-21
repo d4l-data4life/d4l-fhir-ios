@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A record of information transmitted from a sender to a receiver.
  
@@ -26,85 +24,85 @@
  agency that was notified about a reportable condition.
  */
 open class Communication: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .communication }
-	
+
 	/// Unique identifier
 	public var identifier: [Identifier]?
-	
+
 	/// Instantiates FHIR protocol or definition
 	public var instantiatesCanonical: [FHIRPrimitive<Canonical>]?
-	
+
 	/// Instantiates external protocol or definition
 	public var instantiatesUri: [FHIRPrimitive<FHIRURI>]?
-	
+
 	/// Request fulfilled by this communication
 	public var basedOn: [Reference]?
-	
+
 	/// Part of this action
 	public var partOf: [Reference]?
-	
+
 	/// Reply to
 	public var inResponseTo: [Reference]?
-	
+
 	/// The status of the transmission.
 	public var status: FHIRPrimitive<EventStatus>
-	
+
 	/// Reason for current status
 	public var statusReason: CodeableConcept?
-	
+
 	/// Message category
 	public var category: [CodeableConcept]?
-	
+
 	/// Characterizes how quickly the planned or in progress communication must be addressed. Includes concepts such as
 	/// stat, urgent, routine.
 	public var priority: FHIRPrimitive<RequestPriority>?
-	
+
 	/// A channel of communication
 	public var medium: [CodeableConcept]?
-	
+
 	/// Focus of message
 	public var subject: Reference?
-	
+
 	/// Description of the purpose/content
 	public var topic: CodeableConcept?
-	
+
 	/// Resources that pertain to this communication
 	public var about: [Reference]?
-	
+
 	/// Encounter created as part of
 	public var encounter: Reference?
-	
+
 	/// When sent
 	public var sent: FHIRPrimitive<DateTime>?
-	
+
 	/// When received
 	public var received: FHIRPrimitive<DateTime>?
-	
+
 	/// Message recipient
 	public var recipient: [Reference]?
-	
+
 	/// Message sender
 	public var sender: Reference?
-	
+
 	/// Indication for message
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// Why was communication done?
 	public var reasonReference: [Reference]?
-	
+
 	/// Message payload
 	public var payload: [CommunicationPayload]?
-	
+
 	/// Comments made about the communication
 	public var note: [Annotation]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(status: FHIRPrimitive<EventStatus>) {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							about: [Reference]? = nil,
@@ -137,8 +135,7 @@ open class Communication: DomainResource {
 							statusReason: CodeableConcept? = nil,
 							subject: Reference? = nil,
 							text: Narrative? = nil,
-							topic: CodeableConcept? = nil)
-	{
+							topic: CodeableConcept? = nil) {
 		self.init(status: status)
 		self.about = about
 		self.basedOn = basedOn
@@ -171,9 +168,9 @@ open class Communication: DomainResource {
 		self.text = text
 		self.topic = topic
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case about
 		case basedOn
@@ -199,11 +196,11 @@ open class Communication: DomainResource {
 		case subject
 		case topic
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.about = try [Reference](from: _container, forKeyIfPresent: .about)
 		self.basedOn = try [Reference](from: _container, forKeyIfPresent: .basedOn)
@@ -230,11 +227,11 @@ open class Communication: DomainResource {
 		self.topic = try CodeableConcept(from: _container, forKeyIfPresent: .topic)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try about?.encode(on: &_container, forKey: .about)
 		try basedOn?.encode(on: &_container, forKey: .basedOn)
@@ -261,9 +258,9 @@ open class Communication: DomainResource {
 		try topic?.encode(on: &_container, forKey: .topic)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Communication else {
 			return false
@@ -295,7 +292,7 @@ open class Communication: DomainResource {
 		    && subject == _other.subject
 		    && topic == _other.topic
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(about)
@@ -330,56 +327,55 @@ open class Communication: DomainResource {
  Text, attachment(s), or resource(s) that was communicated to the recipient.
  */
 open class CommunicationPayload: BackboneElement {
-	
+
 	/// All possible types for "content[x]"
 	public enum ContentX: Hashable {
 		case attachment(Attachment)
 		case reference(Reference)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Message part content
 	/// One of `content[x]`
 	public var content: ContentX
-	
+
 	/// Designated initializer taking all required properties
 	public init(content: ContentX) {
 		self.content = content
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							content: ContentX,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(content: content)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case contentAttachment
 		case contentReference
 		case contentString; case _contentString
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.contentAttachment) || _container.contains(CodingKeys.contentReference) || _container.contains(CodingKeys.contentString) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.contentAttachment, CodingKeys.contentReference, CodingKeys.contentString], debugDescription: "Must have at least one value for \"content\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_content: ContentX? = nil
+		var _t_content: ContentX?
 		if let contentString = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .contentString, auxiliaryKey: ._contentString) {
 			if _t_content != nil {
 				throw DecodingError.dataCorruptedError(forKey: .contentString, in: _container, debugDescription: "More than one value provided for \"content\"")
@@ -401,13 +397,13 @@ open class CommunicationPayload: BackboneElement {
 		self.content = _t_content!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch content {
 			case .string(let _value):
 				try _value.encode(on: &_container, forKey: .contentString, auxiliaryKey: ._contentString)
@@ -416,12 +412,12 @@ open class CommunicationPayload: BackboneElement {
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .contentReference)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? CommunicationPayload else {
 			return false
@@ -431,7 +427,7 @@ open class CommunicationPayload: BackboneElement {
 		}
 		return content == _other.content
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(content)

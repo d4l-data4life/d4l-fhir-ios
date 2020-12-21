@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Consent Action codes.
  
@@ -26,20 +24,20 @@
  ValueSet: http://hl7.org/fhir/ValueSet/consent-action
  */
 public enum ConsentActionCodes: String, FHIRPrimitiveType {
-	
+
 	/// Gather retrieved information for storage
 	case collect = "collect"
-	
+
 	/// Retrieval without permitting collection, use or disclosure. e.g., no screen-scraping for collection, use or
 	/// disclosure (view-only access)
 	case access = "access"
-	
+
 	/// Utilize the retrieved information
 	case use = "use"
-	
+
 	/// Transfer retrieved information
 	case disclose = "disclose"
-	
+
 	/// Allow retrieval of a patient's information for the purpose of update or rectify
 	case correct = "correct"
 }

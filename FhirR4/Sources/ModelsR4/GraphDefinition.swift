@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Definition of a graph of resources.
  
@@ -26,54 +24,54 @@
  following references. The Graph Definition resource defines a set and makes rules about the set.
  */
 open class GraphDefinition: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .graphDefinition }
-	
+
 	/// Canonical identifier for this graph definition, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Business version of the graph definition
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this graph definition (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// The status of this graph definition. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// For testing purposes, not real usage
 	public var experimental: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the graph definition
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for graph definition (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Why this graph definition is defined
 	public var purpose: FHIRPrimitive<FHIRString>?
-	
+
 	/// The type of FHIR resource at which instances of this graph start.
 	public var start: FHIRPrimitive<ResourceType>
-	
+
 	/// Profile on base resource
 	public var profile: FHIRPrimitive<Canonical>?
-	
+
 	/// Links this graph makes rules about
 	public var link: [GraphDefinitionLink]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(name: FHIRPrimitive<FHIRString>, start: FHIRPrimitive<ResourceType>, status: FHIRPrimitive<PublicationStatus>) {
 		self.name = name
@@ -81,7 +79,7 @@ open class GraphDefinition: DomainResource {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contact: [ContactDetail]? = nil,
@@ -106,8 +104,7 @@ open class GraphDefinition: DomainResource {
 							text: Narrative? = nil,
 							url: FHIRPrimitive<FHIRURI>? = nil,
 							useContext: [UsageContext]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(name: name, start: start, status: status)
 		self.contact = contact
 		self.contained = contained
@@ -130,9 +127,9 @@ open class GraphDefinition: DomainResource {
 		self.useContext = useContext
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case contact
 		case date; case _date
@@ -150,11 +147,11 @@ open class GraphDefinition: DomainResource {
 		case useContext
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.contact = try [ContactDetail](from: _container, forKeyIfPresent: .contact)
 		self.date = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
@@ -173,11 +170,11 @@ open class GraphDefinition: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try contact?.encode(on: &_container, forKey: .contact)
 		try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
@@ -196,9 +193,9 @@ open class GraphDefinition: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? GraphDefinition else {
 			return false
@@ -222,7 +219,7 @@ open class GraphDefinition: DomainResource {
 		    && useContext == _other.useContext
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(contact)
@@ -247,30 +244,30 @@ open class GraphDefinition: DomainResource {
  Links this graph makes rules about.
  */
 open class GraphDefinitionLink: BackboneElement {
-	
+
 	/// Path in the resource that contains the link
 	public var path: FHIRPrimitive<FHIRString>?
-	
+
 	/// Which slice (if profiled)
 	public var sliceName: FHIRPrimitive<FHIRString>?
-	
+
 	/// Minimum occurrences for this link
 	public var min: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Maximum occurrences for this link
 	public var max: FHIRPrimitive<FHIRString>?
-	
+
 	/// Why this link is specified
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Potential target for the link
 	public var target: [GraphDefinitionLinkTarget]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							description_fhir: FHIRPrimitive<FHIRString>? = nil,
@@ -281,8 +278,7 @@ open class GraphDefinitionLink: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							path: FHIRPrimitive<FHIRString>? = nil,
 							sliceName: FHIRPrimitive<FHIRString>? = nil,
-							target: [GraphDefinitionLinkTarget]? = nil)
-	{
+							target: [GraphDefinitionLinkTarget]? = nil) {
 		self.init()
 		self.description_fhir = description_fhir
 		self.`extension` = `extension`
@@ -294,9 +290,9 @@ open class GraphDefinitionLink: BackboneElement {
 		self.sliceName = sliceName
 		self.target = target
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case max; case _max
@@ -305,11 +301,11 @@ open class GraphDefinitionLink: BackboneElement {
 		case sliceName; case _sliceName
 		case target
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.max = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .max, auxiliaryKey: ._max)
@@ -319,11 +315,11 @@ open class GraphDefinitionLink: BackboneElement {
 		self.target = try [GraphDefinitionLinkTarget](from: _container, forKeyIfPresent: .target)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
 		try max?.encode(on: &_container, forKey: .max, auxiliaryKey: ._max)
@@ -333,9 +329,9 @@ open class GraphDefinitionLink: BackboneElement {
 		try target?.encode(on: &_container, forKey: .target)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? GraphDefinitionLink else {
 			return false
@@ -350,7 +346,7 @@ open class GraphDefinitionLink: BackboneElement {
 		    && sliceName == _other.sliceName
 		    && target == _other.target
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(description_fhir)
@@ -366,28 +362,28 @@ open class GraphDefinitionLink: BackboneElement {
  Potential target for the link.
  */
 open class GraphDefinitionLinkTarget: BackboneElement {
-	
+
 	/// None
 	public var type: FHIRPrimitive<ResourceType>
-	
+
 	/// Criteria for reverse lookup
 	public var params: FHIRPrimitive<FHIRString>?
-	
+
 	/// Profile for the target resource
 	public var profile: FHIRPrimitive<Canonical>?
-	
+
 	/// Compartment Consistency Rules
 	public var compartment: [GraphDefinitionLinkTargetCompartment]?
-	
+
 	/// Additional links from target resource
 	public var link: [GraphDefinitionLink]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: FHIRPrimitive<ResourceType>) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							compartment: [GraphDefinitionLinkTargetCompartment]? = nil,
@@ -397,8 +393,7 @@ open class GraphDefinitionLinkTarget: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							params: FHIRPrimitive<FHIRString>? = nil,
 							profile: FHIRPrimitive<Canonical>? = nil,
-							type: FHIRPrimitive<ResourceType>)
-	{
+							type: FHIRPrimitive<ResourceType>) {
 		self.init(type: type)
 		self.compartment = compartment
 		self.`extension` = `extension`
@@ -408,9 +403,9 @@ open class GraphDefinitionLinkTarget: BackboneElement {
 		self.params = params
 		self.profile = profile
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case compartment
 		case link
@@ -418,11 +413,11 @@ open class GraphDefinitionLinkTarget: BackboneElement {
 		case profile; case _profile
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.compartment = try [GraphDefinitionLinkTargetCompartment](from: _container, forKeyIfPresent: .compartment)
 		self.link = try [GraphDefinitionLink](from: _container, forKeyIfPresent: .link)
@@ -431,11 +426,11 @@ open class GraphDefinitionLinkTarget: BackboneElement {
 		self.type = try FHIRPrimitive<ResourceType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try compartment?.encode(on: &_container, forKey: .compartment)
 		try link?.encode(on: &_container, forKey: .link)
@@ -444,9 +439,9 @@ open class GraphDefinitionLinkTarget: BackboneElement {
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? GraphDefinitionLinkTarget else {
 			return false
@@ -460,7 +455,7 @@ open class GraphDefinitionLinkTarget: BackboneElement {
 		    && profile == _other.profile
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(compartment)
@@ -475,23 +470,23 @@ open class GraphDefinitionLinkTarget: BackboneElement {
  Compartment Consistency Rules.
  */
 open class GraphDefinitionLinkTargetCompartment: BackboneElement {
-	
+
 	/// Defines how the compartment rule is used - whether it it is used to test whether resources are subject to the
 	/// rule, or whether it is a rule that must be followed.
 	public var use: FHIRPrimitive<GraphCompartmentUse>
-	
+
 	/// Identifies the compartment.
 	public var code: FHIRPrimitive<CompartmentType>
-	
+
 	/// identical | matching | different | no-rule | custom.
 	public var rule: FHIRPrimitive<GraphCompartmentRule>
-	
+
 	/// Custom rule, as a FHIRPath expression
 	public var expression: FHIRPrimitive<FHIRString>?
-	
+
 	/// Documentation for FHIRPath expression
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: FHIRPrimitive<CompartmentType>, rule: FHIRPrimitive<GraphCompartmentRule>, use: FHIRPrimitive<GraphCompartmentUse>) {
 		self.code = code
@@ -499,7 +494,7 @@ open class GraphDefinitionLinkTargetCompartment: BackboneElement {
 		self.use = use
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: FHIRPrimitive<CompartmentType>,
@@ -509,8 +504,7 @@ open class GraphDefinitionLinkTargetCompartment: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							rule: FHIRPrimitive<GraphCompartmentRule>,
-							use: FHIRPrimitive<GraphCompartmentUse>)
-	{
+							use: FHIRPrimitive<GraphCompartmentUse>) {
 		self.init(code: code, rule: rule, use: use)
 		self.description_fhir = description_fhir
 		self.expression = expression
@@ -518,9 +512,9 @@ open class GraphDefinitionLinkTargetCompartment: BackboneElement {
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code; case _code
 		case description_fhir = "description"; case _description_fhir = "_description"
@@ -528,11 +522,11 @@ open class GraphDefinitionLinkTargetCompartment: BackboneElement {
 		case rule; case _rule
 		case use; case _use
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try FHIRPrimitive<CompartmentType>(from: _container, forKey: .code, auxiliaryKey: ._code)
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -541,11 +535,11 @@ open class GraphDefinitionLinkTargetCompartment: BackboneElement {
 		self.use = try FHIRPrimitive<GraphCompartmentUse>(from: _container, forKey: .use, auxiliaryKey: ._use)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -554,9 +548,9 @@ open class GraphDefinitionLinkTargetCompartment: BackboneElement {
 		try use.encode(on: &_container, forKey: .use, auxiliaryKey: ._use)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? GraphDefinitionLinkTargetCompartment else {
 			return false
@@ -570,7 +564,7 @@ open class GraphDefinitionLinkTargetCompartment: BackboneElement {
 		    && rule == _other.rule
 		    && use == _other.use
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)

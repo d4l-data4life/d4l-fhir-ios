@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Types of security services used with FHIR.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/restful-security-service
  */
 public enum RestfulSecurityService: String, FHIRPrimitiveType {
-	
+
 	/// OAuth (unspecified version see oauth.net).
 	case oAuth = "OAuth"
-	
+
 	/// OAuth2 using SMART-on-FHIR profile (see http://docs.smarthealthit.org/).
 	case sMARTOnFHIR = "SMART-on-FHIR"
-	
+
 	/// Microsoft NTLM Authentication.
 	case NTLM = "NTLM"
-	
+
 	/// Basic authentication defined in HTTP specification.
 	case basic = "Basic"
-	
+
 	/// see http://www.ietf.org/rfc/rfc4120.txt.
 	case kerberos = "Kerberos"
-	
+
 	/// SSL where client must have a certificate registered with the server.
 	case certificates = "Certificates"
 }

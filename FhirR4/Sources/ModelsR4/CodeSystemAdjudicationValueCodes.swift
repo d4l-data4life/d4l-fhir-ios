@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes a smattering of Adjudication Value codes which includes codes to indicate the amounts eligible
  under the plan, the amount of benefit, copays etc.
@@ -27,28 +25,28 @@
  ValueSet: http://hl7.org/fhir/ValueSet/adjudication
  */
 public enum AdjudicationValueCodes: String, FHIRPrimitiveType {
-	
+
 	/// The total submitted amount for the claim or group or line item.
 	case submitted = "submitted"
-	
+
 	/// Patient Co-Payment
 	case copay = "copay"
-	
+
 	/// Amount of the change which is considered for adjudication.
 	case eligible = "eligible"
-	
+
 	/// Amount deducted from the eligible amount prior to adjudication.
 	case deductible = "deductible"
-	
+
 	/// The amount of deductible which could not allocated to other line items.
 	case unallocdeduct = "unallocdeduct"
-	
+
 	/// Eligible Percentage.
 	case eligpercent = "eligpercent"
-	
+
 	/// The amount of tax.
 	case tax = "tax"
-	
+
 	/// Amount payable under the coverage
 	case benefit = "benefit"
 }

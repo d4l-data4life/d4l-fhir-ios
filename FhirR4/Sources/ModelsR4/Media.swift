@@ -17,96 +17,94 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by
  direct reference.
  */
 open class Media: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .media }
-	
+
 	/// All possible types for "created[x]"
 	public enum CreatedX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
 		case period(Period)
 	}
-	
+
 	/// Identifier(s) for the image
 	public var identifier: [Identifier]?
-	
+
 	/// Procedure that caused this media to be created
 	public var basedOn: [Reference]?
-	
+
 	/// Part of referenced event
 	public var partOf: [Reference]?
-	
+
 	/// The current state of the {{title}}.
 	public var status: FHIRPrimitive<EventStatus>
-	
+
 	/// Classification of media as image, video, or audio
 	public var type: CodeableConcept?
-	
+
 	/// The type of acquisition equipment/process
 	public var modality: CodeableConcept?
-	
+
 	/// Imaging view, e.g. Lateral or Antero-posterior
 	public var view: CodeableConcept?
-	
+
 	/// Who/What this Media is a record of
 	public var subject: Reference?
-	
+
 	/// Encounter associated with media
 	public var encounter: Reference?
-	
+
 	/// When Media was collected
 	/// One of `created[x]`
 	public var created: CreatedX?
-	
+
 	/// Date/Time this version was made available
 	public var issued: FHIRPrimitive<Instant>?
-	
+
 	/// The person who generated the image
 	public var `operator`: Reference?
-	
+
 	/// Why was event performed?
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// Observed body part
 	public var bodySite: CodeableConcept?
-	
+
 	/// Name of the device/manufacturer
 	public var deviceName: FHIRPrimitive<FHIRString>?
-	
+
 	/// Observing Device
 	public var device: Reference?
-	
+
 	/// Height of the image in pixels (photo/video)
 	public var height: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// Width of the image in pixels (photo/video)
 	public var width: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// Number of frames if > 1 (photo)
 	public var frames: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// Length in seconds (audio / video)
 	public var duration: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Actual Media - reference or data
 	public var content: Attachment
-	
+
 	/// Comments made about the media
 	public var note: [Annotation]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(content: Attachment, status: FHIRPrimitive<EventStatus>) {
 		self.content = content
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							basedOn: [Reference]? = nil,
@@ -138,8 +136,7 @@ open class Media: DomainResource {
 							text: Narrative? = nil,
 							type: CodeableConcept? = nil,
 							view: CodeableConcept? = nil,
-							width: FHIRPrimitive<FHIRPositiveInteger>? = nil)
-	{
+							width: FHIRPrimitive<FHIRPositiveInteger>? = nil) {
 		self.init(content: content, status: status)
 		self.basedOn = basedOn
 		self.bodySite = bodySite
@@ -170,9 +167,9 @@ open class Media: DomainResource {
 		self.view = view
 		self.width = width
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case basedOn
 		case bodySite
@@ -198,16 +195,16 @@ open class Media: DomainResource {
 		case view
 		case width; case _width
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.basedOn = try [Reference](from: _container, forKeyIfPresent: .basedOn)
 		self.bodySite = try CodeableConcept(from: _container, forKeyIfPresent: .bodySite)
 		self.content = try Attachment(from: _container, forKey: .content)
-		var _t_created: CreatedX? = nil
+		var _t_created: CreatedX?
 		if let createdDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .createdDateTime, auxiliaryKey: ._createdDateTime) {
 			if _t_created != nil {
 				throw DecodingError.dataCorruptedError(forKey: .createdDateTime, in: _container, debugDescription: "More than one value provided for \"created\"")
@@ -241,11 +238,11 @@ open class Media: DomainResource {
 		self.width = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKeyIfPresent: .width, auxiliaryKey: ._width)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try basedOn?.encode(on: &_container, forKey: .basedOn)
 		try bodySite?.encode(on: &_container, forKey: .bodySite)
@@ -278,9 +275,9 @@ open class Media: DomainResource {
 		try width?.encode(on: &_container, forKey: .width, auxiliaryKey: ._width)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Media else {
 			return false
@@ -311,7 +308,7 @@ open class Media: DomainResource {
 		    && view == _other.view
 		    && width == _other.width
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(basedOn)

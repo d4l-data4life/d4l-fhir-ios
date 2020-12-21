@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Whether an operation is a normal operation or a query.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/operation-kind
  */
 public enum OperationKind: String, FHIRPrimitiveType {
-	
+
 	/// This operation is invoked as an operation.
 	case operation = "operation"
-	
+
 	/// This operation is a named query, invoked using the search mechanism.
 	case query = "query"
 }

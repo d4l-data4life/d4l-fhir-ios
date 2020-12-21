@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Missing Tooth Reason codes.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/missing-tooth-reason
  */
 public enum MissingToothReasonCodes: String, FHIRPrimitiveType {
-	
+
 	/// Extraction
 	case E = "e"
-	
+
 	/// Congenital
 	case C = "c"
-	
+
 	/// Unknown
 	case U = "u"
-	
+
 	/// Other
 	case O = "o"
 }

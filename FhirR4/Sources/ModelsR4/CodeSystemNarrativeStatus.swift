@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The status of a resource narrative.
  
@@ -26,18 +24,18 @@
  ValueSet: http://hl7.org/fhir/ValueSet/narrative-status
  */
 public enum NarrativeStatus: String, FHIRPrimitiveType {
-	
+
 	/// The contents of the narrative are entirely generated from the core elements in the content.
 	case generated = "generated"
-	
+
 	/// The contents of the narrative are entirely generated from the core elements in the content and some of the
 	/// content is generated from extensions. The narrative SHALL reflect the impact of all modifier extensions.
 	case extensions = "extensions"
-	
+
 	/// The contents of the narrative may contain additional information not found in the structured data. Note that
 	/// there is no computable way to determine what the extra information is, other than by human inspection.
 	case additional = "additional"
-	
+
 	/// The contents of the narrative are some equivalent of "No human-readable text provided in this case".
 	case empty = "empty"
 }

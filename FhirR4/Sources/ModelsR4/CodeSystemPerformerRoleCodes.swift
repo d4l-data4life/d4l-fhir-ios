@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Performer Role codes.
  
@@ -26,20 +24,20 @@
  ValueSet: http://hl7.org/fhir/ValueSet/consent-performer
  */
 public enum PerformerRoleCodes: String, FHIRPrimitiveType {
-	
+
 	/// An entity or an entity's delegatee who is the grantee in an agreement such as a consent for services, advanced
 	/// directive, or a privacy consent directive in accordance with jurisdictional, organizational, or patient policy.
 	case consenter = "consenter"
-	
+
 	/// An entity which accepts certain rights or authority from a grantor.
 	case grantee = "grantee"
-	
+
 	/// An entity which agrees to confer certain rights or authority to a grantee.
 	case grantor = "grantor"
-	
+
 	/// A party to whom some right or authority is granted by a delegator.
 	case delegatee = "delegatee"
-	
+
 	/// A party that grants all or some portion its right or authority to another party.
 	case delegator = "delegator"
 }

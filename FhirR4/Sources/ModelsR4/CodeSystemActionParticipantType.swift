@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of participant for the action.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/action-participant-type
  */
 public enum ActionParticipantType: String, FHIRPrimitiveType {
-	
+
 	/// The participant is the patient under evaluation.
 	case patient = "patient"
-	
+
 	/// The participant is a practitioner involved in the patient's care.
 	case practitioner = "practitioner"
-	
+
 	/// The participant is a person related to the patient.
 	case relatedPerson = "related-person"
-	
+
 	/// The participant is a system or device used in the care of the patient.
 	case device = "device"
 }

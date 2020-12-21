@@ -19,6 +19,6 @@
 import Foundation
 
 public protocol ConstructibleFromNSDate {
-	
+
 	init(date: Date, timeZone: TimeZone) throws
 }

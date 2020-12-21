@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The status of the document reference.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/document-reference-status
  */
 public enum DocumentReferenceStatus: String, FHIRPrimitiveType {
-	
+
 	/// This is the current reference for this document.
 	case current = "current"
-	
+
 	/// This reference has been superseded by another reference.
 	case superseded = "superseded"
-	
+
 	/// This reference was created in error.
 	case enteredInError = "entered-in-error"
 }

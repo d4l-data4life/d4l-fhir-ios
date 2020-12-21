@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Mode for this instance of data.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/map-input-mode
  */
 public enum StructureMapInputMode: String, FHIRPrimitiveType {
-	
+
 	/// Names an input instance used a source for mapping.
 	case source = "source"
-	
+
 	/// Names an instance that is being populated.
 	case target = "target"
 }

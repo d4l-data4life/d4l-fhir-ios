@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Types of combining results from a body of evidence (eg. summary data meta-analysis).
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/synthesis-type
  */
 public enum SynthesisType: String, FHIRPrimitiveType {
-	
+
 	/// A meta-analysis of the summary data of estimates from individual studies or data sets.
 	case stdMA = "std-MA"
-	
+
 	/// A meta-analysis of the individual participant data from individual studies or data sets.
 	case IPDMA = "IPD-MA"
-	
+
 	/// An indirect meta-analysis derived from 2 or more direct comparisons in a network meta-analysis.
 	case indirectNMA = "indirect-NMA"
-	
+
 	/// An composite meta-analysis derived from direct comparisons and indirect comparisons in a network meta-analysis.
 	case combinedNMA = "combined-NMA"
-	
+
 	/// A range of results across a body of evidence.
 	case range = "range"
-	
+
 	/// An approach describing a body of evidence by categorically classifying individual studies (eg 3 studies showed
 	/// beneft and 2 studied found no effect).
 	case classification = "classification"

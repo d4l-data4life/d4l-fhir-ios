@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The mode of a RESTful capability statement.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/restful-capability-mode
  */
 public enum RestfulCapabilityMode: String, FHIRPrimitiveType {
-	
+
 	/// The application acts as a client for this resource.
 	case client = "client"
-	
+
 	/// The application acts as a server for this resource.
 	case server = "server"
 }

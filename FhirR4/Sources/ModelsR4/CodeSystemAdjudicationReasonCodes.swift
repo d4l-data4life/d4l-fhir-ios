@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes smattering of Adjudication Reason codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/adjudication-reason
  */
 public enum AdjudicationReasonCodes: String, FHIRPrimitiveType {
-	
+
 	/// Not covered
 	case ar001 = "ar001"
-	
+
 	/// Plan Limit Reached
 	case ar002 = "ar002"
 }

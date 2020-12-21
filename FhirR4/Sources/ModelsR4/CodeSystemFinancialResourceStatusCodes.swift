@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes Status codes.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/fm-status
  */
 public enum FinancialResourceStatusCodes: String, FHIRPrimitiveType {
-	
+
 	/// The instance is currently in-force.
 	case active = "active"
-	
+
 	/// The instance is withdrawn, rescinded or reversed.
 	case cancelled = "cancelled"
-	
+
 	/// A new instance the contents of which is not complete.
 	case draft = "draft"
-	
+
 	/// The instance was entered in error.
 	case enteredInError = "entered-in-error"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Describes the intended objective(s) for a patient, group or organization.
  
@@ -26,65 +24,65 @@
  activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
  */
 open class Goal: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .goal }
-	
+
 	/// All possible types for "start[x]"
 	public enum StartX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case date(FHIRPrimitive<FHIRDate>)
 	}
-	
+
 	/// External Ids for this goal
 	public var identifier: [Identifier]?
-	
+
 	/// The state of the goal throughout its lifecycle.
 	public var lifecycleStatus: FHIRPrimitive<GoalLifecycleStatus>
-	
+
 	/// in-progress | improving | worsening | no-change | achieved | sustaining | not-achieved | no-progress | not-
 	/// attainable
 	public var achievementStatus: CodeableConcept?
-	
+
 	/// E.g. Treatment, dietary, behavioral, etc.
 	public var category: [CodeableConcept]?
-	
+
 	/// high-priority | medium-priority | low-priority
 	public var priority: CodeableConcept?
-	
+
 	/// Code or text describing goal
 	public var description_fhir: CodeableConcept
-	
+
 	/// Who this goal is intended for
 	public var subject: Reference
-	
+
 	/// When goal pursuit begins
 	/// One of `start[x]`
 	public var start: StartX?
-	
+
 	/// Target outcome for the goal
 	public var target: [GoalTarget]?
-	
+
 	/// When goal status took effect
 	public var statusDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// Reason for current status
 	public var statusReason: FHIRPrimitive<FHIRString>?
-	
+
 	/// Who's responsible for creating Goal?
 	public var expressedBy: Reference?
-	
+
 	/// Issues addressed by this goal
 	public var addresses: [Reference]?
-	
+
 	/// Comments about the goal
 	public var note: [Annotation]?
-	
+
 	/// What result was achieved regarding the goal?
 	public var outcomeCode: [CodeableConcept]?
-	
+
 	/// Observation that resulted from goal
 	public var outcomeReference: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(description_fhir: CodeableConcept, lifecycleStatus: FHIRPrimitive<GoalLifecycleStatus>, subject: Reference) {
 		self.description_fhir = description_fhir
@@ -92,7 +90,7 @@ open class Goal: DomainResource {
 		self.subject = subject
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							achievementStatus: CodeableConcept? = nil,
@@ -118,8 +116,7 @@ open class Goal: DomainResource {
 							statusReason: FHIRPrimitive<FHIRString>? = nil,
 							subject: Reference,
 							target: [GoalTarget]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(description_fhir: description_fhir, lifecycleStatus: lifecycleStatus, subject: subject)
 		self.achievementStatus = achievementStatus
 		self.addresses = addresses
@@ -143,9 +140,9 @@ open class Goal: DomainResource {
 		self.target = target
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case achievementStatus
 		case addresses
@@ -165,11 +162,11 @@ open class Goal: DomainResource {
 		case subject
 		case target
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.achievementStatus = try CodeableConcept(from: _container, forKeyIfPresent: .achievementStatus)
 		self.addresses = try [Reference](from: _container, forKeyIfPresent: .addresses)
@@ -182,7 +179,7 @@ open class Goal: DomainResource {
 		self.outcomeCode = try [CodeableConcept](from: _container, forKeyIfPresent: .outcomeCode)
 		self.outcomeReference = try [Reference](from: _container, forKeyIfPresent: .outcomeReference)
 		self.priority = try CodeableConcept(from: _container, forKeyIfPresent: .priority)
-		var _t_start: StartX? = nil
+		var _t_start: StartX?
 		if let startDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .startDate, auxiliaryKey: ._startDate) {
 			if _t_start != nil {
 				throw DecodingError.dataCorruptedError(forKey: .startDate, in: _container, debugDescription: "More than one value provided for \"start\"")
@@ -202,11 +199,11 @@ open class Goal: DomainResource {
 		self.target = try [GoalTarget](from: _container, forKeyIfPresent: .target)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try achievementStatus?.encode(on: &_container, forKey: .achievementStatus)
 		try addresses?.encode(on: &_container, forKey: .addresses)
@@ -233,9 +230,9 @@ open class Goal: DomainResource {
 		try target?.encode(on: &_container, forKey: .target)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Goal else {
 			return false
@@ -260,7 +257,7 @@ open class Goal: DomainResource {
 		    && subject == _other.subject
 		    && target == _other.target
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(achievementStatus)
@@ -288,7 +285,7 @@ open class Goal: DomainResource {
  Indicates what should be done by when.
  */
 open class GoalTarget: BackboneElement {
-	
+
 	/// All possible types for "detail[x]"
 	public enum DetailX: Hashable {
 		case boolean(FHIRPrimitive<FHIRBool>)
@@ -299,29 +296,29 @@ open class GoalTarget: BackboneElement {
 		case ratio(Ratio)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// All possible types for "due[x]"
 	public enum DueX: Hashable {
 		case date(FHIRPrimitive<FHIRDate>)
 		case duration(Duration)
 	}
-	
+
 	/// The parameter whose value is being tracked
 	public var measure: CodeableConcept?
-	
+
 	/// The target value to be achieved
 	/// One of `detail[x]`
 	public var detail: DetailX?
-	
+
 	/// Reach goal on or before
 	/// One of `due[x]`
 	public var due: DueX?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							detail: DetailX? = nil,
@@ -329,8 +326,7 @@ open class GoalTarget: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							measure: CodeableConcept? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init()
 		self.detail = detail
 		self.due = due
@@ -339,9 +335,9 @@ open class GoalTarget: BackboneElement {
 		self.measure = measure
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case detailBoolean; case _detailBoolean
 		case detailCodeableConcept
@@ -354,13 +350,13 @@ open class GoalTarget: BackboneElement {
 		case dueDuration
 		case measure
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
-		var _t_detail: DetailX? = nil
+		var _t_detail: DetailX?
 		if let detailQuantity = try Quantity(from: _container, forKeyIfPresent: .detailQuantity) {
 			if _t_detail != nil {
 				throw DecodingError.dataCorruptedError(forKey: .detailQuantity, in: _container, debugDescription: "More than one value provided for \"detail\"")
@@ -404,7 +400,7 @@ open class GoalTarget: BackboneElement {
 			_t_detail = .ratio(detailRatio)
 		}
 		self.detail = _t_detail
-		var _t_due: DueX? = nil
+		var _t_due: DueX?
 		if let dueDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .dueDate, auxiliaryKey: ._dueDate) {
 			if _t_due != nil {
 				throw DecodingError.dataCorruptedError(forKey: .dueDate, in: _container, debugDescription: "More than one value provided for \"due\"")
@@ -421,11 +417,11 @@ open class GoalTarget: BackboneElement {
 		self.measure = try CodeableConcept(from: _container, forKeyIfPresent: .measure)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		if let _enum = detail {
 			switch _enum {
@@ -456,9 +452,9 @@ open class GoalTarget: BackboneElement {
 		try measure?.encode(on: &_container, forKey: .measure)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? GoalTarget else {
 			return false
@@ -470,7 +466,7 @@ open class GoalTarget: BackboneElement {
 		    && due == _other.due
 		    && measure == _other.measure
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(detail)

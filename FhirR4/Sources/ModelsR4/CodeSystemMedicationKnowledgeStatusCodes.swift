@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  MedicationKnowledge Status Codes
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/medicationknowledge-status
  */
 public enum MedicationKnowledgeStatusCodes: String, FHIRPrimitiveType {
-	
+
 	/// The medication is available for use.
 	case active = "active"
-	
+
 	/// The medication is not available for use.
 	case inactive = "inactive"
-	
+
 	/// The medication was entered in error.
 	case enteredInError = "entered-in-error"
 }

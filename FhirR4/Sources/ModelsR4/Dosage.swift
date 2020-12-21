@@ -17,66 +17,64 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How the medication is/was taken or should be taken.
  
  Indicates how the medication is/was taken or should be taken by the patient.
  */
 open class Dosage: BackboneElement {
-	
+
 	/// All possible types for "asNeeded[x]"
 	public enum AsNeededX: Hashable {
 		case boolean(FHIRPrimitive<FHIRBool>)
 		case codeableConcept(CodeableConcept)
 	}
-	
+
 	/// The order of the dosage instructions
 	public var sequence: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Free text dosage instructions e.g. SIG
 	public var text: FHIRPrimitive<FHIRString>?
-	
+
 	/// Supplemental instruction or warnings to the patient - e.g. "with meals", "may cause drowsiness"
 	public var additionalInstruction: [CodeableConcept]?
-	
+
 	/// Patient or consumer oriented instructions
 	public var patientInstruction: FHIRPrimitive<FHIRString>?
-	
+
 	/// When medication should be administered
 	public var timing: Timing?
-	
+
 	/// Take "as needed" (for x)
 	/// One of `asNeeded[x]`
 	public var asNeeded: AsNeededX?
-	
+
 	/// Body site to administer to
 	public var site: CodeableConcept?
-	
+
 	/// How drug should enter body
 	public var route: CodeableConcept?
-	
+
 	/// Technique for administering medication
 	public var method: CodeableConcept?
-	
+
 	/// Amount of medication administered
 	public var doseAndRate: [DosageDoseAndRate]?
-	
+
 	/// Upper limit on medication per unit of time
 	public var maxDosePerPeriod: Ratio?
-	
+
 	/// Upper limit on medication per administration
 	public var maxDosePerAdministration: Quantity?
-	
+
 	/// Upper limit on medication per lifetime of the patient
 	public var maxDosePerLifetime: Quantity?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							additionalInstruction: [CodeableConcept]? = nil,
@@ -94,8 +92,7 @@ open class Dosage: BackboneElement {
 							sequence: FHIRPrimitive<FHIRInteger>? = nil,
 							site: CodeableConcept? = nil,
 							text: FHIRPrimitive<FHIRString>? = nil,
-							timing: Timing? = nil)
-	{
+							timing: Timing? = nil) {
 		self.init()
 		self.additionalInstruction = additionalInstruction
 		self.asNeeded = asNeeded
@@ -114,9 +111,9 @@ open class Dosage: BackboneElement {
 		self.text = text
 		self.timing = timing
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case additionalInstruction
 		case asNeededBoolean; case _asNeededBoolean
@@ -133,14 +130,14 @@ open class Dosage: BackboneElement {
 		case text; case _text
 		case timing
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.additionalInstruction = try [CodeableConcept](from: _container, forKeyIfPresent: .additionalInstruction)
-		var _t_asNeeded: AsNeededX? = nil
+		var _t_asNeeded: AsNeededX?
 		if let asNeededBoolean = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .asNeededBoolean, auxiliaryKey: ._asNeededBoolean) {
 			if _t_asNeeded != nil {
 				throw DecodingError.dataCorruptedError(forKey: .asNeededBoolean, in: _container, debugDescription: "More than one value provided for \"asNeeded\"")
@@ -167,11 +164,11 @@ open class Dosage: BackboneElement {
 		self.timing = try Timing(from: _container, forKeyIfPresent: .timing)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try additionalInstruction?.encode(on: &_container, forKey: .additionalInstruction)
 		if let _enum = asNeeded {
@@ -195,9 +192,9 @@ open class Dosage: BackboneElement {
 		try timing?.encode(on: &_container, forKey: .timing)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Dosage else {
 			return false
@@ -219,7 +216,7 @@ open class Dosage: BackboneElement {
 		    && text == _other.text
 		    && timing == _other.timing
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(additionalInstruction)
@@ -244,44 +241,43 @@ open class Dosage: BackboneElement {
  The amount of medication administered.
  */
 open class DosageDoseAndRate: Element {
-	
+
 	/// All possible types for "dose[x]"
 	public enum DoseX: Hashable {
 		case quantity(Quantity)
 		case range(Range)
 	}
-	
+
 	/// All possible types for "rate[x]"
 	public enum RateX: Hashable {
 		case quantity(Quantity)
 		case range(Range)
 		case ratio(Ratio)
 	}
-	
+
 	/// The kind of dose or rate specified
 	public var type: CodeableConcept?
-	
+
 	/// Amount of medication per dose
 	/// One of `dose[x]`
 	public var dose: DoseX?
-	
+
 	/// Amount of medication per unit of time
 	/// One of `rate[x]`
 	public var rate: RateX?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							dose: DoseX? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							rate: RateX? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.dose = dose
 		self.`extension` = `extension`
@@ -289,9 +285,9 @@ open class DosageDoseAndRate: Element {
 		self.rate = rate
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case doseQuantity
 		case doseRange
@@ -300,13 +296,13 @@ open class DosageDoseAndRate: Element {
 		case rateRatio
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
-		var _t_dose: DoseX? = nil
+		var _t_dose: DoseX?
 		if let doseRange = try Range(from: _container, forKeyIfPresent: .doseRange) {
 			if _t_dose != nil {
 				throw DecodingError.dataCorruptedError(forKey: .doseRange, in: _container, debugDescription: "More than one value provided for \"dose\"")
@@ -320,7 +316,7 @@ open class DosageDoseAndRate: Element {
 			_t_dose = .quantity(doseQuantity)
 		}
 		self.dose = _t_dose
-		var _t_rate: RateX? = nil
+		var _t_rate: RateX?
 		if let rateRatio = try Ratio(from: _container, forKeyIfPresent: .rateRatio) {
 			if _t_rate != nil {
 				throw DecodingError.dataCorruptedError(forKey: .rateRatio, in: _container, debugDescription: "More than one value provided for \"rate\"")
@@ -343,11 +339,11 @@ open class DosageDoseAndRate: Element {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		if let _enum = dose {
 			switch _enum {
@@ -370,9 +366,9 @@ open class DosageDoseAndRate: Element {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DosageDoseAndRate else {
 			return false
@@ -384,7 +380,7 @@ open class DosageDoseAndRate: Element {
 		    && rate == _other.rate
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(dose)

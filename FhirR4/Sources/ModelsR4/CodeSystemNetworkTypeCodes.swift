@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes a smattering of Network type codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/benefit-network
  */
 public enum NetworkTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// Services rendered by a Network provider
 	case `in` = "in"
-	
+
 	/// Services rendered by a provider who is not in the Network
 	case out = "out"
 }

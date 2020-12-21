@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Indicates whether the account is available to be used.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/account-status
  */
 public enum AccountStatus: String, FHIRPrimitiveType {
-	
+
 	/// This account is active and may be used.
 	case active = "active"
-	
+
 	/// This account is inactive and should not be used to track financial information.
 	case inactive = "inactive"
-	
+
 	/// This instance should not have been part of this patient's medical record.
 	case enteredInError = "entered-in-error"
-	
+
 	/// This account is on hold.
 	case onHold = "on-hold"
-	
+
 	/// The account status is unknown.
 	case unknown = "unknown"
 }

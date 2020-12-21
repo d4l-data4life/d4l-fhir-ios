@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes all medication refused, medication not administered, and non-administration of necessary drug
  or medicine codes from SNOMED CT - provided as an exemplar value set.
@@ -26,16 +24,16 @@
  URL: http://hl7.org/fhir/reason-medication-not-given
  */
 public enum SNOMEDCTReasonMedicationNotGivenCodes: String, FHIRPrimitiveType {
-	
+
 	/// No reason known.
 	case A = "a"
-	
+
 	/// The patient was not available when the dose was scheduled.
 	case B = "b"
-	
+
 	/// The patient was asleep when the dose was scheduled.
 	case C = "c"
-	
+
 	/// The patient was given the medication and immediately vomited it back.
 	case D = "d"
 }

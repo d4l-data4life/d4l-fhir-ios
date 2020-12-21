@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Method of reporting variability of estimates, such as confidence intervals, interquartile range or standard deviation.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/precision-estimate-type
  */
 public enum PrecisionEstimateType: String, FHIRPrimitiveType {
-	
+
 	/// confidence interval.
 	case CI = "CI"
-	
+
 	/// interquartile range.
 	case IQR = "IQR"
-	
+
 	/// standard deviation.
 	case SD = "SD"
-	
+
 	/// standard error.
 	case SE = "SE"
 }

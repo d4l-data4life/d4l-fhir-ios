@@ -17,43 +17,41 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Enroll in coverage.
  
  This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
  */
 open class EnrollmentRequest: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .enrollmentRequest }
-	
+
 	/// Business Identifier
 	public var identifier: [Identifier]?
-	
+
 	/// The status of the resource instance.
 	public var status: FHIRPrimitive<FinancialResourceStatusCodes>?
-	
+
 	/// Creation date
 	public var created: FHIRPrimitive<DateTime>?
-	
+
 	/// Target
 	public var insurer: Reference?
-	
+
 	/// Responsible practitioner
 	public var provider: Reference?
-	
+
 	/// The subject to be enrolled
 	public var candidate: Reference?
-	
+
 	/// Insurance information
 	public var coverage: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							candidate: Reference? = nil,
@@ -70,8 +68,7 @@ open class EnrollmentRequest: DomainResource {
 							modifierExtension: [Extension]? = nil,
 							provider: Reference? = nil,
 							status: FHIRPrimitive<FinancialResourceStatusCodes>? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init()
 		self.candidate = candidate
 		self.contained = contained
@@ -89,9 +86,9 @@ open class EnrollmentRequest: DomainResource {
 		self.status = status
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case candidate
 		case coverage
@@ -101,11 +98,11 @@ open class EnrollmentRequest: DomainResource {
 		case provider
 		case status; case _status
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.candidate = try Reference(from: _container, forKeyIfPresent: .candidate)
 		self.coverage = try Reference(from: _container, forKeyIfPresent: .coverage)
@@ -116,11 +113,11 @@ open class EnrollmentRequest: DomainResource {
 		self.status = try FHIRPrimitive<FinancialResourceStatusCodes>(from: _container, forKeyIfPresent: .status, auxiliaryKey: ._status)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try candidate?.encode(on: &_container, forKey: .candidate)
 		try coverage?.encode(on: &_container, forKey: .coverage)
@@ -131,9 +128,9 @@ open class EnrollmentRequest: DomainResource {
 		try status?.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? EnrollmentRequest else {
 			return false
@@ -149,7 +146,7 @@ open class EnrollmentRequest: DomainResource {
 		    && provider == _other.provider
 		    && status == _other.status
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(candidate)

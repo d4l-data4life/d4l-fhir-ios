@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes defining the purpose of a Questionnaire item of type 'text'.
  
@@ -26,15 +24,15 @@
  ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-display-category
  */
 public enum QuestionnaireTextCategories: String, FHIRPrimitiveType {
-	
+
 	/// The text provides guidance on how to populate or use a portion of the questionnaire (or the questionnaire as a
 	/// whole).
 	case instructions = "instructions"
-	
+
 	/// The text provides guidance on how the information should be or will be handled from a
 	/// security/confidentiality/access control perspective when completed
 	case security = "security"
-	
+
 	/// The text provides additional guidance on populating the containing item.  Help text isn't necessarily expected
 	/// to be rendered as part of the form, but may instead be made available through fly-over, pop-up button, link to a
 	/// "help" page, etc.

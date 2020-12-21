@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A healthcare consumer's  choices to permit or deny recipients or roles to perform actions for specific purposes and
  periods of time.
@@ -27,55 +25,55 @@
  perform one or more actions within a given policy context, for specific purposes and periods of time.
  */
 open class Consent: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .consent }
-	
+
 	/// All possible types for "source[x]"
 	public enum SourceX: Hashable {
 		case attachment(Attachment)
 		case reference(Reference)
 	}
-	
+
 	/// Identifier for this record (external references)
 	public var identifier: [Identifier]?
-	
+
 	/// Indicates the current state of this consent.
 	public var status: FHIRPrimitive<ConsentState>
-	
+
 	/// Which of the four areas this resource covers (extensible)
 	public var scope: CodeableConcept
-	
+
 	/// Classification of the consent statement - for indexing/retrieval
 	public var category: [CodeableConcept]
-	
+
 	/// Who the consent applies to
 	public var patient: Reference?
-	
+
 	/// When this Consent was created or indexed
 	public var dateTime: FHIRPrimitive<DateTime>?
-	
+
 	/// Who is agreeing to the policy and rules
 	public var performer: [Reference]?
-	
+
 	/// Custodian of the consent
 	public var organization: [Reference]?
-	
+
 	/// Source from which this consent is taken
 	/// One of `source[x]`
 	public var source: SourceX?
-	
+
 	/// Policies covered by this consent
 	public var policy: [ConsentPolicy]?
-	
+
 	/// Regulation that this consents to
 	public var policyRule: CodeableConcept?
-	
+
 	/// Consent Verified by patient or family
 	public var verification: [ConsentVerification]?
-	
+
 	/// Constraints to the base Consent.policyRule
 	public var provision: ConsentProvision?
-	
+
 	/// Designated initializer taking all required properties
 	public init(category: [CodeableConcept], scope: CodeableConcept, status: FHIRPrimitive<ConsentState>) {
 		self.category = category
@@ -83,7 +81,7 @@ open class Consent: DomainResource {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							category: [CodeableConcept],
@@ -106,8 +104,7 @@ open class Consent: DomainResource {
 							source: SourceX? = nil,
 							status: FHIRPrimitive<ConsentState>,
 							text: Narrative? = nil,
-							verification: [ConsentVerification]? = nil)
-	{
+							verification: [ConsentVerification]? = nil) {
 		self.init(category: category, scope: scope, status: status)
 		self.contained = contained
 		self.dateTime = dateTime
@@ -128,9 +125,9 @@ open class Consent: DomainResource {
 		self.text = text
 		self.verification = verification
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case category
 		case dateTime; case _dateTime
@@ -147,11 +144,11 @@ open class Consent: DomainResource {
 		case status; case _status
 		case verification
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.category = try [CodeableConcept](from: _container, forKey: .category)
 		self.dateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .dateTime, auxiliaryKey: ._dateTime)
@@ -163,7 +160,7 @@ open class Consent: DomainResource {
 		self.policyRule = try CodeableConcept(from: _container, forKeyIfPresent: .policyRule)
 		self.provision = try ConsentProvision(from: _container, forKeyIfPresent: .provision)
 		self.scope = try CodeableConcept(from: _container, forKey: .scope)
-		var _t_source: SourceX? = nil
+		var _t_source: SourceX?
 		if let sourceAttachment = try Attachment(from: _container, forKeyIfPresent: .sourceAttachment) {
 			if _t_source != nil {
 				throw DecodingError.dataCorruptedError(forKey: .sourceAttachment, in: _container, debugDescription: "More than one value provided for \"source\"")
@@ -181,11 +178,11 @@ open class Consent: DomainResource {
 		self.verification = try [ConsentVerification](from: _container, forKeyIfPresent: .verification)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try category.encode(on: &_container, forKey: .category)
 		try dateTime?.encode(on: &_container, forKey: .dateTime, auxiliaryKey: ._dateTime)
@@ -209,9 +206,9 @@ open class Consent: DomainResource {
 		try verification?.encode(on: &_container, forKey: .verification)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Consent else {
 			return false
@@ -233,7 +230,7 @@ open class Consent: DomainResource {
 		    && status == _other.status
 		    && verification == _other.verification
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(category)
@@ -259,26 +256,25 @@ open class Consent: DomainResource {
  defined jurisdictionally, or in law.
  */
 open class ConsentPolicy: BackboneElement {
-	
+
 	/// Enforcement source for policy
 	public var authority: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Specific policy covered by this consent
 	public var uri: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							authority: FHIRPrimitive<FHIRURI>? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							uri: FHIRPrimitive<FHIRURI>? = nil)
-	{
+							uri: FHIRPrimitive<FHIRURI>? = nil) {
 		self.init()
 		self.authority = authority
 		self.`extension` = `extension`
@@ -286,36 +282,36 @@ open class ConsentPolicy: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.uri = uri
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case authority; case _authority
 		case uri; case _uri
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.authority = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .authority, auxiliaryKey: ._authority)
 		self.uri = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .uri, auxiliaryKey: ._uri)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try authority?.encode(on: &_container, forKey: .authority, auxiliaryKey: ._authority)
 		try uri?.encode(on: &_container, forKey: .uri, auxiliaryKey: ._uri)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ConsentPolicy else {
 			return false
@@ -326,7 +322,7 @@ open class ConsentPolicy: BackboneElement {
 		return authority == _other.authority
 		    && uri == _other.uri
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(authority)
@@ -340,46 +336,46 @@ open class ConsentPolicy: BackboneElement {
  An exception to the base policy of this consent. An exception can be an addition or removal of access permissions.
  */
 open class ConsentProvision: BackboneElement {
-	
+
 	/// Action  to take - permit or deny - when the rule conditions are met.  Not permitted in root rule, required in
 	/// all nested rules.
 	public var type: FHIRPrimitive<ConsentProvisionType>?
-	
+
 	/// Timeframe for this rule
 	public var period: Period?
-	
+
 	/// Who|what controlled by this rule (or group, by role)
 	public var actor: [ConsentProvisionActor]?
-	
+
 	/// Actions controlled by this rule
 	public var action: [CodeableConcept]?
-	
+
 	/// Security Labels that define affected resources
 	public var securityLabel: [Coding]?
-	
+
 	/// Context of activities covered by this rule
 	public var purpose: [Coding]?
-	
+
 	/// e.g. Resource Type, Profile, CDA, etc.
 	public var `class`: [Coding]?
-	
+
 	/// e.g. LOINC or SNOMED CT code, etc. in the content
 	public var code: [CodeableConcept]?
-	
+
 	/// Timeframe for data controlled by this rule
 	public var dataPeriod: Period?
-	
+
 	/// Data controlled by this rule
 	public var data: [ConsentProvisionData]?
-	
+
 	/// Nested Exception Rules
 	public var provision: [ConsentProvision]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							action: [CodeableConcept]? = nil,
@@ -395,8 +391,7 @@ open class ConsentProvision: BackboneElement {
 							provision: [ConsentProvision]? = nil,
 							purpose: [Coding]? = nil,
 							securityLabel: [Coding]? = nil,
-							type: FHIRPrimitive<ConsentProvisionType>? = nil)
-	{
+							type: FHIRPrimitive<ConsentProvisionType>? = nil) {
 		self.init()
 		self.action = action
 		self.actor = actor
@@ -413,9 +408,9 @@ open class ConsentProvision: BackboneElement {
 		self.securityLabel = securityLabel
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case action
 		case actor
@@ -429,11 +424,11 @@ open class ConsentProvision: BackboneElement {
 		case securityLabel
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.action = try [CodeableConcept](from: _container, forKeyIfPresent: .action)
 		self.actor = try [ConsentProvisionActor](from: _container, forKeyIfPresent: .actor)
@@ -448,11 +443,11 @@ open class ConsentProvision: BackboneElement {
 		self.type = try FHIRPrimitive<ConsentProvisionType>(from: _container, forKeyIfPresent: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try action?.encode(on: &_container, forKey: .action)
 		try actor?.encode(on: &_container, forKey: .actor)
@@ -467,9 +462,9 @@ open class ConsentProvision: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ConsentProvision else {
 			return false
@@ -489,7 +484,7 @@ open class ConsentProvision: BackboneElement {
 		    && securityLabel == _other.securityLabel
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(action)
@@ -513,63 +508,62 @@ open class ConsentProvision: BackboneElement {
  'admitting officers').
  */
 open class ConsentProvisionActor: BackboneElement {
-	
+
 	/// How the actor is involved
 	public var role: CodeableConcept
-	
+
 	/// Resource for the actor (or group, by role)
 	public var reference: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(reference: Reference, role: CodeableConcept) {
 		self.reference = reference
 		self.role = role
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							reference: Reference,
-							role: CodeableConcept)
-	{
+							role: CodeableConcept) {
 		self.init(reference: reference, role: role)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case reference
 		case role
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.reference = try Reference(from: _container, forKey: .reference)
 		self.role = try CodeableConcept(from: _container, forKey: .role)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try reference.encode(on: &_container, forKey: .reference)
 		try role.encode(on: &_container, forKey: .role)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ConsentProvisionActor else {
 			return false
@@ -580,7 +574,7 @@ open class ConsentProvisionActor: BackboneElement {
 		return reference == _other.reference
 		    && role == _other.role
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(reference)
@@ -594,63 +588,62 @@ open class ConsentProvisionActor: BackboneElement {
  The resources controlled by this rule if specific resources are referenced.
  */
 open class ConsentProvisionData: BackboneElement {
-	
+
 	/// How the resource reference is interpreted when testing consent restrictions.
 	public var meaning: FHIRPrimitive<ConsentDataMeaning>
-	
+
 	/// The actual data reference
 	public var reference: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(meaning: FHIRPrimitive<ConsentDataMeaning>, reference: Reference) {
 		self.meaning = meaning
 		self.reference = reference
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							meaning: FHIRPrimitive<ConsentDataMeaning>,
 							modifierExtension: [Extension]? = nil,
-							reference: Reference)
-	{
+							reference: Reference) {
 		self.init(meaning: meaning, reference: reference)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case meaning; case _meaning
 		case reference
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.meaning = try FHIRPrimitive<ConsentDataMeaning>(from: _container, forKey: .meaning, auxiliaryKey: ._meaning)
 		self.reference = try Reference(from: _container, forKey: .reference)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try meaning.encode(on: &_container, forKey: .meaning, auxiliaryKey: ._meaning)
 		try reference.encode(on: &_container, forKey: .reference)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ConsentProvisionData else {
 			return false
@@ -661,7 +654,7 @@ open class ConsentProvisionData: BackboneElement {
 		return meaning == _other.meaning
 		    && reference == _other.reference
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(meaning)
@@ -676,22 +669,22 @@ open class ConsentProvisionData: BackboneElement {
  or another authorized person.
  */
 open class ConsentVerification: BackboneElement {
-	
+
 	/// Has been verified
 	public var verified: FHIRPrimitive<FHIRBool>
-	
+
 	/// Person who verified
 	public var verifiedWith: Reference?
-	
+
 	/// When consent verified
 	public var verificationDate: FHIRPrimitive<DateTime>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(verified: FHIRPrimitive<FHIRBool>) {
 		self.verified = verified
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -699,8 +692,7 @@ open class ConsentVerification: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							verificationDate: FHIRPrimitive<DateTime>? = nil,
 							verified: FHIRPrimitive<FHIRBool>,
-							verifiedWith: Reference? = nil)
-	{
+							verifiedWith: Reference? = nil) {
 		self.init(verified: verified)
 		self.`extension` = `extension`
 		self.id = id
@@ -708,39 +700,39 @@ open class ConsentVerification: BackboneElement {
 		self.verificationDate = verificationDate
 		self.verifiedWith = verifiedWith
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case verificationDate; case _verificationDate
 		case verified; case _verified
 		case verifiedWith
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.verificationDate = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .verificationDate, auxiliaryKey: ._verificationDate)
 		self.verified = try FHIRPrimitive<FHIRBool>(from: _container, forKey: .verified, auxiliaryKey: ._verified)
 		self.verifiedWith = try Reference(from: _container, forKeyIfPresent: .verifiedWith)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try verificationDate?.encode(on: &_container, forKey: .verificationDate, auxiliaryKey: ._verificationDate)
 		try verified.encode(on: &_container, forKey: .verified, auxiliaryKey: ._verified)
 		try verifiedWith?.encode(on: &_container, forKey: .verifiedWith)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ConsentVerification else {
 			return false
@@ -752,7 +744,7 @@ open class ConsentVerification: BackboneElement {
 		    && verified == _other.verified
 		    && verifiedWith == _other.verifiedWith
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(verificationDate)

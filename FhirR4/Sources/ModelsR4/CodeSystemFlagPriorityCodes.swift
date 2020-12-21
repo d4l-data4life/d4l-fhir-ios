@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set is provided as an exemplar. The value set is driven by IHE Table B.8-4: Abnormal Flags, Alert Priority.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/flag-priority
  */
 public enum FlagPriorityCodes: String, FHIRPrimitiveType {
-	
+
 	/// No alarm.
 	case PN = "PN"
-	
+
 	/// Low priority.
 	case PL = "PL"
-	
+
 	/// Medium priority.
 	case PM = "PM"
-	
+
 	/// High priority.
 	case PH = "PH"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How a compartment must be linked.
  
@@ -26,17 +24,17 @@
  ValueSet: http://hl7.org/fhir/ValueSet/graph-compartment-rule
  */
 public enum GraphCompartmentRule: String, FHIRPrimitiveType {
-	
+
 	/// The compartment must be identical (the same literal reference).
 	case identical = "identical"
-	
+
 	/// The compartment must be the same - the record must be about the same patient, but the reference may be
 	/// different.
 	case matching = "matching"
-	
+
 	/// The compartment must be different.
 	case different = "different"
-	
+
 	/// The compartment rule is defined in the accompanying FHIRPath expression.
 	case custom = "custom"
 }

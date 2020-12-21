@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A set of images produced in single study (one or more series of references images).
  
@@ -28,76 +26,76 @@
  different modalities.
  */
 open class ImagingStudy: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .imagingStudy }
-	
+
 	/// Identifiers for the whole study
 	public var identifier: [Identifier]?
-	
+
 	/// The current state of the ImagingStudy.
 	public var status: FHIRPrimitive<ImagingStudyStatus>
-	
+
 	/// All series modality if actual acquisition modalities
 	public var modality: [Coding]?
-	
+
 	/// Who or what is the subject of the study
 	public var subject: Reference
-	
+
 	/// Encounter with which this imaging study is associated
 	public var encounter: Reference?
-	
+
 	/// When the study was started
 	public var started: FHIRPrimitive<DateTime>?
-	
+
 	/// Request fulfilled
 	public var basedOn: [Reference]?
-	
+
 	/// Referring physician
 	public var referrer: Reference?
-	
+
 	/// Who interpreted images
 	public var interpreter: [Reference]?
-	
+
 	/// Study access endpoint
 	public var endpoint: [Reference]?
-	
+
 	/// Number of Study Related Series
 	public var numberOfSeries: FHIRPrimitive<FHIRUnsignedInteger>?
-	
+
 	/// Number of Study Related Instances
 	public var numberOfInstances: FHIRPrimitive<FHIRUnsignedInteger>?
-	
+
 	/// The performed Procedure reference
 	public var procedureReference: Reference?
-	
+
 	/// The performed procedure code
 	public var procedureCode: [CodeableConcept]?
-	
+
 	/// Where ImagingStudy occurred
 	public var location: Reference?
-	
+
 	/// Why the study was requested
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// Why was study performed
 	public var reasonReference: [Reference]?
-	
+
 	/// User-defined comments
 	public var note: [Annotation]?
-	
+
 	/// Institution-generated description
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Each study has one or more series of instances
 	public var series: [ImagingStudySeries]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(status: FHIRPrimitive<ImagingStudyStatus>, subject: Reference) {
 		self.status = status
 		self.subject = subject
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							basedOn: [Reference]? = nil,
@@ -127,8 +125,7 @@ open class ImagingStudy: DomainResource {
 							started: FHIRPrimitive<DateTime>? = nil,
 							status: FHIRPrimitive<ImagingStudyStatus>,
 							subject: Reference,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(status: status, subject: subject)
 		self.basedOn = basedOn
 		self.contained = contained
@@ -157,9 +154,9 @@ open class ImagingStudy: DomainResource {
 		self.started = started
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case basedOn
 		case description_fhir = "description"; case _description_fhir = "_description"
@@ -182,11 +179,11 @@ open class ImagingStudy: DomainResource {
 		case status; case _status
 		case subject
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.basedOn = try [Reference](from: _container, forKeyIfPresent: .basedOn)
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -210,11 +207,11 @@ open class ImagingStudy: DomainResource {
 		self.subject = try Reference(from: _container, forKey: .subject)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try basedOn?.encode(on: &_container, forKey: .basedOn)
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -238,9 +235,9 @@ open class ImagingStudy: DomainResource {
 		try subject.encode(on: &_container, forKey: .subject)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ImagingStudy else {
 			return false
@@ -269,7 +266,7 @@ open class ImagingStudy: DomainResource {
 		    && status == _other.status
 		    && subject == _other.subject
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(basedOn)
@@ -301,50 +298,50 @@ open class ImagingStudy: DomainResource {
  Each study has one or more series of images or other content.
  */
 open class ImagingStudySeries: BackboneElement {
-	
+
 	/// DICOM Series Instance UID for the series
 	public var uid: FHIRPrimitive<FHIRString>
-	
+
 	/// Numeric identifier of this series
 	public var number: FHIRPrimitive<FHIRUnsignedInteger>?
-	
+
 	/// The modality of the instances in the series
 	public var modality: Coding
-	
+
 	/// A short human readable summary of the series
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Number of Series Related Instances
 	public var numberOfInstances: FHIRPrimitive<FHIRUnsignedInteger>?
-	
+
 	/// Series access endpoint
 	public var endpoint: [Reference]?
-	
+
 	/// Body part examined
 	public var bodySite: Coding?
-	
+
 	/// Body part laterality
 	public var laterality: Coding?
-	
+
 	/// Specimen imaged
 	public var specimen: [Reference]?
-	
+
 	/// When the series started
 	public var started: FHIRPrimitive<DateTime>?
-	
+
 	/// Who performed the series
 	public var performer: [ImagingStudySeriesPerformer]?
-	
+
 	/// A single SOP instance from the series
 	public var instance: [ImagingStudySeriesInstance]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(modality: Coding, uid: FHIRPrimitive<FHIRString>) {
 		self.modality = modality
 		self.uid = uid
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							bodySite: Coding? = nil,
@@ -361,8 +358,7 @@ open class ImagingStudySeries: BackboneElement {
 							performer: [ImagingStudySeriesPerformer]? = nil,
 							specimen: [Reference]? = nil,
 							started: FHIRPrimitive<DateTime>? = nil,
-							uid: FHIRPrimitive<FHIRString>)
-	{
+							uid: FHIRPrimitive<FHIRString>) {
 		self.init(modality: modality, uid: uid)
 		self.bodySite = bodySite
 		self.description_fhir = description_fhir
@@ -378,9 +374,9 @@ open class ImagingStudySeries: BackboneElement {
 		self.specimen = specimen
 		self.started = started
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case bodySite
 		case description_fhir = "description"; case _description_fhir = "_description"
@@ -395,11 +391,11 @@ open class ImagingStudySeries: BackboneElement {
 		case started; case _started
 		case uid; case _uid
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.bodySite = try Coding(from: _container, forKeyIfPresent: .bodySite)
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -415,11 +411,11 @@ open class ImagingStudySeries: BackboneElement {
 		self.uid = try FHIRPrimitive<FHIRString>(from: _container, forKey: .uid, auxiliaryKey: ._uid)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try bodySite?.encode(on: &_container, forKey: .bodySite)
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -435,9 +431,9 @@ open class ImagingStudySeries: BackboneElement {
 		try uid.encode(on: &_container, forKey: .uid, auxiliaryKey: ._uid)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ImagingStudySeries else {
 			return false
@@ -458,7 +454,7 @@ open class ImagingStudySeries: BackboneElement {
 		    && started == _other.started
 		    && uid == _other.uid
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(bodySite)
@@ -482,26 +478,26 @@ open class ImagingStudySeries: BackboneElement {
  A single SOP instance within the series, e.g. an image, or presentation state.
  */
 open class ImagingStudySeriesInstance: BackboneElement {
-	
+
 	/// DICOM SOP Instance UID
 	public var uid: FHIRPrimitive<FHIRString>
-	
+
 	/// DICOM class type
 	public var sopClass: Coding
-	
+
 	/// The number of this instance in the series
 	public var number: FHIRPrimitive<FHIRUnsignedInteger>?
-	
+
 	/// Description of instance
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(sopClass: Coding, uid: FHIRPrimitive<FHIRString>) {
 		self.sopClass = sopClass
 		self.uid = uid
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -510,8 +506,7 @@ open class ImagingStudySeriesInstance: BackboneElement {
 							number: FHIRPrimitive<FHIRUnsignedInteger>? = nil,
 							sopClass: Coding,
 							title: FHIRPrimitive<FHIRString>? = nil,
-							uid: FHIRPrimitive<FHIRString>)
-	{
+							uid: FHIRPrimitive<FHIRString>) {
 		self.init(sopClass: sopClass, uid: uid)
 		self.`extension` = `extension`
 		self.id = id
@@ -519,20 +514,20 @@ open class ImagingStudySeriesInstance: BackboneElement {
 		self.number = number
 		self.title = title
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case number; case _number
 		case sopClass
 		case title; case _title
 		case uid; case _uid
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.number = try FHIRPrimitive<FHIRUnsignedInteger>(from: _container, forKeyIfPresent: .number, auxiliaryKey: ._number)
 		self.sopClass = try Coding(from: _container, forKey: .sopClass)
@@ -540,11 +535,11 @@ open class ImagingStudySeriesInstance: BackboneElement {
 		self.uid = try FHIRPrimitive<FHIRString>(from: _container, forKey: .uid, auxiliaryKey: ._uid)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try number?.encode(on: &_container, forKey: .number, auxiliaryKey: ._number)
 		try sopClass.encode(on: &_container, forKey: .sopClass)
@@ -552,9 +547,9 @@ open class ImagingStudySeriesInstance: BackboneElement {
 		try uid.encode(on: &_container, forKey: .uid, auxiliaryKey: ._uid)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ImagingStudySeriesInstance else {
 			return false
@@ -567,7 +562,7 @@ open class ImagingStudySeriesInstance: BackboneElement {
 		    && title == _other.title
 		    && uid == _other.uid
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(number)
@@ -583,63 +578,62 @@ open class ImagingStudySeriesInstance: BackboneElement {
  Indicates who or what performed the series and how they were involved.
  */
 open class ImagingStudySeriesPerformer: BackboneElement {
-	
+
 	/// Type of performance
 	public var function: CodeableConcept?
-	
+
 	/// Who performed the series
 	public var actor: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(actor: Reference) {
 		self.actor = actor
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							actor: Reference,
 							`extension`: [Extension]? = nil,
 							function: CodeableConcept? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(actor: actor)
 		self.`extension` = `extension`
 		self.function = function
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case actor
 		case function
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.actor = try Reference(from: _container, forKey: .actor)
 		self.function = try CodeableConcept(from: _container, forKeyIfPresent: .function)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try actor.encode(on: &_container, forKey: .actor)
 		try function?.encode(on: &_container, forKey: .function)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ImagingStudySeriesPerformer else {
 			return false
@@ -650,7 +644,7 @@ open class ImagingStudySeriesPerformer: BackboneElement {
 		return actor == _other.actor
 		    && function == _other.function
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(actor)

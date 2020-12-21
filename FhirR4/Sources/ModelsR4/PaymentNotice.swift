@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  PaymentNotice request.
  
@@ -26,45 +24,45 @@
  references.
  */
 open class PaymentNotice: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .paymentNotice }
-	
+
 	/// Business Identifier for the payment noctice
 	public var identifier: [Identifier]?
-	
+
 	/// The status of the resource instance.
 	public var status: FHIRPrimitive<FinancialResourceStatusCodes>
-	
+
 	/// Request reference
 	public var request: Reference?
-	
+
 	/// Response reference
 	public var response: Reference?
-	
+
 	/// Creation date
 	public var created: FHIRPrimitive<DateTime>
-	
+
 	/// Responsible practitioner
 	public var provider: Reference?
-	
+
 	/// Payment reference
 	public var payment: Reference
-	
+
 	/// Payment or clearing date
 	public var paymentDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// Party being paid
 	public var payee: Reference?
-	
+
 	/// Party being notified
 	public var recipient: Reference
-	
+
 	/// Monetary amount of the payment
 	public var amount: Money
-	
+
 	/// Issued or cleared Status of the payment
 	public var paymentStatus: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	public init(amount: Money, created: FHIRPrimitive<DateTime>, payment: Reference, recipient: Reference, status: FHIRPrimitive<FinancialResourceStatusCodes>) {
 		self.amount = amount
@@ -74,7 +72,7 @@ open class PaymentNotice: DomainResource {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							amount: Money,
@@ -96,8 +94,7 @@ open class PaymentNotice: DomainResource {
 							request: Reference? = nil,
 							response: Reference? = nil,
 							status: FHIRPrimitive<FinancialResourceStatusCodes>,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(amount: amount, created: created, payment: payment, recipient: recipient, status: status)
 		self.contained = contained
 		self.`extension` = `extension`
@@ -115,9 +112,9 @@ open class PaymentNotice: DomainResource {
 		self.response = response
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case amount
 		case created; case _created
@@ -132,11 +129,11 @@ open class PaymentNotice: DomainResource {
 		case response
 		case status; case _status
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.amount = try Money(from: _container, forKey: .amount)
 		self.created = try FHIRPrimitive<DateTime>(from: _container, forKey: .created, auxiliaryKey: ._created)
@@ -152,11 +149,11 @@ open class PaymentNotice: DomainResource {
 		self.status = try FHIRPrimitive<FinancialResourceStatusCodes>(from: _container, forKey: .status, auxiliaryKey: ._status)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try amount.encode(on: &_container, forKey: .amount)
 		try created.encode(on: &_container, forKey: .created, auxiliaryKey: ._created)
@@ -172,9 +169,9 @@ open class PaymentNotice: DomainResource {
 		try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PaymentNotice else {
 			return false
@@ -195,7 +192,7 @@ open class PaymentNotice: DomainResource {
 		    && response == _other.response
 		    && status == _other.status
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(amount)

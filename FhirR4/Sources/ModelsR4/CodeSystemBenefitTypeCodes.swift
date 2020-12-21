@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes a smattering of Benefit type codes.
  
@@ -26,40 +24,40 @@
  ValueSet: http://hl7.org/fhir/ValueSet/benefit-type
  */
 public enum BenefitTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// Maximum benefit allowable.
 	case benefit = "benefit"
-	
+
 	/// Cost to be incurred before benefits are applied
 	case deductible = "deductible"
-	
+
 	/// Service visit
 	case visit = "visit"
-	
+
 	/// Type of room
 	case room = "room"
-	
+
 	/// Copayment per service
 	case copay = "copay"
-	
+
 	/// Copayment percentage per service
 	case copayPercent = "copay-percent"
-	
+
 	/// Copayment maximum per service
 	case copayMaximum = "copay-maximum"
-	
+
 	/// Vision Exam
 	case visionExam = "vision-exam"
-	
+
 	/// Frames and lenses
 	case visionGlasses = "vision-glasses"
-	
+
 	/// Contact Lenses
 	case visionContacts = "vision-contacts"
-	
+
 	/// Medical Primary Health Coverage
 	case medicalPrimarycare = "medical-primarycare"
-	
+
 	/// Pharmacy Dispense Coverage
 	case pharmacyDispense = "pharmacy-dispense"
 }

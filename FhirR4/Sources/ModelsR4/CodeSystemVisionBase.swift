@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A coded concept listing the base codes.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/vision-base-codes
  */
 public enum VisionBase: String, FHIRPrimitiveType {
-	
+
 	/// top.
 	case up = "up"
-	
+
 	/// bottom.
 	case down = "down"
-	
+
 	/// inner edge.
 	case `in` = "in"
-	
+
 	/// outer edge.
 	case out = "out"
 }

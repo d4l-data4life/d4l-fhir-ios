@@ -1,4 +1,3 @@
-
 // Copyright (c) 2020 D4L data4life gGmbH
 // All rights reserved.
 
@@ -16,7 +15,6 @@
 
 import XCTest
 @testable import ModelsR4
-
 
 extension ModelsR4Tests {
     func testSubstancenucleicacidExample() {

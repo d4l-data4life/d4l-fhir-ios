@@ -17,35 +17,33 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Todo.
  */
 open class SubstanceReferenceInformation: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .substanceReferenceInformation }
-	
+
 	/// Todo
 	public var comment: FHIRPrimitive<FHIRString>?
-	
+
 	/// Todo
 	public var gene: [SubstanceReferenceInformationGene]?
-	
+
 	/// Todo
 	public var geneElement: [SubstanceReferenceInformationGeneElement]?
-	
+
 	/// Todo
 	public var classification: [SubstanceReferenceInformationClassification]?
-	
+
 	/// Todo
 	public var target: [SubstanceReferenceInformationTarget]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							classification: [SubstanceReferenceInformationClassification]? = nil,
@@ -60,8 +58,7 @@ open class SubstanceReferenceInformation: DomainResource {
 							meta: Meta? = nil,
 							modifierExtension: [Extension]? = nil,
 							target: [SubstanceReferenceInformationTarget]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init()
 		self.classification = classification
 		self.comment = comment
@@ -77,9 +74,9 @@ open class SubstanceReferenceInformation: DomainResource {
 		self.target = target
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case classification
 		case comment; case _comment
@@ -87,11 +84,11 @@ open class SubstanceReferenceInformation: DomainResource {
 		case geneElement
 		case target
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.classification = try [SubstanceReferenceInformationClassification](from: _container, forKeyIfPresent: .classification)
 		self.comment = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .comment, auxiliaryKey: ._comment)
@@ -100,11 +97,11 @@ open class SubstanceReferenceInformation: DomainResource {
 		self.target = try [SubstanceReferenceInformationTarget](from: _container, forKeyIfPresent: .target)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try classification?.encode(on: &_container, forKey: .classification)
 		try comment?.encode(on: &_container, forKey: .comment, auxiliaryKey: ._comment)
@@ -113,9 +110,9 @@ open class SubstanceReferenceInformation: DomainResource {
 		try target?.encode(on: &_container, forKey: .target)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SubstanceReferenceInformation else {
 			return false
@@ -129,7 +126,7 @@ open class SubstanceReferenceInformation: DomainResource {
 		    && geneElement == _other.geneElement
 		    && target == _other.target
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(classification)
@@ -144,24 +141,24 @@ open class SubstanceReferenceInformation: DomainResource {
  Todo.
  */
 open class SubstanceReferenceInformationClassification: BackboneElement {
-	
+
 	/// Todo
 	public var domain: CodeableConcept?
-	
+
 	/// Todo
 	public var classification: CodeableConcept?
-	
+
 	/// Todo
 	public var subtype: [CodeableConcept]?
-	
+
 	/// Todo
 	public var source: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							classification: CodeableConcept? = nil,
@@ -170,8 +167,7 @@ open class SubstanceReferenceInformationClassification: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							source: [Reference]? = nil,
-							subtype: [CodeableConcept]? = nil)
-	{
+							subtype: [CodeableConcept]? = nil) {
 		self.init()
 		self.classification = classification
 		self.domain = domain
@@ -181,20 +177,20 @@ open class SubstanceReferenceInformationClassification: BackboneElement {
 		self.source = source
 		self.subtype = subtype
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case classification
 		case domain
 		case source
 		case subtype
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.classification = try CodeableConcept(from: _container, forKeyIfPresent: .classification)
 		self.domain = try CodeableConcept(from: _container, forKeyIfPresent: .domain)
@@ -202,11 +198,11 @@ open class SubstanceReferenceInformationClassification: BackboneElement {
 		self.subtype = try [CodeableConcept](from: _container, forKeyIfPresent: .subtype)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try classification?.encode(on: &_container, forKey: .classification)
 		try domain?.encode(on: &_container, forKey: .domain)
@@ -214,9 +210,9 @@ open class SubstanceReferenceInformationClassification: BackboneElement {
 		try subtype?.encode(on: &_container, forKey: .subtype)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SubstanceReferenceInformationClassification else {
 			return false
@@ -229,7 +225,7 @@ open class SubstanceReferenceInformationClassification: BackboneElement {
 		    && source == _other.source
 		    && subtype == _other.subtype
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(classification)
@@ -243,21 +239,21 @@ open class SubstanceReferenceInformationClassification: BackboneElement {
  Todo.
  */
 open class SubstanceReferenceInformationGene: BackboneElement {
-	
+
 	/// Todo
 	public var geneSequenceOrigin: CodeableConcept?
-	
+
 	/// Todo
 	public var gene: CodeableConcept?
-	
+
 	/// Todo
 	public var source: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -265,8 +261,7 @@ open class SubstanceReferenceInformationGene: BackboneElement {
 							geneSequenceOrigin: CodeableConcept? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							source: [Reference]? = nil)
-	{
+							source: [Reference]? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.gene = gene
@@ -275,39 +270,39 @@ open class SubstanceReferenceInformationGene: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.source = source
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case gene
 		case geneSequenceOrigin
 		case source
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.gene = try CodeableConcept(from: _container, forKeyIfPresent: .gene)
 		self.geneSequenceOrigin = try CodeableConcept(from: _container, forKeyIfPresent: .geneSequenceOrigin)
 		self.source = try [Reference](from: _container, forKeyIfPresent: .source)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try gene?.encode(on: &_container, forKey: .gene)
 		try geneSequenceOrigin?.encode(on: &_container, forKey: .geneSequenceOrigin)
 		try source?.encode(on: &_container, forKey: .source)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SubstanceReferenceInformationGene else {
 			return false
@@ -319,7 +314,7 @@ open class SubstanceReferenceInformationGene: BackboneElement {
 		    && geneSequenceOrigin == _other.geneSequenceOrigin
 		    && source == _other.source
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(gene)
@@ -332,21 +327,21 @@ open class SubstanceReferenceInformationGene: BackboneElement {
  Todo.
  */
 open class SubstanceReferenceInformationGeneElement: BackboneElement {
-	
+
 	/// Todo
 	public var type: CodeableConcept?
-	
+
 	/// Todo
 	public var element: Identifier?
-	
+
 	/// Todo
 	public var source: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							element: Identifier? = nil,
@@ -354,8 +349,7 @@ open class SubstanceReferenceInformationGeneElement: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							source: [Reference]? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.element = element
 		self.`extension` = `extension`
@@ -364,39 +358,39 @@ open class SubstanceReferenceInformationGeneElement: BackboneElement {
 		self.source = source
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case element
 		case source
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.element = try Identifier(from: _container, forKeyIfPresent: .element)
 		self.source = try [Reference](from: _container, forKeyIfPresent: .source)
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try element?.encode(on: &_container, forKey: .element)
 		try source?.encode(on: &_container, forKey: .source)
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SubstanceReferenceInformationGeneElement else {
 			return false
@@ -408,7 +402,7 @@ open class SubstanceReferenceInformationGeneElement: BackboneElement {
 		    && source == _other.source
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(element)
@@ -421,44 +415,44 @@ open class SubstanceReferenceInformationGeneElement: BackboneElement {
  Todo.
  */
 open class SubstanceReferenceInformationTarget: BackboneElement {
-	
+
 	/// All possible types for "amount[x]"
 	public enum AmountX: Hashable {
 		case quantity(Quantity)
 		case range(Range)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Todo
 	public var target: Identifier?
-	
+
 	/// Todo
 	public var type: CodeableConcept?
-	
+
 	/// Todo
 	public var interaction: CodeableConcept?
-	
+
 	/// Todo
 	public var organism: CodeableConcept?
-	
+
 	/// Todo
 	public var organismType: CodeableConcept?
-	
+
 	/// Todo
 	/// One of `amount[x]`
 	public var amount: AmountX?
-	
+
 	/// Todo
 	public var amountType: CodeableConcept?
-	
+
 	/// Todo
 	public var source: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							amount: AmountX? = nil,
@@ -471,8 +465,7 @@ open class SubstanceReferenceInformationTarget: BackboneElement {
 							organismType: CodeableConcept? = nil,
 							source: [Reference]? = nil,
 							target: Identifier? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.amount = amount
 		self.amountType = amountType
@@ -486,9 +479,9 @@ open class SubstanceReferenceInformationTarget: BackboneElement {
 		self.target = target
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case amountQuantity
 		case amountRange
@@ -501,13 +494,13 @@ open class SubstanceReferenceInformationTarget: BackboneElement {
 		case target
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
-		var _t_amount: AmountX? = nil
+		var _t_amount: AmountX?
 		if let amountQuantity = try Quantity(from: _container, forKeyIfPresent: .amountQuantity) {
 			if _t_amount != nil {
 				throw DecodingError.dataCorruptedError(forKey: .amountQuantity, in: _container, debugDescription: "More than one value provided for \"amount\"")
@@ -536,11 +529,11 @@ open class SubstanceReferenceInformationTarget: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		if let _enum = amount {
 			switch _enum {
@@ -561,9 +554,9 @@ open class SubstanceReferenceInformationTarget: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SubstanceReferenceInformationTarget else {
 			return false
@@ -580,7 +573,7 @@ open class SubstanceReferenceInformationTarget: BackboneElement {
 		    && target == _other.target
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(amount)

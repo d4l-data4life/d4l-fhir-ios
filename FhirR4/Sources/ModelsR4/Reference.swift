@@ -17,30 +17,28 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A reference from one resource to another.
  */
 open class Reference: Element {
-	
+
 	/// Literal reference, Relative, internal or absolute URL
 	public var reference: FHIRPrimitive<FHIRString>?
-	
+
 	/// Type the reference refers to (e.g. "Patient")
 	public var type: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Logical reference, when literal reference is not known
 	public var identifier: Identifier?
-	
+
 	/// Text alternative for the resource
 	public var display: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							display: FHIRPrimitive<FHIRString>? = nil,
@@ -48,8 +46,7 @@ open class Reference: Element {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							identifier: Identifier? = nil,
 							reference: FHIRPrimitive<FHIRString>? = nil,
-							type: FHIRPrimitive<FHIRURI>? = nil)
-	{
+							type: FHIRPrimitive<FHIRURI>? = nil) {
 		self.init()
 		self.display = display
 		self.`extension` = `extension`
@@ -58,20 +55,20 @@ open class Reference: Element {
 		self.reference = reference
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case display; case _display
 		case identifier
 		case reference; case _reference
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.display = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .display, auxiliaryKey: ._display)
 		self.identifier = try Identifier(from: _container, forKeyIfPresent: .identifier)
@@ -79,11 +76,11 @@ open class Reference: Element {
 		self.type = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try display?.encode(on: &_container, forKey: .display, auxiliaryKey: ._display)
 		try identifier?.encode(on: &_container, forKey: .identifier)
@@ -91,9 +88,9 @@ open class Reference: Element {
 		try type?.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Reference else {
 			return false
@@ -106,7 +103,7 @@ open class Reference: Element {
 		    && reference == _other.reference
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(display)

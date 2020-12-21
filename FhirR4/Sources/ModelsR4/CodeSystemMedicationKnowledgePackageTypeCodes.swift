@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  MedicationKnowledge Package Type Codes
  
@@ -26,70 +24,70 @@
  ValueSet: http://hl7.org/fhir/ValueSet/medicationknowledge-package-type
  */
 public enum MedicationKnowledgePackageTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// amp
 	case amp = "amp"
-	
+
 	/// bag
 	case bag = "bag"
-	
+
 	/// blstrpk
 	case blstrpk = "blstrpk"
-	
+
 	/// bot
 	case bot = "bot"
-	
+
 	/// box
 	case box = "box"
-	
+
 	/// can
 	case can = "can"
-	
+
 	/// cart
 	case cart = "cart"
-	
+
 	/// disk
 	case disk = "disk"
-	
+
 	/// doset
 	case doset = "doset"
-	
+
 	/// jar
 	case jar = "jar"
-	
+
 	/// jug
 	case jug = "jug"
-	
+
 	/// minim
 	case minim = "minim"
-	
+
 	/// nebamp
 	case nebamp = "nebamp"
-	
+
 	/// ovul
 	case ovul = "ovul"
-	
+
 	/// pch
 	case pch = "pch"
-	
+
 	/// pkt
 	case pkt = "pkt"
-	
+
 	/// sash
 	case sash = "sash"
-	
+
 	/// strip
 	case strip = "strip"
-	
+
 	/// tin
 	case tin = "tin"
-	
+
 	/// tub
 	case tub = "tub"
-	
+
 	/// tube
 	case tube = "tube"
-	
+
 	/// vial
 	case vial = "vial"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Indicates whether the location is still in use.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/location-status
  */
 public enum LocationStatus: String, FHIRPrimitiveType {
-	
+
 	/// The location is operational.
 	case active = "active"
-	
+
 	/// The location is temporarily closed.
 	case suspended = "suspended"
-	
+
 	/// The location is no longer used.
 	case inactive = "inactive"
 }

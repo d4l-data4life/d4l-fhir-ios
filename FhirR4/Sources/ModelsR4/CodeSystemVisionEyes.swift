@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A coded concept listing the eye codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/vision-eye-codes
  */
 public enum VisionEyes: String, FHIRPrimitiveType {
-	
+
 	/// Right Eye.
 	case right = "right"
-	
+
 	/// Left Eye.
 	case left = "left"
 }

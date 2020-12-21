@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Whether the risk estimate is dichotomous, continuous or qualitative and the specific type of risk estimate (eg
  proportion or median).
@@ -27,23 +25,23 @@
  ValueSet: http://hl7.org/fhir/ValueSet/risk-estimate-type
  */
 public enum RiskEstimateType: String, FHIRPrimitiveType {
-	
+
 	/// dichotomous measure (present or absent) reported as a ratio compared to the denominator of 1 (A percentage is a
 	/// proportion with denominator of 100).
 	case proportion = "proportion"
-	
+
 	/// A special use case where the proportion is derived from a formula rather than derived from summary evidence.
 	case derivedProportion = "derivedProportion"
-	
+
 	/// continuous numerical measure reported as an average.
 	case mean = "mean"
-	
+
 	/// continuous numerical measure reported as the middle of the range.
 	case median = "median"
-	
+
 	/// descriptive measure reported as total number of items.
 	case count = "count"
-	
+
 	/// descriptive measure reported as narrative.
 	case descriptive = "descriptive"
 }

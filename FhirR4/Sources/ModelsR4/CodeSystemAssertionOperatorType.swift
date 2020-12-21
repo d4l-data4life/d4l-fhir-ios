@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of operator to use for assertion.
  
@@ -26,37 +24,37 @@
  ValueSet: http://hl7.org/fhir/ValueSet/assert-operator-codes
  */
 public enum AssertionOperatorType: String, FHIRPrimitiveType {
-	
+
 	/// Default value. Equals comparison.
 	case equals = "equals"
-	
+
 	/// Not equals comparison.
 	case notEquals = "notEquals"
-	
+
 	/// Compare value within a known set of values.
 	case `in` = "in"
-	
+
 	/// Compare value not within a known set of values.
 	case notIn = "notIn"
-	
+
 	/// Compare value to be greater than a known value.
 	case greaterThan = "greaterThan"
-	
+
 	/// Compare value to be less than a known value.
 	case lessThan = "lessThan"
-	
+
 	/// Compare value is empty.
 	case empty = "empty"
-	
+
 	/// Compare value is not empty.
 	case notEmpty = "notEmpty"
-	
+
 	/// Compare value string contains a known value.
 	case contains = "contains"
-	
+
 	/// Compare value string does not contain a known value.
 	case notContains = "notContains"
-	
+
 	/// Evaluate the FHIRPath expression as a boolean condition.
 	case eval = "eval"
 }

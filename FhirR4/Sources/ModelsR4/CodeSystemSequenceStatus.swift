@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes providing the status of the variant test result.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/variant-state
  */
 public enum SequenceStatus: String, FHIRPrimitiveType {
-	
+
 	/// the variant is detected.
 	case positive = "positive"
-	
+
 	/// no variant is detected.
 	case negative = "negative"
-	
+
 	/// result of the variant is missing.
 	case absent = "absent"
 }

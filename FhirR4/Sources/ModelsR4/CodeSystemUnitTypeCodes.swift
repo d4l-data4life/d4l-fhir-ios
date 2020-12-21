@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes a smattering of Unit type codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/benefit-unit
  */
 public enum UnitTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// A single individual
 	case individual = "individual"
-	
+
 	/// A family, typically includes self, spouse(s) and children to a defined age
 	case family = "family"
 }

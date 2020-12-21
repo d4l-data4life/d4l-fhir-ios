@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes a smattering of Benefit Term codes.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/benefit-term
  */
 public enum BenefitTermCodes: String, FHIRPrimitiveType {
-	
+
 	/// Annual, renewing on the anniversary
 	case annual = "annual"
-	
+
 	/// Per day
 	case day = "day"
-	
+
 	/// For the total term, lifetime, of the policy or coverage
 	case lifetime = "lifetime"
 }

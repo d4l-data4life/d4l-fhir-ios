@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How a resource reference is interpreted when evaluating contract offers.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/contract-data-meaning
  */
 public enum ContractDataMeaning: String, FHIRPrimitiveType {
-	
+
 	/// The consent applies directly to the instance of the resource.
 	case instance = "instance"
-	
+
 	/// The consent applies directly to the instance of the resource and instances it refers to.
 	case related = "related"
-	
+
 	/// The consent applies directly to the instance of the resource and instances that refer to it.
 	case dependents = "dependents"
-	
+
 	/// The consent applies to instances of resources that are authored by.
 	case authoredby = "authoredby"
 }

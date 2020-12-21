@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The impact of the content of a message.
  
@@ -26,15 +24,15 @@
  ValueSet: http://hl7.org/fhir/ValueSet/message-significance-category
  */
 public enum MessageSignificanceCategory: String, FHIRPrimitiveType {
-	
+
 	/// The message represents/requests a change that should not be processed more than once; e.g., making a booking for
 	/// an appointment.
 	case consequence = "consequence"
-	
+
 	/// The message represents a response to query for current information. Retrospective processing is wrong and/or
 	/// wasteful.
 	case currency = "currency"
-	
+
 	/// The content is not necessarily intended to be current, and it can be reprocessed, though there may be version
 	/// issues created by processing old notifications.
 	case notification = "notification"

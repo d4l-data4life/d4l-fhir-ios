@@ -30,26 +30,22 @@ Run linter and autocorrect issues
 ```
 fastlane ios generate_all
 ```
-Generate FHIR models
-
-#### Options
-
- * **`embed`** (optional): Should embed newly generated models into Xcode project? defaults to true
+Generate All FHIR code
 ### ios generate_stu3_models
 ```
 fastlane ios generate_stu3_models
 ```
-
+Generate FHIR STU3 models
 ### ios generate_r4_helpers
 ```
 fastlane ios generate_r4_helpers
 ```
-
+Generate FHIR R4 Extesnions
 ### ios generate_r4_tests
 ```
 fastlane ios generate_r4_tests
 ```
-
+Generate FHIR R4 tests
 ### ios release_framework
 ```
 fastlane ios release_framework

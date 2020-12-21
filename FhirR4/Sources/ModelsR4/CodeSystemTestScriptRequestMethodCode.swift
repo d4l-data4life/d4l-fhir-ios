@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The allowable request method or HTTP operation codes.
  
@@ -26,25 +24,25 @@
  ValueSet: http://hl7.org/fhir/ValueSet/http-operations
  */
 public enum TestScriptRequestMethodCode: String, FHIRPrimitiveType {
-	
+
 	/// HTTP DELETE operation.
 	case delete = "delete"
-	
+
 	/// HTTP GET operation.
 	case get = "get"
-	
+
 	/// HTTP OPTIONS operation.
 	case options = "options"
-	
+
 	/// HTTP PATCH operation.
 	case patch = "patch"
-	
+
 	/// HTTP POST operation.
 	case post = "post"
-	
+
 	/// HTTP PUT operation.
 	case put = "put"
-	
+
 	/// HTTP HEAD operation.
 	case head = "head"
 }

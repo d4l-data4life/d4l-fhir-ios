@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Common Tag Codes defined by FHIR project
  
@@ -26,7 +24,7 @@
  ValueSet: http://hl7.org/fhir/ValueSet/common-tags
  */
 public enum CommonTags: String, FHIRPrimitiveType {
-	
+
 	/// This request is intended to be acted upon, not merely stored
 	case actionable = "actionable"
 }

@@ -1,10 +1,23 @@
 // Generated using Sourcery 1.0.2 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
+// Copyright (c) 2020 D4L data4life gGmbH
+// All rights reserved.
+
+// D4L owns all legal rights, title and interest in and to the Software Development Kit ("SDK"),
+// including any intellectual property rights that subsist in the SDK.
+
+// The SDK and its documentation may be accessed and used for viewing/review purposes only.
+// Any usage of the SDK for other purposes, including usage for the development of
+// applications/third-party applications shall require the conclusion of a license agreement
+// between you and D4L.
+
+// If you are interested in licensing the SDK for your own applications/third-party
+// applications and/or if you’d like to contribute to the development of the SDK, please
+// contact D4L by email to help@data4life.care.
 
 // swiftlint:disable file_length
 // MARK: - NSCopying
-
 // MARK: - Account
 extension ModelsR4.Account {
 
@@ -13,16 +26,16 @@ extension ModelsR4.Account {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Account else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.type = self.type?.copy() as? CodeableConcept
         resource.name = self.name
-        resource.subject = self.subject?.compactMap { $0.copy() as? Reference } 
+        resource.subject = self.subject?.compactMap { $0.copy() as? Reference }
         resource.servicePeriod = self.servicePeriod?.copy() as? Period
-        resource.coverage = self.coverage?.compactMap { $0.copy() as? AccountCoverage } 
+        resource.coverage = self.coverage?.compactMap { $0.copy() as? AccountCoverage }
         resource.owner = self.owner?.copy() as? Reference
         resource.description_fhir = self.description_fhir
-        resource.guarantor = self.guarantor?.compactMap { $0.copy() as? AccountGuarantor } 
+        resource.guarantor = self.guarantor?.compactMap { $0.copy() as? AccountGuarantor }
         resource.partOf = self.partOf?.copy() as? Reference
 
         return resource
@@ -32,7 +45,6 @@ extension ModelsR4.Account {
         return self.copied()
     }
 }
-
 
 // MARK: - AccountCoverage
 extension ModelsR4.AccountCoverage {
@@ -52,7 +64,6 @@ extension ModelsR4.AccountCoverage {
         return self.copied()
     }
 }
-
 
 // MARK: - AccountGuarantor
 extension ModelsR4.AccountGuarantor {
@@ -74,7 +85,6 @@ extension ModelsR4.AccountGuarantor {
     }
 }
 
-
 // MARK: - ActivityDefinition
 extension ModelsR4.ActivityDefinition {
 
@@ -84,7 +94,7 @@ extension ModelsR4.ActivityDefinition {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -94,22 +104,22 @@ extension ModelsR4.ActivityDefinition {
         resource.subject = self.subject?.copy() as? SubjectX
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.usage = self.usage
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail } 
-        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail } 
-        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail } 
-        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
+        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail }
+        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail }
+        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail }
+        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
         resource.library = self.library
         resource.kind = self.kind
         resource.profile = self.profile
@@ -119,16 +129,16 @@ extension ModelsR4.ActivityDefinition {
         resource.doNotPerform = self.doNotPerform
         resource.timing = self.timing?.copy() as? TimingX
         resource.location = self.location?.copy() as? Reference
-        resource.participant = self.participant?.compactMap { $0.copy() as? ActivityDefinitionParticipant } 
+        resource.participant = self.participant?.compactMap { $0.copy() as? ActivityDefinitionParticipant }
         resource.product = self.product?.copy() as? ProductX
         resource.quantity = self.quantity?.copy() as? Quantity
-        resource.dosage = self.dosage?.compactMap { $0.copy() as? Dosage } 
-        resource.bodySite = self.bodySite?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.specimenRequirement = self.specimenRequirement?.compactMap { $0.copy() as? Reference } 
-        resource.observationRequirement = self.observationRequirement?.compactMap { $0.copy() as? Reference } 
-        resource.observationResultRequirement = self.observationResultRequirement?.compactMap { $0.copy() as? Reference } 
+        resource.dosage = self.dosage?.compactMap { $0.copy() as? Dosage }
+        resource.bodySite = self.bodySite?.compactMap { $0.copy() as? CodeableConcept }
+        resource.specimenRequirement = self.specimenRequirement?.compactMap { $0.copy() as? Reference }
+        resource.observationRequirement = self.observationRequirement?.compactMap { $0.copy() as? Reference }
+        resource.observationResultRequirement = self.observationResultRequirement?.compactMap { $0.copy() as? Reference }
         resource.transform = self.transform
-        resource.dynamicValue = self.dynamicValue?.compactMap { $0.copy() as? ActivityDefinitionDynamicValue } 
+        resource.dynamicValue = self.dynamicValue?.compactMap { $0.copy() as? ActivityDefinitionDynamicValue }
 
         return resource
     }
@@ -137,7 +147,6 @@ extension ModelsR4.ActivityDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - ActivityDefinitionDynamicValue
 extension ModelsR4.ActivityDefinitionDynamicValue {
@@ -158,7 +167,6 @@ extension ModelsR4.ActivityDefinitionDynamicValue {
     }
 }
 
-
 // MARK: - ActivityDefinitionParticipant
 extension ModelsR4.ActivityDefinitionParticipant {
 
@@ -177,7 +185,6 @@ extension ModelsR4.ActivityDefinitionParticipant {
         return self.copied()
     }
 }
-
 
 // MARK: - Address
 extension ModelsR4.Address {
@@ -206,7 +213,6 @@ extension ModelsR4.Address {
     }
 }
 
-
 // MARK: - AdverseEvent
 extension ModelsR4.AdverseEvent {
 
@@ -217,24 +223,24 @@ extension ModelsR4.AdverseEvent {
         }
         resource.identifier = self.identifier?.copy() as? Identifier
         resource.actuality = self.actuality
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.event = self.event?.copy() as? CodeableConcept
         resource.subject = self.subject.copy() as! Reference
         resource.encounter = self.encounter?.copy() as? Reference
         resource.date = self.date
         resource.detected = self.detected
         resource.recordedDate = self.recordedDate
-        resource.resultingCondition = self.resultingCondition?.compactMap { $0.copy() as? Reference } 
+        resource.resultingCondition = self.resultingCondition?.compactMap { $0.copy() as? Reference }
         resource.location = self.location?.copy() as? Reference
         resource.seriousness = self.seriousness?.copy() as? CodeableConcept
         resource.severity = self.severity?.copy() as? CodeableConcept
         resource.outcome = self.outcome?.copy() as? CodeableConcept
         resource.recorder = self.recorder?.copy() as? Reference
-        resource.contributor = self.contributor?.compactMap { $0.copy() as? Reference } 
-        resource.suspectEntity = self.suspectEntity?.compactMap { $0.copy() as? AdverseEventSuspectEntity } 
-        resource.subjectMedicalHistory = self.subjectMedicalHistory?.compactMap { $0.copy() as? Reference } 
-        resource.referenceDocument = self.referenceDocument?.compactMap { $0.copy() as? Reference } 
-        resource.study = self.study?.compactMap { $0.copy() as? Reference } 
+        resource.contributor = self.contributor?.compactMap { $0.copy() as? Reference }
+        resource.suspectEntity = self.suspectEntity?.compactMap { $0.copy() as? AdverseEventSuspectEntity }
+        resource.subjectMedicalHistory = self.subjectMedicalHistory?.compactMap { $0.copy() as? Reference }
+        resource.referenceDocument = self.referenceDocument?.compactMap { $0.copy() as? Reference }
+        resource.study = self.study?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -243,7 +249,6 @@ extension ModelsR4.AdverseEvent {
         return self.copied()
     }
 }
-
 
 // MARK: - AdverseEventSuspectEntity
 extension ModelsR4.AdverseEventSuspectEntity {
@@ -254,7 +259,7 @@ extension ModelsR4.AdverseEventSuspectEntity {
             return self
         }
         resource.instance = self.instance.copy() as! Reference
-        resource.causality = self.causality?.compactMap { $0.copy() as? AdverseEventSuspectEntityCausality } 
+        resource.causality = self.causality?.compactMap { $0.copy() as? AdverseEventSuspectEntityCausality }
 
         return resource
     }
@@ -263,7 +268,6 @@ extension ModelsR4.AdverseEventSuspectEntity {
         return self.copied()
     }
 }
-
 
 // MARK: - AdverseEventSuspectEntityCausality
 extension ModelsR4.AdverseEventSuspectEntityCausality {
@@ -286,7 +290,6 @@ extension ModelsR4.AdverseEventSuspectEntityCausality {
     }
 }
 
-
 // MARK: - Age
 extension ModelsR4.Age {
 
@@ -304,7 +307,6 @@ extension ModelsR4.Age {
     }
 }
 
-
 // MARK: - AllergyIntolerance
 extension ModelsR4.AllergyIntolerance {
 
@@ -313,7 +315,7 @@ extension ModelsR4.AllergyIntolerance {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.AllergyIntolerance else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.clinicalStatus = self.clinicalStatus?.copy() as? CodeableConcept
         resource.verificationStatus = self.verificationStatus?.copy() as? CodeableConcept
         resource.type = self.type
@@ -327,8 +329,8 @@ extension ModelsR4.AllergyIntolerance {
         resource.recorder = self.recorder?.copy() as? Reference
         resource.asserter = self.asserter?.copy() as? Reference
         resource.lastOccurrence = self.lastOccurrence
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.reaction = self.reaction?.compactMap { $0.copy() as? AllergyIntoleranceReaction } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.reaction = self.reaction?.compactMap { $0.copy() as? AllergyIntoleranceReaction }
 
         return resource
     }
@@ -337,7 +339,6 @@ extension ModelsR4.AllergyIntolerance {
         return self.copied()
     }
 }
-
 
 // MARK: - AllergyIntoleranceReaction
 extension ModelsR4.AllergyIntoleranceReaction {
@@ -348,12 +349,12 @@ extension ModelsR4.AllergyIntoleranceReaction {
             return self
         }
         resource.substance = self.substance?.copy() as? CodeableConcept
-        resource.manifestation = self.manifestation.compactMap { $0.copy() as? CodeableConcept } 
+        resource.manifestation = self.manifestation.compactMap { $0.copy() as? CodeableConcept }
         resource.description_fhir = self.description_fhir
         resource.onset = self.onset
         resource.severity = self.severity
         resource.exposureRoute = self.exposureRoute?.copy() as? CodeableConcept
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -362,7 +363,6 @@ extension ModelsR4.AllergyIntoleranceReaction {
         return self.copied()
     }
 }
-
 
 // MARK: - Annotation
 extension ModelsR4.Annotation {
@@ -384,7 +384,6 @@ extension ModelsR4.Annotation {
     }
 }
 
-
 // MARK: - Appointment
 extension ModelsR4.Appointment {
 
@@ -393,28 +392,28 @@ extension ModelsR4.Appointment {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Appointment else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.cancelationReason = self.cancelationReason?.copy() as? CodeableConcept
-        resource.serviceCategory = self.serviceCategory?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.serviceType = self.serviceType?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.serviceCategory = self.serviceCategory?.compactMap { $0.copy() as? CodeableConcept }
+        resource.serviceType = self.serviceType?.compactMap { $0.copy() as? CodeableConcept }
+        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept }
         resource.appointmentType = self.appointmentType?.copy() as? CodeableConcept
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
         resource.priority = self.priority
         resource.description_fhir = self.description_fhir
-        resource.supportingInformation = self.supportingInformation?.compactMap { $0.copy() as? Reference } 
+        resource.supportingInformation = self.supportingInformation?.compactMap { $0.copy() as? Reference }
         resource.start = self.start
         resource.end = self.end
         resource.minutesDuration = self.minutesDuration
-        resource.slot = self.slot?.compactMap { $0.copy() as? Reference } 
+        resource.slot = self.slot?.compactMap { $0.copy() as? Reference }
         resource.created = self.created
         resource.comment = self.comment
         resource.patientInstruction = self.patientInstruction
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.participant = self.participant.compactMap { $0.copy() as? AppointmentParticipant } 
-        resource.requestedPeriod = self.requestedPeriod?.compactMap { $0.copy() as? Period } 
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.participant = self.participant.compactMap { $0.copy() as? AppointmentParticipant }
+        resource.requestedPeriod = self.requestedPeriod?.compactMap { $0.copy() as? Period }
 
         return resource
     }
@@ -424,7 +423,6 @@ extension ModelsR4.Appointment {
     }
 }
 
-
 // MARK: - AppointmentParticipant
 extension ModelsR4.AppointmentParticipant {
 
@@ -433,7 +431,7 @@ extension ModelsR4.AppointmentParticipant {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.AppointmentParticipant else {
             return self
         }
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
         resource.actor = self.actor?.copy() as? Reference
         resource.required = self.required
         resource.status = self.status
@@ -447,7 +445,6 @@ extension ModelsR4.AppointmentParticipant {
     }
 }
 
-
 // MARK: - AppointmentResponse
 extension ModelsR4.AppointmentResponse {
 
@@ -456,11 +453,11 @@ extension ModelsR4.AppointmentResponse {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.AppointmentResponse else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.appointment = self.appointment.copy() as! Reference
         resource.start = self.start
         resource.end = self.end
-        resource.participantType = self.participantType?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.participantType = self.participantType?.compactMap { $0.copy() as? CodeableConcept }
         resource.actor = self.actor?.copy() as? Reference
         resource.participantStatus = self.participantStatus
         resource.comment = self.comment
@@ -472,7 +469,6 @@ extension ModelsR4.AppointmentResponse {
         return self.copied()
     }
 }
-
 
 // MARK: - Attachment
 extension ModelsR4.Attachment {
@@ -499,7 +495,6 @@ extension ModelsR4.Attachment {
     }
 }
 
-
 // MARK: - AuditEvent
 extension ModelsR4.AuditEvent {
 
@@ -509,16 +504,16 @@ extension ModelsR4.AuditEvent {
             return self
         }
         resource.type = self.type.copy() as! Coding
-        resource.subtype = self.subtype?.compactMap { $0.copy() as? Coding } 
+        resource.subtype = self.subtype?.compactMap { $0.copy() as? Coding }
         resource.action = self.action
         resource.period = self.period?.copy() as? Period
         resource.recorded = self.recorded
         resource.outcome = self.outcome
         resource.outcomeDesc = self.outcomeDesc
-        resource.purposeOfEvent = self.purposeOfEvent?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.agent = self.agent.compactMap { $0.copy() as? AuditEventAgent } 
+        resource.purposeOfEvent = self.purposeOfEvent?.compactMap { $0.copy() as? CodeableConcept }
+        resource.agent = self.agent.compactMap { $0.copy() as? AuditEventAgent }
         resource.source = self.source.copy() as! AuditEventSource
-        resource.entity = self.entity?.compactMap { $0.copy() as? AuditEventEntity } 
+        resource.entity = self.entity?.compactMap { $0.copy() as? AuditEventEntity }
 
         return resource
     }
@@ -527,7 +522,6 @@ extension ModelsR4.AuditEvent {
         return self.copied()
     }
 }
-
 
 // MARK: - AuditEventAgent
 extension ModelsR4.AuditEventAgent {
@@ -538,7 +532,7 @@ extension ModelsR4.AuditEventAgent {
             return self
         }
         resource.type = self.type?.copy() as? CodeableConcept
-        resource.role = self.role?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.role = self.role?.compactMap { $0.copy() as? CodeableConcept }
         resource.who = self.who?.copy() as? Reference
         resource.altId = self.altId
         resource.name = self.name
@@ -547,7 +541,7 @@ extension ModelsR4.AuditEventAgent {
         resource.policy = self.policy
         resource.media = self.media?.copy() as? Coding
         resource.network = self.network?.copy() as? AuditEventAgentNetwork
-        resource.purposeOfUse = self.purposeOfUse?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.purposeOfUse = self.purposeOfUse?.compactMap { $0.copy() as? CodeableConcept }
 
         return resource
     }
@@ -556,7 +550,6 @@ extension ModelsR4.AuditEventAgent {
         return self.copied()
     }
 }
-
 
 // MARK: - AuditEventAgentNetwork
 extension ModelsR4.AuditEventAgentNetwork {
@@ -577,7 +570,6 @@ extension ModelsR4.AuditEventAgentNetwork {
     }
 }
 
-
 // MARK: - AuditEventEntity
 extension ModelsR4.AuditEventEntity {
 
@@ -590,11 +582,11 @@ extension ModelsR4.AuditEventEntity {
         resource.type = self.type?.copy() as? Coding
         resource.role = self.role?.copy() as? Coding
         resource.lifecycle = self.lifecycle?.copy() as? Coding
-        resource.securityLabel = self.securityLabel?.compactMap { $0.copy() as? Coding } 
+        resource.securityLabel = self.securityLabel?.compactMap { $0.copy() as? Coding }
         resource.name = self.name
         resource.description_fhir = self.description_fhir
         resource.query = self.query
-        resource.detail = self.detail?.compactMap { $0.copy() as? AuditEventEntityDetail } 
+        resource.detail = self.detail?.compactMap { $0.copy() as? AuditEventEntityDetail }
 
         return resource
     }
@@ -603,7 +595,6 @@ extension ModelsR4.AuditEventEntity {
         return self.copied()
     }
 }
-
 
 // MARK: - AuditEventEntityDetail
 extension ModelsR4.AuditEventEntityDetail {
@@ -624,7 +615,6 @@ extension ModelsR4.AuditEventEntityDetail {
     }
 }
 
-
 // MARK: - AuditEventSource
 extension ModelsR4.AuditEventSource {
 
@@ -635,7 +625,7 @@ extension ModelsR4.AuditEventSource {
         }
         resource.site = self.site
         resource.observer = self.observer.copy() as! Reference
-        resource.type = self.type?.compactMap { $0.copy() as? Coding } 
+        resource.type = self.type?.compactMap { $0.copy() as? Coding }
 
         return resource
     }
@@ -644,7 +634,6 @@ extension ModelsR4.AuditEventSource {
         return self.copied()
     }
 }
-
 
 // MARK: - BackboneElement
 extension ModelsR4.BackboneElement {
@@ -654,7 +643,7 @@ extension ModelsR4.BackboneElement {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.BackboneElement else {
             return self
         }
-        resource.modifierExtension = self.modifierExtension?.compactMap { $0.copy() as? Extension } 
+        resource.modifierExtension = self.modifierExtension?.compactMap { $0.copy() as? Extension }
 
         return resource
     }
@@ -664,7 +653,6 @@ extension ModelsR4.BackboneElement {
     }
 }
 
-
 // MARK: - Basic
 extension ModelsR4.Basic {
 
@@ -673,7 +661,7 @@ extension ModelsR4.Basic {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Basic else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.code = self.code.copy() as! CodeableConcept
         resource.subject = self.subject?.copy() as? Reference
         resource.created = self.created
@@ -686,7 +674,6 @@ extension ModelsR4.Basic {
         return self.copied()
     }
 }
-
 
 // MARK: - Binary
 extension ModelsR4.Binary {
@@ -708,7 +695,6 @@ extension ModelsR4.Binary {
     }
 }
 
-
 // MARK: - BiologicallyDerivedProduct
 extension ModelsR4.BiologicallyDerivedProduct {
 
@@ -717,17 +703,17 @@ extension ModelsR4.BiologicallyDerivedProduct {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.BiologicallyDerivedProduct else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.productCategory = self.productCategory
         resource.productCode = self.productCode?.copy() as? CodeableConcept
         resource.status = self.status
-        resource.request = self.request?.compactMap { $0.copy() as? Reference } 
+        resource.request = self.request?.compactMap { $0.copy() as? Reference }
         resource.quantity = self.quantity
-        resource.parent = self.parent?.compactMap { $0.copy() as? Reference } 
+        resource.parent = self.parent?.compactMap { $0.copy() as? Reference }
         resource.collection = self.collection?.copy() as? BiologicallyDerivedProductCollection
-        resource.processing = self.processing?.compactMap { $0.copy() as? BiologicallyDerivedProductProcessing } 
+        resource.processing = self.processing?.compactMap { $0.copy() as? BiologicallyDerivedProductProcessing }
         resource.manipulation = self.manipulation?.copy() as? BiologicallyDerivedProductManipulation
-        resource.storage = self.storage?.compactMap { $0.copy() as? BiologicallyDerivedProductStorage } 
+        resource.storage = self.storage?.compactMap { $0.copy() as? BiologicallyDerivedProductStorage }
 
         return resource
     }
@@ -736,7 +722,6 @@ extension ModelsR4.BiologicallyDerivedProduct {
         return self.copied()
     }
 }
-
 
 // MARK: - BiologicallyDerivedProductCollection
 extension ModelsR4.BiologicallyDerivedProductCollection {
@@ -758,7 +743,6 @@ extension ModelsR4.BiologicallyDerivedProductCollection {
     }
 }
 
-
 // MARK: - BiologicallyDerivedProductManipulation
 extension ModelsR4.BiologicallyDerivedProductManipulation {
 
@@ -777,7 +761,6 @@ extension ModelsR4.BiologicallyDerivedProductManipulation {
         return self.copied()
     }
 }
-
 
 // MARK: - BiologicallyDerivedProductProcessing
 extension ModelsR4.BiologicallyDerivedProductProcessing {
@@ -800,7 +783,6 @@ extension ModelsR4.BiologicallyDerivedProductProcessing {
     }
 }
 
-
 // MARK: - BiologicallyDerivedProductStorage
 extension ModelsR4.BiologicallyDerivedProductStorage {
 
@@ -822,7 +804,6 @@ extension ModelsR4.BiologicallyDerivedProductStorage {
     }
 }
 
-
 // MARK: - BodyStructure
 extension ModelsR4.BodyStructure {
 
@@ -831,13 +812,13 @@ extension ModelsR4.BodyStructure {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.BodyStructure else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.active = self.active
         resource.morphology = self.morphology?.copy() as? CodeableConcept
         resource.location = self.location?.copy() as? CodeableConcept
-        resource.locationQualifier = self.locationQualifier?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.locationQualifier = self.locationQualifier?.compactMap { $0.copy() as? CodeableConcept }
         resource.description_fhir = self.description_fhir
-        resource.image = self.image?.compactMap { $0.copy() as? Attachment } 
+        resource.image = self.image?.compactMap { $0.copy() as? Attachment }
         resource.patient = self.patient.copy() as! Reference
 
         return resource
@@ -847,7 +828,6 @@ extension ModelsR4.BodyStructure {
         return self.copied()
     }
 }
-
 
 // MARK: - Bundle
 extension ModelsR4.Bundle {
@@ -861,8 +841,8 @@ extension ModelsR4.Bundle {
         resource.type = self.type
         resource.timestamp = self.timestamp
         resource.total = self.total
-        resource.link = self.link?.compactMap { $0.copy() as? BundleLink } 
-        resource.entry = self.entry?.compactMap { $0.copy() as? BundleEntry } 
+        resource.link = self.link?.compactMap { $0.copy() as? BundleLink }
+        resource.entry = self.entry?.compactMap { $0.copy() as? BundleEntry }
         resource.signature = self.signature?.copy() as? Signature
 
         return resource
@@ -873,7 +853,6 @@ extension ModelsR4.Bundle {
     }
 }
 
-
 // MARK: - BundleEntry
 extension ModelsR4.BundleEntry {
 
@@ -882,7 +861,7 @@ extension ModelsR4.BundleEntry {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.BundleEntry else {
             return self
         }
-        resource.link = self.link?.compactMap { $0.copy() as? BundleLink } 
+        resource.link = self.link?.compactMap { $0.copy() as? BundleLink }
         resource.fullUrl = self.fullUrl
         resource.resource = self.resource?.copy() as? ResourceProxy
         resource.search = self.search?.copy() as? BundleEntrySearch
@@ -896,7 +875,6 @@ extension ModelsR4.BundleEntry {
         return self.copied()
     }
 }
-
 
 // MARK: - BundleEntryRequest
 extension ModelsR4.BundleEntryRequest {
@@ -921,7 +899,6 @@ extension ModelsR4.BundleEntryRequest {
     }
 }
 
-
 // MARK: - BundleEntryResponse
 extension ModelsR4.BundleEntryResponse {
 
@@ -944,7 +921,6 @@ extension ModelsR4.BundleEntryResponse {
     }
 }
 
-
 // MARK: - BundleEntrySearch
 extension ModelsR4.BundleEntrySearch {
 
@@ -963,7 +939,6 @@ extension ModelsR4.BundleEntrySearch {
         return self.copied()
     }
 }
-
 
 // MARK: - BundleLink
 extension ModelsR4.BundleLink {
@@ -984,7 +959,6 @@ extension ModelsR4.BundleLink {
     }
 }
 
-
 // MARK: - CapabilityStatement
 extension ModelsR4.CapabilityStatement {
 
@@ -1001,10 +975,10 @@ extension ModelsR4.CapabilityStatement {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.copyright = self.copyright
         resource.kind = self.kind
@@ -1016,9 +990,9 @@ extension ModelsR4.CapabilityStatement {
         resource.format = self.format
         resource.patchFormat = self.patchFormat
         resource.implementationGuide = self.implementationGuide
-        resource.rest = self.rest?.compactMap { $0.copy() as? CapabilityStatementRest } 
-        resource.messaging = self.messaging?.compactMap { $0.copy() as? CapabilityStatementMessaging } 
-        resource.document = self.document?.compactMap { $0.copy() as? CapabilityStatementDocument } 
+        resource.rest = self.rest?.compactMap { $0.copy() as? CapabilityStatementRest }
+        resource.messaging = self.messaging?.compactMap { $0.copy() as? CapabilityStatementMessaging }
+        resource.document = self.document?.compactMap { $0.copy() as? CapabilityStatementDocument }
 
         return resource
     }
@@ -1027,7 +1001,6 @@ extension ModelsR4.CapabilityStatement {
         return self.copied()
     }
 }
-
 
 // MARK: - CapabilityStatementDocument
 extension ModelsR4.CapabilityStatementDocument {
@@ -1049,7 +1022,6 @@ extension ModelsR4.CapabilityStatementDocument {
     }
 }
 
-
 // MARK: - CapabilityStatementImplementation
 extension ModelsR4.CapabilityStatementImplementation {
 
@@ -1070,7 +1042,6 @@ extension ModelsR4.CapabilityStatementImplementation {
     }
 }
 
-
 // MARK: - CapabilityStatementMessaging
 extension ModelsR4.CapabilityStatementMessaging {
 
@@ -1079,10 +1050,10 @@ extension ModelsR4.CapabilityStatementMessaging {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CapabilityStatementMessaging else {
             return self
         }
-        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? CapabilityStatementMessagingEndpoint } 
+        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? CapabilityStatementMessagingEndpoint }
         resource.reliableCache = self.reliableCache
         resource.documentation = self.documentation
-        resource.supportedMessage = self.supportedMessage?.compactMap { $0.copy() as? CapabilityStatementMessagingSupportedMessage } 
+        resource.supportedMessage = self.supportedMessage?.compactMap { $0.copy() as? CapabilityStatementMessagingSupportedMessage }
 
         return resource
     }
@@ -1091,7 +1062,6 @@ extension ModelsR4.CapabilityStatementMessaging {
         return self.copied()
     }
 }
-
 
 // MARK: - CapabilityStatementMessagingEndpoint
 extension ModelsR4.CapabilityStatementMessagingEndpoint {
@@ -1112,7 +1082,6 @@ extension ModelsR4.CapabilityStatementMessagingEndpoint {
     }
 }
 
-
 // MARK: - CapabilityStatementMessagingSupportedMessage
 extension ModelsR4.CapabilityStatementMessagingSupportedMessage {
 
@@ -1132,7 +1101,6 @@ extension ModelsR4.CapabilityStatementMessagingSupportedMessage {
     }
 }
 
-
 // MARK: - CapabilityStatementRest
 extension ModelsR4.CapabilityStatementRest {
 
@@ -1144,10 +1112,10 @@ extension ModelsR4.CapabilityStatementRest {
         resource.mode = self.mode
         resource.documentation = self.documentation
         resource.security = self.security?.copy() as? CapabilityStatementRestSecurity
-        resource.resource = self.resource?.compactMap { $0.copy() as? CapabilityStatementRestResource } 
-        resource.interaction = self.interaction?.compactMap { $0.copy() as? CapabilityStatementRestInteraction } 
-        resource.searchParam = self.searchParam?.compactMap { $0.copy() as? CapabilityStatementRestResourceSearchParam } 
-        resource.operation = self.operation?.compactMap { $0.copy() as? CapabilityStatementRestResourceOperation } 
+        resource.resource = self.resource?.compactMap { $0.copy() as? CapabilityStatementRestResource }
+        resource.interaction = self.interaction?.compactMap { $0.copy() as? CapabilityStatementRestInteraction }
+        resource.searchParam = self.searchParam?.compactMap { $0.copy() as? CapabilityStatementRestResourceSearchParam }
+        resource.operation = self.operation?.compactMap { $0.copy() as? CapabilityStatementRestResourceOperation }
         resource.compartment = self.compartment
 
         return resource
@@ -1157,7 +1125,6 @@ extension ModelsR4.CapabilityStatementRest {
         return self.copied()
     }
 }
-
 
 // MARK: - CapabilityStatementRestInteraction
 extension ModelsR4.CapabilityStatementRestInteraction {
@@ -1178,7 +1145,6 @@ extension ModelsR4.CapabilityStatementRestInteraction {
     }
 }
 
-
 // MARK: - CapabilityStatementRestResource
 extension ModelsR4.CapabilityStatementRestResource {
 
@@ -1191,7 +1157,7 @@ extension ModelsR4.CapabilityStatementRestResource {
         resource.profile = self.profile
         resource.supportedProfile = self.supportedProfile
         resource.documentation = self.documentation
-        resource.interaction = self.interaction?.compactMap { $0.copy() as? CapabilityStatementRestResourceInteraction } 
+        resource.interaction = self.interaction?.compactMap { $0.copy() as? CapabilityStatementRestResourceInteraction }
         resource.versioning = self.versioning
         resource.readHistory = self.readHistory
         resource.updateCreate = self.updateCreate
@@ -1202,8 +1168,8 @@ extension ModelsR4.CapabilityStatementRestResource {
         resource.referencePolicy = self.referencePolicy
         resource.searchInclude = self.searchInclude
         resource.searchRevInclude = self.searchRevInclude
-        resource.searchParam = self.searchParam?.compactMap { $0.copy() as? CapabilityStatementRestResourceSearchParam } 
-        resource.operation = self.operation?.compactMap { $0.copy() as? CapabilityStatementRestResourceOperation } 
+        resource.searchParam = self.searchParam?.compactMap { $0.copy() as? CapabilityStatementRestResourceSearchParam }
+        resource.operation = self.operation?.compactMap { $0.copy() as? CapabilityStatementRestResourceOperation }
 
         return resource
     }
@@ -1212,7 +1178,6 @@ extension ModelsR4.CapabilityStatementRestResource {
         return self.copied()
     }
 }
-
 
 // MARK: - CapabilityStatementRestResourceInteraction
 extension ModelsR4.CapabilityStatementRestResourceInteraction {
@@ -1233,7 +1198,6 @@ extension ModelsR4.CapabilityStatementRestResourceInteraction {
     }
 }
 
-
 // MARK: - CapabilityStatementRestResourceOperation
 extension ModelsR4.CapabilityStatementRestResourceOperation {
 
@@ -1253,7 +1217,6 @@ extension ModelsR4.CapabilityStatementRestResourceOperation {
         return self.copied()
     }
 }
-
 
 // MARK: - CapabilityStatementRestResourceSearchParam
 extension ModelsR4.CapabilityStatementRestResourceSearchParam {
@@ -1276,7 +1239,6 @@ extension ModelsR4.CapabilityStatementRestResourceSearchParam {
     }
 }
 
-
 // MARK: - CapabilityStatementRestSecurity
 extension ModelsR4.CapabilityStatementRestSecurity {
 
@@ -1286,7 +1248,7 @@ extension ModelsR4.CapabilityStatementRestSecurity {
             return self
         }
         resource.cors = self.cors
-        resource.service = self.service?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.service = self.service?.compactMap { $0.copy() as? CodeableConcept }
         resource.description_fhir = self.description_fhir
 
         return resource
@@ -1296,7 +1258,6 @@ extension ModelsR4.CapabilityStatementRestSecurity {
         return self.copied()
     }
 }
-
 
 // MARK: - CapabilityStatementSoftware
 extension ModelsR4.CapabilityStatementSoftware {
@@ -1318,7 +1279,6 @@ extension ModelsR4.CapabilityStatementSoftware {
     }
 }
 
-
 // MARK: - CarePlan
 extension ModelsR4.CarePlan {
 
@@ -1327,15 +1287,15 @@ extension ModelsR4.CarePlan {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CarePlan else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.instantiatesCanonical = self.instantiatesCanonical
         resource.instantiatesUri = self.instantiatesUri
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.replaces = self.replaces?.compactMap { $0.copy() as? Reference } 
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.replaces = self.replaces?.compactMap { $0.copy() as? Reference }
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
         resource.intent = self.intent
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.title = self.title
         resource.description_fhir = self.description_fhir
         resource.subject = self.subject.copy() as! Reference
@@ -1343,13 +1303,13 @@ extension ModelsR4.CarePlan {
         resource.period = self.period?.copy() as? Period
         resource.created = self.created
         resource.author = self.author?.copy() as? Reference
-        resource.contributor = self.contributor?.compactMap { $0.copy() as? Reference } 
-        resource.careTeam = self.careTeam?.compactMap { $0.copy() as? Reference } 
-        resource.addresses = self.addresses?.compactMap { $0.copy() as? Reference } 
-        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? Reference } 
-        resource.goal = self.goal?.compactMap { $0.copy() as? Reference } 
-        resource.activity = self.activity?.compactMap { $0.copy() as? CarePlanActivity } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.contributor = self.contributor?.compactMap { $0.copy() as? Reference }
+        resource.careTeam = self.careTeam?.compactMap { $0.copy() as? Reference }
+        resource.addresses = self.addresses?.compactMap { $0.copy() as? Reference }
+        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? Reference }
+        resource.goal = self.goal?.compactMap { $0.copy() as? Reference }
+        resource.activity = self.activity?.compactMap { $0.copy() as? CarePlanActivity }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -1359,7 +1319,6 @@ extension ModelsR4.CarePlan {
     }
 }
 
-
 // MARK: - CarePlanActivity
 extension ModelsR4.CarePlanActivity {
 
@@ -1368,9 +1327,9 @@ extension ModelsR4.CarePlanActivity {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CarePlanActivity else {
             return self
         }
-        resource.outcomeCodeableConcept = self.outcomeCodeableConcept?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.outcomeReference = self.outcomeReference?.compactMap { $0.copy() as? Reference } 
-        resource.progress = self.progress?.compactMap { $0.copy() as? Annotation } 
+        resource.outcomeCodeableConcept = self.outcomeCodeableConcept?.compactMap { $0.copy() as? CodeableConcept }
+        resource.outcomeReference = self.outcomeReference?.compactMap { $0.copy() as? Reference }
+        resource.progress = self.progress?.compactMap { $0.copy() as? Annotation }
         resource.reference = self.reference?.copy() as? Reference
         resource.detail = self.detail?.copy() as? CarePlanActivityDetail
 
@@ -1381,7 +1340,6 @@ extension ModelsR4.CarePlanActivity {
         return self.copied()
     }
 }
-
 
 // MARK: - CarePlanActivityDetail
 extension ModelsR4.CarePlanActivityDetail {
@@ -1395,15 +1353,15 @@ extension ModelsR4.CarePlanActivityDetail {
         resource.instantiatesCanonical = self.instantiatesCanonical
         resource.instantiatesUri = self.instantiatesUri
         resource.code = self.code?.copy() as? CodeableConcept
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.goal = self.goal?.compactMap { $0.copy() as? Reference } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.goal = self.goal?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
         resource.statusReason = self.statusReason?.copy() as? CodeableConcept
         resource.doNotPerform = self.doNotPerform
         resource.scheduled = self.scheduled?.copy() as? ScheduledX
         resource.location = self.location?.copy() as? Reference
-        resource.performer = self.performer?.compactMap { $0.copy() as? Reference } 
+        resource.performer = self.performer?.compactMap { $0.copy() as? Reference }
         resource.product = self.product?.copy() as? ProductX
         resource.dailyAmount = self.dailyAmount?.copy() as? Quantity
         resource.quantity = self.quantity?.copy() as? Quantity
@@ -1417,7 +1375,6 @@ extension ModelsR4.CarePlanActivityDetail {
     }
 }
 
-
 // MARK: - CareTeam
 extension ModelsR4.CareTeam {
 
@@ -1426,19 +1383,19 @@ extension ModelsR4.CareTeam {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CareTeam else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.name = self.name
         resource.subject = self.subject?.copy() as? Reference
         resource.encounter = self.encounter?.copy() as? Reference
         resource.period = self.period?.copy() as? Period
-        resource.participant = self.participant?.compactMap { $0.copy() as? CareTeamParticipant } 
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.managingOrganization = self.managingOrganization?.compactMap { $0.copy() as? Reference } 
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.participant = self.participant?.compactMap { $0.copy() as? CareTeamParticipant }
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.managingOrganization = self.managingOrganization?.compactMap { $0.copy() as? Reference }
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -1448,7 +1405,6 @@ extension ModelsR4.CareTeam {
     }
 }
 
-
 // MARK: - CareTeamParticipant
 extension ModelsR4.CareTeamParticipant {
 
@@ -1457,7 +1413,7 @@ extension ModelsR4.CareTeamParticipant {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CareTeamParticipant else {
             return self
         }
-        resource.role = self.role?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.role = self.role?.compactMap { $0.copy() as? CodeableConcept }
         resource.member = self.member?.copy() as? Reference
         resource.onBehalfOf = self.onBehalfOf?.copy() as? Reference
         resource.period = self.period?.copy() as? Period
@@ -1470,7 +1426,6 @@ extension ModelsR4.CareTeamParticipant {
     }
 }
 
-
 // MARK: - CatalogEntry
 extension ModelsR4.CatalogEntry {
 
@@ -1479,19 +1434,19 @@ extension ModelsR4.CatalogEntry {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CatalogEntry else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.type = self.type?.copy() as? CodeableConcept
         resource.orderable = self.orderable
         resource.referencedItem = self.referencedItem.copy() as! Reference
-        resource.additionalIdentifier = self.additionalIdentifier?.compactMap { $0.copy() as? Identifier } 
-        resource.classification = self.classification?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.additionalIdentifier = self.additionalIdentifier?.compactMap { $0.copy() as? Identifier }
+        resource.classification = self.classification?.compactMap { $0.copy() as? CodeableConcept }
         resource.status = self.status
         resource.validityPeriod = self.validityPeriod?.copy() as? Period
         resource.validTo = self.validTo
         resource.lastUpdated = self.lastUpdated
-        resource.additionalCharacteristic = self.additionalCharacteristic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.additionalClassification = self.additionalClassification?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.relatedEntry = self.relatedEntry?.compactMap { $0.copy() as? CatalogEntryRelatedEntry } 
+        resource.additionalCharacteristic = self.additionalCharacteristic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.additionalClassification = self.additionalClassification?.compactMap { $0.copy() as? CodeableConcept }
+        resource.relatedEntry = self.relatedEntry?.compactMap { $0.copy() as? CatalogEntryRelatedEntry }
 
         return resource
     }
@@ -1500,7 +1455,6 @@ extension ModelsR4.CatalogEntry {
         return self.copied()
     }
 }
-
 
 // MARK: - CatalogEntryRelatedEntry
 extension ModelsR4.CatalogEntryRelatedEntry {
@@ -1521,7 +1475,6 @@ extension ModelsR4.CatalogEntryRelatedEntry {
     }
 }
 
-
 // MARK: - ChargeItem
 extension ModelsR4.ChargeItem {
 
@@ -1530,32 +1483,32 @@ extension ModelsR4.ChargeItem {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ChargeItem else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.definitionUri = self.definitionUri
         resource.definitionCanonical = self.definitionCanonical
         resource.status = self.status
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.code = self.code.copy() as! CodeableConcept
         resource.subject = self.subject.copy() as! Reference
         resource.context = self.context?.copy() as? Reference
         resource.occurrence = self.occurrence?.copy() as? OccurrenceX
-        resource.performer = self.performer?.compactMap { $0.copy() as? ChargeItemPerformer } 
+        resource.performer = self.performer?.compactMap { $0.copy() as? ChargeItemPerformer }
         resource.performingOrganization = self.performingOrganization?.copy() as? Reference
         resource.requestingOrganization = self.requestingOrganization?.copy() as? Reference
         resource.costCenter = self.costCenter?.copy() as? Reference
         resource.quantity = self.quantity?.copy() as? Quantity
-        resource.bodysite = self.bodysite?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.bodysite = self.bodysite?.compactMap { $0.copy() as? CodeableConcept }
         resource.factorOverride = self.factorOverride
         resource.priceOverride = self.priceOverride?.copy() as? Money
         resource.overrideReason = self.overrideReason
         resource.enterer = self.enterer?.copy() as? Reference
         resource.enteredDate = self.enteredDate
-        resource.reason = self.reason?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.service = self.service?.compactMap { $0.copy() as? Reference } 
+        resource.reason = self.reason?.compactMap { $0.copy() as? CodeableConcept }
+        resource.service = self.service?.compactMap { $0.copy() as? Reference }
         resource.product = self.product?.copy() as? ProductX
-        resource.account = self.account?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.supportingInformation = self.supportingInformation?.compactMap { $0.copy() as? Reference } 
+        resource.account = self.account?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.supportingInformation = self.supportingInformation?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -1564,7 +1517,6 @@ extension ModelsR4.ChargeItem {
         return self.copied()
     }
 }
-
 
 // MARK: - ChargeItemDefinition
 extension ModelsR4.ChargeItemDefinition {
@@ -1575,7 +1527,7 @@ extension ModelsR4.ChargeItemDefinition {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.title = self.title
         resource.derivedFromUri = self.derivedFromUri
@@ -1585,18 +1537,18 @@ extension ModelsR4.ChargeItemDefinition {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
         resource.code = self.code?.copy() as? CodeableConcept
-        resource.instance = self.instance?.compactMap { $0.copy() as? Reference } 
-        resource.applicability = self.applicability?.compactMap { $0.copy() as? ChargeItemDefinitionApplicability } 
-        resource.propertyGroup = self.propertyGroup?.compactMap { $0.copy() as? ChargeItemDefinitionPropertyGroup } 
+        resource.instance = self.instance?.compactMap { $0.copy() as? Reference }
+        resource.applicability = self.applicability?.compactMap { $0.copy() as? ChargeItemDefinitionApplicability }
+        resource.propertyGroup = self.propertyGroup?.compactMap { $0.copy() as? ChargeItemDefinitionPropertyGroup }
 
         return resource
     }
@@ -1605,7 +1557,6 @@ extension ModelsR4.ChargeItemDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - ChargeItemDefinitionApplicability
 extension ModelsR4.ChargeItemDefinitionApplicability {
@@ -1627,7 +1578,6 @@ extension ModelsR4.ChargeItemDefinitionApplicability {
     }
 }
 
-
 // MARK: - ChargeItemDefinitionPropertyGroup
 extension ModelsR4.ChargeItemDefinitionPropertyGroup {
 
@@ -1636,8 +1586,8 @@ extension ModelsR4.ChargeItemDefinitionPropertyGroup {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ChargeItemDefinitionPropertyGroup else {
             return self
         }
-        resource.applicability = self.applicability?.compactMap { $0.copy() as? ChargeItemDefinitionApplicability } 
-        resource.priceComponent = self.priceComponent?.compactMap { $0.copy() as? ChargeItemDefinitionPropertyGroupPriceComponent } 
+        resource.applicability = self.applicability?.compactMap { $0.copy() as? ChargeItemDefinitionApplicability }
+        resource.priceComponent = self.priceComponent?.compactMap { $0.copy() as? ChargeItemDefinitionPropertyGroupPriceComponent }
 
         return resource
     }
@@ -1646,7 +1596,6 @@ extension ModelsR4.ChargeItemDefinitionPropertyGroup {
         return self.copied()
     }
 }
-
 
 // MARK: - ChargeItemDefinitionPropertyGroupPriceComponent
 extension ModelsR4.ChargeItemDefinitionPropertyGroupPriceComponent {
@@ -1669,7 +1618,6 @@ extension ModelsR4.ChargeItemDefinitionPropertyGroupPriceComponent {
     }
 }
 
-
 // MARK: - ChargeItemPerformer
 extension ModelsR4.ChargeItemPerformer {
 
@@ -1689,7 +1637,6 @@ extension ModelsR4.ChargeItemPerformer {
     }
 }
 
-
 // MARK: - Claim
 extension ModelsR4.Claim {
 
@@ -1698,7 +1645,7 @@ extension ModelsR4.Claim {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Claim else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.type = self.type.copy() as! CodeableConcept
         resource.subType = self.subType?.copy() as? CodeableConcept
@@ -1711,19 +1658,19 @@ extension ModelsR4.Claim {
         resource.provider = self.provider.copy() as! Reference
         resource.priority = self.priority.copy() as! CodeableConcept
         resource.fundsReserve = self.fundsReserve?.copy() as? CodeableConcept
-        resource.related = self.related?.compactMap { $0.copy() as? ClaimRelated } 
+        resource.related = self.related?.compactMap { $0.copy() as? ClaimRelated }
         resource.prescription = self.prescription?.copy() as? Reference
         resource.originalPrescription = self.originalPrescription?.copy() as? Reference
         resource.payee = self.payee?.copy() as? ClaimPayee
         resource.referral = self.referral?.copy() as? Reference
         resource.facility = self.facility?.copy() as? Reference
-        resource.careTeam = self.careTeam?.compactMap { $0.copy() as? ClaimCareTeam } 
-        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? ClaimSupportingInfo } 
-        resource.diagnosis = self.diagnosis?.compactMap { $0.copy() as? ClaimDiagnosis } 
-        resource.procedure = self.procedure?.compactMap { $0.copy() as? ClaimProcedure } 
-        resource.insurance = self.insurance.compactMap { $0.copy() as? ClaimInsurance } 
+        resource.careTeam = self.careTeam?.compactMap { $0.copy() as? ClaimCareTeam }
+        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? ClaimSupportingInfo }
+        resource.diagnosis = self.diagnosis?.compactMap { $0.copy() as? ClaimDiagnosis }
+        resource.procedure = self.procedure?.compactMap { $0.copy() as? ClaimProcedure }
+        resource.insurance = self.insurance.compactMap { $0.copy() as? ClaimInsurance }
         resource.accident = self.accident?.copy() as? ClaimAccident
-        resource.item = self.item?.compactMap { $0.copy() as? ClaimItem } 
+        resource.item = self.item?.compactMap { $0.copy() as? ClaimItem }
         resource.total = self.total?.copy() as? Money
 
         return resource
@@ -1733,7 +1680,6 @@ extension ModelsR4.Claim {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimAccident
 extension ModelsR4.ClaimAccident {
@@ -1754,7 +1700,6 @@ extension ModelsR4.ClaimAccident {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimCareTeam
 extension ModelsR4.ClaimCareTeam {
@@ -1778,7 +1723,6 @@ extension ModelsR4.ClaimCareTeam {
     }
 }
 
-
 // MARK: - ClaimDiagnosis
 extension ModelsR4.ClaimDiagnosis {
 
@@ -1789,7 +1733,7 @@ extension ModelsR4.ClaimDiagnosis {
         }
         resource.sequence = self.sequence
         resource.diagnosis = self.diagnosis.copy() as! DiagnosisX
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
         resource.onAdmission = self.onAdmission?.copy() as? CodeableConcept
         resource.packageCode = self.packageCode?.copy() as? CodeableConcept
 
@@ -1800,7 +1744,6 @@ extension ModelsR4.ClaimDiagnosis {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimInsurance
 extension ModelsR4.ClaimInsurance {
@@ -1826,7 +1769,6 @@ extension ModelsR4.ClaimInsurance {
     }
 }
 
-
 // MARK: - ClaimItem
 extension ModelsR4.ClaimItem {
 
@@ -1843,19 +1785,19 @@ extension ModelsR4.ClaimItem {
         resource.revenue = self.revenue?.copy() as? CodeableConcept
         resource.category = self.category?.copy() as? CodeableConcept
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
+        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.serviced = self.serviced?.copy() as? ServicedX
         resource.location = self.location?.copy() as? LocationX
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.unitPrice = self.unitPrice?.copy() as? Money
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
-        resource.udi = self.udi?.compactMap { $0.copy() as? Reference } 
+        resource.udi = self.udi?.compactMap { $0.copy() as? Reference }
         resource.bodySite = self.bodySite?.copy() as? CodeableConcept
-        resource.subSite = self.subSite?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.encounter = self.encounter?.compactMap { $0.copy() as? Reference } 
-        resource.detail = self.detail?.compactMap { $0.copy() as? ClaimItemDetail } 
+        resource.subSite = self.subSite?.compactMap { $0.copy() as? CodeableConcept }
+        resource.encounter = self.encounter?.compactMap { $0.copy() as? Reference }
+        resource.detail = self.detail?.compactMap { $0.copy() as? ClaimItemDetail }
 
         return resource
     }
@@ -1864,7 +1806,6 @@ extension ModelsR4.ClaimItem {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimItemDetail
 extension ModelsR4.ClaimItemDetail {
@@ -1878,14 +1819,14 @@ extension ModelsR4.ClaimItemDetail {
         resource.revenue = self.revenue?.copy() as? CodeableConcept
         resource.category = self.category?.copy() as? CodeableConcept
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
+        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.unitPrice = self.unitPrice?.copy() as? Money
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
-        resource.udi = self.udi?.compactMap { $0.copy() as? Reference } 
-        resource.subDetail = self.subDetail?.compactMap { $0.copy() as? ClaimItemDetailSubDetail } 
+        resource.udi = self.udi?.compactMap { $0.copy() as? Reference }
+        resource.subDetail = self.subDetail?.compactMap { $0.copy() as? ClaimItemDetailSubDetail }
 
         return resource
     }
@@ -1894,7 +1835,6 @@ extension ModelsR4.ClaimItemDetail {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimItemDetailSubDetail
 extension ModelsR4.ClaimItemDetailSubDetail {
@@ -1908,13 +1848,13 @@ extension ModelsR4.ClaimItemDetailSubDetail {
         resource.revenue = self.revenue?.copy() as? CodeableConcept
         resource.category = self.category?.copy() as? CodeableConcept
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
+        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.unitPrice = self.unitPrice?.copy() as? Money
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
-        resource.udi = self.udi?.compactMap { $0.copy() as? Reference } 
+        resource.udi = self.udi?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -1923,7 +1863,6 @@ extension ModelsR4.ClaimItemDetailSubDetail {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimPayee
 extension ModelsR4.ClaimPayee {
@@ -1944,7 +1883,6 @@ extension ModelsR4.ClaimPayee {
     }
 }
 
-
 // MARK: - ClaimProcedure
 extension ModelsR4.ClaimProcedure {
 
@@ -1954,10 +1892,10 @@ extension ModelsR4.ClaimProcedure {
             return self
         }
         resource.sequence = self.sequence
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
         resource.date = self.date
         resource.procedure = self.procedure.copy() as! ProcedureX
-        resource.udi = self.udi?.compactMap { $0.copy() as? Reference } 
+        resource.udi = self.udi?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -1966,7 +1904,6 @@ extension ModelsR4.ClaimProcedure {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimRelated
 extension ModelsR4.ClaimRelated {
@@ -1988,7 +1925,6 @@ extension ModelsR4.ClaimRelated {
     }
 }
 
-
 // MARK: - ClaimResponse
 extension ModelsR4.ClaimResponse {
 
@@ -1997,7 +1933,7 @@ extension ModelsR4.ClaimResponse {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ClaimResponse else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.type = self.type.copy() as! CodeableConcept
         resource.subType = self.subType?.copy() as? CodeableConcept
@@ -2012,18 +1948,18 @@ extension ModelsR4.ClaimResponse {
         resource.preAuthRef = self.preAuthRef
         resource.preAuthPeriod = self.preAuthPeriod?.copy() as? Period
         resource.payeeType = self.payeeType?.copy() as? CodeableConcept
-        resource.item = self.item?.compactMap { $0.copy() as? ClaimResponseItem } 
-        resource.addItem = self.addItem?.compactMap { $0.copy() as? ClaimResponseAddItem } 
-        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ClaimResponseItemAdjudication } 
-        resource.total = self.total?.compactMap { $0.copy() as? ClaimResponseTotal } 
+        resource.item = self.item?.compactMap { $0.copy() as? ClaimResponseItem }
+        resource.addItem = self.addItem?.compactMap { $0.copy() as? ClaimResponseAddItem }
+        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ClaimResponseItemAdjudication }
+        resource.total = self.total?.compactMap { $0.copy() as? ClaimResponseTotal }
         resource.payment = self.payment?.copy() as? ClaimResponsePayment
         resource.fundsReserve = self.fundsReserve?.copy() as? CodeableConcept
         resource.formCode = self.formCode?.copy() as? CodeableConcept
         resource.form = self.form?.copy() as? Attachment
-        resource.processNote = self.processNote?.compactMap { $0.copy() as? ClaimResponseProcessNote } 
-        resource.communicationRequest = self.communicationRequest?.compactMap { $0.copy() as? Reference } 
-        resource.insurance = self.insurance?.compactMap { $0.copy() as? ClaimResponseInsurance } 
-        resource.error = self.error?.compactMap { $0.copy() as? ClaimResponseError } 
+        resource.processNote = self.processNote?.compactMap { $0.copy() as? ClaimResponseProcessNote }
+        resource.communicationRequest = self.communicationRequest?.compactMap { $0.copy() as? Reference }
+        resource.insurance = self.insurance?.compactMap { $0.copy() as? ClaimResponseInsurance }
+        resource.error = self.error?.compactMap { $0.copy() as? ClaimResponseError }
 
         return resource
     }
@@ -2032,7 +1968,6 @@ extension ModelsR4.ClaimResponse {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimResponseAddItem
 extension ModelsR4.ClaimResponseAddItem {
@@ -2045,10 +1980,10 @@ extension ModelsR4.ClaimResponseAddItem {
         resource.itemSequence = self.itemSequence
         resource.detailSequence = self.detailSequence
         resource.subdetailSequence = self.subdetailSequence
-        resource.provider = self.provider?.compactMap { $0.copy() as? Reference } 
+        resource.provider = self.provider?.compactMap { $0.copy() as? Reference }
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
+        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.serviced = self.serviced?.copy() as? ServicedX
         resource.location = self.location?.copy() as? LocationX
         resource.quantity = self.quantity?.copy() as? Quantity
@@ -2056,10 +1991,10 @@ extension ModelsR4.ClaimResponseAddItem {
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
         resource.bodySite = self.bodySite?.copy() as? CodeableConcept
-        resource.subSite = self.subSite?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.subSite = self.subSite?.compactMap { $0.copy() as? CodeableConcept }
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication.compactMap { $0.copy() as? ClaimResponseItemAdjudication } 
-        resource.detail = self.detail?.compactMap { $0.copy() as? ClaimResponseAddItemDetail } 
+        resource.adjudication = self.adjudication.compactMap { $0.copy() as? ClaimResponseItemAdjudication }
+        resource.detail = self.detail?.compactMap { $0.copy() as? ClaimResponseAddItemDetail }
 
         return resource
     }
@@ -2068,7 +2003,6 @@ extension ModelsR4.ClaimResponseAddItem {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimResponseAddItemDetail
 extension ModelsR4.ClaimResponseAddItemDetail {
@@ -2079,14 +2013,14 @@ extension ModelsR4.ClaimResponseAddItemDetail {
             return self
         }
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.unitPrice = self.unitPrice?.copy() as? Money
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication.compactMap { $0.copy() as? ClaimResponseItemAdjudication } 
-        resource.subDetail = self.subDetail?.compactMap { $0.copy() as? ClaimResponseAddItemDetailSubDetail } 
+        resource.adjudication = self.adjudication.compactMap { $0.copy() as? ClaimResponseItemAdjudication }
+        resource.subDetail = self.subDetail?.compactMap { $0.copy() as? ClaimResponseAddItemDetailSubDetail }
 
         return resource
     }
@@ -2095,7 +2029,6 @@ extension ModelsR4.ClaimResponseAddItemDetail {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimResponseAddItemDetailSubDetail
 extension ModelsR4.ClaimResponseAddItemDetailSubDetail {
@@ -2106,13 +2039,13 @@ extension ModelsR4.ClaimResponseAddItemDetailSubDetail {
             return self
         }
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.unitPrice = self.unitPrice?.copy() as? Money
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication.compactMap { $0.copy() as? ClaimResponseItemAdjudication } 
+        resource.adjudication = self.adjudication.compactMap { $0.copy() as? ClaimResponseItemAdjudication }
 
         return resource
     }
@@ -2121,7 +2054,6 @@ extension ModelsR4.ClaimResponseAddItemDetailSubDetail {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimResponseError
 extension ModelsR4.ClaimResponseError {
@@ -2143,7 +2075,6 @@ extension ModelsR4.ClaimResponseError {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimResponseInsurance
 extension ModelsR4.ClaimResponseInsurance {
@@ -2167,7 +2098,6 @@ extension ModelsR4.ClaimResponseInsurance {
     }
 }
 
-
 // MARK: - ClaimResponseItem
 extension ModelsR4.ClaimResponseItem {
 
@@ -2178,8 +2108,8 @@ extension ModelsR4.ClaimResponseItem {
         }
         resource.itemSequence = self.itemSequence
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication.compactMap { $0.copy() as? ClaimResponseItemAdjudication } 
-        resource.detail = self.detail?.compactMap { $0.copy() as? ClaimResponseItemDetail } 
+        resource.adjudication = self.adjudication.compactMap { $0.copy() as? ClaimResponseItemAdjudication }
+        resource.detail = self.detail?.compactMap { $0.copy() as? ClaimResponseItemDetail }
 
         return resource
     }
@@ -2188,7 +2118,6 @@ extension ModelsR4.ClaimResponseItem {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimResponseItemAdjudication
 extension ModelsR4.ClaimResponseItemAdjudication {
@@ -2211,7 +2140,6 @@ extension ModelsR4.ClaimResponseItemAdjudication {
     }
 }
 
-
 // MARK: - ClaimResponseItemDetail
 extension ModelsR4.ClaimResponseItemDetail {
 
@@ -2222,8 +2150,8 @@ extension ModelsR4.ClaimResponseItemDetail {
         }
         resource.detailSequence = self.detailSequence
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication.compactMap { $0.copy() as? ClaimResponseItemAdjudication } 
-        resource.subDetail = self.subDetail?.compactMap { $0.copy() as? ClaimResponseItemDetailSubDetail } 
+        resource.adjudication = self.adjudication.compactMap { $0.copy() as? ClaimResponseItemAdjudication }
+        resource.subDetail = self.subDetail?.compactMap { $0.copy() as? ClaimResponseItemDetailSubDetail }
 
         return resource
     }
@@ -2232,7 +2160,6 @@ extension ModelsR4.ClaimResponseItemDetail {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimResponseItemDetailSubDetail
 extension ModelsR4.ClaimResponseItemDetailSubDetail {
@@ -2244,7 +2171,7 @@ extension ModelsR4.ClaimResponseItemDetailSubDetail {
         }
         resource.subDetailSequence = self.subDetailSequence
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ClaimResponseItemAdjudication } 
+        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ClaimResponseItemAdjudication }
 
         return resource
     }
@@ -2253,7 +2180,6 @@ extension ModelsR4.ClaimResponseItemDetailSubDetail {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimResponsePayment
 extension ModelsR4.ClaimResponsePayment {
@@ -2278,7 +2204,6 @@ extension ModelsR4.ClaimResponsePayment {
     }
 }
 
-
 // MARK: - ClaimResponseProcessNote
 extension ModelsR4.ClaimResponseProcessNote {
 
@@ -2300,7 +2225,6 @@ extension ModelsR4.ClaimResponseProcessNote {
     }
 }
 
-
 // MARK: - ClaimResponseTotal
 extension ModelsR4.ClaimResponseTotal {
 
@@ -2319,7 +2243,6 @@ extension ModelsR4.ClaimResponseTotal {
         return self.copied()
     }
 }
-
 
 // MARK: - ClaimSupportingInfo
 extension ModelsR4.ClaimSupportingInfo {
@@ -2344,7 +2267,6 @@ extension ModelsR4.ClaimSupportingInfo {
     }
 }
 
-
 // MARK: - ClinicalImpression
 extension ModelsR4.ClinicalImpression {
 
@@ -2353,7 +2275,7 @@ extension ModelsR4.ClinicalImpression {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ClinicalImpression else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.statusReason = self.statusReason?.copy() as? CodeableConcept
         resource.code = self.code?.copy() as? CodeableConcept
@@ -2364,15 +2286,15 @@ extension ModelsR4.ClinicalImpression {
         resource.date = self.date
         resource.assessor = self.assessor?.copy() as? Reference
         resource.previous = self.previous?.copy() as? Reference
-        resource.problem = self.problem?.compactMap { $0.copy() as? Reference } 
-        resource.investigation = self.investigation?.compactMap { $0.copy() as? ClinicalImpressionInvestigation } 
+        resource.problem = self.problem?.compactMap { $0.copy() as? Reference }
+        resource.investigation = self.investigation?.compactMap { $0.copy() as? ClinicalImpressionInvestigation }
         resource.`protocol` = self.`protocol`
         resource.summary = self.summary
-        resource.finding = self.finding?.compactMap { $0.copy() as? ClinicalImpressionFinding } 
-        resource.prognosisCodeableConcept = self.prognosisCodeableConcept?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.prognosisReference = self.prognosisReference?.compactMap { $0.copy() as? Reference } 
-        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.finding = self.finding?.compactMap { $0.copy() as? ClinicalImpressionFinding }
+        resource.prognosisCodeableConcept = self.prognosisCodeableConcept?.compactMap { $0.copy() as? CodeableConcept }
+        resource.prognosisReference = self.prognosisReference?.compactMap { $0.copy() as? Reference }
+        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -2381,7 +2303,6 @@ extension ModelsR4.ClinicalImpression {
         return self.copied()
     }
 }
-
 
 // MARK: - ClinicalImpressionFinding
 extension ModelsR4.ClinicalImpressionFinding {
@@ -2403,7 +2324,6 @@ extension ModelsR4.ClinicalImpressionFinding {
     }
 }
 
-
 // MARK: - ClinicalImpressionInvestigation
 extension ModelsR4.ClinicalImpressionInvestigation {
 
@@ -2413,7 +2333,7 @@ extension ModelsR4.ClinicalImpressionInvestigation {
             return self
         }
         resource.code = self.code.copy() as! CodeableConcept
-        resource.item = self.item?.compactMap { $0.copy() as? Reference } 
+        resource.item = self.item?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -2422,7 +2342,6 @@ extension ModelsR4.ClinicalImpressionInvestigation {
         return self.copied()
     }
 }
-
 
 // MARK: - CodeSystem
 extension ModelsR4.CodeSystem {
@@ -2433,7 +2352,7 @@ extension ModelsR4.CodeSystem {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -2441,10 +2360,10 @@ extension ModelsR4.CodeSystem {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.copyright = self.copyright
         resource.caseSensitive = self.caseSensitive
@@ -2455,9 +2374,9 @@ extension ModelsR4.CodeSystem {
         resource.content = self.content
         resource.supplements = self.supplements
         resource.count = self.count
-        resource.filter = self.filter?.compactMap { $0.copy() as? CodeSystemFilter } 
-        resource.property = self.property?.compactMap { $0.copy() as? CodeSystemProperty } 
-        resource.concept = self.concept?.compactMap { $0.copy() as? CodeSystemConcept } 
+        resource.filter = self.filter?.compactMap { $0.copy() as? CodeSystemFilter }
+        resource.property = self.property?.compactMap { $0.copy() as? CodeSystemProperty }
+        resource.concept = self.concept?.compactMap { $0.copy() as? CodeSystemConcept }
 
         return resource
     }
@@ -2466,7 +2385,6 @@ extension ModelsR4.CodeSystem {
         return self.copied()
     }
 }
-
 
 // MARK: - CodeSystemConcept
 extension ModelsR4.CodeSystemConcept {
@@ -2479,9 +2397,9 @@ extension ModelsR4.CodeSystemConcept {
         resource.code = self.code
         resource.display = self.display
         resource.definition = self.definition
-        resource.designation = self.designation?.compactMap { $0.copy() as? CodeSystemConceptDesignation } 
-        resource.property = self.property?.compactMap { $0.copy() as? CodeSystemConceptProperty } 
-        resource.concept = self.concept?.compactMap { $0.copy() as? CodeSystemConcept } 
+        resource.designation = self.designation?.compactMap { $0.copy() as? CodeSystemConceptDesignation }
+        resource.property = self.property?.compactMap { $0.copy() as? CodeSystemConceptProperty }
+        resource.concept = self.concept?.compactMap { $0.copy() as? CodeSystemConcept }
 
         return resource
     }
@@ -2490,7 +2408,6 @@ extension ModelsR4.CodeSystemConcept {
         return self.copied()
     }
 }
-
 
 // MARK: - CodeSystemConceptDesignation
 extension ModelsR4.CodeSystemConceptDesignation {
@@ -2512,7 +2429,6 @@ extension ModelsR4.CodeSystemConceptDesignation {
     }
 }
 
-
 // MARK: - CodeSystemConceptProperty
 extension ModelsR4.CodeSystemConceptProperty {
 
@@ -2531,7 +2447,6 @@ extension ModelsR4.CodeSystemConceptProperty {
         return self.copied()
     }
 }
-
 
 // MARK: - CodeSystemFilter
 extension ModelsR4.CodeSystemFilter {
@@ -2554,7 +2469,6 @@ extension ModelsR4.CodeSystemFilter {
     }
 }
 
-
 // MARK: - CodeSystemProperty
 extension ModelsR4.CodeSystemProperty {
 
@@ -2576,7 +2490,6 @@ extension ModelsR4.CodeSystemProperty {
     }
 }
 
-
 // MARK: - CodeableConcept
 extension ModelsR4.CodeableConcept {
 
@@ -2585,7 +2498,7 @@ extension ModelsR4.CodeableConcept {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CodeableConcept else {
             return self
         }
-        resource.coding = self.coding?.compactMap { $0.copy() as? Coding } 
+        resource.coding = self.coding?.compactMap { $0.copy() as? Coding }
         resource.text = self.text
 
         return resource
@@ -2595,7 +2508,6 @@ extension ModelsR4.CodeableConcept {
         return self.copied()
     }
 }
-
 
 // MARK: - Coding
 extension ModelsR4.Coding {
@@ -2619,7 +2531,6 @@ extension ModelsR4.Coding {
     }
 }
 
-
 // MARK: - Communication
 extension ModelsR4.Communication {
 
@@ -2628,29 +2539,29 @@ extension ModelsR4.Communication {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Communication else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.instantiatesCanonical = self.instantiatesCanonical
         resource.instantiatesUri = self.instantiatesUri
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
-        resource.inResponseTo = self.inResponseTo?.compactMap { $0.copy() as? Reference } 
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
+        resource.inResponseTo = self.inResponseTo?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
         resource.statusReason = self.statusReason?.copy() as? CodeableConcept
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.priority = self.priority
-        resource.medium = self.medium?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.medium = self.medium?.compactMap { $0.copy() as? CodeableConcept }
         resource.subject = self.subject?.copy() as? Reference
         resource.topic = self.topic?.copy() as? CodeableConcept
-        resource.about = self.about?.compactMap { $0.copy() as? Reference } 
+        resource.about = self.about?.compactMap { $0.copy() as? Reference }
         resource.encounter = self.encounter?.copy() as? Reference
         resource.sent = self.sent
         resource.received = self.received
-        resource.recipient = self.recipient?.compactMap { $0.copy() as? Reference } 
+        resource.recipient = self.recipient?.compactMap { $0.copy() as? Reference }
         resource.sender = self.sender?.copy() as? Reference
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.payload = self.payload?.compactMap { $0.copy() as? CommunicationPayload } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.payload = self.payload?.compactMap { $0.copy() as? CommunicationPayload }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -2659,7 +2570,6 @@ extension ModelsR4.Communication {
         return self.copied()
     }
 }
-
 
 // MARK: - CommunicationPayload
 extension ModelsR4.CommunicationPayload {
@@ -2679,7 +2589,6 @@ extension ModelsR4.CommunicationPayload {
     }
 }
 
-
 // MARK: - CommunicationRequest
 extension ModelsR4.CommunicationRequest {
 
@@ -2688,28 +2597,28 @@ extension ModelsR4.CommunicationRequest {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CommunicationRequest else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.replaces = self.replaces?.compactMap { $0.copy() as? Reference } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.replaces = self.replaces?.compactMap { $0.copy() as? Reference }
         resource.groupIdentifier = self.groupIdentifier?.copy() as? Identifier
         resource.status = self.status
         resource.statusReason = self.statusReason?.copy() as? CodeableConcept
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.priority = self.priority
         resource.doNotPerform = self.doNotPerform
-        resource.medium = self.medium?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.medium = self.medium?.compactMap { $0.copy() as? CodeableConcept }
         resource.subject = self.subject?.copy() as? Reference
-        resource.about = self.about?.compactMap { $0.copy() as? Reference } 
+        resource.about = self.about?.compactMap { $0.copy() as? Reference }
         resource.encounter = self.encounter?.copy() as? Reference
-        resource.payload = self.payload?.compactMap { $0.copy() as? CommunicationRequestPayload } 
+        resource.payload = self.payload?.compactMap { $0.copy() as? CommunicationRequestPayload }
         resource.occurrence = self.occurrence?.copy() as? OccurrenceX
         resource.authoredOn = self.authoredOn
         resource.requester = self.requester?.copy() as? Reference
-        resource.recipient = self.recipient?.compactMap { $0.copy() as? Reference } 
+        resource.recipient = self.recipient?.compactMap { $0.copy() as? Reference }
         resource.sender = self.sender?.copy() as? Reference
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -2718,7 +2627,6 @@ extension ModelsR4.CommunicationRequest {
         return self.copied()
     }
 }
-
 
 // MARK: - CommunicationRequestPayload
 extension ModelsR4.CommunicationRequestPayload {
@@ -2738,7 +2646,6 @@ extension ModelsR4.CommunicationRequestPayload {
     }
 }
 
-
 // MARK: - CompartmentDefinition
 extension ModelsR4.CompartmentDefinition {
 
@@ -2754,13 +2661,13 @@ extension ModelsR4.CompartmentDefinition {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
         resource.purpose = self.purpose
         resource.code = self.code
         resource.search = self.search
-        resource.resource = self.resource?.compactMap { $0.copy() as? CompartmentDefinitionResource } 
+        resource.resource = self.resource?.compactMap { $0.copy() as? CompartmentDefinitionResource }
 
         return resource
     }
@@ -2769,7 +2676,6 @@ extension ModelsR4.CompartmentDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - CompartmentDefinitionResource
 extension ModelsR4.CompartmentDefinitionResource {
@@ -2791,7 +2697,6 @@ extension ModelsR4.CompartmentDefinitionResource {
     }
 }
 
-
 // MARK: - Composition
 extension ModelsR4.Composition {
 
@@ -2803,18 +2708,18 @@ extension ModelsR4.Composition {
         resource.identifier = self.identifier?.copy() as? Identifier
         resource.status = self.status
         resource.type = self.type.copy() as! CodeableConcept
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.subject = self.subject?.copy() as? Reference
         resource.encounter = self.encounter?.copy() as? Reference
         resource.date = self.date
-        resource.author = self.author.compactMap { $0.copy() as? Reference } 
+        resource.author = self.author.compactMap { $0.copy() as? Reference }
         resource.title = self.title
         resource.confidentiality = self.confidentiality
-        resource.attester = self.attester?.compactMap { $0.copy() as? CompositionAttester } 
+        resource.attester = self.attester?.compactMap { $0.copy() as? CompositionAttester }
         resource.custodian = self.custodian?.copy() as? Reference
-        resource.relatesTo = self.relatesTo?.compactMap { $0.copy() as? CompositionRelatesTo } 
-        resource.event = self.event?.compactMap { $0.copy() as? CompositionEvent } 
-        resource.section = self.section?.compactMap { $0.copy() as? CompositionSection } 
+        resource.relatesTo = self.relatesTo?.compactMap { $0.copy() as? CompositionRelatesTo }
+        resource.event = self.event?.compactMap { $0.copy() as? CompositionEvent }
+        resource.section = self.section?.compactMap { $0.copy() as? CompositionSection }
 
         return resource
     }
@@ -2823,7 +2728,6 @@ extension ModelsR4.Composition {
         return self.copied()
     }
 }
-
 
 // MARK: - CompositionAttester
 extension ModelsR4.CompositionAttester {
@@ -2845,7 +2749,6 @@ extension ModelsR4.CompositionAttester {
     }
 }
 
-
 // MARK: - CompositionEvent
 extension ModelsR4.CompositionEvent {
 
@@ -2854,9 +2757,9 @@ extension ModelsR4.CompositionEvent {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CompositionEvent else {
             return self
         }
-        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept }
         resource.period = self.period?.copy() as? Period
-        resource.detail = self.detail?.compactMap { $0.copy() as? Reference } 
+        resource.detail = self.detail?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -2865,7 +2768,6 @@ extension ModelsR4.CompositionEvent {
         return self.copied()
     }
 }
-
 
 // MARK: - CompositionRelatesTo
 extension ModelsR4.CompositionRelatesTo {
@@ -2886,7 +2788,6 @@ extension ModelsR4.CompositionRelatesTo {
     }
 }
 
-
 // MARK: - CompositionSection
 extension ModelsR4.CompositionSection {
 
@@ -2897,14 +2798,14 @@ extension ModelsR4.CompositionSection {
         }
         resource.title = self.title
         resource.code = self.code?.copy() as? CodeableConcept
-        resource.author = self.author?.compactMap { $0.copy() as? Reference } 
+        resource.author = self.author?.compactMap { $0.copy() as? Reference }
         resource.focus = self.focus?.copy() as? Reference
         resource.text = self.text?.copy() as? Narrative
         resource.mode = self.mode
         resource.orderedBy = self.orderedBy?.copy() as? CodeableConcept
-        resource.entry = self.entry?.compactMap { $0.copy() as? Reference } 
+        resource.entry = self.entry?.compactMap { $0.copy() as? Reference }
         resource.emptyReason = self.emptyReason?.copy() as? CodeableConcept
-        resource.section = self.section?.compactMap { $0.copy() as? CompositionSection } 
+        resource.section = self.section?.compactMap { $0.copy() as? CompositionSection }
 
         return resource
     }
@@ -2913,7 +2814,6 @@ extension ModelsR4.CompositionSection {
         return self.copied()
     }
 }
-
 
 // MARK: - ConceptMap
 extension ModelsR4.ConceptMap {
@@ -2932,15 +2832,15 @@ extension ModelsR4.ConceptMap {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.copyright = self.copyright
         resource.source = self.source?.copy() as? SourceX
         resource.target = self.target?.copy() as? TargetX
-        resource.group = self.group?.compactMap { $0.copy() as? ConceptMapGroup } 
+        resource.group = self.group?.compactMap { $0.copy() as? ConceptMapGroup }
 
         return resource
     }
@@ -2949,7 +2849,6 @@ extension ModelsR4.ConceptMap {
         return self.copied()
     }
 }
-
 
 // MARK: - ConceptMapGroup
 extension ModelsR4.ConceptMapGroup {
@@ -2963,7 +2862,7 @@ extension ModelsR4.ConceptMapGroup {
         resource.sourceVersion = self.sourceVersion
         resource.target = self.target
         resource.targetVersion = self.targetVersion
-        resource.element = self.element.compactMap { $0.copy() as? ConceptMapGroupElement } 
+        resource.element = self.element.compactMap { $0.copy() as? ConceptMapGroupElement }
         resource.unmapped = self.unmapped?.copy() as? ConceptMapGroupUnmapped
 
         return resource
@@ -2973,7 +2872,6 @@ extension ModelsR4.ConceptMapGroup {
         return self.copied()
     }
 }
-
 
 // MARK: - ConceptMapGroupElement
 extension ModelsR4.ConceptMapGroupElement {
@@ -2985,7 +2883,7 @@ extension ModelsR4.ConceptMapGroupElement {
         }
         resource.code = self.code
         resource.display = self.display
-        resource.target = self.target?.compactMap { $0.copy() as? ConceptMapGroupElementTarget } 
+        resource.target = self.target?.compactMap { $0.copy() as? ConceptMapGroupElementTarget }
 
         return resource
     }
@@ -2994,7 +2892,6 @@ extension ModelsR4.ConceptMapGroupElement {
         return self.copied()
     }
 }
-
 
 // MARK: - ConceptMapGroupElementTarget
 extension ModelsR4.ConceptMapGroupElementTarget {
@@ -3008,8 +2905,8 @@ extension ModelsR4.ConceptMapGroupElementTarget {
         resource.display = self.display
         resource.equivalence = self.equivalence
         resource.comment = self.comment
-        resource.dependsOn = self.dependsOn?.compactMap { $0.copy() as? ConceptMapGroupElementTargetDependsOn } 
-        resource.product = self.product?.compactMap { $0.copy() as? ConceptMapGroupElementTargetDependsOn } 
+        resource.dependsOn = self.dependsOn?.compactMap { $0.copy() as? ConceptMapGroupElementTargetDependsOn }
+        resource.product = self.product?.compactMap { $0.copy() as? ConceptMapGroupElementTargetDependsOn }
 
         return resource
     }
@@ -3018,7 +2915,6 @@ extension ModelsR4.ConceptMapGroupElementTarget {
         return self.copied()
     }
 }
-
 
 // MARK: - ConceptMapGroupElementTargetDependsOn
 extension ModelsR4.ConceptMapGroupElementTargetDependsOn {
@@ -3041,7 +2937,6 @@ extension ModelsR4.ConceptMapGroupElementTargetDependsOn {
     }
 }
 
-
 // MARK: - ConceptMapGroupUnmapped
 extension ModelsR4.ConceptMapGroupUnmapped {
 
@@ -3063,7 +2958,6 @@ extension ModelsR4.ConceptMapGroupUnmapped {
     }
 }
 
-
 // MARK: - Condition
 extension ModelsR4.Condition {
 
@@ -3072,13 +2966,13 @@ extension ModelsR4.Condition {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Condition else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.clinicalStatus = self.clinicalStatus?.copy() as? CodeableConcept
         resource.verificationStatus = self.verificationStatus?.copy() as? CodeableConcept
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.severity = self.severity?.copy() as? CodeableConcept
         resource.code = self.code?.copy() as? CodeableConcept
-        resource.bodySite = self.bodySite?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.bodySite = self.bodySite?.compactMap { $0.copy() as? CodeableConcept }
         resource.subject = self.subject.copy() as! Reference
         resource.encounter = self.encounter?.copy() as? Reference
         resource.onset = self.onset?.copy() as? OnsetX
@@ -3086,9 +2980,9 @@ extension ModelsR4.Condition {
         resource.recordedDate = self.recordedDate
         resource.recorder = self.recorder?.copy() as? Reference
         resource.asserter = self.asserter?.copy() as? Reference
-        resource.stage = self.stage?.compactMap { $0.copy() as? ConditionStage } 
-        resource.evidence = self.evidence?.compactMap { $0.copy() as? ConditionEvidence } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.stage = self.stage?.compactMap { $0.copy() as? ConditionStage }
+        resource.evidence = self.evidence?.compactMap { $0.copy() as? ConditionEvidence }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -3097,7 +2991,6 @@ extension ModelsR4.Condition {
         return self.copied()
     }
 }
-
 
 // MARK: - ConditionEvidence
 extension ModelsR4.ConditionEvidence {
@@ -3107,8 +3000,8 @@ extension ModelsR4.ConditionEvidence {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ConditionEvidence else {
             return self
         }
-        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.detail = self.detail?.compactMap { $0.copy() as? Reference } 
+        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept }
+        resource.detail = self.detail?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -3117,7 +3010,6 @@ extension ModelsR4.ConditionEvidence {
         return self.copied()
     }
 }
-
 
 // MARK: - ConditionStage
 extension ModelsR4.ConditionStage {
@@ -3128,7 +3020,7 @@ extension ModelsR4.ConditionStage {
             return self
         }
         resource.summary = self.summary?.copy() as? CodeableConcept
-        resource.assessment = self.assessment?.compactMap { $0.copy() as? Reference } 
+        resource.assessment = self.assessment?.compactMap { $0.copy() as? Reference }
         resource.type = self.type?.copy() as? CodeableConcept
 
         return resource
@@ -3139,7 +3031,6 @@ extension ModelsR4.ConditionStage {
     }
 }
 
-
 // MARK: - Consent
 extension ModelsR4.Consent {
 
@@ -3148,18 +3039,18 @@ extension ModelsR4.Consent {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Consent else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.scope = self.scope.copy() as! CodeableConcept
-        resource.category = self.category.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category.compactMap { $0.copy() as? CodeableConcept }
         resource.patient = self.patient?.copy() as? Reference
         resource.dateTime = self.dateTime
-        resource.performer = self.performer?.compactMap { $0.copy() as? Reference } 
-        resource.organization = self.organization?.compactMap { $0.copy() as? Reference } 
+        resource.performer = self.performer?.compactMap { $0.copy() as? Reference }
+        resource.organization = self.organization?.compactMap { $0.copy() as? Reference }
         resource.source = self.source?.copy() as? SourceX
-        resource.policy = self.policy?.compactMap { $0.copy() as? ConsentPolicy } 
+        resource.policy = self.policy?.compactMap { $0.copy() as? ConsentPolicy }
         resource.policyRule = self.policyRule?.copy() as? CodeableConcept
-        resource.verification = self.verification?.compactMap { $0.copy() as? ConsentVerification } 
+        resource.verification = self.verification?.compactMap { $0.copy() as? ConsentVerification }
         resource.provision = self.provision?.copy() as? ConsentProvision
 
         return resource
@@ -3169,7 +3060,6 @@ extension ModelsR4.Consent {
         return self.copied()
     }
 }
-
 
 // MARK: - ConsentPolicy
 extension ModelsR4.ConsentPolicy {
@@ -3190,7 +3080,6 @@ extension ModelsR4.ConsentPolicy {
     }
 }
 
-
 // MARK: - ConsentProvision
 extension ModelsR4.ConsentProvision {
 
@@ -3201,15 +3090,15 @@ extension ModelsR4.ConsentProvision {
         }
         resource.type = self.type
         resource.period = self.period?.copy() as? Period
-        resource.actor = self.actor?.compactMap { $0.copy() as? ConsentProvisionActor } 
-        resource.action = self.action?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.securityLabel = self.securityLabel?.compactMap { $0.copy() as? Coding } 
-        resource.purpose = self.purpose?.compactMap { $0.copy() as? Coding } 
-        resource.`class` = self.`class`?.compactMap { $0.copy() as? Coding } 
-        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.actor = self.actor?.compactMap { $0.copy() as? ConsentProvisionActor }
+        resource.action = self.action?.compactMap { $0.copy() as? CodeableConcept }
+        resource.securityLabel = self.securityLabel?.compactMap { $0.copy() as? Coding }
+        resource.purpose = self.purpose?.compactMap { $0.copy() as? Coding }
+        resource.`class` = self.`class`?.compactMap { $0.copy() as? Coding }
+        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept }
         resource.dataPeriod = self.dataPeriod?.copy() as? Period
-        resource.data = self.data?.compactMap { $0.copy() as? ConsentProvisionData } 
-        resource.provision = self.provision?.compactMap { $0.copy() as? ConsentProvision } 
+        resource.data = self.data?.compactMap { $0.copy() as? ConsentProvisionData }
+        resource.provision = self.provision?.compactMap { $0.copy() as? ConsentProvision }
 
         return resource
     }
@@ -3218,7 +3107,6 @@ extension ModelsR4.ConsentProvision {
         return self.copied()
     }
 }
-
 
 // MARK: - ConsentProvisionActor
 extension ModelsR4.ConsentProvisionActor {
@@ -3239,7 +3127,6 @@ extension ModelsR4.ConsentProvisionActor {
     }
 }
 
-
 // MARK: - ConsentProvisionData
 extension ModelsR4.ConsentProvisionData {
 
@@ -3258,7 +3145,6 @@ extension ModelsR4.ConsentProvisionData {
         return self.copied()
     }
 }
-
 
 // MARK: - ConsentVerification
 extension ModelsR4.ConsentVerification {
@@ -3280,7 +3166,6 @@ extension ModelsR4.ConsentVerification {
     }
 }
 
-
 // MARK: - ContactDetail
 extension ModelsR4.ContactDetail {
 
@@ -3290,7 +3175,7 @@ extension ModelsR4.ContactDetail {
             return self
         }
         resource.name = self.name
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
 
         return resource
     }
@@ -3299,7 +3184,6 @@ extension ModelsR4.ContactDetail {
         return self.copied()
     }
 }
-
 
 // MARK: - ContactPoint
 extension ModelsR4.ContactPoint {
@@ -3323,7 +3207,6 @@ extension ModelsR4.ContactPoint {
     }
 }
 
-
 // MARK: - Contract
 extension ModelsR4.Contract {
 
@@ -3332,7 +3215,7 @@ extension ModelsR4.Contract {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Contract else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.url = self.url
         resource.version = self.version
         resource.status = self.status
@@ -3343,10 +3226,10 @@ extension ModelsR4.Contract {
         resource.issued = self.issued
         resource.applies = self.applies?.copy() as? Period
         resource.expirationType = self.expirationType?.copy() as? CodeableConcept
-        resource.subject = self.subject?.compactMap { $0.copy() as? Reference } 
-        resource.authority = self.authority?.compactMap { $0.copy() as? Reference } 
-        resource.domain = self.domain?.compactMap { $0.copy() as? Reference } 
-        resource.site = self.site?.compactMap { $0.copy() as? Reference } 
+        resource.subject = self.subject?.compactMap { $0.copy() as? Reference }
+        resource.authority = self.authority?.compactMap { $0.copy() as? Reference }
+        resource.domain = self.domain?.compactMap { $0.copy() as? Reference }
+        resource.site = self.site?.compactMap { $0.copy() as? Reference }
         resource.name = self.name
         resource.title = self.title
         resource.subtitle = self.subtitle
@@ -3355,15 +3238,15 @@ extension ModelsR4.Contract {
         resource.scope = self.scope?.copy() as? CodeableConcept
         resource.topic = self.topic?.copy() as? TopicX
         resource.type = self.type?.copy() as? CodeableConcept
-        resource.subType = self.subType?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.subType = self.subType?.compactMap { $0.copy() as? CodeableConcept }
         resource.contentDefinition = self.contentDefinition?.copy() as? ContractContentDefinition
-        resource.term = self.term?.compactMap { $0.copy() as? ContractTerm } 
-        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? Reference } 
-        resource.relevantHistory = self.relevantHistory?.compactMap { $0.copy() as? Reference } 
-        resource.signer = self.signer?.compactMap { $0.copy() as? ContractSigner } 
-        resource.friendly = self.friendly?.compactMap { $0.copy() as? ContractFriendly } 
-        resource.legal = self.legal?.compactMap { $0.copy() as? ContractLegal } 
-        resource.rule = self.rule?.compactMap { $0.copy() as? ContractRule } 
+        resource.term = self.term?.compactMap { $0.copy() as? ContractTerm }
+        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? Reference }
+        resource.relevantHistory = self.relevantHistory?.compactMap { $0.copy() as? Reference }
+        resource.signer = self.signer?.compactMap { $0.copy() as? ContractSigner }
+        resource.friendly = self.friendly?.compactMap { $0.copy() as? ContractFriendly }
+        resource.legal = self.legal?.compactMap { $0.copy() as? ContractLegal }
+        resource.rule = self.rule?.compactMap { $0.copy() as? ContractRule }
         resource.legallyBinding = self.legallyBinding?.copy() as? LegallyBindingX
 
         return resource
@@ -3373,7 +3256,6 @@ extension ModelsR4.Contract {
         return self.copied()
     }
 }
-
 
 // MARK: - ContractContentDefinition
 extension ModelsR4.ContractContentDefinition {
@@ -3398,7 +3280,6 @@ extension ModelsR4.ContractContentDefinition {
     }
 }
 
-
 // MARK: - ContractFriendly
 extension ModelsR4.ContractFriendly {
 
@@ -3416,7 +3297,6 @@ extension ModelsR4.ContractFriendly {
         return self.copied()
     }
 }
-
 
 // MARK: - ContractLegal
 extension ModelsR4.ContractLegal {
@@ -3436,7 +3316,6 @@ extension ModelsR4.ContractLegal {
     }
 }
 
-
 // MARK: - ContractRule
 extension ModelsR4.ContractRule {
 
@@ -3455,7 +3334,6 @@ extension ModelsR4.ContractRule {
     }
 }
 
-
 // MARK: - ContractSigner
 extension ModelsR4.ContractSigner {
 
@@ -3466,7 +3344,7 @@ extension ModelsR4.ContractSigner {
         }
         resource.type = self.type.copy() as! Coding
         resource.party = self.party.copy() as! Reference
-        resource.signature = self.signature.compactMap { $0.copy() as? Signature } 
+        resource.signature = self.signature.compactMap { $0.copy() as? Signature }
 
         return resource
     }
@@ -3475,7 +3353,6 @@ extension ModelsR4.ContractSigner {
         return self.copied()
     }
 }
-
 
 // MARK: - ContractTerm
 extension ModelsR4.ContractTerm {
@@ -3492,11 +3369,11 @@ extension ModelsR4.ContractTerm {
         resource.type = self.type?.copy() as? CodeableConcept
         resource.subType = self.subType?.copy() as? CodeableConcept
         resource.text = self.text
-        resource.securityLabel = self.securityLabel?.compactMap { $0.copy() as? ContractTermSecurityLabel } 
+        resource.securityLabel = self.securityLabel?.compactMap { $0.copy() as? ContractTermSecurityLabel }
         resource.offer = self.offer.copy() as! ContractTermOffer
-        resource.asset = self.asset?.compactMap { $0.copy() as? ContractTermAsset } 
-        resource.action = self.action?.compactMap { $0.copy() as? ContractTermAction } 
-        resource.group = self.group?.compactMap { $0.copy() as? ContractTerm } 
+        resource.asset = self.asset?.compactMap { $0.copy() as? ContractTermAsset }
+        resource.action = self.action?.compactMap { $0.copy() as? ContractTermAction }
+        resource.group = self.group?.compactMap { $0.copy() as? ContractTerm }
 
         return resource
     }
@@ -3505,7 +3382,6 @@ extension ModelsR4.ContractTerm {
         return self.copied()
     }
 }
-
 
 // MARK: - ContractTermAction
 extension ModelsR4.ContractTermAction {
@@ -3517,24 +3393,24 @@ extension ModelsR4.ContractTermAction {
         }
         resource.doNotPerform = self.doNotPerform
         resource.type = self.type.copy() as! CodeableConcept
-        resource.subject = self.subject?.compactMap { $0.copy() as? ContractTermActionSubject } 
+        resource.subject = self.subject?.compactMap { $0.copy() as? ContractTermActionSubject }
         resource.intent = self.intent.copy() as! CodeableConcept
         resource.linkId = self.linkId
         resource.status = self.status.copy() as! CodeableConcept
         resource.context = self.context?.copy() as? Reference
         resource.contextLinkId = self.contextLinkId
         resource.occurrence = self.occurrence?.copy() as? OccurrenceX
-        resource.requester = self.requester?.compactMap { $0.copy() as? Reference } 
+        resource.requester = self.requester?.compactMap { $0.copy() as? Reference }
         resource.requesterLinkId = self.requesterLinkId
-        resource.performerType = self.performerType?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.performerType = self.performerType?.compactMap { $0.copy() as? CodeableConcept }
         resource.performerRole = self.performerRole?.copy() as? CodeableConcept
         resource.performer = self.performer?.copy() as? Reference
         resource.performerLinkId = self.performerLinkId
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
         resource.reason = self.reason
         resource.reasonLinkId = self.reasonLinkId
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
         resource.securityLabelNumber = self.securityLabelNumber
 
         return resource
@@ -3545,7 +3421,6 @@ extension ModelsR4.ContractTermAction {
     }
 }
 
-
 // MARK: - ContractTermActionSubject
 extension ModelsR4.ContractTermActionSubject {
 
@@ -3554,7 +3429,7 @@ extension ModelsR4.ContractTermActionSubject {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ContractTermActionSubject else {
             return self
         }
-        resource.reference = self.reference.compactMap { $0.copy() as? Reference } 
+        resource.reference = self.reference.compactMap { $0.copy() as? Reference }
         resource.role = self.role?.copy() as? CodeableConcept
 
         return resource
@@ -3565,7 +3440,6 @@ extension ModelsR4.ContractTermActionSubject {
     }
 }
 
-
 // MARK: - ContractTermAsset
 extension ModelsR4.ContractTermAsset {
 
@@ -3575,20 +3449,20 @@ extension ModelsR4.ContractTermAsset {
             return self
         }
         resource.scope = self.scope?.copy() as? CodeableConcept
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.typeReference = self.typeReference?.compactMap { $0.copy() as? Reference } 
-        resource.subtype = self.subtype?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
+        resource.typeReference = self.typeReference?.compactMap { $0.copy() as? Reference }
+        resource.subtype = self.subtype?.compactMap { $0.copy() as? CodeableConcept }
         resource.relationship = self.relationship?.copy() as? Coding
-        resource.context = self.context?.compactMap { $0.copy() as? ContractTermAssetContext } 
+        resource.context = self.context?.compactMap { $0.copy() as? ContractTermAssetContext }
         resource.condition = self.condition
-        resource.periodType = self.periodType?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.period = self.period?.compactMap { $0.copy() as? Period } 
-        resource.usePeriod = self.usePeriod?.compactMap { $0.copy() as? Period } 
+        resource.periodType = self.periodType?.compactMap { $0.copy() as? CodeableConcept }
+        resource.period = self.period?.compactMap { $0.copy() as? Period }
+        resource.usePeriod = self.usePeriod?.compactMap { $0.copy() as? Period }
         resource.text = self.text
         resource.linkId = self.linkId
-        resource.answer = self.answer?.compactMap { $0.copy() as? ContractTermOfferAnswer } 
+        resource.answer = self.answer?.compactMap { $0.copy() as? ContractTermOfferAnswer }
         resource.securityLabelNumber = self.securityLabelNumber
-        resource.valuedItem = self.valuedItem?.compactMap { $0.copy() as? ContractTermAssetValuedItem } 
+        resource.valuedItem = self.valuedItem?.compactMap { $0.copy() as? ContractTermAssetValuedItem }
 
         return resource
     }
@@ -3597,7 +3471,6 @@ extension ModelsR4.ContractTermAsset {
         return self.copied()
     }
 }
-
 
 // MARK: - ContractTermAssetContext
 extension ModelsR4.ContractTermAssetContext {
@@ -3608,7 +3481,7 @@ extension ModelsR4.ContractTermAssetContext {
             return self
         }
         resource.reference = self.reference?.copy() as? Reference
-        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept }
         resource.text = self.text
 
         return resource
@@ -3618,7 +3491,6 @@ extension ModelsR4.ContractTermAssetContext {
         return self.copied()
     }
 }
-
 
 // MARK: - ContractTermAssetValuedItem
 extension ModelsR4.ContractTermAssetValuedItem {
@@ -3651,7 +3523,6 @@ extension ModelsR4.ContractTermAssetValuedItem {
     }
 }
 
-
 // MARK: - ContractTermOffer
 extension ModelsR4.ContractTermOffer {
 
@@ -3660,13 +3531,13 @@ extension ModelsR4.ContractTermOffer {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ContractTermOffer else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.party = self.party?.compactMap { $0.copy() as? ContractTermOfferParty } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.party = self.party?.compactMap { $0.copy() as? ContractTermOfferParty }
         resource.topic = self.topic?.copy() as? Reference
         resource.type = self.type?.copy() as? CodeableConcept
         resource.decision = self.decision?.copy() as? CodeableConcept
-        resource.decisionMode = self.decisionMode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.answer = self.answer?.compactMap { $0.copy() as? ContractTermOfferAnswer } 
+        resource.decisionMode = self.decisionMode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.answer = self.answer?.compactMap { $0.copy() as? ContractTermOfferAnswer }
         resource.text = self.text
         resource.linkId = self.linkId
         resource.securityLabelNumber = self.securityLabelNumber
@@ -3678,7 +3549,6 @@ extension ModelsR4.ContractTermOffer {
         return self.copied()
     }
 }
-
 
 // MARK: - ContractTermOfferAnswer
 extension ModelsR4.ContractTermOfferAnswer {
@@ -3698,7 +3568,6 @@ extension ModelsR4.ContractTermOfferAnswer {
     }
 }
 
-
 // MARK: - ContractTermOfferParty
 extension ModelsR4.ContractTermOfferParty {
 
@@ -3707,7 +3576,7 @@ extension ModelsR4.ContractTermOfferParty {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ContractTermOfferParty else {
             return self
         }
-        resource.reference = self.reference.compactMap { $0.copy() as? Reference } 
+        resource.reference = self.reference.compactMap { $0.copy() as? Reference }
         resource.role = self.role.copy() as! CodeableConcept
 
         return resource
@@ -3717,7 +3586,6 @@ extension ModelsR4.ContractTermOfferParty {
         return self.copied()
     }
 }
-
 
 // MARK: - ContractTermSecurityLabel
 extension ModelsR4.ContractTermSecurityLabel {
@@ -3729,8 +3597,8 @@ extension ModelsR4.ContractTermSecurityLabel {
         }
         resource.number = self.number
         resource.classification = self.classification.copy() as! Coding
-        resource.category = self.category?.compactMap { $0.copy() as? Coding } 
-        resource.control = self.control?.compactMap { $0.copy() as? Coding } 
+        resource.category = self.category?.compactMap { $0.copy() as? Coding }
+        resource.control = self.control?.compactMap { $0.copy() as? Coding }
 
         return resource
     }
@@ -3739,7 +3607,6 @@ extension ModelsR4.ContractTermSecurityLabel {
         return self.copied()
     }
 }
-
 
 // MARK: - Contributor
 extension ModelsR4.Contributor {
@@ -3751,7 +3618,7 @@ extension ModelsR4.Contributor {
         }
         resource.type = self.type
         resource.name = self.name
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
 
         return resource
     }
@@ -3760,7 +3627,6 @@ extension ModelsR4.Contributor {
         return self.copied()
     }
 }
-
 
 // MARK: - Count
 extension ModelsR4.Count {
@@ -3779,7 +3645,6 @@ extension ModelsR4.Count {
     }
 }
 
-
 // MARK: - Coverage
 extension ModelsR4.Coverage {
 
@@ -3788,7 +3653,7 @@ extension ModelsR4.Coverage {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Coverage else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.type = self.type?.copy() as? CodeableConcept
         resource.policyHolder = self.policyHolder?.copy() as? Reference
@@ -3798,13 +3663,13 @@ extension ModelsR4.Coverage {
         resource.dependent = self.dependent
         resource.relationship = self.relationship?.copy() as? CodeableConcept
         resource.period = self.period?.copy() as? Period
-        resource.payor = self.payor.compactMap { $0.copy() as? Reference } 
-        resource.`class` = self.`class`?.compactMap { $0.copy() as? CoverageClass } 
+        resource.payor = self.payor.compactMap { $0.copy() as? Reference }
+        resource.`class` = self.`class`?.compactMap { $0.copy() as? CoverageClass }
         resource.order = self.order
         resource.network = self.network
-        resource.costToBeneficiary = self.costToBeneficiary?.compactMap { $0.copy() as? CoverageCostToBeneficiary } 
+        resource.costToBeneficiary = self.costToBeneficiary?.compactMap { $0.copy() as? CoverageCostToBeneficiary }
         resource.subrogation = self.subrogation
-        resource.contract = self.contract?.compactMap { $0.copy() as? Reference } 
+        resource.contract = self.contract?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -3813,7 +3678,6 @@ extension ModelsR4.Coverage {
         return self.copied()
     }
 }
-
 
 // MARK: - CoverageClass
 extension ModelsR4.CoverageClass {
@@ -3835,7 +3699,6 @@ extension ModelsR4.CoverageClass {
     }
 }
 
-
 // MARK: - CoverageCostToBeneficiary
 extension ModelsR4.CoverageCostToBeneficiary {
 
@@ -3846,7 +3709,7 @@ extension ModelsR4.CoverageCostToBeneficiary {
         }
         resource.type = self.type?.copy() as? CodeableConcept
         resource.value = self.value.copy() as! ValueX
-        resource.exception = self.exception?.compactMap { $0.copy() as? CoverageCostToBeneficiaryException } 
+        resource.exception = self.exception?.compactMap { $0.copy() as? CoverageCostToBeneficiaryException }
 
         return resource
     }
@@ -3855,7 +3718,6 @@ extension ModelsR4.CoverageCostToBeneficiary {
         return self.copied()
     }
 }
-
 
 // MARK: - CoverageCostToBeneficiaryException
 extension ModelsR4.CoverageCostToBeneficiaryException {
@@ -3876,7 +3738,6 @@ extension ModelsR4.CoverageCostToBeneficiaryException {
     }
 }
 
-
 // MARK: - CoverageEligibilityRequest
 extension ModelsR4.CoverageEligibilityRequest {
 
@@ -3885,7 +3746,7 @@ extension ModelsR4.CoverageEligibilityRequest {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CoverageEligibilityRequest else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.priority = self.priority?.copy() as? CodeableConcept
         resource.purpose = self.purpose
@@ -3896,9 +3757,9 @@ extension ModelsR4.CoverageEligibilityRequest {
         resource.provider = self.provider?.copy() as? Reference
         resource.insurer = self.insurer.copy() as! Reference
         resource.facility = self.facility?.copy() as? Reference
-        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? CoverageEligibilityRequestSupportingInfo } 
-        resource.insurance = self.insurance?.compactMap { $0.copy() as? CoverageEligibilityRequestInsurance } 
-        resource.item = self.item?.compactMap { $0.copy() as? CoverageEligibilityRequestItem } 
+        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? CoverageEligibilityRequestSupportingInfo }
+        resource.insurance = self.insurance?.compactMap { $0.copy() as? CoverageEligibilityRequestInsurance }
+        resource.item = self.item?.compactMap { $0.copy() as? CoverageEligibilityRequestItem }
 
         return resource
     }
@@ -3907,7 +3768,6 @@ extension ModelsR4.CoverageEligibilityRequest {
         return self.copied()
     }
 }
-
 
 // MARK: - CoverageEligibilityRequestInsurance
 extension ModelsR4.CoverageEligibilityRequestInsurance {
@@ -3929,7 +3789,6 @@ extension ModelsR4.CoverageEligibilityRequestInsurance {
     }
 }
 
-
 // MARK: - CoverageEligibilityRequestItem
 extension ModelsR4.CoverageEligibilityRequestItem {
 
@@ -3941,13 +3800,13 @@ extension ModelsR4.CoverageEligibilityRequestItem {
         resource.supportingInfoSequence = self.supportingInfoSequence
         resource.category = self.category?.copy() as? CodeableConcept
         resource.productOrService = self.productOrService?.copy() as? CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
         resource.provider = self.provider?.copy() as? Reference
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.unitPrice = self.unitPrice?.copy() as? Money
         resource.facility = self.facility?.copy() as? Reference
-        resource.diagnosis = self.diagnosis?.compactMap { $0.copy() as? CoverageEligibilityRequestItemDiagnosis } 
-        resource.detail = self.detail?.compactMap { $0.copy() as? Reference } 
+        resource.diagnosis = self.diagnosis?.compactMap { $0.copy() as? CoverageEligibilityRequestItemDiagnosis }
+        resource.detail = self.detail?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -3956,7 +3815,6 @@ extension ModelsR4.CoverageEligibilityRequestItem {
         return self.copied()
     }
 }
-
 
 // MARK: - CoverageEligibilityRequestItemDiagnosis
 extension ModelsR4.CoverageEligibilityRequestItemDiagnosis {
@@ -3975,7 +3833,6 @@ extension ModelsR4.CoverageEligibilityRequestItemDiagnosis {
         return self.copied()
     }
 }
-
 
 // MARK: - CoverageEligibilityRequestSupportingInfo
 extension ModelsR4.CoverageEligibilityRequestSupportingInfo {
@@ -3997,7 +3854,6 @@ extension ModelsR4.CoverageEligibilityRequestSupportingInfo {
     }
 }
 
-
 // MARK: - CoverageEligibilityResponse
 extension ModelsR4.CoverageEligibilityResponse {
 
@@ -4006,7 +3862,7 @@ extension ModelsR4.CoverageEligibilityResponse {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.CoverageEligibilityResponse else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.purpose = self.purpose
         resource.patient = self.patient.copy() as! Reference
@@ -4017,10 +3873,10 @@ extension ModelsR4.CoverageEligibilityResponse {
         resource.outcome = self.outcome
         resource.disposition = self.disposition
         resource.insurer = self.insurer.copy() as! Reference
-        resource.insurance = self.insurance?.compactMap { $0.copy() as? CoverageEligibilityResponseInsurance } 
+        resource.insurance = self.insurance?.compactMap { $0.copy() as? CoverageEligibilityResponseInsurance }
         resource.preAuthRef = self.preAuthRef
         resource.form = self.form?.copy() as? CodeableConcept
-        resource.error = self.error?.compactMap { $0.copy() as? CoverageEligibilityResponseError } 
+        resource.error = self.error?.compactMap { $0.copy() as? CoverageEligibilityResponseError }
 
         return resource
     }
@@ -4029,7 +3885,6 @@ extension ModelsR4.CoverageEligibilityResponse {
         return self.copied()
     }
 }
-
 
 // MARK: - CoverageEligibilityResponseError
 extension ModelsR4.CoverageEligibilityResponseError {
@@ -4049,7 +3904,6 @@ extension ModelsR4.CoverageEligibilityResponseError {
     }
 }
 
-
 // MARK: - CoverageEligibilityResponseInsurance
 extension ModelsR4.CoverageEligibilityResponseInsurance {
 
@@ -4061,7 +3915,7 @@ extension ModelsR4.CoverageEligibilityResponseInsurance {
         resource.coverage = self.coverage.copy() as! Reference
         resource.inforce = self.inforce
         resource.benefitPeriod = self.benefitPeriod?.copy() as? Period
-        resource.item = self.item?.compactMap { $0.copy() as? CoverageEligibilityResponseInsuranceItem } 
+        resource.item = self.item?.compactMap { $0.copy() as? CoverageEligibilityResponseInsuranceItem }
 
         return resource
     }
@@ -4070,7 +3924,6 @@ extension ModelsR4.CoverageEligibilityResponseInsurance {
         return self.copied()
     }
 }
-
 
 // MARK: - CoverageEligibilityResponseInsuranceItem
 extension ModelsR4.CoverageEligibilityResponseInsuranceItem {
@@ -4082,7 +3935,7 @@ extension ModelsR4.CoverageEligibilityResponseInsuranceItem {
         }
         resource.category = self.category?.copy() as? CodeableConcept
         resource.productOrService = self.productOrService?.copy() as? CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
         resource.provider = self.provider?.copy() as? Reference
         resource.excluded = self.excluded
         resource.name = self.name
@@ -4090,9 +3943,9 @@ extension ModelsR4.CoverageEligibilityResponseInsuranceItem {
         resource.network = self.network?.copy() as? CodeableConcept
         resource.unit = self.unit?.copy() as? CodeableConcept
         resource.term = self.term?.copy() as? CodeableConcept
-        resource.benefit = self.benefit?.compactMap { $0.copy() as? CoverageEligibilityResponseInsuranceItemBenefit } 
+        resource.benefit = self.benefit?.compactMap { $0.copy() as? CoverageEligibilityResponseInsuranceItemBenefit }
         resource.authorizationRequired = self.authorizationRequired
-        resource.authorizationSupporting = self.authorizationSupporting?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.authorizationSupporting = self.authorizationSupporting?.compactMap { $0.copy() as? CodeableConcept }
         resource.authorizationUrl = self.authorizationUrl
 
         return resource
@@ -4102,7 +3955,6 @@ extension ModelsR4.CoverageEligibilityResponseInsuranceItem {
         return self.copied()
     }
 }
-
 
 // MARK: - CoverageEligibilityResponseInsuranceItemBenefit
 extension ModelsR4.CoverageEligibilityResponseInsuranceItemBenefit {
@@ -4124,7 +3976,6 @@ extension ModelsR4.CoverageEligibilityResponseInsuranceItemBenefit {
     }
 }
 
-
 // MARK: - DataRequirement
 extension ModelsR4.DataRequirement {
 
@@ -4137,10 +3988,10 @@ extension ModelsR4.DataRequirement {
         resource.profile = self.profile
         resource.subject = self.subject?.copy() as? SubjectX
         resource.mustSupport = self.mustSupport
-        resource.codeFilter = self.codeFilter?.compactMap { $0.copy() as? DataRequirementCodeFilter } 
-        resource.dateFilter = self.dateFilter?.compactMap { $0.copy() as? DataRequirementDateFilter } 
+        resource.codeFilter = self.codeFilter?.compactMap { $0.copy() as? DataRequirementCodeFilter }
+        resource.dateFilter = self.dateFilter?.compactMap { $0.copy() as? DataRequirementDateFilter }
         resource.limit = self.limit
-        resource.sort = self.sort?.compactMap { $0.copy() as? DataRequirementSort } 
+        resource.sort = self.sort?.compactMap { $0.copy() as? DataRequirementSort }
 
         return resource
     }
@@ -4149,7 +4000,6 @@ extension ModelsR4.DataRequirement {
         return self.copied()
     }
 }
-
 
 // MARK: - DataRequirementCodeFilter
 extension ModelsR4.DataRequirementCodeFilter {
@@ -4162,7 +4012,7 @@ extension ModelsR4.DataRequirementCodeFilter {
         resource.path = self.path
         resource.searchParam = self.searchParam
         resource.valueSet = self.valueSet
-        resource.code = self.code?.compactMap { $0.copy() as? Coding } 
+        resource.code = self.code?.compactMap { $0.copy() as? Coding }
 
         return resource
     }
@@ -4171,7 +4021,6 @@ extension ModelsR4.DataRequirementCodeFilter {
         return self.copied()
     }
 }
-
 
 // MARK: - DataRequirementDateFilter
 extension ModelsR4.DataRequirementDateFilter {
@@ -4193,7 +4042,6 @@ extension ModelsR4.DataRequirementDateFilter {
     }
 }
 
-
 // MARK: - DataRequirementSort
 extension ModelsR4.DataRequirementSort {
 
@@ -4213,7 +4061,6 @@ extension ModelsR4.DataRequirementSort {
     }
 }
 
-
 // MARK: - DetectedIssue
 extension ModelsR4.DetectedIssue {
 
@@ -4222,18 +4069,18 @@ extension ModelsR4.DetectedIssue {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.DetectedIssue else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.code = self.code?.copy() as? CodeableConcept
         resource.severity = self.severity
         resource.patient = self.patient?.copy() as? Reference
         resource.identified = self.identified?.copy() as? IdentifiedX
         resource.author = self.author?.copy() as? Reference
-        resource.implicated = self.implicated?.compactMap { $0.copy() as? Reference } 
-        resource.evidence = self.evidence?.compactMap { $0.copy() as? DetectedIssueEvidence } 
+        resource.implicated = self.implicated?.compactMap { $0.copy() as? Reference }
+        resource.evidence = self.evidence?.compactMap { $0.copy() as? DetectedIssueEvidence }
         resource.detail = self.detail
         resource.reference = self.reference
-        resource.mitigation = self.mitigation?.compactMap { $0.copy() as? DetectedIssueMitigation } 
+        resource.mitigation = self.mitigation?.compactMap { $0.copy() as? DetectedIssueMitigation }
 
         return resource
     }
@@ -4242,7 +4089,6 @@ extension ModelsR4.DetectedIssue {
         return self.copied()
     }
 }
-
 
 // MARK: - DetectedIssueEvidence
 extension ModelsR4.DetectedIssueEvidence {
@@ -4252,8 +4098,8 @@ extension ModelsR4.DetectedIssueEvidence {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.DetectedIssueEvidence else {
             return self
         }
-        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.detail = self.detail?.compactMap { $0.copy() as? Reference } 
+        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept }
+        resource.detail = self.detail?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -4262,7 +4108,6 @@ extension ModelsR4.DetectedIssueEvidence {
         return self.copied()
     }
 }
-
 
 // MARK: - DetectedIssueMitigation
 extension ModelsR4.DetectedIssueMitigation {
@@ -4284,7 +4129,6 @@ extension ModelsR4.DetectedIssueMitigation {
     }
 }
 
-
 // MARK: - Device
 extension ModelsR4.Device {
 
@@ -4293,31 +4137,31 @@ extension ModelsR4.Device {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Device else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.definition = self.definition?.copy() as? Reference
-        resource.udiCarrier = self.udiCarrier?.compactMap { $0.copy() as? DeviceUdiCarrier } 
+        resource.udiCarrier = self.udiCarrier?.compactMap { $0.copy() as? DeviceUdiCarrier }
         resource.status = self.status
-        resource.statusReason = self.statusReason?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.statusReason = self.statusReason?.compactMap { $0.copy() as? CodeableConcept }
         resource.distinctIdentifier = self.distinctIdentifier
         resource.manufacturer = self.manufacturer
         resource.manufactureDate = self.manufactureDate
         resource.expirationDate = self.expirationDate
         resource.lotNumber = self.lotNumber
         resource.serialNumber = self.serialNumber
-        resource.deviceName = self.deviceName?.compactMap { $0.copy() as? DeviceDeviceName } 
+        resource.deviceName = self.deviceName?.compactMap { $0.copy() as? DeviceDeviceName }
         resource.modelNumber = self.modelNumber
         resource.partNumber = self.partNumber
         resource.type = self.type?.copy() as? CodeableConcept
-        resource.specialization = self.specialization?.compactMap { $0.copy() as? DeviceSpecialization } 
-        resource.version = self.version?.compactMap { $0.copy() as? DeviceVersion } 
-        resource.property = self.property?.compactMap { $0.copy() as? DeviceProperty } 
+        resource.specialization = self.specialization?.compactMap { $0.copy() as? DeviceSpecialization }
+        resource.version = self.version?.compactMap { $0.copy() as? DeviceVersion }
+        resource.property = self.property?.compactMap { $0.copy() as? DeviceProperty }
         resource.patient = self.patient?.copy() as? Reference
         resource.owner = self.owner?.copy() as? Reference
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactPoint } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactPoint }
         resource.location = self.location?.copy() as? Reference
         resource.url = self.url
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.safety = self.safety?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.safety = self.safety?.compactMap { $0.copy() as? CodeableConcept }
         resource.parent = self.parent?.copy() as? Reference
 
         return resource
@@ -4328,7 +4172,6 @@ extension ModelsR4.Device {
     }
 }
 
-
 // MARK: - DeviceDefinition
 extension ModelsR4.DeviceDefinition {
 
@@ -4337,28 +4180,28 @@ extension ModelsR4.DeviceDefinition {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.DeviceDefinition else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.udiDeviceIdentifier = self.udiDeviceIdentifier?.compactMap { $0.copy() as? DeviceDefinitionUdiDeviceIdentifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.udiDeviceIdentifier = self.udiDeviceIdentifier?.compactMap { $0.copy() as? DeviceDefinitionUdiDeviceIdentifier }
         resource.manufacturer = self.manufacturer?.copy() as? ManufacturerX
-        resource.deviceName = self.deviceName?.compactMap { $0.copy() as? DeviceDefinitionDeviceName } 
+        resource.deviceName = self.deviceName?.compactMap { $0.copy() as? DeviceDefinitionDeviceName }
         resource.modelNumber = self.modelNumber
         resource.type = self.type?.copy() as? CodeableConcept
-        resource.specialization = self.specialization?.compactMap { $0.copy() as? DeviceDefinitionSpecialization } 
+        resource.specialization = self.specialization?.compactMap { $0.copy() as? DeviceDefinitionSpecialization }
         resource.version = self.version
-        resource.safety = self.safety?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.shelfLifeStorage = self.shelfLifeStorage?.compactMap { $0.copy() as? ProductShelfLife } 
+        resource.safety = self.safety?.compactMap { $0.copy() as? CodeableConcept }
+        resource.shelfLifeStorage = self.shelfLifeStorage?.compactMap { $0.copy() as? ProductShelfLife }
         resource.physicalCharacteristics = self.physicalCharacteristics?.copy() as? ProdCharacteristic
-        resource.languageCode = self.languageCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.capability = self.capability?.compactMap { $0.copy() as? DeviceDefinitionCapability } 
-        resource.property = self.property?.compactMap { $0.copy() as? DeviceDefinitionProperty } 
+        resource.languageCode = self.languageCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.capability = self.capability?.compactMap { $0.copy() as? DeviceDefinitionCapability }
+        resource.property = self.property?.compactMap { $0.copy() as? DeviceDefinitionProperty }
         resource.owner = self.owner?.copy() as? Reference
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactPoint } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactPoint }
         resource.url = self.url
         resource.onlineInformation = self.onlineInformation
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.parentDevice = self.parentDevice?.copy() as? Reference
-        resource.material = self.material?.compactMap { $0.copy() as? DeviceDefinitionMaterial } 
+        resource.material = self.material?.compactMap { $0.copy() as? DeviceDefinitionMaterial }
 
         return resource
     }
@@ -4367,7 +4210,6 @@ extension ModelsR4.DeviceDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - DeviceDefinitionCapability
 extension ModelsR4.DeviceDefinitionCapability {
@@ -4378,7 +4220,7 @@ extension ModelsR4.DeviceDefinitionCapability {
             return self
         }
         resource.type = self.type.copy() as! CodeableConcept
-        resource.description_fhir = self.description_fhir?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.description_fhir = self.description_fhir?.compactMap { $0.copy() as? CodeableConcept }
 
         return resource
     }
@@ -4387,7 +4229,6 @@ extension ModelsR4.DeviceDefinitionCapability {
         return self.copied()
     }
 }
-
 
 // MARK: - DeviceDefinitionDeviceName
 extension ModelsR4.DeviceDefinitionDeviceName {
@@ -4407,7 +4248,6 @@ extension ModelsR4.DeviceDefinitionDeviceName {
         return self.copied()
     }
 }
-
 
 // MARK: - DeviceDefinitionMaterial
 extension ModelsR4.DeviceDefinitionMaterial {
@@ -4429,7 +4269,6 @@ extension ModelsR4.DeviceDefinitionMaterial {
     }
 }
 
-
 // MARK: - DeviceDefinitionProperty
 extension ModelsR4.DeviceDefinitionProperty {
 
@@ -4439,8 +4278,8 @@ extension ModelsR4.DeviceDefinitionProperty {
             return self
         }
         resource.type = self.type.copy() as! CodeableConcept
-        resource.valueQuantity = self.valueQuantity?.compactMap { $0.copy() as? Quantity } 
-        resource.valueCode = self.valueCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.valueQuantity = self.valueQuantity?.compactMap { $0.copy() as? Quantity }
+        resource.valueCode = self.valueCode?.compactMap { $0.copy() as? CodeableConcept }
 
         return resource
     }
@@ -4449,7 +4288,6 @@ extension ModelsR4.DeviceDefinitionProperty {
         return self.copied()
     }
 }
-
 
 // MARK: - DeviceDefinitionSpecialization
 extension ModelsR4.DeviceDefinitionSpecialization {
@@ -4469,7 +4307,6 @@ extension ModelsR4.DeviceDefinitionSpecialization {
         return self.copied()
     }
 }
-
 
 // MARK: - DeviceDefinitionUdiDeviceIdentifier
 extension ModelsR4.DeviceDefinitionUdiDeviceIdentifier {
@@ -4491,7 +4328,6 @@ extension ModelsR4.DeviceDefinitionUdiDeviceIdentifier {
     }
 }
 
-
 // MARK: - DeviceDeviceName
 extension ModelsR4.DeviceDeviceName {
 
@@ -4511,7 +4347,6 @@ extension ModelsR4.DeviceDeviceName {
     }
 }
 
-
 // MARK: - DeviceMetric
 extension ModelsR4.DeviceMetric {
 
@@ -4520,7 +4355,7 @@ extension ModelsR4.DeviceMetric {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.DeviceMetric else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.type = self.type.copy() as! CodeableConcept
         resource.unit = self.unit?.copy() as? CodeableConcept
         resource.source = self.source?.copy() as? Reference
@@ -4529,7 +4364,7 @@ extension ModelsR4.DeviceMetric {
         resource.color = self.color
         resource.category = self.category
         resource.measurementPeriod = self.measurementPeriod?.copy() as? Timing
-        resource.calibration = self.calibration?.compactMap { $0.copy() as? DeviceMetricCalibration } 
+        resource.calibration = self.calibration?.compactMap { $0.copy() as? DeviceMetricCalibration }
 
         return resource
     }
@@ -4538,7 +4373,6 @@ extension ModelsR4.DeviceMetric {
         return self.copied()
     }
 }
-
 
 // MARK: - DeviceMetricCalibration
 extension ModelsR4.DeviceMetricCalibration {
@@ -4560,7 +4394,6 @@ extension ModelsR4.DeviceMetricCalibration {
     }
 }
 
-
 // MARK: - DeviceProperty
 extension ModelsR4.DeviceProperty {
 
@@ -4570,8 +4403,8 @@ extension ModelsR4.DeviceProperty {
             return self
         }
         resource.type = self.type.copy() as! CodeableConcept
-        resource.valueQuantity = self.valueQuantity?.compactMap { $0.copy() as? Quantity } 
-        resource.valueCode = self.valueCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.valueQuantity = self.valueQuantity?.compactMap { $0.copy() as? Quantity }
+        resource.valueCode = self.valueCode?.compactMap { $0.copy() as? CodeableConcept }
 
         return resource
     }
@@ -4580,7 +4413,6 @@ extension ModelsR4.DeviceProperty {
         return self.copied()
     }
 }
-
 
 // MARK: - DeviceRequest
 extension ModelsR4.DeviceRequest {
@@ -4590,17 +4422,17 @@ extension ModelsR4.DeviceRequest {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.DeviceRequest else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.instantiatesCanonical = self.instantiatesCanonical
         resource.instantiatesUri = self.instantiatesUri
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.priorRequest = self.priorRequest?.compactMap { $0.copy() as? Reference } 
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.priorRequest = self.priorRequest?.compactMap { $0.copy() as? Reference }
         resource.groupIdentifier = self.groupIdentifier?.copy() as? Identifier
         resource.status = self.status
         resource.intent = self.intent
         resource.priority = self.priority
         resource.code = self.code.copy() as! CodeX
-        resource.parameter = self.parameter?.compactMap { $0.copy() as? DeviceRequestParameter } 
+        resource.parameter = self.parameter?.compactMap { $0.copy() as? DeviceRequestParameter }
         resource.subject = self.subject.copy() as! Reference
         resource.encounter = self.encounter?.copy() as? Reference
         resource.occurrence = self.occurrence?.copy() as? OccurrenceX
@@ -4608,12 +4440,12 @@ extension ModelsR4.DeviceRequest {
         resource.requester = self.requester?.copy() as? Reference
         resource.performerType = self.performerType?.copy() as? CodeableConcept
         resource.performer = self.performer?.copy() as? Reference
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.insurance = self.insurance?.compactMap { $0.copy() as? Reference } 
-        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.relevantHistory = self.relevantHistory?.compactMap { $0.copy() as? Reference } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.insurance = self.insurance?.compactMap { $0.copy() as? Reference }
+        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.relevantHistory = self.relevantHistory?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -4622,7 +4454,6 @@ extension ModelsR4.DeviceRequest {
         return self.copied()
     }
 }
-
 
 // MARK: - DeviceRequestParameter
 extension ModelsR4.DeviceRequestParameter {
@@ -4643,7 +4474,6 @@ extension ModelsR4.DeviceRequestParameter {
     }
 }
 
-
 // MARK: - DeviceSpecialization
 extension ModelsR4.DeviceSpecialization {
 
@@ -4662,7 +4492,6 @@ extension ModelsR4.DeviceSpecialization {
         return self.copied()
     }
 }
-
 
 // MARK: - DeviceUdiCarrier
 extension ModelsR4.DeviceUdiCarrier {
@@ -4687,7 +4516,6 @@ extension ModelsR4.DeviceUdiCarrier {
     }
 }
 
-
 // MARK: - DeviceUseStatement
 extension ModelsR4.DeviceUseStatement {
 
@@ -4696,19 +4524,19 @@ extension ModelsR4.DeviceUseStatement {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.DeviceUseStatement else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
         resource.subject = self.subject.copy() as! Reference
-        resource.derivedFrom = self.derivedFrom?.compactMap { $0.copy() as? Reference } 
+        resource.derivedFrom = self.derivedFrom?.compactMap { $0.copy() as? Reference }
         resource.timing = self.timing?.copy() as? TimingX
         resource.recordedOn = self.recordedOn
         resource.source = self.source?.copy() as? Reference
         resource.device = self.device.copy() as! Reference
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
         resource.bodySite = self.bodySite?.copy() as? CodeableConcept
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -4717,7 +4545,6 @@ extension ModelsR4.DeviceUseStatement {
         return self.copied()
     }
 }
-
 
 // MARK: - DeviceVersion
 extension ModelsR4.DeviceVersion {
@@ -4739,7 +4566,6 @@ extension ModelsR4.DeviceVersion {
     }
 }
 
-
 // MARK: - DiagnosticReport
 extension ModelsR4.DiagnosticReport {
 
@@ -4748,24 +4574,24 @@ extension ModelsR4.DiagnosticReport {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.DiagnosticReport else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.code = self.code.copy() as! CodeableConcept
         resource.subject = self.subject?.copy() as? Reference
         resource.encounter = self.encounter?.copy() as? Reference
         resource.effective = self.effective?.copy() as? EffectiveX
         resource.issued = self.issued
-        resource.performer = self.performer?.compactMap { $0.copy() as? Reference } 
-        resource.resultsInterpreter = self.resultsInterpreter?.compactMap { $0.copy() as? Reference } 
-        resource.specimen = self.specimen?.compactMap { $0.copy() as? Reference } 
-        resource.result = self.result?.compactMap { $0.copy() as? Reference } 
-        resource.imagingStudy = self.imagingStudy?.compactMap { $0.copy() as? Reference } 
-        resource.media = self.media?.compactMap { $0.copy() as? DiagnosticReportMedia } 
+        resource.performer = self.performer?.compactMap { $0.copy() as? Reference }
+        resource.resultsInterpreter = self.resultsInterpreter?.compactMap { $0.copy() as? Reference }
+        resource.specimen = self.specimen?.compactMap { $0.copy() as? Reference }
+        resource.result = self.result?.compactMap { $0.copy() as? Reference }
+        resource.imagingStudy = self.imagingStudy?.compactMap { $0.copy() as? Reference }
+        resource.media = self.media?.compactMap { $0.copy() as? DiagnosticReportMedia }
         resource.conclusion = self.conclusion
-        resource.conclusionCode = self.conclusionCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.presentedForm = self.presentedForm?.compactMap { $0.copy() as? Attachment } 
+        resource.conclusionCode = self.conclusionCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.presentedForm = self.presentedForm?.compactMap { $0.copy() as? Attachment }
 
         return resource
     }
@@ -4774,7 +4600,6 @@ extension ModelsR4.DiagnosticReport {
         return self.copied()
     }
 }
-
 
 // MARK: - DiagnosticReportMedia
 extension ModelsR4.DiagnosticReportMedia {
@@ -4795,7 +4620,6 @@ extension ModelsR4.DiagnosticReportMedia {
     }
 }
 
-
 // MARK: - Distance
 extension ModelsR4.Distance {
 
@@ -4813,7 +4637,6 @@ extension ModelsR4.Distance {
     }
 }
 
-
 // MARK: - DocumentManifest
 extension ModelsR4.DocumentManifest {
 
@@ -4823,17 +4646,17 @@ extension ModelsR4.DocumentManifest {
             return self
         }
         resource.masterIdentifier = self.masterIdentifier?.copy() as? Identifier
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.type = self.type?.copy() as? CodeableConcept
         resource.subject = self.subject?.copy() as? Reference
         resource.created = self.created
-        resource.author = self.author?.compactMap { $0.copy() as? Reference } 
-        resource.recipient = self.recipient?.compactMap { $0.copy() as? Reference } 
+        resource.author = self.author?.compactMap { $0.copy() as? Reference }
+        resource.recipient = self.recipient?.compactMap { $0.copy() as? Reference }
         resource.source = self.source
         resource.description_fhir = self.description_fhir
-        resource.content = self.content.compactMap { $0.copy() as? Reference } 
-        resource.related = self.related?.compactMap { $0.copy() as? DocumentManifestRelated } 
+        resource.content = self.content.compactMap { $0.copy() as? Reference }
+        resource.related = self.related?.compactMap { $0.copy() as? DocumentManifestRelated }
 
         return resource
     }
@@ -4842,7 +4665,6 @@ extension ModelsR4.DocumentManifest {
         return self.copied()
     }
 }
-
 
 // MARK: - DocumentManifestRelated
 extension ModelsR4.DocumentManifestRelated {
@@ -4863,7 +4685,6 @@ extension ModelsR4.DocumentManifestRelated {
     }
 }
 
-
 // MARK: - DocumentReference
 extension ModelsR4.DocumentReference {
 
@@ -4873,20 +4694,20 @@ extension ModelsR4.DocumentReference {
             return self
         }
         resource.masterIdentifier = self.masterIdentifier?.copy() as? Identifier
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.docStatus = self.docStatus
         resource.type = self.type?.copy() as? CodeableConcept
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.subject = self.subject?.copy() as? Reference
         resource.date = self.date
-        resource.author = self.author?.compactMap { $0.copy() as? Reference } 
+        resource.author = self.author?.compactMap { $0.copy() as? Reference }
         resource.authenticator = self.authenticator?.copy() as? Reference
         resource.custodian = self.custodian?.copy() as? Reference
-        resource.relatesTo = self.relatesTo?.compactMap { $0.copy() as? DocumentReferenceRelatesTo } 
+        resource.relatesTo = self.relatesTo?.compactMap { $0.copy() as? DocumentReferenceRelatesTo }
         resource.description_fhir = self.description_fhir
-        resource.securityLabel = self.securityLabel?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.content = self.content.compactMap { $0.copy() as? DocumentReferenceContent } 
+        resource.securityLabel = self.securityLabel?.compactMap { $0.copy() as? CodeableConcept }
+        resource.content = self.content.compactMap { $0.copy() as? DocumentReferenceContent }
         resource.context = self.context?.copy() as? DocumentReferenceContext
 
         return resource
@@ -4896,7 +4717,6 @@ extension ModelsR4.DocumentReference {
         return self.copied()
     }
 }
-
 
 // MARK: - DocumentReferenceContent
 extension ModelsR4.DocumentReferenceContent {
@@ -4917,7 +4737,6 @@ extension ModelsR4.DocumentReferenceContent {
     }
 }
 
-
 // MARK: - DocumentReferenceContext
 extension ModelsR4.DocumentReferenceContext {
 
@@ -4926,13 +4745,13 @@ extension ModelsR4.DocumentReferenceContext {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.DocumentReferenceContext else {
             return self
         }
-        resource.encounter = self.encounter?.compactMap { $0.copy() as? Reference } 
-        resource.event = self.event?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.encounter = self.encounter?.compactMap { $0.copy() as? Reference }
+        resource.event = self.event?.compactMap { $0.copy() as? CodeableConcept }
         resource.period = self.period?.copy() as? Period
         resource.facilityType = self.facilityType?.copy() as? CodeableConcept
         resource.practiceSetting = self.practiceSetting?.copy() as? CodeableConcept
         resource.sourcePatientInfo = self.sourcePatientInfo?.copy() as? Reference
-        resource.related = self.related?.compactMap { $0.copy() as? Reference } 
+        resource.related = self.related?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -4941,7 +4760,6 @@ extension ModelsR4.DocumentReferenceContext {
         return self.copied()
     }
 }
-
 
 // MARK: - DocumentReferenceRelatesTo
 extension ModelsR4.DocumentReferenceRelatesTo {
@@ -4962,7 +4780,6 @@ extension ModelsR4.DocumentReferenceRelatesTo {
     }
 }
 
-
 // MARK: - DomainResource
 extension ModelsR4.DomainResource {
 
@@ -4973,8 +4790,8 @@ extension ModelsR4.DomainResource {
         }
         resource.text = self.text?.copy() as? Narrative
         resource.contained = self.contained
-        resource.`extension` = self.`extension`?.compactMap { $0.copy() as? Extension } 
-        resource.modifierExtension = self.modifierExtension?.compactMap { $0.copy() as? Extension } 
+        resource.`extension` = self.`extension`?.compactMap { $0.copy() as? Extension }
+        resource.modifierExtension = self.modifierExtension?.compactMap { $0.copy() as? Extension }
 
         return resource
     }
@@ -4983,7 +4800,6 @@ extension ModelsR4.DomainResource {
         return self.copied()
     }
 }
-
 
 // MARK: - Dosage
 extension ModelsR4.Dosage {
@@ -4995,14 +4811,14 @@ extension ModelsR4.Dosage {
         }
         resource.sequence = self.sequence
         resource.text = self.text
-        resource.additionalInstruction = self.additionalInstruction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.additionalInstruction = self.additionalInstruction?.compactMap { $0.copy() as? CodeableConcept }
         resource.patientInstruction = self.patientInstruction
         resource.timing = self.timing?.copy() as? Timing
         resource.asNeeded = self.asNeeded?.copy() as? AsNeededX
         resource.site = self.site?.copy() as? CodeableConcept
         resource.route = self.route?.copy() as? CodeableConcept
         resource.method = self.method?.copy() as? CodeableConcept
-        resource.doseAndRate = self.doseAndRate?.compactMap { $0.copy() as? DosageDoseAndRate } 
+        resource.doseAndRate = self.doseAndRate?.compactMap { $0.copy() as? DosageDoseAndRate }
         resource.maxDosePerPeriod = self.maxDosePerPeriod?.copy() as? Ratio
         resource.maxDosePerAdministration = self.maxDosePerAdministration?.copy() as? Quantity
         resource.maxDosePerLifetime = self.maxDosePerLifetime?.copy() as? Quantity
@@ -5014,7 +4830,6 @@ extension ModelsR4.Dosage {
         return self.copied()
     }
 }
-
 
 // MARK: - DosageDoseAndRate
 extension ModelsR4.DosageDoseAndRate {
@@ -5036,7 +4851,6 @@ extension ModelsR4.DosageDoseAndRate {
     }
 }
 
-
 // MARK: - Duration
 extension ModelsR4.Duration {
 
@@ -5054,7 +4868,6 @@ extension ModelsR4.Duration {
     }
 }
 
-
 // MARK: - EffectEvidenceSynthesis
 extension ModelsR4.EffectEvidenceSynthesis {
 
@@ -5064,28 +4877,28 @@ extension ModelsR4.EffectEvidenceSynthesis {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
         resource.status = self.status
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail } 
-        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail } 
-        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail } 
-        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
+        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail }
+        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail }
+        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail }
+        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
         resource.synthesisType = self.synthesisType?.copy() as? CodeableConcept
         resource.studyType = self.studyType?.copy() as? CodeableConcept
         resource.population = self.population.copy() as! Reference
@@ -5093,9 +4906,9 @@ extension ModelsR4.EffectEvidenceSynthesis {
         resource.exposureAlternative = self.exposureAlternative.copy() as! Reference
         resource.outcome = self.outcome.copy() as! Reference
         resource.sampleSize = self.sampleSize?.copy() as? EffectEvidenceSynthesisSampleSize
-        resource.resultsByExposure = self.resultsByExposure?.compactMap { $0.copy() as? EffectEvidenceSynthesisResultsByExposure } 
-        resource.effectEstimate = self.effectEstimate?.compactMap { $0.copy() as? EffectEvidenceSynthesisEffectEstimate } 
-        resource.certainty = self.certainty?.compactMap { $0.copy() as? EffectEvidenceSynthesisCertainty } 
+        resource.resultsByExposure = self.resultsByExposure?.compactMap { $0.copy() as? EffectEvidenceSynthesisResultsByExposure }
+        resource.effectEstimate = self.effectEstimate?.compactMap { $0.copy() as? EffectEvidenceSynthesisEffectEstimate }
+        resource.certainty = self.certainty?.compactMap { $0.copy() as? EffectEvidenceSynthesisCertainty }
 
         return resource
     }
@@ -5104,7 +4917,6 @@ extension ModelsR4.EffectEvidenceSynthesis {
         return self.copied()
     }
 }
-
 
 // MARK: - EffectEvidenceSynthesisCertainty
 extension ModelsR4.EffectEvidenceSynthesisCertainty {
@@ -5114,9 +4926,9 @@ extension ModelsR4.EffectEvidenceSynthesisCertainty {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.EffectEvidenceSynthesisCertainty else {
             return self
         }
-        resource.rating = self.rating?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.certaintySubcomponent = self.certaintySubcomponent?.compactMap { $0.copy() as? EffectEvidenceSynthesisCertaintyCertaintySubcomponent } 
+        resource.rating = self.rating?.compactMap { $0.copy() as? CodeableConcept }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.certaintySubcomponent = self.certaintySubcomponent?.compactMap { $0.copy() as? EffectEvidenceSynthesisCertaintyCertaintySubcomponent }
 
         return resource
     }
@@ -5125,7 +4937,6 @@ extension ModelsR4.EffectEvidenceSynthesisCertainty {
         return self.copied()
     }
 }
-
 
 // MARK: - EffectEvidenceSynthesisCertaintyCertaintySubcomponent
 extension ModelsR4.EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
@@ -5136,8 +4947,8 @@ extension ModelsR4.EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
             return self
         }
         resource.type = self.type?.copy() as? CodeableConcept
-        resource.rating = self.rating?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.rating = self.rating?.compactMap { $0.copy() as? CodeableConcept }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -5146,7 +4957,6 @@ extension ModelsR4.EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
         return self.copied()
     }
 }
-
 
 // MARK: - EffectEvidenceSynthesisEffectEstimate
 extension ModelsR4.EffectEvidenceSynthesisEffectEstimate {
@@ -5161,7 +4971,7 @@ extension ModelsR4.EffectEvidenceSynthesisEffectEstimate {
         resource.variantState = self.variantState?.copy() as? CodeableConcept
         resource.value = self.value
         resource.unitOfMeasure = self.unitOfMeasure?.copy() as? CodeableConcept
-        resource.precisionEstimate = self.precisionEstimate?.compactMap { $0.copy() as? EffectEvidenceSynthesisEffectEstimatePrecisionEstimate } 
+        resource.precisionEstimate = self.precisionEstimate?.compactMap { $0.copy() as? EffectEvidenceSynthesisEffectEstimatePrecisionEstimate }
 
         return resource
     }
@@ -5170,7 +4980,6 @@ extension ModelsR4.EffectEvidenceSynthesisEffectEstimate {
         return self.copied()
     }
 }
-
 
 // MARK: - EffectEvidenceSynthesisEffectEstimatePrecisionEstimate
 extension ModelsR4.EffectEvidenceSynthesisEffectEstimatePrecisionEstimate {
@@ -5193,7 +5002,6 @@ extension ModelsR4.EffectEvidenceSynthesisEffectEstimatePrecisionEstimate {
     }
 }
 
-
 // MARK: - EffectEvidenceSynthesisResultsByExposure
 extension ModelsR4.EffectEvidenceSynthesisResultsByExposure {
 
@@ -5215,7 +5023,6 @@ extension ModelsR4.EffectEvidenceSynthesisResultsByExposure {
     }
 }
 
-
 // MARK: - EffectEvidenceSynthesisSampleSize
 extension ModelsR4.EffectEvidenceSynthesisSampleSize {
 
@@ -5236,7 +5043,6 @@ extension ModelsR4.EffectEvidenceSynthesisSampleSize {
     }
 }
 
-
 // MARK: - Element
 extension ModelsR4.Element: NSCopying {
 
@@ -5246,7 +5052,7 @@ extension ModelsR4.Element: NSCopying {
             return self
         }
         resource.id = self.id
-        resource.`extension` = self.`extension`?.compactMap { $0.copy() as? Extension } 
+        resource.`extension` = self.`extension`?.compactMap { $0.copy() as? Extension }
 
         return resource
     }
@@ -5255,7 +5061,6 @@ extension ModelsR4.Element: NSCopying {
         return self.copied()
     }
 }
-
 
 // MARK: - ElementDefinition
 extension ModelsR4.ElementDefinition {
@@ -5270,7 +5075,7 @@ extension ModelsR4.ElementDefinition {
         resource.sliceName = self.sliceName
         resource.sliceIsConstraining = self.sliceIsConstraining
         resource.label = self.label
-        resource.code = self.code?.compactMap { $0.copy() as? Coding } 
+        resource.code = self.code?.compactMap { $0.copy() as? Coding }
         resource.slicing = self.slicing?.copy() as? ElementDefinitionSlicing
         resource.short = self.short
         resource.definition = self.definition
@@ -5281,24 +5086,24 @@ extension ModelsR4.ElementDefinition {
         resource.max = self.max
         resource.base = self.base?.copy() as? ElementDefinitionBase
         resource.contentReference = self.contentReference
-        resource.type = self.type?.compactMap { $0.copy() as? ElementDefinitionType } 
+        resource.type = self.type?.compactMap { $0.copy() as? ElementDefinitionType }
         resource.defaultValue = self.defaultValue?.copy() as? DefaultValueX
         resource.meaningWhenMissing = self.meaningWhenMissing
         resource.orderMeaning = self.orderMeaning
         resource.fixed = self.fixed?.copy() as? FixedX
         resource.pattern = self.pattern?.copy() as? PatternX
-        resource.example = self.example?.compactMap { $0.copy() as? ElementDefinitionExample } 
+        resource.example = self.example?.compactMap { $0.copy() as? ElementDefinitionExample }
         resource.minValue = self.minValue?.copy() as? MinValueX
         resource.maxValue = self.maxValue?.copy() as? MaxValueX
         resource.maxLength = self.maxLength
         resource.condition = self.condition
-        resource.constraint = self.constraint?.compactMap { $0.copy() as? ElementDefinitionConstraint } 
+        resource.constraint = self.constraint?.compactMap { $0.copy() as? ElementDefinitionConstraint }
         resource.mustSupport = self.mustSupport
         resource.isModifier = self.isModifier
         resource.isModifierReason = self.isModifierReason
         resource.isSummary = self.isSummary
         resource.binding = self.binding?.copy() as? ElementDefinitionBinding
-        resource.mapping = self.mapping?.compactMap { $0.copy() as? ElementDefinitionMapping } 
+        resource.mapping = self.mapping?.compactMap { $0.copy() as? ElementDefinitionMapping }
 
         return resource
     }
@@ -5307,7 +5112,6 @@ extension ModelsR4.ElementDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - ElementDefinitionBase
 extension ModelsR4.ElementDefinitionBase {
@@ -5329,7 +5133,6 @@ extension ModelsR4.ElementDefinitionBase {
     }
 }
 
-
 // MARK: - ElementDefinitionBinding
 extension ModelsR4.ElementDefinitionBinding {
 
@@ -5349,7 +5152,6 @@ extension ModelsR4.ElementDefinitionBinding {
         return self.copied()
     }
 }
-
 
 // MARK: - ElementDefinitionConstraint
 extension ModelsR4.ElementDefinitionConstraint {
@@ -5375,7 +5177,6 @@ extension ModelsR4.ElementDefinitionConstraint {
     }
 }
 
-
 // MARK: - ElementDefinitionExample
 extension ModelsR4.ElementDefinitionExample {
 
@@ -5394,7 +5195,6 @@ extension ModelsR4.ElementDefinitionExample {
         return self.copied()
     }
 }
-
 
 // MARK: - ElementDefinitionMapping
 extension ModelsR4.ElementDefinitionMapping {
@@ -5417,7 +5217,6 @@ extension ModelsR4.ElementDefinitionMapping {
     }
 }
 
-
 // MARK: - ElementDefinitionSlicing
 extension ModelsR4.ElementDefinitionSlicing {
 
@@ -5426,7 +5225,7 @@ extension ModelsR4.ElementDefinitionSlicing {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ElementDefinitionSlicing else {
             return self
         }
-        resource.discriminator = self.discriminator?.compactMap { $0.copy() as? ElementDefinitionSlicingDiscriminator } 
+        resource.discriminator = self.discriminator?.compactMap { $0.copy() as? ElementDefinitionSlicingDiscriminator }
         resource.description_fhir = self.description_fhir
         resource.ordered = self.ordered
         resource.rules = self.rules
@@ -5438,7 +5237,6 @@ extension ModelsR4.ElementDefinitionSlicing {
         return self.copied()
     }
 }
-
 
 // MARK: - ElementDefinitionSlicingDiscriminator
 extension ModelsR4.ElementDefinitionSlicingDiscriminator {
@@ -5458,7 +5256,6 @@ extension ModelsR4.ElementDefinitionSlicingDiscriminator {
         return self.copied()
     }
 }
-
 
 // MARK: - ElementDefinitionType
 extension ModelsR4.ElementDefinitionType {
@@ -5482,7 +5279,6 @@ extension ModelsR4.ElementDefinitionType {
     }
 }
 
-
 // MARK: - Encounter
 extension ModelsR4.Encounter {
 
@@ -5491,27 +5287,27 @@ extension ModelsR4.Encounter {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Encounter else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
-        resource.statusHistory = self.statusHistory?.compactMap { $0.copy() as? EncounterStatusHistory } 
+        resource.statusHistory = self.statusHistory?.compactMap { $0.copy() as? EncounterStatusHistory }
         resource.`class` = self.`class`.copy() as! Coding
-        resource.classHistory = self.classHistory?.compactMap { $0.copy() as? EncounterClassHistory } 
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.classHistory = self.classHistory?.compactMap { $0.copy() as? EncounterClassHistory }
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
         resource.serviceType = self.serviceType?.copy() as? CodeableConcept
         resource.priority = self.priority?.copy() as? CodeableConcept
         resource.subject = self.subject?.copy() as? Reference
-        resource.episodeOfCare = self.episodeOfCare?.compactMap { $0.copy() as? Reference } 
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.participant = self.participant?.compactMap { $0.copy() as? EncounterParticipant } 
-        resource.appointment = self.appointment?.compactMap { $0.copy() as? Reference } 
+        resource.episodeOfCare = self.episodeOfCare?.compactMap { $0.copy() as? Reference }
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.participant = self.participant?.compactMap { $0.copy() as? EncounterParticipant }
+        resource.appointment = self.appointment?.compactMap { $0.copy() as? Reference }
         resource.period = self.period?.copy() as? Period
         resource.length = self.length?.copy() as? Duration
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.diagnosis = self.diagnosis?.compactMap { $0.copy() as? EncounterDiagnosis } 
-        resource.account = self.account?.compactMap { $0.copy() as? Reference } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.diagnosis = self.diagnosis?.compactMap { $0.copy() as? EncounterDiagnosis }
+        resource.account = self.account?.compactMap { $0.copy() as? Reference }
         resource.hospitalization = self.hospitalization?.copy() as? EncounterHospitalization
-        resource.location = self.location?.compactMap { $0.copy() as? EncounterLocation } 
+        resource.location = self.location?.compactMap { $0.copy() as? EncounterLocation }
         resource.serviceProvider = self.serviceProvider?.copy() as? Reference
         resource.partOf = self.partOf?.copy() as? Reference
 
@@ -5522,7 +5318,6 @@ extension ModelsR4.Encounter {
         return self.copied()
     }
 }
-
 
 // MARK: - EncounterClassHistory
 extension ModelsR4.EncounterClassHistory {
@@ -5542,7 +5337,6 @@ extension ModelsR4.EncounterClassHistory {
         return self.copied()
     }
 }
-
 
 // MARK: - EncounterDiagnosis
 extension ModelsR4.EncounterDiagnosis {
@@ -5564,7 +5358,6 @@ extension ModelsR4.EncounterDiagnosis {
     }
 }
 
-
 // MARK: - EncounterHospitalization
 extension ModelsR4.EncounterHospitalization {
 
@@ -5577,9 +5370,9 @@ extension ModelsR4.EncounterHospitalization {
         resource.origin = self.origin?.copy() as? Reference
         resource.admitSource = self.admitSource?.copy() as? CodeableConcept
         resource.reAdmission = self.reAdmission?.copy() as? CodeableConcept
-        resource.dietPreference = self.dietPreference?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.specialCourtesy = self.specialCourtesy?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.specialArrangement = self.specialArrangement?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.dietPreference = self.dietPreference?.compactMap { $0.copy() as? CodeableConcept }
+        resource.specialCourtesy = self.specialCourtesy?.compactMap { $0.copy() as? CodeableConcept }
+        resource.specialArrangement = self.specialArrangement?.compactMap { $0.copy() as? CodeableConcept }
         resource.destination = self.destination?.copy() as? Reference
         resource.dischargeDisposition = self.dischargeDisposition?.copy() as? CodeableConcept
 
@@ -5590,7 +5383,6 @@ extension ModelsR4.EncounterHospitalization {
         return self.copied()
     }
 }
-
 
 // MARK: - EncounterLocation
 extension ModelsR4.EncounterLocation {
@@ -5613,7 +5405,6 @@ extension ModelsR4.EncounterLocation {
     }
 }
 
-
 // MARK: - EncounterParticipant
 extension ModelsR4.EncounterParticipant {
 
@@ -5622,7 +5413,7 @@ extension ModelsR4.EncounterParticipant {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.EncounterParticipant else {
             return self
         }
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
         resource.period = self.period?.copy() as? Period
         resource.individual = self.individual?.copy() as? Reference
 
@@ -5633,7 +5424,6 @@ extension ModelsR4.EncounterParticipant {
         return self.copied()
     }
 }
-
 
 // MARK: - EncounterStatusHistory
 extension ModelsR4.EncounterStatusHistory {
@@ -5654,7 +5444,6 @@ extension ModelsR4.EncounterStatusHistory {
     }
 }
 
-
 // MARK: - Endpoint
 extension ModelsR4.Endpoint {
 
@@ -5663,14 +5452,14 @@ extension ModelsR4.Endpoint {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Endpoint else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.connectionType = self.connectionType.copy() as! Coding
         resource.name = self.name
         resource.managingOrganization = self.managingOrganization?.copy() as? Reference
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactPoint } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactPoint }
         resource.period = self.period?.copy() as? Period
-        resource.payloadType = self.payloadType.compactMap { $0.copy() as? CodeableConcept } 
+        resource.payloadType = self.payloadType.compactMap { $0.copy() as? CodeableConcept }
         resource.payloadMimeType = self.payloadMimeType
         resource.address = self.address
         resource.header = self.header
@@ -5683,7 +5472,6 @@ extension ModelsR4.Endpoint {
     }
 }
 
-
 // MARK: - EnrollmentRequest
 extension ModelsR4.EnrollmentRequest {
 
@@ -5692,7 +5480,7 @@ extension ModelsR4.EnrollmentRequest {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.EnrollmentRequest else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.created = self.created
         resource.insurer = self.insurer?.copy() as? Reference
@@ -5708,7 +5496,6 @@ extension ModelsR4.EnrollmentRequest {
     }
 }
 
-
 // MARK: - EnrollmentResponse
 extension ModelsR4.EnrollmentResponse {
 
@@ -5717,7 +5504,7 @@ extension ModelsR4.EnrollmentResponse {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.EnrollmentResponse else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.request = self.request?.copy() as? Reference
         resource.outcome = self.outcome
@@ -5734,7 +5521,6 @@ extension ModelsR4.EnrollmentResponse {
     }
 }
 
-
 // MARK: - EpisodeOfCare
 extension ModelsR4.EpisodeOfCare {
 
@@ -5743,18 +5529,18 @@ extension ModelsR4.EpisodeOfCare {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.EpisodeOfCare else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
-        resource.statusHistory = self.statusHistory?.compactMap { $0.copy() as? EpisodeOfCareStatusHistory } 
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.diagnosis = self.diagnosis?.compactMap { $0.copy() as? EpisodeOfCareDiagnosis } 
+        resource.statusHistory = self.statusHistory?.compactMap { $0.copy() as? EpisodeOfCareStatusHistory }
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
+        resource.diagnosis = self.diagnosis?.compactMap { $0.copy() as? EpisodeOfCareDiagnosis }
         resource.patient = self.patient.copy() as! Reference
         resource.managingOrganization = self.managingOrganization?.copy() as? Reference
         resource.period = self.period?.copy() as? Period
-        resource.referralRequest = self.referralRequest?.compactMap { $0.copy() as? Reference } 
+        resource.referralRequest = self.referralRequest?.compactMap { $0.copy() as? Reference }
         resource.careManager = self.careManager?.copy() as? Reference
-        resource.team = self.team?.compactMap { $0.copy() as? Reference } 
-        resource.account = self.account?.compactMap { $0.copy() as? Reference } 
+        resource.team = self.team?.compactMap { $0.copy() as? Reference }
+        resource.account = self.account?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -5763,7 +5549,6 @@ extension ModelsR4.EpisodeOfCare {
         return self.copied()
     }
 }
-
 
 // MARK: - EpisodeOfCareDiagnosis
 extension ModelsR4.EpisodeOfCareDiagnosis {
@@ -5785,7 +5570,6 @@ extension ModelsR4.EpisodeOfCareDiagnosis {
     }
 }
 
-
 // MARK: - EpisodeOfCareStatusHistory
 extension ModelsR4.EpisodeOfCareStatusHistory {
 
@@ -5805,7 +5589,6 @@ extension ModelsR4.EpisodeOfCareStatusHistory {
     }
 }
 
-
 // MARK: - EventDefinition
 extension ModelsR4.EventDefinition {
 
@@ -5815,7 +5598,7 @@ extension ModelsR4.EventDefinition {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -5825,23 +5608,23 @@ extension ModelsR4.EventDefinition {
         resource.subject = self.subject?.copy() as? SubjectX
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.usage = self.usage
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail } 
-        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail } 
-        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail } 
-        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
-        resource.trigger = self.trigger.compactMap { $0.copy() as? TriggerDefinition } 
+        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail }
+        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail }
+        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail }
+        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
+        resource.trigger = self.trigger.compactMap { $0.copy() as? TriggerDefinition }
 
         return resource
     }
@@ -5850,7 +5633,6 @@ extension ModelsR4.EventDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - Evidence
 extension ModelsR4.Evidence {
@@ -5861,7 +5643,7 @@ extension ModelsR4.Evidence {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -5870,24 +5652,24 @@ extension ModelsR4.Evidence {
         resource.status = self.status
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail } 
-        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail } 
-        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail } 
-        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
+        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail }
+        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail }
+        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail }
+        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
         resource.exposureBackground = self.exposureBackground.copy() as! Reference
-        resource.exposureVariant = self.exposureVariant?.compactMap { $0.copy() as? Reference } 
-        resource.outcome = self.outcome?.compactMap { $0.copy() as? Reference } 
+        resource.exposureVariant = self.exposureVariant?.compactMap { $0.copy() as? Reference }
+        resource.outcome = self.outcome?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -5896,7 +5678,6 @@ extension ModelsR4.Evidence {
         return self.copied()
     }
 }
-
 
 // MARK: - EvidenceVariable
 extension ModelsR4.EvidenceVariable {
@@ -5907,7 +5688,7 @@ extension ModelsR4.EvidenceVariable {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -5916,23 +5697,23 @@ extension ModelsR4.EvidenceVariable {
         resource.status = self.status
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail } 
-        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail } 
-        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail } 
-        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
+        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail }
+        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail }
+        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail }
+        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
         resource.type = self.type
-        resource.characteristic = self.characteristic.compactMap { $0.copy() as? EvidenceVariableCharacteristic } 
+        resource.characteristic = self.characteristic.compactMap { $0.copy() as? EvidenceVariableCharacteristic }
 
         return resource
     }
@@ -5941,7 +5722,6 @@ extension ModelsR4.EvidenceVariable {
         return self.copied()
     }
 }
-
 
 // MARK: - EvidenceVariableCharacteristic
 extension ModelsR4.EvidenceVariableCharacteristic {
@@ -5953,7 +5733,7 @@ extension ModelsR4.EvidenceVariableCharacteristic {
         }
         resource.description_fhir = self.description_fhir
         resource.definition = self.definition.copy() as! DefinitionX
-        resource.usageContext = self.usageContext?.compactMap { $0.copy() as? UsageContext } 
+        resource.usageContext = self.usageContext?.compactMap { $0.copy() as? UsageContext }
         resource.exclude = self.exclude
         resource.participantEffective = self.participantEffective?.copy() as? ParticipantEffectiveX
         resource.timeFromStart = self.timeFromStart?.copy() as? Duration
@@ -5967,7 +5747,6 @@ extension ModelsR4.EvidenceVariableCharacteristic {
     }
 }
 
-
 // MARK: - ExampleScenario
 extension ModelsR4.ExampleScenario {
 
@@ -5977,21 +5756,21 @@ extension ModelsR4.ExampleScenario {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.status = self.status
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.copyright = self.copyright
         resource.purpose = self.purpose
-        resource.actor = self.actor?.compactMap { $0.copy() as? ExampleScenarioActor } 
-        resource.instance = self.instance?.compactMap { $0.copy() as? ExampleScenarioInstance } 
-        resource.process = self.process?.compactMap { $0.copy() as? ExampleScenarioProcess } 
+        resource.actor = self.actor?.compactMap { $0.copy() as? ExampleScenarioActor }
+        resource.instance = self.instance?.compactMap { $0.copy() as? ExampleScenarioInstance }
+        resource.process = self.process?.compactMap { $0.copy() as? ExampleScenarioProcess }
         resource.workflow = self.workflow
 
         return resource
@@ -6001,7 +5780,6 @@ extension ModelsR4.ExampleScenario {
         return self.copied()
     }
 }
-
 
 // MARK: - ExampleScenarioActor
 extension ModelsR4.ExampleScenarioActor {
@@ -6024,7 +5802,6 @@ extension ModelsR4.ExampleScenarioActor {
     }
 }
 
-
 // MARK: - ExampleScenarioInstance
 extension ModelsR4.ExampleScenarioInstance {
 
@@ -6037,8 +5814,8 @@ extension ModelsR4.ExampleScenarioInstance {
         resource.resourceType = self.resourceType
         resource.name = self.name
         resource.description_fhir = self.description_fhir
-        resource.version = self.version?.compactMap { $0.copy() as? ExampleScenarioInstanceVersion } 
-        resource.containedInstance = self.containedInstance?.compactMap { $0.copy() as? ExampleScenarioInstanceContainedInstance } 
+        resource.version = self.version?.compactMap { $0.copy() as? ExampleScenarioInstanceVersion }
+        resource.containedInstance = self.containedInstance?.compactMap { $0.copy() as? ExampleScenarioInstanceContainedInstance }
 
         return resource
     }
@@ -6047,7 +5824,6 @@ extension ModelsR4.ExampleScenarioInstance {
         return self.copied()
     }
 }
-
 
 // MARK: - ExampleScenarioInstanceContainedInstance
 extension ModelsR4.ExampleScenarioInstanceContainedInstance {
@@ -6068,7 +5844,6 @@ extension ModelsR4.ExampleScenarioInstanceContainedInstance {
     }
 }
 
-
 // MARK: - ExampleScenarioInstanceVersion
 extension ModelsR4.ExampleScenarioInstanceVersion {
 
@@ -6088,7 +5863,6 @@ extension ModelsR4.ExampleScenarioInstanceVersion {
     }
 }
 
-
 // MARK: - ExampleScenarioProcess
 extension ModelsR4.ExampleScenarioProcess {
 
@@ -6101,7 +5875,7 @@ extension ModelsR4.ExampleScenarioProcess {
         resource.description_fhir = self.description_fhir
         resource.preConditions = self.preConditions
         resource.postConditions = self.postConditions
-        resource.step = self.step?.compactMap { $0.copy() as? ExampleScenarioProcessStep } 
+        resource.step = self.step?.compactMap { $0.copy() as? ExampleScenarioProcessStep }
 
         return resource
     }
@@ -6110,7 +5884,6 @@ extension ModelsR4.ExampleScenarioProcess {
         return self.copied()
     }
 }
-
 
 // MARK: - ExampleScenarioProcessStep
 extension ModelsR4.ExampleScenarioProcessStep {
@@ -6120,10 +5893,10 @@ extension ModelsR4.ExampleScenarioProcessStep {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ExampleScenarioProcessStep else {
             return self
         }
-        resource.process = self.process?.compactMap { $0.copy() as? ExampleScenarioProcess } 
+        resource.process = self.process?.compactMap { $0.copy() as? ExampleScenarioProcess }
         resource.pause = self.pause
         resource.operation = self.operation?.copy() as? ExampleScenarioProcessStepOperation
-        resource.alternative = self.alternative?.compactMap { $0.copy() as? ExampleScenarioProcessStepAlternative } 
+        resource.alternative = self.alternative?.compactMap { $0.copy() as? ExampleScenarioProcessStepAlternative }
 
         return resource
     }
@@ -6132,7 +5905,6 @@ extension ModelsR4.ExampleScenarioProcessStep {
         return self.copied()
     }
 }
-
 
 // MARK: - ExampleScenarioProcessStepAlternative
 extension ModelsR4.ExampleScenarioProcessStepAlternative {
@@ -6144,7 +5916,7 @@ extension ModelsR4.ExampleScenarioProcessStepAlternative {
         }
         resource.title = self.title
         resource.description_fhir = self.description_fhir
-        resource.step = self.step?.compactMap { $0.copy() as? ExampleScenarioProcessStep } 
+        resource.step = self.step?.compactMap { $0.copy() as? ExampleScenarioProcessStep }
 
         return resource
     }
@@ -6153,7 +5925,6 @@ extension ModelsR4.ExampleScenarioProcessStepAlternative {
         return self.copied()
     }
 }
-
 
 // MARK: - ExampleScenarioProcessStepOperation
 extension ModelsR4.ExampleScenarioProcessStepOperation {
@@ -6182,7 +5953,6 @@ extension ModelsR4.ExampleScenarioProcessStepOperation {
     }
 }
 
-
 // MARK: - ExplanationOfBenefit
 extension ModelsR4.ExplanationOfBenefit {
 
@@ -6191,7 +5961,7 @@ extension ModelsR4.ExplanationOfBenefit {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ExplanationOfBenefit else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.type = self.type.copy() as! CodeableConcept
         resource.subType = self.subType?.copy() as? CodeableConcept
@@ -6205,7 +5975,7 @@ extension ModelsR4.ExplanationOfBenefit {
         resource.priority = self.priority?.copy() as? CodeableConcept
         resource.fundsReserveRequested = self.fundsReserveRequested?.copy() as? CodeableConcept
         resource.fundsReserve = self.fundsReserve?.copy() as? CodeableConcept
-        resource.related = self.related?.compactMap { $0.copy() as? ExplanationOfBenefitRelated } 
+        resource.related = self.related?.compactMap { $0.copy() as? ExplanationOfBenefitRelated }
         resource.prescription = self.prescription?.copy() as? Reference
         resource.originalPrescription = self.originalPrescription?.copy() as? Reference
         resource.payee = self.payee?.copy() as? ExplanationOfBenefitPayee
@@ -6216,24 +5986,24 @@ extension ModelsR4.ExplanationOfBenefit {
         resource.outcome = self.outcome
         resource.disposition = self.disposition
         resource.preAuthRef = self.preAuthRef
-        resource.preAuthRefPeriod = self.preAuthRefPeriod?.compactMap { $0.copy() as? Period } 
-        resource.careTeam = self.careTeam?.compactMap { $0.copy() as? ExplanationOfBenefitCareTeam } 
-        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? ExplanationOfBenefitSupportingInfo } 
-        resource.diagnosis = self.diagnosis?.compactMap { $0.copy() as? ExplanationOfBenefitDiagnosis } 
-        resource.procedure = self.procedure?.compactMap { $0.copy() as? ExplanationOfBenefitProcedure } 
+        resource.preAuthRefPeriod = self.preAuthRefPeriod?.compactMap { $0.copy() as? Period }
+        resource.careTeam = self.careTeam?.compactMap { $0.copy() as? ExplanationOfBenefitCareTeam }
+        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? ExplanationOfBenefitSupportingInfo }
+        resource.diagnosis = self.diagnosis?.compactMap { $0.copy() as? ExplanationOfBenefitDiagnosis }
+        resource.procedure = self.procedure?.compactMap { $0.copy() as? ExplanationOfBenefitProcedure }
         resource.precedence = self.precedence
-        resource.insurance = self.insurance.compactMap { $0.copy() as? ExplanationOfBenefitInsurance } 
+        resource.insurance = self.insurance.compactMap { $0.copy() as? ExplanationOfBenefitInsurance }
         resource.accident = self.accident?.copy() as? ExplanationOfBenefitAccident
-        resource.item = self.item?.compactMap { $0.copy() as? ExplanationOfBenefitItem } 
-        resource.addItem = self.addItem?.compactMap { $0.copy() as? ExplanationOfBenefitAddItem } 
-        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication } 
-        resource.total = self.total?.compactMap { $0.copy() as? ExplanationOfBenefitTotal } 
+        resource.item = self.item?.compactMap { $0.copy() as? ExplanationOfBenefitItem }
+        resource.addItem = self.addItem?.compactMap { $0.copy() as? ExplanationOfBenefitAddItem }
+        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication }
+        resource.total = self.total?.compactMap { $0.copy() as? ExplanationOfBenefitTotal }
         resource.payment = self.payment?.copy() as? ExplanationOfBenefitPayment
         resource.formCode = self.formCode?.copy() as? CodeableConcept
         resource.form = self.form?.copy() as? Attachment
-        resource.processNote = self.processNote?.compactMap { $0.copy() as? ExplanationOfBenefitProcessNote } 
+        resource.processNote = self.processNote?.compactMap { $0.copy() as? ExplanationOfBenefitProcessNote }
         resource.benefitPeriod = self.benefitPeriod?.copy() as? Period
-        resource.benefitBalance = self.benefitBalance?.compactMap { $0.copy() as? ExplanationOfBenefitBenefitBalance } 
+        resource.benefitBalance = self.benefitBalance?.compactMap { $0.copy() as? ExplanationOfBenefitBenefitBalance }
 
         return resource
     }
@@ -6242,7 +6012,6 @@ extension ModelsR4.ExplanationOfBenefit {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitAccident
 extension ModelsR4.ExplanationOfBenefitAccident {
@@ -6264,7 +6033,6 @@ extension ModelsR4.ExplanationOfBenefitAccident {
     }
 }
 
-
 // MARK: - ExplanationOfBenefitAddItem
 extension ModelsR4.ExplanationOfBenefitAddItem {
 
@@ -6276,10 +6044,10 @@ extension ModelsR4.ExplanationOfBenefitAddItem {
         resource.itemSequence = self.itemSequence
         resource.detailSequence = self.detailSequence
         resource.subDetailSequence = self.subDetailSequence
-        resource.provider = self.provider?.compactMap { $0.copy() as? Reference } 
+        resource.provider = self.provider?.compactMap { $0.copy() as? Reference }
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
+        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.serviced = self.serviced?.copy() as? ServicedX
         resource.location = self.location?.copy() as? LocationX
         resource.quantity = self.quantity?.copy() as? Quantity
@@ -6287,10 +6055,10 @@ extension ModelsR4.ExplanationOfBenefitAddItem {
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
         resource.bodySite = self.bodySite?.copy() as? CodeableConcept
-        resource.subSite = self.subSite?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.subSite = self.subSite?.compactMap { $0.copy() as? CodeableConcept }
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication } 
-        resource.detail = self.detail?.compactMap { $0.copy() as? ExplanationOfBenefitAddItemDetail } 
+        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication }
+        resource.detail = self.detail?.compactMap { $0.copy() as? ExplanationOfBenefitAddItemDetail }
 
         return resource
     }
@@ -6299,7 +6067,6 @@ extension ModelsR4.ExplanationOfBenefitAddItem {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitAddItemDetail
 extension ModelsR4.ExplanationOfBenefitAddItemDetail {
@@ -6310,14 +6077,14 @@ extension ModelsR4.ExplanationOfBenefitAddItemDetail {
             return self
         }
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.unitPrice = self.unitPrice?.copy() as? Money
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication } 
-        resource.subDetail = self.subDetail?.compactMap { $0.copy() as? ExplanationOfBenefitAddItemDetailSubDetail } 
+        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication }
+        resource.subDetail = self.subDetail?.compactMap { $0.copy() as? ExplanationOfBenefitAddItemDetailSubDetail }
 
         return resource
     }
@@ -6326,7 +6093,6 @@ extension ModelsR4.ExplanationOfBenefitAddItemDetail {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitAddItemDetailSubDetail
 extension ModelsR4.ExplanationOfBenefitAddItemDetailSubDetail {
@@ -6337,13 +6103,13 @@ extension ModelsR4.ExplanationOfBenefitAddItemDetailSubDetail {
             return self
         }
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.unitPrice = self.unitPrice?.copy() as? Money
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication } 
+        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication }
 
         return resource
     }
@@ -6352,7 +6118,6 @@ extension ModelsR4.ExplanationOfBenefitAddItemDetailSubDetail {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitBenefitBalance
 extension ModelsR4.ExplanationOfBenefitBenefitBalance {
@@ -6369,7 +6134,7 @@ extension ModelsR4.ExplanationOfBenefitBenefitBalance {
         resource.network = self.network?.copy() as? CodeableConcept
         resource.unit = self.unit?.copy() as? CodeableConcept
         resource.term = self.term?.copy() as? CodeableConcept
-        resource.financial = self.financial?.compactMap { $0.copy() as? ExplanationOfBenefitBenefitBalanceFinancial } 
+        resource.financial = self.financial?.compactMap { $0.copy() as? ExplanationOfBenefitBenefitBalanceFinancial }
 
         return resource
     }
@@ -6378,7 +6143,6 @@ extension ModelsR4.ExplanationOfBenefitBenefitBalance {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitBenefitBalanceFinancial
 extension ModelsR4.ExplanationOfBenefitBenefitBalanceFinancial {
@@ -6399,7 +6163,6 @@ extension ModelsR4.ExplanationOfBenefitBenefitBalanceFinancial {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitCareTeam
 extension ModelsR4.ExplanationOfBenefitCareTeam {
@@ -6423,7 +6186,6 @@ extension ModelsR4.ExplanationOfBenefitCareTeam {
     }
 }
 
-
 // MARK: - ExplanationOfBenefitDiagnosis
 extension ModelsR4.ExplanationOfBenefitDiagnosis {
 
@@ -6434,7 +6196,7 @@ extension ModelsR4.ExplanationOfBenefitDiagnosis {
         }
         resource.sequence = self.sequence
         resource.diagnosis = self.diagnosis.copy() as! DiagnosisX
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
         resource.onAdmission = self.onAdmission?.copy() as? CodeableConcept
         resource.packageCode = self.packageCode?.copy() as? CodeableConcept
 
@@ -6445,7 +6207,6 @@ extension ModelsR4.ExplanationOfBenefitDiagnosis {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitInsurance
 extension ModelsR4.ExplanationOfBenefitInsurance {
@@ -6467,7 +6228,6 @@ extension ModelsR4.ExplanationOfBenefitInsurance {
     }
 }
 
-
 // MARK: - ExplanationOfBenefitItem
 extension ModelsR4.ExplanationOfBenefitItem {
 
@@ -6484,21 +6244,21 @@ extension ModelsR4.ExplanationOfBenefitItem {
         resource.revenue = self.revenue?.copy() as? CodeableConcept
         resource.category = self.category?.copy() as? CodeableConcept
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
+        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.serviced = self.serviced?.copy() as? ServicedX
         resource.location = self.location?.copy() as? LocationX
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.unitPrice = self.unitPrice?.copy() as? Money
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
-        resource.udi = self.udi?.compactMap { $0.copy() as? Reference } 
+        resource.udi = self.udi?.compactMap { $0.copy() as? Reference }
         resource.bodySite = self.bodySite?.copy() as? CodeableConcept
-        resource.subSite = self.subSite?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.encounter = self.encounter?.compactMap { $0.copy() as? Reference } 
+        resource.subSite = self.subSite?.compactMap { $0.copy() as? CodeableConcept }
+        resource.encounter = self.encounter?.compactMap { $0.copy() as? Reference }
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication } 
-        resource.detail = self.detail?.compactMap { $0.copy() as? ExplanationOfBenefitItemDetail } 
+        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication }
+        resource.detail = self.detail?.compactMap { $0.copy() as? ExplanationOfBenefitItemDetail }
 
         return resource
     }
@@ -6507,7 +6267,6 @@ extension ModelsR4.ExplanationOfBenefitItem {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitItemAdjudication
 extension ModelsR4.ExplanationOfBenefitItemAdjudication {
@@ -6530,7 +6289,6 @@ extension ModelsR4.ExplanationOfBenefitItemAdjudication {
     }
 }
 
-
 // MARK: - ExplanationOfBenefitItemDetail
 extension ModelsR4.ExplanationOfBenefitItemDetail {
 
@@ -6543,16 +6301,16 @@ extension ModelsR4.ExplanationOfBenefitItemDetail {
         resource.revenue = self.revenue?.copy() as? CodeableConcept
         resource.category = self.category?.copy() as? CodeableConcept
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
+        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.unitPrice = self.unitPrice?.copy() as? Money
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
-        resource.udi = self.udi?.compactMap { $0.copy() as? Reference } 
+        resource.udi = self.udi?.compactMap { $0.copy() as? Reference }
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication } 
-        resource.subDetail = self.subDetail?.compactMap { $0.copy() as? ExplanationOfBenefitItemDetailSubDetail } 
+        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication }
+        resource.subDetail = self.subDetail?.compactMap { $0.copy() as? ExplanationOfBenefitItemDetailSubDetail }
 
         return resource
     }
@@ -6561,7 +6319,6 @@ extension ModelsR4.ExplanationOfBenefitItemDetail {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitItemDetailSubDetail
 extension ModelsR4.ExplanationOfBenefitItemDetailSubDetail {
@@ -6575,15 +6332,15 @@ extension ModelsR4.ExplanationOfBenefitItemDetailSubDetail {
         resource.revenue = self.revenue?.copy() as? CodeableConcept
         resource.category = self.category?.copy() as? CodeableConcept
         resource.productOrService = self.productOrService.copy() as! CodeableConcept
-        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.modifier = self.modifier?.compactMap { $0.copy() as? CodeableConcept }
+        resource.programCode = self.programCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.unitPrice = self.unitPrice?.copy() as? Money
         resource.factor = self.factor
         resource.net = self.net?.copy() as? Money
-        resource.udi = self.udi?.compactMap { $0.copy() as? Reference } 
+        resource.udi = self.udi?.compactMap { $0.copy() as? Reference }
         resource.noteNumber = self.noteNumber
-        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication } 
+        resource.adjudication = self.adjudication?.compactMap { $0.copy() as? ExplanationOfBenefitItemAdjudication }
 
         return resource
     }
@@ -6592,7 +6349,6 @@ extension ModelsR4.ExplanationOfBenefitItemDetailSubDetail {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitPayee
 extension ModelsR4.ExplanationOfBenefitPayee {
@@ -6612,7 +6368,6 @@ extension ModelsR4.ExplanationOfBenefitPayee {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitPayment
 extension ModelsR4.ExplanationOfBenefitPayment {
@@ -6637,7 +6392,6 @@ extension ModelsR4.ExplanationOfBenefitPayment {
     }
 }
 
-
 // MARK: - ExplanationOfBenefitProcedure
 extension ModelsR4.ExplanationOfBenefitProcedure {
 
@@ -6647,10 +6401,10 @@ extension ModelsR4.ExplanationOfBenefitProcedure {
             return self
         }
         resource.sequence = self.sequence
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
         resource.date = self.date
         resource.procedure = self.procedure.copy() as! ProcedureX
-        resource.udi = self.udi?.compactMap { $0.copy() as? Reference } 
+        resource.udi = self.udi?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -6659,7 +6413,6 @@ extension ModelsR4.ExplanationOfBenefitProcedure {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitProcessNote
 extension ModelsR4.ExplanationOfBenefitProcessNote {
@@ -6682,7 +6435,6 @@ extension ModelsR4.ExplanationOfBenefitProcessNote {
     }
 }
 
-
 // MARK: - ExplanationOfBenefitRelated
 extension ModelsR4.ExplanationOfBenefitRelated {
 
@@ -6702,7 +6454,6 @@ extension ModelsR4.ExplanationOfBenefitRelated {
         return self.copied()
     }
 }
-
 
 // MARK: - ExplanationOfBenefitSupportingInfo
 extension ModelsR4.ExplanationOfBenefitSupportingInfo {
@@ -6727,7 +6478,6 @@ extension ModelsR4.ExplanationOfBenefitSupportingInfo {
     }
 }
 
-
 // MARK: - ExplanationOfBenefitTotal
 extension ModelsR4.ExplanationOfBenefitTotal {
 
@@ -6746,7 +6496,6 @@ extension ModelsR4.ExplanationOfBenefitTotal {
         return self.copied()
     }
 }
-
 
 // MARK: - Expression
 extension ModelsR4.Expression {
@@ -6770,7 +6519,6 @@ extension ModelsR4.Expression {
     }
 }
 
-
 // MARK: - Extension
 extension ModelsR4.Extension {
 
@@ -6790,7 +6538,6 @@ extension ModelsR4.Extension {
     }
 }
 
-
 // MARK: - FHIRAbstractResource
 extension ModelsR4.FHIRAbstractResource: NSCopying {
 
@@ -6808,7 +6555,6 @@ extension ModelsR4.FHIRAbstractResource: NSCopying {
     }
 }
 
-
 // MARK: - FamilyMemberHistory
 extension ModelsR4.FamilyMemberHistory {
 
@@ -6817,7 +6563,7 @@ extension ModelsR4.FamilyMemberHistory {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.FamilyMemberHistory else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.instantiatesCanonical = self.instantiatesCanonical
         resource.instantiatesUri = self.instantiatesUri
         resource.status = self.status
@@ -6831,10 +6577,10 @@ extension ModelsR4.FamilyMemberHistory {
         resource.age = self.age?.copy() as? AgeX
         resource.estimatedAge = self.estimatedAge
         resource.deceased = self.deceased?.copy() as? DeceasedX
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.condition = self.condition?.compactMap { $0.copy() as? FamilyMemberHistoryCondition } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.condition = self.condition?.compactMap { $0.copy() as? FamilyMemberHistoryCondition }
 
         return resource
     }
@@ -6843,7 +6589,6 @@ extension ModelsR4.FamilyMemberHistory {
         return self.copied()
     }
 }
-
 
 // MARK: - FamilyMemberHistoryCondition
 extension ModelsR4.FamilyMemberHistoryCondition {
@@ -6857,7 +6602,7 @@ extension ModelsR4.FamilyMemberHistoryCondition {
         resource.outcome = self.outcome?.copy() as? CodeableConcept
         resource.contributedToDeath = self.contributedToDeath
         resource.onset = self.onset?.copy() as? OnsetX
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -6867,7 +6612,6 @@ extension ModelsR4.FamilyMemberHistoryCondition {
     }
 }
 
-
 // MARK: - Flag
 extension ModelsR4.Flag {
 
@@ -6876,9 +6620,9 @@ extension ModelsR4.Flag {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Flag else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.code = self.code.copy() as! CodeableConcept
         resource.subject = self.subject.copy() as! Reference
         resource.period = self.period?.copy() as? Period
@@ -6893,7 +6637,6 @@ extension ModelsR4.Flag {
     }
 }
 
-
 // MARK: - Goal
 extension ModelsR4.Goal {
 
@@ -6902,22 +6645,22 @@ extension ModelsR4.Goal {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Goal else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.lifecycleStatus = self.lifecycleStatus
         resource.achievementStatus = self.achievementStatus?.copy() as? CodeableConcept
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.priority = self.priority?.copy() as? CodeableConcept
         resource.description_fhir = self.description_fhir.copy() as! CodeableConcept
         resource.subject = self.subject.copy() as! Reference
         resource.start = self.start?.copy() as? StartX
-        resource.target = self.target?.compactMap { $0.copy() as? GoalTarget } 
+        resource.target = self.target?.compactMap { $0.copy() as? GoalTarget }
         resource.statusDate = self.statusDate
         resource.statusReason = self.statusReason
         resource.expressedBy = self.expressedBy?.copy() as? Reference
-        resource.addresses = self.addresses?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.outcomeCode = self.outcomeCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.outcomeReference = self.outcomeReference?.compactMap { $0.copy() as? Reference } 
+        resource.addresses = self.addresses?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.outcomeCode = self.outcomeCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.outcomeReference = self.outcomeReference?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -6926,7 +6669,6 @@ extension ModelsR4.Goal {
         return self.copied()
     }
 }
-
 
 // MARK: - GoalTarget
 extension ModelsR4.GoalTarget {
@@ -6948,7 +6690,6 @@ extension ModelsR4.GoalTarget {
     }
 }
 
-
 // MARK: - GraphDefinition
 extension ModelsR4.GraphDefinition {
 
@@ -6964,14 +6705,14 @@ extension ModelsR4.GraphDefinition {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.start = self.start
         resource.profile = self.profile
-        resource.link = self.link?.compactMap { $0.copy() as? GraphDefinitionLink } 
+        resource.link = self.link?.compactMap { $0.copy() as? GraphDefinitionLink }
 
         return resource
     }
@@ -6980,7 +6721,6 @@ extension ModelsR4.GraphDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - GraphDefinitionLink
 extension ModelsR4.GraphDefinitionLink {
@@ -6995,7 +6735,7 @@ extension ModelsR4.GraphDefinitionLink {
         resource.min = self.min
         resource.max = self.max
         resource.description_fhir = self.description_fhir
-        resource.target = self.target?.compactMap { $0.copy() as? GraphDefinitionLinkTarget } 
+        resource.target = self.target?.compactMap { $0.copy() as? GraphDefinitionLinkTarget }
 
         return resource
     }
@@ -7004,7 +6744,6 @@ extension ModelsR4.GraphDefinitionLink {
         return self.copied()
     }
 }
-
 
 // MARK: - GraphDefinitionLinkTarget
 extension ModelsR4.GraphDefinitionLinkTarget {
@@ -7017,8 +6756,8 @@ extension ModelsR4.GraphDefinitionLinkTarget {
         resource.type = self.type
         resource.params = self.params
         resource.profile = self.profile
-        resource.compartment = self.compartment?.compactMap { $0.copy() as? GraphDefinitionLinkTargetCompartment } 
-        resource.link = self.link?.compactMap { $0.copy() as? GraphDefinitionLink } 
+        resource.compartment = self.compartment?.compactMap { $0.copy() as? GraphDefinitionLinkTargetCompartment }
+        resource.link = self.link?.compactMap { $0.copy() as? GraphDefinitionLink }
 
         return resource
     }
@@ -7027,7 +6766,6 @@ extension ModelsR4.GraphDefinitionLinkTarget {
         return self.copied()
     }
 }
-
 
 // MARK: - GraphDefinitionLinkTargetCompartment
 extension ModelsR4.GraphDefinitionLinkTargetCompartment {
@@ -7051,7 +6789,6 @@ extension ModelsR4.GraphDefinitionLinkTargetCompartment {
     }
 }
 
-
 // MARK: - Group
 extension ModelsR4.Group {
 
@@ -7060,7 +6797,7 @@ extension ModelsR4.Group {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Group else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.active = self.active
         resource.type = self.type
         resource.actual = self.actual
@@ -7068,8 +6805,8 @@ extension ModelsR4.Group {
         resource.name = self.name
         resource.quantity = self.quantity
         resource.managingEntity = self.managingEntity?.copy() as? Reference
-        resource.characteristic = self.characteristic?.compactMap { $0.copy() as? GroupCharacteristic } 
-        resource.member = self.member?.compactMap { $0.copy() as? GroupMember } 
+        resource.characteristic = self.characteristic?.compactMap { $0.copy() as? GroupCharacteristic }
+        resource.member = self.member?.compactMap { $0.copy() as? GroupMember }
 
         return resource
     }
@@ -7078,7 +6815,6 @@ extension ModelsR4.Group {
         return self.copied()
     }
 }
-
 
 // MARK: - GroupCharacteristic
 extension ModelsR4.GroupCharacteristic {
@@ -7101,7 +6837,6 @@ extension ModelsR4.GroupCharacteristic {
     }
 }
 
-
 // MARK: - GroupMember
 extension ModelsR4.GroupMember {
 
@@ -7122,7 +6857,6 @@ extension ModelsR4.GroupMember {
     }
 }
 
-
 // MARK: - GuidanceResponse
 extension ModelsR4.GuidanceResponse {
 
@@ -7132,20 +6866,20 @@ extension ModelsR4.GuidanceResponse {
             return self
         }
         resource.requestIdentifier = self.requestIdentifier?.copy() as? Identifier
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.module = self.module.copy() as! ModuleX
         resource.status = self.status
         resource.subject = self.subject?.copy() as? Reference
         resource.encounter = self.encounter?.copy() as? Reference
         resource.occurrenceDateTime = self.occurrenceDateTime
         resource.performer = self.performer?.copy() as? Reference
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.evaluationMessage = self.evaluationMessage?.compactMap { $0.copy() as? Reference } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.evaluationMessage = self.evaluationMessage?.compactMap { $0.copy() as? Reference }
         resource.outputParameters = self.outputParameters?.copy() as? Reference
         resource.result = self.result?.copy() as? Reference
-        resource.dataRequirement = self.dataRequirement?.compactMap { $0.copy() as? DataRequirement } 
+        resource.dataRequirement = self.dataRequirement?.compactMap { $0.copy() as? DataRequirement }
 
         return resource
     }
@@ -7154,7 +6888,6 @@ extension ModelsR4.GuidanceResponse {
         return self.copied()
     }
 }
-
 
 // MARK: - HealthcareService
 extension ModelsR4.HealthcareService {
@@ -7164,30 +6897,30 @@ extension ModelsR4.HealthcareService {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.HealthcareService else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.active = self.active
         resource.providedBy = self.providedBy?.copy() as? Reference
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.location = self.location?.compactMap { $0.copy() as? Reference } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
+        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept }
+        resource.location = self.location?.compactMap { $0.copy() as? Reference }
         resource.name = self.name
         resource.comment = self.comment
         resource.extraDetails = self.extraDetails
         resource.photo = self.photo?.copy() as? Attachment
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
-        resource.coverageArea = self.coverageArea?.compactMap { $0.copy() as? Reference } 
-        resource.serviceProvisionCode = self.serviceProvisionCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.eligibility = self.eligibility?.compactMap { $0.copy() as? HealthcareServiceEligibility } 
-        resource.program = self.program?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.characteristic = self.characteristic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.communication = self.communication?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.referralMethod = self.referralMethod?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
+        resource.coverageArea = self.coverageArea?.compactMap { $0.copy() as? Reference }
+        resource.serviceProvisionCode = self.serviceProvisionCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.eligibility = self.eligibility?.compactMap { $0.copy() as? HealthcareServiceEligibility }
+        resource.program = self.program?.compactMap { $0.copy() as? CodeableConcept }
+        resource.characteristic = self.characteristic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.communication = self.communication?.compactMap { $0.copy() as? CodeableConcept }
+        resource.referralMethod = self.referralMethod?.compactMap { $0.copy() as? CodeableConcept }
         resource.appointmentRequired = self.appointmentRequired
-        resource.availableTime = self.availableTime?.compactMap { $0.copy() as? HealthcareServiceAvailableTime } 
-        resource.notAvailable = self.notAvailable?.compactMap { $0.copy() as? HealthcareServiceNotAvailable } 
+        resource.availableTime = self.availableTime?.compactMap { $0.copy() as? HealthcareServiceAvailableTime }
+        resource.notAvailable = self.notAvailable?.compactMap { $0.copy() as? HealthcareServiceNotAvailable }
         resource.availabilityExceptions = self.availabilityExceptions
-        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference } 
+        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -7196,7 +6929,6 @@ extension ModelsR4.HealthcareService {
         return self.copied()
     }
 }
-
 
 // MARK: - HealthcareServiceAvailableTime
 extension ModelsR4.HealthcareServiceAvailableTime {
@@ -7219,7 +6951,6 @@ extension ModelsR4.HealthcareServiceAvailableTime {
     }
 }
 
-
 // MARK: - HealthcareServiceEligibility
 extension ModelsR4.HealthcareServiceEligibility {
 
@@ -7239,7 +6970,6 @@ extension ModelsR4.HealthcareServiceEligibility {
     }
 }
 
-
 // MARK: - HealthcareServiceNotAvailable
 extension ModelsR4.HealthcareServiceNotAvailable {
 
@@ -7258,7 +6988,6 @@ extension ModelsR4.HealthcareServiceNotAvailable {
         return self.copied()
     }
 }
-
 
 // MARK: - HumanName
 extension ModelsR4.HumanName {
@@ -7284,7 +7013,6 @@ extension ModelsR4.HumanName {
     }
 }
 
-
 // MARK: - Identifier
 extension ModelsR4.Identifier {
 
@@ -7308,7 +7036,6 @@ extension ModelsR4.Identifier {
     }
 }
 
-
 // MARK: - ImagingStudy
 extension ModelsR4.ImagingStudy {
 
@@ -7317,26 +7044,26 @@ extension ModelsR4.ImagingStudy {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ImagingStudy else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
-        resource.modality = self.modality?.compactMap { $0.copy() as? Coding } 
+        resource.modality = self.modality?.compactMap { $0.copy() as? Coding }
         resource.subject = self.subject.copy() as! Reference
         resource.encounter = self.encounter?.copy() as? Reference
         resource.started = self.started
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
         resource.referrer = self.referrer?.copy() as? Reference
-        resource.interpreter = self.interpreter?.compactMap { $0.copy() as? Reference } 
-        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference } 
+        resource.interpreter = self.interpreter?.compactMap { $0.copy() as? Reference }
+        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference }
         resource.numberOfSeries = self.numberOfSeries
         resource.numberOfInstances = self.numberOfInstances
         resource.procedureReference = self.procedureReference?.copy() as? Reference
-        resource.procedureCode = self.procedureCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.procedureCode = self.procedureCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.location = self.location?.copy() as? Reference
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
         resource.description_fhir = self.description_fhir
-        resource.series = self.series?.compactMap { $0.copy() as? ImagingStudySeries } 
+        resource.series = self.series?.compactMap { $0.copy() as? ImagingStudySeries }
 
         return resource
     }
@@ -7345,7 +7072,6 @@ extension ModelsR4.ImagingStudy {
         return self.copied()
     }
 }
-
 
 // MARK: - ImagingStudySeries
 extension ModelsR4.ImagingStudySeries {
@@ -7360,13 +7086,13 @@ extension ModelsR4.ImagingStudySeries {
         resource.modality = self.modality.copy() as! Coding
         resource.description_fhir = self.description_fhir
         resource.numberOfInstances = self.numberOfInstances
-        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference } 
+        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference }
         resource.bodySite = self.bodySite?.copy() as? Coding
         resource.laterality = self.laterality?.copy() as? Coding
-        resource.specimen = self.specimen?.compactMap { $0.copy() as? Reference } 
+        resource.specimen = self.specimen?.compactMap { $0.copy() as? Reference }
         resource.started = self.started
-        resource.performer = self.performer?.compactMap { $0.copy() as? ImagingStudySeriesPerformer } 
-        resource.instance = self.instance?.compactMap { $0.copy() as? ImagingStudySeriesInstance } 
+        resource.performer = self.performer?.compactMap { $0.copy() as? ImagingStudySeriesPerformer }
+        resource.instance = self.instance?.compactMap { $0.copy() as? ImagingStudySeriesInstance }
 
         return resource
     }
@@ -7375,7 +7101,6 @@ extension ModelsR4.ImagingStudySeries {
         return self.copied()
     }
 }
-
 
 // MARK: - ImagingStudySeriesInstance
 extension ModelsR4.ImagingStudySeriesInstance {
@@ -7398,7 +7123,6 @@ extension ModelsR4.ImagingStudySeriesInstance {
     }
 }
 
-
 // MARK: - ImagingStudySeriesPerformer
 extension ModelsR4.ImagingStudySeriesPerformer {
 
@@ -7418,7 +7142,6 @@ extension ModelsR4.ImagingStudySeriesPerformer {
     }
 }
 
-
 // MARK: - Immunization
 extension ModelsR4.Immunization {
 
@@ -7427,7 +7150,7 @@ extension ModelsR4.Immunization {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Immunization else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.statusReason = self.statusReason?.copy() as? CodeableConcept
         resource.vaccineCode = self.vaccineCode.copy() as! CodeableConcept
@@ -7444,17 +7167,17 @@ extension ModelsR4.Immunization {
         resource.site = self.site?.copy() as? CodeableConcept
         resource.route = self.route?.copy() as? CodeableConcept
         resource.doseQuantity = self.doseQuantity?.copy() as? Quantity
-        resource.performer = self.performer?.compactMap { $0.copy() as? ImmunizationPerformer } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
+        resource.performer = self.performer?.compactMap { $0.copy() as? ImmunizationPerformer }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
         resource.isSubpotent = self.isSubpotent
-        resource.subpotentReason = self.subpotentReason?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.education = self.education?.compactMap { $0.copy() as? ImmunizationEducation } 
-        resource.programEligibility = self.programEligibility?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.subpotentReason = self.subpotentReason?.compactMap { $0.copy() as? CodeableConcept }
+        resource.education = self.education?.compactMap { $0.copy() as? ImmunizationEducation }
+        resource.programEligibility = self.programEligibility?.compactMap { $0.copy() as? CodeableConcept }
         resource.fundingSource = self.fundingSource?.copy() as? CodeableConcept
-        resource.reaction = self.reaction?.compactMap { $0.copy() as? ImmunizationReaction } 
-        resource.protocolApplied = self.protocolApplied?.compactMap { $0.copy() as? ImmunizationProtocolApplied } 
+        resource.reaction = self.reaction?.compactMap { $0.copy() as? ImmunizationReaction }
+        resource.protocolApplied = self.protocolApplied?.compactMap { $0.copy() as? ImmunizationProtocolApplied }
 
         return resource
     }
@@ -7463,7 +7186,6 @@ extension ModelsR4.Immunization {
         return self.copied()
     }
 }
-
 
 // MARK: - ImmunizationEducation
 extension ModelsR4.ImmunizationEducation {
@@ -7486,7 +7208,6 @@ extension ModelsR4.ImmunizationEducation {
     }
 }
 
-
 // MARK: - ImmunizationEvaluation
 extension ModelsR4.ImmunizationEvaluation {
 
@@ -7495,7 +7216,7 @@ extension ModelsR4.ImmunizationEvaluation {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ImmunizationEvaluation else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.patient = self.patient.copy() as! Reference
         resource.date = self.date
@@ -7503,7 +7224,7 @@ extension ModelsR4.ImmunizationEvaluation {
         resource.targetDisease = self.targetDisease.copy() as! CodeableConcept
         resource.immunizationEvent = self.immunizationEvent.copy() as! Reference
         resource.doseStatus = self.doseStatus.copy() as! CodeableConcept
-        resource.doseStatusReason = self.doseStatusReason?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.doseStatusReason = self.doseStatusReason?.compactMap { $0.copy() as? CodeableConcept }
         resource.description_fhir = self.description_fhir
         resource.series = self.series
         resource.doseNumber = self.doseNumber?.copy() as? DoseNumberX
@@ -7516,7 +7237,6 @@ extension ModelsR4.ImmunizationEvaluation {
         return self.copied()
     }
 }
-
 
 // MARK: - ImmunizationPerformer
 extension ModelsR4.ImmunizationPerformer {
@@ -7537,7 +7257,6 @@ extension ModelsR4.ImmunizationPerformer {
     }
 }
 
-
 // MARK: - ImmunizationProtocolApplied
 extension ModelsR4.ImmunizationProtocolApplied {
 
@@ -7548,7 +7267,7 @@ extension ModelsR4.ImmunizationProtocolApplied {
         }
         resource.series = self.series
         resource.authority = self.authority?.copy() as? Reference
-        resource.targetDisease = self.targetDisease?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.targetDisease = self.targetDisease?.compactMap { $0.copy() as? CodeableConcept }
         resource.doseNumber = self.doseNumber.copy() as! DoseNumberX
         resource.seriesDoses = self.seriesDoses?.copy() as? SeriesDosesX
 
@@ -7559,7 +7278,6 @@ extension ModelsR4.ImmunizationProtocolApplied {
         return self.copied()
     }
 }
-
 
 // MARK: - ImmunizationReaction
 extension ModelsR4.ImmunizationReaction {
@@ -7581,7 +7299,6 @@ extension ModelsR4.ImmunizationReaction {
     }
 }
 
-
 // MARK: - ImmunizationRecommendation
 extension ModelsR4.ImmunizationRecommendation {
 
@@ -7590,11 +7307,11 @@ extension ModelsR4.ImmunizationRecommendation {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ImmunizationRecommendation else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.patient = self.patient.copy() as! Reference
         resource.date = self.date
         resource.authority = self.authority?.copy() as? Reference
-        resource.recommendation = self.recommendation.compactMap { $0.copy() as? ImmunizationRecommendationRecommendation } 
+        resource.recommendation = self.recommendation.compactMap { $0.copy() as? ImmunizationRecommendationRecommendation }
 
         return resource
     }
@@ -7603,7 +7320,6 @@ extension ModelsR4.ImmunizationRecommendation {
         return self.copied()
     }
 }
-
 
 // MARK: - ImmunizationRecommendationRecommendation
 extension ModelsR4.ImmunizationRecommendationRecommendation {
@@ -7613,18 +7329,18 @@ extension ModelsR4.ImmunizationRecommendationRecommendation {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ImmunizationRecommendationRecommendation else {
             return self
         }
-        resource.vaccineCode = self.vaccineCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.vaccineCode = self.vaccineCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.targetDisease = self.targetDisease?.copy() as? CodeableConcept
-        resource.contraindicatedVaccineCode = self.contraindicatedVaccineCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.contraindicatedVaccineCode = self.contraindicatedVaccineCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.forecastStatus = self.forecastStatus.copy() as! CodeableConcept
-        resource.forecastReason = self.forecastReason?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.dateCriterion = self.dateCriterion?.compactMap { $0.copy() as? ImmunizationRecommendationRecommendationDateCriterion } 
+        resource.forecastReason = self.forecastReason?.compactMap { $0.copy() as? CodeableConcept }
+        resource.dateCriterion = self.dateCriterion?.compactMap { $0.copy() as? ImmunizationRecommendationRecommendationDateCriterion }
         resource.description_fhir = self.description_fhir
         resource.series = self.series
         resource.doseNumber = self.doseNumber?.copy() as? DoseNumberX
         resource.seriesDoses = self.seriesDoses?.copy() as? SeriesDosesX
-        resource.supportingImmunization = self.supportingImmunization?.compactMap { $0.copy() as? Reference } 
-        resource.supportingPatientInformation = self.supportingPatientInformation?.compactMap { $0.copy() as? Reference } 
+        resource.supportingImmunization = self.supportingImmunization?.compactMap { $0.copy() as? Reference }
+        resource.supportingPatientInformation = self.supportingPatientInformation?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -7633,7 +7349,6 @@ extension ModelsR4.ImmunizationRecommendationRecommendation {
         return self.copied()
     }
 }
-
 
 // MARK: - ImmunizationRecommendationRecommendationDateCriterion
 extension ModelsR4.ImmunizationRecommendationRecommendationDateCriterion {
@@ -7654,7 +7369,6 @@ extension ModelsR4.ImmunizationRecommendationRecommendationDateCriterion {
     }
 }
 
-
 // MARK: - ImplementationGuide
 extension ModelsR4.ImplementationGuide {
 
@@ -7671,16 +7385,16 @@ extension ModelsR4.ImplementationGuide {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.copyright = self.copyright
         resource.packageId = self.packageId
         resource.license = self.license
         resource.fhirVersion = self.fhirVersion
-        resource.dependsOn = self.dependsOn?.compactMap { $0.copy() as? ImplementationGuideDependsOn } 
-        resource.global = self.global?.compactMap { $0.copy() as? ImplementationGuideGlobal } 
+        resource.dependsOn = self.dependsOn?.compactMap { $0.copy() as? ImplementationGuideDependsOn }
+        resource.global = self.global?.compactMap { $0.copy() as? ImplementationGuideGlobal }
         resource.definition = self.definition?.copy() as? ImplementationGuideDefinition
         resource.manifest = self.manifest?.copy() as? ImplementationGuideManifest
 
@@ -7692,7 +7406,6 @@ extension ModelsR4.ImplementationGuide {
     }
 }
 
-
 // MARK: - ImplementationGuideDefinition
 extension ModelsR4.ImplementationGuideDefinition {
 
@@ -7701,11 +7414,11 @@ extension ModelsR4.ImplementationGuideDefinition {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ImplementationGuideDefinition else {
             return self
         }
-        resource.grouping = self.grouping?.compactMap { $0.copy() as? ImplementationGuideDefinitionGrouping } 
-        resource.resource = self.resource.compactMap { $0.copy() as? ImplementationGuideDefinitionResource } 
+        resource.grouping = self.grouping?.compactMap { $0.copy() as? ImplementationGuideDefinitionGrouping }
+        resource.resource = self.resource.compactMap { $0.copy() as? ImplementationGuideDefinitionResource }
         resource.page = self.page?.copy() as? ImplementationGuideDefinitionPage
-        resource.parameter = self.parameter?.compactMap { $0.copy() as? ImplementationGuideDefinitionParameter } 
-        resource.template = self.template?.compactMap { $0.copy() as? ImplementationGuideDefinitionTemplate } 
+        resource.parameter = self.parameter?.compactMap { $0.copy() as? ImplementationGuideDefinitionParameter }
+        resource.template = self.template?.compactMap { $0.copy() as? ImplementationGuideDefinitionTemplate }
 
         return resource
     }
@@ -7714,7 +7427,6 @@ extension ModelsR4.ImplementationGuideDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - ImplementationGuideDefinitionGrouping
 extension ModelsR4.ImplementationGuideDefinitionGrouping {
@@ -7735,7 +7447,6 @@ extension ModelsR4.ImplementationGuideDefinitionGrouping {
     }
 }
 
-
 // MARK: - ImplementationGuideDefinitionPage
 extension ModelsR4.ImplementationGuideDefinitionPage {
 
@@ -7747,7 +7458,7 @@ extension ModelsR4.ImplementationGuideDefinitionPage {
         resource.name = self.name.copy() as! NameX
         resource.title = self.title
         resource.generation = self.generation
-        resource.page = self.page?.compactMap { $0.copy() as? ImplementationGuideDefinitionPage } 
+        resource.page = self.page?.compactMap { $0.copy() as? ImplementationGuideDefinitionPage }
 
         return resource
     }
@@ -7756,7 +7467,6 @@ extension ModelsR4.ImplementationGuideDefinitionPage {
         return self.copied()
     }
 }
-
 
 // MARK: - ImplementationGuideDefinitionParameter
 extension ModelsR4.ImplementationGuideDefinitionParameter {
@@ -7776,7 +7486,6 @@ extension ModelsR4.ImplementationGuideDefinitionParameter {
         return self.copied()
     }
 }
-
 
 // MARK: - ImplementationGuideDefinitionResource
 extension ModelsR4.ImplementationGuideDefinitionResource {
@@ -7801,7 +7510,6 @@ extension ModelsR4.ImplementationGuideDefinitionResource {
     }
 }
 
-
 // MARK: - ImplementationGuideDefinitionTemplate
 extension ModelsR4.ImplementationGuideDefinitionTemplate {
 
@@ -7821,7 +7529,6 @@ extension ModelsR4.ImplementationGuideDefinitionTemplate {
         return self.copied()
     }
 }
-
 
 // MARK: - ImplementationGuideDependsOn
 extension ModelsR4.ImplementationGuideDependsOn {
@@ -7843,7 +7550,6 @@ extension ModelsR4.ImplementationGuideDependsOn {
     }
 }
 
-
 // MARK: - ImplementationGuideGlobal
 extension ModelsR4.ImplementationGuideGlobal {
 
@@ -7863,7 +7569,6 @@ extension ModelsR4.ImplementationGuideGlobal {
     }
 }
 
-
 // MARK: - ImplementationGuideManifest
 extension ModelsR4.ImplementationGuideManifest {
 
@@ -7873,8 +7578,8 @@ extension ModelsR4.ImplementationGuideManifest {
             return self
         }
         resource.rendering = self.rendering
-        resource.resource = self.resource.compactMap { $0.copy() as? ImplementationGuideManifestResource } 
-        resource.page = self.page?.compactMap { $0.copy() as? ImplementationGuideManifestPage } 
+        resource.resource = self.resource.compactMap { $0.copy() as? ImplementationGuideManifestResource }
+        resource.page = self.page?.compactMap { $0.copy() as? ImplementationGuideManifestPage }
         resource.image = self.image
         resource.other = self.other
 
@@ -7885,7 +7590,6 @@ extension ModelsR4.ImplementationGuideManifest {
         return self.copied()
     }
 }
-
 
 // MARK: - ImplementationGuideManifestPage
 extension ModelsR4.ImplementationGuideManifestPage {
@@ -7907,7 +7611,6 @@ extension ModelsR4.ImplementationGuideManifestPage {
     }
 }
 
-
 // MARK: - ImplementationGuideManifestResource
 extension ModelsR4.ImplementationGuideManifestResource {
 
@@ -7928,7 +7631,6 @@ extension ModelsR4.ImplementationGuideManifestResource {
     }
 }
 
-
 // MARK: - InsurancePlan
 extension ModelsR4.InsurancePlan {
 
@@ -7937,20 +7639,20 @@ extension ModelsR4.InsurancePlan {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.InsurancePlan else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
         resource.name = self.name
         resource.alias = self.alias
         resource.period = self.period?.copy() as? Period
         resource.ownedBy = self.ownedBy?.copy() as? Reference
         resource.administeredBy = self.administeredBy?.copy() as? Reference
-        resource.coverageArea = self.coverageArea?.compactMap { $0.copy() as? Reference } 
-        resource.contact = self.contact?.compactMap { $0.copy() as? InsurancePlanContact } 
-        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference } 
-        resource.network = self.network?.compactMap { $0.copy() as? Reference } 
-        resource.coverage = self.coverage?.compactMap { $0.copy() as? InsurancePlanCoverage } 
-        resource.plan = self.plan?.compactMap { $0.copy() as? InsurancePlanPlan } 
+        resource.coverageArea = self.coverageArea?.compactMap { $0.copy() as? Reference }
+        resource.contact = self.contact?.compactMap { $0.copy() as? InsurancePlanContact }
+        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference }
+        resource.network = self.network?.compactMap { $0.copy() as? Reference }
+        resource.coverage = self.coverage?.compactMap { $0.copy() as? InsurancePlanCoverage }
+        resource.plan = self.plan?.compactMap { $0.copy() as? InsurancePlanPlan }
 
         return resource
     }
@@ -7959,7 +7661,6 @@ extension ModelsR4.InsurancePlan {
         return self.copied()
     }
 }
-
 
 // MARK: - InsurancePlanContact
 extension ModelsR4.InsurancePlanContact {
@@ -7971,7 +7672,7 @@ extension ModelsR4.InsurancePlanContact {
         }
         resource.purpose = self.purpose?.copy() as? CodeableConcept
         resource.name = self.name?.copy() as? HumanName
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
         resource.address = self.address?.copy() as? Address
 
         return resource
@@ -7982,7 +7683,6 @@ extension ModelsR4.InsurancePlanContact {
     }
 }
 
-
 // MARK: - InsurancePlanCoverage
 extension ModelsR4.InsurancePlanCoverage {
 
@@ -7992,8 +7692,8 @@ extension ModelsR4.InsurancePlanCoverage {
             return self
         }
         resource.type = self.type.copy() as! CodeableConcept
-        resource.network = self.network?.compactMap { $0.copy() as? Reference } 
-        resource.benefit = self.benefit.compactMap { $0.copy() as? InsurancePlanCoverageBenefit } 
+        resource.network = self.network?.compactMap { $0.copy() as? Reference }
+        resource.benefit = self.benefit.compactMap { $0.copy() as? InsurancePlanCoverageBenefit }
 
         return resource
     }
@@ -8002,7 +7702,6 @@ extension ModelsR4.InsurancePlanCoverage {
         return self.copied()
     }
 }
-
 
 // MARK: - InsurancePlanCoverageBenefit
 extension ModelsR4.InsurancePlanCoverageBenefit {
@@ -8014,7 +7713,7 @@ extension ModelsR4.InsurancePlanCoverageBenefit {
         }
         resource.type = self.type.copy() as! CodeableConcept
         resource.requirement = self.requirement
-        resource.limit = self.limit?.compactMap { $0.copy() as? InsurancePlanCoverageBenefitLimit } 
+        resource.limit = self.limit?.compactMap { $0.copy() as? InsurancePlanCoverageBenefitLimit }
 
         return resource
     }
@@ -8023,7 +7722,6 @@ extension ModelsR4.InsurancePlanCoverageBenefit {
         return self.copied()
     }
 }
-
 
 // MARK: - InsurancePlanCoverageBenefitLimit
 extension ModelsR4.InsurancePlanCoverageBenefitLimit {
@@ -8044,7 +7742,6 @@ extension ModelsR4.InsurancePlanCoverageBenefitLimit {
     }
 }
 
-
 // MARK: - InsurancePlanPlan
 extension ModelsR4.InsurancePlanPlan {
 
@@ -8053,12 +7750,12 @@ extension ModelsR4.InsurancePlanPlan {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.InsurancePlanPlan else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.type = self.type?.copy() as? CodeableConcept
-        resource.coverageArea = self.coverageArea?.compactMap { $0.copy() as? Reference } 
-        resource.network = self.network?.compactMap { $0.copy() as? Reference } 
-        resource.generalCost = self.generalCost?.compactMap { $0.copy() as? InsurancePlanPlanGeneralCost } 
-        resource.specificCost = self.specificCost?.compactMap { $0.copy() as? InsurancePlanPlanSpecificCost } 
+        resource.coverageArea = self.coverageArea?.compactMap { $0.copy() as? Reference }
+        resource.network = self.network?.compactMap { $0.copy() as? Reference }
+        resource.generalCost = self.generalCost?.compactMap { $0.copy() as? InsurancePlanPlanGeneralCost }
+        resource.specificCost = self.specificCost?.compactMap { $0.copy() as? InsurancePlanPlanSpecificCost }
 
         return resource
     }
@@ -8067,7 +7764,6 @@ extension ModelsR4.InsurancePlanPlan {
         return self.copied()
     }
 }
-
 
 // MARK: - InsurancePlanPlanGeneralCost
 extension ModelsR4.InsurancePlanPlanGeneralCost {
@@ -8090,7 +7786,6 @@ extension ModelsR4.InsurancePlanPlanGeneralCost {
     }
 }
 
-
 // MARK: - InsurancePlanPlanSpecificCost
 extension ModelsR4.InsurancePlanPlanSpecificCost {
 
@@ -8100,7 +7795,7 @@ extension ModelsR4.InsurancePlanPlanSpecificCost {
             return self
         }
         resource.category = self.category.copy() as! CodeableConcept
-        resource.benefit = self.benefit?.compactMap { $0.copy() as? InsurancePlanPlanSpecificCostBenefit } 
+        resource.benefit = self.benefit?.compactMap { $0.copy() as? InsurancePlanPlanSpecificCostBenefit }
 
         return resource
     }
@@ -8109,7 +7804,6 @@ extension ModelsR4.InsurancePlanPlanSpecificCost {
         return self.copied()
     }
 }
-
 
 // MARK: - InsurancePlanPlanSpecificCostBenefit
 extension ModelsR4.InsurancePlanPlanSpecificCostBenefit {
@@ -8120,7 +7814,7 @@ extension ModelsR4.InsurancePlanPlanSpecificCostBenefit {
             return self
         }
         resource.type = self.type.copy() as! CodeableConcept
-        resource.cost = self.cost?.compactMap { $0.copy() as? InsurancePlanPlanSpecificCostBenefitCost } 
+        resource.cost = self.cost?.compactMap { $0.copy() as? InsurancePlanPlanSpecificCostBenefitCost }
 
         return resource
     }
@@ -8129,7 +7823,6 @@ extension ModelsR4.InsurancePlanPlanSpecificCostBenefit {
         return self.copied()
     }
 }
-
 
 // MARK: - InsurancePlanPlanSpecificCostBenefitCost
 extension ModelsR4.InsurancePlanPlanSpecificCostBenefitCost {
@@ -8141,7 +7834,7 @@ extension ModelsR4.InsurancePlanPlanSpecificCostBenefitCost {
         }
         resource.type = self.type.copy() as! CodeableConcept
         resource.applicability = self.applicability?.copy() as? CodeableConcept
-        resource.qualifiers = self.qualifiers?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.qualifiers = self.qualifiers?.compactMap { $0.copy() as? CodeableConcept }
         resource.value = self.value?.copy() as? Quantity
 
         return resource
@@ -8152,7 +7845,6 @@ extension ModelsR4.InsurancePlanPlanSpecificCostBenefitCost {
     }
 }
 
-
 // MARK: - Invoice
 extension ModelsR4.Invoice {
 
@@ -8161,22 +7853,22 @@ extension ModelsR4.Invoice {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Invoice else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.cancelledReason = self.cancelledReason
         resource.type = self.type?.copy() as? CodeableConcept
         resource.subject = self.subject?.copy() as? Reference
         resource.recipient = self.recipient?.copy() as? Reference
         resource.date = self.date
-        resource.participant = self.participant?.compactMap { $0.copy() as? InvoiceParticipant } 
+        resource.participant = self.participant?.compactMap { $0.copy() as? InvoiceParticipant }
         resource.issuer = self.issuer?.copy() as? Reference
         resource.account = self.account?.copy() as? Reference
-        resource.lineItem = self.lineItem?.compactMap { $0.copy() as? InvoiceLineItem } 
-        resource.totalPriceComponent = self.totalPriceComponent?.compactMap { $0.copy() as? InvoiceLineItemPriceComponent } 
+        resource.lineItem = self.lineItem?.compactMap { $0.copy() as? InvoiceLineItem }
+        resource.totalPriceComponent = self.totalPriceComponent?.compactMap { $0.copy() as? InvoiceLineItemPriceComponent }
         resource.totalNet = self.totalNet?.copy() as? Money
         resource.totalGross = self.totalGross?.copy() as? Money
         resource.paymentTerms = self.paymentTerms
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -8185,7 +7877,6 @@ extension ModelsR4.Invoice {
         return self.copied()
     }
 }
-
 
 // MARK: - InvoiceLineItem
 extension ModelsR4.InvoiceLineItem {
@@ -8197,7 +7888,7 @@ extension ModelsR4.InvoiceLineItem {
         }
         resource.sequence = self.sequence
         resource.chargeItem = self.chargeItem.copy() as! ChargeItemX
-        resource.priceComponent = self.priceComponent?.compactMap { $0.copy() as? InvoiceLineItemPriceComponent } 
+        resource.priceComponent = self.priceComponent?.compactMap { $0.copy() as? InvoiceLineItemPriceComponent }
 
         return resource
     }
@@ -8206,7 +7897,6 @@ extension ModelsR4.InvoiceLineItem {
         return self.copied()
     }
 }
-
 
 // MARK: - InvoiceLineItemPriceComponent
 extension ModelsR4.InvoiceLineItemPriceComponent {
@@ -8229,7 +7919,6 @@ extension ModelsR4.InvoiceLineItemPriceComponent {
     }
 }
 
-
 // MARK: - InvoiceParticipant
 extension ModelsR4.InvoiceParticipant {
 
@@ -8249,7 +7938,6 @@ extension ModelsR4.InvoiceParticipant {
     }
 }
 
-
 // MARK: - Library
 extension ModelsR4.Library {
 
@@ -8259,7 +7947,7 @@ extension ModelsR4.Library {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -8270,25 +7958,25 @@ extension ModelsR4.Library {
         resource.subject = self.subject?.copy() as? SubjectX
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.usage = self.usage
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail } 
-        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail } 
-        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail } 
-        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
-        resource.parameter = self.parameter?.compactMap { $0.copy() as? ParameterDefinition } 
-        resource.dataRequirement = self.dataRequirement?.compactMap { $0.copy() as? DataRequirement } 
-        resource.content = self.content?.compactMap { $0.copy() as? Attachment } 
+        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail }
+        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail }
+        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail }
+        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
+        resource.parameter = self.parameter?.compactMap { $0.copy() as? ParameterDefinition }
+        resource.dataRequirement = self.dataRequirement?.compactMap { $0.copy() as? DataRequirement }
+        resource.content = self.content?.compactMap { $0.copy() as? Attachment }
 
         return resource
     }
@@ -8297,7 +7985,6 @@ extension ModelsR4.Library {
         return self.copied()
     }
 }
-
 
 // MARK: - Linkage
 extension ModelsR4.Linkage {
@@ -8309,7 +7996,7 @@ extension ModelsR4.Linkage {
         }
         resource.active = self.active
         resource.author = self.author?.copy() as? Reference
-        resource.item = self.item.compactMap { $0.copy() as? LinkageItem } 
+        resource.item = self.item.compactMap { $0.copy() as? LinkageItem }
 
         return resource
     }
@@ -8318,7 +8005,6 @@ extension ModelsR4.Linkage {
         return self.copied()
     }
 }
-
 
 // MARK: - LinkageItem
 extension ModelsR4.LinkageItem {
@@ -8339,7 +8025,6 @@ extension ModelsR4.LinkageItem {
     }
 }
 
-
 // MARK: - List
 extension ModelsR4.List {
 
@@ -8348,7 +8033,7 @@ extension ModelsR4.List {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.List else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.mode = self.mode
         resource.title = self.title
@@ -8358,8 +8043,8 @@ extension ModelsR4.List {
         resource.date = self.date
         resource.source = self.source?.copy() as? Reference
         resource.orderedBy = self.orderedBy?.copy() as? CodeableConcept
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.entry = self.entry?.compactMap { $0.copy() as? ListEntry } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.entry = self.entry?.compactMap { $0.copy() as? ListEntry }
         resource.emptyReason = self.emptyReason?.copy() as? CodeableConcept
 
         return resource
@@ -8369,7 +8054,6 @@ extension ModelsR4.List {
         return self.copied()
     }
 }
-
 
 // MARK: - ListEntry
 extension ModelsR4.ListEntry {
@@ -8392,7 +8076,6 @@ extension ModelsR4.ListEntry {
     }
 }
 
-
 // MARK: - Location
 extension ModelsR4.Location {
 
@@ -8401,23 +8084,23 @@ extension ModelsR4.Location {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Location else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.operationalStatus = self.operationalStatus?.copy() as? Coding
         resource.name = self.name
         resource.alias = self.alias
         resource.description_fhir = self.description_fhir
         resource.mode = self.mode
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
         resource.address = self.address?.copy() as? Address
         resource.physicalType = self.physicalType?.copy() as? CodeableConcept
         resource.position = self.position?.copy() as? LocationPosition
         resource.managingOrganization = self.managingOrganization?.copy() as? Reference
         resource.partOf = self.partOf?.copy() as? Reference
-        resource.hoursOfOperation = self.hoursOfOperation?.compactMap { $0.copy() as? LocationHoursOfOperation } 
+        resource.hoursOfOperation = self.hoursOfOperation?.compactMap { $0.copy() as? LocationHoursOfOperation }
         resource.availabilityExceptions = self.availabilityExceptions
-        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference } 
+        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -8426,7 +8109,6 @@ extension ModelsR4.Location {
         return self.copied()
     }
 }
-
 
 // MARK: - LocationHoursOfOperation
 extension ModelsR4.LocationHoursOfOperation {
@@ -8449,7 +8131,6 @@ extension ModelsR4.LocationHoursOfOperation {
     }
 }
 
-
 // MARK: - LocationPosition
 extension ModelsR4.LocationPosition {
 
@@ -8469,7 +8150,6 @@ extension ModelsR4.LocationPosition {
         return self.copied()
     }
 }
-
 
 // MARK: - MarketingStatus
 extension ModelsR4.MarketingStatus {
@@ -8493,7 +8173,6 @@ extension ModelsR4.MarketingStatus {
     }
 }
 
-
 // MARK: - Measure
 extension ModelsR4.Measure {
 
@@ -8503,7 +8182,7 @@ extension ModelsR4.Measure {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -8513,27 +8192,27 @@ extension ModelsR4.Measure {
         resource.subject = self.subject?.copy() as? SubjectX
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.usage = self.usage
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail } 
-        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail } 
-        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail } 
-        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
+        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail }
+        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail }
+        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail }
+        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
         resource.library = self.library
         resource.disclaimer = self.disclaimer
         resource.scoring = self.scoring?.copy() as? CodeableConcept
         resource.compositeScoring = self.compositeScoring?.copy() as? CodeableConcept
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
         resource.riskAdjustment = self.riskAdjustment
         resource.rateAggregation = self.rateAggregation
         resource.rationale = self.rationale
@@ -8541,8 +8220,8 @@ extension ModelsR4.Measure {
         resource.improvementNotation = self.improvementNotation?.copy() as? CodeableConcept
         resource.definition = self.definition
         resource.guidance = self.guidance
-        resource.group = self.group?.compactMap { $0.copy() as? MeasureGroup } 
-        resource.supplementalData = self.supplementalData?.compactMap { $0.copy() as? MeasureSupplementalData } 
+        resource.group = self.group?.compactMap { $0.copy() as? MeasureGroup }
+        resource.supplementalData = self.supplementalData?.compactMap { $0.copy() as? MeasureSupplementalData }
 
         return resource
     }
@@ -8551,7 +8230,6 @@ extension ModelsR4.Measure {
         return self.copied()
     }
 }
-
 
 // MARK: - MeasureGroup
 extension ModelsR4.MeasureGroup {
@@ -8563,8 +8241,8 @@ extension ModelsR4.MeasureGroup {
         }
         resource.code = self.code?.copy() as? CodeableConcept
         resource.description_fhir = self.description_fhir
-        resource.population = self.population?.compactMap { $0.copy() as? MeasureGroupPopulation } 
-        resource.stratifier = self.stratifier?.compactMap { $0.copy() as? MeasureGroupStratifier } 
+        resource.population = self.population?.compactMap { $0.copy() as? MeasureGroupPopulation }
+        resource.stratifier = self.stratifier?.compactMap { $0.copy() as? MeasureGroupStratifier }
 
         return resource
     }
@@ -8573,7 +8251,6 @@ extension ModelsR4.MeasureGroup {
         return self.copied()
     }
 }
-
 
 // MARK: - MeasureGroupPopulation
 extension ModelsR4.MeasureGroupPopulation {
@@ -8595,7 +8272,6 @@ extension ModelsR4.MeasureGroupPopulation {
     }
 }
 
-
 // MARK: - MeasureGroupStratifier
 extension ModelsR4.MeasureGroupStratifier {
 
@@ -8607,7 +8283,7 @@ extension ModelsR4.MeasureGroupStratifier {
         resource.code = self.code?.copy() as? CodeableConcept
         resource.description_fhir = self.description_fhir
         resource.criteria = self.criteria?.copy() as? Expression
-        resource.component = self.component?.compactMap { $0.copy() as? MeasureGroupStratifierComponent } 
+        resource.component = self.component?.compactMap { $0.copy() as? MeasureGroupStratifierComponent }
 
         return resource
     }
@@ -8616,7 +8292,6 @@ extension ModelsR4.MeasureGroupStratifier {
         return self.copied()
     }
 }
-
 
 // MARK: - MeasureGroupStratifierComponent
 extension ModelsR4.MeasureGroupStratifierComponent {
@@ -8638,7 +8313,6 @@ extension ModelsR4.MeasureGroupStratifierComponent {
     }
 }
 
-
 // MARK: - MeasureReport
 extension ModelsR4.MeasureReport {
 
@@ -8647,7 +8321,7 @@ extension ModelsR4.MeasureReport {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MeasureReport else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.type = self.type
         resource.measure = self.measure
@@ -8656,8 +8330,8 @@ extension ModelsR4.MeasureReport {
         resource.reporter = self.reporter?.copy() as? Reference
         resource.period = self.period.copy() as! Period
         resource.improvementNotation = self.improvementNotation?.copy() as? CodeableConcept
-        resource.group = self.group?.compactMap { $0.copy() as? MeasureReportGroup } 
-        resource.evaluatedResource = self.evaluatedResource?.compactMap { $0.copy() as? Reference } 
+        resource.group = self.group?.compactMap { $0.copy() as? MeasureReportGroup }
+        resource.evaluatedResource = self.evaluatedResource?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -8666,7 +8340,6 @@ extension ModelsR4.MeasureReport {
         return self.copied()
     }
 }
-
 
 // MARK: - MeasureReportGroup
 extension ModelsR4.MeasureReportGroup {
@@ -8677,9 +8350,9 @@ extension ModelsR4.MeasureReportGroup {
             return self
         }
         resource.code = self.code?.copy() as? CodeableConcept
-        resource.population = self.population?.compactMap { $0.copy() as? MeasureReportGroupPopulation } 
+        resource.population = self.population?.compactMap { $0.copy() as? MeasureReportGroupPopulation }
         resource.measureScore = self.measureScore?.copy() as? Quantity
-        resource.stratifier = self.stratifier?.compactMap { $0.copy() as? MeasureReportGroupStratifier } 
+        resource.stratifier = self.stratifier?.compactMap { $0.copy() as? MeasureReportGroupStratifier }
 
         return resource
     }
@@ -8688,7 +8361,6 @@ extension ModelsR4.MeasureReportGroup {
         return self.copied()
     }
 }
-
 
 // MARK: - MeasureReportGroupPopulation
 extension ModelsR4.MeasureReportGroupPopulation {
@@ -8710,7 +8382,6 @@ extension ModelsR4.MeasureReportGroupPopulation {
     }
 }
 
-
 // MARK: - MeasureReportGroupStratifier
 extension ModelsR4.MeasureReportGroupStratifier {
 
@@ -8719,8 +8390,8 @@ extension ModelsR4.MeasureReportGroupStratifier {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MeasureReportGroupStratifier else {
             return self
         }
-        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.stratum = self.stratum?.compactMap { $0.copy() as? MeasureReportGroupStratifierStratum } 
+        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept }
+        resource.stratum = self.stratum?.compactMap { $0.copy() as? MeasureReportGroupStratifierStratum }
 
         return resource
     }
@@ -8729,7 +8400,6 @@ extension ModelsR4.MeasureReportGroupStratifier {
         return self.copied()
     }
 }
-
 
 // MARK: - MeasureReportGroupStratifierStratum
 extension ModelsR4.MeasureReportGroupStratifierStratum {
@@ -8740,8 +8410,8 @@ extension ModelsR4.MeasureReportGroupStratifierStratum {
             return self
         }
         resource.value = self.value?.copy() as? CodeableConcept
-        resource.component = self.component?.compactMap { $0.copy() as? MeasureReportGroupStratifierStratumComponent } 
-        resource.population = self.population?.compactMap { $0.copy() as? MeasureReportGroupStratifierStratumPopulation } 
+        resource.component = self.component?.compactMap { $0.copy() as? MeasureReportGroupStratifierStratumComponent }
+        resource.population = self.population?.compactMap { $0.copy() as? MeasureReportGroupStratifierStratumPopulation }
         resource.measureScore = self.measureScore?.copy() as? Quantity
 
         return resource
@@ -8751,7 +8421,6 @@ extension ModelsR4.MeasureReportGroupStratifierStratum {
         return self.copied()
     }
 }
-
 
 // MARK: - MeasureReportGroupStratifierStratumComponent
 extension ModelsR4.MeasureReportGroupStratifierStratumComponent {
@@ -8771,7 +8440,6 @@ extension ModelsR4.MeasureReportGroupStratifierStratumComponent {
         return self.copied()
     }
 }
-
 
 // MARK: - MeasureReportGroupStratifierStratumPopulation
 extension ModelsR4.MeasureReportGroupStratifierStratumPopulation {
@@ -8793,7 +8461,6 @@ extension ModelsR4.MeasureReportGroupStratifierStratumPopulation {
     }
 }
 
-
 // MARK: - MeasureSupplementalData
 extension ModelsR4.MeasureSupplementalData {
 
@@ -8803,7 +8470,7 @@ extension ModelsR4.MeasureSupplementalData {
             return self
         }
         resource.code = self.code?.copy() as? CodeableConcept
-        resource.usage = self.usage?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.usage = self.usage?.compactMap { $0.copy() as? CodeableConcept }
         resource.description_fhir = self.description_fhir
         resource.criteria = self.criteria.copy() as! Expression
 
@@ -8815,7 +8482,6 @@ extension ModelsR4.MeasureSupplementalData {
     }
 }
 
-
 // MARK: - Media
 extension ModelsR4.Media {
 
@@ -8824,9 +8490,9 @@ extension ModelsR4.Media {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Media else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
         resource.type = self.type?.copy() as? CodeableConcept
         resource.modality = self.modality?.copy() as? CodeableConcept
@@ -8836,7 +8502,7 @@ extension ModelsR4.Media {
         resource.created = self.created?.copy() as? CreatedX
         resource.issued = self.issued
         resource.`operator` = self.`operator`?.copy() as? Reference
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
         resource.bodySite = self.bodySite?.copy() as? CodeableConcept
         resource.deviceName = self.deviceName
         resource.device = self.device?.copy() as? Reference
@@ -8845,7 +8511,7 @@ extension ModelsR4.Media {
         resource.frames = self.frames
         resource.duration = self.duration
         resource.content = self.content.copy() as! Attachment
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -8855,7 +8521,6 @@ extension ModelsR4.Media {
     }
 }
 
-
 // MARK: - Medication
 extension ModelsR4.Medication {
 
@@ -8864,13 +8529,13 @@ extension ModelsR4.Medication {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Medication else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.code = self.code?.copy() as? CodeableConcept
         resource.status = self.status
         resource.manufacturer = self.manufacturer?.copy() as? Reference
         resource.form = self.form?.copy() as? CodeableConcept
         resource.amount = self.amount?.copy() as? Ratio
-        resource.ingredient = self.ingredient?.compactMap { $0.copy() as? MedicationIngredient } 
+        resource.ingredient = self.ingredient?.compactMap { $0.copy() as? MedicationIngredient }
         resource.batch = self.batch?.copy() as? MedicationBatch
 
         return resource
@@ -8881,7 +8546,6 @@ extension ModelsR4.Medication {
     }
 }
 
-
 // MARK: - MedicationAdministration
 extension ModelsR4.MedicationAdministration {
 
@@ -8890,25 +8554,25 @@ extension ModelsR4.MedicationAdministration {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicationAdministration else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.instantiates = self.instantiates
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
-        resource.statusReason = self.statusReason?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.statusReason = self.statusReason?.compactMap { $0.copy() as? CodeableConcept }
         resource.category = self.category?.copy() as? CodeableConcept
         resource.medication = self.medication.copy() as! MedicationX
         resource.subject = self.subject.copy() as! Reference
         resource.context = self.context?.copy() as? Reference
-        resource.supportingInformation = self.supportingInformation?.compactMap { $0.copy() as? Reference } 
+        resource.supportingInformation = self.supportingInformation?.compactMap { $0.copy() as? Reference }
         resource.effective = self.effective.copy() as! EffectiveX
-        resource.performer = self.performer?.compactMap { $0.copy() as? MedicationAdministrationPerformer } 
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
+        resource.performer = self.performer?.compactMap { $0.copy() as? MedicationAdministrationPerformer }
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
         resource.request = self.request?.copy() as? Reference
-        resource.device = self.device?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.device = self.device?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
         resource.dosage = self.dosage?.copy() as? MedicationAdministrationDosage
-        resource.eventHistory = self.eventHistory?.compactMap { $0.copy() as? Reference } 
+        resource.eventHistory = self.eventHistory?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -8917,7 +8581,6 @@ extension ModelsR4.MedicationAdministration {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationAdministrationDosage
 extension ModelsR4.MedicationAdministrationDosage {
@@ -8942,7 +8605,6 @@ extension ModelsR4.MedicationAdministrationDosage {
     }
 }
 
-
 // MARK: - MedicationAdministrationPerformer
 extension ModelsR4.MedicationAdministrationPerformer {
 
@@ -8961,7 +8623,6 @@ extension ModelsR4.MedicationAdministrationPerformer {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationBatch
 extension ModelsR4.MedicationBatch {
@@ -8982,7 +8643,6 @@ extension ModelsR4.MedicationBatch {
     }
 }
 
-
 // MARK: - MedicationDispense
 extension ModelsR4.MedicationDispense {
 
@@ -8991,30 +8651,30 @@ extension ModelsR4.MedicationDispense {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicationDispense else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
         resource.statusReason = self.statusReason?.copy() as? StatusReasonX
         resource.category = self.category?.copy() as? CodeableConcept
         resource.medication = self.medication.copy() as! MedicationX
         resource.subject = self.subject?.copy() as? Reference
         resource.context = self.context?.copy() as? Reference
-        resource.supportingInformation = self.supportingInformation?.compactMap { $0.copy() as? Reference } 
-        resource.performer = self.performer?.compactMap { $0.copy() as? MedicationDispensePerformer } 
+        resource.supportingInformation = self.supportingInformation?.compactMap { $0.copy() as? Reference }
+        resource.performer = self.performer?.compactMap { $0.copy() as? MedicationDispensePerformer }
         resource.location = self.location?.copy() as? Reference
-        resource.authorizingPrescription = self.authorizingPrescription?.compactMap { $0.copy() as? Reference } 
+        resource.authorizingPrescription = self.authorizingPrescription?.compactMap { $0.copy() as? Reference }
         resource.type = self.type?.copy() as? CodeableConcept
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.daysSupply = self.daysSupply?.copy() as? Quantity
         resource.whenPrepared = self.whenPrepared
         resource.whenHandedOver = self.whenHandedOver
         resource.destination = self.destination?.copy() as? Reference
-        resource.receiver = self.receiver?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.dosageInstruction = self.dosageInstruction?.compactMap { $0.copy() as? Dosage } 
+        resource.receiver = self.receiver?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.dosageInstruction = self.dosageInstruction?.compactMap { $0.copy() as? Dosage }
         resource.substitution = self.substitution?.copy() as? MedicationDispenseSubstitution
-        resource.detectedIssue = self.detectedIssue?.compactMap { $0.copy() as? Reference } 
-        resource.eventHistory = self.eventHistory?.compactMap { $0.copy() as? Reference } 
+        resource.detectedIssue = self.detectedIssue?.compactMap { $0.copy() as? Reference }
+        resource.eventHistory = self.eventHistory?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -9023,7 +8683,6 @@ extension ModelsR4.MedicationDispense {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationDispensePerformer
 extension ModelsR4.MedicationDispensePerformer {
@@ -9044,7 +8703,6 @@ extension ModelsR4.MedicationDispensePerformer {
     }
 }
 
-
 // MARK: - MedicationDispenseSubstitution
 extension ModelsR4.MedicationDispenseSubstitution {
 
@@ -9055,8 +8713,8 @@ extension ModelsR4.MedicationDispenseSubstitution {
         }
         resource.wasSubstituted = self.wasSubstituted
         resource.type = self.type?.copy() as? CodeableConcept
-        resource.reason = self.reason?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.responsibleParty = self.responsibleParty?.compactMap { $0.copy() as? Reference } 
+        resource.reason = self.reason?.compactMap { $0.copy() as? CodeableConcept }
+        resource.responsibleParty = self.responsibleParty?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -9065,7 +8723,6 @@ extension ModelsR4.MedicationDispenseSubstitution {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationIngredient
 extension ModelsR4.MedicationIngredient {
@@ -9087,7 +8744,6 @@ extension ModelsR4.MedicationIngredient {
     }
 }
 
-
 // MARK: - MedicationKnowledge
 extension ModelsR4.MedicationKnowledge {
 
@@ -9102,22 +8758,22 @@ extension ModelsR4.MedicationKnowledge {
         resource.doseForm = self.doseForm?.copy() as? CodeableConcept
         resource.amount = self.amount?.copy() as? Quantity
         resource.synonym = self.synonym
-        resource.relatedMedicationKnowledge = self.relatedMedicationKnowledge?.compactMap { $0.copy() as? MedicationKnowledgeRelatedMedicationKnowledge } 
-        resource.associatedMedication = self.associatedMedication?.compactMap { $0.copy() as? Reference } 
-        resource.productType = self.productType?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.monograph = self.monograph?.compactMap { $0.copy() as? MedicationKnowledgeMonograph } 
-        resource.ingredient = self.ingredient?.compactMap { $0.copy() as? MedicationKnowledgeIngredient } 
+        resource.relatedMedicationKnowledge = self.relatedMedicationKnowledge?.compactMap { $0.copy() as? MedicationKnowledgeRelatedMedicationKnowledge }
+        resource.associatedMedication = self.associatedMedication?.compactMap { $0.copy() as? Reference }
+        resource.productType = self.productType?.compactMap { $0.copy() as? CodeableConcept }
+        resource.monograph = self.monograph?.compactMap { $0.copy() as? MedicationKnowledgeMonograph }
+        resource.ingredient = self.ingredient?.compactMap { $0.copy() as? MedicationKnowledgeIngredient }
         resource.preparationInstruction = self.preparationInstruction
-        resource.intendedRoute = self.intendedRoute?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.cost = self.cost?.compactMap { $0.copy() as? MedicationKnowledgeCost } 
-        resource.monitoringProgram = self.monitoringProgram?.compactMap { $0.copy() as? MedicationKnowledgeMonitoringProgram } 
-        resource.administrationGuidelines = self.administrationGuidelines?.compactMap { $0.copy() as? MedicationKnowledgeAdministrationGuidelines } 
-        resource.medicineClassification = self.medicineClassification?.compactMap { $0.copy() as? MedicationKnowledgeMedicineClassification } 
+        resource.intendedRoute = self.intendedRoute?.compactMap { $0.copy() as? CodeableConcept }
+        resource.cost = self.cost?.compactMap { $0.copy() as? MedicationKnowledgeCost }
+        resource.monitoringProgram = self.monitoringProgram?.compactMap { $0.copy() as? MedicationKnowledgeMonitoringProgram }
+        resource.administrationGuidelines = self.administrationGuidelines?.compactMap { $0.copy() as? MedicationKnowledgeAdministrationGuidelines }
+        resource.medicineClassification = self.medicineClassification?.compactMap { $0.copy() as? MedicationKnowledgeMedicineClassification }
         resource.packaging = self.packaging?.copy() as? MedicationKnowledgePackaging
-        resource.drugCharacteristic = self.drugCharacteristic?.compactMap { $0.copy() as? MedicationKnowledgeDrugCharacteristic } 
-        resource.contraindication = self.contraindication?.compactMap { $0.copy() as? Reference } 
-        resource.regulatory = self.regulatory?.compactMap { $0.copy() as? MedicationKnowledgeRegulatory } 
-        resource.kinetics = self.kinetics?.compactMap { $0.copy() as? MedicationKnowledgeKinetics } 
+        resource.drugCharacteristic = self.drugCharacteristic?.compactMap { $0.copy() as? MedicationKnowledgeDrugCharacteristic }
+        resource.contraindication = self.contraindication?.compactMap { $0.copy() as? Reference }
+        resource.regulatory = self.regulatory?.compactMap { $0.copy() as? MedicationKnowledgeRegulatory }
+        resource.kinetics = self.kinetics?.compactMap { $0.copy() as? MedicationKnowledgeKinetics }
 
         return resource
     }
@@ -9126,7 +8782,6 @@ extension ModelsR4.MedicationKnowledge {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationKnowledgeAdministrationGuidelines
 extension ModelsR4.MedicationKnowledgeAdministrationGuidelines {
@@ -9136,9 +8791,9 @@ extension ModelsR4.MedicationKnowledgeAdministrationGuidelines {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicationKnowledgeAdministrationGuidelines else {
             return self
         }
-        resource.dosage = self.dosage?.compactMap { $0.copy() as? MedicationKnowledgeAdministrationGuidelinesDosage } 
+        resource.dosage = self.dosage?.compactMap { $0.copy() as? MedicationKnowledgeAdministrationGuidelinesDosage }
         resource.indication = self.indication?.copy() as? IndicationX
-        resource.patientCharacteristics = self.patientCharacteristics?.compactMap { $0.copy() as? MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics } 
+        resource.patientCharacteristics = self.patientCharacteristics?.compactMap { $0.copy() as? MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics }
 
         return resource
     }
@@ -9147,7 +8802,6 @@ extension ModelsR4.MedicationKnowledgeAdministrationGuidelines {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationKnowledgeAdministrationGuidelinesDosage
 extension ModelsR4.MedicationKnowledgeAdministrationGuidelinesDosage {
@@ -9158,7 +8812,7 @@ extension ModelsR4.MedicationKnowledgeAdministrationGuidelinesDosage {
             return self
         }
         resource.type = self.type.copy() as! CodeableConcept
-        resource.dosage = self.dosage.compactMap { $0.copy() as? Dosage } 
+        resource.dosage = self.dosage.compactMap { $0.copy() as? Dosage }
 
         return resource
     }
@@ -9167,7 +8821,6 @@ extension ModelsR4.MedicationKnowledgeAdministrationGuidelinesDosage {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics
 extension ModelsR4.MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics {
@@ -9187,7 +8840,6 @@ extension ModelsR4.MedicationKnowledgeAdministrationGuidelinesPatientCharacteris
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationKnowledgeCost
 extension ModelsR4.MedicationKnowledgeCost {
@@ -9209,7 +8861,6 @@ extension ModelsR4.MedicationKnowledgeCost {
     }
 }
 
-
 // MARK: - MedicationKnowledgeDrugCharacteristic
 extension ModelsR4.MedicationKnowledgeDrugCharacteristic {
 
@@ -9228,7 +8879,6 @@ extension ModelsR4.MedicationKnowledgeDrugCharacteristic {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationKnowledgeIngredient
 extension ModelsR4.MedicationKnowledgeIngredient {
@@ -9250,7 +8900,6 @@ extension ModelsR4.MedicationKnowledgeIngredient {
     }
 }
 
-
 // MARK: - MedicationKnowledgeKinetics
 extension ModelsR4.MedicationKnowledgeKinetics {
 
@@ -9259,8 +8908,8 @@ extension ModelsR4.MedicationKnowledgeKinetics {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicationKnowledgeKinetics else {
             return self
         }
-        resource.areaUnderCurve = self.areaUnderCurve?.compactMap { $0.copy() as? Quantity } 
-        resource.lethalDose50 = self.lethalDose50?.compactMap { $0.copy() as? Quantity } 
+        resource.areaUnderCurve = self.areaUnderCurve?.compactMap { $0.copy() as? Quantity }
+        resource.lethalDose50 = self.lethalDose50?.compactMap { $0.copy() as? Quantity }
         resource.halfLifePeriod = self.halfLifePeriod?.copy() as? Duration
 
         return resource
@@ -9271,7 +8920,6 @@ extension ModelsR4.MedicationKnowledgeKinetics {
     }
 }
 
-
 // MARK: - MedicationKnowledgeMedicineClassification
 extension ModelsR4.MedicationKnowledgeMedicineClassification {
 
@@ -9281,7 +8929,7 @@ extension ModelsR4.MedicationKnowledgeMedicineClassification {
             return self
         }
         resource.type = self.type.copy() as! CodeableConcept
-        resource.classification = self.classification?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.classification = self.classification?.compactMap { $0.copy() as? CodeableConcept }
 
         return resource
     }
@@ -9290,7 +8938,6 @@ extension ModelsR4.MedicationKnowledgeMedicineClassification {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationKnowledgeMonitoringProgram
 extension ModelsR4.MedicationKnowledgeMonitoringProgram {
@@ -9311,7 +8958,6 @@ extension ModelsR4.MedicationKnowledgeMonitoringProgram {
     }
 }
 
-
 // MARK: - MedicationKnowledgeMonograph
 extension ModelsR4.MedicationKnowledgeMonograph {
 
@@ -9330,7 +8976,6 @@ extension ModelsR4.MedicationKnowledgeMonograph {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationKnowledgePackaging
 extension ModelsR4.MedicationKnowledgePackaging {
@@ -9351,7 +8996,6 @@ extension ModelsR4.MedicationKnowledgePackaging {
     }
 }
 
-
 // MARK: - MedicationKnowledgeRegulatory
 extension ModelsR4.MedicationKnowledgeRegulatory {
 
@@ -9361,8 +9005,8 @@ extension ModelsR4.MedicationKnowledgeRegulatory {
             return self
         }
         resource.regulatoryAuthority = self.regulatoryAuthority.copy() as! Reference
-        resource.substitution = self.substitution?.compactMap { $0.copy() as? MedicationKnowledgeRegulatorySubstitution } 
-        resource.schedule = self.schedule?.compactMap { $0.copy() as? MedicationKnowledgeRegulatorySchedule } 
+        resource.substitution = self.substitution?.compactMap { $0.copy() as? MedicationKnowledgeRegulatorySubstitution }
+        resource.schedule = self.schedule?.compactMap { $0.copy() as? MedicationKnowledgeRegulatorySchedule }
         resource.maxDispense = self.maxDispense?.copy() as? MedicationKnowledgeRegulatoryMaxDispense
 
         return resource
@@ -9372,7 +9016,6 @@ extension ModelsR4.MedicationKnowledgeRegulatory {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationKnowledgeRegulatoryMaxDispense
 extension ModelsR4.MedicationKnowledgeRegulatoryMaxDispense {
@@ -9393,7 +9036,6 @@ extension ModelsR4.MedicationKnowledgeRegulatoryMaxDispense {
     }
 }
 
-
 // MARK: - MedicationKnowledgeRegulatorySchedule
 extension ModelsR4.MedicationKnowledgeRegulatorySchedule {
 
@@ -9411,7 +9053,6 @@ extension ModelsR4.MedicationKnowledgeRegulatorySchedule {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationKnowledgeRegulatorySubstitution
 extension ModelsR4.MedicationKnowledgeRegulatorySubstitution {
@@ -9432,7 +9073,6 @@ extension ModelsR4.MedicationKnowledgeRegulatorySubstitution {
     }
 }
 
-
 // MARK: - MedicationKnowledgeRelatedMedicationKnowledge
 extension ModelsR4.MedicationKnowledgeRelatedMedicationKnowledge {
 
@@ -9442,7 +9082,7 @@ extension ModelsR4.MedicationKnowledgeRelatedMedicationKnowledge {
             return self
         }
         resource.type = self.type.copy() as! CodeableConcept
-        resource.reference = self.reference.compactMap { $0.copy() as? Reference } 
+        resource.reference = self.reference.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -9451,7 +9091,6 @@ extension ModelsR4.MedicationKnowledgeRelatedMedicationKnowledge {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationRequest
 extension ModelsR4.MedicationRequest {
@@ -9461,38 +9100,38 @@ extension ModelsR4.MedicationRequest {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicationRequest else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.statusReason = self.statusReason?.copy() as? CodeableConcept
         resource.intent = self.intent
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.priority = self.priority
         resource.doNotPerform = self.doNotPerform
         resource.reported = self.reported?.copy() as? ReportedX
         resource.medication = self.medication.copy() as! MedicationX
         resource.subject = self.subject.copy() as! Reference
         resource.encounter = self.encounter?.copy() as? Reference
-        resource.supportingInformation = self.supportingInformation?.compactMap { $0.copy() as? Reference } 
+        resource.supportingInformation = self.supportingInformation?.compactMap { $0.copy() as? Reference }
         resource.authoredOn = self.authoredOn
         resource.requester = self.requester?.copy() as? Reference
         resource.performer = self.performer?.copy() as? Reference
         resource.performerType = self.performerType?.copy() as? CodeableConcept
         resource.recorder = self.recorder?.copy() as? Reference
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
         resource.instantiatesCanonical = self.instantiatesCanonical
         resource.instantiatesUri = self.instantiatesUri
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
         resource.groupIdentifier = self.groupIdentifier?.copy() as? Identifier
         resource.courseOfTherapyType = self.courseOfTherapyType?.copy() as? CodeableConcept
-        resource.insurance = self.insurance?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.dosageInstruction = self.dosageInstruction?.compactMap { $0.copy() as? Dosage } 
+        resource.insurance = self.insurance?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.dosageInstruction = self.dosageInstruction?.compactMap { $0.copy() as? Dosage }
         resource.dispenseRequest = self.dispenseRequest?.copy() as? MedicationRequestDispenseRequest
         resource.substitution = self.substitution?.copy() as? MedicationRequestSubstitution
         resource.priorPrescription = self.priorPrescription?.copy() as? Reference
-        resource.detectedIssue = self.detectedIssue?.compactMap { $0.copy() as? Reference } 
-        resource.eventHistory = self.eventHistory?.compactMap { $0.copy() as? Reference } 
+        resource.detectedIssue = self.detectedIssue?.compactMap { $0.copy() as? Reference }
+        resource.eventHistory = self.eventHistory?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -9501,7 +9140,6 @@ extension ModelsR4.MedicationRequest {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationRequestDispenseRequest
 extension ModelsR4.MedicationRequestDispenseRequest {
@@ -9527,7 +9165,6 @@ extension ModelsR4.MedicationRequestDispenseRequest {
     }
 }
 
-
 // MARK: - MedicationRequestDispenseRequestInitialFill
 extension ModelsR4.MedicationRequestDispenseRequestInitialFill {
 
@@ -9546,7 +9183,6 @@ extension ModelsR4.MedicationRequestDispenseRequestInitialFill {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicationRequestSubstitution
 extension ModelsR4.MedicationRequestSubstitution {
@@ -9567,7 +9203,6 @@ extension ModelsR4.MedicationRequestSubstitution {
     }
 }
 
-
 // MARK: - MedicationStatement
 extension ModelsR4.MedicationStatement {
 
@@ -9576,11 +9211,11 @@ extension ModelsR4.MedicationStatement {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicationStatement else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
-        resource.statusReason = self.statusReason?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.statusReason = self.statusReason?.compactMap { $0.copy() as? CodeableConcept }
         resource.category = self.category?.copy() as? CodeableConcept
         resource.medication = self.medication.copy() as! MedicationX
         resource.subject = self.subject.copy() as! Reference
@@ -9588,11 +9223,11 @@ extension ModelsR4.MedicationStatement {
         resource.effective = self.effective?.copy() as? EffectiveX
         resource.dateAsserted = self.dateAsserted
         resource.informationSource = self.informationSource?.copy() as? Reference
-        resource.derivedFrom = self.derivedFrom?.compactMap { $0.copy() as? Reference } 
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.dosage = self.dosage?.compactMap { $0.copy() as? Dosage } 
+        resource.derivedFrom = self.derivedFrom?.compactMap { $0.copy() as? Reference }
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.dosage = self.dosage?.compactMap { $0.copy() as? Dosage }
 
         return resource
     }
@@ -9601,7 +9236,6 @@ extension ModelsR4.MedicationStatement {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProduct
 extension ModelsR4.MedicinalProduct {
@@ -9611,7 +9245,7 @@ extension ModelsR4.MedicinalProduct {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicinalProduct else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.type = self.type?.copy() as? CodeableConcept
         resource.domain = self.domain?.copy() as? Coding
         resource.combinedPharmaceuticalDoseForm = self.combinedPharmaceuticalDoseForm?.copy() as? CodeableConcept
@@ -9619,18 +9253,18 @@ extension ModelsR4.MedicinalProduct {
         resource.additionalMonitoringIndicator = self.additionalMonitoringIndicator?.copy() as? CodeableConcept
         resource.specialMeasures = self.specialMeasures
         resource.paediatricUseIndicator = self.paediatricUseIndicator?.copy() as? CodeableConcept
-        resource.productClassification = self.productClassification?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.marketingStatus = self.marketingStatus?.compactMap { $0.copy() as? MarketingStatus } 
-        resource.pharmaceuticalProduct = self.pharmaceuticalProduct?.compactMap { $0.copy() as? Reference } 
-        resource.packagedMedicinalProduct = self.packagedMedicinalProduct?.compactMap { $0.copy() as? Reference } 
-        resource.attachedDocument = self.attachedDocument?.compactMap { $0.copy() as? Reference } 
-        resource.masterFile = self.masterFile?.compactMap { $0.copy() as? Reference } 
-        resource.contact = self.contact?.compactMap { $0.copy() as? Reference } 
-        resource.clinicalTrial = self.clinicalTrial?.compactMap { $0.copy() as? Reference } 
-        resource.name = self.name.compactMap { $0.copy() as? MedicinalProductName } 
-        resource.crossReference = self.crossReference?.compactMap { $0.copy() as? Identifier } 
-        resource.manufacturingBusinessOperation = self.manufacturingBusinessOperation?.compactMap { $0.copy() as? MedicinalProductManufacturingBusinessOperation } 
-        resource.specialDesignation = self.specialDesignation?.compactMap { $0.copy() as? MedicinalProductSpecialDesignation } 
+        resource.productClassification = self.productClassification?.compactMap { $0.copy() as? CodeableConcept }
+        resource.marketingStatus = self.marketingStatus?.compactMap { $0.copy() as? MarketingStatus }
+        resource.pharmaceuticalProduct = self.pharmaceuticalProduct?.compactMap { $0.copy() as? Reference }
+        resource.packagedMedicinalProduct = self.packagedMedicinalProduct?.compactMap { $0.copy() as? Reference }
+        resource.attachedDocument = self.attachedDocument?.compactMap { $0.copy() as? Reference }
+        resource.masterFile = self.masterFile?.compactMap { $0.copy() as? Reference }
+        resource.contact = self.contact?.compactMap { $0.copy() as? Reference }
+        resource.clinicalTrial = self.clinicalTrial?.compactMap { $0.copy() as? Reference }
+        resource.name = self.name.compactMap { $0.copy() as? MedicinalProductName }
+        resource.crossReference = self.crossReference?.compactMap { $0.copy() as? Identifier }
+        resource.manufacturingBusinessOperation = self.manufacturingBusinessOperation?.compactMap { $0.copy() as? MedicinalProductManufacturingBusinessOperation }
+        resource.specialDesignation = self.specialDesignation?.compactMap { $0.copy() as? MedicinalProductSpecialDesignation }
 
         return resource
     }
@@ -9640,7 +9274,6 @@ extension ModelsR4.MedicinalProduct {
     }
 }
 
-
 // MARK: - MedicinalProductAuthorization
 extension ModelsR4.MedicinalProductAuthorization {
 
@@ -9649,10 +9282,10 @@ extension ModelsR4.MedicinalProductAuthorization {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicinalProductAuthorization else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.subject = self.subject?.copy() as? Reference
-        resource.country = self.country?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.country = self.country?.compactMap { $0.copy() as? CodeableConcept }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.status = self.status?.copy() as? CodeableConcept
         resource.statusDate = self.statusDate
         resource.restoreDate = self.restoreDate
@@ -9661,7 +9294,7 @@ extension ModelsR4.MedicinalProductAuthorization {
         resource.dateOfFirstAuthorization = self.dateOfFirstAuthorization
         resource.internationalBirthDate = self.internationalBirthDate
         resource.legalBasis = self.legalBasis?.copy() as? CodeableConcept
-        resource.jurisdictionalAuthorization = self.jurisdictionalAuthorization?.compactMap { $0.copy() as? MedicinalProductAuthorizationJurisdictionalAuthorization } 
+        resource.jurisdictionalAuthorization = self.jurisdictionalAuthorization?.compactMap { $0.copy() as? MedicinalProductAuthorizationJurisdictionalAuthorization }
         resource.holder = self.holder?.copy() as? Reference
         resource.regulator = self.regulator?.copy() as? Reference
         resource.procedure = self.procedure?.copy() as? MedicinalProductAuthorizationProcedure
@@ -9674,7 +9307,6 @@ extension ModelsR4.MedicinalProductAuthorization {
     }
 }
 
-
 // MARK: - MedicinalProductAuthorizationJurisdictionalAuthorization
 extension ModelsR4.MedicinalProductAuthorizationJurisdictionalAuthorization {
 
@@ -9683,9 +9315,9 @@ extension ModelsR4.MedicinalProductAuthorizationJurisdictionalAuthorization {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicinalProductAuthorizationJurisdictionalAuthorization else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.country = self.country?.copy() as? CodeableConcept
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.legalStatusOfSupply = self.legalStatusOfSupply?.copy() as? CodeableConcept
         resource.validityPeriod = self.validityPeriod?.copy() as? Period
 
@@ -9696,7 +9328,6 @@ extension ModelsR4.MedicinalProductAuthorizationJurisdictionalAuthorization {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductAuthorizationProcedure
 extension ModelsR4.MedicinalProductAuthorizationProcedure {
@@ -9709,7 +9340,7 @@ extension ModelsR4.MedicinalProductAuthorizationProcedure {
         resource.identifier = self.identifier?.copy() as? Identifier
         resource.type = self.type.copy() as! CodeableConcept
         resource.date = self.date?.copy() as? DateX
-        resource.application = self.application?.compactMap { $0.copy() as? MedicinalProductAuthorizationProcedure } 
+        resource.application = self.application?.compactMap { $0.copy() as? MedicinalProductAuthorizationProcedure }
 
         return resource
     }
@@ -9718,7 +9349,6 @@ extension ModelsR4.MedicinalProductAuthorizationProcedure {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductContraindication
 extension ModelsR4.MedicinalProductContraindication {
@@ -9728,13 +9358,13 @@ extension ModelsR4.MedicinalProductContraindication {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicinalProductContraindication else {
             return self
         }
-        resource.subject = self.subject?.compactMap { $0.copy() as? Reference } 
+        resource.subject = self.subject?.compactMap { $0.copy() as? Reference }
         resource.disease = self.disease?.copy() as? CodeableConcept
         resource.diseaseStatus = self.diseaseStatus?.copy() as? CodeableConcept
-        resource.comorbidity = self.comorbidity?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.therapeuticIndication = self.therapeuticIndication?.compactMap { $0.copy() as? Reference } 
-        resource.otherTherapy = self.otherTherapy?.compactMap { $0.copy() as? MedicinalProductContraindicationOtherTherapy } 
-        resource.population = self.population?.compactMap { $0.copy() as? Population } 
+        resource.comorbidity = self.comorbidity?.compactMap { $0.copy() as? CodeableConcept }
+        resource.therapeuticIndication = self.therapeuticIndication?.compactMap { $0.copy() as? Reference }
+        resource.otherTherapy = self.otherTherapy?.compactMap { $0.copy() as? MedicinalProductContraindicationOtherTherapy }
+        resource.population = self.population?.compactMap { $0.copy() as? Population }
 
         return resource
     }
@@ -9743,7 +9373,6 @@ extension ModelsR4.MedicinalProductContraindication {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductContraindicationOtherTherapy
 extension ModelsR4.MedicinalProductContraindicationOtherTherapy {
@@ -9764,7 +9393,6 @@ extension ModelsR4.MedicinalProductContraindicationOtherTherapy {
     }
 }
 
-
 // MARK: - MedicinalProductIndication
 extension ModelsR4.MedicinalProductIndication {
 
@@ -9773,15 +9401,15 @@ extension ModelsR4.MedicinalProductIndication {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicinalProductIndication else {
             return self
         }
-        resource.subject = self.subject?.compactMap { $0.copy() as? Reference } 
+        resource.subject = self.subject?.compactMap { $0.copy() as? Reference }
         resource.diseaseSymptomProcedure = self.diseaseSymptomProcedure?.copy() as? CodeableConcept
         resource.diseaseStatus = self.diseaseStatus?.copy() as? CodeableConcept
-        resource.comorbidity = self.comorbidity?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.comorbidity = self.comorbidity?.compactMap { $0.copy() as? CodeableConcept }
         resource.intendedEffect = self.intendedEffect?.copy() as? CodeableConcept
         resource.duration = self.duration?.copy() as? Quantity
-        resource.otherTherapy = self.otherTherapy?.compactMap { $0.copy() as? MedicinalProductIndicationOtherTherapy } 
-        resource.undesirableEffect = self.undesirableEffect?.compactMap { $0.copy() as? Reference } 
-        resource.population = self.population?.compactMap { $0.copy() as? Population } 
+        resource.otherTherapy = self.otherTherapy?.compactMap { $0.copy() as? MedicinalProductIndicationOtherTherapy }
+        resource.undesirableEffect = self.undesirableEffect?.compactMap { $0.copy() as? Reference }
+        resource.population = self.population?.compactMap { $0.copy() as? Population }
 
         return resource
     }
@@ -9790,7 +9418,6 @@ extension ModelsR4.MedicinalProductIndication {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductIndicationOtherTherapy
 extension ModelsR4.MedicinalProductIndicationOtherTherapy {
@@ -9811,7 +9438,6 @@ extension ModelsR4.MedicinalProductIndicationOtherTherapy {
     }
 }
 
-
 // MARK: - MedicinalProductIngredient
 extension ModelsR4.MedicinalProductIngredient {
 
@@ -9823,8 +9449,8 @@ extension ModelsR4.MedicinalProductIngredient {
         resource.identifier = self.identifier?.copy() as? Identifier
         resource.role = self.role.copy() as! CodeableConcept
         resource.allergenicIndicator = self.allergenicIndicator
-        resource.manufacturer = self.manufacturer?.compactMap { $0.copy() as? Reference } 
-        resource.specifiedSubstance = self.specifiedSubstance?.compactMap { $0.copy() as? MedicinalProductIngredientSpecifiedSubstance } 
+        resource.manufacturer = self.manufacturer?.compactMap { $0.copy() as? Reference }
+        resource.specifiedSubstance = self.specifiedSubstance?.compactMap { $0.copy() as? MedicinalProductIngredientSpecifiedSubstance }
         resource.substance = self.substance?.copy() as? MedicinalProductIngredientSubstance
 
         return resource
@@ -9834,7 +9460,6 @@ extension ModelsR4.MedicinalProductIngredient {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductIngredientSpecifiedSubstance
 extension ModelsR4.MedicinalProductIngredientSpecifiedSubstance {
@@ -9847,7 +9472,7 @@ extension ModelsR4.MedicinalProductIngredientSpecifiedSubstance {
         resource.code = self.code.copy() as! CodeableConcept
         resource.group = self.group.copy() as! CodeableConcept
         resource.confidentiality = self.confidentiality?.copy() as? CodeableConcept
-        resource.strength = self.strength?.compactMap { $0.copy() as? MedicinalProductIngredientSpecifiedSubstanceStrength } 
+        resource.strength = self.strength?.compactMap { $0.copy() as? MedicinalProductIngredientSpecifiedSubstanceStrength }
 
         return resource
     }
@@ -9856,7 +9481,6 @@ extension ModelsR4.MedicinalProductIngredientSpecifiedSubstance {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductIngredientSpecifiedSubstanceStrength
 extension ModelsR4.MedicinalProductIngredientSpecifiedSubstanceStrength {
@@ -9871,8 +9495,8 @@ extension ModelsR4.MedicinalProductIngredientSpecifiedSubstanceStrength {
         resource.concentration = self.concentration?.copy() as? Ratio
         resource.concentrationLowLimit = self.concentrationLowLimit?.copy() as? Ratio
         resource.measurementPoint = self.measurementPoint
-        resource.country = self.country?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.referenceStrength = self.referenceStrength?.compactMap { $0.copy() as? MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength } 
+        resource.country = self.country?.compactMap { $0.copy() as? CodeableConcept }
+        resource.referenceStrength = self.referenceStrength?.compactMap { $0.copy() as? MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength }
 
         return resource
     }
@@ -9881,7 +9505,6 @@ extension ModelsR4.MedicinalProductIngredientSpecifiedSubstanceStrength {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength
 extension ModelsR4.MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
@@ -9895,7 +9518,7 @@ extension ModelsR4.MedicinalProductIngredientSpecifiedSubstanceStrengthReference
         resource.strength = self.strength.copy() as! Ratio
         resource.strengthLowLimit = self.strengthLowLimit?.copy() as? Ratio
         resource.measurementPoint = self.measurementPoint
-        resource.country = self.country?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.country = self.country?.compactMap { $0.copy() as? CodeableConcept }
 
         return resource
     }
@@ -9904,7 +9527,6 @@ extension ModelsR4.MedicinalProductIngredientSpecifiedSubstanceStrengthReference
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductIngredientSubstance
 extension ModelsR4.MedicinalProductIngredientSubstance {
@@ -9915,7 +9537,7 @@ extension ModelsR4.MedicinalProductIngredientSubstance {
             return self
         }
         resource.code = self.code.copy() as! CodeableConcept
-        resource.strength = self.strength?.compactMap { $0.copy() as? MedicinalProductIngredientSpecifiedSubstanceStrength } 
+        resource.strength = self.strength?.compactMap { $0.copy() as? MedicinalProductIngredientSpecifiedSubstanceStrength }
 
         return resource
     }
@@ -9925,7 +9547,6 @@ extension ModelsR4.MedicinalProductIngredientSubstance {
     }
 }
 
-
 // MARK: - MedicinalProductInteraction
 extension ModelsR4.MedicinalProductInteraction {
 
@@ -9934,9 +9555,9 @@ extension ModelsR4.MedicinalProductInteraction {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicinalProductInteraction else {
             return self
         }
-        resource.subject = self.subject?.compactMap { $0.copy() as? Reference } 
+        resource.subject = self.subject?.compactMap { $0.copy() as? Reference }
         resource.description_fhir = self.description_fhir
-        resource.interactant = self.interactant?.compactMap { $0.copy() as? MedicinalProductInteractionInteractant } 
+        resource.interactant = self.interactant?.compactMap { $0.copy() as? MedicinalProductInteractionInteractant }
         resource.type = self.type?.copy() as? CodeableConcept
         resource.effect = self.effect?.copy() as? CodeableConcept
         resource.incidence = self.incidence?.copy() as? CodeableConcept
@@ -9949,7 +9570,6 @@ extension ModelsR4.MedicinalProductInteraction {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductInteractionInteractant
 extension ModelsR4.MedicinalProductInteractionInteractant {
@@ -9969,7 +9589,6 @@ extension ModelsR4.MedicinalProductInteractionInteractant {
     }
 }
 
-
 // MARK: - MedicinalProductManufactured
 extension ModelsR4.MedicinalProductManufactured {
 
@@ -9981,10 +9600,10 @@ extension ModelsR4.MedicinalProductManufactured {
         resource.manufacturedDoseForm = self.manufacturedDoseForm.copy() as! CodeableConcept
         resource.unitOfPresentation = self.unitOfPresentation?.copy() as? CodeableConcept
         resource.quantity = self.quantity.copy() as! Quantity
-        resource.manufacturer = self.manufacturer?.compactMap { $0.copy() as? Reference } 
-        resource.ingredient = self.ingredient?.compactMap { $0.copy() as? Reference } 
+        resource.manufacturer = self.manufacturer?.compactMap { $0.copy() as? Reference }
+        resource.ingredient = self.ingredient?.compactMap { $0.copy() as? Reference }
         resource.physicalCharacteristics = self.physicalCharacteristics?.copy() as? ProdCharacteristic
-        resource.otherCharacteristics = self.otherCharacteristics?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.otherCharacteristics = self.otherCharacteristics?.compactMap { $0.copy() as? CodeableConcept }
 
         return resource
     }
@@ -9993,7 +9612,6 @@ extension ModelsR4.MedicinalProductManufactured {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductManufacturingBusinessOperation
 extension ModelsR4.MedicinalProductManufacturingBusinessOperation {
@@ -10007,7 +9625,7 @@ extension ModelsR4.MedicinalProductManufacturingBusinessOperation {
         resource.authorisationReferenceNumber = self.authorisationReferenceNumber?.copy() as? Identifier
         resource.effectiveDate = self.effectiveDate
         resource.confidentialityIndicator = self.confidentialityIndicator?.copy() as? CodeableConcept
-        resource.manufacturer = self.manufacturer?.compactMap { $0.copy() as? Reference } 
+        resource.manufacturer = self.manufacturer?.compactMap { $0.copy() as? Reference }
         resource.regulator = self.regulator?.copy() as? Reference
 
         return resource
@@ -10018,7 +9636,6 @@ extension ModelsR4.MedicinalProductManufacturingBusinessOperation {
     }
 }
 
-
 // MARK: - MedicinalProductName
 extension ModelsR4.MedicinalProductName {
 
@@ -10028,8 +9645,8 @@ extension ModelsR4.MedicinalProductName {
             return self
         }
         resource.productName = self.productName
-        resource.namePart = self.namePart?.compactMap { $0.copy() as? MedicinalProductNameNamePart } 
-        resource.countryLanguage = self.countryLanguage?.compactMap { $0.copy() as? MedicinalProductNameCountryLanguage } 
+        resource.namePart = self.namePart?.compactMap { $0.copy() as? MedicinalProductNameNamePart }
+        resource.countryLanguage = self.countryLanguage?.compactMap { $0.copy() as? MedicinalProductNameCountryLanguage }
 
         return resource
     }
@@ -10038,7 +9655,6 @@ extension ModelsR4.MedicinalProductName {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductNameCountryLanguage
 extension ModelsR4.MedicinalProductNameCountryLanguage {
@@ -10060,7 +9676,6 @@ extension ModelsR4.MedicinalProductNameCountryLanguage {
     }
 }
 
-
 // MARK: - MedicinalProductNameNamePart
 extension ModelsR4.MedicinalProductNameNamePart {
 
@@ -10080,7 +9695,6 @@ extension ModelsR4.MedicinalProductNameNamePart {
     }
 }
 
-
 // MARK: - MedicinalProductPackaged
 extension ModelsR4.MedicinalProductPackaged {
 
@@ -10089,15 +9703,15 @@ extension ModelsR4.MedicinalProductPackaged {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicinalProductPackaged else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.subject = self.subject?.compactMap { $0.copy() as? Reference } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.subject = self.subject?.compactMap { $0.copy() as? Reference }
         resource.description_fhir = self.description_fhir
         resource.legalStatusOfSupply = self.legalStatusOfSupply?.copy() as? CodeableConcept
-        resource.marketingStatus = self.marketingStatus?.compactMap { $0.copy() as? MarketingStatus } 
+        resource.marketingStatus = self.marketingStatus?.compactMap { $0.copy() as? MarketingStatus }
         resource.marketingAuthorization = self.marketingAuthorization?.copy() as? Reference
-        resource.manufacturer = self.manufacturer?.compactMap { $0.copy() as? Reference } 
-        resource.batchIdentifier = self.batchIdentifier?.compactMap { $0.copy() as? MedicinalProductPackagedBatchIdentifier } 
-        resource.packageItem = self.packageItem.compactMap { $0.copy() as? MedicinalProductPackagedPackageItem } 
+        resource.manufacturer = self.manufacturer?.compactMap { $0.copy() as? Reference }
+        resource.batchIdentifier = self.batchIdentifier?.compactMap { $0.copy() as? MedicinalProductPackagedBatchIdentifier }
+        resource.packageItem = self.packageItem.compactMap { $0.copy() as? MedicinalProductPackagedPackageItem }
 
         return resource
     }
@@ -10106,7 +9720,6 @@ extension ModelsR4.MedicinalProductPackaged {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductPackagedBatchIdentifier
 extension ModelsR4.MedicinalProductPackagedBatchIdentifier {
@@ -10127,7 +9740,6 @@ extension ModelsR4.MedicinalProductPackagedBatchIdentifier {
     }
 }
 
-
 // MARK: - MedicinalProductPackagedPackageItem
 extension ModelsR4.MedicinalProductPackagedPackageItem {
 
@@ -10136,18 +9748,18 @@ extension ModelsR4.MedicinalProductPackagedPackageItem {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicinalProductPackagedPackageItem else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.type = self.type.copy() as! CodeableConcept
         resource.quantity = self.quantity.copy() as! Quantity
-        resource.material = self.material?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.alternateMaterial = self.alternateMaterial?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.device = self.device?.compactMap { $0.copy() as? Reference } 
-        resource.manufacturedItem = self.manufacturedItem?.compactMap { $0.copy() as? Reference } 
-        resource.packageItem = self.packageItem?.compactMap { $0.copy() as? MedicinalProductPackagedPackageItem } 
+        resource.material = self.material?.compactMap { $0.copy() as? CodeableConcept }
+        resource.alternateMaterial = self.alternateMaterial?.compactMap { $0.copy() as? CodeableConcept }
+        resource.device = self.device?.compactMap { $0.copy() as? Reference }
+        resource.manufacturedItem = self.manufacturedItem?.compactMap { $0.copy() as? Reference }
+        resource.packageItem = self.packageItem?.compactMap { $0.copy() as? MedicinalProductPackagedPackageItem }
         resource.physicalCharacteristics = self.physicalCharacteristics?.copy() as? ProdCharacteristic
-        resource.otherCharacteristics = self.otherCharacteristics?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.shelfLifeStorage = self.shelfLifeStorage?.compactMap { $0.copy() as? ProductShelfLife } 
-        resource.manufacturer = self.manufacturer?.compactMap { $0.copy() as? Reference } 
+        resource.otherCharacteristics = self.otherCharacteristics?.compactMap { $0.copy() as? CodeableConcept }
+        resource.shelfLifeStorage = self.shelfLifeStorage?.compactMap { $0.copy() as? ProductShelfLife }
+        resource.manufacturer = self.manufacturer?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -10156,7 +9768,6 @@ extension ModelsR4.MedicinalProductPackagedPackageItem {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductPharmaceutical
 extension ModelsR4.MedicinalProductPharmaceutical {
@@ -10166,13 +9777,13 @@ extension ModelsR4.MedicinalProductPharmaceutical {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicinalProductPharmaceutical else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.administrableDoseForm = self.administrableDoseForm.copy() as! CodeableConcept
         resource.unitOfPresentation = self.unitOfPresentation?.copy() as? CodeableConcept
-        resource.ingredient = self.ingredient?.compactMap { $0.copy() as? Reference } 
-        resource.device = self.device?.compactMap { $0.copy() as? Reference } 
-        resource.characteristics = self.characteristics?.compactMap { $0.copy() as? MedicinalProductPharmaceuticalCharacteristics } 
-        resource.routeOfAdministration = self.routeOfAdministration.compactMap { $0.copy() as? MedicinalProductPharmaceuticalRouteOfAdministration } 
+        resource.ingredient = self.ingredient?.compactMap { $0.copy() as? Reference }
+        resource.device = self.device?.compactMap { $0.copy() as? Reference }
+        resource.characteristics = self.characteristics?.compactMap { $0.copy() as? MedicinalProductPharmaceuticalCharacteristics }
+        resource.routeOfAdministration = self.routeOfAdministration.compactMap { $0.copy() as? MedicinalProductPharmaceuticalRouteOfAdministration }
 
         return resource
     }
@@ -10181,7 +9792,6 @@ extension ModelsR4.MedicinalProductPharmaceutical {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductPharmaceuticalCharacteristics
 extension ModelsR4.MedicinalProductPharmaceuticalCharacteristics {
@@ -10202,7 +9812,6 @@ extension ModelsR4.MedicinalProductPharmaceuticalCharacteristics {
     }
 }
 
-
 // MARK: - MedicinalProductPharmaceuticalRouteOfAdministration
 extension ModelsR4.MedicinalProductPharmaceuticalRouteOfAdministration {
 
@@ -10217,7 +9826,7 @@ extension ModelsR4.MedicinalProductPharmaceuticalRouteOfAdministration {
         resource.maxDosePerDay = self.maxDosePerDay?.copy() as? Quantity
         resource.maxDosePerTreatmentPeriod = self.maxDosePerTreatmentPeriod?.copy() as? Ratio
         resource.maxTreatmentPeriod = self.maxTreatmentPeriod?.copy() as? Duration
-        resource.targetSpecies = self.targetSpecies?.compactMap { $0.copy() as? MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies } 
+        resource.targetSpecies = self.targetSpecies?.compactMap { $0.copy() as? MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies }
 
         return resource
     }
@@ -10226,7 +9835,6 @@ extension ModelsR4.MedicinalProductPharmaceuticalRouteOfAdministration {
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies
 extension ModelsR4.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies {
@@ -10237,7 +9845,7 @@ extension ModelsR4.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpec
             return self
         }
         resource.code = self.code.copy() as! CodeableConcept
-        resource.withdrawalPeriod = self.withdrawalPeriod?.compactMap { $0.copy() as? MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod } 
+        resource.withdrawalPeriod = self.withdrawalPeriod?.compactMap { $0.copy() as? MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod }
 
         return resource
     }
@@ -10246,7 +9854,6 @@ extension ModelsR4.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpec
         return self.copied()
     }
 }
-
 
 // MARK: - MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod
 extension ModelsR4.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod {
@@ -10268,7 +9875,6 @@ extension ModelsR4.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpec
     }
 }
 
-
 // MARK: - MedicinalProductSpecialDesignation
 extension ModelsR4.MedicinalProductSpecialDesignation {
 
@@ -10277,7 +9883,7 @@ extension ModelsR4.MedicinalProductSpecialDesignation {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicinalProductSpecialDesignation else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.type = self.type?.copy() as? CodeableConcept
         resource.intendedUse = self.intendedUse?.copy() as? CodeableConcept
         resource.indication = self.indication?.copy() as? IndicationX
@@ -10293,7 +9899,6 @@ extension ModelsR4.MedicinalProductSpecialDesignation {
     }
 }
 
-
 // MARK: - MedicinalProductUndesirableEffect
 extension ModelsR4.MedicinalProductUndesirableEffect {
 
@@ -10302,11 +9907,11 @@ extension ModelsR4.MedicinalProductUndesirableEffect {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MedicinalProductUndesirableEffect else {
             return self
         }
-        resource.subject = self.subject?.compactMap { $0.copy() as? Reference } 
+        resource.subject = self.subject?.compactMap { $0.copy() as? Reference }
         resource.symptomConditionEffect = self.symptomConditionEffect?.copy() as? CodeableConcept
         resource.classification = self.classification?.copy() as? CodeableConcept
         resource.frequencyOfOccurrence = self.frequencyOfOccurrence?.copy() as? CodeableConcept
-        resource.population = self.population?.compactMap { $0.copy() as? Population } 
+        resource.population = self.population?.compactMap { $0.copy() as? Population }
 
         return resource
     }
@@ -10315,7 +9920,6 @@ extension ModelsR4.MedicinalProductUndesirableEffect {
         return self.copied()
     }
 }
-
 
 // MARK: - MessageDefinition
 extension ModelsR4.MessageDefinition {
@@ -10326,7 +9930,7 @@ extension ModelsR4.MessageDefinition {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -10335,19 +9939,19 @@ extension ModelsR4.MessageDefinition {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.copyright = self.copyright
         resource.base = self.base
         resource.parent = self.parent
         resource.event = self.event.copy() as! EventX
         resource.category = self.category
-        resource.focus = self.focus?.compactMap { $0.copy() as? MessageDefinitionFocus } 
+        resource.focus = self.focus?.compactMap { $0.copy() as? MessageDefinitionFocus }
         resource.responseRequired = self.responseRequired
-        resource.allowedResponse = self.allowedResponse?.compactMap { $0.copy() as? MessageDefinitionAllowedResponse } 
+        resource.allowedResponse = self.allowedResponse?.compactMap { $0.copy() as? MessageDefinitionAllowedResponse }
         resource.graph = self.graph
 
         return resource
@@ -10357,7 +9961,6 @@ extension ModelsR4.MessageDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - MessageDefinitionAllowedResponse
 extension ModelsR4.MessageDefinitionAllowedResponse {
@@ -10377,7 +9980,6 @@ extension ModelsR4.MessageDefinitionAllowedResponse {
         return self.copied()
     }
 }
-
 
 // MARK: - MessageDefinitionFocus
 extension ModelsR4.MessageDefinitionFocus {
@@ -10400,7 +10002,6 @@ extension ModelsR4.MessageDefinitionFocus {
     }
 }
 
-
 // MARK: - MessageHeader
 extension ModelsR4.MessageHeader {
 
@@ -10410,7 +10011,7 @@ extension ModelsR4.MessageHeader {
             return self
         }
         resource.event = self.event.copy() as! EventX
-        resource.destination = self.destination?.compactMap { $0.copy() as? MessageHeaderDestination } 
+        resource.destination = self.destination?.compactMap { $0.copy() as? MessageHeaderDestination }
         resource.sender = self.sender?.copy() as? Reference
         resource.enterer = self.enterer?.copy() as? Reference
         resource.author = self.author?.copy() as? Reference
@@ -10418,7 +10019,7 @@ extension ModelsR4.MessageHeader {
         resource.responsible = self.responsible?.copy() as? Reference
         resource.reason = self.reason?.copy() as? CodeableConcept
         resource.response = self.response?.copy() as? MessageHeaderResponse
-        resource.focus = self.focus?.compactMap { $0.copy() as? Reference } 
+        resource.focus = self.focus?.compactMap { $0.copy() as? Reference }
         resource.definition = self.definition
 
         return resource
@@ -10428,7 +10029,6 @@ extension ModelsR4.MessageHeader {
         return self.copied()
     }
 }
-
 
 // MARK: - MessageHeaderDestination
 extension ModelsR4.MessageHeaderDestination {
@@ -10451,7 +10051,6 @@ extension ModelsR4.MessageHeaderDestination {
     }
 }
 
-
 // MARK: - MessageHeaderResponse
 extension ModelsR4.MessageHeaderResponse {
 
@@ -10471,7 +10070,6 @@ extension ModelsR4.MessageHeaderResponse {
         return self.copied()
     }
 }
-
 
 // MARK: - MessageHeaderSource
 extension ModelsR4.MessageHeaderSource {
@@ -10495,7 +10093,6 @@ extension ModelsR4.MessageHeaderSource {
     }
 }
 
-
 // MARK: - Meta
 extension ModelsR4.Meta {
 
@@ -10508,8 +10105,8 @@ extension ModelsR4.Meta {
         resource.lastUpdated = self.lastUpdated
         resource.source = self.source
         resource.profile = self.profile
-        resource.security = self.security?.compactMap { $0.copy() as? Coding } 
-        resource.tag = self.tag?.compactMap { $0.copy() as? Coding } 
+        resource.security = self.security?.compactMap { $0.copy() as? Coding }
+        resource.tag = self.tag?.compactMap { $0.copy() as? Coding }
 
         return resource
     }
@@ -10518,7 +10115,6 @@ extension ModelsR4.Meta {
         return self.copied()
     }
 }
-
 
 // MARK: - MolecularSequence
 extension ModelsR4.MolecularSequence {
@@ -10528,7 +10124,7 @@ extension ModelsR4.MolecularSequence {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.MolecularSequence else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.type = self.type
         resource.coordinateSystem = self.coordinateSystem
         resource.patient = self.patient?.copy() as? Reference
@@ -10537,13 +10133,13 @@ extension ModelsR4.MolecularSequence {
         resource.performer = self.performer?.copy() as? Reference
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.referenceSeq = self.referenceSeq?.copy() as? MolecularSequenceReferenceSeq
-        resource.variant = self.variant?.compactMap { $0.copy() as? MolecularSequenceVariant } 
+        resource.variant = self.variant?.compactMap { $0.copy() as? MolecularSequenceVariant }
         resource.observedSeq = self.observedSeq
-        resource.quality = self.quality?.compactMap { $0.copy() as? MolecularSequenceQuality } 
+        resource.quality = self.quality?.compactMap { $0.copy() as? MolecularSequenceQuality }
         resource.readCoverage = self.readCoverage
-        resource.repository = self.repository?.compactMap { $0.copy() as? MolecularSequenceRepository } 
-        resource.pointer = self.pointer?.compactMap { $0.copy() as? Reference } 
-        resource.structureVariant = self.structureVariant?.compactMap { $0.copy() as? MolecularSequenceStructureVariant } 
+        resource.repository = self.repository?.compactMap { $0.copy() as? MolecularSequenceRepository }
+        resource.pointer = self.pointer?.compactMap { $0.copy() as? Reference }
+        resource.structureVariant = self.structureVariant?.compactMap { $0.copy() as? MolecularSequenceStructureVariant }
 
         return resource
     }
@@ -10552,7 +10148,6 @@ extension ModelsR4.MolecularSequence {
         return self.copied()
     }
 }
-
 
 // MARK: - MolecularSequenceQuality
 extension ModelsR4.MolecularSequenceQuality {
@@ -10586,7 +10181,6 @@ extension ModelsR4.MolecularSequenceQuality {
     }
 }
 
-
 // MARK: - MolecularSequenceQualityRoc
 extension ModelsR4.MolecularSequenceQualityRoc {
 
@@ -10610,7 +10204,6 @@ extension ModelsR4.MolecularSequenceQualityRoc {
         return self.copied()
     }
 }
-
 
 // MARK: - MolecularSequenceReferenceSeq
 extension ModelsR4.MolecularSequenceReferenceSeq {
@@ -10638,7 +10231,6 @@ extension ModelsR4.MolecularSequenceReferenceSeq {
     }
 }
 
-
 // MARK: - MolecularSequenceRepository
 extension ModelsR4.MolecularSequenceRepository {
 
@@ -10662,7 +10254,6 @@ extension ModelsR4.MolecularSequenceRepository {
     }
 }
 
-
 // MARK: - MolecularSequenceStructureVariant
 extension ModelsR4.MolecularSequenceStructureVariant {
 
@@ -10685,7 +10276,6 @@ extension ModelsR4.MolecularSequenceStructureVariant {
     }
 }
 
-
 // MARK: - MolecularSequenceStructureVariantInner
 extension ModelsR4.MolecularSequenceStructureVariantInner {
 
@@ -10705,7 +10295,6 @@ extension ModelsR4.MolecularSequenceStructureVariantInner {
     }
 }
 
-
 // MARK: - MolecularSequenceStructureVariantOuter
 extension ModelsR4.MolecularSequenceStructureVariantOuter {
 
@@ -10724,7 +10313,6 @@ extension ModelsR4.MolecularSequenceStructureVariantOuter {
         return self.copied()
     }
 }
-
 
 // MARK: - MolecularSequenceVariant
 extension ModelsR4.MolecularSequenceVariant {
@@ -10749,7 +10337,6 @@ extension ModelsR4.MolecularSequenceVariant {
     }
 }
 
-
 // MARK: - Money
 extension ModelsR4.Money {
 
@@ -10769,7 +10356,6 @@ extension ModelsR4.Money {
     }
 }
 
-
 // MARK: - NamingSystem
 extension ModelsR4.NamingSystem {
 
@@ -10783,14 +10369,14 @@ extension ModelsR4.NamingSystem {
         resource.kind = self.kind
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.responsible = self.responsible
         resource.type = self.type?.copy() as? CodeableConcept
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.usage = self.usage
-        resource.uniqueId = self.uniqueId.compactMap { $0.copy() as? NamingSystemUniqueId } 
+        resource.uniqueId = self.uniqueId.compactMap { $0.copy() as? NamingSystemUniqueId }
 
         return resource
     }
@@ -10799,7 +10385,6 @@ extension ModelsR4.NamingSystem {
         return self.copied()
     }
 }
-
 
 // MARK: - NamingSystemUniqueId
 extension ModelsR4.NamingSystemUniqueId {
@@ -10823,7 +10408,6 @@ extension ModelsR4.NamingSystemUniqueId {
     }
 }
 
-
 // MARK: - Narrative
 extension ModelsR4.Narrative {
 
@@ -10843,7 +10427,6 @@ extension ModelsR4.Narrative {
     }
 }
 
-
 // MARK: - NutritionOrder
 extension ModelsR4.NutritionOrder {
 
@@ -10852,7 +10435,7 @@ extension ModelsR4.NutritionOrder {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.NutritionOrder else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.instantiatesCanonical = self.instantiatesCanonical
         resource.instantiatesUri = self.instantiatesUri
         resource.instantiates = self.instantiates
@@ -10862,13 +10445,13 @@ extension ModelsR4.NutritionOrder {
         resource.encounter = self.encounter?.copy() as? Reference
         resource.dateTime = self.dateTime
         resource.orderer = self.orderer?.copy() as? Reference
-        resource.allergyIntolerance = self.allergyIntolerance?.compactMap { $0.copy() as? Reference } 
-        resource.foodPreferenceModifier = self.foodPreferenceModifier?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.excludeFoodModifier = self.excludeFoodModifier?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.allergyIntolerance = self.allergyIntolerance?.compactMap { $0.copy() as? Reference }
+        resource.foodPreferenceModifier = self.foodPreferenceModifier?.compactMap { $0.copy() as? CodeableConcept }
+        resource.excludeFoodModifier = self.excludeFoodModifier?.compactMap { $0.copy() as? CodeableConcept }
         resource.oralDiet = self.oralDiet?.copy() as? NutritionOrderOralDiet
-        resource.supplement = self.supplement?.compactMap { $0.copy() as? NutritionOrderSupplement } 
+        resource.supplement = self.supplement?.compactMap { $0.copy() as? NutritionOrderSupplement }
         resource.enteralFormula = self.enteralFormula?.copy() as? NutritionOrderEnteralFormula
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -10877,7 +10460,6 @@ extension ModelsR4.NutritionOrder {
         return self.copied()
     }
 }
-
 
 // MARK: - NutritionOrderEnteralFormula
 extension ModelsR4.NutritionOrderEnteralFormula {
@@ -10893,7 +10475,7 @@ extension ModelsR4.NutritionOrderEnteralFormula {
         resource.additiveProductName = self.additiveProductName
         resource.caloricDensity = self.caloricDensity?.copy() as? Quantity
         resource.routeofAdministration = self.routeofAdministration?.copy() as? CodeableConcept
-        resource.administration = self.administration?.compactMap { $0.copy() as? NutritionOrderEnteralFormulaAdministration } 
+        resource.administration = self.administration?.compactMap { $0.copy() as? NutritionOrderEnteralFormulaAdministration }
         resource.maxVolumeToDeliver = self.maxVolumeToDeliver?.copy() as? Quantity
         resource.administrationInstruction = self.administrationInstruction
 
@@ -10904,7 +10486,6 @@ extension ModelsR4.NutritionOrderEnteralFormula {
         return self.copied()
     }
 }
-
 
 // MARK: - NutritionOrderEnteralFormulaAdministration
 extension ModelsR4.NutritionOrderEnteralFormulaAdministration {
@@ -10926,7 +10507,6 @@ extension ModelsR4.NutritionOrderEnteralFormulaAdministration {
     }
 }
 
-
 // MARK: - NutritionOrderOralDiet
 extension ModelsR4.NutritionOrderOralDiet {
 
@@ -10935,11 +10515,11 @@ extension ModelsR4.NutritionOrderOralDiet {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.NutritionOrderOralDiet else {
             return self
         }
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.schedule = self.schedule?.compactMap { $0.copy() as? Timing } 
-        resource.nutrient = self.nutrient?.compactMap { $0.copy() as? NutritionOrderOralDietNutrient } 
-        resource.texture = self.texture?.compactMap { $0.copy() as? NutritionOrderOralDietTexture } 
-        resource.fluidConsistencyType = self.fluidConsistencyType?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
+        resource.schedule = self.schedule?.compactMap { $0.copy() as? Timing }
+        resource.nutrient = self.nutrient?.compactMap { $0.copy() as? NutritionOrderOralDietNutrient }
+        resource.texture = self.texture?.compactMap { $0.copy() as? NutritionOrderOralDietTexture }
+        resource.fluidConsistencyType = self.fluidConsistencyType?.compactMap { $0.copy() as? CodeableConcept }
         resource.instruction = self.instruction
 
         return resource
@@ -10949,7 +10529,6 @@ extension ModelsR4.NutritionOrderOralDiet {
         return self.copied()
     }
 }
-
 
 // MARK: - NutritionOrderOralDietNutrient
 extension ModelsR4.NutritionOrderOralDietNutrient {
@@ -10970,7 +10549,6 @@ extension ModelsR4.NutritionOrderOralDietNutrient {
     }
 }
 
-
 // MARK: - NutritionOrderOralDietTexture
 extension ModelsR4.NutritionOrderOralDietTexture {
 
@@ -10990,7 +10568,6 @@ extension ModelsR4.NutritionOrderOralDietTexture {
     }
 }
 
-
 // MARK: - NutritionOrderSupplement
 extension ModelsR4.NutritionOrderSupplement {
 
@@ -11001,7 +10578,7 @@ extension ModelsR4.NutritionOrderSupplement {
         }
         resource.type = self.type?.copy() as? CodeableConcept
         resource.productName = self.productName
-        resource.schedule = self.schedule?.compactMap { $0.copy() as? Timing } 
+        resource.schedule = self.schedule?.compactMap { $0.copy() as? Timing }
         resource.quantity = self.quantity?.copy() as? Quantity
         resource.instruction = self.instruction
 
@@ -11013,7 +10590,6 @@ extension ModelsR4.NutritionOrderSupplement {
     }
 }
 
-
 // MARK: - Observation
 extension ModelsR4.Observation {
 
@@ -11022,30 +10598,30 @@ extension ModelsR4.Observation {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Observation else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.code = self.code.copy() as! CodeableConcept
         resource.subject = self.subject?.copy() as? Reference
-        resource.focus = self.focus?.compactMap { $0.copy() as? Reference } 
+        resource.focus = self.focus?.compactMap { $0.copy() as? Reference }
         resource.encounter = self.encounter?.copy() as? Reference
         resource.effective = self.effective?.copy() as? EffectiveX
         resource.issued = self.issued
-        resource.performer = self.performer?.compactMap { $0.copy() as? Reference } 
+        resource.performer = self.performer?.compactMap { $0.copy() as? Reference }
         resource.value = self.value?.copy() as? ValueX
         resource.dataAbsentReason = self.dataAbsentReason?.copy() as? CodeableConcept
-        resource.interpretation = self.interpretation?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.interpretation = self.interpretation?.compactMap { $0.copy() as? CodeableConcept }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
         resource.bodySite = self.bodySite?.copy() as? CodeableConcept
         resource.method = self.method?.copy() as? CodeableConcept
         resource.specimen = self.specimen?.copy() as? Reference
         resource.device = self.device?.copy() as? Reference
-        resource.referenceRange = self.referenceRange?.compactMap { $0.copy() as? ObservationReferenceRange } 
-        resource.hasMember = self.hasMember?.compactMap { $0.copy() as? Reference } 
-        resource.derivedFrom = self.derivedFrom?.compactMap { $0.copy() as? Reference } 
-        resource.component = self.component?.compactMap { $0.copy() as? ObservationComponent } 
+        resource.referenceRange = self.referenceRange?.compactMap { $0.copy() as? ObservationReferenceRange }
+        resource.hasMember = self.hasMember?.compactMap { $0.copy() as? Reference }
+        resource.derivedFrom = self.derivedFrom?.compactMap { $0.copy() as? Reference }
+        resource.component = self.component?.compactMap { $0.copy() as? ObservationComponent }
 
         return resource
     }
@@ -11054,7 +10630,6 @@ extension ModelsR4.Observation {
         return self.copied()
     }
 }
-
 
 // MARK: - ObservationComponent
 extension ModelsR4.ObservationComponent {
@@ -11067,8 +10642,8 @@ extension ModelsR4.ObservationComponent {
         resource.code = self.code.copy() as! CodeableConcept
         resource.value = self.value?.copy() as? ValueX
         resource.dataAbsentReason = self.dataAbsentReason?.copy() as? CodeableConcept
-        resource.interpretation = self.interpretation?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.referenceRange = self.referenceRange?.compactMap { $0.copy() as? ObservationReferenceRange } 
+        resource.interpretation = self.interpretation?.compactMap { $0.copy() as? CodeableConcept }
+        resource.referenceRange = self.referenceRange?.compactMap { $0.copy() as? ObservationReferenceRange }
 
         return resource
     }
@@ -11078,7 +10653,6 @@ extension ModelsR4.ObservationComponent {
     }
 }
 
-
 // MARK: - ObservationDefinition
 extension ModelsR4.ObservationDefinition {
 
@@ -11087,15 +10661,15 @@ extension ModelsR4.ObservationDefinition {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ObservationDefinition else {
             return self
         }
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.code = self.code.copy() as! CodeableConcept
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.permittedDataType = self.permittedDataType
         resource.multipleResultsAllowed = self.multipleResultsAllowed
         resource.method = self.method?.copy() as? CodeableConcept
         resource.preferredReportName = self.preferredReportName
         resource.quantitativeDetails = self.quantitativeDetails?.copy() as? ObservationDefinitionQuantitativeDetails
-        resource.qualifiedInterval = self.qualifiedInterval?.compactMap { $0.copy() as? ObservationDefinitionQualifiedInterval } 
+        resource.qualifiedInterval = self.qualifiedInterval?.compactMap { $0.copy() as? ObservationDefinitionQualifiedInterval }
         resource.validCodedValueSet = self.validCodedValueSet?.copy() as? Reference
         resource.normalCodedValueSet = self.normalCodedValueSet?.copy() as? Reference
         resource.abnormalCodedValueSet = self.abnormalCodedValueSet?.copy() as? Reference
@@ -11109,7 +10683,6 @@ extension ModelsR4.ObservationDefinition {
     }
 }
 
-
 // MARK: - ObservationDefinitionQualifiedInterval
 extension ModelsR4.ObservationDefinitionQualifiedInterval {
 
@@ -11121,7 +10694,7 @@ extension ModelsR4.ObservationDefinitionQualifiedInterval {
         resource.category = self.category
         resource.range = self.range?.copy() as? Range
         resource.context = self.context?.copy() as? CodeableConcept
-        resource.appliesTo = self.appliesTo?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.appliesTo = self.appliesTo?.compactMap { $0.copy() as? CodeableConcept }
         resource.gender = self.gender
         resource.age = self.age?.copy() as? Range
         resource.gestationalAge = self.gestationalAge?.copy() as? Range
@@ -11134,7 +10707,6 @@ extension ModelsR4.ObservationDefinitionQualifiedInterval {
         return self.copied()
     }
 }
-
 
 // MARK: - ObservationDefinitionQuantitativeDetails
 extension ModelsR4.ObservationDefinitionQuantitativeDetails {
@@ -11157,7 +10729,6 @@ extension ModelsR4.ObservationDefinitionQuantitativeDetails {
     }
 }
 
-
 // MARK: - ObservationReferenceRange
 extension ModelsR4.ObservationReferenceRange {
 
@@ -11169,7 +10740,7 @@ extension ModelsR4.ObservationReferenceRange {
         resource.low = self.low?.copy() as? Quantity
         resource.high = self.high?.copy() as? Quantity
         resource.type = self.type?.copy() as? CodeableConcept
-        resource.appliesTo = self.appliesTo?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.appliesTo = self.appliesTo?.compactMap { $0.copy() as? CodeableConcept }
         resource.age = self.age?.copy() as? Range
         resource.text = self.text
 
@@ -11180,7 +10751,6 @@ extension ModelsR4.ObservationReferenceRange {
         return self.copied()
     }
 }
-
 
 // MARK: - OperationDefinition
 extension ModelsR4.OperationDefinition {
@@ -11199,10 +10769,10 @@ extension ModelsR4.OperationDefinition {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.affectsState = self.affectsState
         resource.code = self.code
@@ -11214,8 +10784,8 @@ extension ModelsR4.OperationDefinition {
         resource.instance = self.instance
         resource.inputProfile = self.inputProfile
         resource.outputProfile = self.outputProfile
-        resource.parameter = self.parameter?.compactMap { $0.copy() as? OperationDefinitionParameter } 
-        resource.overload = self.overload?.compactMap { $0.copy() as? OperationDefinitionOverload } 
+        resource.parameter = self.parameter?.compactMap { $0.copy() as? OperationDefinitionParameter }
+        resource.overload = self.overload?.compactMap { $0.copy() as? OperationDefinitionOverload }
 
         return resource
     }
@@ -11224,7 +10794,6 @@ extension ModelsR4.OperationDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - OperationDefinitionOverload
 extension ModelsR4.OperationDefinitionOverload {
@@ -11245,7 +10814,6 @@ extension ModelsR4.OperationDefinitionOverload {
     }
 }
 
-
 // MARK: - OperationDefinitionParameter
 extension ModelsR4.OperationDefinitionParameter {
 
@@ -11263,8 +10831,8 @@ extension ModelsR4.OperationDefinitionParameter {
         resource.targetProfile = self.targetProfile
         resource.searchType = self.searchType
         resource.binding = self.binding?.copy() as? OperationDefinitionParameterBinding
-        resource.referencedFrom = self.referencedFrom?.compactMap { $0.copy() as? OperationDefinitionParameterReferencedFrom } 
-        resource.part = self.part?.compactMap { $0.copy() as? OperationDefinitionParameter } 
+        resource.referencedFrom = self.referencedFrom?.compactMap { $0.copy() as? OperationDefinitionParameterReferencedFrom }
+        resource.part = self.part?.compactMap { $0.copy() as? OperationDefinitionParameter }
 
         return resource
     }
@@ -11273,7 +10841,6 @@ extension ModelsR4.OperationDefinitionParameter {
         return self.copied()
     }
 }
-
 
 // MARK: - OperationDefinitionParameterBinding
 extension ModelsR4.OperationDefinitionParameterBinding {
@@ -11294,7 +10861,6 @@ extension ModelsR4.OperationDefinitionParameterBinding {
     }
 }
 
-
 // MARK: - OperationDefinitionParameterReferencedFrom
 extension ModelsR4.OperationDefinitionParameterReferencedFrom {
 
@@ -11314,7 +10880,6 @@ extension ModelsR4.OperationDefinitionParameterReferencedFrom {
     }
 }
 
-
 // MARK: - OperationOutcome
 extension ModelsR4.OperationOutcome {
 
@@ -11323,7 +10888,7 @@ extension ModelsR4.OperationOutcome {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.OperationOutcome else {
             return self
         }
-        resource.issue = self.issue.compactMap { $0.copy() as? OperationOutcomeIssue } 
+        resource.issue = self.issue.compactMap { $0.copy() as? OperationOutcomeIssue }
 
         return resource
     }
@@ -11332,7 +10897,6 @@ extension ModelsR4.OperationOutcome {
         return self.copied()
     }
 }
-
 
 // MARK: - OperationOutcomeIssue
 extension ModelsR4.OperationOutcomeIssue {
@@ -11357,7 +10921,6 @@ extension ModelsR4.OperationOutcomeIssue {
     }
 }
 
-
 // MARK: - Organization
 extension ModelsR4.Organization {
 
@@ -11366,16 +10929,16 @@ extension ModelsR4.Organization {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Organization else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.active = self.active
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
         resource.name = self.name
         resource.alias = self.alias
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
-        resource.address = self.address?.compactMap { $0.copy() as? Address } 
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
+        resource.address = self.address?.compactMap { $0.copy() as? Address }
         resource.partOf = self.partOf?.copy() as? Reference
-        resource.contact = self.contact?.compactMap { $0.copy() as? OrganizationContact } 
-        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? OrganizationContact }
+        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -11384,7 +10947,6 @@ extension ModelsR4.Organization {
         return self.copied()
     }
 }
-
 
 // MARK: - OrganizationAffiliation
 extension ModelsR4.OrganizationAffiliation {
@@ -11394,18 +10956,18 @@ extension ModelsR4.OrganizationAffiliation {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.OrganizationAffiliation else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.active = self.active
         resource.period = self.period?.copy() as? Period
         resource.organization = self.organization?.copy() as? Reference
         resource.participatingOrganization = self.participatingOrganization?.copy() as? Reference
-        resource.network = self.network?.compactMap { $0.copy() as? Reference } 
-        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.location = self.location?.compactMap { $0.copy() as? Reference } 
-        resource.healthcareService = self.healthcareService?.compactMap { $0.copy() as? Reference } 
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
-        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference } 
+        resource.network = self.network?.compactMap { $0.copy() as? Reference }
+        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept }
+        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept }
+        resource.location = self.location?.compactMap { $0.copy() as? Reference }
+        resource.healthcareService = self.healthcareService?.compactMap { $0.copy() as? Reference }
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
+        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -11414,7 +10976,6 @@ extension ModelsR4.OrganizationAffiliation {
         return self.copied()
     }
 }
-
 
 // MARK: - OrganizationContact
 extension ModelsR4.OrganizationContact {
@@ -11426,7 +10987,7 @@ extension ModelsR4.OrganizationContact {
         }
         resource.purpose = self.purpose?.copy() as? CodeableConcept
         resource.name = self.name?.copy() as? HumanName
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
         resource.address = self.address?.copy() as? Address
 
         return resource
@@ -11436,7 +10997,6 @@ extension ModelsR4.OrganizationContact {
         return self.copied()
     }
 }
-
 
 // MARK: - ParameterDefinition
 extension ModelsR4.ParameterDefinition {
@@ -11462,7 +11022,6 @@ extension ModelsR4.ParameterDefinition {
     }
 }
 
-
 // MARK: - Parameters
 extension ModelsR4.Parameters {
 
@@ -11471,7 +11030,7 @@ extension ModelsR4.Parameters {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Parameters else {
             return self
         }
-        resource.parameter = self.parameter?.compactMap { $0.copy() as? ParametersParameter } 
+        resource.parameter = self.parameter?.compactMap { $0.copy() as? ParametersParameter }
 
         return resource
     }
@@ -11480,7 +11039,6 @@ extension ModelsR4.Parameters {
         return self.copied()
     }
 }
-
 
 // MARK: - ParametersParameter
 extension ModelsR4.ParametersParameter {
@@ -11493,7 +11051,7 @@ extension ModelsR4.ParametersParameter {
         resource.name = self.name
         resource.value = self.value?.copy() as? ValueX
         resource.resource = self.resource?.copy() as? ResourceProxy
-        resource.part = self.part?.compactMap { $0.copy() as? ParametersParameter } 
+        resource.part = self.part?.compactMap { $0.copy() as? ParametersParameter }
 
         return resource
     }
@@ -11502,7 +11060,6 @@ extension ModelsR4.ParametersParameter {
         return self.copied()
     }
 }
-
 
 // MARK: - Patient
 extension ModelsR4.Patient {
@@ -11512,22 +11069,22 @@ extension ModelsR4.Patient {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Patient else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.active = self.active
-        resource.name = self.name?.compactMap { $0.copy() as? HumanName } 
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
+        resource.name = self.name?.compactMap { $0.copy() as? HumanName }
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
         resource.gender = self.gender
         resource.birthDate = self.birthDate
         resource.deceased = self.deceased?.copy() as? DeceasedX
-        resource.address = self.address?.compactMap { $0.copy() as? Address } 
+        resource.address = self.address?.compactMap { $0.copy() as? Address }
         resource.maritalStatus = self.maritalStatus?.copy() as? CodeableConcept
         resource.multipleBirth = self.multipleBirth?.copy() as? MultipleBirthX
-        resource.photo = self.photo?.compactMap { $0.copy() as? Attachment } 
-        resource.contact = self.contact?.compactMap { $0.copy() as? PatientContact } 
-        resource.communication = self.communication?.compactMap { $0.copy() as? PatientCommunication } 
-        resource.generalPractitioner = self.generalPractitioner?.compactMap { $0.copy() as? Reference } 
+        resource.photo = self.photo?.compactMap { $0.copy() as? Attachment }
+        resource.contact = self.contact?.compactMap { $0.copy() as? PatientContact }
+        resource.communication = self.communication?.compactMap { $0.copy() as? PatientCommunication }
+        resource.generalPractitioner = self.generalPractitioner?.compactMap { $0.copy() as? Reference }
         resource.managingOrganization = self.managingOrganization?.copy() as? Reference
-        resource.link = self.link?.compactMap { $0.copy() as? PatientLink } 
+        resource.link = self.link?.compactMap { $0.copy() as? PatientLink }
 
         return resource
     }
@@ -11536,7 +11093,6 @@ extension ModelsR4.Patient {
         return self.copied()
     }
 }
-
 
 // MARK: - PatientCommunication
 extension ModelsR4.PatientCommunication {
@@ -11557,7 +11113,6 @@ extension ModelsR4.PatientCommunication {
     }
 }
 
-
 // MARK: - PatientContact
 extension ModelsR4.PatientContact {
 
@@ -11566,9 +11121,9 @@ extension ModelsR4.PatientContact {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.PatientContact else {
             return self
         }
-        resource.relationship = self.relationship?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.relationship = self.relationship?.compactMap { $0.copy() as? CodeableConcept }
         resource.name = self.name?.copy() as? HumanName
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
         resource.address = self.address?.copy() as? Address
         resource.gender = self.gender
         resource.organization = self.organization?.copy() as? Reference
@@ -11581,7 +11136,6 @@ extension ModelsR4.PatientContact {
         return self.copied()
     }
 }
-
 
 // MARK: - PatientLink
 extension ModelsR4.PatientLink {
@@ -11602,7 +11156,6 @@ extension ModelsR4.PatientLink {
     }
 }
 
-
 // MARK: - PaymentNotice
 extension ModelsR4.PaymentNotice {
 
@@ -11611,7 +11164,7 @@ extension ModelsR4.PaymentNotice {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.PaymentNotice else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.request = self.request?.copy() as? Reference
         resource.response = self.response?.copy() as? Reference
@@ -11632,7 +11185,6 @@ extension ModelsR4.PaymentNotice {
     }
 }
 
-
 // MARK: - PaymentReconciliation
 extension ModelsR4.PaymentReconciliation {
 
@@ -11641,7 +11193,7 @@ extension ModelsR4.PaymentReconciliation {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.PaymentReconciliation else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.period = self.period?.copy() as? Period
         resource.created = self.created
@@ -11653,9 +11205,9 @@ extension ModelsR4.PaymentReconciliation {
         resource.paymentDate = self.paymentDate
         resource.paymentAmount = self.paymentAmount.copy() as! Money
         resource.paymentIdentifier = self.paymentIdentifier?.copy() as? Identifier
-        resource.detail = self.detail?.compactMap { $0.copy() as? PaymentReconciliationDetail } 
+        resource.detail = self.detail?.compactMap { $0.copy() as? PaymentReconciliationDetail }
         resource.formCode = self.formCode?.copy() as? CodeableConcept
-        resource.processNote = self.processNote?.compactMap { $0.copy() as? PaymentReconciliationProcessNote } 
+        resource.processNote = self.processNote?.compactMap { $0.copy() as? PaymentReconciliationProcessNote }
 
         return resource
     }
@@ -11664,7 +11216,6 @@ extension ModelsR4.PaymentReconciliation {
         return self.copied()
     }
 }
-
 
 // MARK: - PaymentReconciliationDetail
 extension ModelsR4.PaymentReconciliationDetail {
@@ -11693,7 +11244,6 @@ extension ModelsR4.PaymentReconciliationDetail {
     }
 }
 
-
 // MARK: - PaymentReconciliationProcessNote
 extension ModelsR4.PaymentReconciliationProcessNote {
 
@@ -11712,7 +11262,6 @@ extension ModelsR4.PaymentReconciliationProcessNote {
         return self.copied()
     }
 }
-
 
 // MARK: - Period
 extension ModelsR4.Period {
@@ -11733,7 +11282,6 @@ extension ModelsR4.Period {
     }
 }
 
-
 // MARK: - Person
 extension ModelsR4.Person {
 
@@ -11742,16 +11290,16 @@ extension ModelsR4.Person {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Person else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.name = self.name?.compactMap { $0.copy() as? HumanName } 
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.name = self.name?.compactMap { $0.copy() as? HumanName }
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
         resource.gender = self.gender
         resource.birthDate = self.birthDate
-        resource.address = self.address?.compactMap { $0.copy() as? Address } 
+        resource.address = self.address?.compactMap { $0.copy() as? Address }
         resource.photo = self.photo?.copy() as? Attachment
         resource.managingOrganization = self.managingOrganization?.copy() as? Reference
         resource.active = self.active
-        resource.link = self.link?.compactMap { $0.copy() as? PersonLink } 
+        resource.link = self.link?.compactMap { $0.copy() as? PersonLink }
 
         return resource
     }
@@ -11760,7 +11308,6 @@ extension ModelsR4.Person {
         return self.copied()
     }
 }
-
 
 // MARK: - PersonLink
 extension ModelsR4.PersonLink {
@@ -11781,7 +11328,6 @@ extension ModelsR4.PersonLink {
     }
 }
 
-
 // MARK: - PlanDefinition
 extension ModelsR4.PlanDefinition {
 
@@ -11791,7 +11337,7 @@ extension ModelsR4.PlanDefinition {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -11802,25 +11348,25 @@ extension ModelsR4.PlanDefinition {
         resource.subject = self.subject?.copy() as? SubjectX
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.usage = self.usage
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail } 
-        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail } 
-        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail } 
-        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
+        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail }
+        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail }
+        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail }
+        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
         resource.library = self.library
-        resource.goal = self.goal?.compactMap { $0.copy() as? PlanDefinitionGoal } 
-        resource.action = self.action?.compactMap { $0.copy() as? PlanDefinitionAction } 
+        resource.goal = self.goal?.compactMap { $0.copy() as? PlanDefinitionGoal }
+        resource.action = self.action?.compactMap { $0.copy() as? PlanDefinitionAction }
 
         return resource
     }
@@ -11829,7 +11375,6 @@ extension ModelsR4.PlanDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - PlanDefinitionAction
 extension ModelsR4.PlanDefinitionAction {
@@ -11844,18 +11389,18 @@ extension ModelsR4.PlanDefinitionAction {
         resource.description_fhir = self.description_fhir
         resource.textEquivalent = self.textEquivalent
         resource.priority = self.priority
-        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reason = self.reason?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.documentation = self.documentation?.compactMap { $0.copy() as? RelatedArtifact } 
+        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reason = self.reason?.compactMap { $0.copy() as? CodeableConcept }
+        resource.documentation = self.documentation?.compactMap { $0.copy() as? RelatedArtifact }
         resource.goalId = self.goalId
         resource.subject = self.subject?.copy() as? SubjectX
-        resource.trigger = self.trigger?.compactMap { $0.copy() as? TriggerDefinition } 
-        resource.condition = self.condition?.compactMap { $0.copy() as? PlanDefinitionActionCondition } 
-        resource.input = self.input?.compactMap { $0.copy() as? DataRequirement } 
-        resource.output = self.output?.compactMap { $0.copy() as? DataRequirement } 
-        resource.relatedAction = self.relatedAction?.compactMap { $0.copy() as? PlanDefinitionActionRelatedAction } 
+        resource.trigger = self.trigger?.compactMap { $0.copy() as? TriggerDefinition }
+        resource.condition = self.condition?.compactMap { $0.copy() as? PlanDefinitionActionCondition }
+        resource.input = self.input?.compactMap { $0.copy() as? DataRequirement }
+        resource.output = self.output?.compactMap { $0.copy() as? DataRequirement }
+        resource.relatedAction = self.relatedAction?.compactMap { $0.copy() as? PlanDefinitionActionRelatedAction }
         resource.timing = self.timing?.copy() as? TimingX
-        resource.participant = self.participant?.compactMap { $0.copy() as? PlanDefinitionActionParticipant } 
+        resource.participant = self.participant?.compactMap { $0.copy() as? PlanDefinitionActionParticipant }
         resource.type = self.type?.copy() as? CodeableConcept
         resource.groupingBehavior = self.groupingBehavior
         resource.selectionBehavior = self.selectionBehavior
@@ -11864,8 +11409,8 @@ extension ModelsR4.PlanDefinitionAction {
         resource.cardinalityBehavior = self.cardinalityBehavior
         resource.definition = self.definition?.copy() as? DefinitionX
         resource.transform = self.transform
-        resource.dynamicValue = self.dynamicValue?.compactMap { $0.copy() as? PlanDefinitionActionDynamicValue } 
-        resource.action = self.action?.compactMap { $0.copy() as? PlanDefinitionAction } 
+        resource.dynamicValue = self.dynamicValue?.compactMap { $0.copy() as? PlanDefinitionActionDynamicValue }
+        resource.action = self.action?.compactMap { $0.copy() as? PlanDefinitionAction }
 
         return resource
     }
@@ -11874,7 +11419,6 @@ extension ModelsR4.PlanDefinitionAction {
         return self.copied()
     }
 }
-
 
 // MARK: - PlanDefinitionActionCondition
 extension ModelsR4.PlanDefinitionActionCondition {
@@ -11895,7 +11439,6 @@ extension ModelsR4.PlanDefinitionActionCondition {
     }
 }
 
-
 // MARK: - PlanDefinitionActionDynamicValue
 extension ModelsR4.PlanDefinitionActionDynamicValue {
 
@@ -11915,7 +11458,6 @@ extension ModelsR4.PlanDefinitionActionDynamicValue {
     }
 }
 
-
 // MARK: - PlanDefinitionActionParticipant
 extension ModelsR4.PlanDefinitionActionParticipant {
 
@@ -11934,7 +11476,6 @@ extension ModelsR4.PlanDefinitionActionParticipant {
         return self.copied()
     }
 }
-
 
 // MARK: - PlanDefinitionActionRelatedAction
 extension ModelsR4.PlanDefinitionActionRelatedAction {
@@ -11956,7 +11497,6 @@ extension ModelsR4.PlanDefinitionActionRelatedAction {
     }
 }
 
-
 // MARK: - PlanDefinitionGoal
 extension ModelsR4.PlanDefinitionGoal {
 
@@ -11969,9 +11509,9 @@ extension ModelsR4.PlanDefinitionGoal {
         resource.description_fhir = self.description_fhir.copy() as! CodeableConcept
         resource.priority = self.priority?.copy() as? CodeableConcept
         resource.start = self.start?.copy() as? CodeableConcept
-        resource.addresses = self.addresses?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.documentation = self.documentation?.compactMap { $0.copy() as? RelatedArtifact } 
-        resource.target = self.target?.compactMap { $0.copy() as? PlanDefinitionGoalTarget } 
+        resource.addresses = self.addresses?.compactMap { $0.copy() as? CodeableConcept }
+        resource.documentation = self.documentation?.compactMap { $0.copy() as? RelatedArtifact }
+        resource.target = self.target?.compactMap { $0.copy() as? PlanDefinitionGoalTarget }
 
         return resource
     }
@@ -11980,7 +11520,6 @@ extension ModelsR4.PlanDefinitionGoal {
         return self.copied()
     }
 }
-
 
 // MARK: - PlanDefinitionGoalTarget
 extension ModelsR4.PlanDefinitionGoalTarget {
@@ -12001,7 +11540,6 @@ extension ModelsR4.PlanDefinitionGoalTarget {
         return self.copied()
     }
 }
-
 
 // MARK: - Population
 extension ModelsR4.Population {
@@ -12024,7 +11562,6 @@ extension ModelsR4.Population {
     }
 }
 
-
 // MARK: - Practitioner
 extension ModelsR4.Practitioner {
 
@@ -12033,16 +11570,16 @@ extension ModelsR4.Practitioner {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Practitioner else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.active = self.active
-        resource.name = self.name?.compactMap { $0.copy() as? HumanName } 
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
-        resource.address = self.address?.compactMap { $0.copy() as? Address } 
+        resource.name = self.name?.compactMap { $0.copy() as? HumanName }
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
+        resource.address = self.address?.compactMap { $0.copy() as? Address }
         resource.gender = self.gender
         resource.birthDate = self.birthDate
-        resource.photo = self.photo?.compactMap { $0.copy() as? Attachment } 
-        resource.qualification = self.qualification?.compactMap { $0.copy() as? PractitionerQualification } 
-        resource.communication = self.communication?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.photo = self.photo?.compactMap { $0.copy() as? Attachment }
+        resource.qualification = self.qualification?.compactMap { $0.copy() as? PractitionerQualification }
+        resource.communication = self.communication?.compactMap { $0.copy() as? CodeableConcept }
 
         return resource
     }
@@ -12052,7 +11589,6 @@ extension ModelsR4.Practitioner {
     }
 }
 
-
 // MARK: - PractitionerQualification
 extension ModelsR4.PractitionerQualification {
 
@@ -12061,7 +11597,7 @@ extension ModelsR4.PractitionerQualification {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.PractitionerQualification else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.code = self.code.copy() as! CodeableConcept
         resource.period = self.period?.copy() as? Period
         resource.issuer = self.issuer?.copy() as? Reference
@@ -12074,7 +11610,6 @@ extension ModelsR4.PractitionerQualification {
     }
 }
 
-
 // MARK: - PractitionerRole
 extension ModelsR4.PractitionerRole {
 
@@ -12083,20 +11618,20 @@ extension ModelsR4.PractitionerRole {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.PractitionerRole else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.active = self.active
         resource.period = self.period?.copy() as? Period
         resource.practitioner = self.practitioner?.copy() as? Reference
         resource.organization = self.organization?.copy() as? Reference
-        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.location = self.location?.compactMap { $0.copy() as? Reference } 
-        resource.healthcareService = self.healthcareService?.compactMap { $0.copy() as? Reference } 
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
-        resource.availableTime = self.availableTime?.compactMap { $0.copy() as? PractitionerRoleAvailableTime } 
-        resource.notAvailable = self.notAvailable?.compactMap { $0.copy() as? PractitionerRoleNotAvailable } 
+        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept }
+        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept }
+        resource.location = self.location?.compactMap { $0.copy() as? Reference }
+        resource.healthcareService = self.healthcareService?.compactMap { $0.copy() as? Reference }
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
+        resource.availableTime = self.availableTime?.compactMap { $0.copy() as? PractitionerRoleAvailableTime }
+        resource.notAvailable = self.notAvailable?.compactMap { $0.copy() as? PractitionerRoleNotAvailable }
         resource.availabilityExceptions = self.availabilityExceptions
-        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference } 
+        resource.endpoint = self.endpoint?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -12105,7 +11640,6 @@ extension ModelsR4.PractitionerRole {
         return self.copied()
     }
 }
-
 
 // MARK: - PractitionerRoleAvailableTime
 extension ModelsR4.PractitionerRoleAvailableTime {
@@ -12128,7 +11662,6 @@ extension ModelsR4.PractitionerRoleAvailableTime {
     }
 }
 
-
 // MARK: - PractitionerRoleNotAvailable
 extension ModelsR4.PractitionerRoleNotAvailable {
 
@@ -12148,7 +11681,6 @@ extension ModelsR4.PractitionerRoleNotAvailable {
     }
 }
 
-
 // MARK: - Procedure
 extension ModelsR4.Procedure {
 
@@ -12157,11 +11689,11 @@ extension ModelsR4.Procedure {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Procedure else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.instantiatesCanonical = self.instantiatesCanonical
         resource.instantiatesUri = self.instantiatesUri
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
         resource.statusReason = self.statusReason?.copy() as? CodeableConcept
         resource.category = self.category?.copy() as? CodeableConcept
@@ -12171,20 +11703,20 @@ extension ModelsR4.Procedure {
         resource.performed = self.performed?.copy() as? PerformedX
         resource.recorder = self.recorder?.copy() as? Reference
         resource.asserter = self.asserter?.copy() as? Reference
-        resource.performer = self.performer?.compactMap { $0.copy() as? ProcedurePerformer } 
+        resource.performer = self.performer?.compactMap { $0.copy() as? ProcedurePerformer }
         resource.location = self.location?.copy() as? Reference
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.bodySite = self.bodySite?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.bodySite = self.bodySite?.compactMap { $0.copy() as? CodeableConcept }
         resource.outcome = self.outcome?.copy() as? CodeableConcept
-        resource.report = self.report?.compactMap { $0.copy() as? Reference } 
-        resource.complication = self.complication?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.complicationDetail = self.complicationDetail?.compactMap { $0.copy() as? Reference } 
-        resource.followUp = self.followUp?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.focalDevice = self.focalDevice?.compactMap { $0.copy() as? ProcedureFocalDevice } 
-        resource.usedReference = self.usedReference?.compactMap { $0.copy() as? Reference } 
-        resource.usedCode = self.usedCode?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.report = self.report?.compactMap { $0.copy() as? Reference }
+        resource.complication = self.complication?.compactMap { $0.copy() as? CodeableConcept }
+        resource.complicationDetail = self.complicationDetail?.compactMap { $0.copy() as? Reference }
+        resource.followUp = self.followUp?.compactMap { $0.copy() as? CodeableConcept }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.focalDevice = self.focalDevice?.compactMap { $0.copy() as? ProcedureFocalDevice }
+        resource.usedReference = self.usedReference?.compactMap { $0.copy() as? Reference }
+        resource.usedCode = self.usedCode?.compactMap { $0.copy() as? CodeableConcept }
 
         return resource
     }
@@ -12193,7 +11725,6 @@ extension ModelsR4.Procedure {
         return self.copied()
     }
 }
-
 
 // MARK: - ProcedureFocalDevice
 extension ModelsR4.ProcedureFocalDevice {
@@ -12213,7 +11744,6 @@ extension ModelsR4.ProcedureFocalDevice {
         return self.copied()
     }
 }
-
 
 // MARK: - ProcedurePerformer
 extension ModelsR4.ProcedurePerformer {
@@ -12235,7 +11765,6 @@ extension ModelsR4.ProcedurePerformer {
     }
 }
 
-
 // MARK: - ProdCharacteristic
 extension ModelsR4.ProdCharacteristic {
 
@@ -12253,7 +11782,7 @@ extension ModelsR4.ProdCharacteristic {
         resource.shape = self.shape
         resource.color = self.color
         resource.imprint = self.imprint
-        resource.image = self.image?.compactMap { $0.copy() as? Attachment } 
+        resource.image = self.image?.compactMap { $0.copy() as? Attachment }
         resource.scoring = self.scoring?.copy() as? CodeableConcept
 
         return resource
@@ -12263,7 +11792,6 @@ extension ModelsR4.ProdCharacteristic {
         return self.copied()
     }
 }
-
 
 // MARK: - ProductShelfLife
 extension ModelsR4.ProductShelfLife {
@@ -12276,7 +11804,7 @@ extension ModelsR4.ProductShelfLife {
         resource.identifier = self.identifier?.copy() as? Identifier
         resource.type = self.type.copy() as! CodeableConcept
         resource.period = self.period.copy() as! Quantity
-        resource.specialPrecautionsForStorage = self.specialPrecautionsForStorage?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.specialPrecautionsForStorage = self.specialPrecautionsForStorage?.compactMap { $0.copy() as? CodeableConcept }
 
         return resource
     }
@@ -12285,7 +11813,6 @@ extension ModelsR4.ProductShelfLife {
         return self.copied()
     }
 }
-
 
 // MARK: - Provenance
 extension ModelsR4.Provenance {
@@ -12295,16 +11822,16 @@ extension ModelsR4.Provenance {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Provenance else {
             return self
         }
-        resource.target = self.target.compactMap { $0.copy() as? Reference } 
+        resource.target = self.target.compactMap { $0.copy() as? Reference }
         resource.occurred = self.occurred?.copy() as? OccurredX
         resource.recorded = self.recorded
         resource.policy = self.policy
         resource.location = self.location?.copy() as? Reference
-        resource.reason = self.reason?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.reason = self.reason?.compactMap { $0.copy() as? CodeableConcept }
         resource.activity = self.activity?.copy() as? CodeableConcept
-        resource.agent = self.agent.compactMap { $0.copy() as? ProvenanceAgent } 
-        resource.entity = self.entity?.compactMap { $0.copy() as? ProvenanceEntity } 
-        resource.signature = self.signature?.compactMap { $0.copy() as? Signature } 
+        resource.agent = self.agent.compactMap { $0.copy() as? ProvenanceAgent }
+        resource.entity = self.entity?.compactMap { $0.copy() as? ProvenanceEntity }
+        resource.signature = self.signature?.compactMap { $0.copy() as? Signature }
 
         return resource
     }
@@ -12313,7 +11840,6 @@ extension ModelsR4.Provenance {
         return self.copied()
     }
 }
-
 
 // MARK: - ProvenanceAgent
 extension ModelsR4.ProvenanceAgent {
@@ -12324,7 +11850,7 @@ extension ModelsR4.ProvenanceAgent {
             return self
         }
         resource.type = self.type?.copy() as? CodeableConcept
-        resource.role = self.role?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.role = self.role?.compactMap { $0.copy() as? CodeableConcept }
         resource.who = self.who.copy() as! Reference
         resource.onBehalfOf = self.onBehalfOf?.copy() as? Reference
 
@@ -12336,7 +11862,6 @@ extension ModelsR4.ProvenanceAgent {
     }
 }
 
-
 // MARK: - ProvenanceEntity
 extension ModelsR4.ProvenanceEntity {
 
@@ -12347,7 +11872,7 @@ extension ModelsR4.ProvenanceEntity {
         }
         resource.role = self.role
         resource.what = self.what.copy() as! Reference
-        resource.agent = self.agent?.compactMap { $0.copy() as? ProvenanceAgent } 
+        resource.agent = self.agent?.compactMap { $0.copy() as? ProvenanceAgent }
 
         return resource
     }
@@ -12356,7 +11881,6 @@ extension ModelsR4.ProvenanceEntity {
         return self.copied()
     }
 }
-
 
 // MARK: - Quantity
 extension ModelsR4.Quantity {
@@ -12380,7 +11904,6 @@ extension ModelsR4.Quantity {
     }
 }
 
-
 // MARK: - Questionnaire
 extension ModelsR4.Questionnaire {
 
@@ -12390,7 +11913,7 @@ extension ModelsR4.Questionnaire {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -12400,17 +11923,17 @@ extension ModelsR4.Questionnaire {
         resource.subjectType = self.subjectType
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.code = self.code?.compactMap { $0.copy() as? Coding } 
-        resource.item = self.item?.compactMap { $0.copy() as? QuestionnaireItem } 
+        resource.code = self.code?.compactMap { $0.copy() as? Coding }
+        resource.item = self.item?.compactMap { $0.copy() as? QuestionnaireItem }
 
         return resource
     }
@@ -12419,7 +11942,6 @@ extension ModelsR4.Questionnaire {
         return self.copied()
     }
 }
-
 
 // MARK: - QuestionnaireItem
 extension ModelsR4.QuestionnaireItem {
@@ -12431,20 +11953,20 @@ extension ModelsR4.QuestionnaireItem {
         }
         resource.linkId = self.linkId
         resource.definition = self.definition
-        resource.code = self.code?.compactMap { $0.copy() as? Coding } 
+        resource.code = self.code?.compactMap { $0.copy() as? Coding }
         resource.prefix = self.prefix
         resource.text = self.text
         resource.type = self.type
-        resource.enableWhen = self.enableWhen?.compactMap { $0.copy() as? QuestionnaireItemEnableWhen } 
+        resource.enableWhen = self.enableWhen?.compactMap { $0.copy() as? QuestionnaireItemEnableWhen }
         resource.enableBehavior = self.enableBehavior
         resource.required = self.required
         resource.repeats = self.repeats
         resource.readOnly = self.readOnly
         resource.maxLength = self.maxLength
         resource.answerValueSet = self.answerValueSet
-        resource.answerOption = self.answerOption?.compactMap { $0.copy() as? QuestionnaireItemAnswerOption } 
-        resource.initial = self.initial?.compactMap { $0.copy() as? QuestionnaireItemInitial } 
-        resource.item = self.item?.compactMap { $0.copy() as? QuestionnaireItem } 
+        resource.answerOption = self.answerOption?.compactMap { $0.copy() as? QuestionnaireItemAnswerOption }
+        resource.initial = self.initial?.compactMap { $0.copy() as? QuestionnaireItemInitial }
+        resource.item = self.item?.compactMap { $0.copy() as? QuestionnaireItem }
 
         return resource
     }
@@ -12453,7 +11975,6 @@ extension ModelsR4.QuestionnaireItem {
         return self.copied()
     }
 }
-
 
 // MARK: - QuestionnaireItemAnswerOption
 extension ModelsR4.QuestionnaireItemAnswerOption {
@@ -12473,7 +11994,6 @@ extension ModelsR4.QuestionnaireItemAnswerOption {
         return self.copied()
     }
 }
-
 
 // MARK: - QuestionnaireItemEnableWhen
 extension ModelsR4.QuestionnaireItemEnableWhen {
@@ -12495,7 +12015,6 @@ extension ModelsR4.QuestionnaireItemEnableWhen {
     }
 }
 
-
 // MARK: - QuestionnaireItemInitial
 extension ModelsR4.QuestionnaireItemInitial {
 
@@ -12514,7 +12033,6 @@ extension ModelsR4.QuestionnaireItemInitial {
     }
 }
 
-
 // MARK: - QuestionnaireResponse
 extension ModelsR4.QuestionnaireResponse {
 
@@ -12524,8 +12042,8 @@ extension ModelsR4.QuestionnaireResponse {
             return self
         }
         resource.identifier = self.identifier?.copy() as? Identifier
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.questionnaire = self.questionnaire
         resource.status = self.status
         resource.subject = self.subject?.copy() as? Reference
@@ -12533,7 +12051,7 @@ extension ModelsR4.QuestionnaireResponse {
         resource.authored = self.authored
         resource.author = self.author?.copy() as? Reference
         resource.source = self.source?.copy() as? Reference
-        resource.item = self.item?.compactMap { $0.copy() as? QuestionnaireResponseItem } 
+        resource.item = self.item?.compactMap { $0.copy() as? QuestionnaireResponseItem }
 
         return resource
     }
@@ -12542,7 +12060,6 @@ extension ModelsR4.QuestionnaireResponse {
         return self.copied()
     }
 }
-
 
 // MARK: - QuestionnaireResponseItem
 extension ModelsR4.QuestionnaireResponseItem {
@@ -12555,8 +12072,8 @@ extension ModelsR4.QuestionnaireResponseItem {
         resource.linkId = self.linkId
         resource.definition = self.definition
         resource.text = self.text
-        resource.answer = self.answer?.compactMap { $0.copy() as? QuestionnaireResponseItemAnswer } 
-        resource.item = self.item?.compactMap { $0.copy() as? QuestionnaireResponseItem } 
+        resource.answer = self.answer?.compactMap { $0.copy() as? QuestionnaireResponseItemAnswer }
+        resource.item = self.item?.compactMap { $0.copy() as? QuestionnaireResponseItem }
 
         return resource
     }
@@ -12565,7 +12082,6 @@ extension ModelsR4.QuestionnaireResponseItem {
         return self.copied()
     }
 }
-
 
 // MARK: - QuestionnaireResponseItemAnswer
 extension ModelsR4.QuestionnaireResponseItemAnswer {
@@ -12576,7 +12092,7 @@ extension ModelsR4.QuestionnaireResponseItemAnswer {
             return self
         }
         resource.value = self.value?.copy() as? ValueX
-        resource.item = self.item?.compactMap { $0.copy() as? QuestionnaireResponseItem } 
+        resource.item = self.item?.compactMap { $0.copy() as? QuestionnaireResponseItem }
 
         return resource
     }
@@ -12585,7 +12101,6 @@ extension ModelsR4.QuestionnaireResponseItemAnswer {
         return self.copied()
     }
 }
-
 
 // MARK: - Range
 extension ModelsR4.Range {
@@ -12606,7 +12121,6 @@ extension ModelsR4.Range {
     }
 }
 
-
 // MARK: - Ratio
 extension ModelsR4.Ratio {
 
@@ -12625,7 +12139,6 @@ extension ModelsR4.Ratio {
         return self.copied()
     }
 }
-
 
 // MARK: - Reference
 extension ModelsR4.Reference {
@@ -12647,7 +12160,6 @@ extension ModelsR4.Reference {
         return self.copied()
     }
 }
-
 
 // MARK: - RelatedArtifact
 extension ModelsR4.RelatedArtifact {
@@ -12673,7 +12185,6 @@ extension ModelsR4.RelatedArtifact {
     }
 }
 
-
 // MARK: - RelatedPerson
 extension ModelsR4.RelatedPerson {
 
@@ -12682,18 +12193,18 @@ extension ModelsR4.RelatedPerson {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.RelatedPerson else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.active = self.active
         resource.patient = self.patient.copy() as! Reference
-        resource.relationship = self.relationship?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.name = self.name?.compactMap { $0.copy() as? HumanName } 
-        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint } 
+        resource.relationship = self.relationship?.compactMap { $0.copy() as? CodeableConcept }
+        resource.name = self.name?.compactMap { $0.copy() as? HumanName }
+        resource.telecom = self.telecom?.compactMap { $0.copy() as? ContactPoint }
         resource.gender = self.gender
         resource.birthDate = self.birthDate
-        resource.address = self.address?.compactMap { $0.copy() as? Address } 
-        resource.photo = self.photo?.compactMap { $0.copy() as? Attachment } 
+        resource.address = self.address?.compactMap { $0.copy() as? Address }
+        resource.photo = self.photo?.compactMap { $0.copy() as? Attachment }
         resource.period = self.period?.copy() as? Period
-        resource.communication = self.communication?.compactMap { $0.copy() as? RelatedPersonCommunication } 
+        resource.communication = self.communication?.compactMap { $0.copy() as? RelatedPersonCommunication }
 
         return resource
     }
@@ -12702,7 +12213,6 @@ extension ModelsR4.RelatedPerson {
         return self.copied()
     }
 }
-
 
 // MARK: - RelatedPersonCommunication
 extension ModelsR4.RelatedPersonCommunication {
@@ -12723,7 +12233,6 @@ extension ModelsR4.RelatedPersonCommunication {
     }
 }
 
-
 // MARK: - RequestGroup
 extension ModelsR4.RequestGroup {
 
@@ -12732,11 +12241,11 @@ extension ModelsR4.RequestGroup {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.RequestGroup else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.instantiatesCanonical = self.instantiatesCanonical
         resource.instantiatesUri = self.instantiatesUri
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.replaces = self.replaces?.compactMap { $0.copy() as? Reference } 
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.replaces = self.replaces?.compactMap { $0.copy() as? Reference }
         resource.groupIdentifier = self.groupIdentifier?.copy() as? Identifier
         resource.status = self.status
         resource.intent = self.intent
@@ -12746,10 +12255,10 @@ extension ModelsR4.RequestGroup {
         resource.encounter = self.encounter?.copy() as? Reference
         resource.authoredOn = self.authoredOn
         resource.author = self.author?.copy() as? Reference
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.action = self.action?.compactMap { $0.copy() as? RequestGroupAction } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.action = self.action?.compactMap { $0.copy() as? RequestGroupAction }
 
         return resource
     }
@@ -12758,7 +12267,6 @@ extension ModelsR4.RequestGroup {
         return self.copied()
     }
 }
-
 
 // MARK: - RequestGroupAction
 extension ModelsR4.RequestGroupAction {
@@ -12773,12 +12281,12 @@ extension ModelsR4.RequestGroupAction {
         resource.description_fhir = self.description_fhir
         resource.textEquivalent = self.textEquivalent
         resource.priority = self.priority
-        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.documentation = self.documentation?.compactMap { $0.copy() as? RelatedArtifact } 
-        resource.condition = self.condition?.compactMap { $0.copy() as? RequestGroupActionCondition } 
-        resource.relatedAction = self.relatedAction?.compactMap { $0.copy() as? RequestGroupActionRelatedAction } 
+        resource.code = self.code?.compactMap { $0.copy() as? CodeableConcept }
+        resource.documentation = self.documentation?.compactMap { $0.copy() as? RelatedArtifact }
+        resource.condition = self.condition?.compactMap { $0.copy() as? RequestGroupActionCondition }
+        resource.relatedAction = self.relatedAction?.compactMap { $0.copy() as? RequestGroupActionRelatedAction }
         resource.timing = self.timing?.copy() as? TimingX
-        resource.participant = self.participant?.compactMap { $0.copy() as? Reference } 
+        resource.participant = self.participant?.compactMap { $0.copy() as? Reference }
         resource.type = self.type?.copy() as? CodeableConcept
         resource.groupingBehavior = self.groupingBehavior
         resource.selectionBehavior = self.selectionBehavior
@@ -12786,7 +12294,7 @@ extension ModelsR4.RequestGroupAction {
         resource.precheckBehavior = self.precheckBehavior
         resource.cardinalityBehavior = self.cardinalityBehavior
         resource.resource = self.resource?.copy() as? Reference
-        resource.action = self.action?.compactMap { $0.copy() as? RequestGroupAction } 
+        resource.action = self.action?.compactMap { $0.copy() as? RequestGroupAction }
 
         return resource
     }
@@ -12795,7 +12303,6 @@ extension ModelsR4.RequestGroupAction {
         return self.copied()
     }
 }
-
 
 // MARK: - RequestGroupActionCondition
 extension ModelsR4.RequestGroupActionCondition {
@@ -12815,7 +12322,6 @@ extension ModelsR4.RequestGroupActionCondition {
         return self.copied()
     }
 }
-
 
 // MARK: - RequestGroupActionRelatedAction
 extension ModelsR4.RequestGroupActionRelatedAction {
@@ -12837,7 +12343,6 @@ extension ModelsR4.RequestGroupActionRelatedAction {
     }
 }
 
-
 // MARK: - ResearchDefinition
 extension ModelsR4.ResearchDefinition {
 
@@ -12847,7 +12352,7 @@ extension ModelsR4.ResearchDefinition {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -12858,23 +12363,23 @@ extension ModelsR4.ResearchDefinition {
         resource.subject = self.subject?.copy() as? SubjectX
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
         resource.comment = self.comment
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.usage = self.usage
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail } 
-        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail } 
-        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail } 
-        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
+        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail }
+        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail }
+        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail }
+        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
         resource.library = self.library
         resource.population = self.population.copy() as! Reference
         resource.exposure = self.exposure?.copy() as? Reference
@@ -12889,7 +12394,6 @@ extension ModelsR4.ResearchDefinition {
     }
 }
 
-
 // MARK: - ResearchElementDefinition
 extension ModelsR4.ResearchElementDefinition {
 
@@ -12899,7 +12403,7 @@ extension ModelsR4.ResearchElementDefinition {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -12910,27 +12414,27 @@ extension ModelsR4.ResearchElementDefinition {
         resource.subject = self.subject?.copy() as? SubjectX
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
         resource.comment = self.comment
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.usage = self.usage
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail } 
-        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail } 
-        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail } 
-        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
+        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail }
+        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail }
+        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail }
+        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
         resource.library = self.library
         resource.type = self.type
         resource.variableType = self.variableType
-        resource.characteristic = self.characteristic.compactMap { $0.copy() as? ResearchElementDefinitionCharacteristic } 
+        resource.characteristic = self.characteristic.compactMap { $0.copy() as? ResearchElementDefinitionCharacteristic }
 
         return resource
     }
@@ -12939,7 +12443,6 @@ extension ModelsR4.ResearchElementDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - ResearchElementDefinitionCharacteristic
 extension ModelsR4.ResearchElementDefinitionCharacteristic {
@@ -12950,7 +12453,7 @@ extension ModelsR4.ResearchElementDefinitionCharacteristic {
             return self
         }
         resource.definition = self.definition.copy() as! DefinitionX
-        resource.usageContext = self.usageContext?.compactMap { $0.copy() as? UsageContext } 
+        resource.usageContext = self.usageContext?.compactMap { $0.copy() as? UsageContext }
         resource.exclude = self.exclude
         resource.unitOfMeasure = self.unitOfMeasure?.copy() as? CodeableConcept
         resource.studyEffectiveDescription = self.studyEffectiveDescription
@@ -12970,7 +12473,6 @@ extension ModelsR4.ResearchElementDefinitionCharacteristic {
     }
 }
 
-
 // MARK: - ResearchStudy
 extension ModelsR4.ResearchStudy {
 
@@ -12979,30 +12481,30 @@ extension ModelsR4.ResearchStudy {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ResearchStudy else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.title = self.title
-        resource.`protocol` = self.`protocol`?.compactMap { $0.copy() as? Reference } 
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.`protocol` = self.`protocol`?.compactMap { $0.copy() as? Reference }
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
         resource.primaryPurposeType = self.primaryPurposeType?.copy() as? CodeableConcept
         resource.phase = self.phase?.copy() as? CodeableConcept
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.focus = self.focus?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.condition = self.condition?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
-        resource.keyword = self.keyword?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.location = self.location?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
+        resource.focus = self.focus?.compactMap { $0.copy() as? CodeableConcept }
+        resource.condition = self.condition?.compactMap { $0.copy() as? CodeableConcept }
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
+        resource.keyword = self.keyword?.compactMap { $0.copy() as? CodeableConcept }
+        resource.location = self.location?.compactMap { $0.copy() as? CodeableConcept }
         resource.description_fhir = self.description_fhir
-        resource.enrollment = self.enrollment?.compactMap { $0.copy() as? Reference } 
+        resource.enrollment = self.enrollment?.compactMap { $0.copy() as? Reference }
         resource.period = self.period?.copy() as? Period
         resource.sponsor = self.sponsor?.copy() as? Reference
         resource.principalInvestigator = self.principalInvestigator?.copy() as? Reference
-        resource.site = self.site?.compactMap { $0.copy() as? Reference } 
+        resource.site = self.site?.compactMap { $0.copy() as? Reference }
         resource.reasonStopped = self.reasonStopped?.copy() as? CodeableConcept
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.arm = self.arm?.compactMap { $0.copy() as? ResearchStudyArm } 
-        resource.objective = self.objective?.compactMap { $0.copy() as? ResearchStudyObjective } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.arm = self.arm?.compactMap { $0.copy() as? ResearchStudyArm }
+        resource.objective = self.objective?.compactMap { $0.copy() as? ResearchStudyObjective }
 
         return resource
     }
@@ -13011,7 +12513,6 @@ extension ModelsR4.ResearchStudy {
         return self.copied()
     }
 }
-
 
 // MARK: - ResearchStudyArm
 extension ModelsR4.ResearchStudyArm {
@@ -13033,7 +12534,6 @@ extension ModelsR4.ResearchStudyArm {
     }
 }
 
-
 // MARK: - ResearchStudyObjective
 extension ModelsR4.ResearchStudyObjective {
 
@@ -13053,7 +12553,6 @@ extension ModelsR4.ResearchStudyObjective {
     }
 }
 
-
 // MARK: - ResearchSubject
 extension ModelsR4.ResearchSubject {
 
@@ -13062,7 +12561,7 @@ extension ModelsR4.ResearchSubject {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ResearchSubject else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.period = self.period?.copy() as? Period
         resource.study = self.study.copy() as! Reference
@@ -13078,7 +12577,6 @@ extension ModelsR4.ResearchSubject {
         return self.copied()
     }
 }
-
 
 // MARK: - Resource
 extension ModelsR4.Resource {
@@ -13101,7 +12599,6 @@ extension ModelsR4.Resource {
     }
 }
 
-
 // MARK: - RiskAssessment
 extension ModelsR4.RiskAssessment {
 
@@ -13110,7 +12607,7 @@ extension ModelsR4.RiskAssessment {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.RiskAssessment else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.basedOn = self.basedOn?.copy() as? Reference
         resource.parent = self.parent?.copy() as? Reference
         resource.status = self.status
@@ -13121,12 +12618,12 @@ extension ModelsR4.RiskAssessment {
         resource.occurrence = self.occurrence?.copy() as? OccurrenceX
         resource.condition = self.condition?.copy() as? Reference
         resource.performer = self.performer?.copy() as? Reference
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.basis = self.basis?.compactMap { $0.copy() as? Reference } 
-        resource.prediction = self.prediction?.compactMap { $0.copy() as? RiskAssessmentPrediction } 
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.basis = self.basis?.compactMap { $0.copy() as? Reference }
+        resource.prediction = self.prediction?.compactMap { $0.copy() as? RiskAssessmentPrediction }
         resource.mitigation = self.mitigation
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -13135,7 +12632,6 @@ extension ModelsR4.RiskAssessment {
         return self.copied()
     }
 }
-
 
 // MARK: - RiskAssessmentPrediction
 extension ModelsR4.RiskAssessmentPrediction {
@@ -13160,7 +12656,6 @@ extension ModelsR4.RiskAssessmentPrediction {
     }
 }
 
-
 // MARK: - RiskEvidenceSynthesis
 extension ModelsR4.RiskEvidenceSynthesis {
 
@@ -13170,28 +12665,28 @@ extension ModelsR4.RiskEvidenceSynthesis {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
         resource.status = self.status
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.copyright = self.copyright
         resource.approvalDate = self.approvalDate
         resource.lastReviewDate = self.lastReviewDate
         resource.effectivePeriod = self.effectivePeriod?.copy() as? Period
-        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail } 
-        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail } 
-        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail } 
-        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail } 
-        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact } 
+        resource.topic = self.topic?.compactMap { $0.copy() as? CodeableConcept }
+        resource.author = self.author?.compactMap { $0.copy() as? ContactDetail }
+        resource.editor = self.editor?.compactMap { $0.copy() as? ContactDetail }
+        resource.reviewer = self.reviewer?.compactMap { $0.copy() as? ContactDetail }
+        resource.endorser = self.endorser?.compactMap { $0.copy() as? ContactDetail }
+        resource.relatedArtifact = self.relatedArtifact?.compactMap { $0.copy() as? RelatedArtifact }
         resource.synthesisType = self.synthesisType?.copy() as? CodeableConcept
         resource.studyType = self.studyType?.copy() as? CodeableConcept
         resource.population = self.population.copy() as! Reference
@@ -13199,7 +12694,7 @@ extension ModelsR4.RiskEvidenceSynthesis {
         resource.outcome = self.outcome.copy() as! Reference
         resource.sampleSize = self.sampleSize?.copy() as? RiskEvidenceSynthesisSampleSize
         resource.riskEstimate = self.riskEstimate?.copy() as? RiskEvidenceSynthesisRiskEstimate
-        resource.certainty = self.certainty?.compactMap { $0.copy() as? RiskEvidenceSynthesisCertainty } 
+        resource.certainty = self.certainty?.compactMap { $0.copy() as? RiskEvidenceSynthesisCertainty }
 
         return resource
     }
@@ -13208,7 +12703,6 @@ extension ModelsR4.RiskEvidenceSynthesis {
         return self.copied()
     }
 }
-
 
 // MARK: - RiskEvidenceSynthesisCertainty
 extension ModelsR4.RiskEvidenceSynthesisCertainty {
@@ -13218,9 +12712,9 @@ extension ModelsR4.RiskEvidenceSynthesisCertainty {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.RiskEvidenceSynthesisCertainty else {
             return self
         }
-        resource.rating = self.rating?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.certaintySubcomponent = self.certaintySubcomponent?.compactMap { $0.copy() as? RiskEvidenceSynthesisCertaintyCertaintySubcomponent } 
+        resource.rating = self.rating?.compactMap { $0.copy() as? CodeableConcept }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.certaintySubcomponent = self.certaintySubcomponent?.compactMap { $0.copy() as? RiskEvidenceSynthesisCertaintyCertaintySubcomponent }
 
         return resource
     }
@@ -13229,7 +12723,6 @@ extension ModelsR4.RiskEvidenceSynthesisCertainty {
         return self.copied()
     }
 }
-
 
 // MARK: - RiskEvidenceSynthesisCertaintyCertaintySubcomponent
 extension ModelsR4.RiskEvidenceSynthesisCertaintyCertaintySubcomponent {
@@ -13240,8 +12733,8 @@ extension ModelsR4.RiskEvidenceSynthesisCertaintyCertaintySubcomponent {
             return self
         }
         resource.type = self.type?.copy() as? CodeableConcept
-        resource.rating = self.rating?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.rating = self.rating?.compactMap { $0.copy() as? CodeableConcept }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -13250,7 +12743,6 @@ extension ModelsR4.RiskEvidenceSynthesisCertaintyCertaintySubcomponent {
         return self.copied()
     }
 }
-
 
 // MARK: - RiskEvidenceSynthesisRiskEstimate
 extension ModelsR4.RiskEvidenceSynthesisRiskEstimate {
@@ -13266,7 +12758,7 @@ extension ModelsR4.RiskEvidenceSynthesisRiskEstimate {
         resource.unitOfMeasure = self.unitOfMeasure?.copy() as? CodeableConcept
         resource.denominatorCount = self.denominatorCount
         resource.numeratorCount = self.numeratorCount
-        resource.precisionEstimate = self.precisionEstimate?.compactMap { $0.copy() as? RiskEvidenceSynthesisRiskEstimatePrecisionEstimate } 
+        resource.precisionEstimate = self.precisionEstimate?.compactMap { $0.copy() as? RiskEvidenceSynthesisRiskEstimatePrecisionEstimate }
 
         return resource
     }
@@ -13275,7 +12767,6 @@ extension ModelsR4.RiskEvidenceSynthesisRiskEstimate {
         return self.copied()
     }
 }
-
 
 // MARK: - RiskEvidenceSynthesisRiskEstimatePrecisionEstimate
 extension ModelsR4.RiskEvidenceSynthesisRiskEstimatePrecisionEstimate {
@@ -13298,7 +12789,6 @@ extension ModelsR4.RiskEvidenceSynthesisRiskEstimatePrecisionEstimate {
     }
 }
 
-
 // MARK: - RiskEvidenceSynthesisSampleSize
 extension ModelsR4.RiskEvidenceSynthesisSampleSize {
 
@@ -13318,7 +12808,6 @@ extension ModelsR4.RiskEvidenceSynthesisSampleSize {
         return self.copied()
     }
 }
-
 
 // MARK: - SampledData
 extension ModelsR4.SampledData {
@@ -13344,7 +12833,6 @@ extension ModelsR4.SampledData {
     }
 }
 
-
 // MARK: - Schedule
 extension ModelsR4.Schedule {
 
@@ -13353,12 +12841,12 @@ extension ModelsR4.Schedule {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Schedule else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.active = self.active
-        resource.serviceCategory = self.serviceCategory?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.serviceType = self.serviceType?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.actor = self.actor.compactMap { $0.copy() as? Reference } 
+        resource.serviceCategory = self.serviceCategory?.compactMap { $0.copy() as? CodeableConcept }
+        resource.serviceType = self.serviceType?.compactMap { $0.copy() as? CodeableConcept }
+        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept }
+        resource.actor = self.actor.compactMap { $0.copy() as? Reference }
         resource.planningHorizon = self.planningHorizon?.copy() as? Period
         resource.comment = self.comment
 
@@ -13369,7 +12857,6 @@ extension ModelsR4.Schedule {
         return self.copied()
     }
 }
-
 
 // MARK: - SearchParameter
 extension ModelsR4.SearchParameter {
@@ -13387,10 +12874,10 @@ extension ModelsR4.SearchParameter {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.code = self.code
         resource.base = self.base
@@ -13404,7 +12891,7 @@ extension ModelsR4.SearchParameter {
         resource.comparator = self.comparator
         resource.modifier = self.modifier
         resource.chain = self.chain
-        resource.component = self.component?.compactMap { $0.copy() as? SearchParameterComponent } 
+        resource.component = self.component?.compactMap { $0.copy() as? SearchParameterComponent }
 
         return resource
     }
@@ -13413,7 +12900,6 @@ extension ModelsR4.SearchParameter {
         return self.copied()
     }
 }
-
 
 // MARK: - SearchParameterComponent
 extension ModelsR4.SearchParameterComponent {
@@ -13434,7 +12920,6 @@ extension ModelsR4.SearchParameterComponent {
     }
 }
 
-
 // MARK: - ServiceRequest
 extension ModelsR4.ServiceRequest {
 
@@ -13443,19 +12928,19 @@ extension ModelsR4.ServiceRequest {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.ServiceRequest else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.instantiatesCanonical = self.instantiatesCanonical
         resource.instantiatesUri = self.instantiatesUri
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.replaces = self.replaces?.compactMap { $0.copy() as? Reference } 
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.replaces = self.replaces?.compactMap { $0.copy() as? Reference }
         resource.requisition = self.requisition?.copy() as? Identifier
         resource.status = self.status
         resource.intent = self.intent
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.priority = self.priority
         resource.doNotPerform = self.doNotPerform
         resource.code = self.code?.copy() as? CodeableConcept
-        resource.orderDetail = self.orderDetail?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.orderDetail = self.orderDetail?.compactMap { $0.copy() as? CodeableConcept }
         resource.quantity = self.quantity?.copy() as? QuantityX
         resource.subject = self.subject.copy() as! Reference
         resource.encounter = self.encounter?.copy() as? Reference
@@ -13464,18 +12949,18 @@ extension ModelsR4.ServiceRequest {
         resource.authoredOn = self.authoredOn
         resource.requester = self.requester?.copy() as? Reference
         resource.performerType = self.performerType?.copy() as? CodeableConcept
-        resource.performer = self.performer?.compactMap { $0.copy() as? Reference } 
-        resource.locationCode = self.locationCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.locationReference = self.locationReference?.compactMap { $0.copy() as? Reference } 
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
-        resource.insurance = self.insurance?.compactMap { $0.copy() as? Reference } 
-        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? Reference } 
-        resource.specimen = self.specimen?.compactMap { $0.copy() as? Reference } 
-        resource.bodySite = self.bodySite?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.performer = self.performer?.compactMap { $0.copy() as? Reference }
+        resource.locationCode = self.locationCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.locationReference = self.locationReference?.compactMap { $0.copy() as? Reference }
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
+        resource.insurance = self.insurance?.compactMap { $0.copy() as? Reference }
+        resource.supportingInfo = self.supportingInfo?.compactMap { $0.copy() as? Reference }
+        resource.specimen = self.specimen?.compactMap { $0.copy() as? Reference }
+        resource.bodySite = self.bodySite?.compactMap { $0.copy() as? CodeableConcept }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
         resource.patientInstruction = self.patientInstruction
-        resource.relevantHistory = self.relevantHistory?.compactMap { $0.copy() as? Reference } 
+        resource.relevantHistory = self.relevantHistory?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -13485,7 +12970,6 @@ extension ModelsR4.ServiceRequest {
     }
 }
 
-
 // MARK: - Signature
 extension ModelsR4.Signature {
 
@@ -13494,7 +12978,7 @@ extension ModelsR4.Signature {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Signature else {
             return self
         }
-        resource.type = self.type.compactMap { $0.copy() as? Coding } 
+        resource.type = self.type.compactMap { $0.copy() as? Coding }
         resource.when = self.when
         resource.who = self.who.copy() as! Reference
         resource.onBehalfOf = self.onBehalfOf?.copy() as? Reference
@@ -13510,7 +12994,6 @@ extension ModelsR4.Signature {
     }
 }
 
-
 // MARK: - Slot
 extension ModelsR4.Slot {
 
@@ -13519,10 +13002,10 @@ extension ModelsR4.Slot {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Slot else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.serviceCategory = self.serviceCategory?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.serviceType = self.serviceType?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.serviceCategory = self.serviceCategory?.compactMap { $0.copy() as? CodeableConcept }
+        resource.serviceType = self.serviceType?.compactMap { $0.copy() as? CodeableConcept }
+        resource.specialty = self.specialty?.compactMap { $0.copy() as? CodeableConcept }
         resource.appointmentType = self.appointmentType?.copy() as? CodeableConcept
         resource.schedule = self.schedule.copy() as! Reference
         resource.status = self.status
@@ -13539,7 +13022,6 @@ extension ModelsR4.Slot {
     }
 }
 
-
 // MARK: - Specimen
 extension ModelsR4.Specimen {
 
@@ -13548,19 +13030,19 @@ extension ModelsR4.Specimen {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Specimen else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.accessionIdentifier = self.accessionIdentifier?.copy() as? Identifier
         resource.status = self.status
         resource.type = self.type?.copy() as? CodeableConcept
         resource.subject = self.subject?.copy() as? Reference
         resource.receivedTime = self.receivedTime
-        resource.parent = self.parent?.compactMap { $0.copy() as? Reference } 
-        resource.request = self.request?.compactMap { $0.copy() as? Reference } 
+        resource.parent = self.parent?.compactMap { $0.copy() as? Reference }
+        resource.request = self.request?.compactMap { $0.copy() as? Reference }
         resource.collection = self.collection?.copy() as? SpecimenCollection
-        resource.processing = self.processing?.compactMap { $0.copy() as? SpecimenProcessing } 
-        resource.container = self.container?.compactMap { $0.copy() as? SpecimenContainer } 
-        resource.condition = self.condition?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.processing = self.processing?.compactMap { $0.copy() as? SpecimenProcessing }
+        resource.container = self.container?.compactMap { $0.copy() as? SpecimenContainer }
+        resource.condition = self.condition?.compactMap { $0.copy() as? CodeableConcept }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -13569,7 +13051,6 @@ extension ModelsR4.Specimen {
         return self.copied()
     }
 }
-
 
 // MARK: - SpecimenCollection
 extension ModelsR4.SpecimenCollection {
@@ -13595,7 +13076,6 @@ extension ModelsR4.SpecimenCollection {
     }
 }
 
-
 // MARK: - SpecimenContainer
 extension ModelsR4.SpecimenContainer {
 
@@ -13604,7 +13084,7 @@ extension ModelsR4.SpecimenContainer {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.SpecimenContainer else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.description_fhir = self.description_fhir
         resource.type = self.type?.copy() as? CodeableConcept
         resource.capacity = self.capacity?.copy() as? Quantity
@@ -13619,7 +13099,6 @@ extension ModelsR4.SpecimenContainer {
     }
 }
 
-
 // MARK: - SpecimenDefinition
 extension ModelsR4.SpecimenDefinition {
 
@@ -13630,10 +13109,10 @@ extension ModelsR4.SpecimenDefinition {
         }
         resource.identifier = self.identifier?.copy() as? Identifier
         resource.typeCollected = self.typeCollected?.copy() as? CodeableConcept
-        resource.patientPreparation = self.patientPreparation?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.patientPreparation = self.patientPreparation?.compactMap { $0.copy() as? CodeableConcept }
         resource.timeAspect = self.timeAspect
-        resource.collection = self.collection?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.typeTested = self.typeTested?.compactMap { $0.copy() as? SpecimenDefinitionTypeTested } 
+        resource.collection = self.collection?.compactMap { $0.copy() as? CodeableConcept }
+        resource.typeTested = self.typeTested?.compactMap { $0.copy() as? SpecimenDefinitionTypeTested }
 
         return resource
     }
@@ -13642,7 +13121,6 @@ extension ModelsR4.SpecimenDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - SpecimenDefinitionTypeTested
 extension ModelsR4.SpecimenDefinitionTypeTested {
@@ -13658,8 +13136,8 @@ extension ModelsR4.SpecimenDefinitionTypeTested {
         resource.container = self.container?.copy() as? SpecimenDefinitionTypeTestedContainer
         resource.requirement = self.requirement
         resource.retentionTime = self.retentionTime?.copy() as? Duration
-        resource.rejectionCriterion = self.rejectionCriterion?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.handling = self.handling?.compactMap { $0.copy() as? SpecimenDefinitionTypeTestedHandling } 
+        resource.rejectionCriterion = self.rejectionCriterion?.compactMap { $0.copy() as? CodeableConcept }
+        resource.handling = self.handling?.compactMap { $0.copy() as? SpecimenDefinitionTypeTestedHandling }
 
         return resource
     }
@@ -13668,7 +13146,6 @@ extension ModelsR4.SpecimenDefinitionTypeTested {
         return self.copied()
     }
 }
-
 
 // MARK: - SpecimenDefinitionTypeTestedContainer
 extension ModelsR4.SpecimenDefinitionTypeTestedContainer {
@@ -13684,7 +13161,7 @@ extension ModelsR4.SpecimenDefinitionTypeTestedContainer {
         resource.description_fhir = self.description_fhir
         resource.capacity = self.capacity?.copy() as? Quantity
         resource.minimumVolume = self.minimumVolume?.copy() as? MinimumVolumeX
-        resource.additive = self.additive?.compactMap { $0.copy() as? SpecimenDefinitionTypeTestedContainerAdditive } 
+        resource.additive = self.additive?.compactMap { $0.copy() as? SpecimenDefinitionTypeTestedContainerAdditive }
         resource.preparation = self.preparation
 
         return resource
@@ -13694,7 +13171,6 @@ extension ModelsR4.SpecimenDefinitionTypeTestedContainer {
         return self.copied()
     }
 }
-
 
 // MARK: - SpecimenDefinitionTypeTestedContainerAdditive
 extension ModelsR4.SpecimenDefinitionTypeTestedContainerAdditive {
@@ -13713,7 +13189,6 @@ extension ModelsR4.SpecimenDefinitionTypeTestedContainerAdditive {
         return self.copied()
     }
 }
-
 
 // MARK: - SpecimenDefinitionTypeTestedHandling
 extension ModelsR4.SpecimenDefinitionTypeTestedHandling {
@@ -13736,7 +13211,6 @@ extension ModelsR4.SpecimenDefinitionTypeTestedHandling {
     }
 }
 
-
 // MARK: - SpecimenProcessing
 extension ModelsR4.SpecimenProcessing {
 
@@ -13747,7 +13221,7 @@ extension ModelsR4.SpecimenProcessing {
         }
         resource.description_fhir = self.description_fhir
         resource.procedure = self.procedure?.copy() as? CodeableConcept
-        resource.additive = self.additive?.compactMap { $0.copy() as? Reference } 
+        resource.additive = self.additive?.compactMap { $0.copy() as? Reference }
         resource.time = self.time?.copy() as? TimeX
 
         return resource
@@ -13758,7 +13232,6 @@ extension ModelsR4.SpecimenProcessing {
     }
 }
 
-
 // MARK: - StructureDefinition
 extension ModelsR4.StructureDefinition {
 
@@ -13768,7 +13241,7 @@ extension ModelsR4.StructureDefinition {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -13776,18 +13249,18 @@ extension ModelsR4.StructureDefinition {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.copyright = self.copyright
-        resource.keyword = self.keyword?.compactMap { $0.copy() as? Coding } 
+        resource.keyword = self.keyword?.compactMap { $0.copy() as? Coding }
         resource.fhirVersion = self.fhirVersion
-        resource.mapping = self.mapping?.compactMap { $0.copy() as? StructureDefinitionMapping } 
+        resource.mapping = self.mapping?.compactMap { $0.copy() as? StructureDefinitionMapping }
         resource.kind = self.kind
         resource.abstract = self.abstract
-        resource.context = self.context?.compactMap { $0.copy() as? StructureDefinitionContext } 
+        resource.context = self.context?.compactMap { $0.copy() as? StructureDefinitionContext }
         resource.contextInvariant = self.contextInvariant
         resource.type = self.type
         resource.baseDefinition = self.baseDefinition
@@ -13802,7 +13275,6 @@ extension ModelsR4.StructureDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - StructureDefinitionContext
 extension ModelsR4.StructureDefinitionContext {
@@ -13823,7 +13295,6 @@ extension ModelsR4.StructureDefinitionContext {
     }
 }
 
-
 // MARK: - StructureDefinitionDifferential
 extension ModelsR4.StructureDefinitionDifferential {
 
@@ -13832,7 +13303,7 @@ extension ModelsR4.StructureDefinitionDifferential {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.StructureDefinitionDifferential else {
             return self
         }
-        resource.element = self.element.compactMap { $0.copy() as? ElementDefinition } 
+        resource.element = self.element.compactMap { $0.copy() as? ElementDefinition }
 
         return resource
     }
@@ -13841,7 +13312,6 @@ extension ModelsR4.StructureDefinitionDifferential {
         return self.copied()
     }
 }
-
 
 // MARK: - StructureDefinitionMapping
 extension ModelsR4.StructureDefinitionMapping {
@@ -13864,7 +13334,6 @@ extension ModelsR4.StructureDefinitionMapping {
     }
 }
 
-
 // MARK: - StructureDefinitionSnapshot
 extension ModelsR4.StructureDefinitionSnapshot {
 
@@ -13873,7 +13342,7 @@ extension ModelsR4.StructureDefinitionSnapshot {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.StructureDefinitionSnapshot else {
             return self
         }
-        resource.element = self.element.compactMap { $0.copy() as? ElementDefinition } 
+        resource.element = self.element.compactMap { $0.copy() as? ElementDefinition }
 
         return resource
     }
@@ -13882,7 +13351,6 @@ extension ModelsR4.StructureDefinitionSnapshot {
         return self.copied()
     }
 }
-
 
 // MARK: - StructureMap
 extension ModelsR4.StructureMap {
@@ -13893,7 +13361,7 @@ extension ModelsR4.StructureMap {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -13901,15 +13369,15 @@ extension ModelsR4.StructureMap {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.copyright = self.copyright
-        resource.structure = self.structure?.compactMap { $0.copy() as? StructureMapStructure } 
+        resource.structure = self.structure?.compactMap { $0.copy() as? StructureMapStructure }
         resource.`import` = self.`import`
-        resource.group = self.group.compactMap { $0.copy() as? StructureMapGroup } 
+        resource.group = self.group.compactMap { $0.copy() as? StructureMapGroup }
 
         return resource
     }
@@ -13918,7 +13386,6 @@ extension ModelsR4.StructureMap {
         return self.copied()
     }
 }
-
 
 // MARK: - StructureMapGroup
 extension ModelsR4.StructureMapGroup {
@@ -13932,8 +13399,8 @@ extension ModelsR4.StructureMapGroup {
         resource.extends = self.extends
         resource.typeMode = self.typeMode
         resource.documentation = self.documentation
-        resource.input = self.input.compactMap { $0.copy() as? StructureMapGroupInput } 
-        resource.rule = self.rule.compactMap { $0.copy() as? StructureMapGroupRule } 
+        resource.input = self.input.compactMap { $0.copy() as? StructureMapGroupInput }
+        resource.rule = self.rule.compactMap { $0.copy() as? StructureMapGroupRule }
 
         return resource
     }
@@ -13942,7 +13409,6 @@ extension ModelsR4.StructureMapGroup {
         return self.copied()
     }
 }
-
 
 // MARK: - StructureMapGroupInput
 extension ModelsR4.StructureMapGroupInput {
@@ -13965,7 +13431,6 @@ extension ModelsR4.StructureMapGroupInput {
     }
 }
 
-
 // MARK: - StructureMapGroupRule
 extension ModelsR4.StructureMapGroupRule {
 
@@ -13975,10 +13440,10 @@ extension ModelsR4.StructureMapGroupRule {
             return self
         }
         resource.name = self.name
-        resource.source = self.source.compactMap { $0.copy() as? StructureMapGroupRuleSource } 
-        resource.target = self.target?.compactMap { $0.copy() as? StructureMapGroupRuleTarget } 
-        resource.rule = self.rule?.compactMap { $0.copy() as? StructureMapGroupRule } 
-        resource.dependent = self.dependent?.compactMap { $0.copy() as? StructureMapGroupRuleDependent } 
+        resource.source = self.source.compactMap { $0.copy() as? StructureMapGroupRuleSource }
+        resource.target = self.target?.compactMap { $0.copy() as? StructureMapGroupRuleTarget }
+        resource.rule = self.rule?.compactMap { $0.copy() as? StructureMapGroupRule }
+        resource.dependent = self.dependent?.compactMap { $0.copy() as? StructureMapGroupRuleDependent }
         resource.documentation = self.documentation
 
         return resource
@@ -13988,7 +13453,6 @@ extension ModelsR4.StructureMapGroupRule {
         return self.copied()
     }
 }
-
 
 // MARK: - StructureMapGroupRuleDependent
 extension ModelsR4.StructureMapGroupRuleDependent {
@@ -14008,7 +13472,6 @@ extension ModelsR4.StructureMapGroupRuleDependent {
         return self.copied()
     }
 }
-
 
 // MARK: - StructureMapGroupRuleSource
 extension ModelsR4.StructureMapGroupRuleSource {
@@ -14038,7 +13501,6 @@ extension ModelsR4.StructureMapGroupRuleSource {
     }
 }
 
-
 // MARK: - StructureMapGroupRuleTarget
 extension ModelsR4.StructureMapGroupRuleTarget {
 
@@ -14054,7 +13516,7 @@ extension ModelsR4.StructureMapGroupRuleTarget {
         resource.listMode = self.listMode
         resource.listRuleId = self.listRuleId
         resource.transform = self.transform
-        resource.parameter = self.parameter?.compactMap { $0.copy() as? StructureMapGroupRuleTargetParameter } 
+        resource.parameter = self.parameter?.compactMap { $0.copy() as? StructureMapGroupRuleTargetParameter }
 
         return resource
     }
@@ -14063,7 +13525,6 @@ extension ModelsR4.StructureMapGroupRuleTarget {
         return self.copied()
     }
 }
-
 
 // MARK: - StructureMapGroupRuleTargetParameter
 extension ModelsR4.StructureMapGroupRuleTargetParameter {
@@ -14082,7 +13543,6 @@ extension ModelsR4.StructureMapGroupRuleTargetParameter {
         return self.copied()
     }
 }
-
 
 // MARK: - StructureMapStructure
 extension ModelsR4.StructureMapStructure {
@@ -14105,7 +13565,6 @@ extension ModelsR4.StructureMapStructure {
     }
 }
 
-
 // MARK: - Subscription
 extension ModelsR4.Subscription {
 
@@ -14115,7 +13574,7 @@ extension ModelsR4.Subscription {
             return self
         }
         resource.status = self.status
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactPoint } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactPoint }
         resource.end = self.end
         resource.reason = self.reason
         resource.criteria = self.criteria
@@ -14129,7 +13588,6 @@ extension ModelsR4.Subscription {
         return self.copied()
     }
 }
-
 
 // MARK: - SubscriptionChannel
 extension ModelsR4.SubscriptionChannel {
@@ -14152,7 +13610,6 @@ extension ModelsR4.SubscriptionChannel {
     }
 }
 
-
 // MARK: - Substance
 extension ModelsR4.Substance {
 
@@ -14161,13 +13618,13 @@ extension ModelsR4.Substance {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Substance else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
-        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.category = self.category?.compactMap { $0.copy() as? CodeableConcept }
         resource.code = self.code.copy() as! CodeableConcept
         resource.description_fhir = self.description_fhir
-        resource.instance = self.instance?.compactMap { $0.copy() as? SubstanceInstance } 
-        resource.ingredient = self.ingredient?.compactMap { $0.copy() as? SubstanceIngredient } 
+        resource.instance = self.instance?.compactMap { $0.copy() as? SubstanceInstance }
+        resource.ingredient = self.ingredient?.compactMap { $0.copy() as? SubstanceIngredient }
 
         return resource
     }
@@ -14176,7 +13633,6 @@ extension ModelsR4.Substance {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceAmount
 extension ModelsR4.SubstanceAmount {
@@ -14199,7 +13655,6 @@ extension ModelsR4.SubstanceAmount {
     }
 }
 
-
 // MARK: - SubstanceAmountReferenceRange
 extension ModelsR4.SubstanceAmountReferenceRange {
 
@@ -14219,7 +13674,6 @@ extension ModelsR4.SubstanceAmountReferenceRange {
     }
 }
 
-
 // MARK: - SubstanceIngredient
 extension ModelsR4.SubstanceIngredient {
 
@@ -14238,7 +13692,6 @@ extension ModelsR4.SubstanceIngredient {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceInstance
 extension ModelsR4.SubstanceInstance {
@@ -14260,7 +13713,6 @@ extension ModelsR4.SubstanceInstance {
     }
 }
 
-
 // MARK: - SubstanceNucleicAcid
 extension ModelsR4.SubstanceNucleicAcid {
 
@@ -14273,7 +13725,7 @@ extension ModelsR4.SubstanceNucleicAcid {
         resource.numberOfSubunits = self.numberOfSubunits
         resource.areaOfHybridisation = self.areaOfHybridisation
         resource.oligoNucleotideType = self.oligoNucleotideType?.copy() as? CodeableConcept
-        resource.subunit = self.subunit?.compactMap { $0.copy() as? SubstanceNucleicAcidSubunit } 
+        resource.subunit = self.subunit?.compactMap { $0.copy() as? SubstanceNucleicAcidSubunit }
 
         return resource
     }
@@ -14282,7 +13734,6 @@ extension ModelsR4.SubstanceNucleicAcid {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceNucleicAcidSubunit
 extension ModelsR4.SubstanceNucleicAcidSubunit {
@@ -14298,8 +13749,8 @@ extension ModelsR4.SubstanceNucleicAcidSubunit {
         resource.sequenceAttachment = self.sequenceAttachment?.copy() as? Attachment
         resource.fivePrime = self.fivePrime?.copy() as? CodeableConcept
         resource.threePrime = self.threePrime?.copy() as? CodeableConcept
-        resource.linkage = self.linkage?.compactMap { $0.copy() as? SubstanceNucleicAcidSubunitLinkage } 
-        resource.sugar = self.sugar?.compactMap { $0.copy() as? SubstanceNucleicAcidSubunitSugar } 
+        resource.linkage = self.linkage?.compactMap { $0.copy() as? SubstanceNucleicAcidSubunitLinkage }
+        resource.sugar = self.sugar?.compactMap { $0.copy() as? SubstanceNucleicAcidSubunitSugar }
 
         return resource
     }
@@ -14308,7 +13759,6 @@ extension ModelsR4.SubstanceNucleicAcidSubunit {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceNucleicAcidSubunitLinkage
 extension ModelsR4.SubstanceNucleicAcidSubunitLinkage {
@@ -14331,7 +13781,6 @@ extension ModelsR4.SubstanceNucleicAcidSubunitLinkage {
     }
 }
 
-
 // MARK: - SubstanceNucleicAcidSubunitSugar
 extension ModelsR4.SubstanceNucleicAcidSubunitSugar {
 
@@ -14352,7 +13801,6 @@ extension ModelsR4.SubstanceNucleicAcidSubunitSugar {
     }
 }
 
-
 // MARK: - SubstancePolymer
 extension ModelsR4.SubstancePolymer {
 
@@ -14363,10 +13811,10 @@ extension ModelsR4.SubstancePolymer {
         }
         resource.`class` = self.`class`?.copy() as? CodeableConcept
         resource.geometry = self.geometry?.copy() as? CodeableConcept
-        resource.copolymerConnectivity = self.copolymerConnectivity?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.copolymerConnectivity = self.copolymerConnectivity?.compactMap { $0.copy() as? CodeableConcept }
         resource.modification = self.modification
-        resource.monomerSet = self.monomerSet?.compactMap { $0.copy() as? SubstancePolymerMonomerSet } 
-        resource.`repeat` = self.`repeat`?.compactMap { $0.copy() as? SubstancePolymerRepeat } 
+        resource.monomerSet = self.monomerSet?.compactMap { $0.copy() as? SubstancePolymerMonomerSet }
+        resource.`repeat` = self.`repeat`?.compactMap { $0.copy() as? SubstancePolymerRepeat }
 
         return resource
     }
@@ -14375,7 +13823,6 @@ extension ModelsR4.SubstancePolymer {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstancePolymerMonomerSet
 extension ModelsR4.SubstancePolymerMonomerSet {
@@ -14386,7 +13833,7 @@ extension ModelsR4.SubstancePolymerMonomerSet {
             return self
         }
         resource.ratioType = self.ratioType?.copy() as? CodeableConcept
-        resource.startingMaterial = self.startingMaterial?.compactMap { $0.copy() as? SubstancePolymerMonomerSetStartingMaterial } 
+        resource.startingMaterial = self.startingMaterial?.compactMap { $0.copy() as? SubstancePolymerMonomerSetStartingMaterial }
 
         return resource
     }
@@ -14395,7 +13842,6 @@ extension ModelsR4.SubstancePolymerMonomerSet {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstancePolymerMonomerSetStartingMaterial
 extension ModelsR4.SubstancePolymerMonomerSetStartingMaterial {
@@ -14418,7 +13864,6 @@ extension ModelsR4.SubstancePolymerMonomerSetStartingMaterial {
     }
 }
 
-
 // MARK: - SubstancePolymerRepeat
 extension ModelsR4.SubstancePolymerRepeat {
 
@@ -14430,7 +13875,7 @@ extension ModelsR4.SubstancePolymerRepeat {
         resource.numberOfUnits = self.numberOfUnits
         resource.averageMolecularFormula = self.averageMolecularFormula
         resource.repeatUnitAmountType = self.repeatUnitAmountType?.copy() as? CodeableConcept
-        resource.repeatUnit = self.repeatUnit?.compactMap { $0.copy() as? SubstancePolymerRepeatRepeatUnit } 
+        resource.repeatUnit = self.repeatUnit?.compactMap { $0.copy() as? SubstancePolymerRepeatRepeatUnit }
 
         return resource
     }
@@ -14439,7 +13884,6 @@ extension ModelsR4.SubstancePolymerRepeat {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstancePolymerRepeatRepeatUnit
 extension ModelsR4.SubstancePolymerRepeatRepeatUnit {
@@ -14452,8 +13896,8 @@ extension ModelsR4.SubstancePolymerRepeatRepeatUnit {
         resource.orientationOfPolymerisation = self.orientationOfPolymerisation?.copy() as? CodeableConcept
         resource.repeatUnit = self.repeatUnit
         resource.amount = self.amount?.copy() as? SubstanceAmount
-        resource.degreeOfPolymerisation = self.degreeOfPolymerisation?.compactMap { $0.copy() as? SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation } 
-        resource.structuralRepresentation = self.structuralRepresentation?.compactMap { $0.copy() as? SubstancePolymerRepeatRepeatUnitStructuralRepresentation } 
+        resource.degreeOfPolymerisation = self.degreeOfPolymerisation?.compactMap { $0.copy() as? SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation }
+        resource.structuralRepresentation = self.structuralRepresentation?.compactMap { $0.copy() as? SubstancePolymerRepeatRepeatUnitStructuralRepresentation }
 
         return resource
     }
@@ -14462,7 +13906,6 @@ extension ModelsR4.SubstancePolymerRepeatRepeatUnit {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation
 extension ModelsR4.SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
@@ -14482,7 +13925,6 @@ extension ModelsR4.SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstancePolymerRepeatRepeatUnitStructuralRepresentation
 extension ModelsR4.SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
@@ -14504,7 +13946,6 @@ extension ModelsR4.SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
     }
 }
 
-
 // MARK: - SubstanceProtein
 extension ModelsR4.SubstanceProtein {
 
@@ -14516,7 +13957,7 @@ extension ModelsR4.SubstanceProtein {
         resource.sequenceType = self.sequenceType?.copy() as? CodeableConcept
         resource.numberOfSubunits = self.numberOfSubunits
         resource.disulfideLinkage = self.disulfideLinkage
-        resource.subunit = self.subunit?.compactMap { $0.copy() as? SubstanceProteinSubunit } 
+        resource.subunit = self.subunit?.compactMap { $0.copy() as? SubstanceProteinSubunit }
 
         return resource
     }
@@ -14525,7 +13966,6 @@ extension ModelsR4.SubstanceProtein {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceProteinSubunit
 extension ModelsR4.SubstanceProteinSubunit {
@@ -14552,7 +13992,6 @@ extension ModelsR4.SubstanceProteinSubunit {
     }
 }
 
-
 // MARK: - SubstanceReferenceInformation
 extension ModelsR4.SubstanceReferenceInformation {
 
@@ -14562,10 +14001,10 @@ extension ModelsR4.SubstanceReferenceInformation {
             return self
         }
         resource.comment = self.comment
-        resource.gene = self.gene?.compactMap { $0.copy() as? SubstanceReferenceInformationGene } 
-        resource.geneElement = self.geneElement?.compactMap { $0.copy() as? SubstanceReferenceInformationGeneElement } 
-        resource.classification = self.classification?.compactMap { $0.copy() as? SubstanceReferenceInformationClassification } 
-        resource.target = self.target?.compactMap { $0.copy() as? SubstanceReferenceInformationTarget } 
+        resource.gene = self.gene?.compactMap { $0.copy() as? SubstanceReferenceInformationGene }
+        resource.geneElement = self.geneElement?.compactMap { $0.copy() as? SubstanceReferenceInformationGeneElement }
+        resource.classification = self.classification?.compactMap { $0.copy() as? SubstanceReferenceInformationClassification }
+        resource.target = self.target?.compactMap { $0.copy() as? SubstanceReferenceInformationTarget }
 
         return resource
     }
@@ -14574,7 +14013,6 @@ extension ModelsR4.SubstanceReferenceInformation {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceReferenceInformationClassification
 extension ModelsR4.SubstanceReferenceInformationClassification {
@@ -14586,8 +14024,8 @@ extension ModelsR4.SubstanceReferenceInformationClassification {
         }
         resource.domain = self.domain?.copy() as? CodeableConcept
         resource.classification = self.classification?.copy() as? CodeableConcept
-        resource.subtype = self.subtype?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.source = self.source?.compactMap { $0.copy() as? Reference } 
+        resource.subtype = self.subtype?.compactMap { $0.copy() as? CodeableConcept }
+        resource.source = self.source?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -14596,7 +14034,6 @@ extension ModelsR4.SubstanceReferenceInformationClassification {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceReferenceInformationGene
 extension ModelsR4.SubstanceReferenceInformationGene {
@@ -14608,7 +14045,7 @@ extension ModelsR4.SubstanceReferenceInformationGene {
         }
         resource.geneSequenceOrigin = self.geneSequenceOrigin?.copy() as? CodeableConcept
         resource.gene = self.gene?.copy() as? CodeableConcept
-        resource.source = self.source?.compactMap { $0.copy() as? Reference } 
+        resource.source = self.source?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -14617,7 +14054,6 @@ extension ModelsR4.SubstanceReferenceInformationGene {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceReferenceInformationGeneElement
 extension ModelsR4.SubstanceReferenceInformationGeneElement {
@@ -14629,7 +14065,7 @@ extension ModelsR4.SubstanceReferenceInformationGeneElement {
         }
         resource.type = self.type?.copy() as? CodeableConcept
         resource.element = self.element?.copy() as? Identifier
-        resource.source = self.source?.compactMap { $0.copy() as? Reference } 
+        resource.source = self.source?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -14638,7 +14074,6 @@ extension ModelsR4.SubstanceReferenceInformationGeneElement {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceReferenceInformationTarget
 extension ModelsR4.SubstanceReferenceInformationTarget {
@@ -14655,7 +14090,7 @@ extension ModelsR4.SubstanceReferenceInformationTarget {
         resource.organismType = self.organismType?.copy() as? CodeableConcept
         resource.amount = self.amount?.copy() as? AmountX
         resource.amountType = self.amountType?.copy() as? CodeableConcept
-        resource.source = self.source?.compactMap { $0.copy() as? Reference } 
+        resource.source = self.source?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -14664,7 +14099,6 @@ extension ModelsR4.SubstanceReferenceInformationTarget {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceSourceMaterial
 extension ModelsR4.SubstanceSourceMaterial {
@@ -14679,14 +14113,14 @@ extension ModelsR4.SubstanceSourceMaterial {
         resource.sourceMaterialState = self.sourceMaterialState?.copy() as? CodeableConcept
         resource.organismId = self.organismId?.copy() as? Identifier
         resource.organismName = self.organismName
-        resource.parentSubstanceId = self.parentSubstanceId?.compactMap { $0.copy() as? Identifier } 
+        resource.parentSubstanceId = self.parentSubstanceId?.compactMap { $0.copy() as? Identifier }
         resource.parentSubstanceName = self.parentSubstanceName
-        resource.countryOfOrigin = self.countryOfOrigin?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.countryOfOrigin = self.countryOfOrigin?.compactMap { $0.copy() as? CodeableConcept }
         resource.geographicalLocation = self.geographicalLocation
         resource.developmentStage = self.developmentStage?.copy() as? CodeableConcept
-        resource.fractionDescription = self.fractionDescription?.compactMap { $0.copy() as? SubstanceSourceMaterialFractionDescription } 
+        resource.fractionDescription = self.fractionDescription?.compactMap { $0.copy() as? SubstanceSourceMaterialFractionDescription }
         resource.organism = self.organism?.copy() as? SubstanceSourceMaterialOrganism
-        resource.partDescription = self.partDescription?.compactMap { $0.copy() as? SubstanceSourceMaterialPartDescription } 
+        resource.partDescription = self.partDescription?.compactMap { $0.copy() as? SubstanceSourceMaterialPartDescription }
 
         return resource
     }
@@ -14695,7 +14129,6 @@ extension ModelsR4.SubstanceSourceMaterial {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceSourceMaterialFractionDescription
 extension ModelsR4.SubstanceSourceMaterialFractionDescription {
@@ -14716,7 +14149,6 @@ extension ModelsR4.SubstanceSourceMaterialFractionDescription {
     }
 }
 
-
 // MARK: - SubstanceSourceMaterialOrganism
 extension ModelsR4.SubstanceSourceMaterialOrganism {
 
@@ -14730,7 +14162,7 @@ extension ModelsR4.SubstanceSourceMaterialOrganism {
         resource.species = self.species?.copy() as? CodeableConcept
         resource.intraspecificType = self.intraspecificType?.copy() as? CodeableConcept
         resource.intraspecificDescription = self.intraspecificDescription
-        resource.author = self.author?.compactMap { $0.copy() as? SubstanceSourceMaterialOrganismAuthor } 
+        resource.author = self.author?.compactMap { $0.copy() as? SubstanceSourceMaterialOrganismAuthor }
         resource.hybrid = self.hybrid?.copy() as? SubstanceSourceMaterialOrganismHybrid
         resource.organismGeneral = self.organismGeneral?.copy() as? SubstanceSourceMaterialOrganismOrganismGeneral
 
@@ -14741,7 +14173,6 @@ extension ModelsR4.SubstanceSourceMaterialOrganism {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceSourceMaterialOrganismAuthor
 extension ModelsR4.SubstanceSourceMaterialOrganismAuthor {
@@ -14761,7 +14192,6 @@ extension ModelsR4.SubstanceSourceMaterialOrganismAuthor {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceSourceMaterialOrganismHybrid
 extension ModelsR4.SubstanceSourceMaterialOrganismHybrid {
@@ -14785,7 +14215,6 @@ extension ModelsR4.SubstanceSourceMaterialOrganismHybrid {
     }
 }
 
-
 // MARK: - SubstanceSourceMaterialOrganismOrganismGeneral
 extension ModelsR4.SubstanceSourceMaterialOrganismOrganismGeneral {
 
@@ -14807,7 +14236,6 @@ extension ModelsR4.SubstanceSourceMaterialOrganismOrganismGeneral {
     }
 }
 
-
 // MARK: - SubstanceSourceMaterialPartDescription
 extension ModelsR4.SubstanceSourceMaterialPartDescription {
 
@@ -14827,7 +14255,6 @@ extension ModelsR4.SubstanceSourceMaterialPartDescription {
     }
 }
 
-
 // MARK: - SubstanceSpecification
 extension ModelsR4.SubstanceSpecification {
 
@@ -14841,16 +14268,16 @@ extension ModelsR4.SubstanceSpecification {
         resource.status = self.status?.copy() as? CodeableConcept
         resource.domain = self.domain?.copy() as? CodeableConcept
         resource.description_fhir = self.description_fhir
-        resource.source = self.source?.compactMap { $0.copy() as? Reference } 
+        resource.source = self.source?.compactMap { $0.copy() as? Reference }
         resource.comment = self.comment
-        resource.moiety = self.moiety?.compactMap { $0.copy() as? SubstanceSpecificationMoiety } 
-        resource.property = self.property?.compactMap { $0.copy() as? SubstanceSpecificationProperty } 
+        resource.moiety = self.moiety?.compactMap { $0.copy() as? SubstanceSpecificationMoiety }
+        resource.property = self.property?.compactMap { $0.copy() as? SubstanceSpecificationProperty }
         resource.referenceInformation = self.referenceInformation?.copy() as? Reference
         resource.structure = self.structure?.copy() as? SubstanceSpecificationStructure
-        resource.code = self.code?.compactMap { $0.copy() as? SubstanceSpecificationFHIRString } 
-        resource.name = self.name?.compactMap { $0.copy() as? SubstanceSpecificationName } 
-        resource.molecularWeight = self.molecularWeight?.compactMap { $0.copy() as? SubstanceSpecificationStructureIsotopeMolecularWeight } 
-        resource.relationship = self.relationship?.compactMap { $0.copy() as? SubstanceSpecificationRelationship } 
+        resource.code = self.code?.compactMap { $0.copy() as? SubstanceSpecificationFHIRString }
+        resource.name = self.name?.compactMap { $0.copy() as? SubstanceSpecificationName }
+        resource.molecularWeight = self.molecularWeight?.compactMap { $0.copy() as? SubstanceSpecificationStructureIsotopeMolecularWeight }
+        resource.relationship = self.relationship?.compactMap { $0.copy() as? SubstanceSpecificationRelationship }
         resource.nucleicAcid = self.nucleicAcid?.copy() as? Reference
         resource.polymer = self.polymer?.copy() as? Reference
         resource.protein = self.protein?.copy() as? Reference
@@ -14864,7 +14291,6 @@ extension ModelsR4.SubstanceSpecification {
     }
 }
 
-
 // MARK: - SubstanceSpecificationFHIRString
 extension ModelsR4.SubstanceSpecificationFHIRString {
 
@@ -14877,7 +14303,7 @@ extension ModelsR4.SubstanceSpecificationFHIRString {
         resource.status = self.status?.copy() as? CodeableConcept
         resource.statusDate = self.statusDate
         resource.comment = self.comment
-        resource.source = self.source?.compactMap { $0.copy() as? Reference } 
+        resource.source = self.source?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -14886,7 +14312,6 @@ extension ModelsR4.SubstanceSpecificationFHIRString {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceSpecificationMoiety
 extension ModelsR4.SubstanceSpecificationMoiety {
@@ -14912,7 +14337,6 @@ extension ModelsR4.SubstanceSpecificationMoiety {
     }
 }
 
-
 // MARK: - SubstanceSpecificationName
 extension ModelsR4.SubstanceSpecificationName {
 
@@ -14925,13 +14349,13 @@ extension ModelsR4.SubstanceSpecificationName {
         resource.type = self.type?.copy() as? CodeableConcept
         resource.status = self.status?.copy() as? CodeableConcept
         resource.preferred = self.preferred
-        resource.language = self.language?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.domain = self.domain?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.synonym = self.synonym?.compactMap { $0.copy() as? SubstanceSpecificationName } 
-        resource.translation = self.translation?.compactMap { $0.copy() as? SubstanceSpecificationName } 
-        resource.official = self.official?.compactMap { $0.copy() as? SubstanceSpecificationNameOfficial } 
-        resource.source = self.source?.compactMap { $0.copy() as? Reference } 
+        resource.language = self.language?.compactMap { $0.copy() as? CodeableConcept }
+        resource.domain = self.domain?.compactMap { $0.copy() as? CodeableConcept }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
+        resource.synonym = self.synonym?.compactMap { $0.copy() as? SubstanceSpecificationName }
+        resource.translation = self.translation?.compactMap { $0.copy() as? SubstanceSpecificationName }
+        resource.official = self.official?.compactMap { $0.copy() as? SubstanceSpecificationNameOfficial }
+        resource.source = self.source?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -14940,7 +14364,6 @@ extension ModelsR4.SubstanceSpecificationName {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceSpecificationNameOfficial
 extension ModelsR4.SubstanceSpecificationNameOfficial {
@@ -14961,7 +14384,6 @@ extension ModelsR4.SubstanceSpecificationNameOfficial {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceSpecificationProperty
 extension ModelsR4.SubstanceSpecificationProperty {
@@ -14985,7 +14407,6 @@ extension ModelsR4.SubstanceSpecificationProperty {
     }
 }
 
-
 // MARK: - SubstanceSpecificationRelationship
 extension ModelsR4.SubstanceSpecificationRelationship {
 
@@ -15000,7 +14421,7 @@ extension ModelsR4.SubstanceSpecificationRelationship {
         resource.amount = self.amount?.copy() as? AmountX
         resource.amountRatioLowLimit = self.amountRatioLowLimit?.copy() as? Ratio
         resource.amountType = self.amountType?.copy() as? CodeableConcept
-        resource.source = self.source?.compactMap { $0.copy() as? Reference } 
+        resource.source = self.source?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -15009,7 +14430,6 @@ extension ModelsR4.SubstanceSpecificationRelationship {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceSpecificationStructure
 extension ModelsR4.SubstanceSpecificationStructure {
@@ -15023,10 +14443,10 @@ extension ModelsR4.SubstanceSpecificationStructure {
         resource.opticalActivity = self.opticalActivity?.copy() as? CodeableConcept
         resource.molecularFormula = self.molecularFormula
         resource.molecularFormulaByMoiety = self.molecularFormulaByMoiety
-        resource.isotope = self.isotope?.compactMap { $0.copy() as? SubstanceSpecificationStructureIsotope } 
+        resource.isotope = self.isotope?.compactMap { $0.copy() as? SubstanceSpecificationStructureIsotope }
         resource.molecularWeight = self.molecularWeight?.copy() as? SubstanceSpecificationStructureIsotopeMolecularWeight
-        resource.source = self.source?.compactMap { $0.copy() as? Reference } 
-        resource.representation = self.representation?.compactMap { $0.copy() as? SubstanceSpecificationStructureRepresentation } 
+        resource.source = self.source?.compactMap { $0.copy() as? Reference }
+        resource.representation = self.representation?.compactMap { $0.copy() as? SubstanceSpecificationStructureRepresentation }
 
         return resource
     }
@@ -15035,7 +14455,6 @@ extension ModelsR4.SubstanceSpecificationStructure {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceSpecificationStructureIsotope
 extension ModelsR4.SubstanceSpecificationStructureIsotope {
@@ -15059,7 +14478,6 @@ extension ModelsR4.SubstanceSpecificationStructureIsotope {
     }
 }
 
-
 // MARK: - SubstanceSpecificationStructureIsotopeMolecularWeight
 extension ModelsR4.SubstanceSpecificationStructureIsotopeMolecularWeight {
 
@@ -15079,7 +14497,6 @@ extension ModelsR4.SubstanceSpecificationStructureIsotopeMolecularWeight {
         return self.copied()
     }
 }
-
 
 // MARK: - SubstanceSpecificationStructureRepresentation
 extension ModelsR4.SubstanceSpecificationStructureRepresentation {
@@ -15101,7 +14518,6 @@ extension ModelsR4.SubstanceSpecificationStructureRepresentation {
     }
 }
 
-
 // MARK: - SupplyDelivery
 extension ModelsR4.SupplyDelivery {
 
@@ -15110,9 +14526,9 @@ extension ModelsR4.SupplyDelivery {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.SupplyDelivery else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
         resource.patient = self.patient?.copy() as? Reference
         resource.type = self.type?.copy() as? CodeableConcept
@@ -15120,7 +14536,7 @@ extension ModelsR4.SupplyDelivery {
         resource.occurrence = self.occurrence?.copy() as? OccurrenceX
         resource.supplier = self.supplier?.copy() as? Reference
         resource.destination = self.destination?.copy() as? Reference
-        resource.receiver = self.receiver?.compactMap { $0.copy() as? Reference } 
+        resource.receiver = self.receiver?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -15129,7 +14545,6 @@ extension ModelsR4.SupplyDelivery {
         return self.copied()
     }
 }
-
 
 // MARK: - SupplyDeliverySuppliedItem
 extension ModelsR4.SupplyDeliverySuppliedItem {
@@ -15150,7 +14565,6 @@ extension ModelsR4.SupplyDeliverySuppliedItem {
     }
 }
 
-
 // MARK: - SupplyRequest
 extension ModelsR4.SupplyRequest {
 
@@ -15159,19 +14573,19 @@ extension ModelsR4.SupplyRequest {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.SupplyRequest else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.category = self.category?.copy() as? CodeableConcept
         resource.priority = self.priority
         resource.item = self.item.copy() as! ItemX
         resource.quantity = self.quantity.copy() as! Quantity
-        resource.parameter = self.parameter?.compactMap { $0.copy() as? SupplyRequestParameter } 
+        resource.parameter = self.parameter?.compactMap { $0.copy() as? SupplyRequestParameter }
         resource.occurrence = self.occurrence?.copy() as? OccurrenceX
         resource.authoredOn = self.authoredOn
         resource.requester = self.requester?.copy() as? Reference
-        resource.supplier = self.supplier?.compactMap { $0.copy() as? Reference } 
-        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference } 
+        resource.supplier = self.supplier?.compactMap { $0.copy() as? Reference }
+        resource.reasonCode = self.reasonCode?.compactMap { $0.copy() as? CodeableConcept }
+        resource.reasonReference = self.reasonReference?.compactMap { $0.copy() as? Reference }
         resource.deliverFrom = self.deliverFrom?.copy() as? Reference
         resource.deliverTo = self.deliverTo?.copy() as? Reference
 
@@ -15182,7 +14596,6 @@ extension ModelsR4.SupplyRequest {
         return self.copied()
     }
 }
-
 
 // MARK: - SupplyRequestParameter
 extension ModelsR4.SupplyRequestParameter {
@@ -15203,7 +14616,6 @@ extension ModelsR4.SupplyRequestParameter {
     }
 }
 
-
 // MARK: - Task
 extension ModelsR4.Task {
 
@@ -15212,12 +14624,12 @@ extension ModelsR4.Task {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.Task else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.instantiatesCanonical = self.instantiatesCanonical
         resource.instantiatesUri = self.instantiatesUri
-        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference } 
+        resource.basedOn = self.basedOn?.compactMap { $0.copy() as? Reference }
         resource.groupIdentifier = self.groupIdentifier?.copy() as? Identifier
-        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference } 
+        resource.partOf = self.partOf?.compactMap { $0.copy() as? Reference }
         resource.status = self.status
         resource.statusReason = self.statusReason?.copy() as? CodeableConcept
         resource.businessStatus = self.businessStatus?.copy() as? CodeableConcept
@@ -15232,17 +14644,17 @@ extension ModelsR4.Task {
         resource.authoredOn = self.authoredOn
         resource.lastModified = self.lastModified
         resource.requester = self.requester?.copy() as? Reference
-        resource.performerType = self.performerType?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.performerType = self.performerType?.compactMap { $0.copy() as? CodeableConcept }
         resource.owner = self.owner?.copy() as? Reference
         resource.location = self.location?.copy() as? Reference
         resource.reasonCode = self.reasonCode?.copy() as? CodeableConcept
         resource.reasonReference = self.reasonReference?.copy() as? Reference
-        resource.insurance = self.insurance?.compactMap { $0.copy() as? Reference } 
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
-        resource.relevantHistory = self.relevantHistory?.compactMap { $0.copy() as? Reference } 
+        resource.insurance = self.insurance?.compactMap { $0.copy() as? Reference }
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
+        resource.relevantHistory = self.relevantHistory?.compactMap { $0.copy() as? Reference }
         resource.restriction = self.restriction?.copy() as? TaskRestriction
-        resource.input = self.input?.compactMap { $0.copy() as? TaskInput } 
-        resource.output = self.output?.compactMap { $0.copy() as? TaskOutput } 
+        resource.input = self.input?.compactMap { $0.copy() as? TaskInput }
+        resource.output = self.output?.compactMap { $0.copy() as? TaskOutput }
 
         return resource
     }
@@ -15251,7 +14663,6 @@ extension ModelsR4.Task {
         return self.copied()
     }
 }
-
 
 // MARK: - TaskInput
 extension ModelsR4.TaskInput {
@@ -15272,7 +14683,6 @@ extension ModelsR4.TaskInput {
     }
 }
 
-
 // MARK: - TaskOutput
 extension ModelsR4.TaskOutput {
 
@@ -15292,7 +14702,6 @@ extension ModelsR4.TaskOutput {
     }
 }
 
-
 // MARK: - TaskRestriction
 extension ModelsR4.TaskRestriction {
 
@@ -15303,7 +14712,7 @@ extension ModelsR4.TaskRestriction {
         }
         resource.repetitions = self.repetitions
         resource.period = self.period?.copy() as? Period
-        resource.recipient = self.recipient?.compactMap { $0.copy() as? Reference } 
+        resource.recipient = self.recipient?.compactMap { $0.copy() as? Reference }
 
         return resource
     }
@@ -15312,7 +14721,6 @@ extension ModelsR4.TaskRestriction {
         return self.copied()
     }
 }
-
 
 // MARK: - TerminologyCapabilities
 extension ModelsR4.TerminologyCapabilities {
@@ -15330,17 +14738,17 @@ extension ModelsR4.TerminologyCapabilities {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.copyright = self.copyright
         resource.kind = self.kind
         resource.software = self.software?.copy() as? TerminologyCapabilitiesSoftware
         resource.implementation = self.implementation?.copy() as? TerminologyCapabilitiesImplementation
         resource.lockedDate = self.lockedDate
-        resource.codeSystem = self.codeSystem?.compactMap { $0.copy() as? TerminologyCapabilitiesCodeSystem } 
+        resource.codeSystem = self.codeSystem?.compactMap { $0.copy() as? TerminologyCapabilitiesCodeSystem }
         resource.expansion = self.expansion?.copy() as? TerminologyCapabilitiesExpansion
         resource.codeSearch = self.codeSearch
         resource.validateCode = self.validateCode?.copy() as? TerminologyCapabilitiesValidateCode
@@ -15354,7 +14762,6 @@ extension ModelsR4.TerminologyCapabilities {
         return self.copied()
     }
 }
-
 
 // MARK: - TerminologyCapabilitiesClosure
 extension ModelsR4.TerminologyCapabilitiesClosure {
@@ -15374,7 +14781,6 @@ extension ModelsR4.TerminologyCapabilitiesClosure {
     }
 }
 
-
 // MARK: - TerminologyCapabilitiesCodeSystem
 extension ModelsR4.TerminologyCapabilitiesCodeSystem {
 
@@ -15384,7 +14790,7 @@ extension ModelsR4.TerminologyCapabilitiesCodeSystem {
             return self
         }
         resource.uri = self.uri
-        resource.version = self.version?.compactMap { $0.copy() as? TerminologyCapabilitiesCodeSystemVersion } 
+        resource.version = self.version?.compactMap { $0.copy() as? TerminologyCapabilitiesCodeSystemVersion }
         resource.subsumption = self.subsumption
 
         return resource
@@ -15394,7 +14800,6 @@ extension ModelsR4.TerminologyCapabilitiesCodeSystem {
         return self.copied()
     }
 }
-
 
 // MARK: - TerminologyCapabilitiesCodeSystemVersion
 extension ModelsR4.TerminologyCapabilitiesCodeSystemVersion {
@@ -15408,7 +14813,7 @@ extension ModelsR4.TerminologyCapabilitiesCodeSystemVersion {
         resource.isDefault = self.isDefault
         resource.compositional = self.compositional
         resource.language = self.language
-        resource.filter = self.filter?.compactMap { $0.copy() as? TerminologyCapabilitiesCodeSystemVersionFilter } 
+        resource.filter = self.filter?.compactMap { $0.copy() as? TerminologyCapabilitiesCodeSystemVersionFilter }
         resource.property = self.property
 
         return resource
@@ -15418,7 +14823,6 @@ extension ModelsR4.TerminologyCapabilitiesCodeSystemVersion {
         return self.copied()
     }
 }
-
 
 // MARK: - TerminologyCapabilitiesCodeSystemVersionFilter
 extension ModelsR4.TerminologyCapabilitiesCodeSystemVersionFilter {
@@ -15439,7 +14843,6 @@ extension ModelsR4.TerminologyCapabilitiesCodeSystemVersionFilter {
     }
 }
 
-
 // MARK: - TerminologyCapabilitiesExpansion
 extension ModelsR4.TerminologyCapabilitiesExpansion {
 
@@ -15451,7 +14854,7 @@ extension ModelsR4.TerminologyCapabilitiesExpansion {
         resource.hierarchical = self.hierarchical
         resource.paging = self.paging
         resource.incomplete = self.incomplete
-        resource.parameter = self.parameter?.compactMap { $0.copy() as? TerminologyCapabilitiesExpansionParameter } 
+        resource.parameter = self.parameter?.compactMap { $0.copy() as? TerminologyCapabilitiesExpansionParameter }
         resource.textFilter = self.textFilter
 
         return resource
@@ -15461,7 +14864,6 @@ extension ModelsR4.TerminologyCapabilitiesExpansion {
         return self.copied()
     }
 }
-
 
 // MARK: - TerminologyCapabilitiesExpansionParameter
 extension ModelsR4.TerminologyCapabilitiesExpansionParameter {
@@ -15482,7 +14884,6 @@ extension ModelsR4.TerminologyCapabilitiesExpansionParameter {
     }
 }
 
-
 // MARK: - TerminologyCapabilitiesImplementation
 extension ModelsR4.TerminologyCapabilitiesImplementation {
 
@@ -15501,7 +14902,6 @@ extension ModelsR4.TerminologyCapabilitiesImplementation {
         return self.copied()
     }
 }
-
 
 // MARK: - TerminologyCapabilitiesSoftware
 extension ModelsR4.TerminologyCapabilitiesSoftware {
@@ -15522,7 +14922,6 @@ extension ModelsR4.TerminologyCapabilitiesSoftware {
     }
 }
 
-
 // MARK: - TerminologyCapabilitiesTranslation
 extension ModelsR4.TerminologyCapabilitiesTranslation {
 
@@ -15540,7 +14939,6 @@ extension ModelsR4.TerminologyCapabilitiesTranslation {
         return self.copied()
     }
 }
-
 
 // MARK: - TerminologyCapabilitiesValidateCode
 extension ModelsR4.TerminologyCapabilitiesValidateCode {
@@ -15560,7 +14958,6 @@ extension ModelsR4.TerminologyCapabilitiesValidateCode {
     }
 }
 
-
 // MARK: - TestReport
 extension ModelsR4.TestReport {
 
@@ -15577,9 +14974,9 @@ extension ModelsR4.TestReport {
         resource.score = self.score
         resource.tester = self.tester
         resource.issued = self.issued
-        resource.participant = self.participant?.compactMap { $0.copy() as? TestReportParticipant } 
+        resource.participant = self.participant?.compactMap { $0.copy() as? TestReportParticipant }
         resource.setup = self.setup?.copy() as? TestReportSetup
-        resource.test = self.test?.compactMap { $0.copy() as? TestReportTest } 
+        resource.test = self.test?.compactMap { $0.copy() as? TestReportTest }
         resource.teardown = self.teardown?.copy() as? TestReportTeardown
 
         return resource
@@ -15589,7 +14986,6 @@ extension ModelsR4.TestReport {
         return self.copied()
     }
 }
-
 
 // MARK: - TestReportParticipant
 extension ModelsR4.TestReportParticipant {
@@ -15611,7 +15007,6 @@ extension ModelsR4.TestReportParticipant {
     }
 }
 
-
 // MARK: - TestReportSetup
 extension ModelsR4.TestReportSetup {
 
@@ -15620,7 +15015,7 @@ extension ModelsR4.TestReportSetup {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.TestReportSetup else {
             return self
         }
-        resource.action = self.action.compactMap { $0.copy() as? TestReportSetupAction } 
+        resource.action = self.action.compactMap { $0.copy() as? TestReportSetupAction }
 
         return resource
     }
@@ -15629,7 +15024,6 @@ extension ModelsR4.TestReportSetup {
         return self.copied()
     }
 }
-
 
 // MARK: - TestReportSetupAction
 extension ModelsR4.TestReportSetupAction {
@@ -15649,7 +15043,6 @@ extension ModelsR4.TestReportSetupAction {
         return self.copied()
     }
 }
-
 
 // MARK: - TestReportSetupActionAssert
 extension ModelsR4.TestReportSetupActionAssert {
@@ -15671,7 +15064,6 @@ extension ModelsR4.TestReportSetupActionAssert {
     }
 }
 
-
 // MARK: - TestReportSetupActionOperation
 extension ModelsR4.TestReportSetupActionOperation {
 
@@ -15692,7 +15084,6 @@ extension ModelsR4.TestReportSetupActionOperation {
     }
 }
 
-
 // MARK: - TestReportTeardown
 extension ModelsR4.TestReportTeardown {
 
@@ -15701,7 +15092,7 @@ extension ModelsR4.TestReportTeardown {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.TestReportTeardown else {
             return self
         }
-        resource.action = self.action.compactMap { $0.copy() as? TestReportTeardownAction } 
+        resource.action = self.action.compactMap { $0.copy() as? TestReportTeardownAction }
 
         return resource
     }
@@ -15710,7 +15101,6 @@ extension ModelsR4.TestReportTeardown {
         return self.copied()
     }
 }
-
 
 // MARK: - TestReportTeardownAction
 extension ModelsR4.TestReportTeardownAction {
@@ -15730,7 +15120,6 @@ extension ModelsR4.TestReportTeardownAction {
     }
 }
 
-
 // MARK: - TestReportTest
 extension ModelsR4.TestReportTest {
 
@@ -15741,7 +15130,7 @@ extension ModelsR4.TestReportTest {
         }
         resource.name = self.name
         resource.description_fhir = self.description_fhir
-        resource.action = self.action.compactMap { $0.copy() as? TestReportTestAction } 
+        resource.action = self.action.compactMap { $0.copy() as? TestReportTestAction }
 
         return resource
     }
@@ -15750,7 +15139,6 @@ extension ModelsR4.TestReportTest {
         return self.copied()
     }
 }
-
 
 // MARK: - TestReportTestAction
 extension ModelsR4.TestReportTestAction {
@@ -15771,7 +15159,6 @@ extension ModelsR4.TestReportTestAction {
     }
 }
 
-
 // MARK: - TestScript
 extension ModelsR4.TestScript {
 
@@ -15789,20 +15176,20 @@ extension ModelsR4.TestScript {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.purpose = self.purpose
         resource.copyright = self.copyright
-        resource.origin = self.origin?.compactMap { $0.copy() as? TestScriptOrigin } 
-        resource.destination = self.destination?.compactMap { $0.copy() as? TestScriptDestination } 
+        resource.origin = self.origin?.compactMap { $0.copy() as? TestScriptOrigin }
+        resource.destination = self.destination?.compactMap { $0.copy() as? TestScriptDestination }
         resource.metadata = self.metadata?.copy() as? TestScriptMetadata
-        resource.fixture = self.fixture?.compactMap { $0.copy() as? TestScriptFixture } 
-        resource.profile = self.profile?.compactMap { $0.copy() as? Reference } 
-        resource.variable = self.variable?.compactMap { $0.copy() as? TestScriptVariable } 
+        resource.fixture = self.fixture?.compactMap { $0.copy() as? TestScriptFixture }
+        resource.profile = self.profile?.compactMap { $0.copy() as? Reference }
+        resource.variable = self.variable?.compactMap { $0.copy() as? TestScriptVariable }
         resource.setup = self.setup?.copy() as? TestScriptSetup
-        resource.test = self.test?.compactMap { $0.copy() as? TestScriptTest } 
+        resource.test = self.test?.compactMap { $0.copy() as? TestScriptTest }
         resource.teardown = self.teardown?.copy() as? TestScriptTeardown
 
         return resource
@@ -15812,7 +15199,6 @@ extension ModelsR4.TestScript {
         return self.copied()
     }
 }
-
 
 // MARK: - TestScriptDestination
 extension ModelsR4.TestScriptDestination {
@@ -15832,7 +15218,6 @@ extension ModelsR4.TestScriptDestination {
         return self.copied()
     }
 }
-
 
 // MARK: - TestScriptFixture
 extension ModelsR4.TestScriptFixture {
@@ -15854,7 +15239,6 @@ extension ModelsR4.TestScriptFixture {
     }
 }
 
-
 // MARK: - TestScriptMetadata
 extension ModelsR4.TestScriptMetadata {
 
@@ -15863,8 +15247,8 @@ extension ModelsR4.TestScriptMetadata {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.TestScriptMetadata else {
             return self
         }
-        resource.link = self.link?.compactMap { $0.copy() as? TestScriptMetadataLink } 
-        resource.capability = self.capability.compactMap { $0.copy() as? TestScriptMetadataCapability } 
+        resource.link = self.link?.compactMap { $0.copy() as? TestScriptMetadataLink }
+        resource.capability = self.capability.compactMap { $0.copy() as? TestScriptMetadataCapability }
 
         return resource
     }
@@ -15873,7 +15257,6 @@ extension ModelsR4.TestScriptMetadata {
         return self.copied()
     }
 }
-
 
 // MARK: - TestScriptMetadataCapability
 extension ModelsR4.TestScriptMetadataCapability {
@@ -15899,7 +15282,6 @@ extension ModelsR4.TestScriptMetadataCapability {
     }
 }
 
-
 // MARK: - TestScriptMetadataLink
 extension ModelsR4.TestScriptMetadataLink {
 
@@ -15918,7 +15300,6 @@ extension ModelsR4.TestScriptMetadataLink {
         return self.copied()
     }
 }
-
 
 // MARK: - TestScriptOrigin
 extension ModelsR4.TestScriptOrigin {
@@ -15939,7 +15320,6 @@ extension ModelsR4.TestScriptOrigin {
     }
 }
 
-
 // MARK: - TestScriptSetup
 extension ModelsR4.TestScriptSetup {
 
@@ -15948,7 +15328,7 @@ extension ModelsR4.TestScriptSetup {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.TestScriptSetup else {
             return self
         }
-        resource.action = self.action.compactMap { $0.copy() as? TestScriptSetupAction } 
+        resource.action = self.action.compactMap { $0.copy() as? TestScriptSetupAction }
 
         return resource
     }
@@ -15957,7 +15337,6 @@ extension ModelsR4.TestScriptSetup {
         return self.copied()
     }
 }
-
 
 // MARK: - TestScriptSetupAction
 extension ModelsR4.TestScriptSetupAction {
@@ -15977,7 +15356,6 @@ extension ModelsR4.TestScriptSetupAction {
         return self.copied()
     }
 }
-
 
 // MARK: - TestScriptSetupActionAssert
 extension ModelsR4.TestScriptSetupActionAssert {
@@ -16018,7 +15396,6 @@ extension ModelsR4.TestScriptSetupActionAssert {
     }
 }
 
-
 // MARK: - TestScriptSetupActionOperation
 extension ModelsR4.TestScriptSetupActionOperation {
 
@@ -16038,7 +15415,7 @@ extension ModelsR4.TestScriptSetupActionOperation {
         resource.method = self.method
         resource.origin = self.origin
         resource.params = self.params
-        resource.requestHeader = self.requestHeader?.compactMap { $0.copy() as? TestScriptSetupActionOperationRequestHeader } 
+        resource.requestHeader = self.requestHeader?.compactMap { $0.copy() as? TestScriptSetupActionOperationRequestHeader }
         resource.requestId = self.requestId
         resource.responseId = self.responseId
         resource.sourceId = self.sourceId
@@ -16052,7 +15429,6 @@ extension ModelsR4.TestScriptSetupActionOperation {
         return self.copied()
     }
 }
-
 
 // MARK: - TestScriptSetupActionOperationRequestHeader
 extension ModelsR4.TestScriptSetupActionOperationRequestHeader {
@@ -16073,7 +15449,6 @@ extension ModelsR4.TestScriptSetupActionOperationRequestHeader {
     }
 }
 
-
 // MARK: - TestScriptTeardown
 extension ModelsR4.TestScriptTeardown {
 
@@ -16082,7 +15457,7 @@ extension ModelsR4.TestScriptTeardown {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.TestScriptTeardown else {
             return self
         }
-        resource.action = self.action.compactMap { $0.copy() as? TestScriptTeardownAction } 
+        resource.action = self.action.compactMap { $0.copy() as? TestScriptTeardownAction }
 
         return resource
     }
@@ -16091,7 +15466,6 @@ extension ModelsR4.TestScriptTeardown {
         return self.copied()
     }
 }
-
 
 // MARK: - TestScriptTeardownAction
 extension ModelsR4.TestScriptTeardownAction {
@@ -16111,7 +15485,6 @@ extension ModelsR4.TestScriptTeardownAction {
     }
 }
 
-
 // MARK: - TestScriptTest
 extension ModelsR4.TestScriptTest {
 
@@ -16122,7 +15495,7 @@ extension ModelsR4.TestScriptTest {
         }
         resource.name = self.name
         resource.description_fhir = self.description_fhir
-        resource.action = self.action.compactMap { $0.copy() as? TestScriptTestAction } 
+        resource.action = self.action.compactMap { $0.copy() as? TestScriptTestAction }
 
         return resource
     }
@@ -16131,7 +15504,6 @@ extension ModelsR4.TestScriptTest {
         return self.copied()
     }
 }
-
 
 // MARK: - TestScriptTestAction
 extension ModelsR4.TestScriptTestAction {
@@ -16151,7 +15523,6 @@ extension ModelsR4.TestScriptTestAction {
         return self.copied()
     }
 }
-
 
 // MARK: - TestScriptVariable
 extension ModelsR4.TestScriptVariable {
@@ -16178,7 +15549,6 @@ extension ModelsR4.TestScriptVariable {
     }
 }
 
-
 // MARK: - Timing
 extension ModelsR4.Timing {
 
@@ -16198,7 +15568,6 @@ extension ModelsR4.Timing {
         return self.copied()
     }
 }
-
 
 // MARK: - TimingRepeat
 extension ModelsR4.TimingRepeat {
@@ -16232,7 +15601,6 @@ extension ModelsR4.TimingRepeat {
     }
 }
 
-
 // MARK: - TriggerDefinition
 extension ModelsR4.TriggerDefinition {
 
@@ -16244,7 +15612,7 @@ extension ModelsR4.TriggerDefinition {
         resource.type = self.type
         resource.name = self.name
         resource.timing = self.timing?.copy() as? TimingX
-        resource.data = self.data?.compactMap { $0.copy() as? DataRequirement } 
+        resource.data = self.data?.compactMap { $0.copy() as? DataRequirement }
         resource.condition = self.condition?.copy() as? Expression
 
         return resource
@@ -16254,7 +15622,6 @@ extension ModelsR4.TriggerDefinition {
         return self.copied()
     }
 }
-
 
 // MARK: - UsageContext
 extension ModelsR4.UsageContext {
@@ -16275,7 +15642,6 @@ extension ModelsR4.UsageContext {
     }
 }
 
-
 // MARK: - ValueSet
 extension ModelsR4.ValueSet {
 
@@ -16285,7 +15651,7 @@ extension ModelsR4.ValueSet {
             return self
         }
         resource.url = self.url
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.version = self.version
         resource.name = self.name
         resource.title = self.title
@@ -16293,10 +15659,10 @@ extension ModelsR4.ValueSet {
         resource.experimental = self.experimental
         resource.date = self.date
         resource.publisher = self.publisher
-        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail } 
+        resource.contact = self.contact?.compactMap { $0.copy() as? ContactDetail }
         resource.description_fhir = self.description_fhir
-        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext } 
-        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.useContext = self.useContext?.compactMap { $0.copy() as? UsageContext }
+        resource.jurisdiction = self.jurisdiction?.compactMap { $0.copy() as? CodeableConcept }
         resource.immutable = self.immutable
         resource.purpose = self.purpose
         resource.copyright = self.copyright
@@ -16311,7 +15677,6 @@ extension ModelsR4.ValueSet {
     }
 }
 
-
 // MARK: - ValueSetCompose
 extension ModelsR4.ValueSetCompose {
 
@@ -16322,8 +15687,8 @@ extension ModelsR4.ValueSetCompose {
         }
         resource.lockedDate = self.lockedDate
         resource.inactive = self.inactive
-        resource.include = self.include.compactMap { $0.copy() as? ValueSetComposeInclude } 
-        resource.exclude = self.exclude?.compactMap { $0.copy() as? ValueSetComposeInclude } 
+        resource.include = self.include.compactMap { $0.copy() as? ValueSetComposeInclude }
+        resource.exclude = self.exclude?.compactMap { $0.copy() as? ValueSetComposeInclude }
 
         return resource
     }
@@ -16332,7 +15697,6 @@ extension ModelsR4.ValueSetCompose {
         return self.copied()
     }
 }
-
 
 // MARK: - ValueSetComposeInclude
 extension ModelsR4.ValueSetComposeInclude {
@@ -16344,8 +15708,8 @@ extension ModelsR4.ValueSetComposeInclude {
         }
         resource.system = self.system
         resource.version = self.version
-        resource.concept = self.concept?.compactMap { $0.copy() as? ValueSetComposeIncludeConcept } 
-        resource.filter = self.filter?.compactMap { $0.copy() as? ValueSetComposeIncludeFilter } 
+        resource.concept = self.concept?.compactMap { $0.copy() as? ValueSetComposeIncludeConcept }
+        resource.filter = self.filter?.compactMap { $0.copy() as? ValueSetComposeIncludeFilter }
         resource.valueSet = self.valueSet
 
         return resource
@@ -16355,7 +15719,6 @@ extension ModelsR4.ValueSetComposeInclude {
         return self.copied()
     }
 }
-
 
 // MARK: - ValueSetComposeIncludeConcept
 extension ModelsR4.ValueSetComposeIncludeConcept {
@@ -16367,7 +15730,7 @@ extension ModelsR4.ValueSetComposeIncludeConcept {
         }
         resource.code = self.code
         resource.display = self.display
-        resource.designation = self.designation?.compactMap { $0.copy() as? ValueSetComposeIncludeConceptDesignation } 
+        resource.designation = self.designation?.compactMap { $0.copy() as? ValueSetComposeIncludeConceptDesignation }
 
         return resource
     }
@@ -16376,7 +15739,6 @@ extension ModelsR4.ValueSetComposeIncludeConcept {
         return self.copied()
     }
 }
-
 
 // MARK: - ValueSetComposeIncludeConceptDesignation
 extension ModelsR4.ValueSetComposeIncludeConceptDesignation {
@@ -16398,7 +15760,6 @@ extension ModelsR4.ValueSetComposeIncludeConceptDesignation {
     }
 }
 
-
 // MARK: - ValueSetComposeIncludeFilter
 extension ModelsR4.ValueSetComposeIncludeFilter {
 
@@ -16419,7 +15780,6 @@ extension ModelsR4.ValueSetComposeIncludeFilter {
     }
 }
 
-
 // MARK: - ValueSetExpansion
 extension ModelsR4.ValueSetExpansion {
 
@@ -16432,8 +15792,8 @@ extension ModelsR4.ValueSetExpansion {
         resource.timestamp = self.timestamp
         resource.total = self.total
         resource.offset = self.offset
-        resource.parameter = self.parameter?.compactMap { $0.copy() as? ValueSetExpansionParameter } 
-        resource.contains = self.contains?.compactMap { $0.copy() as? ValueSetExpansionContains } 
+        resource.parameter = self.parameter?.compactMap { $0.copy() as? ValueSetExpansionParameter }
+        resource.contains = self.contains?.compactMap { $0.copy() as? ValueSetExpansionContains }
 
         return resource
     }
@@ -16442,7 +15802,6 @@ extension ModelsR4.ValueSetExpansion {
         return self.copied()
     }
 }
-
 
 // MARK: - ValueSetExpansionContains
 extension ModelsR4.ValueSetExpansionContains {
@@ -16458,8 +15817,8 @@ extension ModelsR4.ValueSetExpansionContains {
         resource.version = self.version
         resource.code = self.code
         resource.display = self.display
-        resource.designation = self.designation?.compactMap { $0.copy() as? ValueSetComposeIncludeConceptDesignation } 
-        resource.contains = self.contains?.compactMap { $0.copy() as? ValueSetExpansionContains } 
+        resource.designation = self.designation?.compactMap { $0.copy() as? ValueSetComposeIncludeConceptDesignation }
+        resource.contains = self.contains?.compactMap { $0.copy() as? ValueSetExpansionContains }
 
         return resource
     }
@@ -16468,7 +15827,6 @@ extension ModelsR4.ValueSetExpansionContains {
         return self.copied()
     }
 }
-
 
 // MARK: - ValueSetExpansionParameter
 extension ModelsR4.ValueSetExpansionParameter {
@@ -16489,7 +15847,6 @@ extension ModelsR4.ValueSetExpansionParameter {
     }
 }
 
-
 // MARK: - VerificationResult
 extension ModelsR4.VerificationResult {
 
@@ -16498,20 +15855,20 @@ extension ModelsR4.VerificationResult {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.VerificationResult else {
             return self
         }
-        resource.target = self.target?.compactMap { $0.copy() as? Reference } 
+        resource.target = self.target?.compactMap { $0.copy() as? Reference }
         resource.targetLocation = self.targetLocation
         resource.need = self.need?.copy() as? CodeableConcept
         resource.status = self.status
         resource.statusDate = self.statusDate
         resource.validationType = self.validationType?.copy() as? CodeableConcept
-        resource.validationProcess = self.validationProcess?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.validationProcess = self.validationProcess?.compactMap { $0.copy() as? CodeableConcept }
         resource.frequency = self.frequency?.copy() as? Timing
         resource.lastPerformed = self.lastPerformed
         resource.nextScheduled = self.nextScheduled
         resource.failureAction = self.failureAction?.copy() as? CodeableConcept
-        resource.primarySource = self.primarySource?.compactMap { $0.copy() as? VerificationResultPrimarySource } 
+        resource.primarySource = self.primarySource?.compactMap { $0.copy() as? VerificationResultPrimarySource }
         resource.attestation = self.attestation?.copy() as? VerificationResultAttestation
-        resource.validator = self.validator?.compactMap { $0.copy() as? VerificationResultValidator } 
+        resource.validator = self.validator?.compactMap { $0.copy() as? VerificationResultValidator }
 
         return resource
     }
@@ -16520,7 +15877,6 @@ extension ModelsR4.VerificationResult {
         return self.copied()
     }
 }
-
 
 // MARK: - VerificationResultAttestation
 extension ModelsR4.VerificationResultAttestation {
@@ -16547,7 +15903,6 @@ extension ModelsR4.VerificationResultAttestation {
     }
 }
 
-
 // MARK: - VerificationResultPrimarySource
 extension ModelsR4.VerificationResultPrimarySource {
 
@@ -16557,12 +15912,12 @@ extension ModelsR4.VerificationResultPrimarySource {
             return self
         }
         resource.who = self.who?.copy() as? Reference
-        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept } 
-        resource.communicationMethod = self.communicationMethod?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.type = self.type?.compactMap { $0.copy() as? CodeableConcept }
+        resource.communicationMethod = self.communicationMethod?.compactMap { $0.copy() as? CodeableConcept }
         resource.validationStatus = self.validationStatus?.copy() as? CodeableConcept
         resource.validationDate = self.validationDate
         resource.canPushUpdates = self.canPushUpdates?.copy() as? CodeableConcept
-        resource.pushTypeAvailable = self.pushTypeAvailable?.compactMap { $0.copy() as? CodeableConcept } 
+        resource.pushTypeAvailable = self.pushTypeAvailable?.compactMap { $0.copy() as? CodeableConcept }
 
         return resource
     }
@@ -16571,7 +15926,6 @@ extension ModelsR4.VerificationResultPrimarySource {
         return self.copied()
     }
 }
-
 
 // MARK: - VerificationResultValidator
 extension ModelsR4.VerificationResultValidator {
@@ -16593,7 +15947,6 @@ extension ModelsR4.VerificationResultValidator {
     }
 }
 
-
 // MARK: - VisionPrescription
 extension ModelsR4.VisionPrescription {
 
@@ -16602,14 +15955,14 @@ extension ModelsR4.VisionPrescription {
         guard let resource = super.copied(on: resourceToCopy) as? ModelsR4.VisionPrescription else {
             return self
         }
-        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier } 
+        resource.identifier = self.identifier?.compactMap { $0.copy() as? Identifier }
         resource.status = self.status
         resource.created = self.created
         resource.patient = self.patient.copy() as! Reference
         resource.encounter = self.encounter?.copy() as? Reference
         resource.dateWritten = self.dateWritten
         resource.prescriber = self.prescriber.copy() as! Reference
-        resource.lensSpecification = self.lensSpecification.compactMap { $0.copy() as? VisionPrescriptionLensSpecification } 
+        resource.lensSpecification = self.lensSpecification.compactMap { $0.copy() as? VisionPrescriptionLensSpecification }
 
         return resource
     }
@@ -16618,7 +15971,6 @@ extension ModelsR4.VisionPrescription {
         return self.copied()
     }
 }
-
 
 // MARK: - VisionPrescriptionLensSpecification
 extension ModelsR4.VisionPrescriptionLensSpecification {
@@ -16633,7 +15985,7 @@ extension ModelsR4.VisionPrescriptionLensSpecification {
         resource.sphere = self.sphere
         resource.cylinder = self.cylinder
         resource.axis = self.axis
-        resource.prism = self.prism?.compactMap { $0.copy() as? VisionPrescriptionLensSpecificationPrism } 
+        resource.prism = self.prism?.compactMap { $0.copy() as? VisionPrescriptionLensSpecificationPrism }
         resource.add = self.add
         resource.power = self.power
         resource.backCurve = self.backCurve
@@ -16641,7 +15993,7 @@ extension ModelsR4.VisionPrescriptionLensSpecification {
         resource.duration = self.duration?.copy() as? Quantity
         resource.color = self.color
         resource.brand = self.brand
-        resource.note = self.note?.compactMap { $0.copy() as? Annotation } 
+        resource.note = self.note?.compactMap { $0.copy() as? Annotation }
 
         return resource
     }
@@ -16650,7 +16002,6 @@ extension ModelsR4.VisionPrescriptionLensSpecification {
         return self.copied()
     }
 }
-
 
 // MARK: - VisionPrescriptionLensSpecificationPrism
 extension ModelsR4.VisionPrescriptionLensSpecificationPrism {
@@ -16670,4 +16021,3 @@ extension ModelsR4.VisionPrescriptionLensSpecificationPrism {
         return self.copied()
     }
 }
-

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A measured or measurable amount.
  
@@ -26,28 +24,28 @@
  not precisely quantified, including amounts involving arbitrary units and floating currencies.
  */
 open class Quantity: Element {
-	
+
 	/// Numerical value (with implicit precision)
 	public var value: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// How the value should be understood and represented - whether the actual value is greater or less than the stated
 	/// value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
 	public var comparator: FHIRPrimitive<QuantityComparator>?
-	
+
 	/// Unit representation
 	public var unit: FHIRPrimitive<FHIRString>?
-	
+
 	/// System that defines coded unit form
 	public var system: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Coded form of the unit
 	public var code: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: FHIRPrimitive<FHIRString>? = nil,
@@ -56,8 +54,7 @@ open class Quantity: Element {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							system: FHIRPrimitive<FHIRURI>? = nil,
 							unit: FHIRPrimitive<FHIRString>? = nil,
-							value: FHIRPrimitive<FHIRDecimal>? = nil)
-	{
+							value: FHIRPrimitive<FHIRDecimal>? = nil) {
 		self.init()
 		self.code = code
 		self.comparator = comparator
@@ -67,9 +64,9 @@ open class Quantity: Element {
 		self.unit = unit
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code; case _code
 		case comparator; case _comparator
@@ -77,11 +74,11 @@ open class Quantity: Element {
 		case unit; case _unit
 		case value; case _value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .code, auxiliaryKey: ._code)
 		self.comparator = try FHIRPrimitive<QuantityComparator>(from: _container, forKeyIfPresent: .comparator, auxiliaryKey: ._comparator)
@@ -90,11 +87,11 @@ open class Quantity: Element {
 		self.value = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .value, auxiliaryKey: ._value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code?.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
 		try comparator?.encode(on: &_container, forKey: .comparator, auxiliaryKey: ._comparator)
@@ -103,9 +100,9 @@ open class Quantity: Element {
 		try value?.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Quantity else {
 			return false
@@ -119,7 +116,7 @@ open class Quantity: Element {
 		    && unit == _other.unit
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)

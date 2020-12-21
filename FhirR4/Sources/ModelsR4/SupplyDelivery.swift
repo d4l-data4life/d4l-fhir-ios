@@ -17,63 +17,61 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Delivery of bulk Supplies.
  
  Record of delivery of what is supplied.
  */
 open class SupplyDelivery: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .supplyDelivery }
-	
+
 	/// All possible types for "occurrence[x]"
 	public enum OccurrenceX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
 		case period(Period)
 		case timing(Timing)
 	}
-	
+
 	/// External identifier
 	public var identifier: [Identifier]?
-	
+
 	/// Fulfills plan, proposal or order
 	public var basedOn: [Reference]?
-	
+
 	/// Part of referenced event
 	public var partOf: [Reference]?
-	
+
 	/// A code specifying the state of the dispense event.
 	public var status: FHIRPrimitive<SupplyDeliveryStatus>?
-	
+
 	/// Patient for whom the item is supplied
 	public var patient: Reference?
-	
+
 	/// Category of dispense event
 	public var type: CodeableConcept?
-	
+
 	/// The item that is delivered or supplied
 	public var suppliedItem: SupplyDeliverySuppliedItem?
-	
+
 	/// When event occurred
 	/// One of `occurrence[x]`
 	public var occurrence: OccurrenceX?
-	
+
 	/// Dispenser
 	public var supplier: Reference?
-	
+
 	/// Where the Supply was sent
 	public var destination: Reference?
-	
+
 	/// Who collected the Supply
 	public var receiver: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							basedOn: [Reference]? = nil,
@@ -94,8 +92,7 @@ open class SupplyDelivery: DomainResource {
 							suppliedItem: SupplyDeliverySuppliedItem? = nil,
 							supplier: Reference? = nil,
 							text: Narrative? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.basedOn = basedOn
 		self.contained = contained
@@ -117,9 +114,9 @@ open class SupplyDelivery: DomainResource {
 		self.text = text
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case basedOn
 		case destination
@@ -135,16 +132,16 @@ open class SupplyDelivery: DomainResource {
 		case supplier
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.basedOn = try [Reference](from: _container, forKeyIfPresent: .basedOn)
 		self.destination = try Reference(from: _container, forKeyIfPresent: .destination)
 		self.identifier = try [Identifier](from: _container, forKeyIfPresent: .identifier)
-		var _t_occurrence: OccurrenceX? = nil
+		var _t_occurrence: OccurrenceX?
 		if let occurrenceDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .occurrenceDateTime, auxiliaryKey: ._occurrenceDateTime) {
 			if _t_occurrence != nil {
 				throw DecodingError.dataCorruptedError(forKey: .occurrenceDateTime, in: _container, debugDescription: "More than one value provided for \"occurrence\"")
@@ -173,11 +170,11 @@ open class SupplyDelivery: DomainResource {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try basedOn?.encode(on: &_container, forKey: .basedOn)
 		try destination?.encode(on: &_container, forKey: .destination)
@@ -201,9 +198,9 @@ open class SupplyDelivery: DomainResource {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SupplyDelivery else {
 			return false
@@ -223,7 +220,7 @@ open class SupplyDelivery: DomainResource {
 		    && supplier == _other.supplier
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(basedOn)
@@ -246,33 +243,32 @@ open class SupplyDelivery: DomainResource {
  The item that is being delivered or has been supplied.
  */
 open class SupplyDeliverySuppliedItem: BackboneElement {
-	
+
 	/// All possible types for "item[x]"
 	public enum ItemX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Amount dispensed
 	public var quantity: Quantity?
-	
+
 	/// Medication, Substance, or Device supplied
 	/// One of `item[x]`
 	public var item: ItemX?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							item: ItemX? = nil,
 							modifierExtension: [Extension]? = nil,
-							quantity: Quantity? = nil)
-	{
+							quantity: Quantity? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.id = id
@@ -280,21 +276,21 @@ open class SupplyDeliverySuppliedItem: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.quantity = quantity
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case itemCodeableConcept
 		case itemReference
 		case quantity
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
-		var _t_item: ItemX? = nil
+		var _t_item: ItemX?
 		if let itemCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .itemCodeableConcept) {
 			if _t_item != nil {
 				throw DecodingError.dataCorruptedError(forKey: .itemCodeableConcept, in: _container, debugDescription: "More than one value provided for \"item\"")
@@ -311,11 +307,11 @@ open class SupplyDeliverySuppliedItem: BackboneElement {
 		self.quantity = try Quantity(from: _container, forKeyIfPresent: .quantity)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		if let _enum = item {
 			switch _enum {
@@ -328,9 +324,9 @@ open class SupplyDeliverySuppliedItem: BackboneElement {
 		try quantity?.encode(on: &_container, forKey: .quantity)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SupplyDeliverySuppliedItem else {
 			return false
@@ -341,7 +337,7 @@ open class SupplyDeliverySuppliedItem: BackboneElement {
 		return item == _other.item
 		    && quantity == _other.quantity
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(item)

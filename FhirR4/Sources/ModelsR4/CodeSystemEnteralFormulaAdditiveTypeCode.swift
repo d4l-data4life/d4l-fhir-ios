@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  EnteralFormulaAdditiveType: Codes for the type of modular component such as protein, carbohydrate or fiber to be
  provided in addition to or mixed with the base formula. This value set is provided as a suggestive example.
@@ -27,19 +25,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/entformula-additive
  */
 public enum EnteralFormulaAdditiveTypeCode: String, FHIRPrimitiveType {
-	
+
 	/// Modular lipid enteral formula component
 	case lipid = "lipid"
-	
+
 	/// Modular protein enteral formula component
 	case protein = "protein"
-	
+
 	/// Modular carbohydrate enteral formula component
 	case carbohydrate = "carbohydrate"
-	
+
 	/// Modular fiber enteral formula component
 	case fiber = "fiber"
-	
+
 	/// Added water
 	case water = "water"
 }

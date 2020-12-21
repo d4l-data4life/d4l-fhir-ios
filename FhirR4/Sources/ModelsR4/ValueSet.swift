@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A set of codes drawn from one or more code systems.
  
@@ -27,71 +25,71 @@
  elements](terminologies.html).
  */
 open class ValueSet: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .valueSet }
-	
+
 	/// Canonical identifier for this value set, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Additional identifier for the value set (business identifier)
 	public var identifier: [Identifier]?
-	
+
 	/// Business version of the value set
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this value set (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this value set (human friendly)
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// The status of this value set. Enables tracking the life-cycle of the content. The status of the value set
 	/// applies to the value set definition (ValueSet.compose) and the associated ValueSet metadata. Expansions do not
 	/// have a state.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// For testing purposes, not real usage
 	public var experimental: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the value set
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for value set (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Indicates whether or not any change to the content logical definition may occur
 	public var immutable: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Why this value set is defined
 	public var purpose: FHIRPrimitive<FHIRString>?
-	
+
 	/// Use and/or publishing restrictions
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// Content logical definition of the value set (CLD)
 	public var compose: ValueSetCompose?
-	
+
 	/// Used when the value set is "expanded"
 	public var expansion: ValueSetExpansion?
-	
+
 	/// Designated initializer taking all required properties
 	public init(status: FHIRPrimitive<PublicationStatus>) {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							compose: ValueSetCompose? = nil,
@@ -119,8 +117,7 @@ open class ValueSet: DomainResource {
 							title: FHIRPrimitive<FHIRString>? = nil,
 							url: FHIRPrimitive<FHIRURI>? = nil,
 							useContext: [UsageContext]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(status: status)
 		self.compose = compose
 		self.contact = contact
@@ -148,9 +145,9 @@ open class ValueSet: DomainResource {
 		self.useContext = useContext
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case compose
 		case contact
@@ -171,11 +168,11 @@ open class ValueSet: DomainResource {
 		case useContext
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.compose = try ValueSetCompose(from: _container, forKeyIfPresent: .compose)
 		self.contact = try [ContactDetail](from: _container, forKeyIfPresent: .contact)
@@ -197,11 +194,11 @@ open class ValueSet: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try compose?.encode(on: &_container, forKey: .compose)
 		try contact?.encode(on: &_container, forKey: .contact)
@@ -223,9 +220,9 @@ open class ValueSet: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ValueSet else {
 			return false
@@ -252,7 +249,7 @@ open class ValueSet: DomainResource {
 		    && useContext == _other.useContext
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(compose)
@@ -283,25 +280,25 @@ open class ValueSet: DomainResource {
  code system(s) that the value set draws from. This is also known as the Content Logical Definition (CLD).
  */
 open class ValueSetCompose: BackboneElement {
-	
+
 	/// Fixed date for references with no specified version (transitive)
 	public var lockedDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// Whether inactive codes are in the value set
 	public var inactive: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Include one or more codes from a code system or other value set(s)
 	public var include: [ValueSetComposeInclude]
-	
+
 	/// Explicitly exclude codes from a code system or other value sets
 	public var exclude: [ValueSetComposeInclude]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(include: [ValueSetComposeInclude]) {
 		self.include = include
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							exclude: [ValueSetComposeInclude]? = nil,
@@ -310,8 +307,7 @@ open class ValueSetCompose: BackboneElement {
 							inactive: FHIRPrimitive<FHIRBool>? = nil,
 							include: [ValueSetComposeInclude],
 							lockedDate: FHIRPrimitive<FHIRDate>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(include: include)
 		self.exclude = exclude
 		self.`extension` = `extension`
@@ -320,20 +316,20 @@ open class ValueSetCompose: BackboneElement {
 		self.lockedDate = lockedDate
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case exclude
 		case inactive; case _inactive
 		case include
 		case lockedDate; case _lockedDate
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.exclude = try [ValueSetComposeInclude](from: _container, forKeyIfPresent: .exclude)
 		self.inactive = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .inactive, auxiliaryKey: ._inactive)
@@ -341,11 +337,11 @@ open class ValueSetCompose: BackboneElement {
 		self.lockedDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .lockedDate, auxiliaryKey: ._lockedDate)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try exclude?.encode(on: &_container, forKey: .exclude)
 		try inactive?.encode(on: &_container, forKey: .inactive, auxiliaryKey: ._inactive)
@@ -353,9 +349,9 @@ open class ValueSetCompose: BackboneElement {
 		try lockedDate?.encode(on: &_container, forKey: .lockedDate, auxiliaryKey: ._lockedDate)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ValueSetCompose else {
 			return false
@@ -368,7 +364,7 @@ open class ValueSetCompose: BackboneElement {
 		    && include == _other.include
 		    && lockedDate == _other.lockedDate
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(exclude)
@@ -382,27 +378,27 @@ open class ValueSetCompose: BackboneElement {
  Include one or more codes from a code system or other value set(s).
  */
 open class ValueSetComposeInclude: BackboneElement {
-	
+
 	/// The system the codes come from
 	public var system: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Specific version of the code system referred to
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// A concept defined in the system
 	public var concept: [ValueSetComposeIncludeConcept]?
-	
+
 	/// Select codes/concepts by their properties (including relationships)
 	public var filter: [ValueSetComposeIncludeFilter]?
-	
+
 	/// Select the contents included in this value set
 	public var valueSet: [FHIRPrimitive<Canonical>]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							concept: [ValueSetComposeIncludeConcept]? = nil,
@@ -412,8 +408,7 @@ open class ValueSetComposeInclude: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							system: FHIRPrimitive<FHIRURI>? = nil,
 							valueSet: [FHIRPrimitive<Canonical>]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init()
 		self.concept = concept
 		self.`extension` = `extension`
@@ -424,9 +419,9 @@ open class ValueSetComposeInclude: BackboneElement {
 		self.valueSet = valueSet
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case concept
 		case filter
@@ -434,11 +429,11 @@ open class ValueSetComposeInclude: BackboneElement {
 		case valueSet; case _valueSet
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.concept = try [ValueSetComposeIncludeConcept](from: _container, forKeyIfPresent: .concept)
 		self.filter = try [ValueSetComposeIncludeFilter](from: _container, forKeyIfPresent: .filter)
@@ -447,11 +442,11 @@ open class ValueSetComposeInclude: BackboneElement {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try concept?.encode(on: &_container, forKey: .concept)
 		try filter?.encode(on: &_container, forKey: .filter)
@@ -460,9 +455,9 @@ open class ValueSetComposeInclude: BackboneElement {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ValueSetComposeInclude else {
 			return false
@@ -476,7 +471,7 @@ open class ValueSetComposeInclude: BackboneElement {
 		    && valueSet == _other.valueSet
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(concept)
@@ -493,22 +488,22 @@ open class ValueSetComposeInclude: BackboneElement {
  Specifies a concept to be included or excluded.
  */
 open class ValueSetComposeIncludeConcept: BackboneElement {
-	
+
 	/// Code or expression from system
 	public var code: FHIRPrimitive<FHIRString>
-	
+
 	/// Text to display for this code for this value set in this valueset
 	public var display: FHIRPrimitive<FHIRString>?
-	
+
 	/// Additional representations for this concept
 	public var designation: [ValueSetComposeIncludeConceptDesignation]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: FHIRPrimitive<FHIRString>) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: FHIRPrimitive<FHIRString>,
@@ -516,8 +511,7 @@ open class ValueSetComposeIncludeConcept: BackboneElement {
 							display: FHIRPrimitive<FHIRString>? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(code: code)
 		self.designation = designation
 		self.display = display
@@ -525,39 +519,39 @@ open class ValueSetComposeIncludeConcept: BackboneElement {
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code; case _code
 		case designation
 		case display; case _display
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try FHIRPrimitive<FHIRString>(from: _container, forKey: .code, auxiliaryKey: ._code)
 		self.designation = try [ValueSetComposeIncludeConceptDesignation](from: _container, forKeyIfPresent: .designation)
 		self.display = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .display, auxiliaryKey: ._display)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
 		try designation?.encode(on: &_container, forKey: .designation)
 		try display?.encode(on: &_container, forKey: .display, auxiliaryKey: ._display)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ValueSetComposeIncludeConcept else {
 			return false
@@ -569,7 +563,7 @@ open class ValueSetComposeIncludeConcept: BackboneElement {
 		    && designation == _other.designation
 		    && display == _other.display
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -585,22 +579,22 @@ open class ValueSetComposeIncludeConcept: BackboneElement {
  purposes, used for particular purposes, etc.
  */
 open class ValueSetComposeIncludeConceptDesignation: BackboneElement {
-	
+
 	/// Human language of the designation
 	public var language: FHIRPrimitive<FHIRString>?
-	
+
 	/// Types of uses of designations
 	public var use: Coding?
-	
+
 	/// The text value for this designation
 	public var value: FHIRPrimitive<FHIRString>
-	
+
 	/// Designated initializer taking all required properties
 	public init(value: FHIRPrimitive<FHIRString>) {
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -608,8 +602,7 @@ open class ValueSetComposeIncludeConceptDesignation: BackboneElement {
 							language: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							use: Coding? = nil,
-							value: FHIRPrimitive<FHIRString>)
-	{
+							value: FHIRPrimitive<FHIRString>) {
 		self.init(value: value)
 		self.`extension` = `extension`
 		self.id = id
@@ -617,39 +610,39 @@ open class ValueSetComposeIncludeConceptDesignation: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.use = use
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case language; case _language
 		case use
 		case value; case _value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.language = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .language, auxiliaryKey: ._language)
 		self.use = try Coding(from: _container, forKeyIfPresent: .use)
 		self.value = try FHIRPrimitive<FHIRString>(from: _container, forKey: .value, auxiliaryKey: ._value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try language?.encode(on: &_container, forKey: .language, auxiliaryKey: ._language)
 		try use?.encode(on: &_container, forKey: .use)
 		try value.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ValueSetComposeIncludeConceptDesignation else {
 			return false
@@ -661,7 +654,7 @@ open class ValueSetComposeIncludeConceptDesignation: BackboneElement {
 		    && use == _other.use
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(language)
@@ -677,16 +670,16 @@ open class ValueSetComposeIncludeConceptDesignation: BackboneElement {
  system, or on filters defined by the system. If multiple filters are specified, they SHALL all be true.
  */
 open class ValueSetComposeIncludeFilter: BackboneElement {
-	
+
 	/// A property/filter defined by the code system
 	public var property: FHIRPrimitive<FHIRString>
-	
+
 	/// The kind of operation to perform as a part of the filter criteria.
 	public var op: FHIRPrimitive<FilterOperator>
-	
+
 	/// Code from the system, or regex criteria, or boolean value for exists
 	public var value: FHIRPrimitive<FHIRString>
-	
+
 	/// Designated initializer taking all required properties
 	public init(op: FHIRPrimitive<FilterOperator>, property: FHIRPrimitive<FHIRString>, value: FHIRPrimitive<FHIRString>) {
 		self.op = op
@@ -694,7 +687,7 @@ open class ValueSetComposeIncludeFilter: BackboneElement {
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -702,46 +695,45 @@ open class ValueSetComposeIncludeFilter: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							op: FHIRPrimitive<FilterOperator>,
 							property: FHIRPrimitive<FHIRString>,
-							value: FHIRPrimitive<FHIRString>)
-	{
+							value: FHIRPrimitive<FHIRString>) {
 		self.init(op: op, property: property, value: value)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case op; case _op
 		case property; case _property
 		case value; case _value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.op = try FHIRPrimitive<FilterOperator>(from: _container, forKey: .op, auxiliaryKey: ._op)
 		self.property = try FHIRPrimitive<FHIRString>(from: _container, forKey: .property, auxiliaryKey: ._property)
 		self.value = try FHIRPrimitive<FHIRString>(from: _container, forKey: .value, auxiliaryKey: ._value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try op.encode(on: &_container, forKey: .op, auxiliaryKey: ._op)
 		try property.encode(on: &_container, forKey: .property, auxiliaryKey: ._property)
 		try value.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ValueSetComposeIncludeFilter else {
 			return false
@@ -753,7 +745,7 @@ open class ValueSetComposeIncludeFilter: BackboneElement {
 		    && property == _other.property
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(op)
@@ -769,31 +761,31 @@ open class ValueSetComposeIncludeFilter: BackboneElement {
  element holds the expansion, if it has been performed.
  */
 open class ValueSetExpansion: BackboneElement {
-	
+
 	/// Identifies the value set expansion (business identifier)
 	public var identifier: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Time ValueSet expansion happened
 	public var timestamp: FHIRPrimitive<DateTime>
-	
+
 	/// Total number of codes in the expansion
 	public var total: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Offset at which this resource starts
 	public var offset: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Parameter that controlled the expansion process
 	public var parameter: [ValueSetExpansionParameter]?
-	
+
 	/// Codes in the value set
 	public var contains: [ValueSetExpansionContains]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(timestamp: FHIRPrimitive<DateTime>) {
 		self.timestamp = timestamp
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contains: [ValueSetExpansionContains]? = nil,
@@ -804,8 +796,7 @@ open class ValueSetExpansion: BackboneElement {
 							offset: FHIRPrimitive<FHIRInteger>? = nil,
 							parameter: [ValueSetExpansionParameter]? = nil,
 							timestamp: FHIRPrimitive<DateTime>,
-							total: FHIRPrimitive<FHIRInteger>? = nil)
-	{
+							total: FHIRPrimitive<FHIRInteger>? = nil) {
 		self.init(timestamp: timestamp)
 		self.contains = contains
 		self.`extension` = `extension`
@@ -816,9 +807,9 @@ open class ValueSetExpansion: BackboneElement {
 		self.parameter = parameter
 		self.total = total
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case contains
 		case identifier; case _identifier
@@ -827,11 +818,11 @@ open class ValueSetExpansion: BackboneElement {
 		case timestamp; case _timestamp
 		case total; case _total
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.contains = try [ValueSetExpansionContains](from: _container, forKeyIfPresent: .contains)
 		self.identifier = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .identifier, auxiliaryKey: ._identifier)
@@ -841,11 +832,11 @@ open class ValueSetExpansion: BackboneElement {
 		self.total = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .total, auxiliaryKey: ._total)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try contains?.encode(on: &_container, forKey: .contains)
 		try identifier?.encode(on: &_container, forKey: .identifier, auxiliaryKey: ._identifier)
@@ -855,9 +846,9 @@ open class ValueSetExpansion: BackboneElement {
 		try total?.encode(on: &_container, forKey: .total, auxiliaryKey: ._total)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ValueSetExpansion else {
 			return false
@@ -872,7 +863,7 @@ open class ValueSetExpansion: BackboneElement {
 		    && timestamp == _other.timestamp
 		    && total == _other.total
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(contains)
@@ -890,36 +881,36 @@ open class ValueSetExpansion: BackboneElement {
  The codes that are contained in the value set expansion.
  */
 open class ValueSetExpansionContains: BackboneElement {
-	
+
 	/// System value for the code
 	public var system: FHIRPrimitive<FHIRURI>?
-	
+
 	/// If user cannot select this entry
 	public var abstract: FHIRPrimitive<FHIRBool>?
-	
+
 	/// If concept is inactive in the code system
 	public var inactive: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Version in which this code/display is defined
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Code - if blank, this is not a selectable code
 	public var code: FHIRPrimitive<FHIRString>?
-	
+
 	/// User display for the concept
 	public var display: FHIRPrimitive<FHIRString>?
-	
+
 	/// Additional representations for this item
 	public var designation: [ValueSetComposeIncludeConceptDesignation]?
-	
+
 	/// Codes contained under this entry
 	public var contains: [ValueSetExpansionContains]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							abstract: FHIRPrimitive<FHIRBool>? = nil,
@@ -932,8 +923,7 @@ open class ValueSetExpansionContains: BackboneElement {
 							inactive: FHIRPrimitive<FHIRBool>? = nil,
 							modifierExtension: [Extension]? = nil,
 							system: FHIRPrimitive<FHIRURI>? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init()
 		self.abstract = abstract
 		self.code = code
@@ -947,9 +937,9 @@ open class ValueSetExpansionContains: BackboneElement {
 		self.system = system
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case abstract; case _abstract
 		case code; case _code
@@ -960,11 +950,11 @@ open class ValueSetExpansionContains: BackboneElement {
 		case system; case _system
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.abstract = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .abstract, auxiliaryKey: ._abstract)
 		self.code = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .code, auxiliaryKey: ._code)
@@ -976,11 +966,11 @@ open class ValueSetExpansionContains: BackboneElement {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try abstract?.encode(on: &_container, forKey: .abstract, auxiliaryKey: ._abstract)
 		try code?.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
@@ -992,9 +982,9 @@ open class ValueSetExpansionContains: BackboneElement {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ValueSetExpansionContains else {
 			return false
@@ -1011,7 +1001,7 @@ open class ValueSetExpansionContains: BackboneElement {
 		    && system == _other.system
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(abstract)
@@ -1032,7 +1022,7 @@ open class ValueSetExpansionContains: BackboneElement {
  check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
  */
 open class ValueSetExpansionParameter: BackboneElement {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case boolean(FHIRPrimitive<FHIRBool>)
@@ -1043,37 +1033,36 @@ open class ValueSetExpansionParameter: BackboneElement {
 		case string(FHIRPrimitive<FHIRString>)
 		case uri(FHIRPrimitive<FHIRURI>)
 	}
-	
+
 	/// Name as assigned by the client or server
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// Value of the named parameter
 	/// One of `value[x]`
 	public var value: ValueX?
-	
+
 	/// Designated initializer taking all required properties
 	public init(name: FHIRPrimitive<FHIRString>) {
 		self.name = name
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							name: FHIRPrimitive<FHIRString>,
-							value: ValueX? = nil)
-	{
+							value: ValueX? = nil) {
 		self.init(name: name)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case name; case _name
 		case valueBoolean; case _valueBoolean
@@ -1084,14 +1073,14 @@ open class ValueSetExpansionParameter: BackboneElement {
 		case valueString; case _valueString
 		case valueUri; case _valueUri
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.name = try FHIRPrimitive<FHIRString>(from: _container, forKey: .name, auxiliaryKey: ._name)
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueString = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .valueString, auxiliaryKey: ._valueString) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueString, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -1137,11 +1126,11 @@ open class ValueSetExpansionParameter: BackboneElement {
 		self.value = _t_value
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try name.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
 		if let _enum = value {
@@ -1164,9 +1153,9 @@ open class ValueSetExpansionParameter: BackboneElement {
 		}
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ValueSetExpansionParameter else {
 			return false
@@ -1177,7 +1166,7 @@ open class ValueSetExpansionParameter: BackboneElement {
 		return name == _other.name
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(name)

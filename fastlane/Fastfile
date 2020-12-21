@@ -31,30 +31,27 @@ platform :ios do
       )
   end
 
-  desc "Generate FHIR models"
-  desc "#### Options"
-  desc " * **`embed`** (optional): Should embed newly generated models into Xcode project? defaults to true"
+  desc "Generate All FHIR code"
   lane :generate_all do | options |
-      embed = options[:embed] ||= true
-      fhir_stu3 xcode:embed
+      fhir_stu3 xcode:true
       fhir_r4_helpers
       fhir_r4_tests
       lint
   end
 
+  desc "Generate FHIR STU3 models"
   lane :generate_stu3_models do | options |
       fhir_stu3 xcode:true
-      lint
   end
 
+  desc "Generate FHIR R4 Extesnions"
   lane :generate_r4_helpers do | options |
       fhir_r4_helpers
-      lint
   end
 
+  desc "Generate FHIR R4 tests"
   lane :generate_r4_tests do | options |
       fhir_r4_tests
-      lint
   end
 
   desc "Package and release framework"

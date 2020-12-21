@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Preferred value set for AllergyIntolerance Clinical Status.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/allergyintolerance-clinical
  */
 public enum AllergyIntoleranceClinicalStatusCodes: String, FHIRPrimitiveType {
-	
+
 	/// The subject is currently experiencing, or is at risk of, a reaction to the identified substance.
 	case active = "active"
-	
+
 	/// The subject is no longer at risk of a reaction to the identified substance.
 	case inactive = "inactive"
-	
+
 	/// A reaction to the identified substance has been clinically reassessed by testing or re-exposure and is
 	/// considered no longer to be present. Re-exposure could be accidental, unplanned, or outside of any clinical
 	/// setting.

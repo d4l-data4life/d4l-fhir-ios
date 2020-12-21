@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Attested information may be validated by process that are manual or automated. For automated processes it may
  accomplished by the system of record reaching out through another system's API or information may be sent to the system
@@ -29,16 +27,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-communication-method
  */
 public enum VerificationresultCommunicationMethod: String, FHIRPrimitiveType {
-	
+
 	/// The information is submitted/retrieved manually (e.g. by phone, fax, paper-based)
 	case manual = "manual"
-	
+
 	/// The information is submitted/retrieved via a portal
 	case portal = "portal"
-	
+
 	/// The information is retrieved (i.e. pulled) from a source (e.g. over an API)
 	case pull = "pull"
-	
+
 	/// The information is sent (i.e. pushed) from a source (e.g. over an API, asynchronously, secure messaging)
 	case push = "push"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Contract Type codes.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/contract-type
  */
 public enum ContractTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// Privacy policy.
 	case privacy = "privacy"
-	
+
 	/// Information disclosure policy.
 	case disclosure = "disclosure"
-	
+
 	/// Health Insurance policy.
 	case healthinsurance = "healthinsurance"
-	
+
 	/// Contract to supply goods or services.
 	case supply = "supply"
-	
+
 	/// Consent Directive.
 	case consent = "consent"
 }

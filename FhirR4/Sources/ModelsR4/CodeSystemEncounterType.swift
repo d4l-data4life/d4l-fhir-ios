@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This example value set defines a set of codes that can be used to indicate the type of encounter: a specific code
  indicating type of service provided.
@@ -27,16 +25,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/encounter-type
  */
 public enum EncounterType: String, FHIRPrimitiveType {
-	
+
 	/// ADMS
 	case ADMS = "ADMS"
-	
+
 	/// bDBMClin
 	case bDBMClin = "BD/BM-clin"
-	
+
 	/// CCS60
 	case CCS60 = "CCS60"
-	
+
 	/// OKI
 	case OKI = "OKI"
 }

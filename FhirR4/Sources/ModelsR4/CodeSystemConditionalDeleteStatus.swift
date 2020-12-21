@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A code that indicates how the server supports conditional delete.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/conditional-delete-status
  */
 public enum ConditionalDeleteStatus: String, FHIRPrimitiveType {
-	
+
 	/// No support for conditional deletes.
 	case notSupported = "not-supported"
-	
+
 	/// Conditional deletes are supported, but only single resources at a time.
 	case single = "single"
-	
+
 	/// Conditional deletes are supported, and multiple resources can be deleted in a single interaction.
 	case multiple = "multiple"
 }

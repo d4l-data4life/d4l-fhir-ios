@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Controls how multiple enableWhen values are interpreted -  whether all or any must be true.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-enable-behavior
  */
 public enum EnableWhenBehavior: String, FHIRPrimitiveType {
-	
+
 	/// Enable the question when all the enableWhen criteria are satisfied.
 	case all = "all"
-	
+
 	/// Enable the question when any of the enableWhen criteria are satisfied.
 	case any = "any"
 }

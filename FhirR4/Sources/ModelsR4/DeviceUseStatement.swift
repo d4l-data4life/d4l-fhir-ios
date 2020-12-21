@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Record of use of a device.
  
@@ -26,57 +24,57 @@
  clinician.
  */
 open class DeviceUseStatement: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .deviceUseStatement }
-	
+
 	/// All possible types for "timing[x]"
 	public enum TimingX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
 		case period(Period)
 		case timing(Timing)
 	}
-	
+
 	/// External identifier for this record
 	public var identifier: [Identifier]?
-	
+
 	/// Fulfills plan, proposal or order
 	public var basedOn: [Reference]?
-	
+
 	/// A code representing the patient or other source's judgment about the state of the device used that this
 	/// statement is about.  Generally this will be active or completed.
 	public var status: FHIRPrimitive<DeviceUseStatementStatus>
-	
+
 	/// Patient using device
 	public var subject: Reference
-	
+
 	/// Supporting information
 	public var derivedFrom: [Reference]?
-	
+
 	/// How often  the device was used
 	/// One of `timing[x]`
 	public var timing: TimingX?
-	
+
 	/// When statement was recorded
 	public var recordedOn: FHIRPrimitive<DateTime>?
-	
+
 	/// Who made the statement
 	public var source: Reference?
-	
+
 	/// Reference to device used
 	public var device: Reference
-	
+
 	/// Why device was used
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// Why was DeviceUseStatement performed?
 	public var reasonReference: [Reference]?
-	
+
 	/// Target body site
 	public var bodySite: CodeableConcept?
-	
+
 	/// Addition details (comments, instructions)
 	public var note: [Annotation]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(device: Reference, status: FHIRPrimitive<DeviceUseStatementStatus>, subject: Reference) {
 		self.device = device
@@ -84,7 +82,7 @@ open class DeviceUseStatement: DomainResource {
 		self.subject = subject
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							basedOn: [Reference]? = nil,
@@ -107,8 +105,7 @@ open class DeviceUseStatement: DomainResource {
 							status: FHIRPrimitive<DeviceUseStatementStatus>,
 							subject: Reference,
 							text: Narrative? = nil,
-							timing: TimingX? = nil)
-	{
+							timing: TimingX? = nil) {
 		self.init(device: device, status: status, subject: subject)
 		self.basedOn = basedOn
 		self.bodySite = bodySite
@@ -129,9 +126,9 @@ open class DeviceUseStatement: DomainResource {
 		self.text = text
 		self.timing = timing
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case basedOn
 		case bodySite
@@ -149,11 +146,11 @@ open class DeviceUseStatement: DomainResource {
 		case timingPeriod
 		case timingTiming
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.basedOn = try [Reference](from: _container, forKeyIfPresent: .basedOn)
 		self.bodySite = try CodeableConcept(from: _container, forKeyIfPresent: .bodySite)
@@ -167,7 +164,7 @@ open class DeviceUseStatement: DomainResource {
 		self.source = try Reference(from: _container, forKeyIfPresent: .source)
 		self.status = try FHIRPrimitive<DeviceUseStatementStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
 		self.subject = try Reference(from: _container, forKey: .subject)
-		var _t_timing: TimingX? = nil
+		var _t_timing: TimingX?
 		if let timingTiming = try Timing(from: _container, forKeyIfPresent: .timingTiming) {
 			if _t_timing != nil {
 				throw DecodingError.dataCorruptedError(forKey: .timingTiming, in: _container, debugDescription: "More than one value provided for \"timing\"")
@@ -189,11 +186,11 @@ open class DeviceUseStatement: DomainResource {
 		self.timing = _t_timing
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try basedOn?.encode(on: &_container, forKey: .basedOn)
 		try bodySite?.encode(on: &_container, forKey: .bodySite)
@@ -219,9 +216,9 @@ open class DeviceUseStatement: DomainResource {
 		}
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DeviceUseStatement else {
 			return false
@@ -243,7 +240,7 @@ open class DeviceUseStatement: DomainResource {
 		    && subject == _other.subject
 		    && timing == _other.timing
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(basedOn)

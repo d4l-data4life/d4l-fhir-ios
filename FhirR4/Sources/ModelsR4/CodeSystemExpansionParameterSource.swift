@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Declares what the source of a parameter is.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/expansion-parameter-source
  */
 public enum ExpansionParameterSource: String, FHIRPrimitiveType {
-	
+
 	/// The parameter was supplied by the client in the $expand request.
 	case input = "input"
-	
+
 	/// The parameter was added by the expansion engine on the server.
 	case server = "server"
-	
+
 	/// The parameter was added from one the code systems used in the $expand operation.
 	case codesystem = "codesystem"
 }

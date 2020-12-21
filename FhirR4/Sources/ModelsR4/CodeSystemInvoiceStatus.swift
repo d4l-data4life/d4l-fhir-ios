@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes identifying the lifecycle stage of an Invoice.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/invoice-status
  */
 public enum InvoiceStatus: String, FHIRPrimitiveType {
-	
+
 	/// the invoice has been prepared but not yet finalized.
 	case draft = "draft"
-	
+
 	/// the invoice has been finalized and sent to the recipient.
 	case issued = "issued"
-	
+
 	/// the invoice has been balaced / completely paid.
 	case balanced = "balanced"
-	
+
 	/// the invoice was cancelled.
 	case cancelled = "cancelled"
-	
+
 	/// the invoice was determined as entered in error before it was issued.
 	case enteredInError = "entered-in-error"
 }

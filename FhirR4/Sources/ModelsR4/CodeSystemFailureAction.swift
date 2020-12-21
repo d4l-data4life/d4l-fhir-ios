@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The result if validation fails
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-failure-action
  */
 public enum FailureAction: String, FHIRPrimitiveType {
-	
+
 	/// fatal
 	case fatal = "fatal"
-	
+
 	/// warn
 	case warn = "warn"
-	
+
 	/// recOnly
 	case recOnly = "rec-only"
-	
+
 	/// none
 	case none = "none"
 }

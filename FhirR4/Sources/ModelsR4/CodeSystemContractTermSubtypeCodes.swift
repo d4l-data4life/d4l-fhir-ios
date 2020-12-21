@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Contract Term SubType codes.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/contract-term-subtype
  */
 public enum ContractTermSubtypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// Terms that go to the very root of a contract.
 	case condition = "condition"
-	
+
 	/// Less imperative than a condition, so the contract will survive a breach
 	case warranty = "warranty"
-	
+
 	/// Breach of which might or might not go to the root of the contract depending upon the nature of the breach
 	case innominate = "innominate"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The presentation types of notes.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/note-type
  */
 public enum NoteType: String, FHIRPrimitiveType {
-	
+
 	/// Display the note.
 	case display = "display"
-	
+
 	/// Print the note on the form.
 	case print = "print"
-	
+
 	/// Print the note for the operator.
 	case printoper = "printoper"
 }

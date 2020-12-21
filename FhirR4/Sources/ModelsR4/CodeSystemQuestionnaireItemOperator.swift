@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The criteria by which a question is enabled.
  
@@ -26,25 +24,25 @@
  ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-enable-operator
  */
 public enum QuestionnaireItemOperator: String, FHIRPrimitiveType {
-	
+
 	/// True if whether an answer exists is equal to the enableWhen answer (which must be a boolean).
 	case exists = "exists"
-	
+
 	/// True if whether at least one answer has a value that is equal to the enableWhen answer.
 	case equal = "="
-	
+
 	/// True if whether at least no answer has a value that is equal to the enableWhen answer.
 	case notEqual = "!="
-	
+
 	/// True if whether at least no answer has a value that is greater than the enableWhen answer.
 	case greaterThan = ">"
-	
+
 	/// True if whether at least no answer has a value that is less than the enableWhen answer.
 	case lessThan = "<"
-	
+
 	/// True if whether at least no answer has a value that is greater or equal to the enableWhen answer.
 	case greaterThanOrEqual = ">="
-	
+
 	/// True if whether at least no answer has a value that is less or equal to the enableWhen answer.
 	case lessThanOrEqual = "<="
 }

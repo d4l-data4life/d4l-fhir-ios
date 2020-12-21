@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Criterion for rejection of the specimen by laboratory.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/rejection-criteria
  */
 public enum RejectionCriterion: String, FHIRPrimitiveType {
-	
+
 	/// blood specimen hemolized.
 	case hemolized = "hemolized"
-	
+
 	/// insufficient quantity of specimen.
 	case insufficient = "insufficient"
-	
+
 	/// specimen container broken.
 	case broken = "broken"
-	
+
 	/// specimen clotted.
 	case clotted = "clotted"
-	
+
 	/// specimen temperature inappropriate.
 	case wrongTemperature = "wrong-temperature"
 }

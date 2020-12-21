@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  MedicationDispense Performer Function Codes
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/medicationdispense-performer-function
  */
 public enum MedicationDispensePerformerFunctionCodes: String, FHIRPrimitiveType {
-	
+
 	/// Recorded the details of the request
 	case dataenterer = "dataenterer"
-	
+
 	/// Prepared the medication.
 	case packager = "packager"
-	
+
 	/// Performed initial quality assurance on the prepared medication
 	case checker = "checker"
-	
+
 	/// Performed the final quality assurance on the prepared medication against the request. Typically, this is a
 	/// pharmacist function.
 	case finalchecker = "finalchecker"

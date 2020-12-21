@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Contract Actor Role codes.
  
@@ -26,11 +24,11 @@
  ValueSet: http://hl7.org/fhir/ValueSet/contract-actorrole
  */
 public enum ContractActorRoleCodes: String, FHIRPrimitiveType {
-	
+
 	/// Someone who provides health care related services to people or animals including both clinical and support
 	/// services.
 	case practitioner = "practitioner"
-	
+
 	/// A receiver, human or animal, of health care related goods and services.
 	case patient = "patient"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Current state of the encounter.
  
@@ -26,31 +24,31 @@
  ValueSet: http://hl7.org/fhir/ValueSet/encounter-status
  */
 public enum EncounterStatus: String, FHIRPrimitiveType {
-	
+
 	/// The Encounter has not yet started.
 	case planned = "planned"
-	
+
 	/// The Patient is present for the encounter, however is not currently meeting with a practitioner.
 	case arrived = "arrived"
-	
+
 	/// The patient has been assessed for the priority of their treatment based on the severity of their condition.
 	case triaged = "triaged"
-	
+
 	/// The Encounter has begun and the patient is present / the practitioner and the patient are meeting.
 	case inProgress = "in-progress"
-	
+
 	/// The Encounter has begun, but the patient is temporarily on leave.
 	case onleave = "onleave"
-	
+
 	/// The Encounter has ended.
 	case finished = "finished"
-	
+
 	/// The Encounter has ended before it has begun.
 	case cancelled = "cancelled"
-	
+
 	/// This instance should not have been part of this patient's medical record.
 	case enteredInError = "entered-in-error"
-	
+
 	/// The encounter status is unknown. Note that "unknown" is a value of last resort and every attempt should be made
 	/// to provide a meaningful value other than "unknown".
 	case unknown = "unknown"

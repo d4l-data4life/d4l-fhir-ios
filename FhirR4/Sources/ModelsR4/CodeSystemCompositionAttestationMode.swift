@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The way in which a person authenticated a composition.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/composition-attestation-mode
  */
 public enum CompositionAttestationMode: String, FHIRPrimitiveType {
-	
+
 	/// The person authenticated the content in their personal capacity.
 	case personal = "personal"
-	
+
 	/// The person authenticated the content in their professional capacity.
 	case professional = "professional"
-	
+
 	/// The person authenticated the content and accepted legal responsibility for its content.
 	case legal = "legal"
-	
+
 	/// The organization authenticated the content as consistent with their policies and procedures.
 	case official = "official"
 }

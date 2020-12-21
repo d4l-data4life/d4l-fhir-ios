@@ -17,38 +17,36 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  An identifier intended for computation.
  
  An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
  */
 open class Identifier: Element {
-	
+
 	/// The purpose of this identifier.
 	public var use: FHIRPrimitive<IdentifierUse>?
-	
+
 	/// Description of identifier
 	public var type: CodeableConcept?
-	
+
 	/// The namespace for the identifier value
 	public var system: FHIRPrimitive<FHIRURI>?
-	
+
 	/// The value that is unique
 	public var value: FHIRPrimitive<FHIRString>?
-	
+
 	/// Time period when id is/was valid for use
 	public var period: Period?
-	
+
 	/// Organization that issued id (may be just text)
 	public var assigner: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							assigner: Reference? = nil,
@@ -58,8 +56,7 @@ open class Identifier: Element {
 							system: FHIRPrimitive<FHIRURI>? = nil,
 							type: CodeableConcept? = nil,
 							use: FHIRPrimitive<IdentifierUse>? = nil,
-							value: FHIRPrimitive<FHIRString>? = nil)
-	{
+							value: FHIRPrimitive<FHIRString>? = nil) {
 		self.init()
 		self.assigner = assigner
 		self.`extension` = `extension`
@@ -70,9 +67,9 @@ open class Identifier: Element {
 		self.use = use
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case assigner
 		case period
@@ -81,11 +78,11 @@ open class Identifier: Element {
 		case use; case _use
 		case value; case _value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.assigner = try Reference(from: _container, forKeyIfPresent: .assigner)
 		self.period = try Period(from: _container, forKeyIfPresent: .period)
@@ -95,11 +92,11 @@ open class Identifier: Element {
 		self.value = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .value, auxiliaryKey: ._value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try assigner?.encode(on: &_container, forKey: .assigner)
 		try period?.encode(on: &_container, forKey: .period)
@@ -109,9 +106,9 @@ open class Identifier: Element {
 		try value?.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Identifier else {
 			return false
@@ -126,7 +123,7 @@ open class Identifier: Element {
 		    && use == _other.use
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(assigner)

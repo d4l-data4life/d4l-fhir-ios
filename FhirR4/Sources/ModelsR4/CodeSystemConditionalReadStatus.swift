@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A code that indicates how the server supports conditional read.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/conditional-read-status
  */
 public enum ConditionalReadStatus: String, FHIRPrimitiveType {
-	
+
 	/// No support for conditional reads.
 	case notSupported = "not-supported"
-	
+
 	/// Conditional reads are supported, but only with the If-Modified-Since HTTP Header.
 	case modifiedSince = "modified-since"
-	
+
 	/// Conditional reads are supported, but only with the If-None-Match HTTP Header.
 	case notMatch = "not-match"
-	
+
 	/// Conditional reads are supported, with both If-Modified-Since and If-None-Match HTTP Headers.
 	case fullSupport = "full-support"
 }

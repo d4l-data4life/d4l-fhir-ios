@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Indicates the potential degree of impact of the identified issue on the patient.
  
@@ -26,14 +24,14 @@
  ValueSet: http://hl7.org/fhir/ValueSet/detectedissue-severity
  */
 public enum DetectedIssueSeverity: String, FHIRPrimitiveType {
-	
+
 	/// Indicates the issue may be life-threatening or has the potential to cause permanent injury.
 	case high = "high"
-	
+
 	/// Indicates the issue may result in noticeable adverse consequences but is unlikely to be life-threatening or
 	/// cause permanent injury.
 	case moderate = "moderate"
-	
+
 	/// Indicates the issue may result in some adverse consequences but is unlikely to substantially affect the
 	/// situation of the subject.
 	case low = "low"

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Type for quality report.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/quality-type
  */
 public enum QualityType: String, FHIRPrimitiveType {
-	
+
 	/// INDEL Comparison.
 	case indel = "indel"
-	
+
 	/// SNP Comparison.
 	case snp = "snp"
-	
+
 	/// UNKNOWN Comparison.
 	case unknown = "unknown"
 }

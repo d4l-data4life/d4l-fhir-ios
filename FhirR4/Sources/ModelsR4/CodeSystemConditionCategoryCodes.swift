@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Preferred value set for Condition Categories.
  
@@ -26,11 +24,11 @@
  ValueSet: http://hl7.org/fhir/ValueSet/condition-category
  */
 public enum ConditionCategoryCodes: String, FHIRPrimitiveType {
-	
+
 	/// An item on a problem list that can be managed over time and can be expressed by a practitioner (e.g. physician,
 	/// nurse), patient, or related person.
 	case problemListItem = "problem-list-item"
-	
+
 	/// A point in time diagnosis (e.g. from a physician or nurse) in context of an encounter.
 	case encounterDiagnosis = "encounter-diagnosis"
 }

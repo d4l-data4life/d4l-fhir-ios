@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How slices are interpreted when evaluating an instance.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/resource-slicing-rules
  */
 public enum SlicingRules: String, FHIRPrimitiveType {
-	
+
 	/// No additional content is allowed other than that described by the slices in this profile.
 	case closed = "closed"
-	
+
 	/// Additional content is allowed anywhere in the list.
 	case open = "open"
-	
+
 	/// Additional content is allowed, but only at the end of the list. Note that using this requires that the slices be
 	/// ordered, which makes it hard to share uses. This should only be done where absolutely required.
 	case openAtEnd = "openAtEnd"

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes the four Consent scope codes.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/consent-scope
  */
 public enum ConsentScopeCodes: String, FHIRPrimitiveType {
-	
+
 	/// Actions to be taken if they are no longer able to make decisions for themselves
 	case adr = "adr"
-	
+
 	/// Consent to participate in research protocol and information sharing required
 	case research = "research"
-	
+
 	/// Agreement to collect, access, use or disclose (share) information
 	case patientPrivacy = "patient-privacy"
-	
+
 	/// Consent to undergo a specific treatment
 	case treatment = "treatment"
 }

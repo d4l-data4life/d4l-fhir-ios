@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Information Category codes.
  
@@ -26,46 +24,46 @@
  ValueSet: http://hl7.org/fhir/ValueSet/claim-informationcategory
  */
 public enum ClaimInformationCategoryCodes: String, FHIRPrimitiveType {
-	
+
 	/// Codes conveying additional situation and condition information.
 	case info = "info"
-	
+
 	/// Discharge status and discharge to locations.
 	case discharge = "discharge"
-	
+
 	/// Period, start or end dates of aspects of the Condition.
 	case onset = "onset"
-	
+
 	/// Nature and date of the related event e.g. Last exam, service, X-ray etc.
 	case related = "related"
-	
+
 	/// Insurance policy exceptions.
 	case exception = "exception"
-	
+
 	/// Materials being forwarded, e.g. Models, molds, images, documents.
 	case material = "material"
-	
+
 	/// Materials attached such as images, documents and resources.
 	case attachment = "attachment"
-	
+
 	/// Teeth which are missing for any reason, for example: prior extraction, never developed.
 	case missingtooth = "missingtooth"
-	
+
 	/// The type of prosthesis and date of supply if a previously supplied prosthesis.
 	case prosthesis = "prosthesis"
-	
+
 	/// Other information identified by the type.system.
 	case other = "other"
-	
+
 	/// An indication that the patient was hospitalized, the period if known otherwise a Yes/No (boolean).
 	case hospitalized = "hospitalized"
-	
+
 	/// An indication that the patient was unable to work, the period if known otherwise a Yes/No (boolean).
 	case employmentimpacted = "employmentimpacted"
-	
+
 	/// The external cause of an illness or injury.
 	case externalcause = "externalcause"
-	
+
 	/// The reason for the patient visit.
 	case patientreasonforvisit = "patientreasonforvisit"
 }

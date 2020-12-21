@@ -17,72 +17,70 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Information about a biological sequence.
  
  Raw data describing a biological sequence.
  */
 open class MolecularSequence: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .molecularSequence }
-	
+
 	/// Unique ID for this particular sequence. This is a FHIR-defined id
 	public var identifier: [Identifier]?
-	
+
 	/// Amino Acid Sequence/ DNA Sequence / RNA Sequence.
 	public var type: FHIRPrimitive<SequenceType>?
-	
+
 	/// Base number of coordinate system (0 for 0-based numbering or coordinates, inclusive start, exclusive end, 1 for
 	/// 1-based numbering, inclusive start, inclusive end)
 	public var coordinateSystem: FHIRPrimitive<FHIRInteger>
-	
+
 	/// Who and/or what this is about
 	public var patient: Reference?
-	
+
 	/// Specimen used for sequencing
 	public var specimen: Reference?
-	
+
 	/// The method for sequencing
 	public var device: Reference?
-	
+
 	/// Who should be responsible for test result
 	public var performer: Reference?
-	
+
 	/// The number of copies of the sequence of interest.  (RNASeq)
 	public var quantity: Quantity?
-	
+
 	/// A sequence used as reference
 	public var referenceSeq: MolecularSequenceReferenceSeq?
-	
+
 	/// Variant in sequence
 	public var variant: [MolecularSequenceVariant]?
-	
+
 	/// Sequence that was observed
 	public var observedSeq: FHIRPrimitive<FHIRString>?
-	
+
 	/// An set of value as quality of sequence
 	public var quality: [MolecularSequenceQuality]?
-	
+
 	/// Average number of reads representing a given nucleotide in the reconstructed sequence
 	public var readCoverage: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// External repository which contains detailed report related with observedSeq in this resource
 	public var repository: [MolecularSequenceRepository]?
-	
+
 	/// Pointer to next atomic sequence
 	public var pointer: [Reference]?
-	
+
 	/// Structural variant
 	public var structureVariant: [MolecularSequenceStructureVariant]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(coordinateSystem: FHIRPrimitive<FHIRInteger>) {
 		self.coordinateSystem = coordinateSystem
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contained: [ResourceProxy]? = nil,
@@ -108,8 +106,7 @@ open class MolecularSequence: DomainResource {
 							structureVariant: [MolecularSequenceStructureVariant]? = nil,
 							text: Narrative? = nil,
 							type: FHIRPrimitive<SequenceType>? = nil,
-							variant: [MolecularSequenceVariant]? = nil)
-	{
+							variant: [MolecularSequenceVariant]? = nil) {
 		self.init(coordinateSystem: coordinateSystem)
 		self.contained = contained
 		self.device = device
@@ -135,9 +132,9 @@ open class MolecularSequence: DomainResource {
 		self.type = type
 		self.variant = variant
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case coordinateSystem; case _coordinateSystem
 		case device
@@ -156,11 +153,11 @@ open class MolecularSequence: DomainResource {
 		case type; case _type
 		case variant
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.coordinateSystem = try FHIRPrimitive<FHIRInteger>(from: _container, forKey: .coordinateSystem, auxiliaryKey: ._coordinateSystem)
 		self.device = try Reference(from: _container, forKeyIfPresent: .device)
@@ -180,11 +177,11 @@ open class MolecularSequence: DomainResource {
 		self.variant = try [MolecularSequenceVariant](from: _container, forKeyIfPresent: .variant)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try coordinateSystem.encode(on: &_container, forKey: .coordinateSystem, auxiliaryKey: ._coordinateSystem)
 		try device?.encode(on: &_container, forKey: .device)
@@ -204,9 +201,9 @@ open class MolecularSequence: DomainResource {
 		try variant?.encode(on: &_container, forKey: .variant)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MolecularSequence else {
 			return false
@@ -231,7 +228,7 @@ open class MolecularSequence: DomainResource {
 		    && type == _other.type
 		    && variant == _other.variant
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(coordinateSystem)
@@ -260,58 +257,58 @@ open class MolecularSequence: DomainResource {
  quality score ([SO:0001686](http://www.sequenceontology.org/browser/current_svn/term/SO:0001686)).
  */
 open class MolecularSequenceQuality: BackboneElement {
-	
+
 	/// INDEL / SNP / Undefined variant.
 	public var type: FHIRPrimitive<QualityType>
-	
+
 	/// Standard sequence for comparison
 	public var standardSequence: CodeableConcept?
-	
+
 	/// Start position of the sequence
 	public var start: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// End position of the sequence
 	public var end: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Quality score for the comparison
 	public var score: Quantity?
-	
+
 	/// Method to get quality
 	public var method: CodeableConcept?
-	
+
 	/// True positives from the perspective of the truth data
 	public var truthTP: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// True positives from the perspective of the query data
 	public var queryTP: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// False negatives
 	public var truthFN: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// False positives
 	public var queryFP: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// False positives where the non-REF alleles in the Truth and Query Call Sets match
 	public var gtFP: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Precision of comparison
 	public var precision: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Recall of comparison
 	public var recall: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// F-score
 	public var fScore: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Receiver Operator Characteristic (ROC) Curve
 	public var roc: MolecularSequenceQualityRoc?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: FHIRPrimitive<QualityType>) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							end: FHIRPrimitive<FHIRInteger>? = nil,
@@ -331,8 +328,7 @@ open class MolecularSequenceQuality: BackboneElement {
 							start: FHIRPrimitive<FHIRInteger>? = nil,
 							truthFN: FHIRPrimitive<FHIRDecimal>? = nil,
 							truthTP: FHIRPrimitive<FHIRDecimal>? = nil,
-							type: FHIRPrimitive<QualityType>)
-	{
+							type: FHIRPrimitive<QualityType>) {
 		self.init(type: type)
 		self.end = end
 		self.`extension` = `extension`
@@ -352,9 +348,9 @@ open class MolecularSequenceQuality: BackboneElement {
 		self.truthFN = truthFN
 		self.truthTP = truthTP
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case end; case _end
 		case fScore; case _fScore
@@ -372,11 +368,11 @@ open class MolecularSequenceQuality: BackboneElement {
 		case truthTP; case _truthTP
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.end = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .end, auxiliaryKey: ._end)
 		self.fScore = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .fScore, auxiliaryKey: ._fScore)
@@ -395,11 +391,11 @@ open class MolecularSequenceQuality: BackboneElement {
 		self.type = try FHIRPrimitive<QualityType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try end?.encode(on: &_container, forKey: .end, auxiliaryKey: ._end)
 		try fScore?.encode(on: &_container, forKey: .fScore, auxiliaryKey: ._fScore)
@@ -418,9 +414,9 @@ open class MolecularSequenceQuality: BackboneElement {
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MolecularSequenceQuality else {
 			return false
@@ -444,7 +440,7 @@ open class MolecularSequenceQuality: BackboneElement {
 		    && truthTP == _other.truthTP
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(end)
@@ -471,33 +467,33 @@ open class MolecularSequenceQuality: BackboneElement {
  Receiver Operator Characteristic (ROC) Curve  to give sensitivity/specificity tradeoff.
  */
 open class MolecularSequenceQualityRoc: BackboneElement {
-	
+
 	/// Genotype quality score
 	public var score: [FHIRPrimitive<FHIRInteger>]?
-	
+
 	/// Roc score true positive numbers
 	public var numTP: [FHIRPrimitive<FHIRInteger>]?
-	
+
 	/// Roc score false positive numbers
 	public var numFP: [FHIRPrimitive<FHIRInteger>]?
-	
+
 	/// Roc score false negative numbers
 	public var numFN: [FHIRPrimitive<FHIRInteger>]?
-	
+
 	/// Precision of the GQ score
 	public var precision: [FHIRPrimitive<FHIRDecimal>]?
-	
+
 	/// Sensitivity of the GQ score
 	public var sensitivity: [FHIRPrimitive<FHIRDecimal>]?
-	
+
 	/// FScore of the GQ score
 	public var fMeasure: [FHIRPrimitive<FHIRDecimal>]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -509,8 +505,7 @@ open class MolecularSequenceQualityRoc: BackboneElement {
 							numTP: [FHIRPrimitive<FHIRInteger>]? = nil,
 							precision: [FHIRPrimitive<FHIRDecimal>]? = nil,
 							score: [FHIRPrimitive<FHIRInteger>]? = nil,
-							sensitivity: [FHIRPrimitive<FHIRDecimal>]? = nil)
-	{
+							sensitivity: [FHIRPrimitive<FHIRDecimal>]? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.fMeasure = fMeasure
@@ -523,9 +518,9 @@ open class MolecularSequenceQualityRoc: BackboneElement {
 		self.score = score
 		self.sensitivity = sensitivity
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case fMeasure; case _fMeasure
 		case numFN; case _numFN
@@ -535,11 +530,11 @@ open class MolecularSequenceQualityRoc: BackboneElement {
 		case score; case _score
 		case sensitivity; case _sensitivity
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.fMeasure = try [FHIRPrimitive<FHIRDecimal>](from: _container, forKeyIfPresent: .fMeasure, auxiliaryKey: ._fMeasure)
 		self.numFN = try [FHIRPrimitive<FHIRInteger>](from: _container, forKeyIfPresent: .numFN, auxiliaryKey: ._numFN)
@@ -550,11 +545,11 @@ open class MolecularSequenceQualityRoc: BackboneElement {
 		self.sensitivity = try [FHIRPrimitive<FHIRDecimal>](from: _container, forKeyIfPresent: .sensitivity, auxiliaryKey: ._sensitivity)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try fMeasure?.encode(on: &_container, forKey: .fMeasure, auxiliaryKey: ._fMeasure)
 		try numFN?.encode(on: &_container, forKey: .numFN, auxiliaryKey: ._numFN)
@@ -565,9 +560,9 @@ open class MolecularSequenceQualityRoc: BackboneElement {
 		try sensitivity?.encode(on: &_container, forKey: .sensitivity, auxiliaryKey: ._sensitivity)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MolecularSequenceQualityRoc else {
 			return false
@@ -583,7 +578,7 @@ open class MolecularSequenceQualityRoc: BackboneElement {
 		    && score == _other.score
 		    && sensitivity == _other.sensitivity
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(fMeasure)
@@ -602,41 +597,41 @@ open class MolecularSequenceQualityRoc: BackboneElement {
  A sequence that is used as a reference to describe variants that are present in a sequence analyzed.
  */
 open class MolecularSequenceReferenceSeq: BackboneElement {
-	
+
 	/// Chromosome containing genetic finding
 	public var chromosome: CodeableConcept?
-	
+
 	/// The Genome Build used for reference, following GRCh build versions e.g. 'GRCh 37'
 	public var genomeBuild: FHIRPrimitive<FHIRString>?
-	
+
 	/// A relative reference to a DNA strand based on gene orientation. The strand that contains the open reading frame
 	/// of the gene is the "sense" strand, and the opposite complementary strand is the "antisense" strand.
 	public var orientation: FHIRPrimitive<OrientationType>?
-	
+
 	/// Reference identifier
 	public var referenceSeqId: CodeableConcept?
-	
+
 	/// A pointer to another MolecularSequence entity as reference sequence
 	public var referenceSeqPointer: Reference?
-	
+
 	/// A string to represent reference sequence
 	public var referenceSeqString: FHIRPrimitive<FHIRString>?
-	
+
 	/// An absolute reference to a strand. The Watson strand is the strand whose 5'-end is on the short arm of the
 	/// chromosome, and the Crick strand as the one whose 5'-end is on the long arm.
 	public var strand: FHIRPrimitive<StrandType>?
-	
+
 	/// Start position of the window on the  reference sequence
 	public var windowStart: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// End position of the window on the reference sequence
 	public var windowEnd: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							chromosome: CodeableConcept? = nil,
@@ -650,8 +645,7 @@ open class MolecularSequenceReferenceSeq: BackboneElement {
 							referenceSeqString: FHIRPrimitive<FHIRString>? = nil,
 							strand: FHIRPrimitive<StrandType>? = nil,
 							windowEnd: FHIRPrimitive<FHIRInteger>? = nil,
-							windowStart: FHIRPrimitive<FHIRInteger>? = nil)
-	{
+							windowStart: FHIRPrimitive<FHIRInteger>? = nil) {
 		self.init()
 		self.chromosome = chromosome
 		self.`extension` = `extension`
@@ -666,9 +660,9 @@ open class MolecularSequenceReferenceSeq: BackboneElement {
 		self.windowEnd = windowEnd
 		self.windowStart = windowStart
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case chromosome
 		case genomeBuild; case _genomeBuild
@@ -680,11 +674,11 @@ open class MolecularSequenceReferenceSeq: BackboneElement {
 		case windowEnd; case _windowEnd
 		case windowStart; case _windowStart
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.chromosome = try CodeableConcept(from: _container, forKeyIfPresent: .chromosome)
 		self.genomeBuild = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .genomeBuild, auxiliaryKey: ._genomeBuild)
@@ -697,11 +691,11 @@ open class MolecularSequenceReferenceSeq: BackboneElement {
 		self.windowStart = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .windowStart, auxiliaryKey: ._windowStart)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try chromosome?.encode(on: &_container, forKey: .chromosome)
 		try genomeBuild?.encode(on: &_container, forKey: .genomeBuild, auxiliaryKey: ._genomeBuild)
@@ -714,9 +708,9 @@ open class MolecularSequenceReferenceSeq: BackboneElement {
 		try windowStart?.encode(on: &_container, forKey: .windowStart, auxiliaryKey: ._windowStart)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MolecularSequenceReferenceSeq else {
 			return false
@@ -734,7 +728,7 @@ open class MolecularSequenceReferenceSeq: BackboneElement {
 		    && windowEnd == _other.windowEnd
 		    && windowStart == _other.windowStart
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(chromosome)
@@ -756,31 +750,31 @@ open class MolecularSequenceReferenceSeq: BackboneElement {
  target's observedSeq.
  */
 open class MolecularSequenceRepository: BackboneElement {
-	
+
 	/// Click and see / RESTful API / Need login to see / RESTful API with authentication / Other ways to see resource.
 	public var type: FHIRPrimitive<RepositoryType>
-	
+
 	/// URI of the repository
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Repository's name
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Id of the dataset that used to call for dataset in repository
 	public var datasetId: FHIRPrimitive<FHIRString>?
-	
+
 	/// Id of the variantset that used to call for variantset in repository
 	public var variantsetId: FHIRPrimitive<FHIRString>?
-	
+
 	/// Id of the read
 	public var readsetId: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: FHIRPrimitive<RepositoryType>) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							datasetId: FHIRPrimitive<FHIRString>? = nil,
@@ -791,8 +785,7 @@ open class MolecularSequenceRepository: BackboneElement {
 							readsetId: FHIRPrimitive<FHIRString>? = nil,
 							type: FHIRPrimitive<RepositoryType>,
 							url: FHIRPrimitive<FHIRURI>? = nil,
-							variantsetId: FHIRPrimitive<FHIRString>? = nil)
-	{
+							variantsetId: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(type: type)
 		self.datasetId = datasetId
 		self.`extension` = `extension`
@@ -803,9 +796,9 @@ open class MolecularSequenceRepository: BackboneElement {
 		self.url = url
 		self.variantsetId = variantsetId
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case datasetId; case _datasetId
 		case name; case _name
@@ -814,11 +807,11 @@ open class MolecularSequenceRepository: BackboneElement {
 		case url; case _url
 		case variantsetId; case _variantsetId
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.datasetId = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .datasetId, auxiliaryKey: ._datasetId)
 		self.name = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
@@ -828,11 +821,11 @@ open class MolecularSequenceRepository: BackboneElement {
 		self.variantsetId = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .variantsetId, auxiliaryKey: ._variantsetId)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try datasetId?.encode(on: &_container, forKey: .datasetId, auxiliaryKey: ._datasetId)
 		try name?.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
@@ -842,9 +835,9 @@ open class MolecularSequenceRepository: BackboneElement {
 		try variantsetId?.encode(on: &_container, forKey: .variantsetId, auxiliaryKey: ._variantsetId)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MolecularSequenceRepository else {
 			return false
@@ -859,7 +852,7 @@ open class MolecularSequenceRepository: BackboneElement {
 		    && url == _other.url
 		    && variantsetId == _other.variantsetId
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(datasetId)
@@ -877,27 +870,27 @@ open class MolecularSequenceRepository: BackboneElement {
  Information about chromosome structure variation.
  */
 open class MolecularSequenceStructureVariant: BackboneElement {
-	
+
 	/// Structural variant change type
 	public var variantType: CodeableConcept?
-	
+
 	/// Does the structural variant have base pair resolution breakpoints?
 	public var exact: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Structural variant length
 	public var length: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Structural variant outer
 	public var outer: MolecularSequenceStructureVariantOuter?
-	
+
 	/// Structural variant inner
 	public var inner: MolecularSequenceStructureVariantInner?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							exact: FHIRPrimitive<FHIRBool>? = nil,
@@ -907,8 +900,7 @@ open class MolecularSequenceStructureVariant: BackboneElement {
 							length: FHIRPrimitive<FHIRInteger>? = nil,
 							modifierExtension: [Extension]? = nil,
 							outer: MolecularSequenceStructureVariantOuter? = nil,
-							variantType: CodeableConcept? = nil)
-	{
+							variantType: CodeableConcept? = nil) {
 		self.init()
 		self.exact = exact
 		self.`extension` = `extension`
@@ -919,9 +911,9 @@ open class MolecularSequenceStructureVariant: BackboneElement {
 		self.outer = outer
 		self.variantType = variantType
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case exact; case _exact
 		case inner
@@ -929,11 +921,11 @@ open class MolecularSequenceStructureVariant: BackboneElement {
 		case outer
 		case variantType
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.exact = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .exact, auxiliaryKey: ._exact)
 		self.inner = try MolecularSequenceStructureVariantInner(from: _container, forKeyIfPresent: .inner)
@@ -942,11 +934,11 @@ open class MolecularSequenceStructureVariant: BackboneElement {
 		self.variantType = try CodeableConcept(from: _container, forKeyIfPresent: .variantType)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try exact?.encode(on: &_container, forKey: .exact, auxiliaryKey: ._exact)
 		try inner?.encode(on: &_container, forKey: .inner)
@@ -955,9 +947,9 @@ open class MolecularSequenceStructureVariant: BackboneElement {
 		try variantType?.encode(on: &_container, forKey: .variantType)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MolecularSequenceStructureVariant else {
 			return false
@@ -971,7 +963,7 @@ open class MolecularSequenceStructureVariant: BackboneElement {
 		    && outer == _other.outer
 		    && variantType == _other.variantType
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(exact)
@@ -986,26 +978,25 @@ open class MolecularSequenceStructureVariant: BackboneElement {
  Structural variant inner.
  */
 open class MolecularSequenceStructureVariantInner: BackboneElement {
-	
+
 	/// Structural variant inner start
 	public var start: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Structural variant inner end
 	public var end: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							end: FHIRPrimitive<FHIRInteger>? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							start: FHIRPrimitive<FHIRInteger>? = nil)
-	{
+							start: FHIRPrimitive<FHIRInteger>? = nil) {
 		self.init()
 		self.end = end
 		self.`extension` = `extension`
@@ -1013,36 +1004,36 @@ open class MolecularSequenceStructureVariantInner: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.start = start
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case end; case _end
 		case start; case _start
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.end = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .end, auxiliaryKey: ._end)
 		self.start = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .start, auxiliaryKey: ._start)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try end?.encode(on: &_container, forKey: .end, auxiliaryKey: ._end)
 		try start?.encode(on: &_container, forKey: .start, auxiliaryKey: ._start)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MolecularSequenceStructureVariantInner else {
 			return false
@@ -1053,7 +1044,7 @@ open class MolecularSequenceStructureVariantInner: BackboneElement {
 		return end == _other.end
 		    && start == _other.start
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(end)
@@ -1065,26 +1056,25 @@ open class MolecularSequenceStructureVariantInner: BackboneElement {
  Structural variant outer.
  */
 open class MolecularSequenceStructureVariantOuter: BackboneElement {
-	
+
 	/// Structural variant outer start
 	public var start: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Structural variant outer end
 	public var end: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							end: FHIRPrimitive<FHIRInteger>? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							start: FHIRPrimitive<FHIRInteger>? = nil)
-	{
+							start: FHIRPrimitive<FHIRInteger>? = nil) {
 		self.init()
 		self.end = end
 		self.`extension` = `extension`
@@ -1092,36 +1082,36 @@ open class MolecularSequenceStructureVariantOuter: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.start = start
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case end; case _end
 		case start; case _start
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.end = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .end, auxiliaryKey: ._end)
 		self.start = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .start, auxiliaryKey: ._start)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try end?.encode(on: &_container, forKey: .end, auxiliaryKey: ._end)
 		try start?.encode(on: &_container, forKey: .start, auxiliaryKey: ._start)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MolecularSequenceStructureVariantOuter else {
 			return false
@@ -1132,7 +1122,7 @@ open class MolecularSequenceStructureVariantOuter: BackboneElement {
 		return end == _other.end
 		    && start == _other.start
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(end)
@@ -1149,30 +1139,30 @@ open class MolecularSequenceStructureVariantOuter: BackboneElement {
  segment variation with the assist of CIGAR string.
  */
 open class MolecularSequenceVariant: BackboneElement {
-	
+
 	/// Start position of the variant on the  reference sequence
 	public var start: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// End position of the variant on the reference sequence
 	public var end: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Allele that was observed
 	public var observedAllele: FHIRPrimitive<FHIRString>?
-	
+
 	/// Allele in the reference sequence
 	public var referenceAllele: FHIRPrimitive<FHIRString>?
-	
+
 	/// Extended CIGAR string for aligning the sequence with reference bases
 	public var cigar: FHIRPrimitive<FHIRString>?
-	
+
 	/// Pointer to observed variant information
 	public var variantPointer: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							cigar: FHIRPrimitive<FHIRString>? = nil,
@@ -1183,8 +1173,7 @@ open class MolecularSequenceVariant: BackboneElement {
 							observedAllele: FHIRPrimitive<FHIRString>? = nil,
 							referenceAllele: FHIRPrimitive<FHIRString>? = nil,
 							start: FHIRPrimitive<FHIRInteger>? = nil,
-							variantPointer: Reference? = nil)
-	{
+							variantPointer: Reference? = nil) {
 		self.init()
 		self.cigar = cigar
 		self.end = end
@@ -1196,9 +1185,9 @@ open class MolecularSequenceVariant: BackboneElement {
 		self.start = start
 		self.variantPointer = variantPointer
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case cigar; case _cigar
 		case end; case _end
@@ -1207,11 +1196,11 @@ open class MolecularSequenceVariant: BackboneElement {
 		case start; case _start
 		case variantPointer
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.cigar = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .cigar, auxiliaryKey: ._cigar)
 		self.end = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .end, auxiliaryKey: ._end)
@@ -1221,11 +1210,11 @@ open class MolecularSequenceVariant: BackboneElement {
 		self.variantPointer = try Reference(from: _container, forKeyIfPresent: .variantPointer)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try cigar?.encode(on: &_container, forKey: .cigar, auxiliaryKey: ._cigar)
 		try end?.encode(on: &_container, forKey: .end, auxiliaryKey: ._end)
@@ -1235,9 +1224,9 @@ open class MolecularSequenceVariant: BackboneElement {
 		try variantPointer?.encode(on: &_container, forKey: .variantPointer)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MolecularSequenceVariant else {
 			return false
@@ -1252,7 +1241,7 @@ open class MolecularSequenceVariant: BackboneElement {
 		    && start == _other.start
 		    && variantPointer == _other.variantPointer
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(cigar)

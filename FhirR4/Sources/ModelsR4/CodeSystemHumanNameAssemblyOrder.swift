@@ -17,24 +17,22 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A code that represents the preferred display order of the components of a human name.
  
  URL: http://terminology.hl7.org/CodeSystem/name-assembly-order
  */
 public enum HumanNameAssemblyOrder: String, FHIRPrimitiveType {
-	
+
 	/// NL1
 	case NL1 = "NL1"
-	
+
 	/// NL2
 	case NL2 = "NL2"
-	
+
 	/// NL3
 	case NL3 = "NL3"
-	
+
 	/// NL4
 	case NL4 = "NL4"
 }

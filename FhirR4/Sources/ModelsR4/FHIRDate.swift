@@ -18,7 +18,6 @@
 
 import Foundation
 
-
 /**
  A date, or partial date (e.g. just year or year + month) as used in human communication. The format is YYYY, YYYY-MM,
  or YYYY-MM-DD, e.g. 2018, 1973-06, or 1905-08-23. There SHALL be no time zone. Dates SHALL be valid dates.
@@ -29,9 +28,9 @@ import Foundation
  http://hl7.org/fhir/datatypes.html#date
  */
 public struct FHIRDate: FHIRPrimitiveType {
-	
+
 	public var year: Int
-	
+
 	public var month: UInt8? {
 		didSet {
 			if let month = month, month > 12 {
@@ -39,7 +38,7 @@ public struct FHIRDate: FHIRPrimitiveType {
 			}
 		}
 	}
-	
+
 	public var day: UInt8? {
 		didSet {
 			if let day = day, day > 31 {
@@ -47,7 +46,7 @@ public struct FHIRDate: FHIRPrimitiveType {
 			}
 		}
 	}
-	
+
 	/**
 	 Designated initializer. You can only have a day if you have a month. Day is capped at 31, month is capped at 12.
 	 */
@@ -60,15 +59,15 @@ public struct FHIRDate: FHIRPrimitiveType {
 			}
 		}
 	}
-	
+
 	public init(_ originalString: String) throws {
 		let scanner = Scanner(string: originalString)
 		let (year, month, day) = try FHIRDate.parseComponents(from: scanner)
 		self.init(year: year, month: month, day: day)
 	}
-	
+
 	// MARK: Parsing
-	
+
 	/// Parse valid "date" strings.
 	/// See http://hl7.org/fhir/datatypes.html#date
 	public static func parseComponents(from scanner: Scanner, expectAtEnd: Bool = true) throws -> (year: Int, month: UInt8?, day: UInt8?) {
@@ -76,21 +75,21 @@ public struct FHIRDate: FHIRPrimitiveType {
 		defer { scanner.charactersToBeSkipped = originalCharactersToBeSkipped }
 		scanner.charactersToBeSkipped = nil
 		let numbers = CharacterSet.decimalDigits
-		
+
 		var scanLocation = scanner.scanLocation
 		guard let scanned = scanner.hs_scanCharacters(from: numbers), scanned.count == 4, let year = Int(scanned), year > 0 else {
 			throw FHIRDateParserError.invalidYear(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
 		}
-		
-		var month: UInt8? = nil
-		var day: UInt8? = nil
+
+		var month: UInt8?
+		var day: UInt8?
 		if scanner.scanString("-", into: nil) {
 			scanLocation = scanner.scanLocation
 			guard let scanned = scanner.hs_scanCharacters(from: numbers), scanned.count == 2, let scanMonth = UInt8(scanned), (1...12).contains(scanMonth) else {
 				throw FHIRDateParserError.invalidMonth(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
 			}
 			month = scanMonth
-			
+
 			if scanner.scanString("-", into: nil) {
 				scanLocation = scanner.scanLocation
 				guard let scanned = scanner.hs_scanCharacters(from: numbers), scanned.count == 2, let scanDay = UInt8(scanned), (1...31).contains(scanDay) else {
@@ -99,15 +98,15 @@ public struct FHIRDate: FHIRPrimitiveType {
 				day = scanDay
 			}
 		}
-		
+
 		scanLocation = scanner.scanLocation
 		if expectAtEnd && !scanner.isAtEnd {    // it's OK if we don't `expectAtEnd` but the scanner actually is
 			throw FHIRDateParserError.additionalCharacters(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
 		}
-		
+
 		return (year, month, day)
 	}
-	
+
 	public static func parse(from scanner: Scanner, expectAtEnd: Bool = true) throws -> FHIRDate {
 		let (year, month, day) = try FHIRDate.parseComponents(from: scanner, expectAtEnd: expectAtEnd)
 		return self.init(year: year, month: month, day: day)
@@ -117,20 +116,20 @@ public struct FHIRDate: FHIRPrimitiveType {
 // MARK: -
 
 extension FHIRDate: ExpressibleByStringLiteral {
-	
+
 	public init(stringLiteral value: StringLiteralType) {
 		try! self.init(value)
 	}
 }
 
 extension FHIRDate: Codable {
-	
+
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
 		let string = try container.decode(String.self)
 		try self.init(string)
 	}
-	
+
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.singleValueContainer()
 		try container.encode(description)
@@ -138,7 +137,7 @@ extension FHIRDate: Codable {
 }
 
 extension FHIRDate: CustomStringConvertible {
-	
+
 	public var description: String {
 		if let month = month {
 			if let day = day {
@@ -151,7 +150,7 @@ extension FHIRDate: CustomStringConvertible {
 }
 
 extension FHIRDate: Equatable {
-	
+
 	public static func ==(l: FHIRDate, r: FHIRDate) -> Bool {
 		if l.year != r.year {
 			return false

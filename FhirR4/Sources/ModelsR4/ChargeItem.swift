@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Item containing charge code(s) associated with the provision of healthcare provider products.
  
@@ -28,102 +26,102 @@
  cost allocation.
  */
 open class ChargeItem: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .chargeItem }
-	
+
 	/// All possible types for "occurrence[x]"
 	public enum OccurrenceX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
 		case period(Period)
 		case timing(Timing)
 	}
-	
+
 	/// All possible types for "product[x]"
 	public enum ProductX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Business Identifier for item
 	public var identifier: [Identifier]?
-	
+
 	/// Defining information about the code of this charge item
 	public var definitionUri: [FHIRPrimitive<FHIRURI>]?
-	
+
 	/// Resource defining the code of this ChargeItem
 	public var definitionCanonical: [FHIRPrimitive<Canonical>]?
-	
+
 	/// The current state of the ChargeItem.
 	public var status: FHIRPrimitive<ChargeItemStatus>
-	
+
 	/// Part of referenced ChargeItem
 	public var partOf: [Reference]?
-	
+
 	/// A code that identifies the charge, like a billing code
 	public var code: CodeableConcept
-	
+
 	/// Individual service was done for/to
 	public var subject: Reference
-	
+
 	/// Encounter / Episode associated with event
 	public var context: Reference?
-	
+
 	/// When the charged service was applied
 	/// One of `occurrence[x]`
 	public var occurrence: OccurrenceX?
-	
+
 	/// Who performed charged service
 	public var performer: [ChargeItemPerformer]?
-	
+
 	/// Organization providing the charged service
 	public var performingOrganization: Reference?
-	
+
 	/// Organization requesting the charged service
 	public var requestingOrganization: Reference?
-	
+
 	/// Organization that has ownership of the (potential, future) revenue
 	public var costCenter: Reference?
-	
+
 	/// Quantity of which the charge item has been serviced
 	public var quantity: Quantity?
-	
+
 	/// Anatomical location, if relevant
 	public var bodysite: [CodeableConcept]?
-	
+
 	/// Factor overriding the associated rules
 	public var factorOverride: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Price overriding the associated rules
 	public var priceOverride: Money?
-	
+
 	/// Reason for overriding the list price/factor
 	public var overrideReason: FHIRPrimitive<FHIRString>?
-	
+
 	/// Individual who was entering
 	public var enterer: Reference?
-	
+
 	/// Date the charge item was entered
 	public var enteredDate: FHIRPrimitive<DateTime>?
-	
+
 	/// Why was the charged  service rendered?
 	public var reason: [CodeableConcept]?
-	
+
 	/// Which rendered service is being charged?
 	public var service: [Reference]?
-	
+
 	/// Product charged
 	/// One of `product[x]`
 	public var product: ProductX?
-	
+
 	/// Account to place this charge
 	public var account: [Reference]?
-	
+
 	/// Comments made about the ChargeItem
 	public var note: [Annotation]?
-	
+
 	/// Further information supporting this charge
 	public var supportingInformation: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept, status: FHIRPrimitive<ChargeItemStatus>, subject: Reference) {
 		self.code = code
@@ -131,7 +129,7 @@ open class ChargeItem: DomainResource {
 		self.subject = subject
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							account: [Reference]? = nil,
@@ -167,8 +165,7 @@ open class ChargeItem: DomainResource {
 							status: FHIRPrimitive<ChargeItemStatus>,
 							subject: Reference,
 							supportingInformation: [Reference]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(code: code, status: status, subject: subject)
 		self.account = account
 		self.bodysite = bodysite
@@ -202,9 +199,9 @@ open class ChargeItem: DomainResource {
 		self.supportingInformation = supportingInformation
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case account
 		case bodysite
@@ -236,11 +233,11 @@ open class ChargeItem: DomainResource {
 		case subject
 		case supportingInformation
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.account = try [Reference](from: _container, forKeyIfPresent: .account)
 		self.bodysite = try [CodeableConcept](from: _container, forKeyIfPresent: .bodysite)
@@ -254,7 +251,7 @@ open class ChargeItem: DomainResource {
 		self.factorOverride = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .factorOverride, auxiliaryKey: ._factorOverride)
 		self.identifier = try [Identifier](from: _container, forKeyIfPresent: .identifier)
 		self.note = try [Annotation](from: _container, forKeyIfPresent: .note)
-		var _t_occurrence: OccurrenceX? = nil
+		var _t_occurrence: OccurrenceX?
 		if let occurrenceDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .occurrenceDateTime, auxiliaryKey: ._occurrenceDateTime) {
 			if _t_occurrence != nil {
 				throw DecodingError.dataCorruptedError(forKey: .occurrenceDateTime, in: _container, debugDescription: "More than one value provided for \"occurrence\"")
@@ -279,7 +276,7 @@ open class ChargeItem: DomainResource {
 		self.performer = try [ChargeItemPerformer](from: _container, forKeyIfPresent: .performer)
 		self.performingOrganization = try Reference(from: _container, forKeyIfPresent: .performingOrganization)
 		self.priceOverride = try Money(from: _container, forKeyIfPresent: .priceOverride)
-		var _t_product: ProductX? = nil
+		var _t_product: ProductX?
 		if let productReference = try Reference(from: _container, forKeyIfPresent: .productReference) {
 			if _t_product != nil {
 				throw DecodingError.dataCorruptedError(forKey: .productReference, in: _container, debugDescription: "More than one value provided for \"product\"")
@@ -302,11 +299,11 @@ open class ChargeItem: DomainResource {
 		self.supportingInformation = try [Reference](from: _container, forKeyIfPresent: .supportingInformation)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try account?.encode(on: &_container, forKey: .account)
 		try bodysite?.encode(on: &_container, forKey: .bodysite)
@@ -352,9 +349,9 @@ open class ChargeItem: DomainResource {
 		try supportingInformation?.encode(on: &_container, forKey: .supportingInformation)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ChargeItem else {
 			return false
@@ -389,7 +386,7 @@ open class ChargeItem: DomainResource {
 		    && subject == _other.subject
 		    && supportingInformation == _other.supportingInformation
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(account)
@@ -427,63 +424,62 @@ open class ChargeItem: DomainResource {
  Indicates who or what performed or participated in the charged service.
  */
 open class ChargeItemPerformer: BackboneElement {
-	
+
 	/// What type of performance was done
 	public var function: CodeableConcept?
-	
+
 	/// Individual who was performing
 	public var actor: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(actor: Reference) {
 		self.actor = actor
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							actor: Reference,
 							`extension`: [Extension]? = nil,
 							function: CodeableConcept? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(actor: actor)
 		self.`extension` = `extension`
 		self.function = function
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case actor
 		case function
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.actor = try Reference(from: _container, forKey: .actor)
 		self.function = try CodeableConcept(from: _container, forKeyIfPresent: .function)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try actor.encode(on: &_container, forKey: .actor)
 		try function?.encode(on: &_container, forKey: .function)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ChargeItemPerformer else {
 			return false
@@ -494,7 +490,7 @@ open class ChargeItemPerformer: BackboneElement {
 		return actor == _other.actor
 		    && function == _other.function
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(actor)

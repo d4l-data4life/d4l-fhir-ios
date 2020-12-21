@@ -20,39 +20,39 @@
  The base protocol for all FHIR objects.
  */
 public protocol FHIRType: Codable, Hashable {
-	
+
 }
 
 extension FHIRType {
 	public init<K>(from parentContainer: KeyedDecodingContainer<K>, forKey key: K) throws {
 		self = try parentContainer.decode(Self.self, forKey: key)
 	}
-	
+
 	public init?<K>(from parentContainer: KeyedDecodingContainer<K>, forKeyIfPresent key: K) throws {
 		guard let decoded = try parentContainer.decodeIfPresent(Self.self, forKey: key) else {
 			return nil
 		}
 		self = decoded
 	}
-	
+
 	public func encode<K>(on parentContainer: inout KeyedEncodingContainer<K>, forKey key: K) throws {
 		try parentContainer.encode(self, forKey: key)
 	}
 }
 
 extension Array where Element: FHIRType {
-	
+
 	public init<K>(from container: KeyedDecodingContainer<K>, forKey key: K) throws {
 		self = try container.decode(Self.self, forKey: key)
 	}
-	
+
 	public init?<K>(from container: KeyedDecodingContainer<K>, forKeyIfPresent key: K) throws {
 		guard let decoded = try container.decodeIfPresent(Self.self, forKey: key) else {
 			return nil
 		}
 		self = decoded
 	}
-	
+
 	public func encode<K>(on parentContainer: inout KeyedEncodingContainer<K>, forKey key: K) throws {
 		try parentContainer.encode(self, forKey: key)
 	}

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A code to indicate if the substance is actively used.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/substance-status
  */
 public enum FHIRSubstanceStatus: String, FHIRPrimitiveType {
-	
+
 	/// The substance is considered for use or reference.
 	case active = "active"
-	
+
 	/// The substance is considered for reference, but not for use.
 	case inactive = "inactive"
-	
+
 	/// The substance was entered in error.
 	case enteredInError = "entered-in-error"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A code that indicates whether an application accepts unknown elements or extensions when reading resources.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/unknown-content-code
  */
 public enum UnknownContentCode: String, FHIRPrimitiveType {
-	
+
 	/// The application does not accept either unknown elements or extensions.
 	case no = "no"
-	
+
 	/// The application accepts unknown extensions, but not unknown elements.
 	case extensions = "extensions"
-	
+
 	/// The application accepts unknown elements, but not unknown extensions.
 	case elements = "elements"
-	
+
 	/// The application accepts unknown elements and extensions.
 	case both = "both"
 }

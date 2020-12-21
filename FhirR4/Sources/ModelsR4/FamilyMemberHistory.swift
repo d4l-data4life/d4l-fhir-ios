@@ -17,31 +17,29 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Information about patient's relatives, relevant for patient.
  
  Significant health conditions for a person related to the patient relevant in the context of care for the patient.
  */
 open class FamilyMemberHistory: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .familyMemberHistory }
-	
+
 	/// All possible types for "age[x]"
 	public enum AgeX: Hashable {
 		case age(Age)
 		case range(Range)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// All possible types for "born[x]"
 	public enum BornX: Hashable {
 		case date(FHIRPrimitive<FHIRDate>)
 		case period(Period)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// All possible types for "deceased[x]"
 	public enum DeceasedX: Hashable {
 		case age(Age)
@@ -50,64 +48,64 @@ open class FamilyMemberHistory: DomainResource {
 		case range(Range)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// External Id(s) for this record
 	public var identifier: [Identifier]?
-	
+
 	/// Instantiates FHIR protocol or definition
 	public var instantiatesCanonical: [FHIRPrimitive<Canonical>]?
-	
+
 	/// Instantiates external protocol or definition
 	public var instantiatesUri: [FHIRPrimitive<FHIRURI>]?
-	
+
 	/// A code specifying the status of the record of the family history of a specific family member.
 	public var status: FHIRPrimitive<FamilyHistoryStatus>
-	
+
 	/// subject-unknown | withheld | unable-to-obtain | deferred
 	public var dataAbsentReason: CodeableConcept?
-	
+
 	/// Patient history is about
 	public var patient: Reference
-	
+
 	/// When history was recorded or last updated
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// The family member described
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Relationship to the subject
 	public var relationship: CodeableConcept
-	
+
 	/// male | female | other | unknown
 	public var sex: CodeableConcept?
-	
+
 	/// (approximate) date of birth
 	/// One of `born[x]`
 	public var born: BornX?
-	
+
 	/// (approximate) age
 	/// One of `age[x]`
 	public var age: AgeX?
-	
+
 	/// Age is estimated?
 	public var estimatedAge: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Dead? How old/when?
 	/// One of `deceased[x]`
 	public var deceased: DeceasedX?
-	
+
 	/// Why was family member history performed?
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// Why was family member history performed?
 	public var reasonReference: [Reference]?
-	
+
 	/// General note about related person
 	public var note: [Annotation]?
-	
+
 	/// Condition that the related person had
 	public var condition: [FamilyMemberHistoryCondition]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(patient: Reference, relationship: CodeableConcept, status: FHIRPrimitive<FamilyHistoryStatus>) {
 		self.patient = patient
@@ -115,7 +113,7 @@ open class FamilyMemberHistory: DomainResource {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							age: AgeX? = nil,
@@ -143,8 +141,7 @@ open class FamilyMemberHistory: DomainResource {
 							relationship: CodeableConcept,
 							sex: CodeableConcept? = nil,
 							status: FHIRPrimitive<FamilyHistoryStatus>,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(patient: patient, relationship: relationship, status: status)
 		self.age = age
 		self.born = born
@@ -170,9 +167,9 @@ open class FamilyMemberHistory: DomainResource {
 		self.sex = sex
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case ageAge
 		case ageRange
@@ -201,13 +198,13 @@ open class FamilyMemberHistory: DomainResource {
 		case sex
 		case status; case _status
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
-		var _t_age: AgeX? = nil
+		var _t_age: AgeX?
 		if let ageAge = try Age(from: _container, forKeyIfPresent: .ageAge) {
 			if _t_age != nil {
 				throw DecodingError.dataCorruptedError(forKey: .ageAge, in: _container, debugDescription: "More than one value provided for \"age\"")
@@ -227,7 +224,7 @@ open class FamilyMemberHistory: DomainResource {
 			_t_age = .string(ageString)
 		}
 		self.age = _t_age
-		var _t_born: BornX? = nil
+		var _t_born: BornX?
 		if let bornPeriod = try Period(from: _container, forKeyIfPresent: .bornPeriod) {
 			if _t_born != nil {
 				throw DecodingError.dataCorruptedError(forKey: .bornPeriod, in: _container, debugDescription: "More than one value provided for \"born\"")
@@ -250,7 +247,7 @@ open class FamilyMemberHistory: DomainResource {
 		self.condition = try [FamilyMemberHistoryCondition](from: _container, forKeyIfPresent: .condition)
 		self.dataAbsentReason = try CodeableConcept(from: _container, forKeyIfPresent: .dataAbsentReason)
 		self.date = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
-		var _t_deceased: DeceasedX? = nil
+		var _t_deceased: DeceasedX?
 		if let deceasedBoolean = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .deceasedBoolean, auxiliaryKey: ._deceasedBoolean) {
 			if _t_deceased != nil {
 				throw DecodingError.dataCorruptedError(forKey: .deceasedBoolean, in: _container, debugDescription: "More than one value provided for \"deceased\"")
@@ -296,11 +293,11 @@ open class FamilyMemberHistory: DomainResource {
 		self.status = try FHIRPrimitive<FamilyHistoryStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		if let _enum = age {
 			switch _enum {
@@ -353,9 +350,9 @@ open class FamilyMemberHistory: DomainResource {
 		try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? FamilyMemberHistory else {
 			return false
@@ -382,7 +379,7 @@ open class FamilyMemberHistory: DomainResource {
 		    && sex == _other.sex
 		    && status == _other.status
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(age)
@@ -414,7 +411,7 @@ open class FamilyMemberHistory: DomainResource {
  condition.
  */
 open class FamilyMemberHistoryCondition: BackboneElement {
-	
+
 	/// All possible types for "onset[x]"
 	public enum OnsetX: Hashable {
 		case age(Age)
@@ -422,29 +419,29 @@ open class FamilyMemberHistoryCondition: BackboneElement {
 		case range(Range)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Condition suffered by relation
 	public var code: CodeableConcept
-	
+
 	/// deceased | permanent disability | etc.
 	public var outcome: CodeableConcept?
-	
+
 	/// Whether the condition contributed to the cause of death
 	public var contributedToDeath: FHIRPrimitive<FHIRBool>?
-	
+
 	/// When condition first manifested
 	/// One of `onset[x]`
 	public var onset: OnsetX?
-	
+
 	/// Extra information about condition
 	public var note: [Annotation]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept,
@@ -454,8 +451,7 @@ open class FamilyMemberHistoryCondition: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							note: [Annotation]? = nil,
 							onset: OnsetX? = nil,
-							outcome: CodeableConcept? = nil)
-	{
+							outcome: CodeableConcept? = nil) {
 		self.init(code: code)
 		self.contributedToDeath = contributedToDeath
 		self.`extension` = `extension`
@@ -465,9 +461,9 @@ open class FamilyMemberHistoryCondition: BackboneElement {
 		self.onset = onset
 		self.outcome = outcome
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case contributedToDeath; case _contributedToDeath
@@ -478,16 +474,16 @@ open class FamilyMemberHistoryCondition: BackboneElement {
 		case onsetString; case _onsetString
 		case outcome
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKey: .code)
 		self.contributedToDeath = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .contributedToDeath, auxiliaryKey: ._contributedToDeath)
 		self.note = try [Annotation](from: _container, forKeyIfPresent: .note)
-		var _t_onset: OnsetX? = nil
+		var _t_onset: OnsetX?
 		if let onsetAge = try Age(from: _container, forKeyIfPresent: .onsetAge) {
 			if _t_onset != nil {
 				throw DecodingError.dataCorruptedError(forKey: .onsetAge, in: _container, debugDescription: "More than one value provided for \"onset\"")
@@ -516,11 +512,11 @@ open class FamilyMemberHistoryCondition: BackboneElement {
 		self.outcome = try CodeableConcept(from: _container, forKeyIfPresent: .outcome)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code)
 		try contributedToDeath?.encode(on: &_container, forKey: .contributedToDeath, auxiliaryKey: ._contributedToDeath)
@@ -540,9 +536,9 @@ open class FamilyMemberHistoryCondition: BackboneElement {
 		try outcome?.encode(on: &_container, forKey: .outcome)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? FamilyMemberHistoryCondition else {
 			return false
@@ -556,7 +552,7 @@ open class FamilyMemberHistoryCondition: BackboneElement {
 		    && onset == _other.onset
 		    && outcome == _other.outcome
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)

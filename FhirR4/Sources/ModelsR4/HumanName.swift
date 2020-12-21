@@ -17,41 +17,39 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Name of a human - parts and usage.
  
  A human's name with the ability to identify parts and usage.
  */
 open class HumanName: Element {
-	
+
 	/// Identifies the purpose for this name.
 	public var use: FHIRPrimitive<NameUse>?
-	
+
 	/// Text representation of the full name
 	public var text: FHIRPrimitive<FHIRString>?
-	
+
 	/// Family name (often called 'Surname')
 	public var family: FHIRPrimitive<FHIRString>?
-	
+
 	/// Given names (not always 'first'). Includes middle names
 	public var given: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Parts that come before the name
 	public var prefix: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Parts that come after the name
 	public var suffix: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Time period when name was/is in use
 	public var period: Period?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -62,8 +60,7 @@ open class HumanName: Element {
 							prefix: [FHIRPrimitive<FHIRString>]? = nil,
 							suffix: [FHIRPrimitive<FHIRString>]? = nil,
 							text: FHIRPrimitive<FHIRString>? = nil,
-							use: FHIRPrimitive<NameUse>? = nil)
-	{
+							use: FHIRPrimitive<NameUse>? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.family = family
@@ -75,9 +72,9 @@ open class HumanName: Element {
 		self.text = text
 		self.use = use
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case family; case _family
 		case given; case _given
@@ -87,11 +84,11 @@ open class HumanName: Element {
 		case text; case _text
 		case use; case _use
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.family = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .family, auxiliaryKey: ._family)
 		self.given = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .given, auxiliaryKey: ._given)
@@ -102,11 +99,11 @@ open class HumanName: Element {
 		self.use = try FHIRPrimitive<NameUse>(from: _container, forKeyIfPresent: .use, auxiliaryKey: ._use)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try family?.encode(on: &_container, forKey: .family, auxiliaryKey: ._family)
 		try given?.encode(on: &_container, forKey: .given, auxiliaryKey: ._given)
@@ -117,9 +114,9 @@ open class HumanName: Element {
 		try use?.encode(on: &_container, forKey: .use, auxiliaryKey: ._use)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? HumanName else {
 			return false
@@ -135,7 +132,7 @@ open class HumanName: Element {
 		    && text == _other.text
 		    && use == _other.use
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(family)

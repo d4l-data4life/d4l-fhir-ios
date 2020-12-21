@@ -17,50 +17,48 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A slot of time on a schedule that may be available for booking appointments.
  */
 open class Slot: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .slot }
-	
+
 	/// External Ids for this item
 	public var identifier: [Identifier]?
-	
+
 	/// A broad categorization of the service that is to be performed during this appointment
 	public var serviceCategory: [CodeableConcept]?
-	
+
 	/// The type of appointments that can be booked into this slot (ideally this would be an identifiable service -
 	/// which is at a location, rather than the location itself). If provided then this overrides the value provided on
 	/// the availability resource
 	public var serviceType: [CodeableConcept]?
-	
+
 	/// The specialty of a practitioner that would be required to perform the service requested in this appointment
 	public var specialty: [CodeableConcept]?
-	
+
 	/// The style of appointment or patient that may be booked in the slot (not service type)
 	public var appointmentType: CodeableConcept?
-	
+
 	/// The schedule resource that this slot defines an interval of status information
 	public var schedule: Reference
-	
+
 	/// None
 	public var status: FHIRPrimitive<SlotStatus>
-	
+
 	/// Date/Time that the slot is to begin
 	public var start: FHIRPrimitive<Instant>
-	
+
 	/// Date/Time that the slot is to conclude
 	public var end: FHIRPrimitive<Instant>
-	
+
 	/// This slot has already been overbooked, appointments are unlikely to be accepted for this time
 	public var overbooked: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Comments on the slot to describe any extended information. Such as custom constraints on the slot
 	public var comment: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(end: FHIRPrimitive<Instant>, schedule: Reference, start: FHIRPrimitive<Instant>, status: FHIRPrimitive<SlotStatus>) {
 		self.end = end
@@ -69,7 +67,7 @@ open class Slot: DomainResource {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							appointmentType: CodeableConcept? = nil,
@@ -90,8 +88,7 @@ open class Slot: DomainResource {
 							specialty: [CodeableConcept]? = nil,
 							start: FHIRPrimitive<Instant>,
 							status: FHIRPrimitive<SlotStatus>,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(end: end, schedule: schedule, start: start, status: status)
 		self.appointmentType = appointmentType
 		self.comment = comment
@@ -109,9 +106,9 @@ open class Slot: DomainResource {
 		self.specialty = specialty
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case appointmentType
 		case comment; case _comment
@@ -125,11 +122,11 @@ open class Slot: DomainResource {
 		case start; case _start
 		case status; case _status
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.appointmentType = try CodeableConcept(from: _container, forKeyIfPresent: .appointmentType)
 		self.comment = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .comment, auxiliaryKey: ._comment)
@@ -144,11 +141,11 @@ open class Slot: DomainResource {
 		self.status = try FHIRPrimitive<SlotStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try appointmentType?.encode(on: &_container, forKey: .appointmentType)
 		try comment?.encode(on: &_container, forKey: .comment, auxiliaryKey: ._comment)
@@ -163,9 +160,9 @@ open class Slot: DomainResource {
 		try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Slot else {
 			return false
@@ -185,7 +182,7 @@ open class Slot: DomainResource {
 		    && start == _other.start
 		    && status == _other.status
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(appointmentType)

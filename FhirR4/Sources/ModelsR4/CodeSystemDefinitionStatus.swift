@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes identifying the lifecycle stage of a definition.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/definition-status
  */
 public enum DefinitionStatus: String, FHIRPrimitiveType {
-	
+
 	/// The definition is in the design stage and is not yet considered to be "ready for use".
 	case draft = "draft"
-	
+
 	/// The definition is considered ready for use.
 	case active = "active"
-	
+
 	/// The definition should no longer be used.
 	case withdrawn = "withdrawn"
-	
+
 	/// The authoring/source system does not know which of the status values currently applies for this resource.  Note:
 	/// This concept is not to be used for "other" - one of the listed statuses is presumed to apply,  but the
 	/// authoring/source system does not know which.

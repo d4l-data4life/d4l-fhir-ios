@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Which type a compartment definition describes.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/compartment-type
  */
 public enum CompartmentType: String, FHIRPrimitiveType {
-	
+
 	/// The compartment definition is for the patient compartment.
 	case patient = "Patient"
-	
+
 	/// The compartment definition is for the encounter compartment.
 	case encounter = "Encounter"
-	
+
 	/// The compartment definition is for the related-person compartment.
 	case relatedPerson = "RelatedPerson"
-	
+
 	/// The compartment definition is for the practitioner compartment.
 	case practitioner = "Practitioner"
-	
+
 	/// The compartment definition is for the device compartment.
 	case device = "Device"
 }

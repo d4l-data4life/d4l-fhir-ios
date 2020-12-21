@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The free/busy status of the slot.
  
@@ -26,20 +24,20 @@
  ValueSet: http://hl7.org/fhir/ValueSet/slotstatus
  */
 public enum SlotStatus: String, FHIRPrimitiveType {
-	
+
 	/// Indicates that the time interval is busy because one  or more events have been scheduled for that interval.
 	case busy = "busy"
-	
+
 	/// Indicates that the time interval is free for scheduling.
 	case free = "free"
-	
+
 	/// Indicates that the time interval is busy and that the interval cannot be scheduled.
 	case busyUnavailable = "busy-unavailable"
-	
+
 	/// Indicates that the time interval is busy because one or more events have been tentatively scheduled for that
 	/// interval.
 	case busyTentative = "busy-tentative"
-	
+
 	/// This instance should not have been part of this patient's medical record.
 	case enteredInError = "entered-in-error"
 }

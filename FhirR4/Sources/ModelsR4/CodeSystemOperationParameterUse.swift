@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Whether an operation parameter is an input or an output parameter.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/operation-parameter-use
  */
 public enum OperationParameterUse: String, FHIRPrimitiveType {
-	
+
 	/// This is an input parameter.
 	case `in` = "in"
-	
+
 	/// This is an output parameter.
 	case out = "out"
 }

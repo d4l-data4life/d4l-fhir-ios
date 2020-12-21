@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  MedicationDispense Category Codes
  
@@ -26,18 +24,18 @@
  ValueSet: http://hl7.org/fhir/ValueSet/medicationdispense-category
  */
 public enum MedicationDispenseCategoryCodes: String, FHIRPrimitiveType {
-	
+
 	/// Includes dispenses for medications to be administered or consumed in an inpatient or acute care setting.
 	case inpatient = "inpatient"
-	
+
 	/// Includes dispenses for medications to be administered or consumed in an outpatient setting (for example,
 	/// Emergency Department, Outpatient Clinic, Outpatient Surgery, Doctor's office).
 	case outpatient = "outpatient"
-	
+
 	/// Includes dispenses for medications to be administered or consumed by the patient in their home (this would
 	/// include long term care or nursing homes, hospices, etc.).
 	case community = "community"
-	
+
 	/// Includes dispenses for medications created when the patient is being released from a facility.
 	case discharge = "discharge"
 }

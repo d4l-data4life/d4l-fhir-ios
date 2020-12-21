@@ -17,7 +17,7 @@
 //  limitations under the License.
 
 public extension DomainResource {
-	
+
 	/**
 	 Returns an array of Extensions matching the desired URL. An empty array is returned if there are no extensions that
 	 match or there are no extensions at all.

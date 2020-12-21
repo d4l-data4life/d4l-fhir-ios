@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A grouping of people or organizations with a common purpose.
  
@@ -27,44 +25,44 @@
  practice groups, payer/insurer, etc.
  */
 open class Organization: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .organization }
-	
+
 	/// Identifies this organization  across multiple systems
 	public var identifier: [Identifier]?
-	
+
 	/// Whether the organization's record is still in active use
 	public var active: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Kind of organization
 	public var type: [CodeableConcept]?
-	
+
 	/// Name used for the organization
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// A list of alternate names that the organization is known as, or was known as in the past
 	public var alias: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// A contact detail for the organization
 	public var telecom: [ContactPoint]?
-	
+
 	/// An address for the organization
 	public var address: [Address]?
-	
+
 	/// The organization of which this organization forms a part
 	public var partOf: Reference?
-	
+
 	/// Contact for the organization for a certain purpose
 	public var contact: [OrganizationContact]?
-	
+
 	/// Technical endpoints providing access to services operated for the organization
 	public var endpoint: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							active: FHIRPrimitive<FHIRBool>? = nil,
@@ -84,8 +82,7 @@ open class Organization: DomainResource {
 							partOf: Reference? = nil,
 							telecom: [ContactPoint]? = nil,
 							text: Narrative? = nil,
-							type: [CodeableConcept]? = nil)
-	{
+							type: [CodeableConcept]? = nil) {
 		self.init()
 		self.active = active
 		self.address = address
@@ -106,9 +103,9 @@ open class Organization: DomainResource {
 		self.text = text
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case active; case _active
 		case address
@@ -121,11 +118,11 @@ open class Organization: DomainResource {
 		case telecom
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.active = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .active, auxiliaryKey: ._active)
 		self.address = try [Address](from: _container, forKeyIfPresent: .address)
@@ -139,11 +136,11 @@ open class Organization: DomainResource {
 		self.type = try [CodeableConcept](from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try active?.encode(on: &_container, forKey: .active, auxiliaryKey: ._active)
 		try address?.encode(on: &_container, forKey: .address)
@@ -157,9 +154,9 @@ open class Organization: DomainResource {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Organization else {
 			return false
@@ -178,7 +175,7 @@ open class Organization: DomainResource {
 		    && telecom == _other.telecom
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(active)
@@ -198,24 +195,24 @@ open class Organization: DomainResource {
  Contact for the organization for a certain purpose.
  */
 open class OrganizationContact: BackboneElement {
-	
+
 	/// The type of contact
 	public var purpose: CodeableConcept?
-	
+
 	/// A name associated with the contact
 	public var name: HumanName?
-	
+
 	/// Contact details (telephone, email, etc.)  for a contact
 	public var telecom: [ContactPoint]?
-	
+
 	/// Visiting or postal addresses for the contact
 	public var address: Address?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							address: Address? = nil,
@@ -224,8 +221,7 @@ open class OrganizationContact: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							name: HumanName? = nil,
 							purpose: CodeableConcept? = nil,
-							telecom: [ContactPoint]? = nil)
-	{
+							telecom: [ContactPoint]? = nil) {
 		self.init()
 		self.address = address
 		self.`extension` = `extension`
@@ -235,20 +231,20 @@ open class OrganizationContact: BackboneElement {
 		self.purpose = purpose
 		self.telecom = telecom
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case address
 		case name
 		case purpose
 		case telecom
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.address = try Address(from: _container, forKeyIfPresent: .address)
 		self.name = try HumanName(from: _container, forKeyIfPresent: .name)
@@ -256,11 +252,11 @@ open class OrganizationContact: BackboneElement {
 		self.telecom = try [ContactPoint](from: _container, forKeyIfPresent: .telecom)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try address?.encode(on: &_container, forKey: .address)
 		try name?.encode(on: &_container, forKey: .name)
@@ -268,9 +264,9 @@ open class OrganizationContact: BackboneElement {
 		try telecom?.encode(on: &_container, forKey: .telecom)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? OrganizationContact else {
 			return false
@@ -283,7 +279,7 @@ open class OrganizationContact: BackboneElement {
 		    && purpose == _other.purpose
 		    && telecom == _other.telecom
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(address)

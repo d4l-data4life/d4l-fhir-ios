@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The risk of an adverse reaction (allergy or intolerance) for this patient upon exposure to the substance (including
  pharmaceutical products).
@@ -27,10 +25,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/allerg-intol-substance-exp-risk
  */
 public enum AllergyIntoleranceSubstanceExposureRisk: String, FHIRPrimitiveType {
-	
+
 	/// Known risk of allergy or intolerance reaction upon exposure to the specified substance.
 	case knownReactionRisk = "known-reaction-risk"
-	
+
 	/// No known risk of allergy or intolerance reaction upon exposure to the specified substance.
 	case noKnownReactionRisk = "no-known-reaction-risk"
 }

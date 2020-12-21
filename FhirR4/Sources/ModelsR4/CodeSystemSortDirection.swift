@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The possible sort directions, ascending or descending.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/sort-direction
  */
 public enum SortDirection: String, FHIRPrimitiveType {
-	
+
 	/// Sort by the value ascending, so that lower values appear first.
 	case ascending = "ascending"
-	
+
 	/// Sort by the value descending, so that lower values appear last.
 	case descending = "descending"
 }

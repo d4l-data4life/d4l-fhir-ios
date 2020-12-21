@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A Master Patient Index (MPI) assessment of whether a candidate patient record is a match or not.
  
@@ -26,18 +24,18 @@
  ValueSet: http://hl7.org/fhir/ValueSet/match-grade
  */
 public enum MatchGrade: String, FHIRPrimitiveType {
-	
+
 	/// This record meets the matching criteria to be automatically considered as a full match.
 	case certain = "certain"
-	
+
 	/// This record is a close match, but not a certain match. Additional review (e.g. by a human) may be required
 	/// before using this as a match.
 	case probable = "probable"
-	
+
 	/// This record may be a matching one. Additional review (e.g. by a human) SHOULD be performed before using this as
 	/// a match.
 	case possible = "possible"
-	
+
 	/// This record is known not to be a match. Note that usually non-matching records are not returned, but in some
 	/// cases records previously or likely considered as a match may specifically be negated by the matching engine.
 	case certainlyNot = "certainly-not"

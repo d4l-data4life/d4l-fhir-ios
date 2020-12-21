@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The results of executing an action.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/report-action-result-codes
  */
 public enum TestReportActionResult: String, FHIRPrimitiveType {
-	
+
 	/// The action was successful.
 	case pass = "pass"
-	
+
 	/// The action was skipped.
 	case skip = "skip"
-	
+
 	/// The action failed.
 	case fail = "fail"
-	
+
 	/// The action passed but with warnings.
 	case warning = "warning"
-	
+
 	/// The action encountered a fatal error and the engine was unable to process.
 	case error = "error"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set is provided as an example. The value set to instantiate this attribute should be drawn from a robust
  terminology code system that consists of or contains concepts to support the medication process.
@@ -27,13 +25,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/reason-medication-given-codes
  */
 public enum ReasonMedicationGivenCodes: String, FHIRPrimitiveType {
-	
+
 	/// No reason known.
 	case A = "a"
-	
+
 	/// The administration was following an ordered protocol.
 	case B = "b"
-	
+
 	/// The administration was needed to treat an emergency.
 	case C = "c"
 }

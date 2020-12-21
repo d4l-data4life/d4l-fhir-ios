@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Is the Participant required to attend the appointment.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/participantrequired
  */
 public enum ParticipantRequired: String, FHIRPrimitiveType {
-	
+
 	/// The participant is required to attend the appointment.
 	case required = "required"
-	
+
 	/// The participant may optionally attend the appointment.
 	case optional = "optional"
-	
+
 	/// The participant is excluded from the appointment, and might not be informed of the appointment taking place.
 	/// (Appointment is about them, not for them - such as 2 doctors discussing results about a patient's test).
 	case informationOnly = "information-only"

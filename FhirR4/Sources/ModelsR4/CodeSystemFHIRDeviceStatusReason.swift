@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The availability status reason of the device.
  
@@ -26,28 +24,28 @@
  ValueSet: http://hl7.org/fhir/ValueSet/device-status-reason
  */
 public enum FHIRDeviceStatusReason: String, FHIRPrimitiveType {
-	
+
 	/// The device is off.
 	case online = "online"
-	
+
 	/// The device is paused.
 	case paused = "paused"
-	
+
 	/// The device is ready but not actively operating.
 	case standby = "standby"
-	
+
 	/// The device is offline.
 	case offline = "offline"
-	
+
 	/// The device is not ready.
 	case notReady = "not-ready"
-	
+
 	/// The device transducer is disconnected.
 	case transducDiscon = "transduc-discon"
-	
+
 	/// The device hardware is disconnected.
 	case hwDiscon = "hw-discon"
-	
+
 	/// The device is off.
 	case off = "off"
 }

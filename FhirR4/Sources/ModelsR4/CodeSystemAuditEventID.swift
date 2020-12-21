@@ -17,15 +17,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Event Types for Audit Events - defined by DICOM with some FHIR specific additions.
  
  URL: http://terminology.hl7.org/CodeSystem/audit-event-type
  */
 public enum AuditEventID: String, FHIRPrimitiveType {
-	
+
 	/// Audit Event: Execution of a RESTful operation as defined by FHIR.
 	case rest = "rest"
 }

@@ -17,15 +17,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Definition of an element in a resource or extension.
  
  Captures constraints on each element within the resource, profile, or extension.
  */
 open class ElementDefinition: BackboneElement {
-	
+
 	/// All possible types for "defaultValue[x]"
 	public enum DefaultValueX: Hashable {
 		case address(Address)
@@ -79,7 +77,7 @@ open class ElementDefinition: BackboneElement {
 		case usageContext(UsageContext)
 		case uuid(FHIRPrimitive<FHIRURI>)
 	}
-	
+
 	/// All possible types for "fixed[x]"
 	public enum FixedX: Hashable {
 		case address(Address)
@@ -133,7 +131,7 @@ open class ElementDefinition: BackboneElement {
 		case usageContext(UsageContext)
 		case uuid(FHIRPrimitive<FHIRURI>)
 	}
-	
+
 	/// All possible types for "maxValue[x]"
 	public enum MaxValueX: Hashable {
 		case date(FHIRPrimitive<FHIRDate>)
@@ -146,7 +144,7 @@ open class ElementDefinition: BackboneElement {
 		case time(FHIRPrimitive<FHIRTime>)
 		case unsignedInt(FHIRPrimitive<FHIRUnsignedInteger>)
 	}
-	
+
 	/// All possible types for "minValue[x]"
 	public enum MinValueX: Hashable {
 		case date(FHIRPrimitive<FHIRDate>)
@@ -159,7 +157,7 @@ open class ElementDefinition: BackboneElement {
 		case time(FHIRPrimitive<FHIRTime>)
 		case unsignedInt(FHIRPrimitive<FHIRUnsignedInteger>)
 	}
-	
+
 	/// All possible types for "pattern[x]"
 	public enum PatternX: Hashable {
 		case address(Address)
@@ -213,120 +211,120 @@ open class ElementDefinition: BackboneElement {
 		case usageContext(UsageContext)
 		case uuid(FHIRPrimitive<FHIRURI>)
 	}
-	
+
 	/// Path of the element in the hierarchy of elements
 	public var path: FHIRPrimitive<FHIRString>
-	
+
 	/// Codes that define how this element is represented in instances, when the deviation varies from the normal case.
 	public var representation: [FHIRPrimitive<PropertyRepresentation>]?
-	
+
 	/// Name for this particular element (in a set of slices)
 	public var sliceName: FHIRPrimitive<FHIRString>?
-	
+
 	/// If this slice definition constrains an inherited slice definition (or not)
 	public var sliceIsConstraining: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Name for element to display with or prompt for element
 	public var label: FHIRPrimitive<FHIRString>?
-	
+
 	/// Corresponding codes in terminologies
 	public var code: [Coding]?
-	
+
 	/// This element is sliced - slices follow
 	public var slicing: ElementDefinitionSlicing?
-	
+
 	/// Concise definition for space-constrained presentation
 	public var short: FHIRPrimitive<FHIRString>?
-	
+
 	/// Full formal definition as narrative text
 	public var definition: FHIRPrimitive<FHIRString>?
-	
+
 	/// Comments about the use of this element
 	public var comment: FHIRPrimitive<FHIRString>?
-	
+
 	/// Why this resource has been created
 	public var requirements: FHIRPrimitive<FHIRString>?
-	
+
 	/// Other names
 	public var alias: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Minimum Cardinality
 	public var min: FHIRPrimitive<FHIRUnsignedInteger>?
-	
+
 	/// Maximum Cardinality (a number or *)
 	public var max: FHIRPrimitive<FHIRString>?
-	
+
 	/// Base definition information for tools
 	public var base: ElementDefinitionBase?
-	
+
 	/// Reference to definition of content for the element
 	public var contentReference: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Data type and Profile for this element
 	public var type: [ElementDefinitionType]?
-	
+
 	/// Specified value if missing from instance
 	/// One of `defaultValue[x]`
 	public var defaultValue: DefaultValueX?
-	
+
 	/// Implicit meaning when this element is missing
 	public var meaningWhenMissing: FHIRPrimitive<FHIRString>?
-	
+
 	/// What the order of the elements means
 	public var orderMeaning: FHIRPrimitive<FHIRString>?
-	
+
 	/// Value must be exactly this
 	/// One of `fixed[x]`
 	public var fixed: FixedX?
-	
+
 	/// Value must have at least these property values
 	/// One of `pattern[x]`
 	public var pattern: PatternX?
-	
+
 	/// Example value (as defined for type)
 	public var example: [ElementDefinitionExample]?
-	
+
 	/// Minimum Allowed Value (for some types)
 	/// One of `minValue[x]`
 	public var minValue: MinValueX?
-	
+
 	/// Maximum Allowed Value (for some types)
 	/// One of `maxValue[x]`
 	public var maxValue: MaxValueX?
-	
+
 	/// Max length for strings
 	public var maxLength: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Reference to invariant about presence
 	public var condition: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Condition that must evaluate to true
 	public var constraint: [ElementDefinitionConstraint]?
-	
+
 	/// If the element must be supported
 	public var mustSupport: FHIRPrimitive<FHIRBool>?
-	
+
 	/// If this modifies the meaning of other elements
 	public var isModifier: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Reason that this element is marked as a modifier
 	public var isModifierReason: FHIRPrimitive<FHIRString>?
-	
+
 	/// Include when _summary = true?
 	public var isSummary: FHIRPrimitive<FHIRBool>?
-	
+
 	/// ValueSet details if this is coded
 	public var binding: ElementDefinitionBinding?
-	
+
 	/// Map element to another set of definitions
 	public var mapping: [ElementDefinitionMapping]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(path: FHIRPrimitive<FHIRString>) {
 		self.path = path
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							alias: [FHIRPrimitive<FHIRString>]? = nil,
@@ -365,8 +363,7 @@ open class ElementDefinition: BackboneElement {
 							sliceIsConstraining: FHIRPrimitive<FHIRBool>? = nil,
 							sliceName: FHIRPrimitive<FHIRString>? = nil,
 							slicing: ElementDefinitionSlicing? = nil,
-							type: [ElementDefinitionType]? = nil)
-	{
+							type: [ElementDefinitionType]? = nil) {
 		self.init(path: path)
 		self.alias = alias
 		self.base = base
@@ -405,9 +402,9 @@ open class ElementDefinition: BackboneElement {
 		self.slicing = slicing
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case alias; case _alias
 		case base
@@ -607,11 +604,11 @@ open class ElementDefinition: BackboneElement {
 		case slicing
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.alias = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .alias, auxiliaryKey: ._alias)
 		self.base = try ElementDefinitionBase(from: _container, forKeyIfPresent: .base)
@@ -621,7 +618,7 @@ open class ElementDefinition: BackboneElement {
 		self.condition = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .condition, auxiliaryKey: ._condition)
 		self.constraint = try [ElementDefinitionConstraint](from: _container, forKeyIfPresent: .constraint)
 		self.contentReference = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .contentReference, auxiliaryKey: ._contentReference)
-		var _t_defaultValue: DefaultValueX? = nil
+		var _t_defaultValue: DefaultValueX?
 		if let defaultValueBase64Binary = try FHIRPrimitive<Base64Binary>(from: _container, forKeyIfPresent: .defaultValueBase64Binary, auxiliaryKey: ._defaultValueBase64Binary) {
 			if _t_defaultValue != nil {
 				throw DecodingError.dataCorruptedError(forKey: .defaultValueBase64Binary, in: _container, debugDescription: "More than one value provided for \"defaultValue\"")
@@ -925,7 +922,7 @@ open class ElementDefinition: BackboneElement {
 		self.defaultValue = _t_defaultValue
 		self.definition = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .definition, auxiliaryKey: ._definition)
 		self.example = try [ElementDefinitionExample](from: _container, forKeyIfPresent: .example)
-		var _t_fixed: FixedX? = nil
+		var _t_fixed: FixedX?
 		if let fixedBase64Binary = try FHIRPrimitive<Base64Binary>(from: _container, forKeyIfPresent: .fixedBase64Binary, auxiliaryKey: ._fixedBase64Binary) {
 			if _t_fixed != nil {
 				throw DecodingError.dataCorruptedError(forKey: .fixedBase64Binary, in: _container, debugDescription: "More than one value provided for \"fixed\"")
@@ -1234,7 +1231,7 @@ open class ElementDefinition: BackboneElement {
 		self.mapping = try [ElementDefinitionMapping](from: _container, forKeyIfPresent: .mapping)
 		self.max = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .max, auxiliaryKey: ._max)
 		self.maxLength = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .maxLength, auxiliaryKey: ._maxLength)
-		var _t_maxValue: MaxValueX? = nil
+		var _t_maxValue: MaxValueX?
 		if let maxValueDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .maxValueDate, auxiliaryKey: ._maxValueDate) {
 			if _t_maxValue != nil {
 				throw DecodingError.dataCorruptedError(forKey: .maxValueDate, in: _container, debugDescription: "More than one value provided for \"maxValue\"")
@@ -1292,7 +1289,7 @@ open class ElementDefinition: BackboneElement {
 		self.maxValue = _t_maxValue
 		self.meaningWhenMissing = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .meaningWhenMissing, auxiliaryKey: ._meaningWhenMissing)
 		self.min = try FHIRPrimitive<FHIRUnsignedInteger>(from: _container, forKeyIfPresent: .min, auxiliaryKey: ._min)
-		var _t_minValue: MinValueX? = nil
+		var _t_minValue: MinValueX?
 		if let minValueDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .minValueDate, auxiliaryKey: ._minValueDate) {
 			if _t_minValue != nil {
 				throw DecodingError.dataCorruptedError(forKey: .minValueDate, in: _container, debugDescription: "More than one value provided for \"minValue\"")
@@ -1351,7 +1348,7 @@ open class ElementDefinition: BackboneElement {
 		self.mustSupport = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .mustSupport, auxiliaryKey: ._mustSupport)
 		self.orderMeaning = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .orderMeaning, auxiliaryKey: ._orderMeaning)
 		self.path = try FHIRPrimitive<FHIRString>(from: _container, forKey: .path, auxiliaryKey: ._path)
-		var _t_pattern: PatternX? = nil
+		var _t_pattern: PatternX?
 		if let patternBase64Binary = try FHIRPrimitive<Base64Binary>(from: _container, forKeyIfPresent: .patternBase64Binary, auxiliaryKey: ._patternBase64Binary) {
 			if _t_pattern != nil {
 				throw DecodingError.dataCorruptedError(forKey: .patternBase64Binary, in: _container, debugDescription: "More than one value provided for \"pattern\"")
@@ -1662,11 +1659,11 @@ open class ElementDefinition: BackboneElement {
 		self.type = try [ElementDefinitionType](from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try alias?.encode(on: &_container, forKey: .alias, auxiliaryKey: ._alias)
 		try base?.encode(on: &_container, forKey: .base)
@@ -2055,9 +2052,9 @@ open class ElementDefinition: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ElementDefinition else {
 			return false
@@ -2100,7 +2097,7 @@ open class ElementDefinition: BackboneElement {
 		    && slicing == _other.slicing
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(alias)
@@ -2150,16 +2147,16 @@ open class ElementDefinition: BackboneElement {
  of the element, it will be same.
  */
 open class ElementDefinitionBase: Element {
-	
+
 	/// Path that identifies the base element
 	public var path: FHIRPrimitive<FHIRString>
-	
+
 	/// Min cardinality of the base element
 	public var min: FHIRPrimitive<FHIRUnsignedInteger>
-	
+
 	/// Max cardinality of the base element
 	public var max: FHIRPrimitive<FHIRString>
-	
+
 	/// Designated initializer taking all required properties
 	public init(max: FHIRPrimitive<FHIRString>, min: FHIRPrimitive<FHIRUnsignedInteger>, path: FHIRPrimitive<FHIRString>) {
 		self.max = max
@@ -2167,52 +2164,51 @@ open class ElementDefinitionBase: Element {
 		self.path = path
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							max: FHIRPrimitive<FHIRString>,
 							min: FHIRPrimitive<FHIRUnsignedInteger>,
-							path: FHIRPrimitive<FHIRString>)
-	{
+							path: FHIRPrimitive<FHIRString>) {
 		self.init(max: max, min: min, path: path)
 		self.`extension` = `extension`
 		self.id = id
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case max; case _max
 		case min; case _min
 		case path; case _path
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.max = try FHIRPrimitive<FHIRString>(from: _container, forKey: .max, auxiliaryKey: ._max)
 		self.min = try FHIRPrimitive<FHIRUnsignedInteger>(from: _container, forKey: .min, auxiliaryKey: ._min)
 		self.path = try FHIRPrimitive<FHIRString>(from: _container, forKey: .path, auxiliaryKey: ._path)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try max.encode(on: &_container, forKey: .max, auxiliaryKey: ._max)
 		try min.encode(on: &_container, forKey: .min, auxiliaryKey: ._min)
 		try path.encode(on: &_container, forKey: .path, auxiliaryKey: ._path)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ElementDefinitionBase else {
 			return false
@@ -2224,7 +2220,7 @@ open class ElementDefinitionBase: Element {
 		    && min == _other.min
 		    && path == _other.path
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(max)
@@ -2240,70 +2236,69 @@ open class ElementDefinitionBase: Element {
  uri).
  */
 open class ElementDefinitionBinding: Element {
-	
+
 	/// Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the
 	/// provided value set must be adhered to in the instances.
 	public var strength: FHIRPrimitive<BindingStrength>
-	
+
 	/// Human explanation of the value set
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Source of value set
 	public var valueSet: FHIRPrimitive<Canonical>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(strength: FHIRPrimitive<BindingStrength>) {
 		self.strength = strength
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							description_fhir: FHIRPrimitive<FHIRString>? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							strength: FHIRPrimitive<BindingStrength>,
-							valueSet: FHIRPrimitive<Canonical>? = nil)
-	{
+							valueSet: FHIRPrimitive<Canonical>? = nil) {
 		self.init(strength: strength)
 		self.description_fhir = description_fhir
 		self.`extension` = `extension`
 		self.id = id
 		self.valueSet = valueSet
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case strength; case _strength
 		case valueSet; case _valueSet
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.strength = try FHIRPrimitive<BindingStrength>(from: _container, forKey: .strength, auxiliaryKey: ._strength)
 		self.valueSet = try FHIRPrimitive<Canonical>(from: _container, forKeyIfPresent: .valueSet, auxiliaryKey: ._valueSet)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
 		try strength.encode(on: &_container, forKey: .strength, auxiliaryKey: ._strength)
 		try valueSet?.encode(on: &_container, forKey: .valueSet, auxiliaryKey: ._valueSet)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ElementDefinitionBinding else {
 			return false
@@ -2315,7 +2310,7 @@ open class ElementDefinitionBinding: Element {
 		    && strength == _other.strength
 		    && valueSet == _other.valueSet
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(description_fhir)
@@ -2331,28 +2326,28 @@ open class ElementDefinitionBinding: Element {
  of the instance.
  */
 open class ElementDefinitionConstraint: Element {
-	
+
 	/// Target of 'condition' reference above
 	public var key: FHIRPrimitive<FHIRString>
-	
+
 	/// Why this constraint is necessary or appropriate
 	public var requirements: FHIRPrimitive<FHIRString>?
-	
+
 	/// Identifies the impact constraint violation has on the conformance of the instance.
 	public var severity: FHIRPrimitive<ConstraintSeverity>
-	
+
 	/// Human description of constraint
 	public var human: FHIRPrimitive<FHIRString>
-	
+
 	/// FHIRPath expression of constraint
 	public var expression: FHIRPrimitive<FHIRString>?
-	
+
 	/// XPath expression of constraint
 	public var xpath: FHIRPrimitive<FHIRString>?
-	
+
 	/// Reference to original source of constraint
 	public var source: FHIRPrimitive<Canonical>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(human: FHIRPrimitive<FHIRString>, key: FHIRPrimitive<FHIRString>, severity: FHIRPrimitive<ConstraintSeverity>) {
 		self.human = human
@@ -2360,7 +2355,7 @@ open class ElementDefinitionConstraint: Element {
 		self.severity = severity
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							expression: FHIRPrimitive<FHIRString>? = nil,
@@ -2371,8 +2366,7 @@ open class ElementDefinitionConstraint: Element {
 							requirements: FHIRPrimitive<FHIRString>? = nil,
 							severity: FHIRPrimitive<ConstraintSeverity>,
 							source: FHIRPrimitive<Canonical>? = nil,
-							xpath: FHIRPrimitive<FHIRString>? = nil)
-	{
+							xpath: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(human: human, key: key, severity: severity)
 		self.expression = expression
 		self.`extension` = `extension`
@@ -2381,9 +2375,9 @@ open class ElementDefinitionConstraint: Element {
 		self.source = source
 		self.xpath = xpath
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case expression; case _expression
 		case human; case _human
@@ -2393,11 +2387,11 @@ open class ElementDefinitionConstraint: Element {
 		case source; case _source
 		case xpath; case _xpath
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.expression = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .expression, auxiliaryKey: ._expression)
 		self.human = try FHIRPrimitive<FHIRString>(from: _container, forKey: .human, auxiliaryKey: ._human)
@@ -2408,11 +2402,11 @@ open class ElementDefinitionConstraint: Element {
 		self.xpath = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .xpath, auxiliaryKey: ._xpath)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try expression?.encode(on: &_container, forKey: .expression, auxiliaryKey: ._expression)
 		try human.encode(on: &_container, forKey: .human, auxiliaryKey: ._human)
@@ -2423,9 +2417,9 @@ open class ElementDefinitionConstraint: Element {
 		try xpath?.encode(on: &_container, forKey: .xpath, auxiliaryKey: ._xpath)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ElementDefinitionConstraint else {
 			return false
@@ -2441,7 +2435,7 @@ open class ElementDefinitionConstraint: Element {
 		    && source == _other.source
 		    && xpath == _other.xpath
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(expression)
@@ -2460,7 +2454,7 @@ open class ElementDefinitionConstraint: Element {
  A sample value for this element demonstrating the type of information that would typically be found in the element.
  */
 open class ElementDefinitionExample: Element {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case address(Address)
@@ -2514,35 +2508,34 @@ open class ElementDefinitionExample: Element {
 		case usageContext(UsageContext)
 		case uuid(FHIRPrimitive<FHIRURI>)
 	}
-	
+
 	/// Describes the purpose of this example
 	public var label: FHIRPrimitive<FHIRString>
-	
+
 	/// Value of Example (one of allowed types)
 	/// One of `value[x]`
 	public var value: ValueX
-	
+
 	/// Designated initializer taking all required properties
 	public init(label: FHIRPrimitive<FHIRString>, value: ValueX) {
 		self.label = label
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							label: FHIRPrimitive<FHIRString>,
-							value: ValueX)
-	{
+							value: ValueX) {
 		self.init(label: label, value: value)
 		self.`extension` = `extension`
 		self.id = id
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case label; case _label
 		case valueAddress
@@ -2596,19 +2589,19 @@ open class ElementDefinitionExample: Element {
 		case valueUsageContext
 		case valueUuid; case _valueUuid
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.valueAddress) || _container.contains(CodingKeys.valueAge) || _container.contains(CodingKeys.valueAnnotation) || _container.contains(CodingKeys.valueAttachment) || _container.contains(CodingKeys.valueBase64Binary) || _container.contains(CodingKeys.valueBoolean) || _container.contains(CodingKeys.valueCanonical) || _container.contains(CodingKeys.valueCode) || _container.contains(CodingKeys.valueCodeableConcept) || _container.contains(CodingKeys.valueCoding) || _container.contains(CodingKeys.valueContactDetail) || _container.contains(CodingKeys.valueContactPoint) || _container.contains(CodingKeys.valueContributor) || _container.contains(CodingKeys.valueCount) || _container.contains(CodingKeys.valueDataRequirement) || _container.contains(CodingKeys.valueDate) || _container.contains(CodingKeys.valueDateTime) || _container.contains(CodingKeys.valueDecimal) || _container.contains(CodingKeys.valueDistance) || _container.contains(CodingKeys.valueDosage) || _container.contains(CodingKeys.valueDuration) || _container.contains(CodingKeys.valueExpression) || _container.contains(CodingKeys.valueHumanName) || _container.contains(CodingKeys.valueId) || _container.contains(CodingKeys.valueIdentifier) || _container.contains(CodingKeys.valueInstant) || _container.contains(CodingKeys.valueInteger) || _container.contains(CodingKeys.valueMarkdown) || _container.contains(CodingKeys.valueMeta) || _container.contains(CodingKeys.valueMoney) || _container.contains(CodingKeys.valueOid) || _container.contains(CodingKeys.valueParameterDefinition) || _container.contains(CodingKeys.valuePeriod) || _container.contains(CodingKeys.valuePositiveInt) || _container.contains(CodingKeys.valueQuantity) || _container.contains(CodingKeys.valueRange) || _container.contains(CodingKeys.valueRatio) || _container.contains(CodingKeys.valueReference) || _container.contains(CodingKeys.valueRelatedArtifact) || _container.contains(CodingKeys.valueSampledData) || _container.contains(CodingKeys.valueSignature) || _container.contains(CodingKeys.valueString) || _container.contains(CodingKeys.valueTime) || _container.contains(CodingKeys.valueTiming) || _container.contains(CodingKeys.valueTriggerDefinition) || _container.contains(CodingKeys.valueUnsignedInt) || _container.contains(CodingKeys.valueUri) || _container.contains(CodingKeys.valueUrl) || _container.contains(CodingKeys.valueUsageContext) || _container.contains(CodingKeys.valueUuid) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.valueAddress, CodingKeys.valueAge, CodingKeys.valueAnnotation, CodingKeys.valueAttachment, CodingKeys.valueBase64Binary, CodingKeys.valueBoolean, CodingKeys.valueCanonical, CodingKeys.valueCode, CodingKeys.valueCodeableConcept, CodingKeys.valueCoding, CodingKeys.valueContactDetail, CodingKeys.valueContactPoint, CodingKeys.valueContributor, CodingKeys.valueCount, CodingKeys.valueDataRequirement, CodingKeys.valueDate, CodingKeys.valueDateTime, CodingKeys.valueDecimal, CodingKeys.valueDistance, CodingKeys.valueDosage, CodingKeys.valueDuration, CodingKeys.valueExpression, CodingKeys.valueHumanName, CodingKeys.valueId, CodingKeys.valueIdentifier, CodingKeys.valueInstant, CodingKeys.valueInteger, CodingKeys.valueMarkdown, CodingKeys.valueMeta, CodingKeys.valueMoney, CodingKeys.valueOid, CodingKeys.valueParameterDefinition, CodingKeys.valuePeriod, CodingKeys.valuePositiveInt, CodingKeys.valueQuantity, CodingKeys.valueRange, CodingKeys.valueRatio, CodingKeys.valueReference, CodingKeys.valueRelatedArtifact, CodingKeys.valueSampledData, CodingKeys.valueSignature, CodingKeys.valueString, CodingKeys.valueTime, CodingKeys.valueTiming, CodingKeys.valueTriggerDefinition, CodingKeys.valueUnsignedInt, CodingKeys.valueUri, CodingKeys.valueUrl, CodingKeys.valueUsageContext, CodingKeys.valueUuid], debugDescription: "Must have at least one value for \"value\" but have none"))
 		}
-		
+
 		// Decode all our properties
 		self.label = try FHIRPrimitive<FHIRString>(from: _container, forKey: .label, auxiliaryKey: ._label)
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueBase64Binary = try FHIRPrimitive<Base64Binary>(from: _container, forKeyIfPresent: .valueBase64Binary, auxiliaryKey: ._valueBase64Binary) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueBase64Binary, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -2912,14 +2905,14 @@ open class ElementDefinitionExample: Element {
 		self.value = _t_value!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try label.encode(on: &_container, forKey: .label, auxiliaryKey: ._label)
-		
+
 			switch value {
 			case .base64Binary(let _value):
 				try _value.encode(on: &_container, forKey: .valueBase64Binary, auxiliaryKey: ._valueBase64Binary)
@@ -3022,12 +3015,12 @@ open class ElementDefinitionExample: Element {
 			case .meta(let _value):
 				try _value.encode(on: &_container, forKey: .valueMeta)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ElementDefinitionExample else {
 			return false
@@ -3038,7 +3031,7 @@ open class ElementDefinitionExample: Element {
 		return label == _other.label
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(label)
@@ -3052,26 +3045,26 @@ open class ElementDefinitionExample: Element {
  Identifies a concept from an external specification that roughly corresponds to this element.
  */
 open class ElementDefinitionMapping: Element {
-	
+
 	/// Reference to mapping declaration
 	public var identity: FHIRPrimitive<FHIRString>
-	
+
 	/// Computable language of mapping
 	public var language: FHIRPrimitive<FHIRString>?
-	
+
 	/// Details of the mapping
 	public var map: FHIRPrimitive<FHIRString>
-	
+
 	/// Comments about the mapping or its use
 	public var comment: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(identity: FHIRPrimitive<FHIRString>, map: FHIRPrimitive<FHIRString>) {
 		self.identity = identity
 		self.map = map
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							comment: FHIRPrimitive<FHIRString>? = nil,
@@ -3079,28 +3072,27 @@ open class ElementDefinitionMapping: Element {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							identity: FHIRPrimitive<FHIRString>,
 							language: FHIRPrimitive<FHIRString>? = nil,
-							map: FHIRPrimitive<FHIRString>)
-	{
+							map: FHIRPrimitive<FHIRString>) {
 		self.init(identity: identity, map: map)
 		self.comment = comment
 		self.`extension` = `extension`
 		self.id = id
 		self.language = language
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case comment; case _comment
 		case identity; case _identity
 		case language; case _language
 		case map; case _map
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.comment = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .comment, auxiliaryKey: ._comment)
 		self.identity = try FHIRPrimitive<FHIRString>(from: _container, forKey: .identity, auxiliaryKey: ._identity)
@@ -3108,11 +3100,11 @@ open class ElementDefinitionMapping: Element {
 		self.map = try FHIRPrimitive<FHIRString>(from: _container, forKey: .map, auxiliaryKey: ._map)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try comment?.encode(on: &_container, forKey: .comment, auxiliaryKey: ._comment)
 		try identity.encode(on: &_container, forKey: .identity, auxiliaryKey: ._identity)
@@ -3120,9 +3112,9 @@ open class ElementDefinitionMapping: Element {
 		try map.encode(on: &_container, forKey: .map, auxiliaryKey: ._map)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ElementDefinitionMapping else {
 			return false
@@ -3135,7 +3127,7 @@ open class ElementDefinitionMapping: Element {
 		    && language == _other.language
 		    && map == _other.map
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(comment)
@@ -3155,26 +3147,26 @@ open class ElementDefinitionMapping: Element {
  terminates the set).
  */
 open class ElementDefinitionSlicing: Element {
-	
+
 	/// Element values that are used to distinguish the slices
 	public var discriminator: [ElementDefinitionSlicingDiscriminator]?
-	
+
 	/// Text description of how slicing works (or not)
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// If elements must be in same order as slices
 	public var ordered: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that
 	/// additional slices are only allowed at the end.
 	public var rules: FHIRPrimitive<SlicingRules>
-	
+
 	/// Designated initializer taking all required properties
 	public init(rules: FHIRPrimitive<SlicingRules>) {
 		self.rules = rules
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							description_fhir: FHIRPrimitive<FHIRString>? = nil,
@@ -3182,8 +3174,7 @@ open class ElementDefinitionSlicing: Element {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							ordered: FHIRPrimitive<FHIRBool>? = nil,
-							rules: FHIRPrimitive<SlicingRules>)
-	{
+							rules: FHIRPrimitive<SlicingRules>) {
 		self.init(rules: rules)
 		self.description_fhir = description_fhir
 		self.discriminator = discriminator
@@ -3191,20 +3182,20 @@ open class ElementDefinitionSlicing: Element {
 		self.id = id
 		self.ordered = ordered
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case discriminator
 		case ordered; case _ordered
 		case rules; case _rules
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.discriminator = try [ElementDefinitionSlicingDiscriminator](from: _container, forKeyIfPresent: .discriminator)
@@ -3212,11 +3203,11 @@ open class ElementDefinitionSlicing: Element {
 		self.rules = try FHIRPrimitive<SlicingRules>(from: _container, forKey: .rules, auxiliaryKey: ._rules)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
 		try discriminator?.encode(on: &_container, forKey: .discriminator)
@@ -3224,9 +3215,9 @@ open class ElementDefinitionSlicing: Element {
 		try rules.encode(on: &_container, forKey: .rules, auxiliaryKey: ._rules)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ElementDefinitionSlicing else {
 			return false
@@ -3239,7 +3230,7 @@ open class ElementDefinitionSlicing: Element {
 		    && ordered == _other.ordered
 		    && rules == _other.rules
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(description_fhir)
@@ -3257,61 +3248,60 @@ open class ElementDefinitionSlicing: Element {
  slice the element in the resource matches based on the allowed values for those elements in each of the slices.
  */
 open class ElementDefinitionSlicingDiscriminator: Element {
-	
+
 	/// How the element value is interpreted when discrimination is evaluated.
 	public var type: FHIRPrimitive<DiscriminatorType>
-	
+
 	/// Path to element value
 	public var path: FHIRPrimitive<FHIRString>
-	
+
 	/// Designated initializer taking all required properties
 	public init(path: FHIRPrimitive<FHIRString>, type: FHIRPrimitive<DiscriminatorType>) {
 		self.path = path
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							path: FHIRPrimitive<FHIRString>,
-							type: FHIRPrimitive<DiscriminatorType>)
-	{
+							type: FHIRPrimitive<DiscriminatorType>) {
 		self.init(path: path, type: type)
 		self.`extension` = `extension`
 		self.id = id
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case path; case _path
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.path = try FHIRPrimitive<FHIRString>(from: _container, forKey: .path, auxiliaryKey: ._path)
 		self.type = try FHIRPrimitive<DiscriminatorType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try path.encode(on: &_container, forKey: .path, auxiliaryKey: ._path)
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ElementDefinitionSlicingDiscriminator else {
 			return false
@@ -3322,7 +3312,7 @@ open class ElementDefinitionSlicingDiscriminator: Element {
 		return path == _other.path
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(path)
@@ -3336,29 +3326,29 @@ open class ElementDefinitionSlicingDiscriminator: Element {
  The data type or resource that the value of this element is permitted to be.
  */
 open class ElementDefinitionType: Element {
-	
+
 	/// Data type or Resource (reference to definition)
 	public var code: FHIRPrimitive<FHIRURI>
-	
+
 	/// Profiles (StructureDefinition or IG) - one must apply
 	public var profile: [FHIRPrimitive<Canonical>]?
-	
+
 	/// Profile (StructureDefinition or IG) on the Reference/canonical target - one must apply
 	public var targetProfile: [FHIRPrimitive<Canonical>]?
-	
+
 	/// If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained
 	/// resource, or a reference, and if the context is a bundle, is it included in the bundle.
 	public var aggregation: [FHIRPrimitive<AggregationMode>]?
-	
+
 	/// Whether this reference needs to be version specific or version independent, or whether either can be used.
 	public var versioning: FHIRPrimitive<ReferenceVersionRules>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: FHIRPrimitive<FHIRURI>) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							aggregation: [FHIRPrimitive<AggregationMode>]? = nil,
@@ -3367,8 +3357,7 @@ open class ElementDefinitionType: Element {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							profile: [FHIRPrimitive<Canonical>]? = nil,
 							targetProfile: [FHIRPrimitive<Canonical>]? = nil,
-							versioning: FHIRPrimitive<ReferenceVersionRules>? = nil)
-	{
+							versioning: FHIRPrimitive<ReferenceVersionRules>? = nil) {
 		self.init(code: code)
 		self.aggregation = aggregation
 		self.`extension` = `extension`
@@ -3377,9 +3366,9 @@ open class ElementDefinitionType: Element {
 		self.targetProfile = targetProfile
 		self.versioning = versioning
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case aggregation; case _aggregation
 		case code; case _code
@@ -3387,11 +3376,11 @@ open class ElementDefinitionType: Element {
 		case targetProfile; case _targetProfile
 		case versioning; case _versioning
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.aggregation = try [FHIRPrimitive<AggregationMode>](from: _container, forKeyIfPresent: .aggregation, auxiliaryKey: ._aggregation)
 		self.code = try FHIRPrimitive<FHIRURI>(from: _container, forKey: .code, auxiliaryKey: ._code)
@@ -3400,11 +3389,11 @@ open class ElementDefinitionType: Element {
 		self.versioning = try FHIRPrimitive<ReferenceVersionRules>(from: _container, forKeyIfPresent: .versioning, auxiliaryKey: ._versioning)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try aggregation?.encode(on: &_container, forKey: .aggregation, auxiliaryKey: ._aggregation)
 		try code.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
@@ -3413,9 +3402,9 @@ open class ElementDefinitionType: Element {
 		try versioning?.encode(on: &_container, forKey: .versioning, auxiliaryKey: ._versioning)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ElementDefinitionType else {
 			return false
@@ -3429,7 +3418,7 @@ open class ElementDefinitionType: Element {
 		    && targetProfile == _other.targetProfile
 		    && versioning == _other.versioning
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(aggregation)

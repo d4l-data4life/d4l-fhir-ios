@@ -17,32 +17,30 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Links records for 'same' item.
  
  Identifies two or more records (resource instances) that refer to the same real-world "occurrence".
  */
 open class Linkage: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .linkage }
-	
+
 	/// Whether this linkage assertion is active or not
 	public var active: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Who is responsible for linkages
 	public var author: Reference?
-	
+
 	/// Item to be linked
 	public var item: [LinkageItem]
-	
+
 	/// Designated initializer taking all required properties
 	public init(item: [LinkageItem]) {
 		self.item = item
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							active: FHIRPrimitive<FHIRBool>? = nil,
@@ -55,8 +53,7 @@ open class Linkage: DomainResource {
 							language: FHIRPrimitive<FHIRString>? = nil,
 							meta: Meta? = nil,
 							modifierExtension: [Extension]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(item: item)
 		self.active = active
 		self.author = author
@@ -69,39 +66,39 @@ open class Linkage: DomainResource {
 		self.modifierExtension = modifierExtension
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case active; case _active
 		case author
 		case item
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.active = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .active, auxiliaryKey: ._active)
 		self.author = try Reference(from: _container, forKeyIfPresent: .author)
 		self.item = try [LinkageItem](from: _container, forKey: .item)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try active?.encode(on: &_container, forKey: .active, auxiliaryKey: ._active)
 		try author?.encode(on: &_container, forKey: .author)
 		try item.encode(on: &_container, forKey: .item)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Linkage else {
 			return false
@@ -113,7 +110,7 @@ open class Linkage: DomainResource {
 		    && author == _other.author
 		    && item == _other.item
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(active)
@@ -129,64 +126,63 @@ open class Linkage: DomainResource {
  be evaluated within the collection of linked items.
  */
 open class LinkageItem: BackboneElement {
-	
+
 	/// Distinguishes which item is "source of truth" (if any) and which items are no longer considered to be current
 	/// representations.
 	public var type: FHIRPrimitive<LinkageType>
-	
+
 	/// Resource being linked
 	public var resource: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(resource: Reference, type: FHIRPrimitive<LinkageType>) {
 		self.resource = resource
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							resource: Reference,
-							type: FHIRPrimitive<LinkageType>)
-	{
+							type: FHIRPrimitive<LinkageType>) {
 		self.init(resource: resource, type: type)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case resource
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.resource = try Reference(from: _container, forKey: .resource)
 		self.type = try FHIRPrimitive<LinkageType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try resource.encode(on: &_container, forKey: .resource)
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? LinkageItem else {
 			return false
@@ -197,7 +193,7 @@ open class LinkageItem: BackboneElement {
 		return resource == _other.resource
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(resource)

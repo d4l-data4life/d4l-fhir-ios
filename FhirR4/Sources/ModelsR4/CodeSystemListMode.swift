@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The processing mode that applies to this list.
  
@@ -26,14 +24,14 @@
  ValueSet: http://hl7.org/fhir/ValueSet/list-mode
  */
 public enum ListMode: String, FHIRPrimitiveType {
-	
+
 	/// This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is
 	/// tracking changes.
 	case working = "working"
-	
+
 	/// This list was prepared as a snapshot. It should not be assumed to be current.
 	case snapshot = "snapshot"
-	
+
 	/// A point-in-time list that shows what changes have been made or recommended.  E.g. a discharge medication list
 	/// showing what was added and removed during an encounter.
 	case changes = "changes"

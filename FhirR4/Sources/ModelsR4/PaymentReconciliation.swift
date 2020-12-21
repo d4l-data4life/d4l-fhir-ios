@@ -17,62 +17,60 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  PaymentReconciliation resource.
  
  This resource provides the details including amount of a payment and allocates the payment items being paid.
  */
 open class PaymentReconciliation: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .paymentReconciliation }
-	
+
 	/// Business Identifier for a payment reconciliation
 	public var identifier: [Identifier]?
-	
+
 	/// The status of the resource instance.
 	public var status: FHIRPrimitive<FinancialResourceStatusCodes>
-	
+
 	/// Period covered
 	public var period: Period?
-	
+
 	/// Creation date
 	public var created: FHIRPrimitive<DateTime>
-	
+
 	/// Party generating payment
 	public var paymentIssuer: Reference?
-	
+
 	/// Reference to requesting resource
 	public var request: Reference?
-	
+
 	/// Responsible practitioner
 	public var requestor: Reference?
-	
+
 	/// The outcome of a request for a reconciliation.
 	public var outcome: FHIRPrimitive<ClaimProcessingCodes>?
-	
+
 	/// Disposition message
 	public var disposition: FHIRPrimitive<FHIRString>?
-	
+
 	/// When payment issued
 	public var paymentDate: FHIRPrimitive<FHIRDate>
-	
+
 	/// Total amount of Payment
 	public var paymentAmount: Money
-	
+
 	/// Business identifier for the payment
 	public var paymentIdentifier: Identifier?
-	
+
 	/// Settlement particulars
 	public var detail: [PaymentReconciliationDetail]?
-	
+
 	/// Printed form identifier
 	public var formCode: CodeableConcept?
-	
+
 	/// Note concerning processing
 	public var processNote: [PaymentReconciliationProcessNote]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(created: FHIRPrimitive<DateTime>, paymentAmount: Money, paymentDate: FHIRPrimitive<FHIRDate>, status: FHIRPrimitive<FinancialResourceStatusCodes>) {
 		self.created = created
@@ -81,7 +79,7 @@ open class PaymentReconciliation: DomainResource {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contained: [ResourceProxy]? = nil,
@@ -106,8 +104,7 @@ open class PaymentReconciliation: DomainResource {
 							request: Reference? = nil,
 							requestor: Reference? = nil,
 							status: FHIRPrimitive<FinancialResourceStatusCodes>,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(created: created, paymentAmount: paymentAmount, paymentDate: paymentDate, status: status)
 		self.contained = contained
 		self.detail = detail
@@ -129,9 +126,9 @@ open class PaymentReconciliation: DomainResource {
 		self.requestor = requestor
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case created; case _created
 		case detail
@@ -149,11 +146,11 @@ open class PaymentReconciliation: DomainResource {
 		case requestor
 		case status; case _status
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.created = try FHIRPrimitive<DateTime>(from: _container, forKey: .created, auxiliaryKey: ._created)
 		self.detail = try [PaymentReconciliationDetail](from: _container, forKeyIfPresent: .detail)
@@ -172,11 +169,11 @@ open class PaymentReconciliation: DomainResource {
 		self.status = try FHIRPrimitive<FinancialResourceStatusCodes>(from: _container, forKey: .status, auxiliaryKey: ._status)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try created.encode(on: &_container, forKey: .created, auxiliaryKey: ._created)
 		try detail?.encode(on: &_container, forKey: .detail)
@@ -195,9 +192,9 @@ open class PaymentReconciliation: DomainResource {
 		try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PaymentReconciliation else {
 			return false
@@ -221,7 +218,7 @@ open class PaymentReconciliation: DomainResource {
 		    && requestor == _other.requestor
 		    && status == _other.status
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(created)
@@ -248,43 +245,43 @@ open class PaymentReconciliation: DomainResource {
  Distribution of the payment amount for a previously acknowledged payable.
  */
 open class PaymentReconciliationDetail: BackboneElement {
-	
+
 	/// Business identifier of the payment detail
 	public var identifier: Identifier?
-	
+
 	/// Business identifier of the prior payment detail
 	public var predecessor: Identifier?
-	
+
 	/// Category of payment
 	public var type: CodeableConcept
-	
+
 	/// Request giving rise to the payment
 	public var request: Reference?
-	
+
 	/// Submitter of the request
 	public var submitter: Reference?
-	
+
 	/// Response committing to a payment
 	public var response: Reference?
-	
+
 	/// Date of commitment to pay
 	public var date: FHIRPrimitive<FHIRDate>?
-	
+
 	/// Contact for the response
 	public var responsible: Reference?
-	
+
 	/// Recipient of the payment
 	public var payee: Reference?
-	
+
 	/// Amount allocated to this payable
 	public var amount: Money?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: CodeableConcept) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							amount: Money? = nil,
@@ -299,8 +296,7 @@ open class PaymentReconciliationDetail: BackboneElement {
 							response: Reference? = nil,
 							responsible: Reference? = nil,
 							submitter: Reference? = nil,
-							type: CodeableConcept)
-	{
+							type: CodeableConcept) {
 		self.init(type: type)
 		self.amount = amount
 		self.date = date
@@ -315,9 +311,9 @@ open class PaymentReconciliationDetail: BackboneElement {
 		self.responsible = responsible
 		self.submitter = submitter
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case amount
 		case date; case _date
@@ -330,11 +326,11 @@ open class PaymentReconciliationDetail: BackboneElement {
 		case submitter
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.amount = try Money(from: _container, forKeyIfPresent: .amount)
 		self.date = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
@@ -348,11 +344,11 @@ open class PaymentReconciliationDetail: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKey: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try amount?.encode(on: &_container, forKey: .amount)
 		try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
@@ -366,9 +362,9 @@ open class PaymentReconciliationDetail: BackboneElement {
 		try type.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PaymentReconciliationDetail else {
 			return false
@@ -387,7 +383,7 @@ open class PaymentReconciliationDetail: BackboneElement {
 		    && submitter == _other.submitter
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(amount)
@@ -409,26 +405,25 @@ open class PaymentReconciliationDetail: BackboneElement {
  A note that describes or explains the processing in a human readable form.
  */
 open class PaymentReconciliationProcessNote: BackboneElement {
-	
+
 	/// The business purpose of the note text.
 	public var type: FHIRPrimitive<NoteType>?
-	
+
 	/// Note explanatory text
 	public var text: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							text: FHIRPrimitive<FHIRString>? = nil,
-							type: FHIRPrimitive<NoteType>? = nil)
-	{
+							type: FHIRPrimitive<NoteType>? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.id = id
@@ -436,36 +431,36 @@ open class PaymentReconciliationProcessNote: BackboneElement {
 		self.text = text
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case text; case _text
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.text = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .text, auxiliaryKey: ._text)
 		self.type = try FHIRPrimitive<NoteType>(from: _container, forKeyIfPresent: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try text?.encode(on: &_container, forKey: .text, auxiliaryKey: ._text)
 		try type?.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PaymentReconciliationProcessNote else {
 			return false
@@ -476,7 +471,7 @@ open class PaymentReconciliationProcessNote: BackboneElement {
 		return text == _other.text
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(text)

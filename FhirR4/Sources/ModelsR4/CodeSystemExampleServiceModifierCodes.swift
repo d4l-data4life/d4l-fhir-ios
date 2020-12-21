@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Service Modifier codes which may support differential payment.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/service-modifiers
  */
 public enum ExampleServiceModifierCodes: String, FHIRPrimitiveType {
-	
+
 	/// Services provided on the side of the road or such other non-conventional setting.
 	case sr = "sr"
-	
+
 	/// Services provided outside or normal business hours.
 	case ah = "ah"
 }

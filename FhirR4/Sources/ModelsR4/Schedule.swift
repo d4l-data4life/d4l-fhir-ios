@@ -17,45 +17,43 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A container for slots of time that may be available for booking appointments.
  */
 open class Schedule: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .schedule }
-	
+
 	/// External Ids for this item
 	public var identifier: [Identifier]?
-	
+
 	/// Whether this schedule is in active use
 	public var active: FHIRPrimitive<FHIRBool>?
-	
+
 	/// High-level category
 	public var serviceCategory: [CodeableConcept]?
-	
+
 	/// Specific service
 	public var serviceType: [CodeableConcept]?
-	
+
 	/// Type of specialty needed
 	public var specialty: [CodeableConcept]?
-	
+
 	/// Resource(s) that availability information is being provided for
 	public var actor: [Reference]
-	
+
 	/// Period of time covered by schedule
 	public var planningHorizon: Period?
-	
+
 	/// Comments on availability
 	public var comment: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(actor: [Reference]) {
 		self.actor = actor
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							active: FHIRPrimitive<FHIRBool>? = nil,
@@ -73,8 +71,7 @@ open class Schedule: DomainResource {
 							serviceCategory: [CodeableConcept]? = nil,
 							serviceType: [CodeableConcept]? = nil,
 							specialty: [CodeableConcept]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(actor: actor)
 		self.active = active
 		self.comment = comment
@@ -92,9 +89,9 @@ open class Schedule: DomainResource {
 		self.specialty = specialty
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case active; case _active
 		case actor
@@ -105,11 +102,11 @@ open class Schedule: DomainResource {
 		case serviceType
 		case specialty
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.active = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .active, auxiliaryKey: ._active)
 		self.actor = try [Reference](from: _container, forKey: .actor)
@@ -121,11 +118,11 @@ open class Schedule: DomainResource {
 		self.specialty = try [CodeableConcept](from: _container, forKeyIfPresent: .specialty)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try active?.encode(on: &_container, forKey: .active, auxiliaryKey: ._active)
 		try actor.encode(on: &_container, forKey: .actor)
@@ -137,9 +134,9 @@ open class Schedule: DomainResource {
 		try specialty?.encode(on: &_container, forKey: .specialty)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Schedule else {
 			return false
@@ -156,7 +153,7 @@ open class Schedule: DomainResource {
 		    && serviceType == _other.serviceType
 		    && specialty == _other.specialty
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(active)

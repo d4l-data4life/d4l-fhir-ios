@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Example list of general categories for flagged issues. (Not complete or necessarily appropriate.)
  
@@ -26,34 +24,34 @@
  ValueSet: http://hl7.org/fhir/ValueSet/flag-category
  */
 public enum FlagCategory: String, FHIRPrimitiveType {
-	
+
 	/// Flags related to the subject's dietary needs.
 	case diet = "diet"
-	
+
 	/// Flags related to the subject's medications.
 	case drug = "drug"
-	
+
 	/// Flags related to performing laboratory tests and related processes (e.g. phlebotomy).
 	case lab = "lab"
-	
+
 	/// Flags related to administrative and financial processes.
 	case admin = "admin"
-	
+
 	/// Flags related to coming into contact with the patient.
 	case contact = "contact"
-	
+
 	/// Flags related to the subject's clinical data.
 	case clinical = "clinical"
-	
+
 	/// Flags related to behavior.
 	case behavioral = "behavioral"
-	
+
 	/// Flags related to research.
 	case research = "research"
-	
+
 	/// Flags related to subject's advance directives.
 	case advanceDirective = "advance-directive"
-	
+
 	/// Flags related to safety precautions.
 	case safety = "safety"
 }

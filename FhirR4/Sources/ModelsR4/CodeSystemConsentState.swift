@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Indicates the state of the consent.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/consent-state-codes
  */
 public enum ConsentState: String, FHIRPrimitiveType {
-	
+
 	/// The consent is in development or awaiting use but is not yet intended to be acted upon.
 	case draft = "draft"
-	
+
 	/// The consent has been proposed but not yet agreed to by all parties. The negotiation stage.
 	case proposed = "proposed"
-	
+
 	/// The consent is to be followed and enforced.
 	case active = "active"
-	
+
 	/// The consent has been rejected by one or more of the parties.
 	case rejected = "rejected"
-	
+
 	/// The consent is terminated or replaced.
 	case inactive = "inactive"
-	
+
 	/// The consent was created wrongly (e.g. wrong patient) and should be ignored.
 	case enteredInError = "entered-in-error"
 }

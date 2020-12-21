@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Indicates the level of importance associated with reaching or sustaining a goal.
  
@@ -26,14 +24,14 @@
  ValueSet: http://hl7.org/fhir/ValueSet/goal-priority
  */
 public enum GoalPriority: String, FHIRPrimitiveType {
-	
+
 	/// Indicates that the goal is of considerable importance and should be a primary focus of care delivery.
 	case highPriority = "high-priority"
-	
+
 	/// Indicates that the goal has a reasonable degree of importance and that concrete action should be taken towards
 	/// the goal.  Attainment is not as critical as high-priority goals.
 	case mediumPriority = "medium-priority"
-	
+
 	/// The goal is desirable but is not sufficiently important to devote significant resources to.  Achievement of the
 	/// goal may be sought when incidental to achieving other goals.
 	case lowPriority = "low-priority"

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A population, intervention, or exposure definition.
  
@@ -26,115 +24,115 @@
  is about.
  */
 open class ResearchElementDefinition: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .researchElementDefinition }
-	
+
 	/// All possible types for "subject[x]"
 	public enum SubjectX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Canonical identifier for this research element definition, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Additional identifier for the research element definition
 	public var identifier: [Identifier]?
-	
+
 	/// Business version of the research element definition
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this research element definition (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this research element definition (human friendly)
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// Title for use in informal contexts
 	public var shortTitle: FHIRPrimitive<FHIRString>?
-	
+
 	/// Subordinate title of the ResearchElementDefinition
 	public var subtitle: FHIRPrimitive<FHIRString>?
-	
+
 	/// The status of this research element definition. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// For testing purposes, not real usage
 	public var experimental: FHIRPrimitive<FHIRBool>?
-	
+
 	/// E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device
 	/// One of `subject[x]`
 	public var subject: SubjectX?
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the research element definition
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Used for footnotes or explanatory notes
 	public var comment: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for research element definition (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Why this research element definition is defined
 	public var purpose: FHIRPrimitive<FHIRString>?
-	
+
 	/// Describes the clinical usage of the ResearchElementDefinition
 	public var usage: FHIRPrimitive<FHIRString>?
-	
+
 	/// Use and/or publishing restrictions
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// When the research element definition was approved by publisher
 	public var approvalDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the research element definition was last reviewed
 	public var lastReviewDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the research element definition is expected to be used
 	public var effectivePeriod: Period?
-	
+
 	/// The category of the ResearchElementDefinition, such as Education, Treatment, Assessment, etc.
 	public var topic: [CodeableConcept]?
-	
+
 	/// Who authored the content
 	public var author: [ContactDetail]?
-	
+
 	/// Who edited the content
 	public var editor: [ContactDetail]?
-	
+
 	/// Who reviewed the content
 	public var reviewer: [ContactDetail]?
-	
+
 	/// Who endorsed the content
 	public var endorser: [ContactDetail]?
-	
+
 	/// Additional documentation, citations, etc.
 	public var relatedArtifact: [RelatedArtifact]?
-	
+
 	/// Logic used by the ResearchElementDefinition
 	public var library: [FHIRPrimitive<Canonical>]?
-	
+
 	/// The type of research element, a population, an exposure, or an outcome.
 	public var type: FHIRPrimitive<ResearchElementType>
-	
+
 	/// The type of the outcome (e.g. Dichotomous, Continuous, or Descriptive).
 	public var variableType: FHIRPrimitive<EvidenceVariableType>?
-	
+
 	/// What defines the members of the research element
 	public var characteristic: [ResearchElementDefinitionCharacteristic]
-	
+
 	/// Designated initializer taking all required properties
 	public init(characteristic: [ResearchElementDefinitionCharacteristic], status: FHIRPrimitive<PublicationStatus>, type: FHIRPrimitive<ResearchElementType>) {
 		self.characteristic = characteristic
@@ -142,7 +140,7 @@ open class ResearchElementDefinition: DomainResource {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							approvalDate: FHIRPrimitive<FHIRDate>? = nil,
@@ -185,8 +183,7 @@ open class ResearchElementDefinition: DomainResource {
 							usage: FHIRPrimitive<FHIRString>? = nil,
 							useContext: [UsageContext]? = nil,
 							variableType: FHIRPrimitive<EvidenceVariableType>? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(characteristic: characteristic, status: status, type: type)
 		self.approvalDate = approvalDate
 		self.author = author
@@ -227,9 +224,9 @@ open class ResearchElementDefinition: DomainResource {
 		self.variableType = variableType
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case approvalDate; case _approvalDate
 		case author
@@ -266,11 +263,11 @@ open class ResearchElementDefinition: DomainResource {
 		case variableType; case _variableType
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.approvalDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .approvalDate, auxiliaryKey: ._approvalDate)
 		self.author = try [ContactDetail](from: _container, forKeyIfPresent: .author)
@@ -295,7 +292,7 @@ open class ResearchElementDefinition: DomainResource {
 		self.reviewer = try [ContactDetail](from: _container, forKeyIfPresent: .reviewer)
 		self.shortTitle = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .shortTitle, auxiliaryKey: ._shortTitle)
 		self.status = try FHIRPrimitive<PublicationStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
-		var _t_subject: SubjectX? = nil
+		var _t_subject: SubjectX?
 		if let subjectCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .subjectCodeableConcept) {
 			if _t_subject != nil {
 				throw DecodingError.dataCorruptedError(forKey: .subjectCodeableConcept, in: _container, debugDescription: "More than one value provided for \"subject\"")
@@ -320,11 +317,11 @@ open class ResearchElementDefinition: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try approvalDate?.encode(on: &_container, forKey: .approvalDate, auxiliaryKey: ._approvalDate)
 		try author?.encode(on: &_container, forKey: .author)
@@ -368,9 +365,9 @@ open class ResearchElementDefinition: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ResearchElementDefinition else {
 			return false
@@ -412,7 +409,7 @@ open class ResearchElementDefinition: DomainResource {
 		    && variableType == _other.variableType
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(approvalDate)
@@ -458,7 +455,7 @@ open class ResearchElementDefinition: DomainResource {
  semantics.
  */
 open class ResearchElementDefinitionCharacteristic: BackboneElement {
-	
+
 	/// All possible types for "definition[x]"
 	public enum DefinitionX: Hashable {
 		case canonical(FHIRPrimitive<Canonical>)
@@ -466,7 +463,7 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 		case dataRequirement(DataRequirement)
 		case expression(Expression)
 	}
-	
+
 	/// All possible types for "participantEffective[x]"
 	public enum ParticipantEffectiveX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
@@ -474,7 +471,7 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 		case period(Period)
 		case timing(Timing)
 	}
-	
+
 	/// All possible types for "studyEffective[x]"
 	public enum StudyEffectiveX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
@@ -482,52 +479,52 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 		case period(Period)
 		case timing(Timing)
 	}
-	
+
 	/// What code or expression defines members?
 	/// One of `definition[x]`
 	public var definition: DefinitionX
-	
+
 	/// What code/value pairs define members?
 	public var usageContext: [UsageContext]?
-	
+
 	/// Whether the characteristic includes or excludes members
 	public var exclude: FHIRPrimitive<FHIRBool>?
-	
+
 	/// What unit is the outcome described in?
 	public var unitOfMeasure: CodeableConcept?
-	
+
 	/// What time period does the study cover
 	public var studyEffectiveDescription: FHIRPrimitive<FHIRString>?
-	
+
 	/// What time period does the study cover
 	/// One of `studyEffective[x]`
 	public var studyEffective: StudyEffectiveX?
-	
+
 	/// Observation time from study start
 	public var studyEffectiveTimeFromStart: Duration?
-	
+
 	/// Indicates how elements are aggregated within the study effective period.
 	public var studyEffectiveGroupMeasure: FHIRPrimitive<GroupMeasure>?
-	
+
 	/// What time period do participants cover
 	public var participantEffectiveDescription: FHIRPrimitive<FHIRString>?
-	
+
 	/// What time period do participants cover
 	/// One of `participantEffective[x]`
 	public var participantEffective: ParticipantEffectiveX?
-	
+
 	/// Observation time from study start
 	public var participantEffectiveTimeFromStart: Duration?
-	
+
 	/// Indicates how elements are aggregated within the study effective period.
 	public var participantEffectiveGroupMeasure: FHIRPrimitive<GroupMeasure>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(definition: DefinitionX) {
 		self.definition = definition
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							definition: DefinitionX,
@@ -544,8 +541,7 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 							studyEffectiveGroupMeasure: FHIRPrimitive<GroupMeasure>? = nil,
 							studyEffectiveTimeFromStart: Duration? = nil,
 							unitOfMeasure: CodeableConcept? = nil,
-							usageContext: [UsageContext]? = nil)
-	{
+							usageContext: [UsageContext]? = nil) {
 		self.init(definition: definition)
 		self.exclude = exclude
 		self.`extension` = `extension`
@@ -562,9 +558,9 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 		self.unitOfMeasure = unitOfMeasure
 		self.usageContext = usageContext
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case definitionCanonical; case _definitionCanonical
 		case definitionCodeableConcept
@@ -588,18 +584,18 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 		case unitOfMeasure
 		case usageContext
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.definitionCanonical) || _container.contains(CodingKeys.definitionCodeableConcept) || _container.contains(CodingKeys.definitionDataRequirement) || _container.contains(CodingKeys.definitionExpression) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.definitionCanonical, CodingKeys.definitionCodeableConcept, CodingKeys.definitionDataRequirement, CodingKeys.definitionExpression], debugDescription: "Must have at least one value for \"definition\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_definition: DefinitionX? = nil
+		var _t_definition: DefinitionX?
 		if let definitionCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .definitionCodeableConcept) {
 			if _t_definition != nil {
 				throw DecodingError.dataCorruptedError(forKey: .definitionCodeableConcept, in: _container, debugDescription: "More than one value provided for \"definition\"")
@@ -626,7 +622,7 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 		}
 		self.definition = _t_definition!
 		self.exclude = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .exclude, auxiliaryKey: ._exclude)
-		var _t_participantEffective: ParticipantEffectiveX? = nil
+		var _t_participantEffective: ParticipantEffectiveX?
 		if let participantEffectiveDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .participantEffectiveDateTime, auxiliaryKey: ._participantEffectiveDateTime) {
 			if _t_participantEffective != nil {
 				throw DecodingError.dataCorruptedError(forKey: .participantEffectiveDateTime, in: _container, debugDescription: "More than one value provided for \"participantEffective\"")
@@ -655,7 +651,7 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 		self.participantEffectiveDescription = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .participantEffectiveDescription, auxiliaryKey: ._participantEffectiveDescription)
 		self.participantEffectiveGroupMeasure = try FHIRPrimitive<GroupMeasure>(from: _container, forKeyIfPresent: .participantEffectiveGroupMeasure, auxiliaryKey: ._participantEffectiveGroupMeasure)
 		self.participantEffectiveTimeFromStart = try Duration(from: _container, forKeyIfPresent: .participantEffectiveTimeFromStart)
-		var _t_studyEffective: StudyEffectiveX? = nil
+		var _t_studyEffective: StudyEffectiveX?
 		if let studyEffectiveDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .studyEffectiveDateTime, auxiliaryKey: ._studyEffectiveDateTime) {
 			if _t_studyEffective != nil {
 				throw DecodingError.dataCorruptedError(forKey: .studyEffectiveDateTime, in: _container, debugDescription: "More than one value provided for \"studyEffective\"")
@@ -688,13 +684,13 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 		self.usageContext = try [UsageContext](from: _container, forKeyIfPresent: .usageContext)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch definition {
 			case .codeableConcept(let _value):
 				try _value.encode(on: &_container, forKey: .definitionCodeableConcept)
@@ -705,7 +701,7 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 			case .dataRequirement(let _value):
 				try _value.encode(on: &_container, forKey: .definitionDataRequirement)
 			}
-		
+
 		try exclude?.encode(on: &_container, forKey: .exclude, auxiliaryKey: ._exclude)
 		if let _enum = participantEffective {
 			switch _enum {
@@ -741,9 +737,9 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 		try usageContext?.encode(on: &_container, forKey: .usageContext)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ResearchElementDefinitionCharacteristic else {
 			return false
@@ -764,7 +760,7 @@ open class ResearchElementDefinitionCharacteristic: BackboneElement {
 		    && unitOfMeasure == _other.unitOfMeasure
 		    && usageContext == _other.usageContext
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(definition)

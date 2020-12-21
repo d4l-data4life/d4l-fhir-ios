@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A code that indicates how transactions are supported.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/transaction-mode
  */
 public enum TransactionMode: String, FHIRPrimitiveType {
-	
+
 	/// Neither batch or transaction is supported.
 	case notSupported = "not-supported"
-	
+
 	/// Batches are  supported.
 	case batch = "batch"
-	
+
 	/// Transactions are supported.
 	case transaction = "transaction"
-	
+
 	/// Both batches and transactions are supported.
 	case both = "both"
 }

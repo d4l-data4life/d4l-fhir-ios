@@ -17,12 +17,12 @@
 //  limitations under the License.
 
 public protocol FHIRIntegerRepresentable: ExpressibleByIntegerLiteral, Equatable, Decodable {
-	
+
 	var integer: Self.IntegerLiteralType { get set }
 }
 
 extension FHIRIntegerRepresentable where IntegerLiteralType: Equatable {
-	
+
 	public static func ==(l: Self, r: Self) -> Bool {
 		return l.integer == r.integer
 	}

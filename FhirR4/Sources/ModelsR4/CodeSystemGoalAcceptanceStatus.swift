@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes indicating whether the goal has been accepted by a stakeholder.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/goal-acceptance-status
  */
 public enum GoalAcceptanceStatus: String, FHIRPrimitiveType {
-	
+
 	/// Stakeholder supports pursuit of the goal.
 	case agree = "agree"
-	
+
 	/// Stakeholder is not in support of the pursuit of the goal.
 	case disagree = "disagree"
-	
+
 	/// Stakeholder has not yet made a decision on whether they support the goal.
 	case pending = "pending"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of an address (physical / postal).
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/address-type
  */
 public enum AddressType: String, FHIRPrimitiveType {
-	
+
 	/// Mailing addresses - PO Boxes and care-of addresses.
 	case postal = "postal"
-	
+
 	/// A physical address that can be visited.
 	case physical = "physical"
-	
+
 	/// An address that is both physical and postal.
 	case both = "both"
 }

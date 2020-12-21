@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Possible group measure aggregates (E.g. Mean, Median).
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/group-measure
  */
 public enum GroupMeasure: String, FHIRPrimitiveType {
-	
+
 	/// Aggregated using Mean of participant values.
 	case mean = "mean"
-	
+
 	/// Aggregated using Median of participant values.
 	case median = "median"
-	
+
 	/// Aggregated using Mean of study mean values.
 	case meanOfMean = "mean-of-mean"
-	
+
 	/// Aggregated using Mean of study median values.
 	case meanOfMedian = "mean-of-median"
-	
+
 	/// Aggregated using Median of study mean values.
 	case medianOfMean = "median-of-mean"
-	
+
 	/// Aggregated using Median of study median values.
 	case medianOfMedian = "median-of-median"
 }

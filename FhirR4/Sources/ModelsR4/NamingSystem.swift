@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  System of unique identification.
  
@@ -26,48 +24,48 @@
  devices, etc.  Represents a "System" used within the Identifier and Coding data types.
  */
 open class NamingSystem: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .namingSystem }
-	
+
 	/// Name for this naming system (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// The status of this naming system. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// Indicates the purpose for the naming system - what kinds of things does it make unique?
 	public var kind: FHIRPrimitive<NamingSystemType>
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Who maintains system namespace?
 	public var responsible: FHIRPrimitive<FHIRString>?
-	
+
 	/// e.g. driver,  provider,  patient, bank etc.
 	public var type: CodeableConcept?
-	
+
 	/// Natural language description of the naming system
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for naming system (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// How/where is it used
 	public var usage: FHIRPrimitive<FHIRString>?
-	
+
 	/// Unique identifiers used for system
 	public var uniqueId: [NamingSystemUniqueId]
-	
+
 	/// Designated initializer taking all required properties
 	public init(date: FHIRPrimitive<DateTime>, kind: FHIRPrimitive<NamingSystemType>, name: FHIRPrimitive<FHIRString>, status: FHIRPrimitive<PublicationStatus>, uniqueId: [NamingSystemUniqueId]) {
 		self.date = date
@@ -77,7 +75,7 @@ open class NamingSystem: DomainResource {
 		self.uniqueId = uniqueId
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contact: [ContactDetail]? = nil,
@@ -100,8 +98,7 @@ open class NamingSystem: DomainResource {
 							type: CodeableConcept? = nil,
 							uniqueId: [NamingSystemUniqueId],
 							usage: FHIRPrimitive<FHIRString>? = nil,
-							useContext: [UsageContext]? = nil)
-	{
+							useContext: [UsageContext]? = nil) {
 		self.init(date: date, kind: kind, name: name, status: status, uniqueId: uniqueId)
 		self.contact = contact
 		self.contained = contained
@@ -120,9 +117,9 @@ open class NamingSystem: DomainResource {
 		self.usage = usage
 		self.useContext = useContext
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case contact
 		case date; case _date
@@ -138,11 +135,11 @@ open class NamingSystem: DomainResource {
 		case usage; case _usage
 		case useContext
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.contact = try [ContactDetail](from: _container, forKeyIfPresent: .contact)
 		self.date = try FHIRPrimitive<DateTime>(from: _container, forKey: .date, auxiliaryKey: ._date)
@@ -159,11 +156,11 @@ open class NamingSystem: DomainResource {
 		self.useContext = try [UsageContext](from: _container, forKeyIfPresent: .useContext)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try contact?.encode(on: &_container, forKey: .contact)
 		try date.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
@@ -180,9 +177,9 @@ open class NamingSystem: DomainResource {
 		try useContext?.encode(on: &_container, forKey: .useContext)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? NamingSystem else {
 			return false
@@ -204,7 +201,7 @@ open class NamingSystem: DomainResource {
 		    && usage == _other.usage
 		    && useContext == _other.useContext
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(contact)
@@ -229,29 +226,29 @@ open class NamingSystem: DomainResource {
  Indicates how the system may be identified when referenced in electronic exchange.
  */
 open class NamingSystemUniqueId: BackboneElement {
-	
+
 	/// Identifies the unique identifier scheme used for this particular identifier.
 	public var type: FHIRPrimitive<NamingSystemIdentifierType>
-	
+
 	/// The unique identifier
 	public var value: FHIRPrimitive<FHIRString>
-	
+
 	/// Is this the id that should be used for this type
 	public var preferred: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Notes about identifier usage
 	public var comment: FHIRPrimitive<FHIRString>?
-	
+
 	/// When is identifier valid?
 	public var period: Period?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: FHIRPrimitive<NamingSystemIdentifierType>, value: FHIRPrimitive<FHIRString>) {
 		self.type = type
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							comment: FHIRPrimitive<FHIRString>? = nil,
@@ -261,8 +258,7 @@ open class NamingSystemUniqueId: BackboneElement {
 							period: Period? = nil,
 							preferred: FHIRPrimitive<FHIRBool>? = nil,
 							type: FHIRPrimitive<NamingSystemIdentifierType>,
-							value: FHIRPrimitive<FHIRString>)
-	{
+							value: FHIRPrimitive<FHIRString>) {
 		self.init(type: type, value: value)
 		self.comment = comment
 		self.`extension` = `extension`
@@ -271,9 +267,9 @@ open class NamingSystemUniqueId: BackboneElement {
 		self.period = period
 		self.preferred = preferred
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case comment; case _comment
 		case period
@@ -281,11 +277,11 @@ open class NamingSystemUniqueId: BackboneElement {
 		case type; case _type
 		case value; case _value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.comment = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .comment, auxiliaryKey: ._comment)
 		self.period = try Period(from: _container, forKeyIfPresent: .period)
@@ -294,11 +290,11 @@ open class NamingSystemUniqueId: BackboneElement {
 		self.value = try FHIRPrimitive<FHIRString>(from: _container, forKey: .value, auxiliaryKey: ._value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try comment?.encode(on: &_container, forKey: .comment, auxiliaryKey: ._comment)
 		try period?.encode(on: &_container, forKey: .period)
@@ -307,9 +303,9 @@ open class NamingSystemUniqueId: BackboneElement {
 		try value.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? NamingSystemUniqueId else {
 			return false
@@ -323,7 +319,7 @@ open class NamingSystemUniqueId: BackboneElement {
 		    && type == _other.type
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(comment)

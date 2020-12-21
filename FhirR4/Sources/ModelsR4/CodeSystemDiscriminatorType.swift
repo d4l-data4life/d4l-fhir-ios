@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How an element value is interpreted when discrimination is evaluated.
  
@@ -26,20 +24,20 @@
  ValueSet: http://hl7.org/fhir/ValueSet/discriminator-type
  */
 public enum DiscriminatorType: String, FHIRPrimitiveType {
-	
+
 	/// The slices have different values in the nominated element.
 	case value = "value"
-	
+
 	/// The slices are differentiated by the presence or absence of the nominated element.
 	case exists = "exists"
-	
+
 	/// The slices have different values in the nominated element, as determined by testing them against the applicable
 	/// ElementDefinition.pattern[x].
 	case pattern = "pattern"
-	
+
 	/// The slices are differentiated by type of the nominated element.
 	case type = "type"
-	
+
 	/// The slices are differentiated by conformance of the nominated element to a specified profile. Note that if the
 	/// path specifies .resolve() then the profile is the target profile on the reference. In this case, validation by
 	/// the possible profiles is required to differentiate the slices.

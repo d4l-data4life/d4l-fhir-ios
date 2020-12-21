@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of name the device is referred by.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/device-nametype
  */
 public enum DeviceNameType: String, FHIRPrimitiveType {
-	
+
 	/// UDI Label name.
 	case udiLabelName = "udi-label-name"
-	
+
 	/// User Friendly name.
 	case userFriendlyName = "user-friendly-name"
-	
+
 	/// Patient Reported name.
 	case patientReportedName = "patient-reported-name"
-	
+
 	/// Manufacturer name.
 	case manufacturerName = "manufacturer-name"
-	
+
 	/// Model name.
 	case modelName = "model-name"
-	
+
 	/// other.
 	case other = "other"
 }

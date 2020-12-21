@@ -17,135 +17,133 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Legal Agreement.
  
  Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement.
  */
 open class Contract: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .contract }
-	
+
 	/// All possible types for "legallyBinding[x]"
 	public enum LegallyBindingX: Hashable {
 		case attachment(Attachment)
 		case reference(Reference)
 	}
-	
+
 	/// All possible types for "topic[x]"
 	public enum TopicX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Contract number
 	public var identifier: [Identifier]?
-	
+
 	/// Basal definition
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Business edition
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// The status of the resource instance.
 	public var status: FHIRPrimitive<ContractResourceStatusCodes>?
-	
+
 	/// Negotiation status
 	public var legalState: CodeableConcept?
-	
+
 	/// Source Contract Definition
 	public var instantiatesCanonical: Reference?
-	
+
 	/// External Contract Definition
 	public var instantiatesUri: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Content derived from the basal information
 	public var contentDerivative: CodeableConcept?
-	
+
 	/// When this Contract was issued
 	public var issued: FHIRPrimitive<DateTime>?
-	
+
 	/// Effective time
 	public var applies: Period?
-	
+
 	/// Contract cessation cause
 	public var expirationType: CodeableConcept?
-	
+
 	/// Contract Target Entity
 	public var subject: [Reference]?
-	
+
 	/// Authority under which this Contract has standing
 	public var authority: [Reference]?
-	
+
 	/// A sphere of control governed by an authoritative jurisdiction, organization, or person
 	public var domain: [Reference]?
-	
+
 	/// Specific Location
 	public var site: [Reference]?
-	
+
 	/// Computer friendly designation
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Human Friendly name
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// Subordinate Friendly name
 	public var subtitle: FHIRPrimitive<FHIRString>?
-	
+
 	/// Acronym or short name
 	public var alias: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Source of Contract
 	public var author: Reference?
-	
+
 	/// Range of Legal Concerns
 	public var scope: CodeableConcept?
-	
+
 	/// Focus of contract interest
 	/// One of `topic[x]`
 	public var topic: TopicX?
-	
+
 	/// Legal instrument category
 	public var type: CodeableConcept?
-	
+
 	/// Subtype within the context of type
 	public var subType: [CodeableConcept]?
-	
+
 	/// Contract precursor content
 	public var contentDefinition: ContractContentDefinition?
-	
+
 	/// Contract Term List
 	public var term: [ContractTerm]?
-	
+
 	/// Extra Information
 	public var supportingInfo: [Reference]?
-	
+
 	/// Key event in Contract History
 	public var relevantHistory: [Reference]?
-	
+
 	/// Contract Signatory
 	public var signer: [ContractSigner]?
-	
+
 	/// Contract Friendly Language
 	public var friendly: [ContractFriendly]?
-	
+
 	/// Contract Legal Language
 	public var legal: [ContractLegal]?
-	
+
 	/// Computable Contract Language
 	public var rule: [ContractRule]?
-	
+
 	/// Binding Contract
 	/// One of `legallyBinding[x]`
 	public var legallyBinding: LegallyBindingX?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							alias: [FHIRPrimitive<FHIRString>]? = nil,
@@ -188,8 +186,7 @@ open class Contract: DomainResource {
 							topic: TopicX? = nil,
 							type: CodeableConcept? = nil,
 							url: FHIRPrimitive<FHIRURI>? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init()
 		self.alias = alias
 		self.applies = applies
@@ -233,9 +230,9 @@ open class Contract: DomainResource {
 		self.url = url
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case alias; case _alias
 		case applies
@@ -273,11 +270,11 @@ open class Contract: DomainResource {
 		case url; case _url
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.alias = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .alias, auxiliaryKey: ._alias)
 		self.applies = try Period(from: _container, forKeyIfPresent: .applies)
@@ -294,7 +291,7 @@ open class Contract: DomainResource {
 		self.issued = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .issued, auxiliaryKey: ._issued)
 		self.legal = try [ContractLegal](from: _container, forKeyIfPresent: .legal)
 		self.legalState = try CodeableConcept(from: _container, forKeyIfPresent: .legalState)
-		var _t_legallyBinding: LegallyBindingX? = nil
+		var _t_legallyBinding: LegallyBindingX?
 		if let legallyBindingAttachment = try Attachment(from: _container, forKeyIfPresent: .legallyBindingAttachment) {
 			if _t_legallyBinding != nil {
 				throw DecodingError.dataCorruptedError(forKey: .legallyBindingAttachment, in: _container, debugDescription: "More than one value provided for \"legallyBinding\"")
@@ -321,7 +318,7 @@ open class Contract: DomainResource {
 		self.supportingInfo = try [Reference](from: _container, forKeyIfPresent: .supportingInfo)
 		self.term = try [ContractTerm](from: _container, forKeyIfPresent: .term)
 		self.title = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .title, auxiliaryKey: ._title)
-		var _t_topic: TopicX? = nil
+		var _t_topic: TopicX?
 		if let topicCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .topicCodeableConcept) {
 			if _t_topic != nil {
 				throw DecodingError.dataCorruptedError(forKey: .topicCodeableConcept, in: _container, debugDescription: "More than one value provided for \"topic\"")
@@ -340,11 +337,11 @@ open class Contract: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try alias?.encode(on: &_container, forKey: .alias, auxiliaryKey: ._alias)
 		try applies?.encode(on: &_container, forKey: .applies)
@@ -395,9 +392,9 @@ open class Contract: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Contract else {
 			return false
@@ -439,7 +436,7 @@ open class Contract: DomainResource {
 		    && url == _other.url
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(alias)
@@ -485,32 +482,32 @@ open class Contract: DomainResource {
  associated with and transformable into a Contract.
  */
 open class ContractContentDefinition: BackboneElement {
-	
+
 	/// Content structure and use
 	public var type: CodeableConcept
-	
+
 	/// Detailed Content Type Definition
 	public var subType: CodeableConcept?
-	
+
 	/// Publisher Entity
 	public var publisher: Reference?
-	
+
 	/// When published
 	public var publicationDate: FHIRPrimitive<DateTime>?
-	
+
 	/// None
 	public var publicationStatus: FHIRPrimitive<ContractResourcePublicationStatusCodes>
-	
+
 	/// Publication Ownership
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(publicationStatus: FHIRPrimitive<ContractResourcePublicationStatusCodes>, type: CodeableConcept) {
 		self.publicationStatus = publicationStatus
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							copyright: FHIRPrimitive<FHIRString>? = nil,
@@ -521,8 +518,7 @@ open class ContractContentDefinition: BackboneElement {
 							publicationStatus: FHIRPrimitive<ContractResourcePublicationStatusCodes>,
 							publisher: Reference? = nil,
 							subType: CodeableConcept? = nil,
-							type: CodeableConcept)
-	{
+							type: CodeableConcept) {
 		self.init(publicationStatus: publicationStatus, type: type)
 		self.copyright = copyright
 		self.`extension` = `extension`
@@ -532,9 +528,9 @@ open class ContractContentDefinition: BackboneElement {
 		self.publisher = publisher
 		self.subType = subType
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case copyright; case _copyright
 		case publicationDate; case _publicationDate
@@ -543,11 +539,11 @@ open class ContractContentDefinition: BackboneElement {
 		case subType
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.copyright = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .copyright, auxiliaryKey: ._copyright)
 		self.publicationDate = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .publicationDate, auxiliaryKey: ._publicationDate)
@@ -557,11 +553,11 @@ open class ContractContentDefinition: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKey: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try copyright?.encode(on: &_container, forKey: .copyright, auxiliaryKey: ._copyright)
 		try publicationDate?.encode(on: &_container, forKey: .publicationDate, auxiliaryKey: ._publicationDate)
@@ -571,9 +567,9 @@ open class ContractContentDefinition: BackboneElement {
 		try type.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractContentDefinition else {
 			return false
@@ -588,7 +584,7 @@ open class ContractContentDefinition: BackboneElement {
 		    && subType == _other.subType
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(copyright)
@@ -609,54 +605,53 @@ open class ContractContentDefinition: BackboneElement {
  Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.
  */
 open class ContractFriendly: BackboneElement {
-	
+
 	/// All possible types for "content[x]"
 	public enum ContentX: Hashable {
 		case attachment(Attachment)
 		case reference(Reference)
 	}
-	
+
 	/// Easily comprehended representation of this Contract
 	/// One of `content[x]`
 	public var content: ContentX
-	
+
 	/// Designated initializer taking all required properties
 	public init(content: ContentX) {
 		self.content = content
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							content: ContentX,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(content: content)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case contentAttachment
 		case contentReference
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.contentAttachment) || _container.contains(CodingKeys.contentReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.contentAttachment, CodingKeys.contentReference], debugDescription: "Must have at least one value for \"content\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_content: ContentX? = nil
+		var _t_content: ContentX?
 		if let contentAttachment = try Attachment(from: _container, forKeyIfPresent: .contentAttachment) {
 			if _t_content != nil {
 				throw DecodingError.dataCorruptedError(forKey: .contentAttachment, in: _container, debugDescription: "More than one value provided for \"content\"")
@@ -672,25 +667,25 @@ open class ContractFriendly: BackboneElement {
 		self.content = _t_content!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch content {
 			case .attachment(let _value):
 				try _value.encode(on: &_container, forKey: .contentAttachment)
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .contentReference)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractFriendly else {
 			return false
@@ -700,7 +695,7 @@ open class ContractFriendly: BackboneElement {
 		}
 		return content == _other.content
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(content)
@@ -713,54 +708,53 @@ open class ContractFriendly: BackboneElement {
  List of Legal expressions or representations of this Contract.
  */
 open class ContractLegal: BackboneElement {
-	
+
 	/// All possible types for "content[x]"
 	public enum ContentX: Hashable {
 		case attachment(Attachment)
 		case reference(Reference)
 	}
-	
+
 	/// Contract Legal Text
 	/// One of `content[x]`
 	public var content: ContentX
-	
+
 	/// Designated initializer taking all required properties
 	public init(content: ContentX) {
 		self.content = content
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							content: ContentX,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(content: content)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case contentAttachment
 		case contentReference
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.contentAttachment) || _container.contains(CodingKeys.contentReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.contentAttachment, CodingKeys.contentReference], debugDescription: "Must have at least one value for \"content\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_content: ContentX? = nil
+		var _t_content: ContentX?
 		if let contentAttachment = try Attachment(from: _container, forKeyIfPresent: .contentAttachment) {
 			if _t_content != nil {
 				throw DecodingError.dataCorruptedError(forKey: .contentAttachment, in: _container, debugDescription: "More than one value provided for \"content\"")
@@ -776,25 +770,25 @@ open class ContractLegal: BackboneElement {
 		self.content = _t_content!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch content {
 			case .attachment(let _value):
 				try _value.encode(on: &_container, forKey: .contentAttachment)
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .contentReference)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractLegal else {
 			return false
@@ -804,7 +798,7 @@ open class ContractLegal: BackboneElement {
 		}
 		return content == _other.content
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(content)
@@ -817,54 +811,53 @@ open class ContractLegal: BackboneElement {
  List of Computable Policy Rule Language Representations of this Contract.
  */
 open class ContractRule: BackboneElement {
-	
+
 	/// All possible types for "content[x]"
 	public enum ContentX: Hashable {
 		case attachment(Attachment)
 		case reference(Reference)
 	}
-	
+
 	/// Computable Contract Rules
 	/// One of `content[x]`
 	public var content: ContentX
-	
+
 	/// Designated initializer taking all required properties
 	public init(content: ContentX) {
 		self.content = content
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							content: ContentX,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(content: content)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case contentAttachment
 		case contentReference
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.contentAttachment) || _container.contains(CodingKeys.contentReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.contentAttachment, CodingKeys.contentReference], debugDescription: "Must have at least one value for \"content\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_content: ContentX? = nil
+		var _t_content: ContentX?
 		if let contentAttachment = try Attachment(from: _container, forKeyIfPresent: .contentAttachment) {
 			if _t_content != nil {
 				throw DecodingError.dataCorruptedError(forKey: .contentAttachment, in: _container, debugDescription: "More than one value provided for \"content\"")
@@ -880,25 +873,25 @@ open class ContractRule: BackboneElement {
 		self.content = _t_content!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch content {
 			case .attachment(let _value):
 				try _value.encode(on: &_container, forKey: .contentAttachment)
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .contentReference)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractRule else {
 			return false
@@ -908,7 +901,7 @@ open class ContractRule: BackboneElement {
 		}
 		return content == _other.content
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(content)
@@ -923,16 +916,16 @@ open class ContractRule: BackboneElement {
  contract such as a notary or witness.
  */
 open class ContractSigner: BackboneElement {
-	
+
 	/// Contract Signatory Role
 	public var type: Coding
-	
+
 	/// Contract Signatory Party
 	public var party: Reference
-	
+
 	/// Contract Documentation Signature
 	public var signature: [Signature]
-	
+
 	/// Designated initializer taking all required properties
 	public init(party: Reference, signature: [Signature], type: Coding) {
 		self.party = party
@@ -940,7 +933,7 @@ open class ContractSigner: BackboneElement {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -948,46 +941,45 @@ open class ContractSigner: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							party: Reference,
 							signature: [Signature],
-							type: Coding)
-	{
+							type: Coding) {
 		self.init(party: party, signature: signature, type: type)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case party
 		case signature
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.party = try Reference(from: _container, forKey: .party)
 		self.signature = try [Signature](from: _container, forKey: .signature)
 		self.type = try Coding(from: _container, forKey: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try party.encode(on: &_container, forKey: .party)
 		try signature.encode(on: &_container, forKey: .signature)
 		try type.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractSigner else {
 			return false
@@ -999,7 +991,7 @@ open class ContractSigner: BackboneElement {
 		    && signature == _other.signature
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(party)
@@ -1014,56 +1006,56 @@ open class ContractSigner: BackboneElement {
  One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.
  */
 open class ContractTerm: BackboneElement {
-	
+
 	/// All possible types for "topic[x]"
 	public enum TopicX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Contract Term Number
 	public var identifier: Identifier?
-	
+
 	/// Contract Term Issue Date Time
 	public var issued: FHIRPrimitive<DateTime>?
-	
+
 	/// Contract Term Effective Time
 	public var applies: Period?
-	
+
 	/// Term Concern
 	/// One of `topic[x]`
 	public var topic: TopicX?
-	
+
 	/// Contract Term Type or Form
 	public var type: CodeableConcept?
-	
+
 	/// Contract Term Type specific classification
 	public var subType: CodeableConcept?
-	
+
 	/// Term Statement
 	public var text: FHIRPrimitive<FHIRString>?
-	
+
 	/// Protection for the Term
 	public var securityLabel: [ContractTermSecurityLabel]?
-	
+
 	/// Context of the Contract term
 	public var offer: ContractTermOffer
-	
+
 	/// Contract Term Asset List
 	public var asset: [ContractTermAsset]?
-	
+
 	/// Entity being ascribed responsibility
 	public var action: [ContractTermAction]?
-	
+
 	/// Nested Contract Term Group
 	public var group: [ContractTerm]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(offer: ContractTermOffer) {
 		self.offer = offer
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							action: [ContractTermAction]? = nil,
@@ -1080,8 +1072,7 @@ open class ContractTerm: BackboneElement {
 							subType: CodeableConcept? = nil,
 							text: FHIRPrimitive<FHIRString>? = nil,
 							topic: TopicX? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init(offer: offer)
 		self.action = action
 		self.applies = applies
@@ -1098,9 +1089,9 @@ open class ContractTerm: BackboneElement {
 		self.topic = topic
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case action
 		case applies
@@ -1116,11 +1107,11 @@ open class ContractTerm: BackboneElement {
 		case topicReference
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.action = try [ContractTermAction](from: _container, forKeyIfPresent: .action)
 		self.applies = try Period(from: _container, forKeyIfPresent: .applies)
@@ -1132,7 +1123,7 @@ open class ContractTerm: BackboneElement {
 		self.securityLabel = try [ContractTermSecurityLabel](from: _container, forKeyIfPresent: .securityLabel)
 		self.subType = try CodeableConcept(from: _container, forKeyIfPresent: .subType)
 		self.text = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .text, auxiliaryKey: ._text)
-		var _t_topic: TopicX? = nil
+		var _t_topic: TopicX?
 		if let topicCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .topicCodeableConcept) {
 			if _t_topic != nil {
 				throw DecodingError.dataCorruptedError(forKey: .topicCodeableConcept, in: _container, debugDescription: "More than one value provided for \"topic\"")
@@ -1149,11 +1140,11 @@ open class ContractTerm: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try action?.encode(on: &_container, forKey: .action)
 		try applies?.encode(on: &_container, forKey: .applies)
@@ -1176,9 +1167,9 @@ open class ContractTerm: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractTerm else {
 			return false
@@ -1199,7 +1190,7 @@ open class ContractTerm: BackboneElement {
 		    && topic == _other.topic
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(action)
@@ -1224,78 +1215,78 @@ open class ContractTerm: BackboneElement {
  taking place.
  */
 open class ContractTermAction: BackboneElement {
-	
+
 	/// All possible types for "occurrence[x]"
 	public enum OccurrenceX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
 		case period(Period)
 		case timing(Timing)
 	}
-	
+
 	/// True if the term prohibits the  action
 	public var doNotPerform: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Type or form of the action
 	public var type: CodeableConcept
-	
+
 	/// Entity of the action
 	public var subject: [ContractTermActionSubject]?
-	
+
 	/// Purpose for the Contract Term Action
 	public var intent: CodeableConcept
-	
+
 	/// Pointer to specific item
 	public var linkId: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// State of the action
 	public var status: CodeableConcept
-	
+
 	/// Episode associated with action
 	public var context: Reference?
-	
+
 	/// Pointer to specific item
 	public var contextLinkId: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// When action happens
 	/// One of `occurrence[x]`
 	public var occurrence: OccurrenceX?
-	
+
 	/// Who asked for action
 	public var requester: [Reference]?
-	
+
 	/// Pointer to specific item
 	public var requesterLinkId: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Kind of service performer
 	public var performerType: [CodeableConcept]?
-	
+
 	/// Competency of the performer
 	public var performerRole: CodeableConcept?
-	
+
 	/// Actor that wil execute (or not) the action
 	public var performer: Reference?
-	
+
 	/// Pointer to specific item
 	public var performerLinkId: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Why is action (not) needed?
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// Why is action (not) needed?
 	public var reasonReference: [Reference]?
-	
+
 	/// Why action is to be performed
 	public var reason: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Pointer to specific item
 	public var reasonLinkId: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Comments about the action
 	public var note: [Annotation]?
-	
+
 	/// Action restriction numbers
 	public var securityLabelNumber: [FHIRPrimitive<FHIRUnsignedInteger>]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(intent: CodeableConcept, status: CodeableConcept, type: CodeableConcept) {
 		self.intent = intent
@@ -1303,7 +1294,7 @@ open class ContractTermAction: BackboneElement {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							context: Reference? = nil,
@@ -1329,8 +1320,7 @@ open class ContractTermAction: BackboneElement {
 							securityLabelNumber: [FHIRPrimitive<FHIRUnsignedInteger>]? = nil,
 							status: CodeableConcept,
 							subject: [ContractTermActionSubject]? = nil,
-							type: CodeableConcept)
-	{
+							type: CodeableConcept) {
 		self.init(intent: intent, status: status, type: type)
 		self.context = context
 		self.contextLinkId = contextLinkId
@@ -1354,9 +1344,9 @@ open class ContractTermAction: BackboneElement {
 		self.securityLabelNumber = securityLabelNumber
 		self.subject = subject
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case context
 		case contextLinkId; case _contextLinkId
@@ -1382,11 +1372,11 @@ open class ContractTermAction: BackboneElement {
 		case subject
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.context = try Reference(from: _container, forKeyIfPresent: .context)
 		self.contextLinkId = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .contextLinkId, auxiliaryKey: ._contextLinkId)
@@ -1394,7 +1384,7 @@ open class ContractTermAction: BackboneElement {
 		self.intent = try CodeableConcept(from: _container, forKey: .intent)
 		self.linkId = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .linkId, auxiliaryKey: ._linkId)
 		self.note = try [Annotation](from: _container, forKeyIfPresent: .note)
-		var _t_occurrence: OccurrenceX? = nil
+		var _t_occurrence: OccurrenceX?
 		if let occurrenceDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .occurrenceDateTime, auxiliaryKey: ._occurrenceDateTime) {
 			if _t_occurrence != nil {
 				throw DecodingError.dataCorruptedError(forKey: .occurrenceDateTime, in: _container, debugDescription: "More than one value provided for \"occurrence\"")
@@ -1430,11 +1420,11 @@ open class ContractTermAction: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKey: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try context?.encode(on: &_container, forKey: .context)
 		try contextLinkId?.encode(on: &_container, forKey: .contextLinkId, auxiliaryKey: ._contextLinkId)
@@ -1468,9 +1458,9 @@ open class ContractTermAction: BackboneElement {
 		try type.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractTermAction else {
 			return false
@@ -1500,7 +1490,7 @@ open class ContractTermAction: BackboneElement {
 		    && subject == _other.subject
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(context)
@@ -1531,63 +1521,62 @@ open class ContractTermAction: BackboneElement {
  Entity of the action.
  */
 open class ContractTermActionSubject: BackboneElement {
-	
+
 	/// Entity of the action
 	public var reference: [Reference]
-	
+
 	/// Role type of the agent
 	public var role: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	public init(reference: [Reference]) {
 		self.reference = reference
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							reference: [Reference],
-							role: CodeableConcept? = nil)
-	{
+							role: CodeableConcept? = nil) {
 		self.init(reference: reference)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.role = role
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case reference
 		case role
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.reference = try [Reference](from: _container, forKey: .reference)
 		self.role = try CodeableConcept(from: _container, forKeyIfPresent: .role)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try reference.encode(on: &_container, forKey: .reference)
 		try role?.encode(on: &_container, forKey: .role)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractTermActionSubject else {
 			return false
@@ -1598,7 +1587,7 @@ open class ContractTermActionSubject: BackboneElement {
 		return reference == _other.reference
 		    && role == _other.role
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(reference)
@@ -1610,57 +1599,57 @@ open class ContractTermActionSubject: BackboneElement {
  Contract Term Asset List.
  */
 open class ContractTermAsset: BackboneElement {
-	
+
 	/// Range of asset
 	public var scope: CodeableConcept?
-	
+
 	/// Asset category
 	public var type: [CodeableConcept]?
-	
+
 	/// Associated entities
 	public var typeReference: [Reference]?
-	
+
 	/// Asset sub-category
 	public var subtype: [CodeableConcept]?
-	
+
 	/// Kinship of the asset
 	public var relationship: Coding?
-	
+
 	/// Circumstance of the asset
 	public var context: [ContractTermAssetContext]?
-	
+
 	/// Quality desctiption of asset
 	public var condition: FHIRPrimitive<FHIRString>?
-	
+
 	/// Asset availability types
 	public var periodType: [CodeableConcept]?
-	
+
 	/// Time period of the asset
 	public var period: [Period]?
-	
+
 	/// Time period
 	public var usePeriod: [Period]?
-	
+
 	/// Asset clause or question text
 	public var text: FHIRPrimitive<FHIRString>?
-	
+
 	/// Pointer to asset text
 	public var linkId: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Response to assets
 	public var answer: [ContractTermOfferAnswer]?
-	
+
 	/// Asset restriction numbers
 	public var securityLabelNumber: [FHIRPrimitive<FHIRUnsignedInteger>]?
-	
+
 	/// Contract Valued Item List
 	public var valuedItem: [ContractTermAssetValuedItem]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							answer: [ContractTermOfferAnswer]? = nil,
@@ -1680,8 +1669,7 @@ open class ContractTermAsset: BackboneElement {
 							type: [CodeableConcept]? = nil,
 							typeReference: [Reference]? = nil,
 							usePeriod: [Period]? = nil,
-							valuedItem: [ContractTermAssetValuedItem]? = nil)
-	{
+							valuedItem: [ContractTermAssetValuedItem]? = nil) {
 		self.init()
 		self.answer = answer
 		self.condition = condition
@@ -1702,9 +1690,9 @@ open class ContractTermAsset: BackboneElement {
 		self.usePeriod = usePeriod
 		self.valuedItem = valuedItem
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case answer
 		case condition; case _condition
@@ -1722,11 +1710,11 @@ open class ContractTermAsset: BackboneElement {
 		case usePeriod
 		case valuedItem
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.answer = try [ContractTermOfferAnswer](from: _container, forKeyIfPresent: .answer)
 		self.condition = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .condition, auxiliaryKey: ._condition)
@@ -1745,11 +1733,11 @@ open class ContractTermAsset: BackboneElement {
 		self.valuedItem = try [ContractTermAssetValuedItem](from: _container, forKeyIfPresent: .valuedItem)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try answer?.encode(on: &_container, forKey: .answer)
 		try condition?.encode(on: &_container, forKey: .condition, auxiliaryKey: ._condition)
@@ -1768,9 +1756,9 @@ open class ContractTermAsset: BackboneElement {
 		try valuedItem?.encode(on: &_container, forKey: .valuedItem)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractTermAsset else {
 			return false
@@ -1794,7 +1782,7 @@ open class ContractTermAsset: BackboneElement {
 		    && usePeriod == _other.usePeriod
 		    && valuedItem == _other.valuedItem
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(answer)
@@ -1819,21 +1807,21 @@ open class ContractTermAsset: BackboneElement {
  Circumstance of the asset.
  */
 open class ContractTermAssetContext: BackboneElement {
-	
+
 	/// Creator,custodian or owner
 	public var reference: Reference?
-	
+
 	/// Codeable asset context
 	public var code: [CodeableConcept]?
-	
+
 	/// Context description
 	public var text: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: [CodeableConcept]? = nil,
@@ -1841,8 +1829,7 @@ open class ContractTermAssetContext: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							reference: Reference? = nil,
-							text: FHIRPrimitive<FHIRString>? = nil)
-	{
+							text: FHIRPrimitive<FHIRString>? = nil) {
 		self.init()
 		self.code = code
 		self.`extension` = `extension`
@@ -1851,39 +1838,39 @@ open class ContractTermAssetContext: BackboneElement {
 		self.reference = reference
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case reference
 		case text; case _text
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try [CodeableConcept](from: _container, forKeyIfPresent: .code)
 		self.reference = try Reference(from: _container, forKeyIfPresent: .reference)
 		self.text = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .text, auxiliaryKey: ._text)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code?.encode(on: &_container, forKey: .code)
 		try reference?.encode(on: &_container, forKey: .reference)
 		try text?.encode(on: &_container, forKey: .text, auxiliaryKey: ._text)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractTermAssetContext else {
 			return false
@@ -1895,7 +1882,7 @@ open class ContractTermAssetContext: BackboneElement {
 		    && reference == _other.reference
 		    && text == _other.text
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -1908,61 +1895,61 @@ open class ContractTermAssetContext: BackboneElement {
  Contract Valued Item List.
  */
 open class ContractTermAssetValuedItem: BackboneElement {
-	
+
 	/// All possible types for "entity[x]"
 	public enum EntityX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Contract Valued Item Type
 	/// One of `entity[x]`
 	public var entity: EntityX?
-	
+
 	/// Contract Valued Item Number
 	public var identifier: Identifier?
-	
+
 	/// Contract Valued Item Effective Tiem
 	public var effectiveTime: FHIRPrimitive<DateTime>?
-	
+
 	/// Count of Contract Valued Items
 	public var quantity: Quantity?
-	
+
 	/// Contract Valued Item fee, charge, or cost
 	public var unitPrice: Money?
-	
+
 	/// Contract Valued Item Price Scaling Factor
 	public var factor: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Contract Valued Item Difficulty Scaling Factor
 	public var points: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Total Contract Valued Item Value
 	public var net: Money?
-	
+
 	/// Terms of valuation
 	public var payment: FHIRPrimitive<FHIRString>?
-	
+
 	/// When payment is due
 	public var paymentDate: FHIRPrimitive<DateTime>?
-	
+
 	/// Who will make payment
 	public var responsible: Reference?
-	
+
 	/// Who will receive payment
 	public var recipient: Reference?
-	
+
 	/// Pointer to specific item
 	public var linkId: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Security Labels that define affected terms
 	public var securityLabelNumber: [FHIRPrimitive<FHIRUnsignedInteger>]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							effectiveTime: FHIRPrimitive<DateTime>? = nil,
@@ -1981,8 +1968,7 @@ open class ContractTermAssetValuedItem: BackboneElement {
 							recipient: Reference? = nil,
 							responsible: Reference? = nil,
 							securityLabelNumber: [FHIRPrimitive<FHIRUnsignedInteger>]? = nil,
-							unitPrice: Money? = nil)
-	{
+							unitPrice: Money? = nil) {
 		self.init()
 		self.effectiveTime = effectiveTime
 		self.entity = entity
@@ -2002,9 +1988,9 @@ open class ContractTermAssetValuedItem: BackboneElement {
 		self.securityLabelNumber = securityLabelNumber
 		self.unitPrice = unitPrice
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case effectiveTime; case _effectiveTime
 		case entityCodeableConcept
@@ -2022,14 +2008,14 @@ open class ContractTermAssetValuedItem: BackboneElement {
 		case securityLabelNumber; case _securityLabelNumber
 		case unitPrice
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.effectiveTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .effectiveTime, auxiliaryKey: ._effectiveTime)
-		var _t_entity: EntityX? = nil
+		var _t_entity: EntityX?
 		if let entityCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .entityCodeableConcept) {
 			if _t_entity != nil {
 				throw DecodingError.dataCorruptedError(forKey: .entityCodeableConcept, in: _container, debugDescription: "More than one value provided for \"entity\"")
@@ -2057,11 +2043,11 @@ open class ContractTermAssetValuedItem: BackboneElement {
 		self.unitPrice = try Money(from: _container, forKeyIfPresent: .unitPrice)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try effectiveTime?.encode(on: &_container, forKey: .effectiveTime, auxiliaryKey: ._effectiveTime)
 		if let _enum = entity {
@@ -2086,9 +2072,9 @@ open class ContractTermAssetValuedItem: BackboneElement {
 		try unitPrice?.encode(on: &_container, forKey: .unitPrice)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractTermAssetValuedItem else {
 			return false
@@ -2111,7 +2097,7 @@ open class ContractTermAssetValuedItem: BackboneElement {
 		    && securityLabelNumber == _other.securityLabelNumber
 		    && unitPrice == _other.unitPrice
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(effectiveTime)
@@ -2137,42 +2123,42 @@ open class ContractTermAssetValuedItem: BackboneElement {
  The matter of concern in the context of this provision of the agrement.
  */
 open class ContractTermOffer: BackboneElement {
-	
+
 	/// Offer business ID
 	public var identifier: [Identifier]?
-	
+
 	/// Offer Recipient
 	public var party: [ContractTermOfferParty]?
-	
+
 	/// Negotiable offer asset
 	public var topic: Reference?
-	
+
 	/// Contract Offer Type or Form
 	public var type: CodeableConcept?
-	
+
 	/// Accepting party choice
 	public var decision: CodeableConcept?
-	
+
 	/// How decision is conveyed
 	public var decisionMode: [CodeableConcept]?
-	
+
 	/// Response to offer text
 	public var answer: [ContractTermOfferAnswer]?
-	
+
 	/// Human readable offer text
 	public var text: FHIRPrimitive<FHIRString>?
-	
+
 	/// Pointer to text
 	public var linkId: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Offer restriction numbers
 	public var securityLabelNumber: [FHIRPrimitive<FHIRUnsignedInteger>]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							answer: [ContractTermOfferAnswer]? = nil,
@@ -2187,8 +2173,7 @@ open class ContractTermOffer: BackboneElement {
 							securityLabelNumber: [FHIRPrimitive<FHIRUnsignedInteger>]? = nil,
 							text: FHIRPrimitive<FHIRString>? = nil,
 							topic: Reference? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.answer = answer
 		self.decision = decision
@@ -2204,9 +2189,9 @@ open class ContractTermOffer: BackboneElement {
 		self.topic = topic
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case answer
 		case decision
@@ -2219,11 +2204,11 @@ open class ContractTermOffer: BackboneElement {
 		case topic
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.answer = try [ContractTermOfferAnswer](from: _container, forKeyIfPresent: .answer)
 		self.decision = try CodeableConcept(from: _container, forKeyIfPresent: .decision)
@@ -2237,11 +2222,11 @@ open class ContractTermOffer: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try answer?.encode(on: &_container, forKey: .answer)
 		try decision?.encode(on: &_container, forKey: .decision)
@@ -2255,9 +2240,9 @@ open class ContractTermOffer: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractTermOffer else {
 			return false
@@ -2276,7 +2261,7 @@ open class ContractTermOffer: BackboneElement {
 		    && topic == _other.topic
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(answer)
@@ -2296,7 +2281,7 @@ open class ContractTermOffer: BackboneElement {
  Response to offer text.
  */
 open class ContractTermOfferAnswer: BackboneElement {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case attachment(Attachment)
@@ -2312,32 +2297,31 @@ open class ContractTermOfferAnswer: BackboneElement {
 		case time(FHIRPrimitive<FHIRTime>)
 		case uri(FHIRPrimitive<FHIRURI>)
 	}
-	
+
 	/// The actual answer response
 	/// One of `value[x]`
 	public var value: ValueX
-	
+
 	/// Designated initializer taking all required properties
 	public init(value: ValueX) {
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							value: ValueX)
-	{
+							value: ValueX) {
 		self.init(value: value)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case valueAttachment
 		case valueBoolean; case _valueBoolean
@@ -2352,18 +2336,18 @@ open class ContractTermOfferAnswer: BackboneElement {
 		case valueTime; case _valueTime
 		case valueUri; case _valueUri
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.valueAttachment) || _container.contains(CodingKeys.valueBoolean) || _container.contains(CodingKeys.valueCoding) || _container.contains(CodingKeys.valueDate) || _container.contains(CodingKeys.valueDateTime) || _container.contains(CodingKeys.valueDecimal) || _container.contains(CodingKeys.valueInteger) || _container.contains(CodingKeys.valueQuantity) || _container.contains(CodingKeys.valueReference) || _container.contains(CodingKeys.valueString) || _container.contains(CodingKeys.valueTime) || _container.contains(CodingKeys.valueUri) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.valueAttachment, CodingKeys.valueBoolean, CodingKeys.valueCoding, CodingKeys.valueDate, CodingKeys.valueDateTime, CodingKeys.valueDecimal, CodingKeys.valueInteger, CodingKeys.valueQuantity, CodingKeys.valueReference, CodingKeys.valueString, CodingKeys.valueTime, CodingKeys.valueUri], debugDescription: "Must have at least one value for \"value\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueBoolean = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .valueBoolean, auxiliaryKey: ._valueBoolean) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -2439,13 +2423,13 @@ open class ContractTermOfferAnswer: BackboneElement {
 		self.value = _t_value!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch value {
 			case .boolean(let _value):
 				try _value.encode(on: &_container, forKey: .valueBoolean, auxiliaryKey: ._valueBoolean)
@@ -2472,12 +2456,12 @@ open class ContractTermOfferAnswer: BackboneElement {
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .valueReference)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractTermOfferAnswer else {
 			return false
@@ -2487,7 +2471,7 @@ open class ContractTermOfferAnswer: BackboneElement {
 		}
 		return value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(value)
@@ -2498,63 +2482,62 @@ open class ContractTermOfferAnswer: BackboneElement {
  Offer Recipient.
  */
 open class ContractTermOfferParty: BackboneElement {
-	
+
 	/// Referenced entity
 	public var reference: [Reference]
-	
+
 	/// Participant engagement type
 	public var role: CodeableConcept
-	
+
 	/// Designated initializer taking all required properties
 	public init(reference: [Reference], role: CodeableConcept) {
 		self.reference = reference
 		self.role = role
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							reference: [Reference],
-							role: CodeableConcept)
-	{
+							role: CodeableConcept) {
 		self.init(reference: reference, role: role)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case reference
 		case role
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.reference = try [Reference](from: _container, forKey: .reference)
 		self.role = try CodeableConcept(from: _container, forKey: .role)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try reference.encode(on: &_container, forKey: .reference)
 		try role.encode(on: &_container, forKey: .role)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractTermOfferParty else {
 			return false
@@ -2565,7 +2548,7 @@ open class ContractTermOfferParty: BackboneElement {
 		return reference == _other.reference
 		    && role == _other.role
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(reference)
@@ -2580,25 +2563,25 @@ open class ContractTermOfferParty: BackboneElement {
  identified..
  */
 open class ContractTermSecurityLabel: BackboneElement {
-	
+
 	/// Link to Security Labels
 	public var number: [FHIRPrimitive<FHIRUnsignedInteger>]?
-	
+
 	/// Confidentiality Protection
 	public var classification: Coding
-	
+
 	/// Applicable Policy
 	public var category: [Coding]?
-	
+
 	/// Handling Instructions
 	public var control: [Coding]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(classification: Coding) {
 		self.classification = classification
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							category: [Coding]? = nil,
@@ -2607,8 +2590,7 @@ open class ContractTermSecurityLabel: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							number: [FHIRPrimitive<FHIRUnsignedInteger>]? = nil)
-	{
+							number: [FHIRPrimitive<FHIRUnsignedInteger>]? = nil) {
 		self.init(classification: classification)
 		self.category = category
 		self.control = control
@@ -2617,20 +2599,20 @@ open class ContractTermSecurityLabel: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.number = number
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case category
 		case classification
 		case control
 		case number; case _number
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.category = try [Coding](from: _container, forKeyIfPresent: .category)
 		self.classification = try Coding(from: _container, forKey: .classification)
@@ -2638,11 +2620,11 @@ open class ContractTermSecurityLabel: BackboneElement {
 		self.number = try [FHIRPrimitive<FHIRUnsignedInteger>](from: _container, forKeyIfPresent: .number, auxiliaryKey: ._number)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try category?.encode(on: &_container, forKey: .category)
 		try classification.encode(on: &_container, forKey: .classification)
@@ -2650,9 +2632,9 @@ open class ContractTermSecurityLabel: BackboneElement {
 		try number?.encode(on: &_container, forKey: .number, auxiliaryKey: ._number)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContractTermSecurityLabel else {
 			return false
@@ -2665,7 +2647,7 @@ open class ContractTermSecurityLabel: BackboneElement {
 		    && control == _other.control
 		    && number == _other.number
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(category)

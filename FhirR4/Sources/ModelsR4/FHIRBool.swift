@@ -16,19 +16,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A boolean value: true | false
  
  http://hl7.org/fhir/datatypes.html#boolean
  */
 public struct FHIRBool: FHIRPrimitiveType {
-	
+
 	public typealias BooleanLiteralType = Bool
-	
+
 	public var bool: Self.BooleanLiteralType
-	
+
 	/**
 	 Designated initializer.
 	 */
@@ -38,19 +36,19 @@ public struct FHIRBool: FHIRPrimitiveType {
 }
 
 extension FHIRBool: ExpressibleByBooleanLiteral {
-	
+
 	public init(booleanLiteral value: Self.BooleanLiteralType) {
 		self.bool = value
 	}
 }
 
 extension FHIRBool: Codable {
-	
+
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
 		self.bool = try container.decode(Self.BooleanLiteralType.self)
 	}
-	
+
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.singleValueContainer()
 		try container.encode(bool)
@@ -58,15 +56,15 @@ extension FHIRBool: Codable {
 }
 
 extension FHIRBool: Equatable {
-	
+
 	public static func ==(l: FHIRBool, r: FHIRBool) -> Bool {
 		return l.bool == r.bool
 	}
-	
+
 	public static func ==(l: Bool, r: FHIRBool) -> Bool {
 		return l == r.bool
 	}
-	
+
 	public static func ==(l: FHIRBool, r: Bool) -> Bool {
 		return l.bool == r
 	}
@@ -75,16 +73,16 @@ extension FHIRBool: Equatable {
 // MARK: -
 
 extension Bool {
-	
+
 	public func asPrimitive() -> FHIRPrimitive<FHIRBool> {
 		return FHIRPrimitive(FHIRBool(self))
 	}
 }
 
 extension FHIRPrimitive: ExpressibleByBooleanLiteral where PrimitiveType == FHIRBool {
-	
+
 	public typealias BooleanLiteralType = Bool
-	
+
 	public init(booleanLiteral value: Self.BooleanLiteralType) {
 		self.init(FHIRBool(value))
 	}

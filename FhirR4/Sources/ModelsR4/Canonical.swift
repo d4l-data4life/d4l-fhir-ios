@@ -16,7 +16,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
 import Foundation
 
 /**
@@ -31,11 +30,11 @@ import Foundation
  http://hl7.org/fhir/datatypes.html#canonical
  */
 public struct Canonical: FHIRPrimitiveType {
-	
+
 	public var url: URL
-	
+
 	public var version: String?
-	
+
 	/**
 	 Designated initializer.
 	 */
@@ -43,7 +42,7 @@ public struct Canonical: FHIRPrimitiveType {
 		self.url = url
 		self.version = version
 	}
-	
+
 	fileprivate static func parseParts(from string: String) -> (url: URL?, version: String?) {
 		let parts = string.split(separator: "|", maxSplits: 1)
 		if let urlPart = parts.first, let url = URL(string: String(urlPart)) {
@@ -54,7 +53,7 @@ public struct Canonical: FHIRPrimitiveType {
 }
 
 extension Canonical: ExpressibleByStringLiteral {
-	
+
 	public init(stringLiteral value: StringLiteralType) {
 		let (url, version) = Self.parseParts(from: value)
 		self.init(url ?? URL(string: "invalid:uri")!, version: version)
@@ -62,7 +61,7 @@ extension Canonical: ExpressibleByStringLiteral {
 }
 
 extension Canonical: Codable {
-	
+
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
 		let string = try container.decode(String.self)
@@ -73,7 +72,7 @@ extension Canonical: Codable {
 		self.url = urlInstance
 		self.version = parts.count > 1 ? String(parts[1]) : nil
 	}
-	
+
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.singleValueContainer()
 		if let version = version {
@@ -85,7 +84,7 @@ extension Canonical: Codable {
 }
 
 extension Canonical: CustomStringConvertible {
-	
+
 	public var description: String {
 		if let version = version, !version.isEmpty {
 			return "\(url.absoluteString)|\(version)"
@@ -95,7 +94,7 @@ extension Canonical: CustomStringConvertible {
 }
 
 extension Canonical: Equatable {
-	
+
 	public static func ==(l: Canonical, r: Canonical) -> Bool {
 		if l.url != r.url {
 			return false
@@ -105,11 +104,11 @@ extension Canonical: Equatable {
 		}
 		return true
 	}
-	
+
 	public static func ==(l: String, r: Canonical) -> Bool {
 		return l == r.description
 	}
-	
+
 	public static func ==(l: Canonical, r: String) -> Bool {
 		return l.description == r
 	}
@@ -118,7 +117,7 @@ extension Canonical: Equatable {
 // MARK: -
 
 extension String {
-	
+
 	public func asFHIRCanonical() -> Canonical? {
 		let (parsedURL, version) = Canonical.parseParts(from: self)
 		guard let url = parsedURL else {
@@ -126,7 +125,7 @@ extension String {
 		}
 		return Canonical(url, version: version)
 	}
-	
+
 	public func asFHIRCanonicalPrimitive() -> FHIRPrimitive<Canonical>? {
 		guard let uri = asFHIRCanonical() else {
 			return nil

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Resource for non-supported content.
  
@@ -26,30 +24,30 @@
  resource, and custom resources not appropriate for inclusion in the FHIR specification.
  */
 open class Basic: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .basic }
-	
+
 	/// Business identifier
 	public var identifier: [Identifier]?
-	
+
 	/// Kind of Resource
 	public var code: CodeableConcept
-	
+
 	/// Identifies the focus of this resource
 	public var subject: Reference?
-	
+
 	/// When created
 	public var created: FHIRPrimitive<FHIRDate>?
-	
+
 	/// Who created
 	public var author: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							author: Reference? = nil,
@@ -64,8 +62,7 @@ open class Basic: DomainResource {
 							meta: Meta? = nil,
 							modifierExtension: [Extension]? = nil,
 							subject: Reference? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(code: code)
 		self.author = author
 		self.contained = contained
@@ -80,9 +77,9 @@ open class Basic: DomainResource {
 		self.subject = subject
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case author
 		case code
@@ -90,11 +87,11 @@ open class Basic: DomainResource {
 		case identifier
 		case subject
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.author = try Reference(from: _container, forKeyIfPresent: .author)
 		self.code = try CodeableConcept(from: _container, forKey: .code)
@@ -103,11 +100,11 @@ open class Basic: DomainResource {
 		self.subject = try Reference(from: _container, forKeyIfPresent: .subject)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try author?.encode(on: &_container, forKey: .author)
 		try code.encode(on: &_container, forKey: .code)
@@ -116,9 +113,9 @@ open class Basic: DomainResource {
 		try subject?.encode(on: &_container, forKey: .subject)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Basic else {
 			return false
@@ -132,7 +129,7 @@ open class Basic: DomainResource {
 		    && identifier == _other.identifier
 		    && subject == _other.subject
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(author)

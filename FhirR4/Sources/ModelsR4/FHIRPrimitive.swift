@@ -16,8 +16,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Protocol for all FHIR primitives.
  */
@@ -25,7 +23,7 @@ public protocol FHIRPrimitiveType: FHIRType {
 }
 
 extension FHIRPrimitiveType {
-	
+
 	public func asPrimitive(with id: String? = nil, extension: [Extension]? = nil) -> FHIRPrimitive<Self> {
 		return FHIRPrimitive(self, id: id, extension: `extension`)
 	}
@@ -34,22 +32,22 @@ extension FHIRPrimitiveType {
 // MARK: -
 
 public protocol FHIRPrimitiveProtocol: Codable {
-	
+
 	associatedtype PrimitiveType: FHIRPrimitiveType
-	
+
 	var value: PrimitiveType? { get set }
-	
+
 	var id: String? { get set }
-	
+
 	var `extension`: [Extension]? { get set }
-	
+
 	var isNull: Bool { get }
-	
+
 	var hasPrimitiveData: Bool { get }
 }
 
 extension FHIRPrimitiveProtocol {
-	
+
 	/**
 	 Returns an array of Extensions matching the desired URL. An empty array is returned if there are no extensions that
 	 match or there are no extensions at all.
@@ -68,29 +66,29 @@ extension FHIRPrimitiveProtocol {
  Wrap any of the FHIR primitive types.
  */
 public struct FHIRPrimitive<PrimitiveType: FHIRPrimitiveType>: FHIRPrimitiveProtocol {
-	
+
 	public var value: PrimitiveType?
-	
+
 	public var id: String?
-	
+
 	public var `extension`: [Extension]?
-	
+
 	public init(_ value: PrimitiveType? = nil, id: String? = nil, extension: [Extension]? = nil) {
 		self.value = value
 		self.id = id
 		self.extension = `extension`
 	}
-	
+
 	/// Returns `true` if the receiver has neither a value nor an id nor extensions
 	public var isNull: Bool {
 		return value == nil && id == nil && `extension` == nil
 	}
-	
+
 	/// Returns `true` if the receiver has either an id or extensions
 	public var hasPrimitiveData: Bool {
 		return id != nil || `extension` != nil
 	}
-	
+
 	/// Convenience debug description
 	public var primitiveDescription: String {
 		let valueStr = (value == nil) ? "nil value" : "value=\"\(value!)\""
@@ -101,7 +99,7 @@ public struct FHIRPrimitive<PrimitiveType: FHIRPrimitiveType>: FHIRPrimitiveProt
 }
 
 extension FHIRPrimitive: Hashable {
-	
+
 	public static func ==(l: FHIRPrimitive<PrimitiveType>, r: FHIRPrimitive<PrimitiveType>) -> Bool {
 		if l.value != r.value {
 			return false
@@ -114,15 +112,15 @@ extension FHIRPrimitive: Hashable {
 		}
 		return true
 	}
-	
+
 	public static func ==(l: FHIRPrimitive<PrimitiveType>, r: PrimitiveType) -> Bool {
 		return l.value == r
 	}
-	
+
 	public static func ==(l: PrimitiveType, r: FHIRPrimitive<PrimitiveType>) -> Bool {
 		return l == r.value
 	}
-	
+
 	public func hash(into hasher: inout Hasher) {
 		hasher.combine(value)
 		hasher.combine(id)
@@ -133,12 +131,12 @@ extension FHIRPrimitive: Hashable {
 // MARK: - Codable
 
 extension FHIRPrimitive: Codable {
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case id
 		case `extension`
 	}
-	
+
 	/**
 	 Decode the primitive from the given container. Right now this is tailored for FHIR's JSON representation and it
 	 will look for its value on "key" and id or extensions on "_key".
@@ -153,7 +151,7 @@ extension FHIRPrimitive: Codable {
 			throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "Must have a value for \"\(key)\" but have none"))
 		}
 	}
-	
+
 	/**
 	 Decode the primitive from the given container. Right now this is tailored for FHIR's JSON representation and it
 	 will look for its value on "key" and id or extensions on "_key".
@@ -168,7 +166,7 @@ extension FHIRPrimitive: Codable {
 			return nil
 		}
 	}
-	
+
 	/**
 	 Encode the primitive to the given parent container. Right now this is tailored for FHIR's JSON representation and
 	 will encode its value to "key" and its id and/or extension, if any, to "_key" given with auxiliaryKey.
@@ -190,7 +188,7 @@ extension FHIRPrimitive: Codable {
 // MARK: - Array<FHIRPrimitiveProtocol>
 
 extension Array where Element: FHIRPrimitiveProtocol {
-	
+
 	public init<K: CodingKey>(from parentContainer: KeyedDecodingContainer<K>, forKey key: K, auxiliaryKey: K? = nil) throws {
 		// This is thorny. See testDecodePrimitiveArrayWithID() and testDecodePrimitiveArrayWithOnlyExtension()
 		let values = try parentContainer.decodeIfPresent([Element.PrimitiveType?].self, forKey: key)
@@ -216,7 +214,7 @@ extension Array where Element: FHIRPrimitiveProtocol {
 			throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "Must have a value for \"\(key)\" but have none"))
 		}
 	}
-	
+
 	public init?<K: CodingKey>(from parentContainer: KeyedDecodingContainer<K>, forKeyIfPresent key: K, auxiliaryKey: K? = nil) throws {
 		// This is thorny. See testDecodePrimitiveArrayWithID() and testDecodePrimitiveArrayWithOnlyExtension()
 		let values = try parentContainer.decodeIfPresent([Element.PrimitiveType?].self, forKey: key)
@@ -242,7 +240,7 @@ extension Array where Element: FHIRPrimitiveProtocol {
 			return nil
 		}
 	}
-	
+
 	public func encode<K>(on parentContainer: inout KeyedEncodingContainer<K>, forKey key: K, auxiliaryKey: K? = nil) throws {
 		var values = [Element.PrimitiveType?]()
 		var primitives = [Element?]()
@@ -257,7 +255,7 @@ extension Array where Element: FHIRPrimitiveProtocol {
 			hasNonnullValues = hasNonnullValues || (element.value != nil)
 			hasNonnullPrimitives = hasNonnullPrimitives || element.hasPrimitiveData
 		}
-		
+
 		if hasNonnullValues {
 			try parentContainer.encode(values, forKey: key)
 		}
@@ -272,7 +270,7 @@ extension Array where Element: FHIRPrimitiveProtocol {
 }
 
 extension Collection {
-	
+
 	subscript(safe index: Index) -> Iterator.Element? {
 		guard indices.contains(index) else {
 			return nil
@@ -284,39 +282,39 @@ extension Collection {
 // MARK: - ExpressibleByLiteral
 
 extension FHIRPrimitive: ExpressibleByStringLiteral, ExpressibleByUnicodeScalarLiteral, ExpressibleByExtendedGraphemeClusterLiteral where PrimitiveType: ExpressibleByStringLiteral {
-	
+
 	public typealias StringLiteralType = PrimitiveType.StringLiteralType
-	
+
 	public typealias UnicodeScalarLiteralType = PrimitiveType.UnicodeScalarLiteralType
-	
+
 	public typealias ExtendedGraphemeClusterLiteralType = PrimitiveType.ExtendedGraphemeClusterLiteralType
-	
+
 	public init(stringLiteral value: StringLiteralType) {
 		self.init(PrimitiveType(stringLiteral: value))
 	}
-	
+
 	public init(unicodeScalarLiteral value: PrimitiveType.UnicodeScalarLiteralType) {
 		self.init(PrimitiveType(unicodeScalarLiteral: value))
 	}
-	
+
 	public init(extendedGraphemeClusterLiteral value: PrimitiveType.ExtendedGraphemeClusterLiteralType) {
 		self.init(PrimitiveType(extendedGraphemeClusterLiteral: value))
 	}
 }
 
 extension FHIRPrimitive: ExpressibleByIntegerLiteral where PrimitiveType: ExpressibleByIntegerLiteral {
-	
+
 	public typealias IntegerLiteralType = PrimitiveType.IntegerLiteralType
-	
+
 	public init(integerLiteral value: PrimitiveType.IntegerLiteralType) {
 		self.init(PrimitiveType(integerLiteral: value))
 	}
 }
 
 extension FHIRPrimitive: ExpressibleByFloatLiteral where PrimitiveType: ExpressibleByFloatLiteral {
-	
+
 	public typealias FloatLiteralType = PrimitiveType.FloatLiteralType
-	
+
 	public init(floatLiteral value: PrimitiveType.FloatLiteralType) {
 		self.init(PrimitiveType(floatLiteral: value))
 	}

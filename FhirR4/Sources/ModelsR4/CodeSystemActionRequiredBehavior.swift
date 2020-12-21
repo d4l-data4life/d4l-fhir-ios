@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Defines expectations around whether an action or action group is required.
  
@@ -26,14 +24,14 @@
  ValueSet: http://hl7.org/fhir/ValueSet/action-required-behavior
  */
 public enum ActionRequiredBehavior: String, FHIRPrimitiveType {
-	
+
 	/// An action with this behavior must be included in the actions processed by the end user; the end user SHALL NOT
 	/// choose not to include this action.
 	case must = "must"
-	
+
 	/// An action with this behavior may be included in the set of actions processed by the end user.
 	case could = "could"
-	
+
 	/// An action with this behavior must be included in the set of actions processed by the end user, unless the end
 	/// user provides documentation as to why the action was not included.
 	case mustUnlessDocumented = "must-unless-documented"

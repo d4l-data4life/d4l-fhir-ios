@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Defines an expected trigger for a module.
  
@@ -26,7 +24,7 @@
  the type element.
  */
 open class TriggerDefinition: Element {
-	
+
 	/// All possible types for "timing[x]"
 	public enum TimingX: Hashable {
 		case date(FHIRPrimitive<FHIRDate>)
@@ -34,29 +32,29 @@ open class TriggerDefinition: Element {
 		case reference(Reference)
 		case timing(Timing)
 	}
-	
+
 	/// The type of triggering event.
 	public var type: FHIRPrimitive<TriggerType>
-	
+
 	/// Name or URI that identifies the event
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Timing of the event
 	/// One of `timing[x]`
 	public var timing: TimingX?
-	
+
 	/// Triggering data of the event (multiple = 'and')
 	public var data: [DataRequirement]?
-	
+
 	/// Whether the event triggers (boolean expression)
 	public var condition: Expression?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: FHIRPrimitive<TriggerType>) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							condition: Expression? = nil,
@@ -65,8 +63,7 @@ open class TriggerDefinition: Element {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							name: FHIRPrimitive<FHIRString>? = nil,
 							timing: TimingX? = nil,
-							type: FHIRPrimitive<TriggerType>)
-	{
+							type: FHIRPrimitive<TriggerType>) {
 		self.init(type: type)
 		self.condition = condition
 		self.data = data
@@ -75,9 +72,9 @@ open class TriggerDefinition: Element {
 		self.name = name
 		self.timing = timing
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case condition
 		case data
@@ -88,16 +85,16 @@ open class TriggerDefinition: Element {
 		case timingTiming
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.condition = try Expression(from: _container, forKeyIfPresent: .condition)
 		self.data = try [DataRequirement](from: _container, forKeyIfPresent: .data)
 		self.name = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
-		var _t_timing: TimingX? = nil
+		var _t_timing: TimingX?
 		if let timingTiming = try Timing(from: _container, forKeyIfPresent: .timingTiming) {
 			if _t_timing != nil {
 				throw DecodingError.dataCorruptedError(forKey: .timingTiming, in: _container, debugDescription: "More than one value provided for \"timing\"")
@@ -126,11 +123,11 @@ open class TriggerDefinition: Element {
 		self.type = try FHIRPrimitive<TriggerType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try condition?.encode(on: &_container, forKey: .condition)
 		try data?.encode(on: &_container, forKey: .data)
@@ -150,9 +147,9 @@ open class TriggerDefinition: Element {
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TriggerDefinition else {
 			return false
@@ -166,7 +163,7 @@ open class TriggerDefinition: Element {
 		    && timing == _other.timing
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(condition)

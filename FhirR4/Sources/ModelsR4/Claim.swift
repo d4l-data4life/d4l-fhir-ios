@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Claim, Pre-determination or Pre-authorization.
  
@@ -26,92 +24,92 @@
  patient which is sent to an insurer for reimbursement.
  */
 open class Claim: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .claim }
-	
+
 	/// Business Identifier for claim
 	public var identifier: [Identifier]?
-	
+
 	/// The status of the resource instance.
 	public var status: FHIRPrimitive<FinancialResourceStatusCodes>
-	
+
 	/// Category or discipline
 	public var type: CodeableConcept
-	
+
 	/// More granular claim type
 	public var subType: CodeableConcept?
-	
+
 	/// A code to indicate whether the nature of the request is: to request adjudication of products and services
 	/// previously rendered; or requesting authorization and adjudication for provision in the future; or requesting the
 	/// non-binding adjudication of the listed products and services which could be provided in the future.
 	public var use: FHIRPrimitive<Use>
-	
+
 	/// The recipient of the products and services
 	public var patient: Reference
-	
+
 	/// Relevant time frame for the claim
 	public var billablePeriod: Period?
-	
+
 	/// Resource creation date
 	public var created: FHIRPrimitive<DateTime>
-	
+
 	/// Author of the claim
 	public var enterer: Reference?
-	
+
 	/// Target
 	public var insurer: Reference?
-	
+
 	/// Party responsible for the claim
 	public var provider: Reference
-	
+
 	/// Desired processing ugency
 	public var priority: CodeableConcept
-	
+
 	/// For whom to reserve funds
 	public var fundsReserve: CodeableConcept?
-	
+
 	/// Prior or corollary claims
 	public var related: [ClaimRelated]?
-	
+
 	/// Prescription authorizing services and products
 	public var prescription: Reference?
-	
+
 	/// Original prescription if superseded by fulfiller
 	public var originalPrescription: Reference?
-	
+
 	/// Recipient of benefits payable
 	public var payee: ClaimPayee?
-	
+
 	/// Treatment referral
 	public var referral: Reference?
-	
+
 	/// Servicing facility
 	public var facility: Reference?
-	
+
 	/// Members of the care team
 	public var careTeam: [ClaimCareTeam]?
-	
+
 	/// Supporting information
 	public var supportingInfo: [ClaimSupportingInfo]?
-	
+
 	/// Pertinent diagnosis information
 	public var diagnosis: [ClaimDiagnosis]?
-	
+
 	/// Clinical procedures performed
 	public var procedure: [ClaimProcedure]?
-	
+
 	/// Patient insurance information
 	public var insurance: [ClaimInsurance]
-	
+
 	/// Details of the event
 	public var accident: ClaimAccident?
-	
+
 	/// Product or service provided
 	public var item: [ClaimItem]?
-	
+
 	/// Total claim cost
 	public var total: Money?
-	
+
 	/// Designated initializer taking all required properties
 	public init(created: FHIRPrimitive<DateTime>, insurance: [ClaimInsurance], patient: Reference, priority: CodeableConcept, provider: Reference, status: FHIRPrimitive<FinancialResourceStatusCodes>, type: CodeableConcept, use: FHIRPrimitive<Use>) {
 		self.created = created
@@ -124,7 +122,7 @@ open class Claim: DomainResource {
 		self.use = use
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							accident: ClaimAccident? = nil,
@@ -161,8 +159,7 @@ open class Claim: DomainResource {
 							text: Narrative? = nil,
 							total: Money? = nil,
 							type: CodeableConcept,
-							use: FHIRPrimitive<Use>)
-	{
+							use: FHIRPrimitive<Use>) {
 		self.init(created: created, insurance: insurance, patient: patient, priority: priority, provider: provider, status: status, type: type, use: use)
 		self.accident = accident
 		self.billablePeriod = billablePeriod
@@ -192,9 +189,9 @@ open class Claim: DomainResource {
 		self.text = text
 		self.total = total
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case accident
 		case billablePeriod
@@ -224,11 +221,11 @@ open class Claim: DomainResource {
 		case type
 		case use; case _use
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.accident = try ClaimAccident(from: _container, forKeyIfPresent: .accident)
 		self.billablePeriod = try Period(from: _container, forKeyIfPresent: .billablePeriod)
@@ -259,11 +256,11 @@ open class Claim: DomainResource {
 		self.use = try FHIRPrimitive<Use>(from: _container, forKey: .use, auxiliaryKey: ._use)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try accident?.encode(on: &_container, forKey: .accident)
 		try billablePeriod?.encode(on: &_container, forKey: .billablePeriod)
@@ -294,9 +291,9 @@ open class Claim: DomainResource {
 		try use.encode(on: &_container, forKey: .use, auxiliaryKey: ._use)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Claim else {
 			return false
@@ -332,7 +329,7 @@ open class Claim: DomainResource {
 		    && type == _other.type
 		    && use == _other.use
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(accident)
@@ -371,29 +368,29 @@ open class Claim: DomainResource {
  Details of an accident which resulted in injuries which required the products and services listed in the claim.
  */
 open class ClaimAccident: BackboneElement {
-	
+
 	/// All possible types for "location[x]"
 	public enum LocationX: Hashable {
 		case address(Address)
 		case reference(Reference)
 	}
-	
+
 	/// When the incident occurred
 	public var date: FHIRPrimitive<FHIRDate>
-	
+
 	/// The nature of the accident
 	public var type: CodeableConcept?
-	
+
 	/// Where the event occurred
 	/// One of `location[x]`
 	public var location: LocationX?
-	
+
 	/// Designated initializer taking all required properties
 	public init(date: FHIRPrimitive<FHIRDate>) {
 		self.date = date
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							date: FHIRPrimitive<FHIRDate>,
@@ -401,8 +398,7 @@ open class ClaimAccident: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							location: LocationX? = nil,
 							modifierExtension: [Extension]? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init(date: date)
 		self.`extension` = `extension`
 		self.id = id
@@ -410,23 +406,23 @@ open class ClaimAccident: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case date; case _date
 		case locationAddress
 		case locationReference
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.date = try FHIRPrimitive<FHIRDate>(from: _container, forKey: .date, auxiliaryKey: ._date)
-		var _t_location: LocationX? = nil
+		var _t_location: LocationX?
 		if let locationAddress = try Address(from: _container, forKeyIfPresent: .locationAddress) {
 			if _t_location != nil {
 				throw DecodingError.dataCorruptedError(forKey: .locationAddress, in: _container, debugDescription: "More than one value provided for \"location\"")
@@ -443,11 +439,11 @@ open class ClaimAccident: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try date.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
 		if let _enum = location {
@@ -461,9 +457,9 @@ open class ClaimAccident: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ClaimAccident else {
 			return false
@@ -475,7 +471,7 @@ open class ClaimAccident: BackboneElement {
 		    && location == _other.location
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(date)
@@ -490,29 +486,29 @@ open class ClaimAccident: BackboneElement {
  The members of the team who provided the products and services.
  */
 open class ClaimCareTeam: BackboneElement {
-	
+
 	/// Order of care team
 	public var sequence: FHIRPrimitive<FHIRPositiveInteger>
-	
+
 	/// Practitioner or organization
 	public var provider: Reference
-	
+
 	/// Indicator of the lead practitioner
 	public var responsible: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Function within the team
 	public var role: CodeableConcept?
-	
+
 	/// Practitioner credential or specialization
 	public var qualification: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	public init(provider: Reference, sequence: FHIRPrimitive<FHIRPositiveInteger>) {
 		self.provider = provider
 		self.sequence = sequence
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -522,8 +518,7 @@ open class ClaimCareTeam: BackboneElement {
 							qualification: CodeableConcept? = nil,
 							responsible: FHIRPrimitive<FHIRBool>? = nil,
 							role: CodeableConcept? = nil,
-							sequence: FHIRPrimitive<FHIRPositiveInteger>)
-	{
+							sequence: FHIRPrimitive<FHIRPositiveInteger>) {
 		self.init(provider: provider, sequence: sequence)
 		self.`extension` = `extension`
 		self.id = id
@@ -532,9 +527,9 @@ open class ClaimCareTeam: BackboneElement {
 		self.responsible = responsible
 		self.role = role
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case provider
 		case qualification
@@ -542,11 +537,11 @@ open class ClaimCareTeam: BackboneElement {
 		case role
 		case sequence; case _sequence
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.provider = try Reference(from: _container, forKey: .provider)
 		self.qualification = try CodeableConcept(from: _container, forKeyIfPresent: .qualification)
@@ -555,11 +550,11 @@ open class ClaimCareTeam: BackboneElement {
 		self.sequence = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try provider.encode(on: &_container, forKey: .provider)
 		try qualification?.encode(on: &_container, forKey: .qualification)
@@ -568,9 +563,9 @@ open class ClaimCareTeam: BackboneElement {
 		try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ClaimCareTeam else {
 			return false
@@ -584,7 +579,7 @@ open class ClaimCareTeam: BackboneElement {
 		    && role == _other.role
 		    && sequence == _other.sequence
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(provider)
@@ -601,36 +596,36 @@ open class ClaimCareTeam: BackboneElement {
  Information about diagnoses relevant to the claim items.
  */
 open class ClaimDiagnosis: BackboneElement {
-	
+
 	/// All possible types for "diagnosis[x]"
 	public enum DiagnosisX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Diagnosis instance identifier
 	public var sequence: FHIRPrimitive<FHIRPositiveInteger>
-	
+
 	/// Nature of illness or problem
 	/// One of `diagnosis[x]`
 	public var diagnosis: DiagnosisX
-	
+
 	/// Timing or nature of the diagnosis
 	public var type: [CodeableConcept]?
-	
+
 	/// Present on admission
 	public var onAdmission: CodeableConcept?
-	
+
 	/// Package billing code
 	public var packageCode: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	public init(diagnosis: DiagnosisX, sequence: FHIRPrimitive<FHIRPositiveInteger>) {
 		self.diagnosis = diagnosis
 		self.sequence = sequence
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							diagnosis: DiagnosisX,
@@ -640,8 +635,7 @@ open class ClaimDiagnosis: BackboneElement {
 							onAdmission: CodeableConcept? = nil,
 							packageCode: CodeableConcept? = nil,
 							sequence: FHIRPrimitive<FHIRPositiveInteger>,
-							type: [CodeableConcept]? = nil)
-	{
+							type: [CodeableConcept]? = nil) {
 		self.init(diagnosis: diagnosis, sequence: sequence)
 		self.`extension` = `extension`
 		self.id = id
@@ -650,9 +644,9 @@ open class ClaimDiagnosis: BackboneElement {
 		self.packageCode = packageCode
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case diagnosisCodeableConcept
 		case diagnosisReference
@@ -661,18 +655,18 @@ open class ClaimDiagnosis: BackboneElement {
 		case sequence; case _sequence
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.diagnosisCodeableConcept) || _container.contains(CodingKeys.diagnosisReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.diagnosisCodeableConcept, CodingKeys.diagnosisReference], debugDescription: "Must have at least one value for \"diagnosis\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_diagnosis: DiagnosisX? = nil
+		var _t_diagnosis: DiagnosisX?
 		if let diagnosisCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .diagnosisCodeableConcept) {
 			if _t_diagnosis != nil {
 				throw DecodingError.dataCorruptedError(forKey: .diagnosisCodeableConcept, in: _container, debugDescription: "More than one value provided for \"diagnosis\"")
@@ -692,29 +686,29 @@ open class ClaimDiagnosis: BackboneElement {
 		self.type = try [CodeableConcept](from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch diagnosis {
 			case .codeableConcept(let _value):
 				try _value.encode(on: &_container, forKey: .diagnosisCodeableConcept)
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .diagnosisReference)
 			}
-		
+
 		try onAdmission?.encode(on: &_container, forKey: .onAdmission)
 		try packageCode?.encode(on: &_container, forKey: .packageCode)
 		try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ClaimDiagnosis else {
 			return false
@@ -728,7 +722,7 @@ open class ClaimDiagnosis: BackboneElement {
 		    && sequence == _other.sequence
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(diagnosis)
@@ -745,28 +739,28 @@ open class ClaimDiagnosis: BackboneElement {
  Financial instruments for reimbursement for the health care products and services specified on the claim.
  */
 open class ClaimInsurance: BackboneElement {
-	
+
 	/// Insurance instance identifier
 	public var sequence: FHIRPrimitive<FHIRPositiveInteger>
-	
+
 	/// Coverage to be used for adjudication
 	public var focal: FHIRPrimitive<FHIRBool>
-	
+
 	/// Pre-assigned Claim number
 	public var identifier: Identifier?
-	
+
 	/// Insurance information
 	public var coverage: Reference
-	
+
 	/// Additional provider contract number
 	public var businessArrangement: FHIRPrimitive<FHIRString>?
-	
+
 	/// Prior authorization reference number
 	public var preAuthRef: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Adjudication results
 	public var claimResponse: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	public init(coverage: Reference, focal: FHIRPrimitive<FHIRBool>, sequence: FHIRPrimitive<FHIRPositiveInteger>) {
 		self.coverage = coverage
@@ -774,7 +768,7 @@ open class ClaimInsurance: BackboneElement {
 		self.sequence = sequence
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							businessArrangement: FHIRPrimitive<FHIRString>? = nil,
@@ -786,8 +780,7 @@ open class ClaimInsurance: BackboneElement {
 							identifier: Identifier? = nil,
 							modifierExtension: [Extension]? = nil,
 							preAuthRef: [FHIRPrimitive<FHIRString>]? = nil,
-							sequence: FHIRPrimitive<FHIRPositiveInteger>)
-	{
+							sequence: FHIRPrimitive<FHIRPositiveInteger>) {
 		self.init(coverage: coverage, focal: focal, sequence: sequence)
 		self.businessArrangement = businessArrangement
 		self.claimResponse = claimResponse
@@ -797,9 +790,9 @@ open class ClaimInsurance: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.preAuthRef = preAuthRef
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case businessArrangement; case _businessArrangement
 		case claimResponse
@@ -809,11 +802,11 @@ open class ClaimInsurance: BackboneElement {
 		case preAuthRef; case _preAuthRef
 		case sequence; case _sequence
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.businessArrangement = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .businessArrangement, auxiliaryKey: ._businessArrangement)
 		self.claimResponse = try Reference(from: _container, forKeyIfPresent: .claimResponse)
@@ -824,11 +817,11 @@ open class ClaimInsurance: BackboneElement {
 		self.sequence = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try businessArrangement?.encode(on: &_container, forKey: .businessArrangement, auxiliaryKey: ._businessArrangement)
 		try claimResponse?.encode(on: &_container, forKey: .claimResponse)
@@ -839,9 +832,9 @@ open class ClaimInsurance: BackboneElement {
 		try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ClaimInsurance else {
 			return false
@@ -857,7 +850,7 @@ open class ClaimInsurance: BackboneElement {
 		    && preAuthRef == _other.preAuthRef
 		    && sequence == _other.sequence
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(businessArrangement)
@@ -877,92 +870,92 @@ open class ClaimInsurance: BackboneElement {
  sub-details.
  */
 open class ClaimItem: BackboneElement {
-	
+
 	/// All possible types for "location[x]"
 	public enum LocationX: Hashable {
 		case address(Address)
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// All possible types for "serviced[x]"
 	public enum ServicedX: Hashable {
 		case date(FHIRPrimitive<FHIRDate>)
 		case period(Period)
 	}
-	
+
 	/// Item instance identifier
 	public var sequence: FHIRPrimitive<FHIRPositiveInteger>
-	
+
 	/// Applicable careTeam members
 	public var careTeamSequence: [FHIRPrimitive<FHIRPositiveInteger>]?
-	
+
 	/// Applicable diagnoses
 	public var diagnosisSequence: [FHIRPrimitive<FHIRPositiveInteger>]?
-	
+
 	/// Applicable procedures
 	public var procedureSequence: [FHIRPrimitive<FHIRPositiveInteger>]?
-	
+
 	/// Applicable exception and supporting information
 	public var informationSequence: [FHIRPrimitive<FHIRPositiveInteger>]?
-	
+
 	/// Revenue or cost center code
 	public var revenue: CodeableConcept?
-	
+
 	/// Benefit classification
 	public var category: CodeableConcept?
-	
+
 	/// Billing, service, product, or drug code
 	public var productOrService: CodeableConcept
-	
+
 	/// Product or service billing modifiers
 	public var modifier: [CodeableConcept]?
-	
+
 	/// Program the product or service is provided under
 	public var programCode: [CodeableConcept]?
-	
+
 	/// Date or dates of service or product delivery
 	/// One of `serviced[x]`
 	public var serviced: ServicedX?
-	
+
 	/// Place of service or where product was supplied
 	/// One of `location[x]`
 	public var location: LocationX?
-	
+
 	/// Count of products or services
 	public var quantity: Quantity?
-	
+
 	/// Fee, charge or cost per item
 	public var unitPrice: Money?
-	
+
 	/// Price scaling factor
 	public var factor: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Total item cost
 	public var net: Money?
-	
+
 	/// Unique device identifier
 	public var udi: [Reference]?
-	
+
 	/// Anatomical location
 	public var bodySite: CodeableConcept?
-	
+
 	/// Anatomical sub-location
 	public var subSite: [CodeableConcept]?
-	
+
 	/// Encounters related to this billed item
 	public var encounter: [Reference]?
-	
+
 	/// Product or service provided
 	public var detail: [ClaimItemDetail]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(productOrService: CodeableConcept, sequence: FHIRPrimitive<FHIRPositiveInteger>) {
 		self.productOrService = productOrService
 		self.sequence = sequence
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							bodySite: CodeableConcept? = nil,
@@ -988,8 +981,7 @@ open class ClaimItem: BackboneElement {
 							serviced: ServicedX? = nil,
 							subSite: [CodeableConcept]? = nil,
 							udi: [Reference]? = nil,
-							unitPrice: Money? = nil)
-	{
+							unitPrice: Money? = nil) {
 		self.init(productOrService: productOrService, sequence: sequence)
 		self.bodySite = bodySite
 		self.careTeamSequence = careTeamSequence
@@ -1014,9 +1006,9 @@ open class ClaimItem: BackboneElement {
 		self.udi = udi
 		self.unitPrice = unitPrice
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case bodySite
 		case careTeamSequence; case _careTeamSequence
@@ -1043,11 +1035,11 @@ open class ClaimItem: BackboneElement {
 		case udi
 		case unitPrice
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.bodySite = try CodeableConcept(from: _container, forKeyIfPresent: .bodySite)
 		self.careTeamSequence = try [FHIRPrimitive<FHIRPositiveInteger>](from: _container, forKeyIfPresent: .careTeamSequence, auxiliaryKey: ._careTeamSequence)
@@ -1057,7 +1049,7 @@ open class ClaimItem: BackboneElement {
 		self.encounter = try [Reference](from: _container, forKeyIfPresent: .encounter)
 		self.factor = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .factor, auxiliaryKey: ._factor)
 		self.informationSequence = try [FHIRPrimitive<FHIRPositiveInteger>](from: _container, forKeyIfPresent: .informationSequence, auxiliaryKey: ._informationSequence)
-		var _t_location: LocationX? = nil
+		var _t_location: LocationX?
 		if let locationCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .locationCodeableConcept) {
 			if _t_location != nil {
 				throw DecodingError.dataCorruptedError(forKey: .locationCodeableConcept, in: _container, debugDescription: "More than one value provided for \"location\"")
@@ -1085,7 +1077,7 @@ open class ClaimItem: BackboneElement {
 		self.quantity = try Quantity(from: _container, forKeyIfPresent: .quantity)
 		self.revenue = try CodeableConcept(from: _container, forKeyIfPresent: .revenue)
 		self.sequence = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
-		var _t_serviced: ServicedX? = nil
+		var _t_serviced: ServicedX?
 		if let servicedDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .servicedDate, auxiliaryKey: ._servicedDate) {
 			if _t_serviced != nil {
 				throw DecodingError.dataCorruptedError(forKey: .servicedDate, in: _container, debugDescription: "More than one value provided for \"serviced\"")
@@ -1104,11 +1096,11 @@ open class ClaimItem: BackboneElement {
 		self.unitPrice = try Money(from: _container, forKeyIfPresent: .unitPrice)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try bodySite?.encode(on: &_container, forKey: .bodySite)
 		try careTeamSequence?.encode(on: &_container, forKey: .careTeamSequence, auxiliaryKey: ._careTeamSequence)
@@ -1149,9 +1141,9 @@ open class ClaimItem: BackboneElement {
 		try unitPrice?.encode(on: &_container, forKey: .unitPrice)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ClaimItem else {
 			return false
@@ -1181,7 +1173,7 @@ open class ClaimItem: BackboneElement {
 		    && udi == _other.udi
 		    && unitPrice == _other.unitPrice
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(bodySite)
@@ -1214,50 +1206,50 @@ open class ClaimItem: BackboneElement {
  A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items.
  */
 open class ClaimItemDetail: BackboneElement {
-	
+
 	/// Item instance identifier
 	public var sequence: FHIRPrimitive<FHIRPositiveInteger>
-	
+
 	/// Revenue or cost center code
 	public var revenue: CodeableConcept?
-	
+
 	/// Benefit classification
 	public var category: CodeableConcept?
-	
+
 	/// Billing, service, product, or drug code
 	public var productOrService: CodeableConcept
-	
+
 	/// Service/Product billing modifiers
 	public var modifier: [CodeableConcept]?
-	
+
 	/// Program the product or service is provided under
 	public var programCode: [CodeableConcept]?
-	
+
 	/// Count of products or services
 	public var quantity: Quantity?
-	
+
 	/// Fee, charge or cost per item
 	public var unitPrice: Money?
-	
+
 	/// Price scaling factor
 	public var factor: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Total item cost
 	public var net: Money?
-	
+
 	/// Unique device identifier
 	public var udi: [Reference]?
-	
+
 	/// Product or service provided
 	public var subDetail: [ClaimItemDetailSubDetail]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(productOrService: CodeableConcept, sequence: FHIRPrimitive<FHIRPositiveInteger>) {
 		self.productOrService = productOrService
 		self.sequence = sequence
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							category: CodeableConcept? = nil,
@@ -1274,8 +1266,7 @@ open class ClaimItemDetail: BackboneElement {
 							sequence: FHIRPrimitive<FHIRPositiveInteger>,
 							subDetail: [ClaimItemDetailSubDetail]? = nil,
 							udi: [Reference]? = nil,
-							unitPrice: Money? = nil)
-	{
+							unitPrice: Money? = nil) {
 		self.init(productOrService: productOrService, sequence: sequence)
 		self.category = category
 		self.`extension` = `extension`
@@ -1291,9 +1282,9 @@ open class ClaimItemDetail: BackboneElement {
 		self.udi = udi
 		self.unitPrice = unitPrice
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case category
 		case factor; case _factor
@@ -1308,11 +1299,11 @@ open class ClaimItemDetail: BackboneElement {
 		case udi
 		case unitPrice
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.category = try CodeableConcept(from: _container, forKeyIfPresent: .category)
 		self.factor = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .factor, auxiliaryKey: ._factor)
@@ -1328,11 +1319,11 @@ open class ClaimItemDetail: BackboneElement {
 		self.unitPrice = try Money(from: _container, forKeyIfPresent: .unitPrice)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try category?.encode(on: &_container, forKey: .category)
 		try factor?.encode(on: &_container, forKey: .factor, auxiliaryKey: ._factor)
@@ -1348,9 +1339,9 @@ open class ClaimItemDetail: BackboneElement {
 		try unitPrice?.encode(on: &_container, forKey: .unitPrice)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ClaimItemDetail else {
 			return false
@@ -1371,7 +1362,7 @@ open class ClaimItemDetail: BackboneElement {
 		    && udi == _other.udi
 		    && unitPrice == _other.unitPrice
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(category)
@@ -1395,47 +1386,47 @@ open class ClaimItemDetail: BackboneElement {
  A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items.
  */
 open class ClaimItemDetailSubDetail: BackboneElement {
-	
+
 	/// Item instance identifier
 	public var sequence: FHIRPrimitive<FHIRPositiveInteger>
-	
+
 	/// Revenue or cost center code
 	public var revenue: CodeableConcept?
-	
+
 	/// Benefit classification
 	public var category: CodeableConcept?
-	
+
 	/// Billing, service, product, or drug code
 	public var productOrService: CodeableConcept
-	
+
 	/// Service/Product billing modifiers
 	public var modifier: [CodeableConcept]?
-	
+
 	/// Program the product or service is provided under
 	public var programCode: [CodeableConcept]?
-	
+
 	/// Count of products or services
 	public var quantity: Quantity?
-	
+
 	/// Fee, charge or cost per item
 	public var unitPrice: Money?
-	
+
 	/// Price scaling factor
 	public var factor: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Total item cost
 	public var net: Money?
-	
+
 	/// Unique device identifier
 	public var udi: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(productOrService: CodeableConcept, sequence: FHIRPrimitive<FHIRPositiveInteger>) {
 		self.productOrService = productOrService
 		self.sequence = sequence
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							category: CodeableConcept? = nil,
@@ -1451,8 +1442,7 @@ open class ClaimItemDetailSubDetail: BackboneElement {
 							revenue: CodeableConcept? = nil,
 							sequence: FHIRPrimitive<FHIRPositiveInteger>,
 							udi: [Reference]? = nil,
-							unitPrice: Money? = nil)
-	{
+							unitPrice: Money? = nil) {
 		self.init(productOrService: productOrService, sequence: sequence)
 		self.category = category
 		self.`extension` = `extension`
@@ -1467,9 +1457,9 @@ open class ClaimItemDetailSubDetail: BackboneElement {
 		self.udi = udi
 		self.unitPrice = unitPrice
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case category
 		case factor; case _factor
@@ -1483,11 +1473,11 @@ open class ClaimItemDetailSubDetail: BackboneElement {
 		case udi
 		case unitPrice
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.category = try CodeableConcept(from: _container, forKeyIfPresent: .category)
 		self.factor = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .factor, auxiliaryKey: ._factor)
@@ -1502,11 +1492,11 @@ open class ClaimItemDetailSubDetail: BackboneElement {
 		self.unitPrice = try Money(from: _container, forKeyIfPresent: .unitPrice)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try category?.encode(on: &_container, forKey: .category)
 		try factor?.encode(on: &_container, forKey: .factor, auxiliaryKey: ._factor)
@@ -1521,9 +1511,9 @@ open class ClaimItemDetailSubDetail: BackboneElement {
 		try unitPrice?.encode(on: &_container, forKey: .unitPrice)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ClaimItemDetailSubDetail else {
 			return false
@@ -1543,7 +1533,7 @@ open class ClaimItemDetailSubDetail: BackboneElement {
 		    && udi == _other.udi
 		    && unitPrice == _other.unitPrice
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(category)
@@ -1566,63 +1556,62 @@ open class ClaimItemDetailSubDetail: BackboneElement {
  The party to be reimbursed for cost of the products and services according to the terms of the policy.
  */
 open class ClaimPayee: BackboneElement {
-	
+
 	/// Category of recipient
 	public var type: CodeableConcept
-	
+
 	/// Recipient reference
 	public var party: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: CodeableConcept) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							party: Reference? = nil,
-							type: CodeableConcept)
-	{
+							type: CodeableConcept) {
 		self.init(type: type)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.party = party
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case party
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.party = try Reference(from: _container, forKeyIfPresent: .party)
 		self.type = try CodeableConcept(from: _container, forKey: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try party?.encode(on: &_container, forKey: .party)
 		try type.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ClaimPayee else {
 			return false
@@ -1633,7 +1622,7 @@ open class ClaimPayee: BackboneElement {
 		return party == _other.party
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(party)
@@ -1647,36 +1636,36 @@ open class ClaimPayee: BackboneElement {
  Procedures performed on the patient relevant to the billing items with the claim.
  */
 open class ClaimProcedure: BackboneElement {
-	
+
 	/// All possible types for "procedure[x]"
 	public enum ProcedureX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Procedure instance identifier
 	public var sequence: FHIRPrimitive<FHIRPositiveInteger>
-	
+
 	/// Category of Procedure
 	public var type: [CodeableConcept]?
-	
+
 	/// When the procedure was performed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Specific clinical procedure
 	/// One of `procedure[x]`
 	public var procedure: ProcedureX
-	
+
 	/// Unique device identifier
 	public var udi: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(procedure: ProcedureX, sequence: FHIRPrimitive<FHIRPositiveInteger>) {
 		self.procedure = procedure
 		self.sequence = sequence
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							date: FHIRPrimitive<DateTime>? = nil,
@@ -1686,8 +1675,7 @@ open class ClaimProcedure: BackboneElement {
 							procedure: ProcedureX,
 							sequence: FHIRPrimitive<FHIRPositiveInteger>,
 							type: [CodeableConcept]? = nil,
-							udi: [Reference]? = nil)
-	{
+							udi: [Reference]? = nil) {
 		self.init(procedure: procedure, sequence: sequence)
 		self.date = date
 		self.`extension` = `extension`
@@ -1696,9 +1684,9 @@ open class ClaimProcedure: BackboneElement {
 		self.type = type
 		self.udi = udi
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case date; case _date
 		case procedureCodeableConcept
@@ -1707,19 +1695,19 @@ open class ClaimProcedure: BackboneElement {
 		case type
 		case udi
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.procedureCodeableConcept) || _container.contains(CodingKeys.procedureReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.procedureCodeableConcept, CodingKeys.procedureReference], debugDescription: "Must have at least one value for \"procedure\" but have none"))
 		}
-		
+
 		// Decode all our properties
 		self.date = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
-		var _t_procedure: ProcedureX? = nil
+		var _t_procedure: ProcedureX?
 		if let procedureCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .procedureCodeableConcept) {
 			if _t_procedure != nil {
 				throw DecodingError.dataCorruptedError(forKey: .procedureCodeableConcept, in: _container, debugDescription: "More than one value provided for \"procedure\"")
@@ -1738,29 +1726,29 @@ open class ClaimProcedure: BackboneElement {
 		self.udi = try [Reference](from: _container, forKeyIfPresent: .udi)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
-		
+
 			switch procedure {
 			case .codeableConcept(let _value):
 				try _value.encode(on: &_container, forKey: .procedureCodeableConcept)
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .procedureReference)
 			}
-		
+
 		try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
 		try type?.encode(on: &_container, forKey: .type)
 		try udi?.encode(on: &_container, forKey: .udi)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ClaimProcedure else {
 			return false
@@ -1774,7 +1762,7 @@ open class ClaimProcedure: BackboneElement {
 		    && type == _other.type
 		    && udi == _other.udi
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(date)
@@ -1792,21 +1780,21 @@ open class ClaimProcedure: BackboneElement {
  event.
  */
 open class ClaimRelated: BackboneElement {
-	
+
 	/// Reference to the related claim
 	public var claim: Reference?
-	
+
 	/// How the reference claim is related
 	public var relationship: CodeableConcept?
-	
+
 	/// File or case reference
 	public var reference: Identifier?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							claim: Reference? = nil,
@@ -1814,8 +1802,7 @@ open class ClaimRelated: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							reference: Identifier? = nil,
-							relationship: CodeableConcept? = nil)
-	{
+							relationship: CodeableConcept? = nil) {
 		self.init()
 		self.claim = claim
 		self.`extension` = `extension`
@@ -1824,39 +1811,39 @@ open class ClaimRelated: BackboneElement {
 		self.reference = reference
 		self.relationship = relationship
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case claim
 		case reference
 		case relationship
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.claim = try Reference(from: _container, forKeyIfPresent: .claim)
 		self.reference = try Identifier(from: _container, forKeyIfPresent: .reference)
 		self.relationship = try CodeableConcept(from: _container, forKeyIfPresent: .relationship)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try claim?.encode(on: &_container, forKey: .claim)
 		try reference?.encode(on: &_container, forKey: .reference)
 		try relationship?.encode(on: &_container, forKey: .relationship)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ClaimRelated else {
 			return false
@@ -1868,7 +1855,7 @@ open class ClaimRelated: BackboneElement {
 		    && reference == _other.reference
 		    && relationship == _other.relationship
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(claim)
@@ -1884,13 +1871,13 @@ open class ClaimRelated: BackboneElement {
  concurrent issues.
  */
 open class ClaimSupportingInfo: BackboneElement {
-	
+
 	/// All possible types for "timing[x]"
 	public enum TimingX: Hashable {
 		case date(FHIRPrimitive<FHIRDate>)
 		case period(Period)
 	}
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case attachment(Attachment)
@@ -1899,34 +1886,34 @@ open class ClaimSupportingInfo: BackboneElement {
 		case reference(Reference)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Information instance identifier
 	public var sequence: FHIRPrimitive<FHIRPositiveInteger>
-	
+
 	/// Classification of the supplied information
 	public var category: CodeableConcept
-	
+
 	/// Type of information
 	public var code: CodeableConcept?
-	
+
 	/// When it occurred
 	/// One of `timing[x]`
 	public var timing: TimingX?
-	
+
 	/// Data to be provided
 	/// One of `value[x]`
 	public var value: ValueX?
-	
+
 	/// Explanation for the information
 	public var reason: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	public init(category: CodeableConcept, sequence: FHIRPrimitive<FHIRPositiveInteger>) {
 		self.category = category
 		self.sequence = sequence
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							category: CodeableConcept,
@@ -1937,8 +1924,7 @@ open class ClaimSupportingInfo: BackboneElement {
 							reason: CodeableConcept? = nil,
 							sequence: FHIRPrimitive<FHIRPositiveInteger>,
 							timing: TimingX? = nil,
-							value: ValueX? = nil)
-	{
+							value: ValueX? = nil) {
 		self.init(category: category, sequence: sequence)
 		self.code = code
 		self.`extension` = `extension`
@@ -1948,9 +1934,9 @@ open class ClaimSupportingInfo: BackboneElement {
 		self.timing = timing
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case category
 		case code
@@ -1964,17 +1950,17 @@ open class ClaimSupportingInfo: BackboneElement {
 		case valueReference
 		case valueString; case _valueString
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.category = try CodeableConcept(from: _container, forKey: .category)
 		self.code = try CodeableConcept(from: _container, forKeyIfPresent: .code)
 		self.reason = try CodeableConcept(from: _container, forKeyIfPresent: .reason)
 		self.sequence = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
-		var _t_timing: TimingX? = nil
+		var _t_timing: TimingX?
 		if let timingDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .timingDate, auxiliaryKey: ._timingDate) {
 			if _t_timing != nil {
 				throw DecodingError.dataCorruptedError(forKey: .timingDate, in: _container, debugDescription: "More than one value provided for \"timing\"")
@@ -1988,7 +1974,7 @@ open class ClaimSupportingInfo: BackboneElement {
 			_t_timing = .period(timingPeriod)
 		}
 		self.timing = _t_timing
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueBoolean = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .valueBoolean, auxiliaryKey: ._valueBoolean) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -2022,11 +2008,11 @@ open class ClaimSupportingInfo: BackboneElement {
 		self.value = _t_value
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try category.encode(on: &_container, forKey: .category)
 		try code?.encode(on: &_container, forKey: .code)
@@ -2056,9 +2042,9 @@ open class ClaimSupportingInfo: BackboneElement {
 		}
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ClaimSupportingInfo else {
 			return false
@@ -2073,7 +2059,7 @@ open class ClaimSupportingInfo: BackboneElement {
 		    && timing == _other.timing
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(category)
