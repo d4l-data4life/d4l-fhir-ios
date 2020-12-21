@@ -1,8 +1,7 @@
 {% macro addOptionalMark variable %}{% if variable.isOptional %}?{% endif %}{% endmacro %}
 {% macro addOptionalCast variable %} as{% if variable.isOptional %}?{% else %}!{% endif %} {{ variable.typeName.unwrappedTypeName }}{% endmacro %}
 // swiftlint:disable file_length
-
-// MARK: - {{ type.name }} NSCopying
+// MARK: - NSCopying
 {% for type in types.classes %}
 
 // MARK: - {{ type.name }}

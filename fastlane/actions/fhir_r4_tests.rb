@@ -7,23 +7,26 @@ module Fastlane
   module Actions
     class FhirR4TestsAction < Action
       def self.run(params)
-        generate_fhir_tests
+        resourcesPath = './FhirR4/Tests/Resources'
+        testsPath = './FhirR4/Tests/Generated'
+        generate_fhir_tests(testsPath, resourcesPath)
+        integrate_files_xcode(testsPath, resourcesPath)
+        clean_temp_files
       end
 
-      def self.generate_fhir_tests
-          resources_path = './parser-resources'
-          cache_src = File.join(resources_path, "hl7.org", "fhir", "R4")
-          cache_dst = File.join(resources_path, "hl7.org", "fhir", "R4", "cache")
-          cache_dst_json = File.join(resources_path, "hl7.org", "fhir", "R4", "cache", "examples-json")
-          xcode_resources_path = './FhirR4/Tests/Resources'
-          xcode_tests_path = './FhirR4/Tests/Generated'
+      def self.generate_fhir_tests(testsPath, resourcesPath)
+          hl7Path = './parser-resources'
+          cache_src = File.join(hl7Path, "hl7.org", "fhir", "R4")
+          cache_dst = File.join(hl7Path, "hl7.org", "fhir", "R4", "cache")
+          cache_dst_json = File.join(hl7Path, "hl7.org", "fhir", "R4", "cache", "examples-json")
           resources_map = Hash.new
-          # Setup the parser
-          sh "rm -rf #{cache_dst}"
-          sh "rm -rf #{xcode_resources_path}"
-          sh "rm -rf #{xcode_tests_path}"
-          # Create a cache for the FHIR JSON models
 
+          # Setup the parser
+          sh "rm -rf #{testsPath}"
+          sh "rm -rf #{resourcesPath}"
+          sh "rm -rf #{cache_dst}"
+
+          # Create a cache for the FHIR JSON models
           FileUtils.mkdir(cache_dst)
           Zip::File.open(File.join(cache_src, "examples-json.zip")) do |zipfile|
             zipfile.each do |f|
@@ -33,10 +36,9 @@ module Fastlane
             end
           end
 
-          Dir.mkdir("#{xcode_resources_path}") unless Dir.exist?("#{xcode_resources_path}")
+          Dir.mkdir("#{resourcesPath}") unless Dir.exist?("#{resourcesPath}")
           Dir.chdir("#{cache_dst_json}") do
              Dir.glob('*.json').each do|fileName|
-               puts fileName
                jsonExampleData= File.read(fileName)
                resourceType = JSON.parse(jsonExampleData)["resourceType"]
                if !(resourceType.include? "Bundle")
@@ -46,45 +48,14 @@ module Fastlane
           end
 
           # Generate files
-          Dir.mkdir("#{xcode_tests_path}") unless Dir.exist?("#{xcode_tests_path}")
+          Dir.mkdir("#{testsPath}") unless Dir.exist?("#{testsPath}")
           resources_map.each do |resourceType, fileName|
-            FileUtils.mv("#{cache_dst_json}/#{fileName}", File.join(xcode_resources_path, fileName))
+            FileUtils.mv("#{cache_dst_json}/#{fileName}", File.join(resourcesPath, fileName))
             fileData = makeFileData(resourceType, fileName)
-            File.open("#{xcode_tests_path}/#{makeCamelCaseName(fileName)}+Test.swift", "w") { |f| f.write fileData }
+            File.open("#{testsPath}/#{makeCamelCaseName(fileName)}+Test.swift", "w") { |f| f.write fileData }
           end
 
-          sh "rm -rf #{cache_dst}"
-
-          project_file = './Data4LifeFHIR' + '.xcodeproj'
-          project = Xcodeproj::Project.open(project_file)
-          target = project.native_targets
-                 .select { |target| target.name == 'ModelsR4Tests' }
-                 .first
-
-          old_tests_group =project.main_group.find_subpath(File.join('FhirR4/Tests/Generated'), false)
-          if old_tests_group
-            target.source_build_phase.files.each do |sourceFile|
-               next if sourceFile == 'ModelsR4Tests.swift' or sourceFile == 'ModelsR4Bundle.swift'
-            end
-             old_tests_group.clear
-             old_tests_group.remove_from_project
-          end
-
-          old_test_resources_group = project.main_group.find_subpath(File.join('FhirR4/Tests/Resources'), false)
-          if old_test_resources_group
-              target.resources_build_phase.files.each do |resourceFile|
-              end
-             old_test_resources_group.clear
-             old_test_resources_group.remove_from_project
-          end
-
-          tests_group = project.main_group.find_subpath(File.join('FhirR4/Tests'), true).new_group('Generated')
-          test_resources_group = project.main_group.find_subpath(File.join('FhirR4/Tests'), true).new_group('Resources')
-          addfiles("#{xcode_tests_path}/*", tests_group, target)
-          addfiles("#{xcode_resources_path}/*", test_resources_group, target)
-
-          project.save(project_file)
-          UI.success "Done generating FHIR models ✅"
+          UI.success "Done generating FHIR R4 Tests ✅"
       end
 
       def self.addfiles(dir, group, target)
@@ -93,12 +64,9 @@ module Fastlane
           Dir.glob(dir) do |fileName|
               next if fileName == '.' or fileName == '.DS_Store'
               sourcefile_extension = ".swift"
-
                   unpathedFile =  File.basename(fileName)
                   group_path = group.real_path + group.display_name
-                  puts group_path
                   group_file = group.new_file(group.display_name + "/" + unpathedFile)
-                  puts group_file
                   if fileName.include? sourcefile_extension
                   target.add_file_references([group_file])
                 else
@@ -149,15 +117,43 @@ extension ModelsR4Tests {
         return fileData
       end
 
-      def self.clean_tmp_files
-        fhir_parser_path = './fhir-parser'
-        generated_files_path = "./generated"
-        generated_tests_path = "./generated_tests"
+      def self.integrate_files_xcode(testsPath, resourcesPath)
+        project_file = './Data4LifeFHIR' + '.xcodeproj'
 
-        sh "rm -rf #{fhir_parser_path}"
-        sh "rm -rf #{generated_files_path}"
-        sh "rm -rf #{generated_tests_path}"
+        project = Xcodeproj::Project.open(project_file)
+        target = project.native_targets
+               .select { |target| target.name == 'ModelsR4Tests' }
+               .first
 
+        old_tests_group =project.main_group.find_subpath(File.join('FhirR4/Tests/Generated'), false)
+        if old_tests_group
+          target.source_build_phase.files.each do |sourceFile|
+             next if sourceFile == 'ModelsR4Tests.swift' or sourceFile == 'ModelsR4Bundle.swift'
+          end
+           old_tests_group.clear
+           old_tests_group.remove_from_project
+        end
+
+        old_test_resources_group = project.main_group.find_subpath(File.join('FhirR4/Tests/Resources'), false)
+        if old_test_resources_group
+            target.resources_build_phase.files.each do |resourceFile|
+            end
+           old_test_resources_group.clear
+           old_test_resources_group.remove_from_project
+        end
+
+        tests_group = project.main_group.find_subpath(File.join('FhirR4/Tests'), true).new_group('Generated')
+        test_resources_group = project.main_group.find_subpath(File.join('FhirR4/Tests'), true).new_group('Resources')
+        addfiles("#{testsPath}/*", tests_group, target)
+        addfiles("#{resourcesPath}/*", test_resources_group, target)
+        project.save(project_file)
+        UI.success "Done integrating tests and resources in Xcode Project ✅"
+      end
+
+      def self.clean_temp_files
+        resources_path = './parser-resources'
+        cache_dst = File.join(resources_path, "hl7.org", "fhir", "R4", "cache")
+        sh "rm -rf #{cache_dst}"
         UI.success "Done cleaning temporary files ✅"
       end
       #####################################################

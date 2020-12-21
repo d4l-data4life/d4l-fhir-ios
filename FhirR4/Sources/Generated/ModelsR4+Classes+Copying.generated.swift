@@ -3,8 +3,7 @@
 
 
 // swiftlint:disable file_length
-
-// MARK: -  NSCopying
+// MARK: - NSCopying
 
 // MARK: - Account
 extension ModelsR4.Account {

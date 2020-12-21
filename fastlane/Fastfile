@@ -34,16 +34,25 @@ platform :ios do
   desc "Generate FHIR models"
   desc "#### Options"
   desc " * **`embed`** (optional): Should embed newly generated models into Xcode project? defaults to true"
-  lane :generate_models do | options |
+  lane :generate_all do | options |
       embed = options[:embed] ||= true
-      fhir xcode:embed
-      sh "sourcery --sources FhirR4\/Sources\/ModelsR4 --templates FhirR4\/Sources\/Templates\/ --output FhirR4\/Sources\/Generated"
+      fhir_stu3 xcode:embed
+      fhir_r4_helpers
       fhir_r4_tests
       lint
   end
 
+  lane :generate_stu3_models do | options |
+      fhir_stu3 xcode:true
+      lint
+  end
+
+  lane :generate_r4_helpers do | options |
+      fhir_r4_helpers
+      lint
+  end
+
   lane :generate_r4_tests do | options |
-      embed = options[:embed] ||= true
       fhir_r4_tests
       lint
   end

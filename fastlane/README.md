@@ -26,15 +26,25 @@ Run unit tests
 fastlane ios lint
 ```
 Run linter and autocorrect issues
-### ios generate_models
+### ios generate_all
 ```
-fastlane ios generate_models
+fastlane ios generate_all
 ```
 Generate FHIR models
 
 #### Options
 
  * **`embed`** (optional): Should embed newly generated models into Xcode project? defaults to true
+### ios generate_stu3_models
+```
+fastlane ios generate_stu3_models
+```
+
+### ios generate_r4_helpers
+```
+fastlane ios generate_r4_helpers
+```
+
 ### ios generate_r4_tests
 ```
 fastlane ios generate_r4_tests
