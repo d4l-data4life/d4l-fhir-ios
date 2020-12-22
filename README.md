@@ -9,8 +9,11 @@ Minimal FHIR standard models and data types for iOS
 
 ### Description
 [fastlane](https://fastlane.tools/) is used to manage fhir-parser and integrate generated models into Xcode project
+
 [fhir-parser](https://github.com/gesundheitscloud/fhir-parser) is used to generate Swift models from JSON examples for latest FHIR standard
+
 [Swift-FHIR](https://github.com/smart-on-fhir/Swift-FHIR) was used as inspiration for this project
+
 [Apple-FHIR](https://github.com/apple/FHIRModels) R4 models were (tepmorarily) ported over because we needed a pod version of it
 
 Required resources include:
