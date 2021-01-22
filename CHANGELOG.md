@@ -150,7 +150,7 @@ Adds support down to iOS 12 for ModelsR4 framework
 - FHIR models using Codable protocol
 
 [Unreleased]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.18.0...master
-[0.17.0]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.18.0
+[0.18.0]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.18.0
 [0.17.0]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.17.0
 [0.16.1]: https://github.com/gesundheitscloud/hc-fhir-ios/releases/tag/0.16.1
 [0.16.0]: https://github.com/gesundheitscloud/hc-fhir-ios/releases/tag/0.16.0
