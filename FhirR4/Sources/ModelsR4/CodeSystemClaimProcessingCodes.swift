@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes Claim Processing Outcome codes.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/remittance-outcome
  */
 public enum ClaimProcessingCodes: String, FHIRPrimitiveType {
-	
+
 	/// The Claim/Pre-authorization/Pre-determination has been received but processing has not begun.
 	case queued = "queued"
-	
+
 	/// The processing has completed without errors
 	case complete = "complete"
-	
+
 	/// One or more errors have been detected in the Claim
 	case error = "error"
-	
+
 	/// No errors have been detected in the Claim and some of the adjudication has been performed.
 	case partial = "partial"
 }

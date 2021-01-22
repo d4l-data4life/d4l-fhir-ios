@@ -16,8 +16,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  *  Any positive integer in the range 1..2,147,483,647 (that's only 31 bit because the positive int is a constraint on
  *  the signed int in FHIR).
@@ -25,9 +23,9 @@
  *  http://hl7.org/fhir/datatypes.html#positiveInt
  */
 public struct FHIRPositiveInteger: FHIRPrimitiveType, FHIRIntegerRepresentable {
-	
+
 	public typealias IntegerLiteralType = Int32
-	
+
 	public var integer: Self.IntegerLiteralType {
 		didSet {
 			if integer < 1 {
@@ -35,14 +33,14 @@ public struct FHIRPositiveInteger: FHIRPrimitiveType, FHIRIntegerRepresentable {
 			}
 		}
 	}
-	
+
 	/**
 	 Designated initializer.
 	 */
 	public init(_ integer: Self.IntegerLiteralType) {
 		self.integer = max(1, integer)
 	}
-	
+
 	/// When initializing with a value < 1, the value will be set to 1
 	public init(integerLiteral value: Self.IntegerLiteralType) {
 		self.integer = max(1, value)
@@ -50,7 +48,7 @@ public struct FHIRPositiveInteger: FHIRPrimitiveType, FHIRIntegerRepresentable {
 }
 
 extension FHIRPositiveInteger: Codable {
-	
+
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
 		let integer = try container.decode(Self.IntegerLiteralType.self)
@@ -59,7 +57,7 @@ extension FHIRPositiveInteger: Codable {
 		}
 		self.integer = integer
 	}
-	
+
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.singleValueContainer()
 		try container.encode(integer)
@@ -75,7 +73,7 @@ public enum FHIRPositiveIntegerError: Error {
 // MARK: -
 
 extension Int {
-	
+
 	public func asFHIRPositiveIntegerPrimitive() -> FHIRPrimitive<FHIRPositiveInteger> {
 		return FHIRPrimitive(FHIRPositiveInteger(FHIRPositiveInteger.IntegerLiteralType(self)))
 	}

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes a sample set of Payment Status codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/payment-status
  */
 public enum PaymentStatusCodes: String, FHIRPrimitiveType {
-	
+
 	/// The payment has been sent physically or electronically.
 	case paid = "paid"
-	
+
 	/// The payment has been received by the payee.
 	case cleared = "cleared"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of relations between entries.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/relation-type
  */
 public enum CatalogEntryRelationType: String, FHIRPrimitiveType {
-	
+
 	/// the related entry represents an activity that may be triggered by the current item.
 	case triggers = "triggers"
-	
+
 	/// the related entry represents an item that replaces the current retired item.
 	case isReplacedBy = "is-replaced-by"
 }

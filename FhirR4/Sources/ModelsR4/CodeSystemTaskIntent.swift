@@ -17,15 +17,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Distinguishes whether the task is a proposal, plan or full order.
  
  URL: http://hl7.org/fhir/task-intent
  */
 public enum TaskIntent: String, FHIRPrimitiveType {
-	
+
 	/// The intent is not known.  When dealing with Task, it's not always known (or relevant) how the task was initiated
 	/// - i.e. whether it was proposed, planned, ordered or just done spontaneously.
 	case unknown = "unknown"

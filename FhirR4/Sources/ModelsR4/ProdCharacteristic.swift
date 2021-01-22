@@ -17,68 +17,66 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The marketing status describes the date when a medicinal product is actually put on the market or the date as of which
  it is no longer available.
  */
 open class ProdCharacteristic: BackboneElement {
-	
+
 	/// Where applicable, the height can be specified using a numerical value and its unit of measurement The unit of
 	/// measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the
 	/// symbol identifier shall be used
 	public var height: Quantity?
-	
+
 	/// Where applicable, the width can be specified using a numerical value and its unit of measurement The unit of
 	/// measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the
 	/// symbol identifier shall be used
 	public var width: Quantity?
-	
+
 	/// Where applicable, the depth can be specified using a numerical value and its unit of measurement The unit of
 	/// measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the
 	/// symbol identifier shall be used
 	public var depth: Quantity?
-	
+
 	/// Where applicable, the weight can be specified using a numerical value and its unit of measurement The unit of
 	/// measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the
 	/// symbol identifier shall be used
 	public var weight: Quantity?
-	
+
 	/// Where applicable, the nominal volume can be specified using a numerical value and its unit of measurement The
 	/// unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and
 	/// the symbol identifier shall be used
 	public var nominalVolume: Quantity?
-	
+
 	/// Where applicable, the external diameter can be specified using a numerical value and its unit of measurement The
 	/// unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and
 	/// the symbol identifier shall be used
 	public var externalDiameter: Quantity?
-	
+
 	/// Where applicable, the shape can be specified An appropriate controlled vocabulary shall be used The term and the
 	/// term identifier shall be used
 	public var shape: FHIRPrimitive<FHIRString>?
-	
+
 	/// Where applicable, the color can be specified An appropriate controlled vocabulary shall be used The term and the
 	/// term identifier shall be used
 	public var color: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Where applicable, the imprint can be specified as text
 	public var imprint: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Where applicable, the image can be provided The format of the image attachment shall be specified by regional
 	/// implementations
 	public var image: [Attachment]?
-	
+
 	/// Where applicable, the scoring can be specified An appropriate controlled vocabulary shall be used The term and
 	/// the term identifier shall be used
 	public var scoring: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							color: [FHIRPrimitive<FHIRString>]? = nil,
@@ -94,8 +92,7 @@ open class ProdCharacteristic: BackboneElement {
 							scoring: CodeableConcept? = nil,
 							shape: FHIRPrimitive<FHIRString>? = nil,
 							weight: Quantity? = nil,
-							width: Quantity? = nil)
-	{
+							width: Quantity? = nil) {
 		self.init()
 		self.color = color
 		self.depth = depth
@@ -112,9 +109,9 @@ open class ProdCharacteristic: BackboneElement {
 		self.weight = weight
 		self.width = width
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case color; case _color
 		case depth
@@ -128,11 +125,11 @@ open class ProdCharacteristic: BackboneElement {
 		case weight
 		case width
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.color = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .color, auxiliaryKey: ._color)
 		self.depth = try Quantity(from: _container, forKeyIfPresent: .depth)
@@ -147,11 +144,11 @@ open class ProdCharacteristic: BackboneElement {
 		self.width = try Quantity(from: _container, forKeyIfPresent: .width)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try color?.encode(on: &_container, forKey: .color, auxiliaryKey: ._color)
 		try depth?.encode(on: &_container, forKey: .depth)
@@ -166,9 +163,9 @@ open class ProdCharacteristic: BackboneElement {
 		try width?.encode(on: &_container, forKey: .width)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ProdCharacteristic else {
 			return false
@@ -188,7 +185,7 @@ open class ProdCharacteristic: BackboneElement {
 		    && weight == _other.weight
 		    && width == _other.width
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(color)

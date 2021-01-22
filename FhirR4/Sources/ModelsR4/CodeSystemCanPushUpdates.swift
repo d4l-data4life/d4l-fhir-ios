@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Ability of the primary source to push updates/alerts
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-can-push-updates
  */
 public enum CanPushUpdates: String, FHIRPrimitiveType {
-	
+
 	/// yes
 	case yes = "yes"
-	
+
 	/// no
 	case no = "no"
-	
+
 	/// undetermined
 	case undetermined = "undetermined"
 }

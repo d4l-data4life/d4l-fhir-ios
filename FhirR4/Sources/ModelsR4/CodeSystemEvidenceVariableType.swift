@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The possible types of variables for exposures or outcomes (E.g. Dichotomous, Continuous, Descriptive).
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/variable-type
  */
 public enum EvidenceVariableType: String, FHIRPrimitiveType {
-	
+
 	/// The variable is dichotomous, such as present or absent.
 	case dichotomous = "dichotomous"
-	
+
 	/// The variable is a continuous result such as a quantity.
 	case continuous = "continuous"
-	
+
 	/// The variable is described narratively rather than quantitatively.
 	case descriptive = "descriptive"
 }

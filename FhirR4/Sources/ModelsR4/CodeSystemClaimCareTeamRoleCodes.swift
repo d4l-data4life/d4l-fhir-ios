@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Claim Care Team Role codes.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/claim-careteamrole
  */
 public enum ClaimCareTeamRoleCodes: String, FHIRPrimitiveType {
-	
+
 	/// The primary care provider.
 	case primary = "primary"
-	
+
 	/// Assisting care provider.
 	case assist = "assist"
-	
+
 	/// Supervising care provider.
 	case supervisor = "supervisor"
-	
+
 	/// Other role on the care team.
 	case other = "other"
 }

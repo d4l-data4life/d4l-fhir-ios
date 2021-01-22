@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  SHALL applications comply with this constraint?
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity
  */
 public enum ConstraintSeverity: String, FHIRPrimitiveType {
-	
+
 	/// If the constraint is violated, the resource is not conformant.
 	case error = "error"
-	
+
 	/// If the constraint is violated, the resource is conformant, but it is not necessarily following best practice.
 	case warning = "warning"
 }

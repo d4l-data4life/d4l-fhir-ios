@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Describes a set of tests.
  
@@ -26,81 +24,81 @@
  specification.
  */
 open class TestScript: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .testScript }
-	
+
 	/// Canonical identifier for this test script, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>
-	
+
 	/// Additional identifier for the test script
 	public var identifier: Identifier?
-	
+
 	/// Business version of the test script
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this test script (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// Name for this test script (human friendly)
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// The status of this test script. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// For testing purposes, not real usage
 	public var experimental: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the test script
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for test script (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Why this test script is defined
 	public var purpose: FHIRPrimitive<FHIRString>?
-	
+
 	/// Use and/or publishing restrictions
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// An abstract server representing a client or sender in a message exchange
 	public var origin: [TestScriptOrigin]?
-	
+
 	/// An abstract server representing a destination or receiver in a message exchange
 	public var destination: [TestScriptDestination]?
-	
+
 	/// Required capability that is assumed to function correctly on the FHIR server being tested
 	public var metadata: TestScriptMetadata?
-	
+
 	/// Fixture in the test script - by reference (uri)
 	public var fixture: [TestScriptFixture]?
-	
+
 	/// Reference of the validation profile
 	public var profile: [Reference]?
-	
+
 	/// Placeholder for evaluated elements
 	public var variable: [TestScriptVariable]?
-	
+
 	/// A series of required setup operations before tests are executed
 	public var setup: TestScriptSetup?
-	
+
 	/// A test in this script
 	public var test: [TestScriptTest]?
-	
+
 	/// A series of required clean up steps
 	public var teardown: TestScriptTeardown?
-	
+
 	/// Designated initializer taking all required properties
 	public init(name: FHIRPrimitive<FHIRString>, status: FHIRPrimitive<PublicationStatus>, url: FHIRPrimitive<FHIRURI>) {
 		self.name = name
@@ -108,7 +106,7 @@ open class TestScript: DomainResource {
 		self.url = url
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contact: [ContactDetail]? = nil,
@@ -142,8 +140,7 @@ open class TestScript: DomainResource {
 							url: FHIRPrimitive<FHIRURI>,
 							useContext: [UsageContext]? = nil,
 							variable: [TestScriptVariable]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(name: name, status: status, url: url)
 		self.contact = contact
 		self.contained = contained
@@ -175,9 +172,9 @@ open class TestScript: DomainResource {
 		self.variable = variable
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case contact
 		case copyright; case _copyright
@@ -204,11 +201,11 @@ open class TestScript: DomainResource {
 		case variable
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.contact = try [ContactDetail](from: _container, forKeyIfPresent: .contact)
 		self.copyright = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .copyright, auxiliaryKey: ._copyright)
@@ -236,11 +233,11 @@ open class TestScript: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try contact?.encode(on: &_container, forKey: .contact)
 		try copyright?.encode(on: &_container, forKey: .copyright, auxiliaryKey: ._copyright)
@@ -268,9 +265,9 @@ open class TestScript: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScript else {
 			return false
@@ -303,7 +300,7 @@ open class TestScript: DomainResource {
 		    && variable == _other.variable
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(contact)
@@ -339,63 +336,62 @@ open class TestScript: DomainResource {
  An abstract server used in operations within this test script in the destination element.
  */
 open class TestScriptDestination: BackboneElement {
-	
+
 	/// The index of the abstract destination server starting at 1
 	public var index: FHIRPrimitive<FHIRInteger>
-	
+
 	/// FHIR-Server | FHIR-SDC-FormManager | FHIR-SDC-FormReceiver | FHIR-SDC-FormProcessor
 	public var profile: Coding
-	
+
 	/// Designated initializer taking all required properties
 	public init(index: FHIRPrimitive<FHIRInteger>, profile: Coding) {
 		self.index = index
 		self.profile = profile
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							index: FHIRPrimitive<FHIRInteger>,
 							modifierExtension: [Extension]? = nil,
-							profile: Coding)
-	{
+							profile: Coding) {
 		self.init(index: index, profile: profile)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case index; case _index
 		case profile
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.index = try FHIRPrimitive<FHIRInteger>(from: _container, forKey: .index, auxiliaryKey: ._index)
 		self.profile = try Coding(from: _container, forKey: .profile)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try index.encode(on: &_container, forKey: .index, auxiliaryKey: ._index)
 		try profile.encode(on: &_container, forKey: .profile)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptDestination else {
 			return false
@@ -406,7 +402,7 @@ open class TestScriptDestination: BackboneElement {
 		return index == _other.index
 		    && profile == _other.profile
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(index)
@@ -420,23 +416,23 @@ open class TestScriptDestination: BackboneElement {
  Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.
  */
 open class TestScriptFixture: BackboneElement {
-	
+
 	/// Whether or not to implicitly create the fixture during setup
 	public var autocreate: FHIRPrimitive<FHIRBool>
-	
+
 	/// Whether or not to implicitly delete the fixture during teardown
 	public var autodelete: FHIRPrimitive<FHIRBool>
-	
+
 	/// Reference of the resource
 	public var resource: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	public init(autocreate: FHIRPrimitive<FHIRBool>, autodelete: FHIRPrimitive<FHIRBool>) {
 		self.autocreate = autocreate
 		self.autodelete = autodelete
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							autocreate: FHIRPrimitive<FHIRBool>,
@@ -444,47 +440,46 @@ open class TestScriptFixture: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							resource: Reference? = nil)
-	{
+							resource: Reference? = nil) {
 		self.init(autocreate: autocreate, autodelete: autodelete)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.resource = resource
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case autocreate; case _autocreate
 		case autodelete; case _autodelete
 		case resource
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.autocreate = try FHIRPrimitive<FHIRBool>(from: _container, forKey: .autocreate, auxiliaryKey: ._autocreate)
 		self.autodelete = try FHIRPrimitive<FHIRBool>(from: _container, forKey: .autodelete, auxiliaryKey: ._autodelete)
 		self.resource = try Reference(from: _container, forKeyIfPresent: .resource)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try autocreate.encode(on: &_container, forKey: .autocreate, auxiliaryKey: ._autocreate)
 		try autodelete.encode(on: &_container, forKey: .autodelete, auxiliaryKey: ._autodelete)
 		try resource?.encode(on: &_container, forKey: .resource)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptFixture else {
 			return false
@@ -496,7 +491,7 @@ open class TestScriptFixture: BackboneElement {
 		    && autodelete == _other.autodelete
 		    && resource == _other.resource
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(autocreate)
@@ -511,63 +506,62 @@ open class TestScriptFixture: BackboneElement {
  The required capability must exist and are assumed to function correctly on the FHIR server being tested.
  */
 open class TestScriptMetadata: BackboneElement {
-	
+
 	/// Links to the FHIR specification
 	public var link: [TestScriptMetadataLink]?
-	
+
 	/// Capabilities  that are assumed to function correctly on the FHIR server being tested
 	public var capability: [TestScriptMetadataCapability]
-	
+
 	/// Designated initializer taking all required properties
 	public init(capability: [TestScriptMetadataCapability]) {
 		self.capability = capability
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							capability: [TestScriptMetadataCapability],
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							link: [TestScriptMetadataLink]? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(capability: capability)
 		self.`extension` = `extension`
 		self.id = id
 		self.link = link
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case capability
 		case link
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.capability = try [TestScriptMetadataCapability](from: _container, forKey: .capability)
 		self.link = try [TestScriptMetadataLink](from: _container, forKeyIfPresent: .link)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try capability.encode(on: &_container, forKey: .capability)
 		try link?.encode(on: &_container, forKey: .link)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptMetadata else {
 			return false
@@ -578,7 +572,7 @@ open class TestScriptMetadata: BackboneElement {
 		return capability == _other.capability
 		    && link == _other.link
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(capability)
@@ -592,28 +586,28 @@ open class TestScriptMetadata: BackboneElement {
  Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
  */
 open class TestScriptMetadataCapability: BackboneElement {
-	
+
 	/// Are the capabilities required?
 	public var required: FHIRPrimitive<FHIRBool>
-	
+
 	/// Are the capabilities validated?
 	public var validated: FHIRPrimitive<FHIRBool>
-	
+
 	/// The expected capabilities of the server
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Which origin server these requirements apply to
 	public var origin: [FHIRPrimitive<FHIRInteger>]?
-	
+
 	/// Which server these requirements apply to
 	public var destination: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Links to the FHIR specification
 	public var link: [FHIRPrimitive<FHIRURI>]?
-	
+
 	/// Required Capability Statement
 	public var capabilities: FHIRPrimitive<Canonical>
-	
+
 	/// Designated initializer taking all required properties
 	public init(capabilities: FHIRPrimitive<Canonical>, required: FHIRPrimitive<FHIRBool>, validated: FHIRPrimitive<FHIRBool>) {
 		self.capabilities = capabilities
@@ -621,7 +615,7 @@ open class TestScriptMetadataCapability: BackboneElement {
 		self.validated = validated
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							capabilities: FHIRPrimitive<Canonical>,
@@ -633,8 +627,7 @@ open class TestScriptMetadataCapability: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							origin: [FHIRPrimitive<FHIRInteger>]? = nil,
 							required: FHIRPrimitive<FHIRBool>,
-							validated: FHIRPrimitive<FHIRBool>)
-	{
+							validated: FHIRPrimitive<FHIRBool>) {
 		self.init(capabilities: capabilities, required: required, validated: validated)
 		self.description_fhir = description_fhir
 		self.destination = destination
@@ -644,9 +637,9 @@ open class TestScriptMetadataCapability: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.origin = origin
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case capabilities; case _capabilities
 		case description_fhir = "description"; case _description_fhir = "_description"
@@ -656,11 +649,11 @@ open class TestScriptMetadataCapability: BackboneElement {
 		case required; case _required
 		case validated; case _validated
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.capabilities = try FHIRPrimitive<Canonical>(from: _container, forKey: .capabilities, auxiliaryKey: ._capabilities)
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -671,11 +664,11 @@ open class TestScriptMetadataCapability: BackboneElement {
 		self.validated = try FHIRPrimitive<FHIRBool>(from: _container, forKey: .validated, auxiliaryKey: ._validated)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try capabilities.encode(on: &_container, forKey: .capabilities, auxiliaryKey: ._capabilities)
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -686,9 +679,9 @@ open class TestScriptMetadataCapability: BackboneElement {
 		try validated.encode(on: &_container, forKey: .validated, auxiliaryKey: ._validated)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptMetadataCapability else {
 			return false
@@ -704,7 +697,7 @@ open class TestScriptMetadataCapability: BackboneElement {
 		    && required == _other.required
 		    && validated == _other.validated
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(capabilities)
@@ -723,63 +716,62 @@ open class TestScriptMetadataCapability: BackboneElement {
  A link to the FHIR specification that this test is covering.
  */
 open class TestScriptMetadataLink: BackboneElement {
-	
+
 	/// URL to the specification
 	public var url: FHIRPrimitive<FHIRURI>
-	
+
 	/// Short description
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(url: FHIRPrimitive<FHIRURI>) {
 		self.url = url
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							description_fhir: FHIRPrimitive<FHIRString>? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							url: FHIRPrimitive<FHIRURI>)
-	{
+							url: FHIRPrimitive<FHIRURI>) {
 		self.init(url: url)
 		self.description_fhir = description_fhir
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case url; case _url
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.url = try FHIRPrimitive<FHIRURI>(from: _container, forKey: .url, auxiliaryKey: ._url)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
 		try url.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptMetadataLink else {
 			return false
@@ -790,7 +782,7 @@ open class TestScriptMetadataLink: BackboneElement {
 		return description_fhir == _other.description_fhir
 		    && url == _other.url
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(description_fhir)
@@ -804,63 +796,62 @@ open class TestScriptMetadataLink: BackboneElement {
  An abstract server used in operations within this test script in the origin element.
  */
 open class TestScriptOrigin: BackboneElement {
-	
+
 	/// The index of the abstract origin server starting at 1
 	public var index: FHIRPrimitive<FHIRInteger>
-	
+
 	/// FHIR-Client | FHIR-SDC-FormFiller
 	public var profile: Coding
-	
+
 	/// Designated initializer taking all required properties
 	public init(index: FHIRPrimitive<FHIRInteger>, profile: Coding) {
 		self.index = index
 		self.profile = profile
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							index: FHIRPrimitive<FHIRInteger>,
 							modifierExtension: [Extension]? = nil,
-							profile: Coding)
-	{
+							profile: Coding) {
 		self.init(index: index, profile: profile)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case index; case _index
 		case profile
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.index = try FHIRPrimitive<FHIRInteger>(from: _container, forKey: .index, auxiliaryKey: ._index)
 		self.profile = try Coding(from: _container, forKey: .profile)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try index.encode(on: &_container, forKey: .index, auxiliaryKey: ._index)
 		try profile.encode(on: &_container, forKey: .profile)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptOrigin else {
 			return false
@@ -871,7 +862,7 @@ open class TestScriptOrigin: BackboneElement {
 		return index == _other.index
 		    && profile == _other.profile
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(index)
@@ -883,55 +874,54 @@ open class TestScriptOrigin: BackboneElement {
  A series of required setup operations before tests are executed.
  */
 open class TestScriptSetup: BackboneElement {
-	
+
 	/// A setup operation or assert to perform
 	public var action: [TestScriptSetupAction]
-	
+
 	/// Designated initializer taking all required properties
 	public init(action: [TestScriptSetupAction]) {
 		self.action = action
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							action: [TestScriptSetupAction],
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(action: action)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case action
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.action = try [TestScriptSetupAction](from: _container, forKey: .action)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try action.encode(on: &_container, forKey: .action)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptSetup else {
 			return false
@@ -941,7 +931,7 @@ open class TestScriptSetup: BackboneElement {
 		}
 		return action == _other.action
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(action)
@@ -954,26 +944,25 @@ open class TestScriptSetup: BackboneElement {
  Action would contain either an operation or an assertion.
  */
 open class TestScriptSetupAction: BackboneElement {
-	
+
 	/// The setup operation to perform
 	public var operation: TestScriptSetupActionOperation?
-	
+
 	/// The assertion to perform
 	public var assert: TestScriptSetupActionAssert?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							assert: TestScriptSetupActionAssert? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							operation: TestScriptSetupActionOperation? = nil)
-	{
+							operation: TestScriptSetupActionOperation? = nil) {
 		self.init()
 		self.assert = assert
 		self.`extension` = `extension`
@@ -981,36 +970,36 @@ open class TestScriptSetupAction: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.operation = operation
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case assert
 		case operation
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.assert = try TestScriptSetupActionAssert(from: _container, forKeyIfPresent: .assert)
 		self.operation = try TestScriptSetupActionOperation(from: _container, forKeyIfPresent: .operation)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try assert?.encode(on: &_container, forKey: .assert)
 		try operation?.encode(on: &_container, forKey: .operation)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptSetupAction else {
 			return false
@@ -1021,7 +1010,7 @@ open class TestScriptSetupAction: BackboneElement {
 		return assert == _other.assert
 		    && operation == _other.operation
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(assert)
@@ -1035,79 +1024,79 @@ open class TestScriptSetupAction: BackboneElement {
  Evaluates the results of previous operations to determine if the server under test behaves appropriately.
  */
 open class TestScriptSetupActionAssert: BackboneElement {
-	
+
 	/// Tracking/logging assertion label
 	public var label: FHIRPrimitive<FHIRString>?
-	
+
 	/// Tracking/reporting assertion description
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The direction to use for the assertion.
 	public var direction: FHIRPrimitive<AssertionDirectionType>?
-	
+
 	/// Id of the source fixture to be evaluated
 	public var compareToSourceId: FHIRPrimitive<FHIRString>?
-	
+
 	/// The FHIRPath expression to evaluate against the source fixture
 	public var compareToSourceExpression: FHIRPrimitive<FHIRString>?
-	
+
 	/// XPath or JSONPath expression to evaluate against the source fixture
 	public var compareToSourcePath: FHIRPrimitive<FHIRString>?
-	
+
 	/// Mime type to compare against the 'Content-Type' header
 	public var contentType: FHIRPrimitive<FHIRString>?
-	
+
 	/// The FHIRPath expression to be evaluated
 	public var expression: FHIRPrimitive<FHIRString>?
-	
+
 	/// HTTP header field name
 	public var headerField: FHIRPrimitive<FHIRString>?
-	
+
 	/// Fixture Id of minimum content resource
 	public var minimumId: FHIRPrimitive<FHIRString>?
-	
+
 	/// Perform validation on navigation links?
 	public var navigationLinks: FHIRPrimitive<FHIRBool>?
-	
+
 	/// The operator type defines the conditional behavior of the assert. If not defined, the default is equals.
 	public var `operator`: FHIRPrimitive<AssertionOperatorType>?
-	
+
 	/// XPath or JSONPath expression
 	public var path: FHIRPrimitive<FHIRString>?
-	
+
 	/// The request method or HTTP operation code to compare against that used by the client system under test.
 	public var requestMethod: FHIRPrimitive<TestScriptRequestMethodCode>?
-	
+
 	/// Request URL comparison value
 	public var requestURL: FHIRPrimitive<FHIRString>?
-	
+
 	/// Resource type
 	public var resource: FHIRPrimitive<FHIRString>?
-	
+
 	/// None
 	public var response: FHIRPrimitive<AssertionResponseTypes>?
-	
+
 	/// HTTP response code to test
 	public var responseCode: FHIRPrimitive<FHIRString>?
-	
+
 	/// Fixture Id of source expression or headerField
 	public var sourceId: FHIRPrimitive<FHIRString>?
-	
+
 	/// Profile Id of validation profile reference
 	public var validateProfileId: FHIRPrimitive<FHIRString>?
-	
+
 	/// The value to compare to
 	public var value: FHIRPrimitive<FHIRString>?
-	
+
 	/// Will this assert produce a warning only on error?
 	public var warningOnly: FHIRPrimitive<FHIRBool>
-	
+
 	/// Designated initializer taking all required properties
 	public init(warningOnly: FHIRPrimitive<FHIRBool>) {
 		self.warningOnly = warningOnly
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							compareToSourceExpression: FHIRPrimitive<FHIRString>? = nil,
@@ -1134,8 +1123,7 @@ open class TestScriptSetupActionAssert: BackboneElement {
 							sourceId: FHIRPrimitive<FHIRString>? = nil,
 							validateProfileId: FHIRPrimitive<FHIRString>? = nil,
 							value: FHIRPrimitive<FHIRString>? = nil,
-							warningOnly: FHIRPrimitive<FHIRBool>)
-	{
+							warningOnly: FHIRPrimitive<FHIRBool>) {
 		self.init(warningOnly: warningOnly)
 		self.compareToSourceExpression = compareToSourceExpression
 		self.compareToSourceId = compareToSourceId
@@ -1162,9 +1150,9 @@ open class TestScriptSetupActionAssert: BackboneElement {
 		self.validateProfileId = validateProfileId
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case compareToSourceExpression; case _compareToSourceExpression
 		case compareToSourceId; case _compareToSourceId
@@ -1189,11 +1177,11 @@ open class TestScriptSetupActionAssert: BackboneElement {
 		case value; case _value
 		case warningOnly; case _warningOnly
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.compareToSourceExpression = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .compareToSourceExpression, auxiliaryKey: ._compareToSourceExpression)
 		self.compareToSourceId = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .compareToSourceId, auxiliaryKey: ._compareToSourceId)
@@ -1219,11 +1207,11 @@ open class TestScriptSetupActionAssert: BackboneElement {
 		self.warningOnly = try FHIRPrimitive<FHIRBool>(from: _container, forKey: .warningOnly, auxiliaryKey: ._warningOnly)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try compareToSourceExpression?.encode(on: &_container, forKey: .compareToSourceExpression, auxiliaryKey: ._compareToSourceExpression)
 		try compareToSourceId?.encode(on: &_container, forKey: .compareToSourceId, auxiliaryKey: ._compareToSourceId)
@@ -1249,9 +1237,9 @@ open class TestScriptSetupActionAssert: BackboneElement {
 		try warningOnly.encode(on: &_container, forKey: .warningOnly, auxiliaryKey: ._warningOnly)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptSetupActionAssert else {
 			return false
@@ -1282,7 +1270,7 @@ open class TestScriptSetupActionAssert: BackboneElement {
 		    && value == _other.value
 		    && warningOnly == _other.warningOnly
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(compareToSourceExpression)
@@ -1316,64 +1304,64 @@ open class TestScriptSetupActionAssert: BackboneElement {
  The operation to perform.
  */
 open class TestScriptSetupActionOperation: BackboneElement {
-	
+
 	/// The operation code type that will be executed
 	public var type: Coding?
-	
+
 	/// Resource type
 	public var resource: FHIRPrimitive<FHIRString>?
-	
+
 	/// Tracking/logging operation label
 	public var label: FHIRPrimitive<FHIRString>?
-	
+
 	/// Tracking/reporting operation description
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Mime type to accept in the payload of the response, with charset etc.
 	public var accept: FHIRPrimitive<FHIRString>?
-	
+
 	/// Mime type of the request payload contents, with charset etc.
 	public var contentType: FHIRPrimitive<FHIRString>?
-	
+
 	/// Server responding to the request
 	public var destination: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Whether or not to send the request url in encoded format
 	public var encodeRequestUrl: FHIRPrimitive<FHIRBool>
-	
+
 	/// The HTTP method the test engine MUST use for this operation regardless of any other operation details.
 	public var method: FHIRPrimitive<TestScriptRequestMethodCode>?
-	
+
 	/// Server initiating the request
 	public var origin: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Explicitly defined path parameters
 	public var params: FHIRPrimitive<FHIRString>?
-	
+
 	/// Each operation can have one or more header elements
 	public var requestHeader: [TestScriptSetupActionOperationRequestHeader]?
-	
+
 	/// Fixture Id of mapped request
 	public var requestId: FHIRPrimitive<FHIRString>?
-	
+
 	/// Fixture Id of mapped response
 	public var responseId: FHIRPrimitive<FHIRString>?
-	
+
 	/// Fixture Id of body for PUT and POST requests
 	public var sourceId: FHIRPrimitive<FHIRString>?
-	
+
 	/// Id of fixture used for extracting the [id],  [type], and [vid] for GET requests
 	public var targetId: FHIRPrimitive<FHIRString>?
-	
+
 	/// Request URL
 	public var url: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(encodeRequestUrl: FHIRPrimitive<FHIRBool>) {
 		self.encodeRequestUrl = encodeRequestUrl
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							accept: FHIRPrimitive<FHIRString>? = nil,
@@ -1395,8 +1383,7 @@ open class TestScriptSetupActionOperation: BackboneElement {
 							sourceId: FHIRPrimitive<FHIRString>? = nil,
 							targetId: FHIRPrimitive<FHIRString>? = nil,
 							type: Coding? = nil,
-							url: FHIRPrimitive<FHIRString>? = nil)
-	{
+							url: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(encodeRequestUrl: encodeRequestUrl)
 		self.accept = accept
 		self.contentType = contentType
@@ -1418,9 +1405,9 @@ open class TestScriptSetupActionOperation: BackboneElement {
 		self.type = type
 		self.url = url
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case accept; case _accept
 		case contentType; case _contentType
@@ -1440,11 +1427,11 @@ open class TestScriptSetupActionOperation: BackboneElement {
 		case type
 		case url; case _url
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.accept = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .accept, auxiliaryKey: ._accept)
 		self.contentType = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .contentType, auxiliaryKey: ._contentType)
@@ -1465,11 +1452,11 @@ open class TestScriptSetupActionOperation: BackboneElement {
 		self.url = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .url, auxiliaryKey: ._url)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try accept?.encode(on: &_container, forKey: .accept, auxiliaryKey: ._accept)
 		try contentType?.encode(on: &_container, forKey: .contentType, auxiliaryKey: ._contentType)
@@ -1490,9 +1477,9 @@ open class TestScriptSetupActionOperation: BackboneElement {
 		try url?.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptSetupActionOperation else {
 			return false
@@ -1518,7 +1505,7 @@ open class TestScriptSetupActionOperation: BackboneElement {
 		    && type == _other.type
 		    && url == _other.url
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(accept)
@@ -1547,63 +1534,62 @@ open class TestScriptSetupActionOperation: BackboneElement {
  Header elements would be used to set HTTP headers.
  */
 open class TestScriptSetupActionOperationRequestHeader: BackboneElement {
-	
+
 	/// HTTP header field name
 	public var field: FHIRPrimitive<FHIRString>
-	
+
 	/// HTTP headerfield value
 	public var value: FHIRPrimitive<FHIRString>
-	
+
 	/// Designated initializer taking all required properties
 	public init(field: FHIRPrimitive<FHIRString>, value: FHIRPrimitive<FHIRString>) {
 		self.field = field
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							field: FHIRPrimitive<FHIRString>,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							value: FHIRPrimitive<FHIRString>)
-	{
+							value: FHIRPrimitive<FHIRString>) {
 		self.init(field: field, value: value)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case field; case _field
 		case value; case _value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.field = try FHIRPrimitive<FHIRString>(from: _container, forKey: .field, auxiliaryKey: ._field)
 		self.value = try FHIRPrimitive<FHIRString>(from: _container, forKey: .value, auxiliaryKey: ._value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try field.encode(on: &_container, forKey: .field, auxiliaryKey: ._field)
 		try value.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptSetupActionOperationRequestHeader else {
 			return false
@@ -1614,7 +1600,7 @@ open class TestScriptSetupActionOperationRequestHeader: BackboneElement {
 		return field == _other.field
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(field)
@@ -1628,55 +1614,54 @@ open class TestScriptSetupActionOperationRequestHeader: BackboneElement {
  A series of operations required to clean up after all the tests are executed (successfully or otherwise).
  */
 open class TestScriptTeardown: BackboneElement {
-	
+
 	/// One or more teardown operations to perform
 	public var action: [TestScriptTeardownAction]
-	
+
 	/// Designated initializer taking all required properties
 	public init(action: [TestScriptTeardownAction]) {
 		self.action = action
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							action: [TestScriptTeardownAction],
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(action: action)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case action
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.action = try [TestScriptTeardownAction](from: _container, forKey: .action)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try action.encode(on: &_container, forKey: .action)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptTeardown else {
 			return false
@@ -1686,7 +1671,7 @@ open class TestScriptTeardown: BackboneElement {
 		}
 		return action == _other.action
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(action)
@@ -1699,55 +1684,54 @@ open class TestScriptTeardown: BackboneElement {
  The teardown action will only contain an operation.
  */
 open class TestScriptTeardownAction: BackboneElement {
-	
+
 	/// The teardown operation to perform
 	public var operation: TestScriptSetupActionOperation
-	
+
 	/// Designated initializer taking all required properties
 	public init(operation: TestScriptSetupActionOperation) {
 		self.operation = operation
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							operation: TestScriptSetupActionOperation)
-	{
+							operation: TestScriptSetupActionOperation) {
 		self.init(operation: operation)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case operation
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.operation = try TestScriptSetupActionOperation(from: _container, forKey: .operation)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try operation.encode(on: &_container, forKey: .operation)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptTeardownAction else {
 			return false
@@ -1757,7 +1741,7 @@ open class TestScriptTeardownAction: BackboneElement {
 		}
 		return operation == _other.operation
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(operation)
@@ -1768,22 +1752,22 @@ open class TestScriptTeardownAction: BackboneElement {
  A test in this script.
  */
 open class TestScriptTest: BackboneElement {
-	
+
 	/// Tracking/logging name of this test
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Tracking/reporting short description of the test
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// A test operation or assert to perform
 	public var action: [TestScriptTestAction]
-	
+
 	/// Designated initializer taking all required properties
 	public init(action: [TestScriptTestAction]) {
 		self.action = action
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							action: [TestScriptTestAction],
@@ -1791,8 +1775,7 @@ open class TestScriptTest: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							name: FHIRPrimitive<FHIRString>? = nil)
-	{
+							name: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(action: action)
 		self.description_fhir = description_fhir
 		self.`extension` = `extension`
@@ -1800,39 +1783,39 @@ open class TestScriptTest: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.name = name
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case action
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case name; case _name
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.action = try [TestScriptTestAction](from: _container, forKey: .action)
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.name = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try action.encode(on: &_container, forKey: .action)
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
 		try name?.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptTest else {
 			return false
@@ -1844,7 +1827,7 @@ open class TestScriptTest: BackboneElement {
 		    && description_fhir == _other.description_fhir
 		    && name == _other.name
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(action)
@@ -1859,26 +1842,25 @@ open class TestScriptTest: BackboneElement {
  Action would contain either an operation or an assertion.
  */
 open class TestScriptTestAction: BackboneElement {
-	
+
 	/// The setup operation to perform
 	public var operation: TestScriptSetupActionOperation?
-	
+
 	/// The setup assertion to perform
 	public var assert: TestScriptSetupActionAssert?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							assert: TestScriptSetupActionAssert? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							operation: TestScriptSetupActionOperation? = nil)
-	{
+							operation: TestScriptSetupActionOperation? = nil) {
 		self.init()
 		self.assert = assert
 		self.`extension` = `extension`
@@ -1886,36 +1868,36 @@ open class TestScriptTestAction: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.operation = operation
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case assert
 		case operation
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.assert = try TestScriptSetupActionAssert(from: _container, forKeyIfPresent: .assert)
 		self.operation = try TestScriptSetupActionOperation(from: _container, forKeyIfPresent: .operation)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try assert?.encode(on: &_container, forKey: .assert)
 		try operation?.encode(on: &_container, forKey: .operation)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptTestAction else {
 			return false
@@ -1926,7 +1908,7 @@ open class TestScriptTestAction: BackboneElement {
 		return assert == _other.assert
 		    && operation == _other.operation
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(assert)
@@ -1940,37 +1922,37 @@ open class TestScriptTestAction: BackboneElement {
  Variable is set based either on element value in response body or on header field value in the response headers.
  */
 open class TestScriptVariable: BackboneElement {
-	
+
 	/// Descriptive name for this variable
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// Default, hard-coded, or user-defined value for this variable
 	public var defaultValue: FHIRPrimitive<FHIRString>?
-	
+
 	/// Natural language description of the variable
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The FHIRPath expression against the fixture body
 	public var expression: FHIRPrimitive<FHIRString>?
-	
+
 	/// HTTP header field name for source
 	public var headerField: FHIRPrimitive<FHIRString>?
-	
+
 	/// Hint help text for default value to enter
 	public var hint: FHIRPrimitive<FHIRString>?
-	
+
 	/// XPath or JSONPath against the fixture body
 	public var path: FHIRPrimitive<FHIRString>?
-	
+
 	/// Fixture Id of source expression or headerField within this variable
 	public var sourceId: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(name: FHIRPrimitive<FHIRString>) {
 		self.name = name
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							defaultValue: FHIRPrimitive<FHIRString>? = nil,
@@ -1983,8 +1965,7 @@ open class TestScriptVariable: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							name: FHIRPrimitive<FHIRString>,
 							path: FHIRPrimitive<FHIRString>? = nil,
-							sourceId: FHIRPrimitive<FHIRString>? = nil)
-	{
+							sourceId: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(name: name)
 		self.defaultValue = defaultValue
 		self.description_fhir = description_fhir
@@ -1997,9 +1978,9 @@ open class TestScriptVariable: BackboneElement {
 		self.path = path
 		self.sourceId = sourceId
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case defaultValue; case _defaultValue
 		case description_fhir = "description"; case _description_fhir = "_description"
@@ -2010,11 +1991,11 @@ open class TestScriptVariable: BackboneElement {
 		case path; case _path
 		case sourceId; case _sourceId
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.defaultValue = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .defaultValue, auxiliaryKey: ._defaultValue)
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -2026,11 +2007,11 @@ open class TestScriptVariable: BackboneElement {
 		self.sourceId = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .sourceId, auxiliaryKey: ._sourceId)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try defaultValue?.encode(on: &_container, forKey: .defaultValue, auxiliaryKey: ._defaultValue)
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
@@ -2042,9 +2023,9 @@ open class TestScriptVariable: BackboneElement {
 		try sourceId?.encode(on: &_container, forKey: .sourceId, auxiliaryKey: ._sourceId)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TestScriptVariable else {
 			return false
@@ -2061,7 +2042,7 @@ open class TestScriptVariable: BackboneElement {
 		    && path == _other.path
 		    && sourceId == _other.sourceId
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(defaultValue)

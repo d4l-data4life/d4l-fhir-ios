@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes describing the purpose or content of the communication.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/communication-topic
  */
 public enum CommunicationTopic: String, FHIRPrimitiveType {
-	
+
 	/// The purpose or content of the communication is a prescription refill request.
 	case prescriptionRefillRequest = "prescription-refill-request"
-	
+
 	/// The purpose or content of the communication is a progress update.
 	case progressUpdate = "progress-update"
-	
+
 	/// The purpose or content of the communication is to report labs.
 	case reportLabs = "report-labs"
-	
+
 	/// The purpose or content of the communication is an appointment reminder.
 	case appointmentReminder = "appointment-reminder"
-	
+
 	/// The purpose or content of the communication is a phone consult.
 	case phoneConsult = "phone-consult"
-	
+
 	/// The purpose or content of the communication is a summary report.
 	case summaryReport = "summary-report"
 }

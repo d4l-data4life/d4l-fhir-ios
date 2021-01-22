@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of catalog.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/catalogType
  */
 public enum CatalogType: String, FHIRPrimitiveType {
-	
+
 	/// Medication Catalog.
 	case medication = "medication"
-	
+
 	/// Device Catalog.
 	case device = "device"
-	
+
 	/// Protocol List.
 	case `protocol` = "protocol"
 }

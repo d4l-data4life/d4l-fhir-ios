@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Regulatory consent policy types from the US and other regions.
  
@@ -26,11 +24,11 @@
  ValueSet: http://hl7.org/fhir/ValueSet/consent-policy
  */
 public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
-	
+
 	/// 45 CFR part 46 §46.116 General requirements for informed consent; and §46.117 Documentation of informed consent.
 	/// https://www.gpo.gov/fdsys/pkg/FR-2017-01-19/pdf/2017-01058.pdf
 	case cric = "cric"
-	
+
 	/// The consent to the performance of a medical or surgical procedure by a physician licensed to practice medicine
 	/// and surgery, a licensed advanced practice nurse, or a licensed physician assistant executed by a married person
 	/// who is a minor, by a parent who is a minor, by a pregnant woman who is a minor, or by any person 18 years of age
@@ -41,7 +39,7 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// title. This Act may be cited as the Consent by Minors to Medical Procedures Act. (Source: P.A. 86-1324.)
 	/// http://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=1539&ChapterID=35
 	case illinoisMinorProcedure = "illinois-minor-procedure"
-	
+
 	/// HIPAA 45 CFR Section 164.508 Uses and disclosures for which an authorization is required. (a) Standard:
 	/// Authorizations for uses and disclosures. (1) Authorization required: General rule. Except as otherwise permitted
 	/// or required by this subchapter, a covered entity SHALL not use or disclose protected health information without
@@ -50,7 +48,7 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// consistent with such authorization. Usage Note: Authorizations governed under this regulation meet the
 	/// definition of an opt in class of consent directive.
 	case hipaaAuth = "hipaa-auth"
-	
+
 	/// 164.520  Notice of privacy practices for protected health information. (1) Right to notice. Except as provided
 	/// by paragraph (a)(2) or (3) of this section, an individual has a right to adequate notice of the uses and
 	/// disclosures of protected health information that may be made by the covered entity, and of the individual's
@@ -58,7 +56,7 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// Restrictions governed under this regulation meet the definition of an implied with an opportunity to dissent
 	/// class of consent directive.
 	case hipaaNpp = "hipaa-npp"
-	
+
 	/// HIPAA 45 CFR 164.510 - Uses and disclosures requiring an opportunity for the individual to agree or to object. A
 	/// covered entity may use or disclose protected health information, provided that the individual is informed in
 	/// advance of the use or disclosure and has the opportunity to agree to or prohibit or restrict the use or
@@ -67,7 +65,7 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// this section. Usage Note: Restrictions governed under this regulation meet the definition of an opt out with
 	/// exception class of consent directive.
 	case hipaaRestrictions = "hipaa-restrictions"
-	
+
 	/// HIPAA 45 CFR 164.508 - Uses and disclosures for which an authorization is required. (a) Standard: Authorizations
 	/// for uses and disclosures. (3) Compound authorizations. An authorization for use or disclosure of protected
 	/// health information SHALL NOT be combined with any other document to create a compound authorization, except as
@@ -83,7 +81,7 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// authorization. Usage Notes: See HHS http://www.hhs.gov/hipaa/for-professionals/special-
 	/// topics/research/index.html and OCR http://www.hhs.gov/hipaa/for-professionals/special-topics/research/index.html
 	case hipaaResearch = "hipaa-research"
-	
+
 	/// HIPAA 45 CFR 164.522(a) Right To Request a Restriction of Uses and Disclosures. (vi) A covered entity must agree
 	/// to the request of an individual to restrict disclosure of protected health information about the individual to a
 	/// health plan if: (A) The disclosure is for the purpose of carrying out payment or health care operations and is
@@ -93,7 +91,7 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// out with exception class of consent directive. Opt out is limited to disclosures to a payer for payment and
 	/// operations purpose of use. See HL7 HIPAA Self-Pay code in ActPrivacyLaw (2.16.840.1.113883.1.11.20426).
 	case hipaaSelfPay = "hipaa-self-pay"
-	
+
 	/// On January 1, 2015, the Michigan Department of Health and Human Services (MDHHS) released a standard consent
 	/// form for the sharing of health information specific to behavioral health and substance use treatment in
 	/// accordance with Public Act 129 of 2014. In Michigan, while providers are not required to use this new standard
@@ -102,7 +100,7 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// information see
 	/// http://www.michigan.gov/documents/mdhhs/Behavioral_Health_Consent_Form_Background_Information_548864_7.pdf
 	case mdhhs5515 = "mdhhs-5515"
-	
+
 	/// The New York State Surgical and Invasive Procedure Protocol (NYSSIPP) applies to all operative and invasive
 	/// procedures including endoscopy, general surgery or interventional radiology. Other procedures that involve
 	/// puncture or incision of the skin, or insertion of an instrument or foreign material into the body are within the
@@ -114,14 +112,14 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// Note: HHC 100B-1 Form is available at
 	/// http://www.downstate.edu/emergency_medicine/documents/Consent_CT_with_contrast.pdf
 	case nyssipp = "nyssipp"
-	
+
 	/// VA Form 10-0484 Revocation for Release of Individually-Identifiable Health Information enables a veteran to
 	/// revoke authorization for the VA to release specified copies of individually-identifiable health information with
 	/// the non-VA health care provider organizations participating in the eHealth Exchange and partnering with VA.
 	/// Comment: Opt-in Consent Directive with status = rescinded (aka 'revoked'). Note: Form is available at
 	/// http://www.va.gov/vaforms/medical/pdf/vha-10-0484-fill.pdf
 	case va100484 = "va-10-0484"
-	
+
 	/// VA Form 10-0485 Request for and Authorization to Release Protected Health Information to eHealth Exchange
 	/// enables a veteran to request and authorize a VA health care facility to release protected health information
 	/// (PHI) for treatment purposes only to the communities that are participating in the eHealth Exchange, VLER
@@ -132,7 +130,7 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// the future including those protected by 38 U.S.C. 7332. Comment: Opt-in Consent Directive. Note: Form is
 	/// available at http://www.va.gov/vaforms/medical/pdf/10-0485-fill.pdf
 	case va100485 = "va-10-0485"
-	
+
 	/// VA Form 10-5345 Request for and Authorization to Release Medical Records or Health Information enables a veteran
 	/// to request and authorize the VA to release specified copies of protected health information (PHI), such as
 	/// hospital summary or outpatient treatment notes, which may include information about conditions governed under
@@ -140,47 +138,47 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// cell anemia). Comment: Opt-in Consent Directive. Note: Form is available at
 	/// http://www.va.gov/vaforms/medical/pdf/vha-10-5345-fill.pdf
 	case va105345 = "va-10-5345"
-	
+
 	/// VA Form 10-5345a Individuals' Request for a Copy of Their Own Health Information enables a veteran to request
 	/// and authorize the VA to release specified copies of protected health information (PHI), such as hospital summary
 	/// or outpatient treatment notes. Note: Form is available at
 	/// http://www.va.gov/vaforms/medical/pdf/vha-10-5345a-fill.pdf
 	case va105345a = "va-10-5345a"
-	
+
 	/// VA Form 10-5345a-MHV Individual's Request for a Copy of their own health information from MyHealtheVet enables a
 	/// veteran to receive a copy of all available personal health information to be delivered through the veteran's My
 	/// HealtheVet account. Note: Form is available at http://www.va.gov/vaforms/medical/pdf/vha-10-5345a-MHV-fill.pdf
 	case va105345aMhv = "va-10-5345a-mhv"
-	
+
 	/// VA Form 10-10116 Revocation of Authorization for Use and Release of Individually Identifiable Health Information
 	/// for Veterans Health Administration Research. Comment: Opt-in with Restriction Consent Directive with status =
 	/// 'completed'. Note: Form is available at
 	/// http://www.northerncalifornia.va.gov/northerncalifornia/services/rnd/docs/vha-10-10116.pdf
 	case va1010116 = "va-10-10116"
-	
+
 	/// VA Form 21-4142 (Authorization and Consent to Release Information to the Department of Veterans Affairs (VA)
 	/// enables a veteran to authorize the US Veterans Administration [VA] to request veteran's health information from
 	/// non-VA providers. Aka VA Compensation Application Note: Form is available at
 	/// http://www.vba.va.gov/pubs/forms/VBA-21-4142-ARE.pdf . For additional information regarding VA Form 21-4142,
 	/// refer to the following website: www.benefits.va.gov/compensation/consent_privateproviders
 	case va214142 = "va-21-4142"
-	
+
 	/// SA Form SSA-827 (Authorization to Disclose Information to the Social Security Administration (SSA)). Form is
 	/// available at https://www.socialsecurity.gov/forms/ssa-827-inst-sp.pdf
 	case ssa827 = "ssa-827"
-	
+
 	/// Michigan DCH-3927 Consent to Share Behavioral Health Information for Care Coordination Purposes, which combines
 	/// 42 CFR Part 2 and Michigan Mental Health Code, Act 258 of 1974. Form is available at
 	/// http://www.michigan.gov/documents/mdch/DCH-3927_Consent_to_Share_Health_Information_477005_7.docx
 	case dch3927 = "dch-3927"
-	
+
 	/// Squaxin Indian HIPAA and 42 CFR Part 2 Consent for Release and Exchange of Confidential Information, which
 	/// permits consenter to select healthcare record type and types of treatment purposes.  This consent requires
 	/// disclosers and recipients to comply with 42 C.F.R. Part 2, and HIPAA 45 C.F.R. parts 160 and 164. It includes
 	/// patient notice of the refrain policy not to disclose without consent, and revocation rights.
 	/// https://www.ncsacw.samhsa.gov/files/SI_ConsentForReleaseAndExchange.PDF
 	case squaxin = "squaxin"
-	
+
 	/// LSP (National Exchange Point) requires that providers, hospitals and pharmacy obtain explicit permission [opt-
 	/// in] from healthcare consumers to submit and retrieve all or only some of a subject of care’s health information
 	/// collected by the LSP for purpose of treatment, which can be revoked.  Without permission, a provider cannot
@@ -188,7 +186,7 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// disclosures. https://www.vzvz.nl/uploaded/FILES/htmlcontent/Formulieren/TOESTEMMINGSFORMULIER.pdf,
 	/// https://www.ikgeeftoestemming.nl/en, https://www.ikgeeftoestemming.nl/en/registration/find-healthcare-provider
 	case nlLsp = "nl-lsp"
-	
+
 	/// Pursuant to Sec. 2 no. 9 Health Telematics Act 2012, ELGA Health Data ( “ELGA-Gesundheitsdaten”) = Medical
 	/// documents. Austria opted for an opt-out approach. This means that a person is by default ‘ELGA participant’
 	/// unless he/she objects. ELGA participants have the following options: General opt out: No participation in ELGA,
@@ -197,25 +195,25 @@ public enum ConsentPolicyRuleCodes: String, FHIRPrimitiveType {
 	/// ELGA participants can also exclude the access of a particular ELGA healthcare provider to a particular piece of
 	/// or all of their ELGA data. http://ec.europa.eu/health/ehealth/docs/laws_austria_en.pdf
 	case atElga = "at-elga"
-	
+
 	/// Guidance and template form https://privacyruleandresearch.nih.gov/pdf/authorization.pdf
 	case nihHipaa = "nih-hipaa"
-	
+
 	/// see http://ctep.cancer.gov/protocolDevelopment/docs/Informed_Consent_Template.docx
 	case nci = "nci"
-	
+
 	/// Global Rare Disease Patient Registry and Data Repository (GRDR) consent is an agreement of a healthcare consumer
 	/// to permit collection, access, use and disclosure of de-identified rare disease information and collection of
 	/// bio-specimens, medical information, family history and other related information from patients to permit the
 	/// registry collection of health and genetic information, and specimens for pseudonymized disclosure for research
 	/// purpose of use. https://rarediseases.info.nih.gov/files/informed_consent_template.pdf
 	case nihGrdr = "nih-grdr"
-	
+
 	/// NIH Authorization for the Release of Medical Information is a patient’s consent for the National Institutes of
 	/// Health Clinical Center to release medical information to care providers, which can be revoked. Note: Consent
 	/// Form available @ http://cc.nih.gov/participate/_pdf/NIH-527.pdf
 	case nih527 = "nih-527"
-	
+
 	/// Global Alliance for Genomic Health Data Sharing Consent Form is an example of the GA4GH Population origins and
 	/// ancestry research consent form. Consenters agree to permitting a specified research project to collect ancestry
 	/// and genetic information in controlled-access databases, and to allow other researchers to use deidentified

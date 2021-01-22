@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Preferred value set for AllergyIntolerance Verification Status.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/allergyintolerance-verification
  */
 public enum AllergyIntoleranceVerificationStatusCodes: String, FHIRPrimitiveType {
-	
+
 	/// A low level of certainty about the propensity for a reaction to the identified substance.
 	case unconfirmed = "unconfirmed"
-	
+
 	/// A high level of certainty about the propensity for a reaction to the identified substance, which may include
 	/// clinical evidence by testing or rechallenge.
 	case confirmed = "confirmed"
-	
+
 	/// A propensity for a reaction to the identified substance has been disputed or disproven with a sufficient level
 	/// of clinical certainty to justify invalidating the assertion. This might or might not include testing or
 	/// rechallenge.
 	case refuted = "refuted"
-	
+
 	/// The statement was entered in error and is not valid.
 	case enteredInError = "entered-in-error"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes Coverage SelfPay codes.
  
@@ -26,7 +24,7 @@
  ValueSet: http://hl7.org/fhir/ValueSet/coverage-selfpay
  */
 public enum CoverageSelfPayCodes: String, FHIRPrimitiveType {
-	
+
 	/// An individual or organization is paying directly for goods and services.
 	case pay = "pay"
 }

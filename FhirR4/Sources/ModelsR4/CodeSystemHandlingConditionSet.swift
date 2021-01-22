@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Set of handling instructions prior testing of the specimen.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/handling-condition
  */
 public enum HandlingConditionSet: String, FHIRPrimitiveType {
-	
+
 	/// room temperature.
 	case room = "room"
-	
+
 	/// refrigerated temperature.
 	case refrigerated = "refrigerated"
-	
+
 	/// frozen temperature.
 	case frozen = "frozen"
 }

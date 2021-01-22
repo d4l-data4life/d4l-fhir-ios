@@ -17,44 +17,42 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Content in a format defined elsewhere.
  
  For referring to data content defined in other formats.
  */
 open class Attachment: Element {
-	
+
 	/// Mime type of the content, with charset etc.
 	public var contentType: FHIRPrimitive<FHIRString>?
-	
+
 	/// Human language of the content (BCP-47)
 	public var language: FHIRPrimitive<FHIRString>?
-	
+
 	/// Data inline, base64ed
 	public var data: FHIRPrimitive<Base64Binary>?
-	
+
 	/// Uri where the data can be found
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Number of bytes of content (if url provided)
 	public var size: FHIRPrimitive<FHIRUnsignedInteger>?
-	
+
 	/// Hash of the data (sha-1, base64ed)
 	public var hash: FHIRPrimitive<Base64Binary>?
-	
+
 	/// Label to display in place of the data
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// Date attachment was first created
 	public var creation: FHIRPrimitive<DateTime>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contentType: FHIRPrimitive<FHIRString>? = nil,
@@ -66,8 +64,7 @@ open class Attachment: Element {
 							language: FHIRPrimitive<FHIRString>? = nil,
 							size: FHIRPrimitive<FHIRUnsignedInteger>? = nil,
 							title: FHIRPrimitive<FHIRString>? = nil,
-							url: FHIRPrimitive<FHIRURI>? = nil)
-	{
+							url: FHIRPrimitive<FHIRURI>? = nil) {
 		self.init()
 		self.contentType = contentType
 		self.creation = creation
@@ -80,9 +77,9 @@ open class Attachment: Element {
 		self.title = title
 		self.url = url
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case contentType; case _contentType
 		case creation; case _creation
@@ -93,11 +90,11 @@ open class Attachment: Element {
 		case title; case _title
 		case url; case _url
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.contentType = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .contentType, auxiliaryKey: ._contentType)
 		self.creation = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .creation, auxiliaryKey: ._creation)
@@ -109,11 +106,11 @@ open class Attachment: Element {
 		self.url = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .url, auxiliaryKey: ._url)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try contentType?.encode(on: &_container, forKey: .contentType, auxiliaryKey: ._contentType)
 		try creation?.encode(on: &_container, forKey: .creation, auxiliaryKey: ._creation)
@@ -125,9 +122,9 @@ open class Attachment: Element {
 		try url?.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Attachment else {
 			return false
@@ -144,7 +141,7 @@ open class Attachment: Element {
 		    && title == _other.title
 		    && url == _other.url
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(contentType)

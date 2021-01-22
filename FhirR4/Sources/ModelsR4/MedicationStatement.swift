@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Record of medication being taken by a patient.
  
@@ -39,75 +37,75 @@
  administration is more formal and is not missing detailed information.
  */
 open class MedicationStatement: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .medicationStatement }
-	
+
 	/// All possible types for "effective[x]"
 	public enum EffectiveX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
 		case period(Period)
 	}
-	
+
 	/// All possible types for "medication[x]"
 	public enum MedicationX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// External identifier
 	public var identifier: [Identifier]?
-	
+
 	/// Fulfils plan, proposal or order
 	public var basedOn: [Reference]?
-	
+
 	/// Part of referenced event
 	public var partOf: [Reference]?
-	
+
 	/// A code representing the patient or other source's judgment about the state of the medication used that this
 	/// statement is about.  Generally, this will be active or completed.
 	public var status: FHIRPrimitive<MedicationStatusCodes>
-	
+
 	/// Reason for current status
 	public var statusReason: [CodeableConcept]?
-	
+
 	/// Type of medication usage
 	public var category: CodeableConcept?
-	
+
 	/// What medication was taken
 	/// One of `medication[x]`
 	public var medication: MedicationX
-	
+
 	/// Who is/was taking  the medication
 	public var subject: Reference
-	
+
 	/// Encounter / Episode associated with MedicationStatement
 	public var context: Reference?
-	
+
 	/// The date/time or interval when the medication is/was/will be taken
 	/// One of `effective[x]`
 	public var effective: EffectiveX?
-	
+
 	/// When the statement was asserted?
 	public var dateAsserted: FHIRPrimitive<DateTime>?
-	
+
 	/// Person or organization that provided the information about the taking of this medication
 	public var informationSource: Reference?
-	
+
 	/// Additional supporting information
 	public var derivedFrom: [Reference]?
-	
+
 	/// Reason for why the medication is being/was taken
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// Condition or observation that supports why the medication is being/was taken
 	public var reasonReference: [Reference]?
-	
+
 	/// Further information about the statement
 	public var note: [Annotation]?
-	
+
 	/// Details of how medication is/was taken or should be taken
 	public var dosage: [Dosage]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(medication: MedicationX, status: FHIRPrimitive<MedicationStatusCodes>, subject: Reference) {
 		self.medication = medication
@@ -115,7 +113,7 @@ open class MedicationStatement: DomainResource {
 		self.subject = subject
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							basedOn: [Reference]? = nil,
@@ -142,8 +140,7 @@ open class MedicationStatement: DomainResource {
 							status: FHIRPrimitive<MedicationStatusCodes>,
 							statusReason: [CodeableConcept]? = nil,
 							subject: Reference,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(medication: medication, status: status, subject: subject)
 		self.basedOn = basedOn
 		self.category = category
@@ -168,9 +165,9 @@ open class MedicationStatement: DomainResource {
 		self.statusReason = statusReason
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case basedOn
 		case category
@@ -192,16 +189,16 @@ open class MedicationStatement: DomainResource {
 		case statusReason
 		case subject
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.medicationCodeableConcept) || _container.contains(CodingKeys.medicationReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.medicationCodeableConcept, CodingKeys.medicationReference], debugDescription: "Must have at least one value for \"medication\" but have none"))
 		}
-		
+
 		// Decode all our properties
 		self.basedOn = try [Reference](from: _container, forKeyIfPresent: .basedOn)
 		self.category = try CodeableConcept(from: _container, forKeyIfPresent: .category)
@@ -209,7 +206,7 @@ open class MedicationStatement: DomainResource {
 		self.dateAsserted = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .dateAsserted, auxiliaryKey: ._dateAsserted)
 		self.derivedFrom = try [Reference](from: _container, forKeyIfPresent: .derivedFrom)
 		self.dosage = try [Dosage](from: _container, forKeyIfPresent: .dosage)
-		var _t_effective: EffectiveX? = nil
+		var _t_effective: EffectiveX?
 		if let effectiveDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .effectiveDateTime, auxiliaryKey: ._effectiveDateTime) {
 			if _t_effective != nil {
 				throw DecodingError.dataCorruptedError(forKey: .effectiveDateTime, in: _container, debugDescription: "More than one value provided for \"effective\"")
@@ -225,7 +222,7 @@ open class MedicationStatement: DomainResource {
 		self.effective = _t_effective
 		self.identifier = try [Identifier](from: _container, forKeyIfPresent: .identifier)
 		self.informationSource = try Reference(from: _container, forKeyIfPresent: .informationSource)
-		var _t_medication: MedicationX? = nil
+		var _t_medication: MedicationX?
 		if let medicationCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .medicationCodeableConcept) {
 			if _t_medication != nil {
 				throw DecodingError.dataCorruptedError(forKey: .medicationCodeableConcept, in: _container, debugDescription: "More than one value provided for \"medication\"")
@@ -248,11 +245,11 @@ open class MedicationStatement: DomainResource {
 		self.subject = try Reference(from: _container, forKey: .subject)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try basedOn?.encode(on: &_container, forKey: .basedOn)
 		try category?.encode(on: &_container, forKey: .category)
@@ -270,14 +267,14 @@ open class MedicationStatement: DomainResource {
 		}
 		try identifier?.encode(on: &_container, forKey: .identifier)
 		try informationSource?.encode(on: &_container, forKey: .informationSource)
-		
+
 			switch medication {
 			case .codeableConcept(let _value):
 				try _value.encode(on: &_container, forKey: .medicationCodeableConcept)
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .medicationReference)
 			}
-		
+
 		try note?.encode(on: &_container, forKey: .note)
 		try partOf?.encode(on: &_container, forKey: .partOf)
 		try reasonCode?.encode(on: &_container, forKey: .reasonCode)
@@ -287,9 +284,9 @@ open class MedicationStatement: DomainResource {
 		try subject.encode(on: &_container, forKey: .subject)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicationStatement else {
 			return false
@@ -315,7 +312,7 @@ open class MedicationStatement: DomainResource {
 		    && statusReason == _other.statusReason
 		    && subject == _other.subject
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(basedOn)

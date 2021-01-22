@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The subsumption relationship between code/Coding "A" and code/Coding "B". There are 4 possible codes to be returned:
  equivalent, subsumes, subsumed-by, and not-subsumed. If the server is unable to determine the relationship between the
@@ -28,16 +26,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/concept-subsumption-outcome
  */
 public enum ConceptSubsumptionOutcome: String, FHIRPrimitiveType {
-	
+
 	/// The two concepts are equivalent (have the same properties).
 	case equivalent = "equivalent"
-	
+
 	/// Coding/code "A" subsumes Coding/code "B" (e.g. B has all the properties A has, and some of it's own).
 	case subsumes = "subsumes"
-	
+
 	/// Coding/code "A" is subsumed by Coding/code "B" (e.g. A has all the properties B has, and some of it's own).
 	case subsumedBy = "subsumed-by"
-	
+
 	/// Coding/code "A" and Coding/code "B" are disjoint (e.g. each has propeties that the other doesn't have).
 	case notSubsumed = "not-subsumed"
 }

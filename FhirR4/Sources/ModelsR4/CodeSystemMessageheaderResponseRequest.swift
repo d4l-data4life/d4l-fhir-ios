@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  HL7-defined table of codes which identify conditions under which acknowledgments are required to be returned in
  response to a message.
@@ -27,16 +25,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/messageheader-response-request
  */
 public enum MessageheaderResponseRequest: String, FHIRPrimitiveType {
-	
+
 	/// initiator expects a response for this message.
 	case always = "always"
-	
+
 	/// initiator expects a response only if in error.
 	case onError = "on-error"
-	
+
 	/// initiator does not expect a response.
 	case never = "never"
-	
+
 	/// initiator expects a response only if successful.
 	case onSuccess = "on-success"
 }

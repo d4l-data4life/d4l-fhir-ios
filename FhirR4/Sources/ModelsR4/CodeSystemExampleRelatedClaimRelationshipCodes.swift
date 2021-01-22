@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Related Claim Relationship codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/related-claim-relationship
  */
 public enum ExampleRelatedClaimRelationshipCodes: String, FHIRPrimitiveType {
-	
+
 	/// A prior claim instance for the same intended suite of services.
 	case prior = "prior"
-	
+
 	/// A claim for a different suite of services which is related the suite claimed here.
 	case associated = "associated"
 }

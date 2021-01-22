@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 public enum ResourceProxy: FHIRType {
 	case account(Account)
 	case activityDefinition(ActivityDefinition)
@@ -169,7 +167,7 @@ public enum ResourceProxy: FHIRType {
 	case verificationResult(VerificationResult)
 	case visionPrescription(VisionPrescription)
 	case unrecognized(Resource)
-	
+
 	public var resourceType: String {
 		switch self {
 		case .account:
@@ -472,9 +470,9 @@ public enum ResourceProxy: FHIRType {
 			return "Resource"
 		}
 	}
-	
+
 	// MARK: -
-	
+
 	public init(with resource: Resource) {
 		switch type(of: resource).resourceType {
 		case .account:
@@ -775,7 +773,7 @@ public enum ResourceProxy: FHIRType {
 			self = .visionPrescription(resource as! VisionPrescription)
 		}
 	}
-	
+
 	public func get() -> Resource {
 		switch self {
 		case .account(let resource):
@@ -1078,23 +1076,23 @@ public enum ResourceProxy: FHIRType {
 			return resource
 		}
 	}
-	
+
 	public func get<T: Resource>(if type: T.Type) -> T? {
 		guard let resource = get() as? T else {
 			return nil
 		}
 		return resource
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case resourceType
 	}
-	
+
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		switch try container.decode(String.self, forKey: .resourceType) {
 		case "Account":
 			self = .account(try Account(from: decoder))
@@ -1396,7 +1394,7 @@ public enum ResourceProxy: FHIRType {
 			self = .unrecognized(try Resource(from: decoder))
 		}
 	}
-	
+
 	public func encode(to encoder: Encoder) throws {
 		try get().encode(to: encoder)
 	}

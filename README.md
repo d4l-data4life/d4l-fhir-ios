@@ -79,6 +79,13 @@ brew install carthage
 ```
 *Note*: For other installation methods check [README](https://github.com/Carthage/Carthage#installing-carthage).
 
+#### Install Sourcery
+
+```sh
+brew install sourcery
+```
+*Note*: For other installation methods check [README](https://github.com/krzysztofzablocki/Sourcery).
+
 #### Build frameworks
 *Note*: Since from XCode 12 Carthage packaging does not work anymore, please use the script.
 ```sh
@@ -95,13 +102,12 @@ These directories are not generated and are not meant to be removed from the pro
 * `FhirR4`
 
 #### Generate stu3 models and embed into Xcode project
-1. Manually delete all of the generated models from the project
-2. Run fastlane to generate models
+1. Run fastlane to generate STU3 models, R4 helpers and R4 tests  
 ```
-fastlane generate_models
+fastlane generate_all
 ```
 
-**Note**: It's possible to generated models without embeding into Xcode project, check Fastlane [README](fastlane/README.md) for more information
+**Note**: It's possible to generated separately STU3 Models, R4 helpers or R4 tests, check Fastlane [README](fastlane/README.md) for more information
 
 ## Issues
 ### FHIR Stu3 standard

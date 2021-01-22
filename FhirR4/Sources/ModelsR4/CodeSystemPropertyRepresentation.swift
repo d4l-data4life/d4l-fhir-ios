@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How a property is represented when serialized.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/property-representation
  */
 public enum PropertyRepresentation: String, FHIRPrimitiveType {
-	
+
 	/// In XML, this property is represented as an attribute not an element.
 	case xmlAttr = "xmlAttr"
-	
+
 	/// This element is represented using the XML text attribute (primitives only).
 	case xmlText = "xmlText"
-	
+
 	/// The type of this element is indicated using xsi:type.
 	case typeAttr = "typeAttr"
-	
+
 	/// Use CDA narrative instead of XHTML.
 	case cdaText = "cdaText"
-	
+
 	/// The property is represented using XHTML.
 	case xhtml = "xhtml"
 }

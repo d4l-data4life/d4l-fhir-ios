@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The status of a guidance response.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/guidance-response-status
  */
 public enum GuidanceResponseStatus: String, FHIRPrimitiveType {
-	
+
 	/// The request was processed successfully.
 	case success = "success"
-	
+
 	/// The request was processed successfully, but more data may result in a more complete evaluation.
 	case dataRequested = "data-requested"
-	
+
 	/// The request was processed, but more data is required to complete the evaluation.
 	case dataRequired = "data-required"
-	
+
 	/// The request is currently being processed.
 	case inProgress = "in-progress"
-	
+
 	/// The request was not processed successfully.
 	case failure = "failure"
-	
+
 	/// The response was entered in error.
 	case enteredInError = "entered-in-error"
 }

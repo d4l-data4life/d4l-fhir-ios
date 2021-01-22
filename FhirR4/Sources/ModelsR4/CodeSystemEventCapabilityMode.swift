@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The mode of a message capability statement.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/event-capability-mode
  */
 public enum EventCapabilityMode: String, FHIRPrimitiveType {
-	
+
 	/// The application sends requests and receives responses.
 	case sender = "sender"
-	
+
 	/// The application receives requests and sends responses.
 	case receiver = "receiver"
 }

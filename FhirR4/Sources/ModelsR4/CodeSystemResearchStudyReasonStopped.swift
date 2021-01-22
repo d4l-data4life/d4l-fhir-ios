@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes for why the study ended prematurely.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/research-study-reason-stopped
  */
 public enum ResearchStudyReasonStopped: String, FHIRPrimitiveType {
-	
+
 	/// The study prematurely ended because the accrual goal was met.
 	case accrualGoalMet = "accrual-goal-met"
-	
+
 	/// The study prematurely ended due to toxicity.
 	case closedDueToToxicity = "closed-due-to-toxicity"
-	
+
 	/// The study prematurely ended due to lack of study progress.
 	case closedDueToLackOfStudyProgress = "closed-due-to-lack-of-study-progress"
-	
+
 	/// The study prematurely ended temporarily per study design.
 	case temporarilyClosedPerStudyDesign = "temporarily-closed-per-study-design"
 }

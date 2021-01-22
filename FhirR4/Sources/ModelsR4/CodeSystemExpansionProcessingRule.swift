@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Defines how concepts are processed into the expansion when it's for UI presentation.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/expansion-processing-rule
  */
 public enum ExpansionProcessingRule: String, FHIRPrimitiveType {
-	
+
 	/// The expansion (when in UI mode) includes all codes *and* any defined groups (in extensions).
 	case allCodes = "all-codes"
-	
+
 	/// The expanion (when in UI mode) lists the groups, and then any codes that have not been included in a group.
 	case ungrouped = "ungrouped"
-	
+
 	/// The expansion (when in UI mode) only includes the defined groups.
 	case groupsOnly = "groups-only"
 }

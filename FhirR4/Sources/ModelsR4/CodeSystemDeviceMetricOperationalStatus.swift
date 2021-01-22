@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Describes the operational status of the DeviceMetric.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/metric-operational-status
  */
 public enum DeviceMetricOperationalStatus: String, FHIRPrimitiveType {
-	
+
 	/// The DeviceMetric is operating and will generate DeviceObservations.
 	case on = "on"
-	
+
 	/// The DeviceMetric is not operating.
 	case off = "off"
-	
+
 	/// The DeviceMetric is operating, but will not generate any DeviceObservations.
 	case standby = "standby"
-	
+
 	/// The DeviceMetric was entered in error.
 	case enteredInError = "entered-in-error"
 }

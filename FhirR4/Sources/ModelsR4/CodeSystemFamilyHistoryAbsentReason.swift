@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes describing the reason why a family member's history is not available.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/history-absent-reason
  */
 public enum FamilyHistoryAbsentReason: String, FHIRPrimitiveType {
-	
+
 	/// Patient does not know the subject, e.g. the biological parent of an adopted patient.
 	case subjectUnknown = "subject-unknown"
-	
+
 	/// The patient withheld or refused to share the information.
 	case withheld = "withheld"
-	
+
 	/// Information cannot be obtained; e.g. unconscious patient.
 	case unableToObtain = "unable-to-obtain"
-	
+
 	/// Patient does not have the information now, but can provide the information at a later date.
 	case deferred = "deferred"
 }

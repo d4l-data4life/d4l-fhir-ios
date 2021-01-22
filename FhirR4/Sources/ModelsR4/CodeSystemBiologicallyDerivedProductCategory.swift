@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Biologically Derived Product Category.
  
@@ -26,20 +24,20 @@
  ValueSet: http://hl7.org/fhir/ValueSet/product-category
  */
 public enum BiologicallyDerivedProductCategory: String, FHIRPrimitiveType {
-	
+
 	/// A collection of tissues joined in a structural unit to serve a common function.
 	case organ = "organ"
-	
+
 	/// An ensemble of similar cells and their extracellular matrix from the same origin that together carry out a
 	/// specific function.
 	case tissue = "tissue"
-	
+
 	/// Body fluid.
 	case fluid = "fluid"
-	
+
 	/// Collection of cells.
 	case cells = "cells"
-	
+
 	/// Biological agent of unspecified type.
 	case biologicalAgent = "biologicalAgent"
 }

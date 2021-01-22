@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes a smattering of Prescription Product codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/vision-product
  */
 public enum ExampleVisionPrescriptionProductCodes: String, FHIRPrimitiveType {
-	
+
 	/// A lens to be fitted to a frame to comprise a pair of glasses.
 	case lens = "lens"
-	
+
 	/// A lens to be fitted for wearing directly on an eye.
 	case contact = "contact"
 }

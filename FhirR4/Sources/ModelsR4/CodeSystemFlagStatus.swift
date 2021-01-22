@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Indicates whether this flag is active and needs to be displayed to a user, or whether it is no longer needed or was
  entered in error.
@@ -27,14 +25,14 @@
  ValueSet: http://hl7.org/fhir/ValueSet/flag-status
  */
 public enum FlagStatus: String, FHIRPrimitiveType {
-	
+
 	/// A current flag that should be displayed to a user. A system may use the category to determine which user roles
 	/// should view the flag.
 	case active = "active"
-	
+
 	/// The flag no longer needs to be displayed.
 	case inactive = "inactive"
-	
+
 	/// The flag was added in error and should no longer be displayed.
 	case enteredInError = "entered-in-error"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A group of related requests.
  
@@ -26,72 +24,72 @@
  this medication after that one".
  */
 open class RequestGroup: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .requestGroup }
-	
+
 	/// Business identifier
 	public var identifier: [Identifier]?
-	
+
 	/// Instantiates FHIR protocol or definition
 	public var instantiatesCanonical: [FHIRPrimitive<Canonical>]?
-	
+
 	/// Instantiates external protocol or definition
 	public var instantiatesUri: [FHIRPrimitive<FHIRURI>]?
-	
+
 	/// Fulfills plan, proposal, or order
 	public var basedOn: [Reference]?
-	
+
 	/// Request(s) replaced by this request
 	public var replaces: [Reference]?
-	
+
 	/// Composite request this is part of
 	public var groupIdentifier: Identifier?
-	
+
 	/// The current state of the request. For request groups, the status reflects the status of all the requests in the
 	/// group.
 	public var status: FHIRPrimitive<RequestStatus>
-	
+
 	/// Indicates the level of authority/intentionality associated with the request and where the request fits into the
 	/// workflow chain.
 	public var intent: FHIRPrimitive<RequestIntent>
-	
+
 	/// Indicates how quickly the request should be addressed with respect to other requests.
 	public var priority: FHIRPrimitive<RequestPriority>?
-	
+
 	/// What's being requested/ordered
 	public var code: CodeableConcept?
-	
+
 	/// Who the request group is about
 	public var subject: Reference?
-	
+
 	/// Created as part of
 	public var encounter: Reference?
-	
+
 	/// When the request group was authored
 	public var authoredOn: FHIRPrimitive<DateTime>?
-	
+
 	/// Device or practitioner that authored the request group
 	public var author: Reference?
-	
+
 	/// Why the request group is needed
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// Why the request group is needed
 	public var reasonReference: [Reference]?
-	
+
 	/// Additional notes about the response
 	public var note: [Annotation]?
-	
+
 	/// Proposed actions, if any
 	public var action: [RequestGroupAction]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(intent: FHIRPrimitive<RequestIntent>, status: FHIRPrimitive<RequestStatus>) {
 		self.intent = intent
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							action: [RequestGroupAction]? = nil,
@@ -119,8 +117,7 @@ open class RequestGroup: DomainResource {
 							replaces: [Reference]? = nil,
 							status: FHIRPrimitive<RequestStatus>,
 							subject: Reference? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(intent: intent, status: status)
 		self.action = action
 		self.author = author
@@ -147,9 +144,9 @@ open class RequestGroup: DomainResource {
 		self.subject = subject
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case action
 		case author
@@ -170,11 +167,11 @@ open class RequestGroup: DomainResource {
 		case status; case _status
 		case subject
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.action = try [RequestGroupAction](from: _container, forKeyIfPresent: .action)
 		self.author = try Reference(from: _container, forKeyIfPresent: .author)
@@ -196,11 +193,11 @@ open class RequestGroup: DomainResource {
 		self.subject = try Reference(from: _container, forKeyIfPresent: .subject)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try action?.encode(on: &_container, forKey: .action)
 		try author?.encode(on: &_container, forKey: .author)
@@ -222,9 +219,9 @@ open class RequestGroup: DomainResource {
 		try subject?.encode(on: &_container, forKey: .subject)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? RequestGroup else {
 			return false
@@ -251,7 +248,7 @@ open class RequestGroup: DomainResource {
 		    && status == _other.status
 		    && subject == _other.subject
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(action)
@@ -281,7 +278,7 @@ open class RequestGroup: DomainResource {
  The actions, if any, produced by the evaluation of the artifact.
  */
 open class RequestGroupAction: BackboneElement {
-	
+
 	/// All possible types for "timing[x]"
 	public enum TimingX: Hashable {
 		case age(Age)
@@ -291,70 +288,70 @@ open class RequestGroupAction: BackboneElement {
 		case range(Range)
 		case timing(Timing)
 	}
-	
+
 	/// User-visible prefix for the action (e.g. 1. or A.)
 	public var prefix: FHIRPrimitive<FHIRString>?
-	
+
 	/// User-visible title
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// Short description of the action
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system
 	public var textEquivalent: FHIRPrimitive<FHIRString>?
-	
+
 	/// Indicates how quickly the action should be addressed with respect to other actions.
 	public var priority: FHIRPrimitive<RequestPriority>?
-	
+
 	/// Code representing the meaning of the action or sub-actions
 	public var code: [CodeableConcept]?
-	
+
 	/// Supporting documentation for the intended performer of the action
 	public var documentation: [RelatedArtifact]?
-	
+
 	/// Whether or not the action is applicable
 	public var condition: [RequestGroupActionCondition]?
-	
+
 	/// Relationship to another action
 	public var relatedAction: [RequestGroupActionRelatedAction]?
-	
+
 	/// When the action should take place
 	/// One of `timing[x]`
 	public var timing: TimingX?
-	
+
 	/// Who should perform the action
 	public var participant: [Reference]?
-	
+
 	/// create | update | remove | fire-event
 	public var type: CodeableConcept?
-	
+
 	/// Defines the grouping behavior for the action and its children.
 	public var groupingBehavior: FHIRPrimitive<ActionGroupingBehavior>?
-	
+
 	/// Defines the selection behavior for the action and its children.
 	public var selectionBehavior: FHIRPrimitive<ActionSelectionBehavior>?
-	
+
 	/// Defines expectations around whether an action is required.
 	public var requiredBehavior: FHIRPrimitive<ActionRequiredBehavior>?
-	
+
 	/// Defines whether the action should usually be preselected.
 	public var precheckBehavior: FHIRPrimitive<ActionPrecheckBehavior>?
-	
+
 	/// Defines whether the action can be selected multiple times.
 	public var cardinalityBehavior: FHIRPrimitive<ActionCardinalityBehavior>?
-	
+
 	/// The target of the action
 	public var resource: Reference?
-	
+
 	/// Sub action
 	public var action: [RequestGroupAction]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							action: [RequestGroupAction]? = nil,
@@ -378,8 +375,7 @@ open class RequestGroupAction: BackboneElement {
 							textEquivalent: FHIRPrimitive<FHIRString>? = nil,
 							timing: TimingX? = nil,
 							title: FHIRPrimitive<FHIRString>? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.action = action
 		self.cardinalityBehavior = cardinalityBehavior
@@ -404,9 +400,9 @@ open class RequestGroupAction: BackboneElement {
 		self.title = title
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case action
 		case cardinalityBehavior; case _cardinalityBehavior
@@ -433,11 +429,11 @@ open class RequestGroupAction: BackboneElement {
 		case title; case _title
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.action = try [RequestGroupAction](from: _container, forKeyIfPresent: .action)
 		self.cardinalityBehavior = try FHIRPrimitive<ActionCardinalityBehavior>(from: _container, forKeyIfPresent: .cardinalityBehavior, auxiliaryKey: ._cardinalityBehavior)
@@ -455,7 +451,7 @@ open class RequestGroupAction: BackboneElement {
 		self.resource = try Reference(from: _container, forKeyIfPresent: .resource)
 		self.selectionBehavior = try FHIRPrimitive<ActionSelectionBehavior>(from: _container, forKeyIfPresent: .selectionBehavior, auxiliaryKey: ._selectionBehavior)
 		self.textEquivalent = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .textEquivalent, auxiliaryKey: ._textEquivalent)
-		var _t_timing: TimingX? = nil
+		var _t_timing: TimingX?
 		if let timingDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .timingDateTime, auxiliaryKey: ._timingDateTime) {
 			if _t_timing != nil {
 				throw DecodingError.dataCorruptedError(forKey: .timingDateTime, in: _container, debugDescription: "More than one value provided for \"timing\"")
@@ -497,11 +493,11 @@ open class RequestGroupAction: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try action?.encode(on: &_container, forKey: .action)
 		try cardinalityBehavior?.encode(on: &_container, forKey: .cardinalityBehavior, auxiliaryKey: ._cardinalityBehavior)
@@ -539,9 +535,9 @@ open class RequestGroupAction: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? RequestGroupAction else {
 			return false
@@ -569,7 +565,7 @@ open class RequestGroupAction: BackboneElement {
 		    && title == _other.title
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(action)
@@ -600,63 +596,62 @@ open class RequestGroupAction: BackboneElement {
  An expression that describes applicability criteria, or start/stop conditions for the action.
  */
 open class RequestGroupActionCondition: BackboneElement {
-	
+
 	/// The kind of condition.
 	public var kind: FHIRPrimitive<ActionConditionKind>
-	
+
 	/// Boolean-valued expression
 	public var expression: Expression?
-	
+
 	/// Designated initializer taking all required properties
 	public init(kind: FHIRPrimitive<ActionConditionKind>) {
 		self.kind = kind
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							expression: Expression? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							kind: FHIRPrimitive<ActionConditionKind>,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(kind: kind)
 		self.expression = expression
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case expression
 		case kind; case _kind
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.expression = try Expression(from: _container, forKeyIfPresent: .expression)
 		self.kind = try FHIRPrimitive<ActionConditionKind>(from: _container, forKey: .kind, auxiliaryKey: ._kind)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try expression?.encode(on: &_container, forKey: .expression)
 		try kind.encode(on: &_container, forKey: .kind, auxiliaryKey: ._kind)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? RequestGroupActionCondition else {
 			return false
@@ -667,7 +662,7 @@ open class RequestGroupActionCondition: BackboneElement {
 		return expression == _other.expression
 		    && kind == _other.kind
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(expression)
@@ -681,30 +676,30 @@ open class RequestGroupActionCondition: BackboneElement {
  A relationship to another action such as "before" or "30-60 minutes after start of".
  */
 open class RequestGroupActionRelatedAction: BackboneElement {
-	
+
 	/// All possible types for "offset[x]"
 	public enum OffsetX: Hashable {
 		case duration(Duration)
 		case range(Range)
 	}
-	
+
 	/// What action this is related to
 	public var actionId: FHIRPrimitive<FHIRString>
-	
+
 	/// The relationship of this action to the related action.
 	public var relationship: FHIRPrimitive<ActionRelationshipType>
-	
+
 	/// Time offset for the relationship
 	/// One of `offset[x]`
 	public var offset: OffsetX?
-	
+
 	/// Designated initializer taking all required properties
 	public init(actionId: FHIRPrimitive<FHIRString>, relationship: FHIRPrimitive<ActionRelationshipType>) {
 		self.actionId = actionId
 		self.relationship = relationship
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							actionId: FHIRPrimitive<FHIRString>,
@@ -712,31 +707,30 @@ open class RequestGroupActionRelatedAction: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							offset: OffsetX? = nil,
-							relationship: FHIRPrimitive<ActionRelationshipType>)
-	{
+							relationship: FHIRPrimitive<ActionRelationshipType>) {
 		self.init(actionId: actionId, relationship: relationship)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.offset = offset
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case actionId; case _actionId
 		case offsetDuration
 		case offsetRange
 		case relationship; case _relationship
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.actionId = try FHIRPrimitive<FHIRString>(from: _container, forKey: .actionId, auxiliaryKey: ._actionId)
-		var _t_offset: OffsetX? = nil
+		var _t_offset: OffsetX?
 		if let offsetDuration = try Duration(from: _container, forKeyIfPresent: .offsetDuration) {
 			if _t_offset != nil {
 				throw DecodingError.dataCorruptedError(forKey: .offsetDuration, in: _container, debugDescription: "More than one value provided for \"offset\"")
@@ -753,11 +747,11 @@ open class RequestGroupActionRelatedAction: BackboneElement {
 		self.relationship = try FHIRPrimitive<ActionRelationshipType>(from: _container, forKey: .relationship, auxiliaryKey: ._relationship)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try actionId.encode(on: &_container, forKey: .actionId, auxiliaryKey: ._actionId)
 		if let _enum = offset {
@@ -771,9 +765,9 @@ open class RequestGroupActionRelatedAction: BackboneElement {
 		try relationship.encode(on: &_container, forKey: .relationship, auxiliaryKey: ._relationship)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? RequestGroupActionRelatedAction else {
 			return false
@@ -785,7 +779,7 @@ open class RequestGroupActionRelatedAction: BackboneElement {
 		    && offset == _other.offset
 		    && relationship == _other.relationship
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(actionId)

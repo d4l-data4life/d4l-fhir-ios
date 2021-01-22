@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A coded concept indicating the current status of the Device Usage.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/device-statement-status
  */
 public enum DeviceUseStatementStatus: String, FHIRPrimitiveType {
-	
+
 	/// The device is still being used.
 	case active = "active"
-	
+
 	/// The device is no longer being used.
 	case completed = "completed"
-	
+
 	/// The statement was recorded incorrectly.
 	case enteredInError = "entered-in-error"
-	
+
 	/// The device may be used at some time in the future.
 	case intended = "intended"
-	
+
 	/// Actions implied by the statement have been permanently halted, before all of them occurred.
 	case stopped = "stopped"
-	
+
 	/// Actions implied by the statement have been temporarily halted, but are expected to continue later. May also be
 	/// called "suspended".
 	case onHold = "on-hold"

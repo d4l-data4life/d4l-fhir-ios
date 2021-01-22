@@ -17,59 +17,57 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Compartment Definition for a resource.
  
  A compartment definition that defines how resources are accessed on a server.
  */
 open class CompartmentDefinition: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .compartmentDefinition }
-	
+
 	/// Canonical identifier for this compartment definition, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>
-	
+
 	/// Business version of the compartment definition
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this compartment definition (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// The status of this compartment definition. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// For testing purposes, not real usage
 	public var experimental: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the compartment definition
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Why this compartment definition is defined
 	public var purpose: FHIRPrimitive<FHIRString>?
-	
+
 	/// Which compartment this definition describes.
 	public var code: FHIRPrimitive<CompartmentType>
-	
+
 	/// Whether the search syntax is supported
 	public var search: FHIRPrimitive<FHIRBool>
-	
+
 	/// How a resource is related to the compartment
 	public var resource: [CompartmentDefinitionResource]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: FHIRPrimitive<CompartmentType>, name: FHIRPrimitive<FHIRString>, search: FHIRPrimitive<FHIRBool>, status: FHIRPrimitive<PublicationStatus>, url: FHIRPrimitive<FHIRURI>) {
 		self.code = code
@@ -79,7 +77,7 @@ open class CompartmentDefinition: DomainResource {
 		self.url = url
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: FHIRPrimitive<CompartmentType>,
@@ -103,8 +101,7 @@ open class CompartmentDefinition: DomainResource {
 							text: Narrative? = nil,
 							url: FHIRPrimitive<FHIRURI>,
 							useContext: [UsageContext]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(code: code, name: name, search: search, status: status, url: url)
 		self.contact = contact
 		self.contained = contained
@@ -124,9 +121,9 @@ open class CompartmentDefinition: DomainResource {
 		self.useContext = useContext
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code; case _code
 		case contact
@@ -143,11 +140,11 @@ open class CompartmentDefinition: DomainResource {
 		case useContext
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try FHIRPrimitive<CompartmentType>(from: _container, forKey: .code, auxiliaryKey: ._code)
 		self.contact = try [ContactDetail](from: _container, forKeyIfPresent: .contact)
@@ -165,11 +162,11 @@ open class CompartmentDefinition: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
 		try contact?.encode(on: &_container, forKey: .contact)
@@ -187,9 +184,9 @@ open class CompartmentDefinition: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? CompartmentDefinition else {
 			return false
@@ -212,7 +209,7 @@ open class CompartmentDefinition: DomainResource {
 		    && useContext == _other.useContext
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -238,22 +235,22 @@ open class CompartmentDefinition: DomainResource {
  Information about how a resource is related to the compartment.
  */
 open class CompartmentDefinitionResource: BackboneElement {
-	
+
 	/// The name of a resource supported by the server.
 	public var code: FHIRPrimitive<ResourceType>
-	
+
 	/// Search Parameter Name, or chained parameters
 	public var param: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Additional documentation about the resource and compartment
 	public var documentation: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: FHIRPrimitive<ResourceType>) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: FHIRPrimitive<ResourceType>,
@@ -261,8 +258,7 @@ open class CompartmentDefinitionResource: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							param: [FHIRPrimitive<FHIRString>]? = nil)
-	{
+							param: [FHIRPrimitive<FHIRString>]? = nil) {
 		self.init(code: code)
 		self.documentation = documentation
 		self.`extension` = `extension`
@@ -270,39 +266,39 @@ open class CompartmentDefinitionResource: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.param = param
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code; case _code
 		case documentation; case _documentation
 		case param; case _param
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try FHIRPrimitive<ResourceType>(from: _container, forKey: .code, auxiliaryKey: ._code)
 		self.documentation = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
 		self.param = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .param, auxiliaryKey: ._param)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
 		try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
 		try param?.encode(on: &_container, forKey: .param, auxiliaryKey: ._param)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? CompartmentDefinitionResource else {
 			return false
@@ -314,7 +310,7 @@ open class CompartmentDefinitionResource: BackboneElement {
 		    && documentation == _other.documentation
 		    && param == _other.param
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Type for orientation.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/orientation-type
  */
 public enum OrientationType: String, FHIRPrimitiveType {
-	
+
 	/// Sense orientation of reference sequence.
 	case sense = "sense"
-	
+
 	/// Antisense orientation of reference sequence.
 	case antisense = "antisense"
 }

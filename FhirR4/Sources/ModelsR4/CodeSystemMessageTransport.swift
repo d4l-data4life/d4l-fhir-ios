@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The protocol used for message transport.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/message-transport
  */
 public enum MessageTransport: String, FHIRPrimitiveType {
-	
+
 	/// The application sends or receives messages using HTTP POST (may be over http: or https:).
 	case http = "http"
-	
+
 	/// The application sends or receives messages using File Transfer Protocol.
 	case ftp = "ftp"
-	
+
 	/// The application sends or receives messages using HL7's Minimal Lower Level Protocol.
 	case mllp = "mllp"
 }

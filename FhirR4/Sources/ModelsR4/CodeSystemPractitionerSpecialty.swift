@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This example value set defines a set of codes that can be used to indicate the specialty of a Practitioner.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/practitioner-specialty
  */
 public enum PractitionerSpecialty: String, FHIRPrimitiveType {
-	
+
 	/// cardio
 	case cardio = "cardio"
-	
+
 	/// dent
 	case dent = "dent"
-	
+
 	/// dietary
 	case dietary = "dietary"
-	
+
 	/// midw
 	case midw = "midw"
-	
+
 	/// sysarch
 	case sysarch = "sysarch"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of payee Resource.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/resource-type-link
  */
 public enum PayeeResourceType: String, FHIRPrimitiveType {
-	
+
 	/// Organization resource.
 	case organization = "organization"
-	
+
 	/// Patient resource.
 	case patient = "patient"
-	
+
 	/// Practitioner resource.
 	case practitioner = "practitioner"
-	
+
 	/// RelatedPerson resource.
 	case relatedperson = "relatedperson"
 }

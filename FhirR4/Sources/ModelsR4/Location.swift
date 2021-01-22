@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Details and position information for a physical place.
  
@@ -26,67 +24,67 @@
  stored, found, contained, or accommodated.
  */
 open class Location: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .location }
-	
+
 	/// Unique code or number identifying the location to its users
 	public var identifier: [Identifier]?
-	
+
 	/// The status property covers the general availability of the resource, not the current value which may be covered
 	/// by the operationStatus, or by a schedule/slots if they are configured for the location.
 	public var status: FHIRPrimitive<LocationStatus>?
-	
+
 	/// The operational status of the location (typically only for a bed/room)
 	public var operationalStatus: Coding?
-	
+
 	/// Name of the location as used by humans
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// A list of alternate names that the location is known as, or was known as, in the past
 	public var alias: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Additional details about the location that could be displayed as further information to identify the location
 	/// beyond its name
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Indicates whether a resource instance represents a specific location or a class of locations.
 	public var mode: FHIRPrimitive<LocationMode>?
-	
+
 	/// Type of function performed
 	public var type: [CodeableConcept]?
-	
+
 	/// Contact details of the location
 	public var telecom: [ContactPoint]?
-	
+
 	/// Physical location
 	public var address: Address?
-	
+
 	/// Physical form of the location
 	public var physicalType: CodeableConcept?
-	
+
 	/// The absolute geographic location
 	public var position: LocationPosition?
-	
+
 	/// Organization responsible for provisioning and upkeep
 	public var managingOrganization: Reference?
-	
+
 	/// Another Location this one is physically a part of
 	public var partOf: Reference?
-	
+
 	/// What days/times during a week is this location usually open
 	public var hoursOfOperation: [LocationHoursOfOperation]?
-	
+
 	/// Description of availability exceptions
 	public var availabilityExceptions: FHIRPrimitive<FHIRString>?
-	
+
 	/// Technical endpoints providing access to services operated for the location
 	public var endpoint: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							address: Address? = nil,
@@ -113,8 +111,7 @@ open class Location: DomainResource {
 							status: FHIRPrimitive<LocationStatus>? = nil,
 							telecom: [ContactPoint]? = nil,
 							text: Narrative? = nil,
-							type: [CodeableConcept]? = nil)
-	{
+							type: [CodeableConcept]? = nil) {
 		self.init()
 		self.address = address
 		self.alias = alias
@@ -142,9 +139,9 @@ open class Location: DomainResource {
 		self.text = text
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case address
 		case alias; case _alias
@@ -164,11 +161,11 @@ open class Location: DomainResource {
 		case telecom
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.address = try Address(from: _container, forKeyIfPresent: .address)
 		self.alias = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .alias, auxiliaryKey: ._alias)
@@ -189,11 +186,11 @@ open class Location: DomainResource {
 		self.type = try [CodeableConcept](from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try address?.encode(on: &_container, forKey: .address)
 		try alias?.encode(on: &_container, forKey: .alias, auxiliaryKey: ._alias)
@@ -214,9 +211,9 @@ open class Location: DomainResource {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Location else {
 			return false
@@ -242,7 +239,7 @@ open class Location: DomainResource {
 		    && telecom == _other.telecom
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(address)
@@ -269,24 +266,24 @@ open class Location: DomainResource {
  What days/times during a week is this location usually open.
  */
 open class LocationHoursOfOperation: BackboneElement {
-	
+
 	/// Indicates which days of the week are available between the start and end Times.
 	public var daysOfWeek: [FHIRPrimitive<DaysOfWeek>]?
-	
+
 	/// The Location is open all day
 	public var allDay: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Time that the Location opens
 	public var openingTime: FHIRPrimitive<FHIRTime>?
-	
+
 	/// Time that the Location closes
 	public var closingTime: FHIRPrimitive<FHIRTime>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							allDay: FHIRPrimitive<FHIRBool>? = nil,
@@ -295,8 +292,7 @@ open class LocationHoursOfOperation: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							openingTime: FHIRPrimitive<FHIRTime>? = nil)
-	{
+							openingTime: FHIRPrimitive<FHIRTime>? = nil) {
 		self.init()
 		self.allDay = allDay
 		self.closingTime = closingTime
@@ -306,20 +302,20 @@ open class LocationHoursOfOperation: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.openingTime = openingTime
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case allDay; case _allDay
 		case closingTime; case _closingTime
 		case daysOfWeek; case _daysOfWeek
 		case openingTime; case _openingTime
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.allDay = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .allDay, auxiliaryKey: ._allDay)
 		self.closingTime = try FHIRPrimitive<FHIRTime>(from: _container, forKeyIfPresent: .closingTime, auxiliaryKey: ._closingTime)
@@ -327,11 +323,11 @@ open class LocationHoursOfOperation: BackboneElement {
 		self.openingTime = try FHIRPrimitive<FHIRTime>(from: _container, forKeyIfPresent: .openingTime, auxiliaryKey: ._openingTime)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try allDay?.encode(on: &_container, forKey: .allDay, auxiliaryKey: ._allDay)
 		try closingTime?.encode(on: &_container, forKey: .closingTime, auxiliaryKey: ._closingTime)
@@ -339,9 +335,9 @@ open class LocationHoursOfOperation: BackboneElement {
 		try openingTime?.encode(on: &_container, forKey: .openingTime, auxiliaryKey: ._openingTime)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? LocationHoursOfOperation else {
 			return false
@@ -354,7 +350,7 @@ open class LocationHoursOfOperation: BackboneElement {
 		    && daysOfWeek == _other.daysOfWeek
 		    && openingTime == _other.openingTime
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(allDay)
@@ -371,23 +367,23 @@ open class LocationHoursOfOperation: BackboneElement {
  used in KML).
  */
 open class LocationPosition: BackboneElement {
-	
+
 	/// Longitude with WGS84 datum
 	public var longitude: FHIRPrimitive<FHIRDecimal>
-	
+
 	/// Latitude with WGS84 datum
 	public var latitude: FHIRPrimitive<FHIRDecimal>
-	
+
 	/// Altitude with WGS84 datum
 	public var altitude: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(latitude: FHIRPrimitive<FHIRDecimal>, longitude: FHIRPrimitive<FHIRDecimal>) {
 		self.latitude = latitude
 		self.longitude = longitude
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							altitude: FHIRPrimitive<FHIRDecimal>? = nil,
@@ -395,47 +391,46 @@ open class LocationPosition: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							latitude: FHIRPrimitive<FHIRDecimal>,
 							longitude: FHIRPrimitive<FHIRDecimal>,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(latitude: latitude, longitude: longitude)
 		self.altitude = altitude
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case altitude; case _altitude
 		case latitude; case _latitude
 		case longitude; case _longitude
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.altitude = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .altitude, auxiliaryKey: ._altitude)
 		self.latitude = try FHIRPrimitive<FHIRDecimal>(from: _container, forKey: .latitude, auxiliaryKey: ._latitude)
 		self.longitude = try FHIRPrimitive<FHIRDecimal>(from: _container, forKey: .longitude, auxiliaryKey: ._longitude)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try altitude?.encode(on: &_container, forKey: .altitude, auxiliaryKey: ._altitude)
 		try latitude.encode(on: &_container, forKey: .latitude, auxiliaryKey: ._latitude)
 		try longitude.encode(on: &_container, forKey: .longitude, auxiliaryKey: ._longitude)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? LocationPosition else {
 			return false
@@ -447,7 +442,7 @@ open class LocationPosition: BackboneElement {
 		    && latitude == _other.latitude
 		    && longitude == _other.longitude
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(altitude)

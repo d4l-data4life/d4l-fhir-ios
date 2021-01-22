@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How the system supports versioning for a resource.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/versioning-policy
  */
 public enum ResourceVersionPolicy: String, FHIRPrimitiveType {
-	
+
 	/// VersionId meta-property is not supported (server) or used (client).
 	case noVersion = "no-version"
-	
+
 	/// VersionId meta-property is supported (server) or used (client).
 	case versioned = "versioned"
-	
+
 	/// VersionId must be correct for updates (server) or will be specified (If-match header) for updates (client).
 	case versionedUpdate = "versioned-update"
 }

@@ -17,64 +17,62 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  An entry in a catalog.
  
  Catalog entries are wrappers that contextualize items included in a catalog.
  */
 open class CatalogEntry: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .catalogEntry }
-	
+
 	/// Unique identifier of the catalog item
 	public var identifier: [Identifier]?
-	
+
 	/// The type of item - medication, device, service, protocol or other
 	public var type: CodeableConcept?
-	
+
 	/// Whether the entry represents an orderable item
 	public var orderable: FHIRPrimitive<FHIRBool>
-	
+
 	/// The item that is being defined
 	public var referencedItem: Reference
-	
+
 	/// Any additional identifier(s) for the catalog item, in the same granularity or concept
 	public var additionalIdentifier: [Identifier]?
-	
+
 	/// Classification (category or class) of the item entry
 	public var classification: [CodeableConcept]?
-	
+
 	/// Used to support catalog exchange even for unsupported products, e.g. getting list of medications even if not
 	/// prescribable.
 	public var status: FHIRPrimitive<PublicationStatus>?
-	
+
 	/// The time period in which this catalog entry is expected to be active
 	public var validityPeriod: Period?
-	
+
 	/// The date until which this catalog entry is expected to be active
 	public var validTo: FHIRPrimitive<DateTime>?
-	
+
 	/// When was this catalog last updated
 	public var lastUpdated: FHIRPrimitive<DateTime>?
-	
+
 	/// Additional characteristics of the catalog entry
 	public var additionalCharacteristic: [CodeableConcept]?
-	
+
 	/// Additional classification of the catalog entry
 	public var additionalClassification: [CodeableConcept]?
-	
+
 	/// An item that this catalog entry is related to
 	public var relatedEntry: [CatalogEntryRelatedEntry]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(orderable: FHIRPrimitive<FHIRBool>, referencedItem: Reference) {
 		self.orderable = orderable
 		self.referencedItem = referencedItem
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							additionalCharacteristic: [CodeableConcept]? = nil,
@@ -97,8 +95,7 @@ open class CatalogEntry: DomainResource {
 							text: Narrative? = nil,
 							type: CodeableConcept? = nil,
 							validTo: FHIRPrimitive<DateTime>? = nil,
-							validityPeriod: Period? = nil)
-	{
+							validityPeriod: Period? = nil) {
 		self.init(orderable: orderable, referencedItem: referencedItem)
 		self.additionalCharacteristic = additionalCharacteristic
 		self.additionalClassification = additionalClassification
@@ -120,9 +117,9 @@ open class CatalogEntry: DomainResource {
 		self.validTo = validTo
 		self.validityPeriod = validityPeriod
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case additionalCharacteristic
 		case additionalClassification
@@ -138,11 +135,11 @@ open class CatalogEntry: DomainResource {
 		case validTo; case _validTo
 		case validityPeriod
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.additionalCharacteristic = try [CodeableConcept](from: _container, forKeyIfPresent: .additionalCharacteristic)
 		self.additionalClassification = try [CodeableConcept](from: _container, forKeyIfPresent: .additionalClassification)
@@ -159,11 +156,11 @@ open class CatalogEntry: DomainResource {
 		self.validityPeriod = try Period(from: _container, forKeyIfPresent: .validityPeriod)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try additionalCharacteristic?.encode(on: &_container, forKey: .additionalCharacteristic)
 		try additionalClassification?.encode(on: &_container, forKey: .additionalClassification)
@@ -180,9 +177,9 @@ open class CatalogEntry: DomainResource {
 		try validityPeriod?.encode(on: &_container, forKey: .validityPeriod)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? CatalogEntry else {
 			return false
@@ -204,7 +201,7 @@ open class CatalogEntry: DomainResource {
 		    && validTo == _other.validTo
 		    && validityPeriod == _other.validityPeriod
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(additionalCharacteristic)
@@ -229,64 +226,63 @@ open class CatalogEntry: DomainResource {
  Used for example, to point to a substance, or to a device used to administer a medication.
  */
 open class CatalogEntryRelatedEntry: BackboneElement {
-	
+
 	/// The type of relation to the related item: child, parent, packageContent, containerPackage, usedIn, uses,
 	/// requires, etc.
 	public var relationtype: FHIRPrimitive<CatalogEntryRelationType>
-	
+
 	/// The reference to the related item
 	public var item: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(item: Reference, relationtype: FHIRPrimitive<CatalogEntryRelationType>) {
 		self.item = item
 		self.relationtype = relationtype
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							item: Reference,
 							modifierExtension: [Extension]? = nil,
-							relationtype: FHIRPrimitive<CatalogEntryRelationType>)
-	{
+							relationtype: FHIRPrimitive<CatalogEntryRelationType>) {
 		self.init(item: item, relationtype: relationtype)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case item
 		case relationtype; case _relationtype
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.item = try Reference(from: _container, forKey: .item)
 		self.relationtype = try FHIRPrimitive<CatalogEntryRelationType>(from: _container, forKey: .relationtype, auxiliaryKey: ._relationtype)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try item.encode(on: &_container, forKey: .item)
 		try relationtype.encode(on: &_container, forKey: .relationtype, auxiliaryKey: ._relationtype)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? CatalogEntryRelatedEntry else {
 			return false
@@ -297,7 +293,7 @@ open class CatalogEntryRelatedEntry: BackboneElement {
 		return item == _other.item
 		    && relationtype == _other.relationtype
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(item)

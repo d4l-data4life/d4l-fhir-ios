@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes a smattering of Pharmacy Service codes.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/service-pharmacy
  */
 public enum ExamplePharmacyServiceCodes: String, FHIRPrimitiveType {
-	
+
 	/// Smoking cessation
 	case smokecess = "smokecess"
-	
+
 	/// Flu Shot
 	case flushot = "flushot"
-	
+
 	/// The wholesale price of the medication.
 	case drugcost = "drugcost"
-	
+
 	/// The additional cost assessed on the drug.
 	case markup = "markup"
-	
+
 	/// The professional fee charged for dispensing the product or service.
 	case dispensefee = "dispensefee"
-	
+
 	/// The professional fee charged for compounding the medication.
 	case compoundfee = "compoundfee"
 }

@@ -17,49 +17,47 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.
  */
 open class AppointmentResponse: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .appointmentResponse }
-	
+
 	/// External Ids for this item
 	public var identifier: [Identifier]?
-	
+
 	/// Appointment this response relates to
 	public var appointment: Reference
-	
+
 	/// Time from appointment, or requested new start time
 	public var start: FHIRPrimitive<Instant>?
-	
+
 	/// Time from appointment, or requested new end time
 	public var end: FHIRPrimitive<Instant>?
-	
+
 	/// Role of participant in the appointment
 	public var participantType: [CodeableConcept]?
-	
+
 	/// Person, Location, HealthcareService, or Device
 	public var actor: Reference?
-	
+
 	/// Participation status of the participant. When the status is declined or tentative if the start/end times are
 	/// different to the appointment, then these times should be interpreted as a requested time change. When the status
 	/// is accepted, the times can either be the time of the appointment (as a confirmation of the time) or can be
 	/// empty.
 	public var participantStatus: FHIRPrimitive<ParticipationStatus>
-	
+
 	/// Additional comments
 	public var comment: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(appointment: Reference, participantStatus: FHIRPrimitive<ParticipationStatus>) {
 		self.appointment = appointment
 		self.participantStatus = participantStatus
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							actor: Reference? = nil,
@@ -77,8 +75,7 @@ open class AppointmentResponse: DomainResource {
 							participantStatus: FHIRPrimitive<ParticipationStatus>,
 							participantType: [CodeableConcept]? = nil,
 							start: FHIRPrimitive<Instant>? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(appointment: appointment, participantStatus: participantStatus)
 		self.actor = actor
 		self.comment = comment
@@ -95,9 +92,9 @@ open class AppointmentResponse: DomainResource {
 		self.start = start
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case actor
 		case appointment
@@ -108,11 +105,11 @@ open class AppointmentResponse: DomainResource {
 		case participantType
 		case start; case _start
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.actor = try Reference(from: _container, forKeyIfPresent: .actor)
 		self.appointment = try Reference(from: _container, forKey: .appointment)
@@ -124,11 +121,11 @@ open class AppointmentResponse: DomainResource {
 		self.start = try FHIRPrimitive<Instant>(from: _container, forKeyIfPresent: .start, auxiliaryKey: ._start)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try actor?.encode(on: &_container, forKey: .actor)
 		try appointment.encode(on: &_container, forKey: .appointment)
@@ -140,9 +137,9 @@ open class AppointmentResponse: DomainResource {
 		try start?.encode(on: &_container, forKey: .start, auxiliaryKey: ._start)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? AppointmentResponse else {
 			return false
@@ -159,7 +156,7 @@ open class AppointmentResponse: DomainResource {
 		    && participantType == _other.participantType
 		    && start == _other.start
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(actor)

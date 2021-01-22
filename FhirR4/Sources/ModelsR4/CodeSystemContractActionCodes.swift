@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Contract Action codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/contract-action
  */
 public enum ContractActionCodes: String, FHIRPrimitiveType {
-	
+
 	/// Definition for Action A
 	case actionA = "action-a"
-	
+
 	/// Definition for Action B
 	case actionB = "action-b"
 }

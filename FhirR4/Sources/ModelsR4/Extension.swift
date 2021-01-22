@@ -17,15 +17,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Optional Extensions Element.
  
  Optional Extension Element - found in all resources.
  */
 open class Extension: Element {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case address(Address)
@@ -79,35 +77,34 @@ open class Extension: Element {
 		case usageContext(UsageContext)
 		case uuid(FHIRPrimitive<FHIRURI>)
 	}
-	
+
 	/// identifies the meaning of the extension
 	public var url: FHIRPrimitive<FHIRURI>
-	
+
 	/// Value of extension
 	/// One of `value[x]`
 	public var value: ValueX?
-	
+
 	/// Designated initializer taking all required properties
 	public init(url: FHIRPrimitive<FHIRURI>) {
 		self.url = url
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							url: FHIRPrimitive<FHIRURI>,
-							value: ValueX? = nil)
-	{
+							value: ValueX? = nil) {
 		self.init(url: url)
 		self.`extension` = `extension`
 		self.id = id
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case url; case _url
 		case valueAddress
@@ -161,14 +158,14 @@ open class Extension: Element {
 		case valueUsageContext
 		case valueUuid; case _valueUuid
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.url = try FHIRPrimitive<FHIRURI>(from: _container, forKey: .url, auxiliaryKey: ._url)
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueBase64Binary = try FHIRPrimitive<Base64Binary>(from: _container, forKeyIfPresent: .valueBase64Binary, auxiliaryKey: ._valueBase64Binary) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueBase64Binary, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -472,11 +469,11 @@ open class Extension: Element {
 		self.value = _t_value
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try url.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
 		if let _enum = value {
@@ -585,9 +582,9 @@ open class Extension: Element {
 		}
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Extension else {
 			return false
@@ -598,7 +595,7 @@ open class Extension: Element {
 		return url == _other.url
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(url)

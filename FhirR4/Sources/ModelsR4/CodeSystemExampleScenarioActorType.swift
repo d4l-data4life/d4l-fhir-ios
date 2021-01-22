@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of actor - system or human.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/examplescenario-actor-type
  */
 public enum ExampleScenarioActorType: String, FHIRPrimitiveType {
-	
+
 	/// A person.
 	case person = "person"
-	
+
 	/// A system.
 	case entity = "entity"
 }

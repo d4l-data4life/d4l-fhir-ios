@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes indicating the kind of the price component.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/invoice-priceComponentType
  */
 public enum InvoicePriceComponentType: String, FHIRPrimitiveType {
-	
+
 	/// the amount is the base price used for calculating the total price before applying surcharges, discount or taxes.
 	case base = "base"
-	
+
 	/// the amount is a surcharge applied on the base price.
 	case surcharge = "surcharge"
-	
+
 	/// the amount is a deduction applied on the base price.
 	case deduction = "deduction"
-	
+
 	/// the amount is a discount applied on the base price.
 	case discount = "discount"
-	
+
 	/// the amount is the tax component of the total price.
 	case tax = "tax"
-	
+
 	/// the amount is of informational character, it has not been applied in the calculation of the total price.
 	case informational = "informational"
 }

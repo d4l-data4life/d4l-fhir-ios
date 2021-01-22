@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A structured set of questions and their answers.
  
@@ -26,48 +24,48 @@
  corresponding to the structure of the grouping of the questionnaire being responded to.
  */
 open class QuestionnaireResponse: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .questionnaireResponse }
-	
+
 	/// Unique id for this set of answers
 	public var identifier: Identifier?
-	
+
 	/// Request fulfilled by this QuestionnaireResponse
 	public var basedOn: [Reference]?
-	
+
 	/// Part of this action
 	public var partOf: [Reference]?
-	
+
 	/// Form being answered
 	public var questionnaire: FHIRPrimitive<Canonical>?
-	
+
 	/// The position of the questionnaire response within its overall lifecycle.
 	public var status: FHIRPrimitive<QuestionnaireResponseStatus>
-	
+
 	/// The subject of the questions
 	public var subject: Reference?
-	
+
 	/// Encounter created as part of
 	public var encounter: Reference?
-	
+
 	/// Date the answers were gathered
 	public var authored: FHIRPrimitive<DateTime>?
-	
+
 	/// Person who received and recorded the answers
 	public var author: Reference?
-	
+
 	/// The person who answered the questions
 	public var source: Reference?
-	
+
 	/// Groups and questions
 	public var item: [QuestionnaireResponseItem]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(status: FHIRPrimitive<QuestionnaireResponseStatus>) {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							author: Reference? = nil,
@@ -88,8 +86,7 @@ open class QuestionnaireResponse: DomainResource {
 							source: Reference? = nil,
 							status: FHIRPrimitive<QuestionnaireResponseStatus>,
 							subject: Reference? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(status: status)
 		self.author = author
 		self.authored = authored
@@ -110,9 +107,9 @@ open class QuestionnaireResponse: DomainResource {
 		self.subject = subject
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case author
 		case authored; case _authored
@@ -126,11 +123,11 @@ open class QuestionnaireResponse: DomainResource {
 		case status; case _status
 		case subject
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.author = try Reference(from: _container, forKeyIfPresent: .author)
 		self.authored = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .authored, auxiliaryKey: ._authored)
@@ -145,11 +142,11 @@ open class QuestionnaireResponse: DomainResource {
 		self.subject = try Reference(from: _container, forKeyIfPresent: .subject)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try author?.encode(on: &_container, forKey: .author)
 		try authored?.encode(on: &_container, forKey: .authored, auxiliaryKey: ._authored)
@@ -164,9 +161,9 @@ open class QuestionnaireResponse: DomainResource {
 		try subject?.encode(on: &_container, forKey: .subject)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? QuestionnaireResponse else {
 			return false
@@ -186,7 +183,7 @@ open class QuestionnaireResponse: DomainResource {
 		    && status == _other.status
 		    && subject == _other.subject
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(author)
@@ -209,28 +206,28 @@ open class QuestionnaireResponse: DomainResource {
  A group or question item from the original questionnaire for which answers are provided.
  */
 open class QuestionnaireResponseItem: BackboneElement {
-	
+
 	/// Pointer to specific item from Questionnaire
 	public var linkId: FHIRPrimitive<FHIRString>
-	
+
 	/// ElementDefinition - details for the item
 	public var definition: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Name for group or question text
 	public var text: FHIRPrimitive<FHIRString>?
-	
+
 	/// The response(s) to the question
 	public var answer: [QuestionnaireResponseItemAnswer]?
-	
+
 	/// Nested questionnaire response items
 	public var item: [QuestionnaireResponseItem]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(linkId: FHIRPrimitive<FHIRString>) {
 		self.linkId = linkId
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							answer: [QuestionnaireResponseItemAnswer]? = nil,
@@ -240,8 +237,7 @@ open class QuestionnaireResponseItem: BackboneElement {
 							item: [QuestionnaireResponseItem]? = nil,
 							linkId: FHIRPrimitive<FHIRString>,
 							modifierExtension: [Extension]? = nil,
-							text: FHIRPrimitive<FHIRString>? = nil)
-	{
+							text: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(linkId: linkId)
 		self.answer = answer
 		self.definition = definition
@@ -251,9 +247,9 @@ open class QuestionnaireResponseItem: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case answer
 		case definition; case _definition
@@ -261,11 +257,11 @@ open class QuestionnaireResponseItem: BackboneElement {
 		case linkId; case _linkId
 		case text; case _text
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.answer = try [QuestionnaireResponseItemAnswer](from: _container, forKeyIfPresent: .answer)
 		self.definition = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .definition, auxiliaryKey: ._definition)
@@ -274,11 +270,11 @@ open class QuestionnaireResponseItem: BackboneElement {
 		self.text = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .text, auxiliaryKey: ._text)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try answer?.encode(on: &_container, forKey: .answer)
 		try definition?.encode(on: &_container, forKey: .definition, auxiliaryKey: ._definition)
@@ -287,9 +283,9 @@ open class QuestionnaireResponseItem: BackboneElement {
 		try text?.encode(on: &_container, forKey: .text, auxiliaryKey: ._text)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? QuestionnaireResponseItem else {
 			return false
@@ -303,7 +299,7 @@ open class QuestionnaireResponseItem: BackboneElement {
 		    && linkId == _other.linkId
 		    && text == _other.text
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(answer)
@@ -320,7 +316,7 @@ open class QuestionnaireResponseItem: BackboneElement {
  The respondent's answer(s) to the question.
  */
 open class QuestionnaireResponseItemAnswer: BackboneElement {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case attachment(Attachment)
@@ -336,27 +332,26 @@ open class QuestionnaireResponseItemAnswer: BackboneElement {
 		case time(FHIRPrimitive<FHIRTime>)
 		case uri(FHIRPrimitive<FHIRURI>)
 	}
-	
+
 	/// Single-valued answer to the question
 	/// One of `value[x]`
 	public var value: ValueX?
-	
+
 	/// Nested groups and questions
 	public var item: [QuestionnaireResponseItem]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							item: [QuestionnaireResponseItem]? = nil,
 							modifierExtension: [Extension]? = nil,
-							value: ValueX? = nil)
-	{
+							value: ValueX? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.id = id
@@ -364,9 +359,9 @@ open class QuestionnaireResponseItemAnswer: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case item
 		case valueAttachment
@@ -382,14 +377,14 @@ open class QuestionnaireResponseItemAnswer: BackboneElement {
 		case valueTime; case _valueTime
 		case valueUri; case _valueUri
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.item = try [QuestionnaireResponseItem](from: _container, forKeyIfPresent: .item)
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueBoolean = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .valueBoolean, auxiliaryKey: ._valueBoolean) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -465,11 +460,11 @@ open class QuestionnaireResponseItemAnswer: BackboneElement {
 		self.value = _t_value
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try item?.encode(on: &_container, forKey: .item)
 		if let _enum = value {
@@ -502,9 +497,9 @@ open class QuestionnaireResponseItemAnswer: BackboneElement {
 		}
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? QuestionnaireResponseItemAnswer else {
 			return false
@@ -515,7 +510,7 @@ open class QuestionnaireResponseItemAnswer: BackboneElement {
 		return item == _other.item
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(item)

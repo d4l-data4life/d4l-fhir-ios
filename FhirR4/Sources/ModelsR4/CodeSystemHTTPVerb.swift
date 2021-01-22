@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  HTTP verbs (in the HTTP command line). See [HTTP rfc](https://tools.ietf.org/html/rfc7231) for details.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/http-verb
  */
 public enum HTTPVerb: String, FHIRPrimitiveType {
-	
+
 	/// HTTP GET Command.
 	case GET = "GET"
-	
+
 	/// HTTP HEAD Command.
 	case HEAD = "HEAD"
-	
+
 	/// HTTP POST Command.
 	case POST = "POST"
-	
+
 	/// HTTP PUT Command.
 	case PUT = "PUT"
-	
+
 	/// HTTP DELETE Command.
 	case DELETE = "DELETE"
-	
+
 	/// HTTP PATCH Command.
 	case PATCH = "PATCH"
 }

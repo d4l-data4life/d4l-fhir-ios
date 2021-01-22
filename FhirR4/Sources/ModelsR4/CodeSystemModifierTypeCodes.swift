@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Modifier type codes.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/claim-modifiers
  */
 public enum ModifierTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// Repair of prior service or installation.
 	case A = "a"
-	
+
 	/// Temporary service or installation.
 	case B = "b"
-	
+
 	/// Treatment associated with TMJ.
 	case C = "c"
-	
+
 	/// Implant or associated with an implant.
 	case E = "e"
-	
+
 	/// A Rush service or service performed outside of normal office hours.
 	case rooh = "rooh"
-	
+
 	/// None.
 	case X = "x"
 }

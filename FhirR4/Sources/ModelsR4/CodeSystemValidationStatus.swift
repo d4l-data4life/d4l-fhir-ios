@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Status of the validation of the target against the primary source
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-validation-status
  */
 public enum ValidationStatus: String, FHIRPrimitiveType {
-	
+
 	/// successful
 	case successful = "successful"
-	
+
 	/// failed
 	case failed = "failed"
-	
+
 	/// The validations status has not been determined yet
 	case unknown = "unknown"
 }

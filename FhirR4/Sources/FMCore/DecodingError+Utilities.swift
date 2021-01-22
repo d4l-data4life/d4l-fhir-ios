@@ -17,7 +17,7 @@
 //  limitations under the License.
 
 public extension CodingKey {
-	
+
 	var hs_keyPathRepresentation: String {
 		if let intValue = intValue {
 			return String(intValue)
@@ -27,14 +27,14 @@ public extension CodingKey {
 }
 
 public extension DecodingError.Context {
-	
+
 	var hs_keyPathRepresentation: String {
 		return codingPath.map { $0.hs_keyPathRepresentation }.joined(separator: ".")
 	}
 }
 
 public extension DecodingError {
-	
+
 	/**
 	`DecodingError` apparently already adopts `LocalizedError`, however the following override is not showing up when
 	calling `localizedDescription` on a DecodingError. Hence you need to do this:

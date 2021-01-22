@@ -4,12 +4,12 @@ require 'zip'
 
 module Fastlane
   module Actions
-    class FhirAction < Action
+    class FhirStu3Action < Action
       def self.run(params)
         xcode_embed = params[:xcode]
         generate_fhir_models
-        integrate_json_examples(xcode_embed)
         integrate_fhir_models(xcode_embed)
+        integrate_json_examples(xcode_embed)
         clean_tmp_files
       end
 
@@ -63,6 +63,27 @@ module Fastlane
           # Setup project
           project_file = './Data4LifeFHIR' + '.xcodeproj'
           project = Xcodeproj::Project.open(project_file)
+
+          if xcode_embed
+            sourcesGroup = project.main_group.find_subpath(File.join("FhirStu3/Sources"), true)
+            if sourcesGroup
+               sourcesGroup.groups.each do |group|
+                 next if group.display_name.include?("Helpers")
+                 group.clear
+                 group.remove_from_project
+               end
+            end
+
+            testsGroup = project.main_group.find_subpath(File.join("FhirStu3/Tests"), true)
+            if testsGroup
+              testsGroup.groups.each do |group|
+                puts group.display_name
+                next if group.display_name.include?("PrimitiveTests") || group.display_name.include?("Helpers")
+                group.clear
+                group.remove_from_project
+              end
+            end
+          end
 
           # Create new groups
           sources_group = project.main_group.find_subpath(File.join('FhirStu3/Sources'), true)

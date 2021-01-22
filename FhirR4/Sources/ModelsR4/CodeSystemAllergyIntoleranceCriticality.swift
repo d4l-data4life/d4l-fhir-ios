@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Estimate of the potential clinical harm, or seriousness, of a reaction to an identified substance.
  
@@ -26,15 +24,15 @@
  ValueSet: http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality
  */
 public enum AllergyIntoleranceCriticality: String, FHIRPrimitiveType {
-	
+
 	/// Worst case result of a future exposure is not assessed to be life-threatening or having high potential for organ
 	/// system failure.
 	case low = "low"
-	
+
 	/// Worst case result of a future exposure is assessed to be life-threatening or having high potential for organ
 	/// system failure.
 	case high = "high"
-	
+
 	/// Unable to assess the worst case result of a future exposure.
 	case unableToAssess = "unable-to-assess"
 }

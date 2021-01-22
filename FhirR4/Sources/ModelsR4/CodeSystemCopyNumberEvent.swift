@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Copy Number Event.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/copy-number-event
  */
 public enum CopyNumberEvent: String, FHIRPrimitiveType {
-	
+
 	/// amplification.
 	case amp = "amp"
-	
+
 	/// deletion.
 	case del = "del"
-	
+
 	/// loss of function.
 	case lof = "lof"
 }

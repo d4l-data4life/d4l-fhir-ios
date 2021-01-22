@@ -17,37 +17,35 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  MedicinalProductUndesirableEffect.
  
  Describe the undesirable effects of the medicinal product.
  */
 open class MedicinalProductUndesirableEffect: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .medicinalProductUndesirableEffect }
-	
+
 	/// The medication for which this is an indication
 	public var subject: [Reference]?
-	
+
 	/// The symptom, condition or undesirable effect
 	public var symptomConditionEffect: CodeableConcept?
-	
+
 	/// Classification of the effect
 	public var classification: CodeableConcept?
-	
+
 	/// The frequency of occurrence of the effect
 	public var frequencyOfOccurrence: CodeableConcept?
-	
+
 	/// The population group to which this applies
 	public var population: [Population]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							classification: CodeableConcept? = nil,
@@ -62,8 +60,7 @@ open class MedicinalProductUndesirableEffect: DomainResource {
 							population: [Population]? = nil,
 							subject: [Reference]? = nil,
 							symptomConditionEffect: CodeableConcept? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init()
 		self.classification = classification
 		self.contained = contained
@@ -79,9 +76,9 @@ open class MedicinalProductUndesirableEffect: DomainResource {
 		self.symptomConditionEffect = symptomConditionEffect
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case classification
 		case frequencyOfOccurrence
@@ -89,11 +86,11 @@ open class MedicinalProductUndesirableEffect: DomainResource {
 		case subject
 		case symptomConditionEffect
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.classification = try CodeableConcept(from: _container, forKeyIfPresent: .classification)
 		self.frequencyOfOccurrence = try CodeableConcept(from: _container, forKeyIfPresent: .frequencyOfOccurrence)
@@ -102,11 +99,11 @@ open class MedicinalProductUndesirableEffect: DomainResource {
 		self.symptomConditionEffect = try CodeableConcept(from: _container, forKeyIfPresent: .symptomConditionEffect)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try classification?.encode(on: &_container, forKey: .classification)
 		try frequencyOfOccurrence?.encode(on: &_container, forKey: .frequencyOfOccurrence)
@@ -115,9 +112,9 @@ open class MedicinalProductUndesirableEffect: DomainResource {
 		try symptomConditionEffect?.encode(on: &_container, forKey: .symptomConditionEffect)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductUndesirableEffect else {
 			return false
@@ -131,7 +128,7 @@ open class MedicinalProductUndesirableEffect: DomainResource {
 		    && subject == _other.subject
 		    && symptomConditionEffect == _other.symptomConditionEffect
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(classification)

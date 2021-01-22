@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The intended usage for supplemental data elements in the measure.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/measure-data-usage
  */
 public enum MeasureDataUsage: String, FHIRPrimitiveType {
-	
+
 	/// The data is intended to be provided as additional information alongside the measure results.
 	case supplementalData = "supplemental-data"
-	
+
 	/// The data is intended to be used to calculate and apply a risk adjustment model for the measure.
 	case riskAdjustmentFactor = "risk-adjustment-factor"
 }

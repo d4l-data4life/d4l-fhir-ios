@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A Signature - XML DigSig, JWS, Graphical image of signature, etc..
  
@@ -27,28 +25,28 @@
  a hand-written signature, or a signature ceremony Different signature approaches have different utilities.
  */
 open class Signature: Element {
-	
+
 	/// Indication of the reason the entity signed the object(s)
 	public var type: [Coding]
-	
+
 	/// When the signature was created
 	public var when: FHIRPrimitive<Instant>
-	
+
 	/// Who signed
 	public var who: Reference
-	
+
 	/// The party represented
 	public var onBehalfOf: Reference?
-	
+
 	/// The technical format of the signed resources
 	public var targetFormat: FHIRPrimitive<FHIRString>?
-	
+
 	/// The technical format of the signature
 	public var sigFormat: FHIRPrimitive<FHIRString>?
-	
+
 	/// The actual signature content (XML DigSig. JWS, picture, etc.)
 	public var data: FHIRPrimitive<Base64Binary>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: [Coding], when: FHIRPrimitive<Instant>, who: Reference) {
 		self.type = type
@@ -56,7 +54,7 @@ open class Signature: Element {
 		self.who = who
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							data: FHIRPrimitive<Base64Binary>? = nil,
@@ -67,8 +65,7 @@ open class Signature: Element {
 							targetFormat: FHIRPrimitive<FHIRString>? = nil,
 							type: [Coding],
 							when: FHIRPrimitive<Instant>,
-							who: Reference)
-	{
+							who: Reference) {
 		self.init(type: type, when: when, who: who)
 		self.data = data
 		self.`extension` = `extension`
@@ -77,9 +74,9 @@ open class Signature: Element {
 		self.sigFormat = sigFormat
 		self.targetFormat = targetFormat
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case data; case _data
 		case onBehalfOf
@@ -89,11 +86,11 @@ open class Signature: Element {
 		case when; case _when
 		case who
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.data = try FHIRPrimitive<Base64Binary>(from: _container, forKeyIfPresent: .data, auxiliaryKey: ._data)
 		self.onBehalfOf = try Reference(from: _container, forKeyIfPresent: .onBehalfOf)
@@ -104,11 +101,11 @@ open class Signature: Element {
 		self.who = try Reference(from: _container, forKey: .who)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try data?.encode(on: &_container, forKey: .data, auxiliaryKey: ._data)
 		try onBehalfOf?.encode(on: &_container, forKey: .onBehalfOf)
@@ -119,9 +116,9 @@ open class Signature: Element {
 		try who.encode(on: &_container, forKey: .who)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Signature else {
 			return false
@@ -137,7 +134,7 @@ open class Signature: Element {
 		    && when == _other.when
 		    && who == _other.who
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(data)

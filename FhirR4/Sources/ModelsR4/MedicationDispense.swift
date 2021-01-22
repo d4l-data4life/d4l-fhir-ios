@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Dispensing a medication to a named patient.
  
@@ -27,102 +25,102 @@
  medication dispense is the result of a pharmacy system responding to a medication order.
  */
 open class MedicationDispense: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .medicationDispense }
-	
+
 	/// All possible types for "medication[x]"
 	public enum MedicationX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// All possible types for "statusReason[x]"
 	public enum StatusReasonX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// External identifier
 	public var identifier: [Identifier]?
-	
+
 	/// Event that dispense is part of
 	public var partOf: [Reference]?
-	
+
 	/// A code specifying the state of the set of dispense events.
 	public var status: FHIRPrimitive<MedicationDispenseStatusCodes>
-	
+
 	/// Why a dispense was not performed
 	/// One of `statusReason[x]`
 	public var statusReason: StatusReasonX?
-	
+
 	/// Type of medication dispense
 	public var category: CodeableConcept?
-	
+
 	/// What medication was supplied
 	/// One of `medication[x]`
 	public var medication: MedicationX
-	
+
 	/// Who the dispense is for
 	public var subject: Reference?
-	
+
 	/// Encounter / Episode associated with event
 	public var context: Reference?
-	
+
 	/// Information that supports the dispensing of the medication
 	public var supportingInformation: [Reference]?
-	
+
 	/// Who performed event
 	public var performer: [MedicationDispensePerformer]?
-	
+
 	/// Where the dispense occurred
 	public var location: Reference?
-	
+
 	/// Medication order that authorizes the dispense
 	public var authorizingPrescription: [Reference]?
-	
+
 	/// Trial fill, partial fill, emergency fill, etc.
 	public var type: CodeableConcept?
-	
+
 	/// Amount dispensed
 	public var quantity: Quantity?
-	
+
 	/// Amount of medication expressed as a timing amount
 	public var daysSupply: Quantity?
-	
+
 	/// When product was packaged and reviewed
 	public var whenPrepared: FHIRPrimitive<DateTime>?
-	
+
 	/// When product was given out
 	public var whenHandedOver: FHIRPrimitive<DateTime>?
-	
+
 	/// Where the medication was sent
 	public var destination: Reference?
-	
+
 	/// Who collected the medication
 	public var receiver: [Reference]?
-	
+
 	/// Information about the dispense
 	public var note: [Annotation]?
-	
+
 	/// How the medication is to be used by the patient or administered by the caregiver
 	public var dosageInstruction: [Dosage]?
-	
+
 	/// Whether a substitution was performed on the dispense
 	public var substitution: MedicationDispenseSubstitution?
-	
+
 	/// Clinical issue with action
 	public var detectedIssue: [Reference]?
-	
+
 	/// A list of relevant lifecycle events
 	public var eventHistory: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(medication: MedicationX, status: FHIRPrimitive<MedicationDispenseStatusCodes>) {
 		self.medication = medication
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							authorizingPrescription: [Reference]? = nil,
@@ -156,8 +154,7 @@ open class MedicationDispense: DomainResource {
 							text: Narrative? = nil,
 							type: CodeableConcept? = nil,
 							whenHandedOver: FHIRPrimitive<DateTime>? = nil,
-							whenPrepared: FHIRPrimitive<DateTime>? = nil)
-	{
+							whenPrepared: FHIRPrimitive<DateTime>? = nil) {
 		self.init(medication: medication, status: status)
 		self.authorizingPrescription = authorizingPrescription
 		self.category = category
@@ -190,9 +187,9 @@ open class MedicationDispense: DomainResource {
 		self.whenHandedOver = whenHandedOver
 		self.whenPrepared = whenPrepared
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case authorizingPrescription
 		case category
@@ -221,16 +218,16 @@ open class MedicationDispense: DomainResource {
 		case whenHandedOver; case _whenHandedOver
 		case whenPrepared; case _whenPrepared
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.medicationCodeableConcept) || _container.contains(CodingKeys.medicationReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.medicationCodeableConcept, CodingKeys.medicationReference], debugDescription: "Must have at least one value for \"medication\" but have none"))
 		}
-		
+
 		// Decode all our properties
 		self.authorizingPrescription = try [Reference](from: _container, forKeyIfPresent: .authorizingPrescription)
 		self.category = try CodeableConcept(from: _container, forKeyIfPresent: .category)
@@ -242,7 +239,7 @@ open class MedicationDispense: DomainResource {
 		self.eventHistory = try [Reference](from: _container, forKeyIfPresent: .eventHistory)
 		self.identifier = try [Identifier](from: _container, forKeyIfPresent: .identifier)
 		self.location = try Reference(from: _container, forKeyIfPresent: .location)
-		var _t_medication: MedicationX? = nil
+		var _t_medication: MedicationX?
 		if let medicationCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .medicationCodeableConcept) {
 			if _t_medication != nil {
 				throw DecodingError.dataCorruptedError(forKey: .medicationCodeableConcept, in: _container, debugDescription: "More than one value provided for \"medication\"")
@@ -262,7 +259,7 @@ open class MedicationDispense: DomainResource {
 		self.quantity = try Quantity(from: _container, forKeyIfPresent: .quantity)
 		self.receiver = try [Reference](from: _container, forKeyIfPresent: .receiver)
 		self.status = try FHIRPrimitive<MedicationDispenseStatusCodes>(from: _container, forKey: .status, auxiliaryKey: ._status)
-		var _t_statusReason: StatusReasonX? = nil
+		var _t_statusReason: StatusReasonX?
 		if let statusReasonCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .statusReasonCodeableConcept) {
 			if _t_statusReason != nil {
 				throw DecodingError.dataCorruptedError(forKey: .statusReasonCodeableConcept, in: _container, debugDescription: "More than one value provided for \"statusReason\"")
@@ -284,11 +281,11 @@ open class MedicationDispense: DomainResource {
 		self.whenPrepared = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .whenPrepared, auxiliaryKey: ._whenPrepared)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try authorizingPrescription?.encode(on: &_container, forKey: .authorizingPrescription)
 		try category?.encode(on: &_container, forKey: .category)
@@ -300,14 +297,14 @@ open class MedicationDispense: DomainResource {
 		try eventHistory?.encode(on: &_container, forKey: .eventHistory)
 		try identifier?.encode(on: &_container, forKey: .identifier)
 		try location?.encode(on: &_container, forKey: .location)
-		
+
 			switch medication {
 			case .codeableConcept(let _value):
 				try _value.encode(on: &_container, forKey: .medicationCodeableConcept)
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .medicationReference)
 			}
-		
+
 		try note?.encode(on: &_container, forKey: .note)
 		try partOf?.encode(on: &_container, forKey: .partOf)
 		try performer?.encode(on: &_container, forKey: .performer)
@@ -330,9 +327,9 @@ open class MedicationDispense: DomainResource {
 		try whenPrepared?.encode(on: &_container, forKey: .whenPrepared, auxiliaryKey: ._whenPrepared)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicationDispense else {
 			return false
@@ -365,7 +362,7 @@ open class MedicationDispense: DomainResource {
 		    && whenHandedOver == _other.whenHandedOver
 		    && whenPrepared == _other.whenPrepared
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(authorizingPrescription)
@@ -401,63 +398,62 @@ open class MedicationDispense: DomainResource {
  Indicates who or what performed the event.
  */
 open class MedicationDispensePerformer: BackboneElement {
-	
+
 	/// Who performed the dispense and what they did
 	public var function: CodeableConcept?
-	
+
 	/// Individual who was performing
 	public var actor: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(actor: Reference) {
 		self.actor = actor
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							actor: Reference,
 							`extension`: [Extension]? = nil,
 							function: CodeableConcept? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(actor: actor)
 		self.`extension` = `extension`
 		self.function = function
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case actor
 		case function
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.actor = try Reference(from: _container, forKey: .actor)
 		self.function = try CodeableConcept(from: _container, forKeyIfPresent: .function)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try actor.encode(on: &_container, forKey: .actor)
 		try function?.encode(on: &_container, forKey: .function)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicationDispensePerformer else {
 			return false
@@ -468,7 +464,7 @@ open class MedicationDispensePerformer: BackboneElement {
 		return actor == _other.actor
 		    && function == _other.function
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(actor)
@@ -484,25 +480,25 @@ open class MedicationDispensePerformer: BackboneElement {
  substitution did or did not happen and why.  If nothing is specified, substitution was not done.
  */
 open class MedicationDispenseSubstitution: BackboneElement {
-	
+
 	/// Whether a substitution was or was not performed on the dispense
 	public var wasSubstituted: FHIRPrimitive<FHIRBool>
-	
+
 	/// Code signifying whether a different drug was dispensed from what was prescribed
 	public var type: CodeableConcept?
-	
+
 	/// Why was substitution made
 	public var reason: [CodeableConcept]?
-	
+
 	/// Who is responsible for the substitution
 	public var responsibleParty: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(wasSubstituted: FHIRPrimitive<FHIRBool>) {
 		self.wasSubstituted = wasSubstituted
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -511,8 +507,7 @@ open class MedicationDispenseSubstitution: BackboneElement {
 							reason: [CodeableConcept]? = nil,
 							responsibleParty: [Reference]? = nil,
 							type: CodeableConcept? = nil,
-							wasSubstituted: FHIRPrimitive<FHIRBool>)
-	{
+							wasSubstituted: FHIRPrimitive<FHIRBool>) {
 		self.init(wasSubstituted: wasSubstituted)
 		self.`extension` = `extension`
 		self.id = id
@@ -521,20 +516,20 @@ open class MedicationDispenseSubstitution: BackboneElement {
 		self.responsibleParty = responsibleParty
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case reason
 		case responsibleParty
 		case type
 		case wasSubstituted; case _wasSubstituted
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.reason = try [CodeableConcept](from: _container, forKeyIfPresent: .reason)
 		self.responsibleParty = try [Reference](from: _container, forKeyIfPresent: .responsibleParty)
@@ -542,11 +537,11 @@ open class MedicationDispenseSubstitution: BackboneElement {
 		self.wasSubstituted = try FHIRPrimitive<FHIRBool>(from: _container, forKey: .wasSubstituted, auxiliaryKey: ._wasSubstituted)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try reason?.encode(on: &_container, forKey: .reason)
 		try responsibleParty?.encode(on: &_container, forKey: .responsibleParty)
@@ -554,9 +549,9 @@ open class MedicationDispenseSubstitution: BackboneElement {
 		try wasSubstituted.encode(on: &_container, forKey: .wasSubstituted, auxiliaryKey: ._wasSubstituted)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicationDispenseSubstitution else {
 			return false
@@ -569,7 +564,7 @@ open class MedicationDispenseSubstitution: BackboneElement {
 		    && type == _other.type
 		    && wasSubstituted == _other.wasSubstituted
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(reason)

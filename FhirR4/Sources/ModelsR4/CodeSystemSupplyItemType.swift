@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value sets refers to a specific supply item.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/supplydelivery-type
  */
 public enum SupplyItemType: String, FHIRPrimitiveType {
-	
+
 	/// Supply is a kind of medication.
 	case medication = "medication"
-	
+
 	/// What is supplied (or requested) is a device.
 	case device = "device"
 }

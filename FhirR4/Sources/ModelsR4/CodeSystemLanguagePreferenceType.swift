@@ -17,18 +17,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set defines the set of codes for describing the type or mode of the patient's preferred language.
  
  URL: http://hl7.org/fhir/language-preference-type
  */
 public enum LanguagePreferenceType: String, FHIRPrimitiveType {
-	
+
 	/// The patient prefers to verbally communicate with the associated language.
 	case verbal = "verbal"
-	
+
 	/// The patient prefers to communicate in writing with the associated language.
 	case written = "written"
 }

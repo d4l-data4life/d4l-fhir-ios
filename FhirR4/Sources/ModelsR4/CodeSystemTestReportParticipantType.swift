@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of participant.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/report-participant-type
  */
 public enum TestReportParticipantType: String, FHIRPrimitiveType {
-	
+
 	/// The test execution engine.
 	case testEngine = "test-engine"
-	
+
 	/// A FHIR Client.
 	case client = "client"
-	
+
 	/// A FHIR Server.
 	case server = "server"
 }

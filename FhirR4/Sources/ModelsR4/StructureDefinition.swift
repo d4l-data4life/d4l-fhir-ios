@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Structural Definition.
  
@@ -26,90 +24,90 @@
  FHIR, and also for describing extensions and constraints on resources and data types.
  */
 open class StructureDefinition: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .structureDefinition }
-	
+
 	/// Canonical identifier for this structure definition, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>
-	
+
 	/// Additional identifier for the structure definition
 	public var identifier: [Identifier]?
-	
+
 	/// Business version of the structure definition
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this structure definition (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// Name for this structure definition (human friendly)
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// The status of this structure definition. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// For testing purposes, not real usage
 	public var experimental: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the structure definition
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for structure definition (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Why this structure definition is defined
 	public var purpose: FHIRPrimitive<FHIRString>?
-	
+
 	/// Use and/or publishing restrictions
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// Assist with indexing and finding
 	public var keyword: [Coding]?
-	
+
 	/// FHIR Version this StructureDefinition targets
 	public var fhirVersion: FHIRPrimitive<FHIRString>?
-	
+
 	/// External specification that the content is mapped to
 	public var mapping: [StructureDefinitionMapping]?
-	
+
 	/// Defines the kind of structure that this definition is describing.
 	public var kind: FHIRPrimitive<StructureDefinitionKind>
-	
+
 	/// Whether the structure is abstract
 	public var abstract: FHIRPrimitive<FHIRBool>
-	
+
 	/// If an extension, where it can be used in instances
 	public var context: [StructureDefinitionContext]?
-	
+
 	/// FHIRPath invariants - when the extension can be used
 	public var contextInvariant: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Type defined or constrained by this structure
 	public var type: FHIRPrimitive<FHIRURI>
-	
+
 	/// Definition that this type is constrained/specialized from
 	public var baseDefinition: FHIRPrimitive<Canonical>?
-	
+
 	/// How the type relates to the baseDefinition.
 	public var derivation: FHIRPrimitive<TypeDerivationRule>?
-	
+
 	/// Snapshot view of the structure
 	public var snapshot: StructureDefinitionSnapshot?
-	
+
 	/// Differential view of the structure
 	public var differential: StructureDefinitionDifferential?
-	
+
 	/// Designated initializer taking all required properties
 	public init(abstract: FHIRPrimitive<FHIRBool>, kind: FHIRPrimitive<StructureDefinitionKind>, name: FHIRPrimitive<FHIRString>, status: FHIRPrimitive<PublicationStatus>, type: FHIRPrimitive<FHIRURI>, url: FHIRPrimitive<FHIRURI>) {
 		self.abstract = abstract
@@ -120,7 +118,7 @@ open class StructureDefinition: DomainResource {
 		self.url = url
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							abstract: FHIRPrimitive<FHIRBool>,
@@ -157,8 +155,7 @@ open class StructureDefinition: DomainResource {
 							type: FHIRPrimitive<FHIRURI>,
 							url: FHIRPrimitive<FHIRURI>,
 							useContext: [UsageContext]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(abstract: abstract, kind: kind, name: name, status: status, type: type, url: url)
 		self.baseDefinition = baseDefinition
 		self.contact = contact
@@ -190,9 +187,9 @@ open class StructureDefinition: DomainResource {
 		self.useContext = useContext
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case abstract; case _abstract
 		case baseDefinition; case _baseDefinition
@@ -222,11 +219,11 @@ open class StructureDefinition: DomainResource {
 		case useContext
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.abstract = try FHIRPrimitive<FHIRBool>(from: _container, forKey: .abstract, auxiliaryKey: ._abstract)
 		self.baseDefinition = try FHIRPrimitive<Canonical>(from: _container, forKeyIfPresent: .baseDefinition, auxiliaryKey: ._baseDefinition)
@@ -257,11 +254,11 @@ open class StructureDefinition: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try abstract.encode(on: &_container, forKey: .abstract, auxiliaryKey: ._abstract)
 		try baseDefinition?.encode(on: &_container, forKey: .baseDefinition, auxiliaryKey: ._baseDefinition)
@@ -292,9 +289,9 @@ open class StructureDefinition: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureDefinition else {
 			return false
@@ -330,7 +327,7 @@ open class StructureDefinition: DomainResource {
 		    && useContext == _other.useContext
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(abstract)
@@ -369,63 +366,62 @@ open class StructureDefinition: DomainResource {
  Identifies the types of resource or data type elements to which the extension can be applied.
  */
 open class StructureDefinitionContext: BackboneElement {
-	
+
 	/// Defines how to interpret the expression that defines what the context of the extension is.
 	public var type: FHIRPrimitive<ExtensionContextType>
-	
+
 	/// Where the extension can be used in instances
 	public var expression: FHIRPrimitive<FHIRString>
-	
+
 	/// Designated initializer taking all required properties
 	public init(expression: FHIRPrimitive<FHIRString>, type: FHIRPrimitive<ExtensionContextType>) {
 		self.expression = expression
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							expression: FHIRPrimitive<FHIRString>,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							type: FHIRPrimitive<ExtensionContextType>)
-	{
+							type: FHIRPrimitive<ExtensionContextType>) {
 		self.init(expression: expression, type: type)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case expression; case _expression
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.expression = try FHIRPrimitive<FHIRString>(from: _container, forKey: .expression, auxiliaryKey: ._expression)
 		self.type = try FHIRPrimitive<ExtensionContextType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try expression.encode(on: &_container, forKey: .expression, auxiliaryKey: ._expression)
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureDefinitionContext else {
 			return false
@@ -436,7 +432,7 @@ open class StructureDefinitionContext: BackboneElement {
 		return expression == _other.expression
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(expression)
@@ -450,55 +446,54 @@ open class StructureDefinitionContext: BackboneElement {
  A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies.
  */
 open class StructureDefinitionDifferential: BackboneElement {
-	
+
 	/// Definition of elements in the resource (if no StructureDefinition)
 	public var element: [ElementDefinition]
-	
+
 	/// Designated initializer taking all required properties
 	public init(element: [ElementDefinition]) {
 		self.element = element
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							element: [ElementDefinition],
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(element: element)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case element
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.element = try [ElementDefinition](from: _container, forKey: .element)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try element.encode(on: &_container, forKey: .element)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureDefinitionDifferential else {
 			return false
@@ -508,7 +503,7 @@ open class StructureDefinitionDifferential: BackboneElement {
 		}
 		return element == _other.element
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(element)
@@ -521,25 +516,25 @@ open class StructureDefinitionDifferential: BackboneElement {
  An external specification that the content is mapped to.
  */
 open class StructureDefinitionMapping: BackboneElement {
-	
+
 	/// Internal id when this mapping is used
 	public var identity: FHIRPrimitive<FHIRString>
-	
+
 	/// Identifies what this mapping refers to
 	public var uri: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Names what this mapping refers to
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Versions, Issues, Scope limitations etc.
 	public var comment: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(identity: FHIRPrimitive<FHIRString>) {
 		self.identity = identity
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							comment: FHIRPrimitive<FHIRString>? = nil,
@@ -548,8 +543,7 @@ open class StructureDefinitionMapping: BackboneElement {
 							identity: FHIRPrimitive<FHIRString>,
 							modifierExtension: [Extension]? = nil,
 							name: FHIRPrimitive<FHIRString>? = nil,
-							uri: FHIRPrimitive<FHIRURI>? = nil)
-	{
+							uri: FHIRPrimitive<FHIRURI>? = nil) {
 		self.init(identity: identity)
 		self.comment = comment
 		self.`extension` = `extension`
@@ -558,20 +552,20 @@ open class StructureDefinitionMapping: BackboneElement {
 		self.name = name
 		self.uri = uri
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case comment; case _comment
 		case identity; case _identity
 		case name; case _name
 		case uri; case _uri
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.comment = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .comment, auxiliaryKey: ._comment)
 		self.identity = try FHIRPrimitive<FHIRString>(from: _container, forKey: .identity, auxiliaryKey: ._identity)
@@ -579,11 +573,11 @@ open class StructureDefinitionMapping: BackboneElement {
 		self.uri = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .uri, auxiliaryKey: ._uri)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try comment?.encode(on: &_container, forKey: .comment, auxiliaryKey: ._comment)
 		try identity.encode(on: &_container, forKey: .identity, auxiliaryKey: ._identity)
@@ -591,9 +585,9 @@ open class StructureDefinitionMapping: BackboneElement {
 		try uri?.encode(on: &_container, forKey: .uri, auxiliaryKey: ._uri)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureDefinitionMapping else {
 			return false
@@ -606,7 +600,7 @@ open class StructureDefinitionMapping: BackboneElement {
 		    && name == _other.name
 		    && uri == _other.uri
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(comment)
@@ -623,55 +617,54 @@ open class StructureDefinitionMapping: BackboneElement {
  StructureDefinition.
  */
 open class StructureDefinitionSnapshot: BackboneElement {
-	
+
 	/// Definition of elements in the resource (if no StructureDefinition)
 	public var element: [ElementDefinition]
-	
+
 	/// Designated initializer taking all required properties
 	public init(element: [ElementDefinition]) {
 		self.element = element
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							element: [ElementDefinition],
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(element: element)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case element
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.element = try [ElementDefinition](from: _container, forKey: .element)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try element.encode(on: &_container, forKey: .element)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureDefinitionSnapshot else {
 			return false
@@ -681,7 +674,7 @@ open class StructureDefinitionSnapshot: BackboneElement {
 		}
 		return element == _other.element
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(element)

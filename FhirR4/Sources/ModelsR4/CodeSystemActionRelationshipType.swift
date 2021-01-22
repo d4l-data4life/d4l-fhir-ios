@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Defines the types of relationships between actions.
  
@@ -26,31 +24,31 @@
  ValueSet: http://hl7.org/fhir/ValueSet/action-relationship-type
  */
 public enum ActionRelationshipType: String, FHIRPrimitiveType {
-	
+
 	/// The action must be performed before the start of the related action.
 	case beforeStart = "before-start"
-	
+
 	/// The action must be performed before the related action.
 	case before = "before"
-	
+
 	/// The action must be performed before the end of the related action.
 	case beforeEnd = "before-end"
-	
+
 	/// The action must be performed concurrent with the start of the related action.
 	case concurrentWithStart = "concurrent-with-start"
-	
+
 	/// The action must be performed concurrent with the related action.
 	case concurrent = "concurrent"
-	
+
 	/// The action must be performed concurrent with the end of the related action.
 	case concurrentWithEnd = "concurrent-with-end"
-	
+
 	/// The action must be performed after the start of the related action.
 	case afterStart = "after-start"
-	
+
 	/// The action must be performed after the related action.
 	case after = "after"
-	
+
 	/// The action must be performed after the end of the related action.
 	case afterEnd = "after-end"
 }

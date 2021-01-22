@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of action to be performed.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/action-type
  */
 public enum ActionType: String, FHIRPrimitiveType {
-	
+
 	/// The action is to create a new resource.
 	case create = "create"
-	
+
 	/// The action is to update an existing resource.
 	case update = "update"
-	
+
 	/// The action is to remove an existing resource.
 	case remove = "remove"
-	
+
 	/// The action is to fire a specific event.
 	case fireEvent = "fire-event"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A set of generally useful codes defined so they can be included in value sets.
  
@@ -26,23 +24,23 @@
  ValueSet: http://hl7.org/fhir/ValueSet/special-values
  */
 public enum SpecialValues: String, FHIRPrimitiveType {
-	
+
 	/// Boolean true.
 	case `true` = "true"
-	
+
 	/// Boolean false.
 	case `false` = "false"
-	
+
 	/// The content is greater than zero, but too small to be quantified.
 	case trace = "trace"
-	
+
 	/// The specific quantity is not known, but is known to be non-zero and is not specified because it makes up the
 	/// bulk of the material.
 	case sufficient = "sufficient"
-	
+
 	/// The value is no longer available.
 	case withdrawn = "withdrawn"
-	
+
 	/// The are no known applicable values in this context.
 	case nilKnown = "nil-known"
 }

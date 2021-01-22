@@ -16,7 +16,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
 import Foundation
 
 /**
@@ -38,31 +37,31 @@ import Foundation
  http://hl7.org/fhir/datatypes.html#decimal
  */
 public struct FHIRDecimal: FHIRPrimitiveType, ExpressibleByFloatLiteral {
-	
+
 	public typealias FloatLiteralType = Double
-	
+
 	public var decimal: Decimal
-	
+
 	/**
 	 Designated initializer.
 	 */
 	public init(_ decimal: Decimal) {
 		self.decimal = decimal
 	}
-	
+
 	public init(floatLiteral value: Self.FloatLiteralType) {
 		self.decimal = Decimal(floatLiteral: value)
 	}
 }
 
 extension FHIRDecimal: Codable {
-	
+
 	public init(from decoder: Decoder) throws {
 		// TODO: preserve precision / trailing zeroes
 		let container = try decoder.singleValueContainer()
 		self.decimal = try container.decode(Decimal.self)
 	}
-	
+
 	public func encode(to encoder: Encoder) throws {
 		// TODO: preserve precision / trailing zeroes
 		var container = encoder.singleValueContainer()
@@ -71,7 +70,7 @@ extension FHIRDecimal: Codable {
 }
 
 extension FHIRDecimal: Equatable {
-	
+
 	public static func ==(l: FHIRDecimal, r: FHIRDecimal) -> Bool {
 		return l.decimal == r.decimal
 	}
@@ -80,7 +79,7 @@ extension FHIRDecimal: Equatable {
 // MARK: -
 
 extension Double {
-	
+
 	public func asFHIRDecimalPrimitive() -> FHIRPrimitive<FHIRDecimal> {
 		return FHIRPrimitive(FHIRDecimal(floatLiteral: FHIRDecimal.FloatLiteralType(self)))
 	}

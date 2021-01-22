@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Status of the supply delivery.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/supplydelivery-status
  */
 public enum SupplyDeliveryStatus: String, FHIRPrimitiveType {
-	
+
 	/// Supply has been requested, but not delivered.
 	case inProgress = "in-progress"
-	
+
 	/// Supply has been delivered ("completed").
 	case completed = "completed"
-	
+
 	/// Delivery was not completed.
 	case abandoned = "abandoned"
-	
+
 	/// This electronic record should never have existed, though it is possible that real-world decisions were based on
 	/// it. (If real-world activity has occurred, the status should be "abandoned" rather than "entered-in-error".).
 	case enteredInError = "entered-in-error"

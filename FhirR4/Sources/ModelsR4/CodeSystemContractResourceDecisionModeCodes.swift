@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set contract specific codes for decision modes.
  
@@ -26,7 +24,7 @@
  ValueSet: http://hl7.org/fhir/ValueSet/contract-decision-mode
  */
 public enum ContractResourceDecisionModeCodes: String, FHIRPrimitiveType {
-	
+
 	/// To be completed
 	case policy = "policy"
 }

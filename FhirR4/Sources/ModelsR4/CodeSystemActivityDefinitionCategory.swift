@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  High-level categorization of the type of activity.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/activity-definition-category
  */
 public enum ActivityDefinitionCategory: String, FHIRPrimitiveType {
-	
+
 	/// The activity is intended to provide or is related to treatment of the patient.
 	case treatment = "treatment"
-	
+
 	/// The activity is intended to provide or is related to education of the patient.
 	case education = "education"
-	
+
 	/// The activity is intended to perform or is related to assessment of the patient.
 	case assessment = "assessment"
 }

@@ -17,95 +17,93 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Search parameter for a resource.
  
  A search parameter that defines a named search item that can be used to search/filter on a resource.
  */
 open class SearchParameter: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .searchParameter }
-	
+
 	/// Canonical identifier for this search parameter, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>
-	
+
 	/// Business version of the search parameter
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this search parameter (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// Original definition for the search parameter
 	public var derivedFrom: FHIRPrimitive<Canonical>?
-	
+
 	/// The status of this search parameter. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// For testing purposes, not real usage
 	public var experimental: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the search parameter
 	public var description_fhir: FHIRPrimitive<FHIRString>
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for search parameter (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Why this search parameter is defined
 	public var purpose: FHIRPrimitive<FHIRString>?
-	
+
 	/// Code used in URL
 	public var code: FHIRPrimitive<FHIRString>
-	
+
 	/// The base resource type(s) that this search parameter can be used against.
 	public var base: [FHIRPrimitive<ResourceType>]
-	
+
 	/// The type of value that a search parameter may contain, and how the content is interpreted.
 	public var type: FHIRPrimitive<SearchParamType>
-	
+
 	/// FHIRPath expression that extracts the values
 	public var expression: FHIRPrimitive<FHIRString>?
-	
+
 	/// XPath that extracts the values
 	public var xpath: FHIRPrimitive<FHIRString>?
-	
+
 	/// How the search parameter relates to the set of elements returned by evaluating the xpath query.
 	public var xpathUsage: FHIRPrimitive<XPathUsageType>?
-	
+
 	/// Types of resource (if a resource is referenced).
 	public var target: [FHIRPrimitive<ResourceType>]?
-	
+
 	/// Allow multiple values per parameter (or)
 	public var multipleOr: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Allow multiple parameters (and)
 	public var multipleAnd: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Comparators supported for the search parameter.
 	public var comparator: [FHIRPrimitive<SearchComparator>]?
-	
+
 	/// A modifier supported for the search parameter.
 	public var modifier: [FHIRPrimitive<SearchModifierCode>]?
-	
+
 	/// Chained names supported
 	public var chain: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// For Composite resources to define the parts
 	public var component: [SearchParameterComponent]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(base: [FHIRPrimitive<ResourceType>], code: FHIRPrimitive<FHIRString>, description_fhir: FHIRPrimitive<FHIRString>, name: FHIRPrimitive<FHIRString>, status: FHIRPrimitive<PublicationStatus>, type: FHIRPrimitive<SearchParamType>, url: FHIRPrimitive<FHIRURI>) {
 		self.base = base
@@ -117,7 +115,7 @@ open class SearchParameter: DomainResource {
 		self.url = url
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							base: [FHIRPrimitive<ResourceType>],
@@ -153,8 +151,7 @@ open class SearchParameter: DomainResource {
 							useContext: [UsageContext]? = nil,
 							version: FHIRPrimitive<FHIRString>? = nil,
 							xpath: FHIRPrimitive<FHIRString>? = nil,
-							xpathUsage: FHIRPrimitive<XPathUsageType>? = nil)
-	{
+							xpathUsage: FHIRPrimitive<XPathUsageType>? = nil) {
 		self.init(base: base, code: code, description_fhir: description_fhir, name: name, status: status, type: type, url: url)
 		self.chain = chain
 		self.comparator = comparator
@@ -184,9 +181,9 @@ open class SearchParameter: DomainResource {
 		self.xpath = xpath
 		self.xpathUsage = xpathUsage
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case base; case _base
 		case chain; case _chain
@@ -215,11 +212,11 @@ open class SearchParameter: DomainResource {
 		case xpath; case _xpath
 		case xpathUsage; case _xpathUsage
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.base = try [FHIRPrimitive<ResourceType>](from: _container, forKey: .base, auxiliaryKey: ._base)
 		self.chain = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .chain, auxiliaryKey: ._chain)
@@ -249,11 +246,11 @@ open class SearchParameter: DomainResource {
 		self.xpathUsage = try FHIRPrimitive<XPathUsageType>(from: _container, forKeyIfPresent: .xpathUsage, auxiliaryKey: ._xpathUsage)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try base.encode(on: &_container, forKey: .base, auxiliaryKey: ._base)
 		try chain?.encode(on: &_container, forKey: .chain, auxiliaryKey: ._chain)
@@ -283,9 +280,9 @@ open class SearchParameter: DomainResource {
 		try xpathUsage?.encode(on: &_container, forKey: .xpathUsage, auxiliaryKey: ._xpathUsage)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SearchParameter else {
 			return false
@@ -320,7 +317,7 @@ open class SearchParameter: DomainResource {
 		    && xpath == _other.xpath
 		    && xpathUsage == _other.xpathUsage
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(base)
@@ -358,63 +355,62 @@ open class SearchParameter: DomainResource {
  Used to define the parts of a composite search parameter.
  */
 open class SearchParameterComponent: BackboneElement {
-	
+
 	/// Defines how the part works
 	public var definition: FHIRPrimitive<Canonical>
-	
+
 	/// Subexpression relative to main expression
 	public var expression: FHIRPrimitive<FHIRString>
-	
+
 	/// Designated initializer taking all required properties
 	public init(definition: FHIRPrimitive<Canonical>, expression: FHIRPrimitive<FHIRString>) {
 		self.definition = definition
 		self.expression = expression
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							definition: FHIRPrimitive<Canonical>,
 							expression: FHIRPrimitive<FHIRString>,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(definition: definition, expression: expression)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case definition; case _definition
 		case expression; case _expression
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.definition = try FHIRPrimitive<Canonical>(from: _container, forKey: .definition, auxiliaryKey: ._definition)
 		self.expression = try FHIRPrimitive<FHIRString>(from: _container, forKey: .expression, auxiliaryKey: ._expression)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try definition.encode(on: &_container, forKey: .definition, auxiliaryKey: ._definition)
 		try expression.encode(on: &_container, forKey: .expression, auxiliaryKey: ._expression)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SearchParameterComponent else {
 			return false
@@ -425,7 +421,7 @@ open class SearchParameterComponent: BackboneElement {
 		return definition == _other.definition
 		    && expression == _other.expression
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(definition)

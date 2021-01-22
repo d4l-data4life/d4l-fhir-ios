@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A code specifying the state of the resource instance.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/explanationofbenefit-status
  */
 public enum ExplanationOfBenefitStatus: String, FHIRPrimitiveType {
-	
+
 	/// The resource instance is currently in-force.
 	case active = "active"
-	
+
 	/// The resource instance is withdrawn, rescinded or reversed.
 	case cancelled = "cancelled"
-	
+
 	/// A new resource instance the contents of which is not complete.
 	case draft = "draft"
-	
+
 	/// The resource instance was entered in error.
 	case enteredInError = "entered-in-error"
 }

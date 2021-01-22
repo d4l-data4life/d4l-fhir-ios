@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample UDI codes.
  
@@ -26,7 +24,7 @@
  ValueSet: http://hl7.org/fhir/ValueSet/udi
  */
 public enum UDICodes: String, FHIRPrimitiveType {
-	
+
 	/// GUDID (FDA) US Repository
 	case gudid = "gudid"
 }

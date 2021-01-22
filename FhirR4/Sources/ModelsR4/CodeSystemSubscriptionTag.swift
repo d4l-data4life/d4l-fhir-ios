@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Tags to put on a resource after subscriptions have been sent.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/subscription-tag
  */
 public enum SubscriptionTag: String, FHIRPrimitiveType {
-	
+
 	/// The message has been queued for processing on a destination systems.
 	case queued = "queued"
-	
+
 	/// The message has been delivered to its intended recipient.
 	case delivered = "delivered"
 }

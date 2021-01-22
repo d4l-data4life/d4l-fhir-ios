@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Whether a reference needs to be version specific or version independent, or whether either can be used.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/reference-version-rules
  */
 public enum ReferenceVersionRules: String, FHIRPrimitiveType {
-	
+
 	/// The reference may be either version independent or version specific.
 	case either = "either"
-	
+
 	/// The reference must be version independent.
 	case independent = "independent"
-	
+
 	/// The reference must be version specific.
 	case specific = "specific"
 }

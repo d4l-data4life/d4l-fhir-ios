@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Definition of a parameter to a module.
  
@@ -26,35 +24,35 @@
  provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse.
  */
 open class ParameterDefinition: Element {
-	
+
 	/// Name used to access the parameter value
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Whether the parameter is input or output for the module.
 	public var use: FHIRPrimitive<OperationParameterUse>
-	
+
 	/// Minimum cardinality
 	public var min: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Maximum cardinality (a number of *)
 	public var max: FHIRPrimitive<FHIRString>?
-	
+
 	/// A brief description of the parameter
 	public var documentation: FHIRPrimitive<FHIRString>?
-	
+
 	/// What type of value
 	public var type: FHIRPrimitive<FHIRString>
-	
+
 	/// What profile the value is expected to be
 	public var profile: FHIRPrimitive<Canonical>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: FHIRPrimitive<FHIRString>, use: FHIRPrimitive<OperationParameterUse>) {
 		self.type = type
 		self.use = use
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							documentation: FHIRPrimitive<FHIRString>? = nil,
@@ -65,8 +63,7 @@ open class ParameterDefinition: Element {
 							name: FHIRPrimitive<FHIRString>? = nil,
 							profile: FHIRPrimitive<Canonical>? = nil,
 							type: FHIRPrimitive<FHIRString>,
-							use: FHIRPrimitive<OperationParameterUse>)
-	{
+							use: FHIRPrimitive<OperationParameterUse>) {
 		self.init(type: type, use: use)
 		self.documentation = documentation
 		self.`extension` = `extension`
@@ -76,9 +73,9 @@ open class ParameterDefinition: Element {
 		self.name = name
 		self.profile = profile
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case documentation; case _documentation
 		case max; case _max
@@ -88,11 +85,11 @@ open class ParameterDefinition: Element {
 		case type; case _type
 		case use; case _use
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.documentation = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
 		self.max = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .max, auxiliaryKey: ._max)
@@ -103,11 +100,11 @@ open class ParameterDefinition: Element {
 		self.use = try FHIRPrimitive<OperationParameterUse>(from: _container, forKey: .use, auxiliaryKey: ._use)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
 		try max?.encode(on: &_container, forKey: .max, auxiliaryKey: ._max)
@@ -118,9 +115,9 @@ open class ParameterDefinition: Element {
 		try use.encode(on: &_container, forKey: .use, auxiliaryKey: ._use)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ParameterDefinition else {
 			return false
@@ -136,7 +133,7 @@ open class ParameterDefinition: Element {
 		    && type == _other.type
 		    && use == _other.use
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(documentation)

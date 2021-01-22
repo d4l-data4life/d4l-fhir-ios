@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  BiologicallyDerived Product Storage Scale.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/product-storage-scale
  */
 public enum BiologicallyDerivedProductStorageScale: String, FHIRPrimitiveType {
-	
+
 	/// Fahrenheit temperature scale.
 	case farenheit = "farenheit"
-	
+
 	/// Celsius or centigrade temperature scale.
 	case celsius = "celsius"
-	
+
 	/// Kelvin absolute thermodynamic temperature scale.
 	case kelvin = "kelvin"
 }

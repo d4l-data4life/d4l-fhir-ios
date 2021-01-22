@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Exception codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/claim-exception
  */
 public enum ExceptionCodes: String, FHIRPrimitiveType {
-	
+
 	/// Fulltime Student
 	case student = "student"
-	
+
 	/// Disabled
 	case disabled = "disabled"
 }

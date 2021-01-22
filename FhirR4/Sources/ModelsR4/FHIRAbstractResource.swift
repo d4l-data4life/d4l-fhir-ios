@@ -16,19 +16,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Base class for all FHIR resources.
  */
 open class FHIRAbstractResource: FHIRType {
-	
+
 	open class var resourceType: ResourceType { return .resource }
-	
+
 	public init() {}
-	
+
 	// MARK: Codable
-	
+
 	private enum ValidKeys: String, CodingKey {
 		case resourceType
 	}
@@ -37,24 +35,24 @@ open class FHIRAbstractResource: FHIRType {
 		// We _could_ enforce resourceType checking here, let's rely on ResourceProxy on that for now so we can instantiate custom resources
 		// as `Resource`
 	}	//	*/
-	
+
 	public func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: ValidKeys.self)
 		try _container.encode(type(of: self).resourceType, forKey: .resourceType)
 	}
-	
+
 	// MARK: Custom String Convertible
-	
+
 	public var description: String {
 		return "<\(type(of: self).resourceType)>"
 	}
 
 	// MARK: Equatable & Hashable
-	
+
 	public static func ==(l: FHIRAbstractResource, r: FHIRAbstractResource) -> Bool {
 		return l.isEqual(to: r)
 	}
-	
+
 	public func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? FHIRAbstractResource else {
 			return false
@@ -64,7 +62,7 @@ open class FHIRAbstractResource: FHIRType {
 		}
 		return type(of: self).resourceType == type(of: _other).resourceType
 	}
-	
+
 	public func hash(into hasher: inout Hasher) {
 		hasher.combine(type(of: self).resourceType)
 	}

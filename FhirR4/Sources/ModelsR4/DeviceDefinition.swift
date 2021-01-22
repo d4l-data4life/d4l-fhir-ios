@@ -17,97 +17,95 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  An instance of a medical-related component of a medical device.
  
  The characteristics, operational status and capabilities of a medical-related component of a medical device.
  */
 open class DeviceDefinition: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .deviceDefinition }
-	
+
 	/// All possible types for "manufacturer[x]"
 	public enum ManufacturerX: Hashable {
 		case reference(Reference)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Instance identifier
 	public var identifier: [Identifier]?
-	
+
 	/// Unique Device Identifier (UDI) Barcode string
 	public var udiDeviceIdentifier: [DeviceDefinitionUdiDeviceIdentifier]?
-	
+
 	/// Name of device manufacturer
 	/// One of `manufacturer[x]`
 	public var manufacturer: ManufacturerX?
-	
+
 	/// A name given to the device to identify it
 	public var deviceName: [DeviceDefinitionDeviceName]?
-	
+
 	/// The model number for the device
 	public var modelNumber: FHIRPrimitive<FHIRString>?
-	
+
 	/// What kind of device or device system this is
 	public var type: CodeableConcept?
-	
+
 	/// The capabilities supported on a  device, the standards to which the device conforms for a particular purpose,
 	/// and used for the communication
 	public var specialization: [DeviceDefinitionSpecialization]?
-	
+
 	/// Available versions
 	public var version: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Safety characteristics of the device
 	public var safety: [CodeableConcept]?
-	
+
 	/// Shelf Life and storage information
 	public var shelfLifeStorage: [ProductShelfLife]?
-	
+
 	/// Dimensions, color etc.
 	public var physicalCharacteristics: ProdCharacteristic?
-	
+
 	/// Language code for the human-readable text strings produced by the device (all supported)
 	public var languageCode: [CodeableConcept]?
-	
+
 	/// Device capabilities
 	public var capability: [DeviceDefinitionCapability]?
-	
+
 	/// The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties
 	public var property: [DeviceDefinitionProperty]?
-	
+
 	/// Organization responsible for device
 	public var owner: Reference?
-	
+
 	/// Details for human/organization for support
 	public var contact: [ContactPoint]?
-	
+
 	/// Network address to contact device
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Access to on-line information
 	public var onlineInformation: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Device notes and comments
 	public var note: [Annotation]?
-	
+
 	/// The quantity of the device present in the packaging (e.g. the number of devices present in a pack, or the number
 	/// of devices in the same package of the medicinal product)
 	public var quantity: Quantity?
-	
+
 	/// The parent device it can be part of
 	public var parentDevice: Reference?
-	
+
 	/// A substance used to create the material(s) of which the device is made
 	public var material: [DeviceDefinitionMaterial]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							capability: [DeviceDefinitionCapability]? = nil,
@@ -139,8 +137,7 @@ open class DeviceDefinition: DomainResource {
 							type: CodeableConcept? = nil,
 							udiDeviceIdentifier: [DeviceDefinitionUdiDeviceIdentifier]? = nil,
 							url: FHIRPrimitive<FHIRURI>? = nil,
-							version: [FHIRPrimitive<FHIRString>]? = nil)
-	{
+							version: [FHIRPrimitive<FHIRString>]? = nil) {
 		self.init()
 		self.capability = capability
 		self.contact = contact
@@ -173,9 +170,9 @@ open class DeviceDefinition: DomainResource {
 		self.url = url
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case capability
 		case contact
@@ -201,18 +198,18 @@ open class DeviceDefinition: DomainResource {
 		case url; case _url
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.capability = try [DeviceDefinitionCapability](from: _container, forKeyIfPresent: .capability)
 		self.contact = try [ContactPoint](from: _container, forKeyIfPresent: .contact)
 		self.deviceName = try [DeviceDefinitionDeviceName](from: _container, forKeyIfPresent: .deviceName)
 		self.identifier = try [Identifier](from: _container, forKeyIfPresent: .identifier)
 		self.languageCode = try [CodeableConcept](from: _container, forKeyIfPresent: .languageCode)
-		var _t_manufacturer: ManufacturerX? = nil
+		var _t_manufacturer: ManufacturerX?
 		if let manufacturerString = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .manufacturerString, auxiliaryKey: ._manufacturerString) {
 			if _t_manufacturer != nil {
 				throw DecodingError.dataCorruptedError(forKey: .manufacturerString, in: _container, debugDescription: "More than one value provided for \"manufacturer\"")
@@ -244,11 +241,11 @@ open class DeviceDefinition: DomainResource {
 		self.version = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try capability?.encode(on: &_container, forKey: .capability)
 		try contact?.encode(on: &_container, forKey: .contact)
@@ -281,9 +278,9 @@ open class DeviceDefinition: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DeviceDefinition else {
 			return false
@@ -314,7 +311,7 @@ open class DeviceDefinition: DomainResource {
 		    && url == _other.url
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(capability)
@@ -346,63 +343,62 @@ open class DeviceDefinition: DomainResource {
  Device capabilities.
  */
 open class DeviceDefinitionCapability: BackboneElement {
-	
+
 	/// Type of capability
 	public var type: CodeableConcept
-	
+
 	/// Description of capability
 	public var description_fhir: [CodeableConcept]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: CodeableConcept) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							description_fhir: [CodeableConcept]? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							type: CodeableConcept)
-	{
+							type: CodeableConcept) {
 		self.init(type: type)
 		self.description_fhir = description_fhir
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case description_fhir = "description"
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.description_fhir = try [CodeableConcept](from: _container, forKeyIfPresent: .description_fhir)
 		self.type = try CodeableConcept(from: _container, forKey: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir)
 		try type.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DeviceDefinitionCapability else {
 			return false
@@ -413,7 +409,7 @@ open class DeviceDefinitionCapability: BackboneElement {
 		return description_fhir == _other.description_fhir
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(description_fhir)
@@ -425,64 +421,63 @@ open class DeviceDefinitionCapability: BackboneElement {
  A name given to the device to identify it.
  */
 open class DeviceDefinitionDeviceName: BackboneElement {
-	
+
 	/// The name of the device
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// The type of deviceName.
 	/// UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | ModelName.
 	public var type: FHIRPrimitive<DeviceNameType>
-	
+
 	/// Designated initializer taking all required properties
 	public init(name: FHIRPrimitive<FHIRString>, type: FHIRPrimitive<DeviceNameType>) {
 		self.name = name
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							name: FHIRPrimitive<FHIRString>,
-							type: FHIRPrimitive<DeviceNameType>)
-	{
+							type: FHIRPrimitive<DeviceNameType>) {
 		self.init(name: name, type: type)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case name; case _name
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.name = try FHIRPrimitive<FHIRString>(from: _container, forKey: .name, auxiliaryKey: ._name)
 		self.type = try FHIRPrimitive<DeviceNameType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try name.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DeviceDefinitionDeviceName else {
 			return false
@@ -493,7 +488,7 @@ open class DeviceDefinitionDeviceName: BackboneElement {
 		return name == _other.name
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(name)
@@ -505,22 +500,22 @@ open class DeviceDefinitionDeviceName: BackboneElement {
  A substance used to create the material(s) of which the device is made.
  */
 open class DeviceDefinitionMaterial: BackboneElement {
-	
+
 	/// The substance
 	public var substance: CodeableConcept
-	
+
 	/// Indicates an alternative material of the device
 	public var alternate: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Whether the substance is a known or suspected allergen
 	public var allergenicIndicator: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(substance: CodeableConcept) {
 		self.substance = substance
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							allergenicIndicator: FHIRPrimitive<FHIRBool>? = nil,
@@ -528,8 +523,7 @@ open class DeviceDefinitionMaterial: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							substance: CodeableConcept)
-	{
+							substance: CodeableConcept) {
 		self.init(substance: substance)
 		self.allergenicIndicator = allergenicIndicator
 		self.alternate = alternate
@@ -537,39 +531,39 @@ open class DeviceDefinitionMaterial: BackboneElement {
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case allergenicIndicator; case _allergenicIndicator
 		case alternate; case _alternate
 		case substance
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.allergenicIndicator = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .allergenicIndicator, auxiliaryKey: ._allergenicIndicator)
 		self.alternate = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .alternate, auxiliaryKey: ._alternate)
 		self.substance = try CodeableConcept(from: _container, forKey: .substance)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try allergenicIndicator?.encode(on: &_container, forKey: .allergenicIndicator, auxiliaryKey: ._allergenicIndicator)
 		try alternate?.encode(on: &_container, forKey: .alternate, auxiliaryKey: ._alternate)
 		try substance.encode(on: &_container, forKey: .substance)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DeviceDefinitionMaterial else {
 			return false
@@ -581,7 +575,7 @@ open class DeviceDefinitionMaterial: BackboneElement {
 		    && alternate == _other.alternate
 		    && substance == _other.substance
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(allergenicIndicator)
@@ -594,22 +588,22 @@ open class DeviceDefinitionMaterial: BackboneElement {
  The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties.
  */
 open class DeviceDefinitionProperty: BackboneElement {
-	
+
 	/// Code that specifies the property DeviceDefinitionPropetyCode (Extensible)
 	public var type: CodeableConcept
-	
+
 	/// Property value as a quantity
 	public var valueQuantity: [Quantity]?
-	
+
 	/// Property value as a code, e.g., NTP4 (synced to NTP)
 	public var valueCode: [CodeableConcept]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: CodeableConcept) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -617,8 +611,7 @@ open class DeviceDefinitionProperty: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							type: CodeableConcept,
 							valueCode: [CodeableConcept]? = nil,
-							valueQuantity: [Quantity]? = nil)
-	{
+							valueQuantity: [Quantity]? = nil) {
 		self.init(type: type)
 		self.`extension` = `extension`
 		self.id = id
@@ -626,39 +619,39 @@ open class DeviceDefinitionProperty: BackboneElement {
 		self.valueCode = valueCode
 		self.valueQuantity = valueQuantity
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case type
 		case valueCode
 		case valueQuantity
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.type = try CodeableConcept(from: _container, forKey: .type)
 		self.valueCode = try [CodeableConcept](from: _container, forKeyIfPresent: .valueCode)
 		self.valueQuantity = try [Quantity](from: _container, forKeyIfPresent: .valueQuantity)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try type.encode(on: &_container, forKey: .type)
 		try valueCode?.encode(on: &_container, forKey: .valueCode)
 		try valueQuantity?.encode(on: &_container, forKey: .valueQuantity)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DeviceDefinitionProperty else {
 			return false
@@ -670,7 +663,7 @@ open class DeviceDefinitionProperty: BackboneElement {
 		    && valueCode == _other.valueCode
 		    && valueQuantity == _other.valueQuantity
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(type)
@@ -684,63 +677,62 @@ open class DeviceDefinitionProperty: BackboneElement {
  for the communication.
  */
 open class DeviceDefinitionSpecialization: BackboneElement {
-	
+
 	/// The standard that is used to operate and communicate
 	public var systemType: FHIRPrimitive<FHIRString>
-	
+
 	/// The version of the standard that is used to operate and communicate
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(systemType: FHIRPrimitive<FHIRString>) {
 		self.systemType = systemType
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							systemType: FHIRPrimitive<FHIRString>,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(systemType: systemType)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case systemType; case _systemType
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.systemType = try FHIRPrimitive<FHIRString>(from: _container, forKey: .systemType, auxiliaryKey: ._systemType)
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try systemType.encode(on: &_container, forKey: .systemType, auxiliaryKey: ._systemType)
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DeviceDefinitionSpecialization else {
 			return false
@@ -751,7 +743,7 @@ open class DeviceDefinitionSpecialization: BackboneElement {
 		return systemType == _other.systemType
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(systemType)
@@ -767,17 +759,17 @@ open class DeviceDefinitionSpecialization: BackboneElement {
  it could have been sold.
  */
 open class DeviceDefinitionUdiDeviceIdentifier: BackboneElement {
-	
+
 	/// The identifier that is to be associated with every Device that references this DeviceDefintiion for the issuer
 	/// and jurisdication porvided in the DeviceDefinition.udiDeviceIdentifier
 	public var deviceIdentifier: FHIRPrimitive<FHIRString>
-	
+
 	/// The organization that assigns the identifier algorithm
 	public var issuer: FHIRPrimitive<FHIRURI>
-	
+
 	/// The jurisdiction to which the deviceIdentifier applies
 	public var jurisdiction: FHIRPrimitive<FHIRURI>
-	
+
 	/// Designated initializer taking all required properties
 	public init(deviceIdentifier: FHIRPrimitive<FHIRString>, issuer: FHIRPrimitive<FHIRURI>, jurisdiction: FHIRPrimitive<FHIRURI>) {
 		self.deviceIdentifier = deviceIdentifier
@@ -785,7 +777,7 @@ open class DeviceDefinitionUdiDeviceIdentifier: BackboneElement {
 		self.jurisdiction = jurisdiction
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							deviceIdentifier: FHIRPrimitive<FHIRString>,
@@ -793,46 +785,45 @@ open class DeviceDefinitionUdiDeviceIdentifier: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							issuer: FHIRPrimitive<FHIRURI>,
 							jurisdiction: FHIRPrimitive<FHIRURI>,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(deviceIdentifier: deviceIdentifier, issuer: issuer, jurisdiction: jurisdiction)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case deviceIdentifier; case _deviceIdentifier
 		case issuer; case _issuer
 		case jurisdiction; case _jurisdiction
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.deviceIdentifier = try FHIRPrimitive<FHIRString>(from: _container, forKey: .deviceIdentifier, auxiliaryKey: ._deviceIdentifier)
 		self.issuer = try FHIRPrimitive<FHIRURI>(from: _container, forKey: .issuer, auxiliaryKey: ._issuer)
 		self.jurisdiction = try FHIRPrimitive<FHIRURI>(from: _container, forKey: .jurisdiction, auxiliaryKey: ._jurisdiction)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try deviceIdentifier.encode(on: &_container, forKey: .deviceIdentifier, auxiliaryKey: ._deviceIdentifier)
 		try issuer.encode(on: &_container, forKey: .issuer, auxiliaryKey: ._issuer)
 		try jurisdiction.encode(on: &_container, forKey: .jurisdiction, auxiliaryKey: ._jurisdiction)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DeviceDefinitionUdiDeviceIdentifier else {
 			return false
@@ -844,7 +835,7 @@ open class DeviceDefinitionUdiDeviceIdentifier: BackboneElement {
 		    && issuer == _other.issuer
 		    && jurisdiction == _other.jurisdiction
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(deviceIdentifier)

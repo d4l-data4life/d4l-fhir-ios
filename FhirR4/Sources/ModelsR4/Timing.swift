@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A timing schedule that specifies an event that may occur multiple times.
  
@@ -28,21 +26,21 @@
  carried out.
  */
 open class Timing: BackboneElement {
-	
+
 	/// When the event occurs
 	public var event: [FHIRPrimitive<DateTime>]?
-	
+
 	/// When the event is to occur
 	public var `repeat`: TimingRepeat?
-	
+
 	/// BID | TID | QID | AM | PM | QD | QOD | +
 	public var code: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept? = nil,
@@ -50,8 +48,7 @@ open class Timing: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							`repeat`: TimingRepeat? = nil)
-	{
+							`repeat`: TimingRepeat? = nil) {
 		self.init()
 		self.code = code
 		self.event = event
@@ -60,39 +57,39 @@ open class Timing: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.`repeat` = `repeat`
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case event; case _event
 		case `repeat` = "repeat"
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKeyIfPresent: .code)
 		self.event = try [FHIRPrimitive<DateTime>](from: _container, forKeyIfPresent: .event, auxiliaryKey: ._event)
 		self.`repeat` = try TimingRepeat(from: _container, forKeyIfPresent: .`repeat`)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code?.encode(on: &_container, forKey: .code)
 		try event?.encode(on: &_container, forKey: .event, auxiliaryKey: ._event)
 		try `repeat`?.encode(on: &_container, forKey: .`repeat`)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Timing else {
 			return false
@@ -104,7 +101,7 @@ open class Timing: BackboneElement {
 		    && event == _other.event
 		    && `repeat` == _other.`repeat`
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -119,65 +116,65 @@ open class Timing: BackboneElement {
  A set of rules that describe when the event is scheduled.
  */
 open class TimingRepeat: Element {
-	
+
 	/// All possible types for "bounds[x]"
 	public enum BoundsX: Hashable {
 		case duration(Duration)
 		case period(Period)
 		case range(Range)
 	}
-	
+
 	/// Length/Range of lengths, or (Start and/or end) limits
 	/// One of `bounds[x]`
 	public var bounds: BoundsX?
-	
+
 	/// Number of times to repeat
 	public var count: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// Maximum number of times to repeat
 	public var countMax: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// How long when it happens
 	public var duration: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// How long when it happens (Max)
 	public var durationMax: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// s | min | h | d | wk | mo | a - unit of time (UCUM)
 	public var durationUnit: FHIRPrimitive<FHIRString>?
-	
+
 	/// Event occurs frequency times per period
 	public var frequency: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// Event occurs up to frequencyMax times per period
 	public var frequencyMax: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// Event occurs frequency times per period
 	public var period: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Upper limit of period (3-4 hours)
 	public var periodMax: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// s | min | h | d | wk | mo | a - unit of time (UCUM)
 	public var periodUnit: FHIRPrimitive<FHIRString>?
-	
+
 	/// If one or more days of week is provided, then the action happens only on the specified day(s).
 	public var dayOfWeek: [FHIRPrimitive<DaysOfWeek>]?
-	
+
 	/// Time of day for action
 	public var timeOfDay: [FHIRPrimitive<FHIRTime>]?
-	
+
 	/// Code for time period of occurrence
 	public var when: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Minutes from event (before or after)
 	public var offset: FHIRPrimitive<FHIRUnsignedInteger>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							bounds: BoundsX? = nil,
@@ -196,8 +193,7 @@ open class TimingRepeat: Element {
 							periodMax: FHIRPrimitive<FHIRDecimal>? = nil,
 							periodUnit: FHIRPrimitive<FHIRString>? = nil,
 							timeOfDay: [FHIRPrimitive<FHIRTime>]? = nil,
-							when: [FHIRPrimitive<FHIRString>]? = nil)
-	{
+							when: [FHIRPrimitive<FHIRString>]? = nil) {
 		self.init()
 		self.bounds = bounds
 		self.count = count
@@ -217,9 +213,9 @@ open class TimingRepeat: Element {
 		self.timeOfDay = timeOfDay
 		self.when = when
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case boundsDuration
 		case boundsPeriod
@@ -239,13 +235,13 @@ open class TimingRepeat: Element {
 		case timeOfDay; case _timeOfDay
 		case when; case _when
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
-		var _t_bounds: BoundsX? = nil
+		var _t_bounds: BoundsX?
 		if let boundsDuration = try Duration(from: _container, forKeyIfPresent: .boundsDuration) {
 			if _t_bounds != nil {
 				throw DecodingError.dataCorruptedError(forKey: .boundsDuration, in: _container, debugDescription: "More than one value provided for \"bounds\"")
@@ -281,11 +277,11 @@ open class TimingRepeat: Element {
 		self.when = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .when, auxiliaryKey: ._when)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		if let _enum = bounds {
 			switch _enum {
@@ -313,9 +309,9 @@ open class TimingRepeat: Element {
 		try when?.encode(on: &_container, forKey: .when, auxiliaryKey: ._when)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? TimingRepeat else {
 			return false
@@ -339,7 +335,7 @@ open class TimingRepeat: Element {
 		    && timeOfDay == _other.timeOfDay
 		    && when == _other.when
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(bounds)

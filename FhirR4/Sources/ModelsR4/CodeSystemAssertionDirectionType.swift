@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of direction to use for assertion.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/assert-direction-codes
  */
 public enum AssertionDirectionType: String, FHIRPrimitiveType {
-	
+
 	/// The assertion is evaluated on the response. This is the default value.
 	case response = "response"
-	
+
 	/// The assertion is evaluated on the request.
 	case request = "request"
 }

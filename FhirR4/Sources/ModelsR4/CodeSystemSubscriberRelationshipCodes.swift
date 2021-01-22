@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes codes for the relationship between the Subscriber and the Beneficiary (insured/covered
  party/patient).
@@ -27,25 +25,25 @@
  ValueSet: http://hl7.org/fhir/ValueSet/subscriber-relationship
  */
 public enum SubscriberRelationshipCodes: String, FHIRPrimitiveType {
-	
+
 	/// The Beneficiary is a child of the Subscriber
 	case child = "child"
-	
+
 	/// The Beneficiary is a parent of the Subscriber
 	case parent = "parent"
-	
+
 	/// The Beneficiary is a spouse or equivalent of the Subscriber
 	case spouse = "spouse"
-	
+
 	/// The Beneficiary is a common law spouse or equivalent of the Subscriber
 	case common = "common"
-	
+
 	/// The Beneficiary has some other relationship the Subscriber
 	case other = "other"
-	
+
 	/// The Beneficiary is the Subscriber
 	case `self` = "self"
-	
+
 	/// The Beneficiary is covered under insurance of the subscriber due to an injury.
 	case injured = "injured"
 }

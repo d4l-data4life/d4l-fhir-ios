@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The current state of the list.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/list-status
  */
 public enum ListStatus: String, FHIRPrimitiveType {
-	
+
 	/// The list is considered to be an active part of the patient's record.
 	case current = "current"
-	
+
 	/// The list is "old" and should no longer be considered accurate or relevant.
 	case retired = "retired"
-	
+
 	/// The list was never accurate.  It is retained for medico-legal purposes only.
 	case enteredInError = "entered-in-error"
 }

@@ -18,9 +18,8 @@
 
 import Foundation
 
-
 extension DateTime: ExpressibleAsNSDate, ConstructibleFromNSDate {
-	
+
 	public func asNSDate() throws -> Date {
 		let dateComponents = FHIRDateComponents(year: date.year,
 												month: date.month,
@@ -31,7 +30,7 @@ extension DateTime: ExpressibleAsNSDate, ConstructibleFromNSDate {
 												timeZone: timeZone)
 		return try dateComponents.asNSDate()
 	}
-	
+
 	public init(date: Date, timeZone: TimeZone = TimeZone.current) throws {
 		self.timeZone = timeZone
 		self.date = try FHIRDate(date: date, timeZone: timeZone)

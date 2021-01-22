@@ -17,90 +17,88 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific
  date/time. This may result in one or more Encounter(s).
  */
 open class Appointment: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .appointment }
-	
+
 	/// External Ids for this item
 	public var identifier: [Identifier]?
-	
+
 	/// The overall status of the Appointment. Each of the participants has their own participation status which
 	/// indicates their involvement in the process, however this status indicates the shared status.
 	public var status: FHIRPrimitive<AppointmentStatus>
-	
+
 	/// The coded reason for the appointment being cancelled
 	public var cancelationReason: CodeableConcept?
-	
+
 	/// A broad categorization of the service that is to be performed during this appointment
 	public var serviceCategory: [CodeableConcept]?
-	
+
 	/// The specific service that is to be performed during this appointment
 	public var serviceType: [CodeableConcept]?
-	
+
 	/// The specialty of a practitioner that would be required to perform the service requested in this appointment
 	public var specialty: [CodeableConcept]?
-	
+
 	/// The style of appointment or patient that has been booked in the slot (not service type)
 	public var appointmentType: CodeableConcept?
-	
+
 	/// Coded reason this appointment is scheduled
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// Reason the appointment is to take place (resource)
 	public var reasonReference: [Reference]?
-	
+
 	/// Used to make informed decisions if needing to re-prioritize
 	public var priority: FHIRPrimitive<FHIRUnsignedInteger>?
-	
+
 	/// Shown on a subject line in a meeting request, or appointment list
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Additional information to support the appointment
 	public var supportingInformation: [Reference]?
-	
+
 	/// When appointment is to take place
 	public var start: FHIRPrimitive<Instant>?
-	
+
 	/// When appointment is to conclude
 	public var end: FHIRPrimitive<Instant>?
-	
+
 	/// Can be less than start/end (e.g. estimate)
 	public var minutesDuration: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// The slots that this appointment is filling
 	public var slot: [Reference]?
-	
+
 	/// The date that this appointment was initially created
 	public var created: FHIRPrimitive<DateTime>?
-	
+
 	/// Additional comments
 	public var comment: FHIRPrimitive<FHIRString>?
-	
+
 	/// Detailed information and instructions for the patient
 	public var patientInstruction: FHIRPrimitive<FHIRString>?
-	
+
 	/// The service request this appointment is allocated to assess
 	public var basedOn: [Reference]?
-	
+
 	/// Participants involved in appointment
 	public var participant: [AppointmentParticipant]
-	
+
 	/// Potential date/time interval(s) requested to allocate the appointment within
 	public var requestedPeriod: [Period]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(participant: [AppointmentParticipant], status: FHIRPrimitive<AppointmentStatus>) {
 		self.participant = participant
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							appointmentType: CodeableConcept? = nil,
@@ -132,8 +130,7 @@ open class Appointment: DomainResource {
 							start: FHIRPrimitive<Instant>? = nil,
 							status: FHIRPrimitive<AppointmentStatus>,
 							supportingInformation: [Reference]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(participant: participant, status: status)
 		self.appointmentType = appointmentType
 		self.basedOn = basedOn
@@ -164,9 +161,9 @@ open class Appointment: DomainResource {
 		self.supportingInformation = supportingInformation
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case appointmentType
 		case basedOn
@@ -191,11 +188,11 @@ open class Appointment: DomainResource {
 		case status; case _status
 		case supportingInformation
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.appointmentType = try CodeableConcept(from: _container, forKeyIfPresent: .appointmentType)
 		self.basedOn = try [Reference](from: _container, forKeyIfPresent: .basedOn)
@@ -221,11 +218,11 @@ open class Appointment: DomainResource {
 		self.supportingInformation = try [Reference](from: _container, forKeyIfPresent: .supportingInformation)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try appointmentType?.encode(on: &_container, forKey: .appointmentType)
 		try basedOn?.encode(on: &_container, forKey: .basedOn)
@@ -251,9 +248,9 @@ open class Appointment: DomainResource {
 		try supportingInformation?.encode(on: &_container, forKey: .supportingInformation)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Appointment else {
 			return false
@@ -284,7 +281,7 @@ open class Appointment: DomainResource {
 		    && status == _other.status
 		    && supportingInformation == _other.supportingInformation
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(appointmentType)
@@ -318,29 +315,29 @@ open class Appointment: DomainResource {
  List of participants involved in the appointment.
  */
 open class AppointmentParticipant: BackboneElement {
-	
+
 	/// Role of participant in the appointment
 	public var type: [CodeableConcept]?
-	
+
 	/// Person, Location/HealthcareService or Device
 	public var actor: Reference?
-	
+
 	/// Whether this participant is required to be present at the meeting. This covers a use-case where two doctors need
 	/// to meet to discuss the results for a specific patient, and the patient is not required to be present.
 	public var required: FHIRPrimitive<ParticipantRequired>?
-	
+
 	/// Participation status of the actor.
 	public var status: FHIRPrimitive<ParticipationStatus>
-	
+
 	/// Participation period of the actor
 	public var period: Period?
-	
+
 	/// Designated initializer taking all required properties
 	public init(status: FHIRPrimitive<ParticipationStatus>) {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							actor: Reference? = nil,
@@ -350,8 +347,7 @@ open class AppointmentParticipant: BackboneElement {
 							period: Period? = nil,
 							required: FHIRPrimitive<ParticipantRequired>? = nil,
 							status: FHIRPrimitive<ParticipationStatus>,
-							type: [CodeableConcept]? = nil)
-	{
+							type: [CodeableConcept]? = nil) {
 		self.init(status: status)
 		self.actor = actor
 		self.`extension` = `extension`
@@ -361,9 +357,9 @@ open class AppointmentParticipant: BackboneElement {
 		self.required = required
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case actor
 		case period
@@ -371,11 +367,11 @@ open class AppointmentParticipant: BackboneElement {
 		case status; case _status
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.actor = try Reference(from: _container, forKeyIfPresent: .actor)
 		self.period = try Period(from: _container, forKeyIfPresent: .period)
@@ -384,11 +380,11 @@ open class AppointmentParticipant: BackboneElement {
 		self.type = try [CodeableConcept](from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try actor?.encode(on: &_container, forKey: .actor)
 		try period?.encode(on: &_container, forKey: .period)
@@ -397,9 +393,9 @@ open class AppointmentParticipant: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? AppointmentParticipant else {
 			return false
@@ -413,7 +409,7 @@ open class AppointmentParticipant: BackboneElement {
 		    && status == _other.status
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(actor)

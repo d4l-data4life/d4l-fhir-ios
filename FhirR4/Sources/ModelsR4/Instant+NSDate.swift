@@ -18,9 +18,8 @@
 
 import Foundation
 
-
 extension Instant: ExpressibleAsNSDate, ConstructibleFromNSDate {
-	
+
 	public func asNSDate() throws -> Date {
 		let dateComponents = FHIRDateComponents(year: date.year,
 												month: date.month,
@@ -31,7 +30,7 @@ extension Instant: ExpressibleAsNSDate, ConstructibleFromNSDate {
 												timeZone: timeZone)
 		return try dateComponents.asNSDate()
 	}
-	
+
 	public init(date: Date, timeZone: TimeZone = TimeZone.current) throws {
 		let (year, month, day, hour, minute, second) = try FHIRDateComponents.components(from: date, with: timeZone)
 		self.date = InstantDate(year: year, month: month, day: day)

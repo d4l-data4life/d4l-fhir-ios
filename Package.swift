@@ -34,12 +34,18 @@ let package = Package(
             name: "ModelsR4",
             dependencies: ["Data4LifeSDKUtils"],
             path: "FhirR4/Sources",
-            exclude: ["Info.plist"]),
+            exclude: ["Info.plist","Templates"]),
         .testTarget(
             name: "Data4LifeFHIRTests",
             dependencies: ["Data4LifeFHIR"],
             path: "FhirStu3/Tests",
             exclude: ["Info.plist"],
             resources: [.process("Examples")]),
+        .testTarget(
+            name: "ModelsR4Tests",
+            dependencies: ["ModelsR4"],
+            path: "FhirR4/Tests",
+            exclude: ["Info.plist"],
+            resources: [.process("Resources")]),
     ]
 )

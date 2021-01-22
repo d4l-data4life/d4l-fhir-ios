@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Defines selection behavior of a group.
  
@@ -26,24 +24,24 @@
  ValueSet: http://hl7.org/fhir/ValueSet/action-selection-behavior
  */
 public enum ActionSelectionBehavior: String, FHIRPrimitiveType {
-	
+
 	/// Any number of the actions in the group may be chosen, from zero to all.
 	case any = "any"
-	
+
 	/// All the actions in the group must be selected as a single unit.
 	case all = "all"
-	
+
 	/// All the actions in the group are meant to be chosen as a single unit: either all must be selected by the end
 	/// user, or none may be selected.
 	case allOrNone = "all-or-none"
-	
+
 	/// The end user must choose one and only one of the selectable actions in the group. The user SHALL NOT choose none
 	/// of the actions in the group.
 	case exactlyOne = "exactly-one"
-	
+
 	/// The end user may choose zero or at most one of the actions in the group.
 	case atMostOne = "at-most-one"
-	
+
 	/// The end user must choose a minimum of one, and as many additional as desired.
 	case oneOrMore = "one-or-more"
 }

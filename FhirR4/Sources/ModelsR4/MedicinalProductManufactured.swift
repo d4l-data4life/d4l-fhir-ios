@@ -17,44 +17,42 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The manufactured item as contained in the packaged medicinal product.
  */
 open class MedicinalProductManufactured: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .medicinalProductManufactured }
-	
+
 	/// Dose form as manufactured and before any transformation into the pharmaceutical product
 	public var manufacturedDoseForm: CodeableConcept
-	
+
 	/// The “real world” units in which the quantity of the manufactured item is described
 	public var unitOfPresentation: CodeableConcept?
-	
+
 	/// The quantity or "count number" of the manufactured item
 	public var quantity: Quantity
-	
+
 	/// Manufacturer of the item (Note that this should be named "manufacturer" but it currently causes technical
 	/// issues)
 	public var manufacturer: [Reference]?
-	
+
 	/// Ingredient
 	public var ingredient: [Reference]?
-	
+
 	/// Dimensions, color etc.
 	public var physicalCharacteristics: ProdCharacteristic?
-	
+
 	/// Other codeable characteristics
 	public var otherCharacteristics: [CodeableConcept]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(manufacturedDoseForm: CodeableConcept, quantity: Quantity) {
 		self.manufacturedDoseForm = manufacturedDoseForm
 		self.quantity = quantity
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contained: [ResourceProxy]? = nil,
@@ -71,8 +69,7 @@ open class MedicinalProductManufactured: DomainResource {
 							physicalCharacteristics: ProdCharacteristic? = nil,
 							quantity: Quantity,
 							text: Narrative? = nil,
-							unitOfPresentation: CodeableConcept? = nil)
-	{
+							unitOfPresentation: CodeableConcept? = nil) {
 		self.init(manufacturedDoseForm: manufacturedDoseForm, quantity: quantity)
 		self.contained = contained
 		self.`extension` = `extension`
@@ -88,9 +85,9 @@ open class MedicinalProductManufactured: DomainResource {
 		self.text = text
 		self.unitOfPresentation = unitOfPresentation
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case ingredient
 		case manufacturedDoseForm
@@ -100,11 +97,11 @@ open class MedicinalProductManufactured: DomainResource {
 		case quantity
 		case unitOfPresentation
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.ingredient = try [Reference](from: _container, forKeyIfPresent: .ingredient)
 		self.manufacturedDoseForm = try CodeableConcept(from: _container, forKey: .manufacturedDoseForm)
@@ -115,11 +112,11 @@ open class MedicinalProductManufactured: DomainResource {
 		self.unitOfPresentation = try CodeableConcept(from: _container, forKeyIfPresent: .unitOfPresentation)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try ingredient?.encode(on: &_container, forKey: .ingredient)
 		try manufacturedDoseForm.encode(on: &_container, forKey: .manufacturedDoseForm)
@@ -130,9 +127,9 @@ open class MedicinalProductManufactured: DomainResource {
 		try unitOfPresentation?.encode(on: &_container, forKey: .unitOfPresentation)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductManufactured else {
 			return false
@@ -148,7 +145,7 @@ open class MedicinalProductManufactured: DomainResource {
 		    && quantity == _other.quantity
 		    && unitOfPresentation == _other.unitOfPresentation
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(ingredient)

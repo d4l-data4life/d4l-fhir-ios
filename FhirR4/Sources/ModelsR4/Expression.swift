@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  An expression that can be used to generate a value.
  
@@ -26,28 +24,28 @@
  specify the context in which the expression is evaluated, and how the result of the expression is used.
  */
 open class Expression: Element {
-	
+
 	/// Natural language description of the condition
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Short name assigned to expression for reuse
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// text/cql | text/fhirpath | application/x-fhir-query | etc.
 	public var language: FHIRPrimitive<FHIRString>
-	
+
 	/// Expression in specified language
 	public var expression: FHIRPrimitive<FHIRString>?
-	
+
 	/// Where the expression is found
 	public var reference: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(language: FHIRPrimitive<FHIRString>) {
 		self.language = language
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							description_fhir: FHIRPrimitive<FHIRString>? = nil,
@@ -56,8 +54,7 @@ open class Expression: Element {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							language: FHIRPrimitive<FHIRString>,
 							name: FHIRPrimitive<FHIRString>? = nil,
-							reference: FHIRPrimitive<FHIRURI>? = nil)
-	{
+							reference: FHIRPrimitive<FHIRURI>? = nil) {
 		self.init(language: language)
 		self.description_fhir = description_fhir
 		self.expression = expression
@@ -66,9 +63,9 @@ open class Expression: Element {
 		self.name = name
 		self.reference = reference
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case description_fhir = "description"; case _description_fhir = "_description"
 		case expression; case _expression
@@ -76,11 +73,11 @@ open class Expression: Element {
 		case name; case _name
 		case reference; case _reference
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.expression = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .expression, auxiliaryKey: ._expression)
@@ -89,11 +86,11 @@ open class Expression: Element {
 		self.reference = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .reference, auxiliaryKey: ._reference)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try description_fhir?.encode(on: &_container, forKey: .description_fhir, auxiliaryKey: ._description_fhir)
 		try expression?.encode(on: &_container, forKey: .expression, auxiliaryKey: ._expression)
@@ -102,9 +99,9 @@ open class Expression: Element {
 		try reference?.encode(on: &_container, forKey: .reference, auxiliaryKey: ._reference)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Expression else {
 			return false
@@ -118,7 +115,7 @@ open class Expression: Element {
 		    && name == _other.name
 		    && reference == _other.reference
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(description_fhir)

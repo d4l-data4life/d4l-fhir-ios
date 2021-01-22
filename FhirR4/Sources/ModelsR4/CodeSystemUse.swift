@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The purpose of the Claim: predetermination, preauthorization, claim.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/claim-use
  */
 public enum Use: String, FHIRPrimitiveType {
-	
+
 	/// The treatment is complete and this represents a Claim for the services.
 	case claim = "claim"
-	
+
 	/// The treatment is proposed and this represents a Pre-authorization for the services.
 	case preauthorization = "preauthorization"
-	
+
 	/// The treatment is proposed and this represents a Pre-determination for the services.
 	case predetermination = "predetermination"
 }

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The verification status to support or decline the clinical status of the condition or diagnosis.
  
@@ -26,23 +24,23 @@
  ValueSet: http://hl7.org/fhir/ValueSet/condition-ver-status
  */
 public enum ConditionVerificationStatus: String, FHIRPrimitiveType {
-	
+
 	/// There is not sufficient diagnostic and/or clinical evidence to treat this as a confirmed condition.
 	case unconfirmed = "unconfirmed"
-	
+
 	/// This is a tentative diagnosis - still a candidate that is under consideration.
 	case provisional = "provisional"
-	
+
 	/// One of a set of potential (and typically mutually exclusive) diagnoses asserted to further guide the diagnostic
 	/// process and preliminary treatment.
 	case differential = "differential"
-	
+
 	/// There is sufficient diagnostic and/or clinical evidence to treat this as a confirmed condition.
 	case confirmed = "confirmed"
-	
+
 	/// This condition has been ruled out by diagnostic and clinical evidence.
 	case refuted = "refuted"
-	
+
 	/// The statement was entered in error and is not valid.
 	case enteredInError = "entered-in-error"
 }

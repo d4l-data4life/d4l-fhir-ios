@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The reason why the supply item was requested.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/supplyrequest-reason
  */
 public enum SupplyRequestReason: String, FHIRPrimitiveType {
-	
+
 	/// The supply has been requested for use in direct patient care.
 	case patientCare = "patient-care"
-	
+
 	/// The supply has been requested for creating or replenishing ward stock.
 	case wardStock = "ward-stock"
 }

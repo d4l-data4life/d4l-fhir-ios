@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The kind of dose or rate specified.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/dose-rate-type
  */
 public enum DoseAndRateType: String, FHIRPrimitiveType {
-	
+
 	/// The dose specified is calculated by the prescriber or the system.
 	case calculated = "calculated"
-	
+
 	/// The dose specified is as ordered by the prescriber.
 	case ordered = "ordered"
 }

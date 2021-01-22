@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The methods of referral can be used when referring to a specific HealthCareService resource.
  
@@ -26,21 +24,21 @@
  ValueSet: http://hl7.org/fhir/ValueSet/service-referral-method
  */
 public enum ReferralMethod: String, FHIRPrimitiveType {
-	
+
 	/// Referrals may be accepted by fax.
 	case fax = "fax"
-	
+
 	/// Referrals may be accepted over the phone from a practitioner.
 	case phone = "phone"
-	
+
 	/// Referrals may be accepted via a secure messaging system. To determine the types of secure messaging systems
 	/// supported, refer to the identifiers collection. Callers will need to understand the specific identifier system
 	/// used to know that they are able to transmit messages.
 	case elec = "elec"
-	
+
 	/// Referrals may be accepted via a secure email. To send please encrypt with the services public key.
 	case semail = "semail"
-	
+
 	/// Referrals may be accepted via regular postage (or hand delivered).
 	case mail = "mail"
 }

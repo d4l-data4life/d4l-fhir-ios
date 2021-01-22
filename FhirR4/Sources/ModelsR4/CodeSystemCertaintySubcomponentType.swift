@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The subcomponent classification of quality of evidence rating systems.
  
@@ -26,28 +24,28 @@
  ValueSet: http://hl7.org/fhir/ValueSet/certainty-subcomponent-type
  */
 public enum CertaintySubcomponentType: String, FHIRPrimitiveType {
-	
+
 	/// methodologic concerns reducing internal validity.
 	case riskOfBias = "RiskOfBias"
-	
+
 	/// concerns that findings are not similar enough to support certainty.
 	case inconsistency = "Inconsistency"
-	
+
 	/// concerns reducing external validity.
 	case indirectness = "Indirectness"
-	
+
 	/// High quality evidence.
 	case imprecision = "Imprecision"
-	
+
 	/// likelihood that what is published misrepresents what is available to publish.
 	case publicationBias = "PublicationBias"
-	
+
 	/// higher certainty due to dose response relationship.
 	case doseResponseGradient = "DoseResponseGradient"
-	
+
 	/// higher certainty due to risk of bias in opposite direction.
 	case plausibleConfounding = "PlausibleConfounding"
-	
+
 	/// higher certainty due to large effect size.
 	case largeEffect = "LargeEffect"
 }

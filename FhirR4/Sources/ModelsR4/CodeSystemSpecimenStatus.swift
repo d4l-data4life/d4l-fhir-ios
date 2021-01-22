@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes providing the status/availability of a specimen.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/specimen-status
  */
 public enum SpecimenStatus: String, FHIRPrimitiveType {
-	
+
 	/// The physical specimen is present and in good condition.
 	case available = "available"
-	
+
 	/// There is no physical specimen because it is either lost, destroyed or consumed.
 	case unavailable = "unavailable"
-	
+
 	/// The specimen cannot be used because of a quality issue such as a broken container, contamination, or too old.
 	case unsatisfactory = "unsatisfactory"
-	
+
 	/// The specimen was entered in error and therefore nullified.
 	case enteredInError = "entered-in-error"
 }

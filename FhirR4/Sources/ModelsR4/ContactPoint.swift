@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Details of a Technology mediated contact point (phone, fax, email, etc.).
  
@@ -26,27 +24,27 @@
  etc.
  */
 open class ContactPoint: Element {
-	
+
 	/// Telecommunications form for contact point - what communications system is required to make use of the contact.
 	public var system: FHIRPrimitive<ContactPointSystem>?
-	
+
 	/// The actual contact point details
 	public var value: FHIRPrimitive<FHIRString>?
-	
+
 	/// Identifies the purpose for the contact point.
 	public var use: FHIRPrimitive<ContactPointUse>?
-	
+
 	/// Specify preferred order of use (1 = highest)
 	public var rank: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// Time period when the contact point was/is in use
 	public var period: Period?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -55,8 +53,7 @@ open class ContactPoint: Element {
 							rank: FHIRPrimitive<FHIRPositiveInteger>? = nil,
 							system: FHIRPrimitive<ContactPointSystem>? = nil,
 							use: FHIRPrimitive<ContactPointUse>? = nil,
-							value: FHIRPrimitive<FHIRString>? = nil)
-	{
+							value: FHIRPrimitive<FHIRString>? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.id = id
@@ -66,9 +63,9 @@ open class ContactPoint: Element {
 		self.use = use
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case period
 		case rank; case _rank
@@ -76,11 +73,11 @@ open class ContactPoint: Element {
 		case use; case _use
 		case value; case _value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.period = try Period(from: _container, forKeyIfPresent: .period)
 		self.rank = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKeyIfPresent: .rank, auxiliaryKey: ._rank)
@@ -89,11 +86,11 @@ open class ContactPoint: Element {
 		self.value = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .value, auxiliaryKey: ._value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try period?.encode(on: &_container, forKey: .period)
 		try rank?.encode(on: &_container, forKey: .rank, auxiliaryKey: ._rank)
@@ -102,9 +99,9 @@ open class ContactPoint: Element {
 		try value?.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ContactPoint else {
 			return false
@@ -118,7 +115,7 @@ open class ContactPoint: Element {
 		    && use == _other.use
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(period)

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The current status of the test report.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/report-status-codes
  */
 public enum TestReportStatus: String, FHIRPrimitiveType {
-	
+
 	/// All test operations have completed.
 	case completed = "completed"
-	
+
 	/// A test operations is currently executing.
 	case inProgress = "in-progress"
-	
+
 	/// A test operation is waiting for an external client request.
 	case waiting = "waiting"
-	
+
 	/// The test script execution was manually stopped.
 	case stopped = "stopped"
-	
+
 	/// This test report was entered or created in error.
 	case enteredInError = "entered-in-error"
 }

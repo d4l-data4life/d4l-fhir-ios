@@ -17,52 +17,50 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A generic person record.
  
  Demographics and administrative information about a person independent of a specific health-related context.
  */
 open class Person: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .person }
-	
+
 	/// A human identifier for this person
 	public var identifier: [Identifier]?
-	
+
 	/// A name associated with the person
 	public var name: [HumanName]?
-	
+
 	/// A contact detail for the person
 	public var telecom: [ContactPoint]?
-	
+
 	/// Administrative Gender.
 	public var gender: FHIRPrimitive<AdministrativeGender>?
-	
+
 	/// The date on which the person was born
 	public var birthDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// One or more addresses for the person
 	public var address: [Address]?
-	
+
 	/// Image of the person
 	public var photo: Attachment?
-	
+
 	/// The organization that is the custodian of the person record
 	public var managingOrganization: Reference?
-	
+
 	/// This person's record is in active use
 	public var active: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Link to a resource that concerns the same actual person
 	public var link: [PersonLink]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							active: FHIRPrimitive<FHIRBool>? = nil,
@@ -82,8 +80,7 @@ open class Person: DomainResource {
 							name: [HumanName]? = nil,
 							photo: Attachment? = nil,
 							telecom: [ContactPoint]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init()
 		self.active = active
 		self.address = address
@@ -104,9 +101,9 @@ open class Person: DomainResource {
 		self.telecom = telecom
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case active; case _active
 		case address
@@ -119,11 +116,11 @@ open class Person: DomainResource {
 		case photo
 		case telecom
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.active = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .active, auxiliaryKey: ._active)
 		self.address = try [Address](from: _container, forKeyIfPresent: .address)
@@ -137,11 +134,11 @@ open class Person: DomainResource {
 		self.telecom = try [ContactPoint](from: _container, forKeyIfPresent: .telecom)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try active?.encode(on: &_container, forKey: .active, auxiliaryKey: ._active)
 		try address?.encode(on: &_container, forKey: .address)
@@ -155,9 +152,9 @@ open class Person: DomainResource {
 		try telecom?.encode(on: &_container, forKey: .telecom)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Person else {
 			return false
@@ -176,7 +173,7 @@ open class Person: DomainResource {
 		    && photo == _other.photo
 		    && telecom == _other.telecom
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(active)
@@ -196,63 +193,62 @@ open class Person: DomainResource {
  Link to a resource that concerns the same actual person.
  */
 open class PersonLink: BackboneElement {
-	
+
 	/// The resource to which this actual person is associated
 	public var target: Reference
-	
+
 	/// Level of assurance that this link is associated with the target resource.
 	public var assurance: FHIRPrimitive<IdentityAssuranceLevel>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(target: Reference) {
 		self.target = target
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							assurance: FHIRPrimitive<IdentityAssuranceLevel>? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							target: Reference)
-	{
+							target: Reference) {
 		self.init(target: target)
 		self.assurance = assurance
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case assurance; case _assurance
 		case target
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.assurance = try FHIRPrimitive<IdentityAssuranceLevel>(from: _container, forKeyIfPresent: .assurance, auxiliaryKey: ._assurance)
 		self.target = try Reference(from: _container, forKey: .target)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try assurance?.encode(on: &_container, forKey: .assurance, auxiliaryKey: ._assurance)
 		try target.encode(on: &_container, forKey: .target)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PersonLink else {
 			return false
@@ -263,7 +259,7 @@ open class PersonLink: BackboneElement {
 		return assurance == _other.assurance
 		    && target == _other.target
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(assurance)

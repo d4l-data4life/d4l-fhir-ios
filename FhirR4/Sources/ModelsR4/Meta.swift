@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Metadata about a resource.
  
@@ -26,30 +24,30 @@
  content might not always be associated with version changes to the resource.
  */
 open class Meta: Element {
-	
+
 	/// Version specific identifier
 	public var versionId: FHIRPrimitive<FHIRString>?
-	
+
 	/// When the resource version last changed
 	public var lastUpdated: FHIRPrimitive<Instant>?
-	
+
 	/// Identifies where the resource comes from
 	public var source: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Profiles this resource claims to conform to
 	public var profile: [FHIRPrimitive<Canonical>]?
-	
+
 	/// Security Labels applied to this resource
 	public var security: [Coding]?
-	
+
 	/// Tags applied to this resource
 	public var tag: [Coding]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -59,8 +57,7 @@ open class Meta: Element {
 							security: [Coding]? = nil,
 							source: FHIRPrimitive<FHIRURI>? = nil,
 							tag: [Coding]? = nil,
-							versionId: FHIRPrimitive<FHIRString>? = nil)
-	{
+							versionId: FHIRPrimitive<FHIRString>? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.id = id
@@ -71,9 +68,9 @@ open class Meta: Element {
 		self.tag = tag
 		self.versionId = versionId
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case lastUpdated; case _lastUpdated
 		case profile; case _profile
@@ -82,11 +79,11 @@ open class Meta: Element {
 		case tag
 		case versionId; case _versionId
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.lastUpdated = try FHIRPrimitive<Instant>(from: _container, forKeyIfPresent: .lastUpdated, auxiliaryKey: ._lastUpdated)
 		self.profile = try [FHIRPrimitive<Canonical>](from: _container, forKeyIfPresent: .profile, auxiliaryKey: ._profile)
@@ -96,11 +93,11 @@ open class Meta: Element {
 		self.versionId = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .versionId, auxiliaryKey: ._versionId)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try lastUpdated?.encode(on: &_container, forKey: .lastUpdated, auxiliaryKey: ._lastUpdated)
 		try profile?.encode(on: &_container, forKey: .profile, auxiliaryKey: ._profile)
@@ -110,9 +107,9 @@ open class Meta: Element {
 		try versionId?.encode(on: &_container, forKey: .versionId, auxiliaryKey: ._versionId)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Meta else {
 			return false
@@ -127,7 +124,7 @@ open class Meta: Element {
 		    && tag == _other.tag
 		    && versionId == _other.versionId
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(lastUpdated)

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes for general categories of communications such as alerts, instructions, etc.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/communication-category
  */
 public enum CommunicationCategory: String, FHIRPrimitiveType {
-	
+
 	/// The communication conveys an alert.
 	case alert = "alert"
-	
+
 	/// The communication conveys a notification.
 	case notification = "notification"
-	
+
 	/// The communication conveys a reminder.
 	case reminder = "reminder"
-	
+
 	/// The communication conveys an instruction.
 	case instruction = "instruction"
 }

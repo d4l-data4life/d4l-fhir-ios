@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How a rule statement is applied, such as adding additional consent or removing consent.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/consent-provision-type
  */
 public enum ConsentProvisionType: String, FHIRPrimitiveType {
-	
+
 	/// Consent is denied for actions meeting these rules.
 	case deny = "deny"
-	
+
 	/// Consent is provided for actions meeting these rules.
 	case permit = "permit"
 }

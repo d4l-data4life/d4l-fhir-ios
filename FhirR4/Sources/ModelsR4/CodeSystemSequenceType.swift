@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Type if a sequence -- DNA, RNA, or amino acid sequence.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/sequence-type
  */
 public enum SequenceType: String, FHIRPrimitiveType {
-	
+
 	/// Amino acid sequence.
 	case aa = "aa"
-	
+
 	/// DNA Sequence.
 	case dna = "dna"
-	
+
 	/// RNA Sequence.
 	case rna = "rna"
 }

@@ -21,12 +21,12 @@ import Foundation
 public struct FHIRParserErrorPosition: CustomStringConvertible {
 	public let string: String
 	public let location: Int
-	
+
 	public init(string: String, location: Int) {
 		self.string = string
 		self.location = location
 	}
-	
+
 	public var description: String {
 		return "[\(location)] in “\(string)”"
 	}
@@ -60,7 +60,7 @@ public enum FHIRDateParserError: LocalizedError {
 	case invalidTimeZoneHour(FHIRParserErrorPosition)
 	case invalidTimeZoneMinute(FHIRParserErrorPosition)
 	case additionalCharacters(FHIRParserErrorPosition)
-	
+
 	public var errorDescription: String? {
 		switch self {
 		case .invalidSeparator(let position):
@@ -87,7 +87,7 @@ public enum FHIRDateParserError: LocalizedError {
 			return "Unexpected characters after \(position)"
 		}
 	}
-	
+
 	public var errorPosition: FHIRParserErrorPosition {
 		switch self {
 		case .invalidSeparator(let position):

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A person that is related to a patient, but who is not a direct target of care.
  
@@ -26,52 +24,52 @@
  a formal responsibility in the care process.
  */
 open class RelatedPerson: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .relatedPerson }
-	
+
 	/// A human identifier for this person
 	public var identifier: [Identifier]?
-	
+
 	/// Whether this related person's record is in active use
 	public var active: FHIRPrimitive<FHIRBool>?
-	
+
 	/// The patient this person is related to
 	public var patient: Reference
-	
+
 	/// The nature of the relationship
 	public var relationship: [CodeableConcept]?
-	
+
 	/// A name associated with the person
 	public var name: [HumanName]?
-	
+
 	/// A contact detail for the person
 	public var telecom: [ContactPoint]?
-	
+
 	/// Administrative Gender - the gender that the person is considered to have for administration and record keeping
 	/// purposes.
 	public var gender: FHIRPrimitive<AdministrativeGender>?
-	
+
 	/// The date on which the related person was born
 	public var birthDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// Address where the related person can be contacted or visited
 	public var address: [Address]?
-	
+
 	/// Image of the person
 	public var photo: [Attachment]?
-	
+
 	/// Period of time that this relationship is considered valid
 	public var period: Period?
-	
+
 	/// A language which may be used to communicate with about the patient's health
 	public var communication: [RelatedPersonCommunication]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(patient: Reference) {
 		self.patient = patient
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							active: FHIRPrimitive<FHIRBool>? = nil,
@@ -93,8 +91,7 @@ open class RelatedPerson: DomainResource {
 							photo: [Attachment]? = nil,
 							relationship: [CodeableConcept]? = nil,
 							telecom: [ContactPoint]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(patient: patient)
 		self.active = active
 		self.address = address
@@ -116,9 +113,9 @@ open class RelatedPerson: DomainResource {
 		self.telecom = telecom
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case active; case _active
 		case address
@@ -133,11 +130,11 @@ open class RelatedPerson: DomainResource {
 		case relationship
 		case telecom
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.active = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .active, auxiliaryKey: ._active)
 		self.address = try [Address](from: _container, forKeyIfPresent: .address)
@@ -153,11 +150,11 @@ open class RelatedPerson: DomainResource {
 		self.telecom = try [ContactPoint](from: _container, forKeyIfPresent: .telecom)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try active?.encode(on: &_container, forKey: .active, auxiliaryKey: ._active)
 		try address?.encode(on: &_container, forKey: .address)
@@ -173,9 +170,9 @@ open class RelatedPerson: DomainResource {
 		try telecom?.encode(on: &_container, forKey: .telecom)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? RelatedPerson else {
 			return false
@@ -196,7 +193,7 @@ open class RelatedPerson: DomainResource {
 		    && relationship == _other.relationship
 		    && telecom == _other.telecom
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(active)
@@ -218,63 +215,62 @@ open class RelatedPerson: DomainResource {
  A language which may be used to communicate with about the patient's health.
  */
 open class RelatedPersonCommunication: BackboneElement {
-	
+
 	/// The language which can be used to communicate with the patient about his or her health
 	public var language: CodeableConcept
-	
+
 	/// Language preference indicator
 	public var preferred: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(language: CodeableConcept) {
 		self.language = language
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							language: CodeableConcept,
 							modifierExtension: [Extension]? = nil,
-							preferred: FHIRPrimitive<FHIRBool>? = nil)
-	{
+							preferred: FHIRPrimitive<FHIRBool>? = nil) {
 		self.init(language: language)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.preferred = preferred
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case language
 		case preferred; case _preferred
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.language = try CodeableConcept(from: _container, forKey: .language)
 		self.preferred = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .preferred, auxiliaryKey: ._preferred)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try language.encode(on: &_container, forKey: .language)
 		try preferred?.encode(on: &_container, forKey: .preferred, auxiliaryKey: ._preferred)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? RelatedPersonCommunication else {
 			return false
@@ -285,7 +281,7 @@ open class RelatedPersonCommunication: BackboneElement {
 		return language == _other.language
 		    && preferred == _other.preferred
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(language)

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes Coverage Class codes.
  
@@ -26,37 +24,37 @@
  ValueSet: http://hl7.org/fhir/ValueSet/coverage-class
  */
 public enum CoverageClassCodes: String, FHIRPrimitiveType {
-	
+
 	/// An employee group
 	case group = "group"
-	
+
 	/// A sub-group of an employee group
 	case subgroup = "subgroup"
-	
+
 	/// A specific suite of benefits.
 	case plan = "plan"
-	
+
 	/// A subset of a specific suite of benefits.
 	case subplan = "subplan"
-	
+
 	/// A class of benefits.
 	case `class` = "class"
-	
+
 	/// A subset of a class of benefits.
 	case subclass = "subclass"
-	
+
 	/// A sequence number associated with a short-term continuance of the coverage.
 	case sequence = "sequence"
-	
+
 	/// Pharmacy benefit manager's Business Identification Number.
 	case rxbin = "rxbin"
-	
+
 	/// A Pharmacy Benefit Manager specified Processor Control Number.
 	case rxpcn = "rxpcn"
-	
+
 	/// A Pharmacy Benefit Manager specified Member ID.
 	case rxid = "rxid"
-	
+
 	/// A Pharmacy Benefit Manager specified Group number.
 	case rxgroup = "rxgroup"
 }

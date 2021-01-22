@@ -17,30 +17,28 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This example value set defines a set of codes that can be used to indicate the role of a Practitioner.
  
  URL: http://terminology.hl7.org/CodeSystem/practitioner-role
  */
 public enum PractitionerRoleCodes: String, FHIRPrimitiveType {
-	
+
 	/// A qualified/registered medical practitioner
 	case doctor = "doctor"
-	
+
 	/// A practitioner with nursing experience that may be qualified/registered
 	case nurse = "nurse"
-	
+
 	/// A qualified/registered/licensed pharmacist
 	case pharmacist = "pharmacist"
-	
+
 	/// A practitioner that may perform research
 	case researcher = "researcher"
-	
+
 	/// Someone who is able to provide educational services
 	case teacher = "teacher"
-	
+
 	/// Someone who is qualified in Information and Communication Technologies
 	case ict = "ict"
 }

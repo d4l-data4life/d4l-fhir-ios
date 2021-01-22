@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Immunization evaluation information.
  
@@ -26,63 +24,63 @@
  "valid" in relation to those  recommendations.
  */
 open class ImmunizationEvaluation: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .immunizationEvaluation }
-	
+
 	/// All possible types for "doseNumber[x]"
 	public enum DoseNumberX: Hashable {
 		case positiveInt(FHIRPrimitive<FHIRPositiveInteger>)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// All possible types for "seriesDoses[x]"
 	public enum SeriesDosesX: Hashable {
 		case positiveInt(FHIRPrimitive<FHIRPositiveInteger>)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Business identifier
 	public var identifier: [Identifier]?
-	
+
 	/// Indicates the current status of the evaluation of the vaccination administration event.
 	/// Restricted to: ['completed', 'entered-in-error']
 	public var status: FHIRPrimitive<MedicationAdministrationStatusCodes>
-	
+
 	/// Who this evaluation is for
 	public var patient: Reference
-	
+
 	/// Date evaluation was performed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Who is responsible for publishing the recommendations
 	public var authority: Reference?
-	
+
 	/// Evaluation target disease
 	public var targetDisease: CodeableConcept
-	
+
 	/// Immunization being evaluated
 	public var immunizationEvent: Reference
-	
+
 	/// Status of the dose relative to published recommendations
 	public var doseStatus: CodeableConcept
-	
+
 	/// Reason for the dose status
 	public var doseStatusReason: [CodeableConcept]?
-	
+
 	/// Evaluation notes
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name of vaccine series
 	public var series: FHIRPrimitive<FHIRString>?
-	
+
 	/// Dose number within series
 	/// One of `doseNumber[x]`
 	public var doseNumber: DoseNumberX?
-	
+
 	/// Recommended number of doses for immunity
 	/// One of `seriesDoses[x]`
 	public var seriesDoses: SeriesDosesX?
-	
+
 	/// Designated initializer taking all required properties
 	public init(doseStatus: CodeableConcept, immunizationEvent: Reference, patient: Reference, status: FHIRPrimitive<MedicationAdministrationStatusCodes>, targetDisease: CodeableConcept) {
 		self.doseStatus = doseStatus
@@ -92,7 +90,7 @@ open class ImmunizationEvaluation: DomainResource {
 		self.targetDisease = targetDisease
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							authority: Reference? = nil,
@@ -115,8 +113,7 @@ open class ImmunizationEvaluation: DomainResource {
 							seriesDoses: SeriesDosesX? = nil,
 							status: FHIRPrimitive<MedicationAdministrationStatusCodes>,
 							targetDisease: CodeableConcept,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(doseStatus: doseStatus, immunizationEvent: immunizationEvent, patient: patient, status: status, targetDisease: targetDisease)
 		self.authority = authority
 		self.contained = contained
@@ -135,9 +132,9 @@ open class ImmunizationEvaluation: DomainResource {
 		self.seriesDoses = seriesDoses
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case authority
 		case date; case _date
@@ -155,16 +152,16 @@ open class ImmunizationEvaluation: DomainResource {
 		case status; case _status
 		case targetDisease
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.authority = try Reference(from: _container, forKeyIfPresent: .authority)
 		self.date = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
-		var _t_doseNumber: DoseNumberX? = nil
+		var _t_doseNumber: DoseNumberX?
 		if let doseNumberPositiveInt = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKeyIfPresent: .doseNumberPositiveInt, auxiliaryKey: ._doseNumberPositiveInt) {
 			if _t_doseNumber != nil {
 				throw DecodingError.dataCorruptedError(forKey: .doseNumberPositiveInt, in: _container, debugDescription: "More than one value provided for \"doseNumber\"")
@@ -184,7 +181,7 @@ open class ImmunizationEvaluation: DomainResource {
 		self.immunizationEvent = try Reference(from: _container, forKey: .immunizationEvent)
 		self.patient = try Reference(from: _container, forKey: .patient)
 		self.series = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .series, auxiliaryKey: ._series)
-		var _t_seriesDoses: SeriesDosesX? = nil
+		var _t_seriesDoses: SeriesDosesX?
 		if let seriesDosesPositiveInt = try FHIRPrimitive<FHIRPositiveInteger>(from: _container, forKeyIfPresent: .seriesDosesPositiveInt, auxiliaryKey: ._seriesDosesPositiveInt) {
 			if _t_seriesDoses != nil {
 				throw DecodingError.dataCorruptedError(forKey: .seriesDosesPositiveInt, in: _container, debugDescription: "More than one value provided for \"seriesDoses\"")
@@ -202,11 +199,11 @@ open class ImmunizationEvaluation: DomainResource {
 		self.targetDisease = try CodeableConcept(from: _container, forKey: .targetDisease)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try authority?.encode(on: &_container, forKey: .authority)
 		try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
@@ -237,9 +234,9 @@ open class ImmunizationEvaluation: DomainResource {
 		try targetDisease.encode(on: &_container, forKey: .targetDisease)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ImmunizationEvaluation else {
 			return false
@@ -261,7 +258,7 @@ open class ImmunizationEvaluation: DomainResource {
 		    && status == _other.status
 		    && targetDisease == _other.targetDisease
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(authority)

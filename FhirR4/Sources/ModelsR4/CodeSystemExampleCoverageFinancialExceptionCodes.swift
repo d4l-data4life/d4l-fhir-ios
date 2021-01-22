@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes Example Coverage Financial Exception Codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/coverage-financial-exception
  */
 public enum ExampleCoverageFinancialExceptionCodes: String, FHIRPrimitiveType {
-	
+
 	/// Retired persons have all copays and deductibles reduced.
 	case retired = "retired"
-	
+
 	/// Children in the foster care have all copays and deductibles waived.
 	case foster = "foster"
 }

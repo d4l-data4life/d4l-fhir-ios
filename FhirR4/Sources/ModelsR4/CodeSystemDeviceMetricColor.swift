@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Describes the typical color of representation.
  
@@ -26,28 +24,28 @@
  ValueSet: http://hl7.org/fhir/ValueSet/metric-color
  */
 public enum DeviceMetricColor: String, FHIRPrimitiveType {
-	
+
 	/// Color for representation - black.
 	case black = "black"
-	
+
 	/// Color for representation - red.
 	case red = "red"
-	
+
 	/// Color for representation - green.
 	case green = "green"
-	
+
 	/// Color for representation - yellow.
 	case yellow = "yellow"
-	
+
 	/// Color for representation - blue.
 	case blue = "blue"
-	
+
 	/// Color for representation - magenta.
 	case magenta = "magenta"
-	
+
 	/// Color for representation - cyan.
 	case cyan = "cyan"
-	
+
 	/// Color for representation - white.
 	case white = "white"
 }

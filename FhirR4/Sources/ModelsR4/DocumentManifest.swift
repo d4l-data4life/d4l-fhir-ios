@@ -17,60 +17,58 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A list that defines a set of documents.
  
  A collection of documents compiled for a purpose together with metadata that applies to the collection.
  */
 open class DocumentManifest: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .documentManifest }
-	
+
 	/// Unique Identifier for the set of documents
 	public var masterIdentifier: Identifier?
-	
+
 	/// Other identifiers for the manifest
 	public var identifier: [Identifier]?
-	
+
 	/// The status of this document manifest.
 	public var status: FHIRPrimitive<DocumentReferenceStatus>
-	
+
 	/// Kind of document set
 	public var type: CodeableConcept?
-	
+
 	/// The subject of the set of documents
 	public var subject: Reference?
-	
+
 	/// When this document manifest created
 	public var created: FHIRPrimitive<DateTime>?
-	
+
 	/// Who and/or what authored the DocumentManifest
 	public var author: [Reference]?
-	
+
 	/// Intended to get notified about this set of documents
 	public var recipient: [Reference]?
-	
+
 	/// The source system/application/software
 	public var source: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Human-readable description (title)
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Items in manifest
 	public var content: [Reference]
-	
+
 	/// Related things
 	public var related: [DocumentManifestRelated]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(content: [Reference], status: FHIRPrimitive<DocumentReferenceStatus>) {
 		self.content = content
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							author: [Reference]? = nil,
@@ -92,8 +90,7 @@ open class DocumentManifest: DomainResource {
 							status: FHIRPrimitive<DocumentReferenceStatus>,
 							subject: Reference? = nil,
 							text: Narrative? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init(content: content, status: status)
 		self.author = author
 		self.contained = contained
@@ -114,9 +111,9 @@ open class DocumentManifest: DomainResource {
 		self.text = text
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case author
 		case content
@@ -131,11 +128,11 @@ open class DocumentManifest: DomainResource {
 		case subject
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.author = try [Reference](from: _container, forKeyIfPresent: .author)
 		self.content = try [Reference](from: _container, forKey: .content)
@@ -151,11 +148,11 @@ open class DocumentManifest: DomainResource {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try author?.encode(on: &_container, forKey: .author)
 		try content.encode(on: &_container, forKey: .content)
@@ -171,9 +168,9 @@ open class DocumentManifest: DomainResource {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DocumentManifest else {
 			return false
@@ -194,7 +191,7 @@ open class DocumentManifest: DomainResource {
 		    && subject == _other.subject
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(author)
@@ -218,26 +215,25 @@ open class DocumentManifest: DomainResource {
  Related identifiers or resources associated with the DocumentManifest.
  */
 open class DocumentManifestRelated: BackboneElement {
-	
+
 	/// Identifiers of things that are related
 	public var identifier: Identifier?
-	
+
 	/// Related Resource
 	public var ref: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							identifier: Identifier? = nil,
 							modifierExtension: [Extension]? = nil,
-							ref: Reference? = nil)
-	{
+							ref: Reference? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.id = id
@@ -245,36 +241,36 @@ open class DocumentManifestRelated: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.ref = ref
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case identifier
 		case ref
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.identifier = try Identifier(from: _container, forKeyIfPresent: .identifier)
 		self.ref = try Reference(from: _container, forKeyIfPresent: .ref)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try identifier?.encode(on: &_container, forKey: .identifier)
 		try ref?.encode(on: &_container, forKey: .ref)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DocumentManifestRelated else {
 			return false
@@ -285,7 +281,7 @@ open class DocumentManifestRelated: BackboneElement {
 		return identifier == _other.identifier
 		    && ref == _other.ref
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(identifier)

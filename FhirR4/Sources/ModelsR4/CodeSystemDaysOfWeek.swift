@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The days of the week.
  
@@ -26,25 +24,25 @@
  ValueSet: http://hl7.org/fhir/ValueSet/days-of-week
  */
 public enum DaysOfWeek: String, FHIRPrimitiveType {
-	
+
 	/// Monday.
 	case mon = "mon"
-	
+
 	/// Tuesday.
 	case tue = "tue"
-	
+
 	/// Wednesday.
 	case wed = "wed"
-	
+
 	/// Thursday.
 	case thu = "thu"
-	
+
 	/// Friday.
 	case fri = "fri"
-	
+
 	/// Saturday.
 	case sat = "sat"
-	
+
 	/// Sunday.
 	case sun = "sun"
 }

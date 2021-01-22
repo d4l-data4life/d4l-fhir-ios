@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Defines behavior for an action or a group for how many times that item may be repeated.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/action-cardinality-behavior
  */
 public enum ActionCardinalityBehavior: String, FHIRPrimitiveType {
-	
+
 	/// The action may only be selected one time.
 	case single = "single"
-	
+
 	/// The action may be selected multiple times.
 	case multiple = "multiple"
 }

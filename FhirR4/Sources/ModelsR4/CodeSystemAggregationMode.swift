@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How resource references can be aggregated.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/resource-aggregation-mode
  */
 public enum AggregationMode: String, FHIRPrimitiveType {
-	
+
 	/// The reference is a local reference to a contained resource.
 	case contained = "contained"
-	
+
 	/// The reference to a resource that has to be resolved externally to the resource that includes the reference.
 	case referenced = "referenced"
-	
+
 	/// The resource the reference points to will be found in the same bundle as the resource that includes the
 	/// reference.
 	case bundled = "bundled"

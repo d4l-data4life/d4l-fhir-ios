@@ -17,37 +17,35 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Detailed information about the type of the image - its kind, purpose, or the kind of equipment used to generate it.
  
  URL: http://terminology.hl7.org/CodeSystem/media-modality
  */
 public enum MediaModality: String, FHIRPrimitiveType {
-	
+
 	/// A diagram. Often used in diagnostic reports
 	case diagram = "diagram"
-	
+
 	/// A digital record of a fax document
 	case fax = "fax"
-	
+
 	/// A digital scan of a document. This is reserved for when there is not enough metadata to create a document
 	/// reference
 	case scan = "scan"
-	
+
 	/// A retinal image used for identification purposes
 	case retina = "retina"
-	
+
 	/// A finger print scan used for identification purposes
 	case fingerprint = "fingerprint"
-	
+
 	/// An iris scan used for identification purposes
 	case iris = "iris"
-	
+
 	/// A palm scan used for identification purposes
 	case palm = "palm"
-	
+
 	/// A face scan used for identification purposes
 	case face = "face"
 }

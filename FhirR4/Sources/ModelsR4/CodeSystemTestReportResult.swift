@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The reported execution result.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/report-result-codes
  */
 public enum TestReportResult: String, FHIRPrimitiveType {
-	
+
 	/// All test operations successfully passed all asserts.
 	case pass = "pass"
-	
+
 	/// One or more test operations failed one or more asserts.
 	case fail = "fail"
-	
+
 	/// One or more test operations is pending execution completion.
 	case pending = "pending"
 }

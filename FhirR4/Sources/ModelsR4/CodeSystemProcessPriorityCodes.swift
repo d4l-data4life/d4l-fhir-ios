@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes the financial processing priority codes.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/process-priority
  */
 public enum ProcessPriorityCodes: String, FHIRPrimitiveType {
-	
+
 	/// Immediately in real time.
 	case stat = "stat"
-	
+
 	/// With best effort.
 	case normal = "normal"
-	
+
 	/// Later, when possible.
 	case deferred = "deferred"
 }

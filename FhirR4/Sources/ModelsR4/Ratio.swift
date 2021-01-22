@@ -17,69 +17,66 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A ratio of two Quantity values - a numerator and a denominator.
  
  A relationship of two Quantity values - expressed as a numerator and a denominator.
  */
 open class Ratio: Element {
-	
+
 	/// Numerator value
 	public var numerator: Quantity?
-	
+
 	/// Denominator value
 	public var denominator: Quantity?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							denominator: Quantity? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							numerator: Quantity? = nil)
-	{
+							numerator: Quantity? = nil) {
 		self.init()
 		self.denominator = denominator
 		self.`extension` = `extension`
 		self.id = id
 		self.numerator = numerator
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case denominator
 		case numerator
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.denominator = try Quantity(from: _container, forKeyIfPresent: .denominator)
 		self.numerator = try Quantity(from: _container, forKeyIfPresent: .numerator)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try denominator?.encode(on: &_container, forKey: .denominator)
 		try numerator?.encode(on: &_container, forKey: .numerator)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Ratio else {
 			return false
@@ -90,7 +87,7 @@ open class Ratio: Element {
 		return denominator == _other.denominator
 		    && numerator == _other.numerator
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(denominator)

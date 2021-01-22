@@ -17,58 +17,56 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of
  relationship/sub-division relationship.
  */
 open class OrganizationAffiliation: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .organizationAffiliation }
-	
+
 	/// Business identifiers that are specific to this role
 	public var identifier: [Identifier]?
-	
+
 	/// Whether this organization affiliation record is in active use
 	public var active: FHIRPrimitive<FHIRBool>?
-	
+
 	/// The period during which the participatingOrganization is affiliated with the primary organization
 	public var period: Period?
-	
+
 	/// Organization where the role is available
 	public var organization: Reference?
-	
+
 	/// Organization that provides/performs the role (e.g. providing services or is a member of)
 	public var participatingOrganization: Reference?
-	
+
 	/// Health insurance provider network in which the participatingOrganization provides the role's services (if
 	/// defined) at the indicated locations (if defined)
 	public var network: [Reference]?
-	
+
 	/// Definition of the role the participatingOrganization plays
 	public var code: [CodeableConcept]?
-	
+
 	/// Specific specialty of the participatingOrganization in the context of the role
 	public var specialty: [CodeableConcept]?
-	
+
 	/// The location(s) at which the role occurs
 	public var location: [Reference]?
-	
+
 	/// Healthcare services provided through the role
 	public var healthcareService: [Reference]?
-	
+
 	/// Contact details at the participatingOrganization relevant to this Affiliation
 	public var telecom: [ContactPoint]?
-	
+
 	/// Technical endpoints providing access to services operated for this role
 	public var endpoint: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							active: FHIRPrimitive<FHIRBool>? = nil,
@@ -90,8 +88,7 @@ open class OrganizationAffiliation: DomainResource {
 							period: Period? = nil,
 							specialty: [CodeableConcept]? = nil,
 							telecom: [ContactPoint]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init()
 		self.active = active
 		self.code = code
@@ -114,9 +111,9 @@ open class OrganizationAffiliation: DomainResource {
 		self.telecom = telecom
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case active; case _active
 		case code
@@ -131,11 +128,11 @@ open class OrganizationAffiliation: DomainResource {
 		case specialty
 		case telecom
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.active = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .active, auxiliaryKey: ._active)
 		self.code = try [CodeableConcept](from: _container, forKeyIfPresent: .code)
@@ -151,11 +148,11 @@ open class OrganizationAffiliation: DomainResource {
 		self.telecom = try [ContactPoint](from: _container, forKeyIfPresent: .telecom)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try active?.encode(on: &_container, forKey: .active, auxiliaryKey: ._active)
 		try code?.encode(on: &_container, forKey: .code)
@@ -171,9 +168,9 @@ open class OrganizationAffiliation: DomainResource {
 		try telecom?.encode(on: &_container, forKey: .telecom)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? OrganizationAffiliation else {
 			return false
@@ -194,7 +191,7 @@ open class OrganizationAffiliation: DomainResource {
 		    && specialty == _other.specialty
 		    && telecom == _other.telecom
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(active)

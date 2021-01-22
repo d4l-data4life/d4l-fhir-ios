@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  How to interpret the context.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/map-context-type
  */
 public enum StructureMapContextType: String, FHIRPrimitiveType {
-	
+
 	/// The context specifies a type.
 	case type = "type"
-	
+
 	/// The context specifies a variable.
 	case variable = "variable"
 }

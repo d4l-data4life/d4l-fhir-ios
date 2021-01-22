@@ -17,62 +17,60 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Details of a Health Insurance product/plan provided by an organization.
  */
 open class InsurancePlan: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .insurancePlan }
-	
+
 	/// Business Identifier for Product
 	public var identifier: [Identifier]?
-	
+
 	/// The current state of the health insurance product.
 	public var status: FHIRPrimitive<PublicationStatus>?
-	
+
 	/// Kind of product
 	public var type: [CodeableConcept]?
-	
+
 	/// Official name
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Alternate names
 	public var alias: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// When the product is available
 	public var period: Period?
-	
+
 	/// Plan issuer
 	public var ownedBy: Reference?
-	
+
 	/// Product administrator
 	public var administeredBy: Reference?
-	
+
 	/// Where product applies
 	public var coverageArea: [Reference]?
-	
+
 	/// Contact for the product
 	public var contact: [InsurancePlanContact]?
-	
+
 	/// Technical endpoint
 	public var endpoint: [Reference]?
-	
+
 	/// What networks are Included
 	public var network: [Reference]?
-	
+
 	/// Coverage details
 	public var coverage: [InsurancePlanCoverage]?
-	
+
 	/// Plan details
 	public var plan: [InsurancePlanPlan]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							administeredBy: Reference? = nil,
@@ -96,8 +94,7 @@ open class InsurancePlan: DomainResource {
 							plan: [InsurancePlanPlan]? = nil,
 							status: FHIRPrimitive<PublicationStatus>? = nil,
 							text: Narrative? = nil,
-							type: [CodeableConcept]? = nil)
-	{
+							type: [CodeableConcept]? = nil) {
 		self.init()
 		self.administeredBy = administeredBy
 		self.alias = alias
@@ -122,9 +119,9 @@ open class InsurancePlan: DomainResource {
 		self.text = text
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case administeredBy
 		case alias; case _alias
@@ -141,11 +138,11 @@ open class InsurancePlan: DomainResource {
 		case status; case _status
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.administeredBy = try Reference(from: _container, forKeyIfPresent: .administeredBy)
 		self.alias = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .alias, auxiliaryKey: ._alias)
@@ -163,11 +160,11 @@ open class InsurancePlan: DomainResource {
 		self.type = try [CodeableConcept](from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try administeredBy?.encode(on: &_container, forKey: .administeredBy)
 		try alias?.encode(on: &_container, forKey: .alias, auxiliaryKey: ._alias)
@@ -185,9 +182,9 @@ open class InsurancePlan: DomainResource {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InsurancePlan else {
 			return false
@@ -210,7 +207,7 @@ open class InsurancePlan: DomainResource {
 		    && status == _other.status
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(administeredBy)
@@ -236,24 +233,24 @@ open class InsurancePlan: DomainResource {
  The contact for the health insurance product for a certain purpose.
  */
 open class InsurancePlanContact: BackboneElement {
-	
+
 	/// The type of contact
 	public var purpose: CodeableConcept?
-	
+
 	/// A name associated with the contact
 	public var name: HumanName?
-	
+
 	/// Contact details (telephone, email, etc.)  for a contact
 	public var telecom: [ContactPoint]?
-	
+
 	/// Visiting or postal addresses for the contact
 	public var address: Address?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							address: Address? = nil,
@@ -262,8 +259,7 @@ open class InsurancePlanContact: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							name: HumanName? = nil,
 							purpose: CodeableConcept? = nil,
-							telecom: [ContactPoint]? = nil)
-	{
+							telecom: [ContactPoint]? = nil) {
 		self.init()
 		self.address = address
 		self.`extension` = `extension`
@@ -273,20 +269,20 @@ open class InsurancePlanContact: BackboneElement {
 		self.purpose = purpose
 		self.telecom = telecom
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case address
 		case name
 		case purpose
 		case telecom
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.address = try Address(from: _container, forKeyIfPresent: .address)
 		self.name = try HumanName(from: _container, forKeyIfPresent: .name)
@@ -294,11 +290,11 @@ open class InsurancePlanContact: BackboneElement {
 		self.telecom = try [ContactPoint](from: _container, forKeyIfPresent: .telecom)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try address?.encode(on: &_container, forKey: .address)
 		try name?.encode(on: &_container, forKey: .name)
@@ -306,9 +302,9 @@ open class InsurancePlanContact: BackboneElement {
 		try telecom?.encode(on: &_container, forKey: .telecom)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InsurancePlanContact else {
 			return false
@@ -321,7 +317,7 @@ open class InsurancePlanContact: BackboneElement {
 		    && purpose == _other.purpose
 		    && telecom == _other.telecom
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(address)
@@ -337,23 +333,23 @@ open class InsurancePlanContact: BackboneElement {
  Details about the coverage offered by the insurance product.
  */
 open class InsurancePlanCoverage: BackboneElement {
-	
+
 	/// Type of coverage
 	public var type: CodeableConcept
-	
+
 	/// What networks provide coverage
 	public var network: [Reference]?
-	
+
 	/// List of benefits
 	public var benefit: [InsurancePlanCoverageBenefit]
-	
+
 	/// Designated initializer taking all required properties
 	public init(benefit: [InsurancePlanCoverageBenefit], type: CodeableConcept) {
 		self.benefit = benefit
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							benefit: [InsurancePlanCoverageBenefit],
@@ -361,47 +357,46 @@ open class InsurancePlanCoverage: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							network: [Reference]? = nil,
-							type: CodeableConcept)
-	{
+							type: CodeableConcept) {
 		self.init(benefit: benefit, type: type)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.network = network
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case benefit
 		case network
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.benefit = try [InsurancePlanCoverageBenefit](from: _container, forKey: .benefit)
 		self.network = try [Reference](from: _container, forKeyIfPresent: .network)
 		self.type = try CodeableConcept(from: _container, forKey: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try benefit.encode(on: &_container, forKey: .benefit)
 		try network?.encode(on: &_container, forKey: .network)
 		try type.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InsurancePlanCoverage else {
 			return false
@@ -413,7 +408,7 @@ open class InsurancePlanCoverage: BackboneElement {
 		    && network == _other.network
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(benefit)
@@ -428,22 +423,22 @@ open class InsurancePlanCoverage: BackboneElement {
  Specific benefits under this type of coverage.
  */
 open class InsurancePlanCoverageBenefit: BackboneElement {
-	
+
 	/// Type of benefit
 	public var type: CodeableConcept
-	
+
 	/// Referral requirements
 	public var requirement: FHIRPrimitive<FHIRString>?
-	
+
 	/// Benefit limits
 	public var limit: [InsurancePlanCoverageBenefitLimit]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: CodeableConcept) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -451,8 +446,7 @@ open class InsurancePlanCoverageBenefit: BackboneElement {
 							limit: [InsurancePlanCoverageBenefitLimit]? = nil,
 							modifierExtension: [Extension]? = nil,
 							requirement: FHIRPrimitive<FHIRString>? = nil,
-							type: CodeableConcept)
-	{
+							type: CodeableConcept) {
 		self.init(type: type)
 		self.`extension` = `extension`
 		self.id = id
@@ -460,39 +454,39 @@ open class InsurancePlanCoverageBenefit: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.requirement = requirement
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case limit
 		case requirement; case _requirement
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.limit = try [InsurancePlanCoverageBenefitLimit](from: _container, forKeyIfPresent: .limit)
 		self.requirement = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .requirement, auxiliaryKey: ._requirement)
 		self.type = try CodeableConcept(from: _container, forKey: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try limit?.encode(on: &_container, forKey: .limit)
 		try requirement?.encode(on: &_container, forKey: .requirement, auxiliaryKey: ._requirement)
 		try type.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InsurancePlanCoverageBenefit else {
 			return false
@@ -504,7 +498,7 @@ open class InsurancePlanCoverageBenefit: BackboneElement {
 		    && requirement == _other.requirement
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(limit)
@@ -519,26 +513,25 @@ open class InsurancePlanCoverageBenefit: BackboneElement {
  The specific limits on the benefit.
  */
 open class InsurancePlanCoverageBenefitLimit: BackboneElement {
-	
+
 	/// Maximum value allowed
 	public var value: Quantity?
-	
+
 	/// Benefit limit details
 	public var code: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							value: Quantity? = nil)
-	{
+							value: Quantity? = nil) {
 		self.init()
 		self.code = code
 		self.`extension` = `extension`
@@ -546,36 +539,36 @@ open class InsurancePlanCoverageBenefitLimit: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKeyIfPresent: .code)
 		self.value = try Quantity(from: _container, forKeyIfPresent: .value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code?.encode(on: &_container, forKey: .code)
 		try value?.encode(on: &_container, forKey: .value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InsurancePlanCoverageBenefitLimit else {
 			return false
@@ -586,7 +579,7 @@ open class InsurancePlanCoverageBenefitLimit: BackboneElement {
 		return code == _other.code
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -600,30 +593,30 @@ open class InsurancePlanCoverageBenefitLimit: BackboneElement {
  Details about an insurance plan.
  */
 open class InsurancePlanPlan: BackboneElement {
-	
+
 	/// Business Identifier for Product
 	public var identifier: [Identifier]?
-	
+
 	/// Type of plan
 	public var type: CodeableConcept?
-	
+
 	/// Where product applies
 	public var coverageArea: [Reference]?
-	
+
 	/// What networks provide coverage
 	public var network: [Reference]?
-	
+
 	/// Overall costs
 	public var generalCost: [InsurancePlanPlanGeneralCost]?
-	
+
 	/// Specific costs
 	public var specificCost: [InsurancePlanPlanSpecificCost]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							coverageArea: [Reference]? = nil,
@@ -634,8 +627,7 @@ open class InsurancePlanPlan: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							network: [Reference]? = nil,
 							specificCost: [InsurancePlanPlanSpecificCost]? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.coverageArea = coverageArea
 		self.`extension` = `extension`
@@ -647,9 +639,9 @@ open class InsurancePlanPlan: BackboneElement {
 		self.specificCost = specificCost
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case coverageArea
 		case generalCost
@@ -658,11 +650,11 @@ open class InsurancePlanPlan: BackboneElement {
 		case specificCost
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.coverageArea = try [Reference](from: _container, forKeyIfPresent: .coverageArea)
 		self.generalCost = try [InsurancePlanPlanGeneralCost](from: _container, forKeyIfPresent: .generalCost)
@@ -672,11 +664,11 @@ open class InsurancePlanPlan: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try coverageArea?.encode(on: &_container, forKey: .coverageArea)
 		try generalCost?.encode(on: &_container, forKey: .generalCost)
@@ -686,9 +678,9 @@ open class InsurancePlanPlan: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InsurancePlanPlan else {
 			return false
@@ -703,7 +695,7 @@ open class InsurancePlanPlan: BackboneElement {
 		    && specificCost == _other.specificCost
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(coverageArea)
@@ -721,24 +713,24 @@ open class InsurancePlanPlan: BackboneElement {
  Overall costs associated with the plan.
  */
 open class InsurancePlanPlanGeneralCost: BackboneElement {
-	
+
 	/// Type of cost
 	public var type: CodeableConcept?
-	
+
 	/// Number of enrollees
 	public var groupSize: FHIRPrimitive<FHIRPositiveInteger>?
-	
+
 	/// Cost value
 	public var cost: Money?
-	
+
 	/// Additional cost information
 	public var comment: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							comment: FHIRPrimitive<FHIRString>? = nil,
@@ -747,8 +739,7 @@ open class InsurancePlanPlanGeneralCost: BackboneElement {
 							groupSize: FHIRPrimitive<FHIRPositiveInteger>? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.comment = comment
 		self.cost = cost
@@ -758,20 +749,20 @@ open class InsurancePlanPlanGeneralCost: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case comment; case _comment
 		case cost
 		case groupSize; case _groupSize
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.comment = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .comment, auxiliaryKey: ._comment)
 		self.cost = try Money(from: _container, forKeyIfPresent: .cost)
@@ -779,11 +770,11 @@ open class InsurancePlanPlanGeneralCost: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try comment?.encode(on: &_container, forKey: .comment, auxiliaryKey: ._comment)
 		try cost?.encode(on: &_container, forKey: .cost)
@@ -791,9 +782,9 @@ open class InsurancePlanPlanGeneralCost: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InsurancePlanPlanGeneralCost else {
 			return false
@@ -806,7 +797,7 @@ open class InsurancePlanPlanGeneralCost: BackboneElement {
 		    && groupSize == _other.groupSize
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(comment)
@@ -822,63 +813,62 @@ open class InsurancePlanPlanGeneralCost: BackboneElement {
  Costs associated with the coverage provided by the product.
  */
 open class InsurancePlanPlanSpecificCost: BackboneElement {
-	
+
 	/// General category of benefit
 	public var category: CodeableConcept
-	
+
 	/// Benefits list
 	public var benefit: [InsurancePlanPlanSpecificCostBenefit]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(category: CodeableConcept) {
 		self.category = category
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							benefit: [InsurancePlanPlanSpecificCostBenefit]? = nil,
 							category: CodeableConcept,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(category: category)
 		self.benefit = benefit
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case benefit
 		case category
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.benefit = try [InsurancePlanPlanSpecificCostBenefit](from: _container, forKeyIfPresent: .benefit)
 		self.category = try CodeableConcept(from: _container, forKey: .category)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try benefit?.encode(on: &_container, forKey: .benefit)
 		try category.encode(on: &_container, forKey: .category)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InsurancePlanPlanSpecificCost else {
 			return false
@@ -889,7 +879,7 @@ open class InsurancePlanPlanSpecificCost: BackboneElement {
 		return benefit == _other.benefit
 		    && category == _other.category
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(benefit)
@@ -903,63 +893,62 @@ open class InsurancePlanPlanSpecificCost: BackboneElement {
  List of the specific benefits under this category of benefit.
  */
 open class InsurancePlanPlanSpecificCostBenefit: BackboneElement {
-	
+
 	/// Type of specific benefit
 	public var type: CodeableConcept
-	
+
 	/// List of the costs
 	public var cost: [InsurancePlanPlanSpecificCostBenefitCost]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: CodeableConcept) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							cost: [InsurancePlanPlanSpecificCostBenefitCost]? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							type: CodeableConcept)
-	{
+							type: CodeableConcept) {
 		self.init(type: type)
 		self.cost = cost
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case cost
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.cost = try [InsurancePlanPlanSpecificCostBenefitCost](from: _container, forKeyIfPresent: .cost)
 		self.type = try CodeableConcept(from: _container, forKey: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try cost?.encode(on: &_container, forKey: .cost)
 		try type.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InsurancePlanPlanSpecificCostBenefit else {
 			return false
@@ -970,7 +959,7 @@ open class InsurancePlanPlanSpecificCostBenefit: BackboneElement {
 		return cost == _other.cost
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(cost)
@@ -984,25 +973,25 @@ open class InsurancePlanPlanSpecificCostBenefit: BackboneElement {
  List of the costs associated with a specific benefit.
  */
 open class InsurancePlanPlanSpecificCostBenefitCost: BackboneElement {
-	
+
 	/// Type of cost
 	public var type: CodeableConcept
-	
+
 	/// in-network | out-of-network | other
 	public var applicability: CodeableConcept?
-	
+
 	/// Additional information about the cost
 	public var qualifiers: [CodeableConcept]?
-	
+
 	/// The actual cost value
 	public var value: Quantity?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: CodeableConcept) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							applicability: CodeableConcept? = nil,
@@ -1011,8 +1000,7 @@ open class InsurancePlanPlanSpecificCostBenefitCost: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							qualifiers: [CodeableConcept]? = nil,
 							type: CodeableConcept,
-							value: Quantity? = nil)
-	{
+							value: Quantity? = nil) {
 		self.init(type: type)
 		self.applicability = applicability
 		self.`extension` = `extension`
@@ -1021,20 +1009,20 @@ open class InsurancePlanPlanSpecificCostBenefitCost: BackboneElement {
 		self.qualifiers = qualifiers
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case applicability
 		case qualifiers
 		case type
 		case value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.applicability = try CodeableConcept(from: _container, forKeyIfPresent: .applicability)
 		self.qualifiers = try [CodeableConcept](from: _container, forKeyIfPresent: .qualifiers)
@@ -1042,11 +1030,11 @@ open class InsurancePlanPlanSpecificCostBenefitCost: BackboneElement {
 		self.value = try Quantity(from: _container, forKeyIfPresent: .value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try applicability?.encode(on: &_container, forKey: .applicability)
 		try qualifiers?.encode(on: &_container, forKey: .qualifiers)
@@ -1054,9 +1042,9 @@ open class InsurancePlanPlanSpecificCostBenefitCost: BackboneElement {
 		try value?.encode(on: &_container, forKey: .value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? InsurancePlanPlanSpecificCostBenefitCost else {
 			return false
@@ -1069,7 +1057,7 @@ open class InsurancePlanPlanSpecificCostBenefitCost: BackboneElement {
 		    && type == _other.type
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(applicability)

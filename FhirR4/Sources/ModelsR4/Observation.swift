@@ -17,17 +17,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Measurements and simple assertions.
  
  Measurements and simple assertions made about a patient, device or other subject.
  */
 open class Observation: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .observation }
-	
+
 	/// All possible types for "effective[x]"
 	public enum EffectiveX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
@@ -35,7 +33,7 @@ open class Observation: DomainResource {
 		case period(Period)
 		case timing(Timing)
 	}
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case boolean(FHIRPrimitive<FHIRBool>)
@@ -50,88 +48,88 @@ open class Observation: DomainResource {
 		case string(FHIRPrimitive<FHIRString>)
 		case time(FHIRPrimitive<FHIRTime>)
 	}
-	
+
 	/// Business Identifier for observation
 	public var identifier: [Identifier]?
-	
+
 	/// Fulfills plan, proposal or order
 	public var basedOn: [Reference]?
-	
+
 	/// Part of referenced event
 	public var partOf: [Reference]?
-	
+
 	/// The status of the result value.
 	public var status: FHIRPrimitive<ObservationStatus>
-	
+
 	/// Classification of  type of observation
 	public var category: [CodeableConcept]?
-	
+
 	/// Type of observation (code / type)
 	public var code: CodeableConcept
-	
+
 	/// Who and/or what the observation is about
 	public var subject: Reference?
-	
+
 	/// What the observation is about, when it is not about the subject of record
 	public var focus: [Reference]?
-	
+
 	/// Healthcare event during which this observation is made
 	public var encounter: Reference?
-	
+
 	/// Clinically relevant time/time-period for observation
 	/// One of `effective[x]`
 	public var effective: EffectiveX?
-	
+
 	/// Date/Time this version was made available
 	public var issued: FHIRPrimitive<Instant>?
-	
+
 	/// Who is responsible for the observation
 	public var performer: [Reference]?
-	
+
 	/// Actual result
 	/// One of `value[x]`
 	public var value: ValueX?
-	
+
 	/// Why the result is missing
 	public var dataAbsentReason: CodeableConcept?
-	
+
 	/// High, low, normal, etc.
 	public var interpretation: [CodeableConcept]?
-	
+
 	/// Comments about the observation
 	public var note: [Annotation]?
-	
+
 	/// Observed body part
 	public var bodySite: CodeableConcept?
-	
+
 	/// How it was done
 	public var method: CodeableConcept?
-	
+
 	/// Specimen used for this observation
 	public var specimen: Reference?
-	
+
 	/// (Measurement) Device
 	public var device: Reference?
-	
+
 	/// Provides guide for interpretation
 	public var referenceRange: [ObservationReferenceRange]?
-	
+
 	/// Related resource that belongs to the Observation group
 	public var hasMember: [Reference]?
-	
+
 	/// Related measurements the observation is made from
 	public var derivedFrom: [Reference]?
-	
+
 	/// Component results
 	public var component: [ObservationComponent]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept, status: FHIRPrimitive<ObservationStatus>) {
 		self.code = code
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							basedOn: [Reference]? = nil,
@@ -165,8 +163,7 @@ open class Observation: DomainResource {
 							status: FHIRPrimitive<ObservationStatus>,
 							subject: Reference? = nil,
 							text: Narrative? = nil,
-							value: ValueX? = nil)
-	{
+							value: ValueX? = nil) {
 		self.init(code: code, status: status)
 		self.basedOn = basedOn
 		self.bodySite = bodySite
@@ -199,9 +196,9 @@ open class Observation: DomainResource {
 		self.text = text
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case basedOn
 		case bodySite
@@ -241,11 +238,11 @@ open class Observation: DomainResource {
 		case valueString; case _valueString
 		case valueTime; case _valueTime
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.basedOn = try [Reference](from: _container, forKeyIfPresent: .basedOn)
 		self.bodySite = try CodeableConcept(from: _container, forKeyIfPresent: .bodySite)
@@ -255,7 +252,7 @@ open class Observation: DomainResource {
 		self.dataAbsentReason = try CodeableConcept(from: _container, forKeyIfPresent: .dataAbsentReason)
 		self.derivedFrom = try [Reference](from: _container, forKeyIfPresent: .derivedFrom)
 		self.device = try Reference(from: _container, forKeyIfPresent: .device)
-		var _t_effective: EffectiveX? = nil
+		var _t_effective: EffectiveX?
 		if let effectiveDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .effectiveDateTime, auxiliaryKey: ._effectiveDateTime) {
 			if _t_effective != nil {
 				throw DecodingError.dataCorruptedError(forKey: .effectiveDateTime, in: _container, debugDescription: "More than one value provided for \"effective\"")
@@ -295,7 +292,7 @@ open class Observation: DomainResource {
 		self.specimen = try Reference(from: _container, forKeyIfPresent: .specimen)
 		self.status = try FHIRPrimitive<ObservationStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
 		self.subject = try Reference(from: _container, forKeyIfPresent: .subject)
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueQuantity = try Quantity(from: _container, forKeyIfPresent: .valueQuantity) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueQuantity, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -365,11 +362,11 @@ open class Observation: DomainResource {
 		self.value = _t_value
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try basedOn?.encode(on: &_container, forKey: .basedOn)
 		try bodySite?.encode(on: &_container, forKey: .bodySite)
@@ -433,9 +430,9 @@ open class Observation: DomainResource {
 		}
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Observation else {
 			return false
@@ -468,7 +465,7 @@ open class Observation: DomainResource {
 		    && subject == _other.subject
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(basedOn)
@@ -506,7 +503,7 @@ open class Observation: DomainResource {
  pressure measurement and multiple component observations for genetics observations.
  */
 open class ObservationComponent: BackboneElement {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case boolean(FHIRPrimitive<FHIRBool>)
@@ -521,29 +518,29 @@ open class ObservationComponent: BackboneElement {
 		case string(FHIRPrimitive<FHIRString>)
 		case time(FHIRPrimitive<FHIRTime>)
 	}
-	
+
 	/// Type of component observation (code / type)
 	public var code: CodeableConcept
-	
+
 	/// Actual component result
 	/// One of `value[x]`
 	public var value: ValueX?
-	
+
 	/// Why the component result is missing
 	public var dataAbsentReason: CodeableConcept?
-	
+
 	/// High, low, normal, etc.
 	public var interpretation: [CodeableConcept]?
-	
+
 	/// Provides guide for interpretation of component result
 	public var referenceRange: [ObservationReferenceRange]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept,
@@ -553,8 +550,7 @@ open class ObservationComponent: BackboneElement {
 							interpretation: [CodeableConcept]? = nil,
 							modifierExtension: [Extension]? = nil,
 							referenceRange: [ObservationReferenceRange]? = nil,
-							value: ValueX? = nil)
-	{
+							value: ValueX? = nil) {
 		self.init(code: code)
 		self.dataAbsentReason = dataAbsentReason
 		self.`extension` = `extension`
@@ -564,9 +560,9 @@ open class ObservationComponent: BackboneElement {
 		self.referenceRange = referenceRange
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case dataAbsentReason
@@ -584,17 +580,17 @@ open class ObservationComponent: BackboneElement {
 		case valueString; case _valueString
 		case valueTime; case _valueTime
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKey: .code)
 		self.dataAbsentReason = try CodeableConcept(from: _container, forKeyIfPresent: .dataAbsentReason)
 		self.interpretation = try [CodeableConcept](from: _container, forKeyIfPresent: .interpretation)
 		self.referenceRange = try [ObservationReferenceRange](from: _container, forKeyIfPresent: .referenceRange)
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueQuantity = try Quantity(from: _container, forKeyIfPresent: .valueQuantity) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueQuantity, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -664,11 +660,11 @@ open class ObservationComponent: BackboneElement {
 		self.value = _t_value
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code)
 		try dataAbsentReason?.encode(on: &_container, forKey: .dataAbsentReason)
@@ -702,9 +698,9 @@ open class ObservationComponent: BackboneElement {
 		}
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ObservationComponent else {
 			return false
@@ -718,7 +714,7 @@ open class ObservationComponent: BackboneElement {
 		    && referenceRange == _other.referenceRange
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -737,30 +733,30 @@ open class ObservationComponent: BackboneElement {
  would be used.
  */
 open class ObservationReferenceRange: BackboneElement {
-	
+
 	/// Low Range, if relevant
 	public var low: Quantity?
-	
+
 	/// High Range, if relevant
 	public var high: Quantity?
-	
+
 	/// Reference range qualifier
 	public var type: CodeableConcept?
-	
+
 	/// Reference range population
 	public var appliesTo: [CodeableConcept]?
-	
+
 	/// Applicable age range, if relevant
 	public var age: Range?
-	
+
 	/// Text based reference range in an observation
 	public var text: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							age: Range? = nil,
@@ -771,8 +767,7 @@ open class ObservationReferenceRange: BackboneElement {
 							low: Quantity? = nil,
 							modifierExtension: [Extension]? = nil,
 							text: FHIRPrimitive<FHIRString>? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.age = age
 		self.appliesTo = appliesTo
@@ -784,9 +779,9 @@ open class ObservationReferenceRange: BackboneElement {
 		self.text = text
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case age
 		case appliesTo
@@ -795,11 +790,11 @@ open class ObservationReferenceRange: BackboneElement {
 		case text; case _text
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.age = try Range(from: _container, forKeyIfPresent: .age)
 		self.appliesTo = try [CodeableConcept](from: _container, forKeyIfPresent: .appliesTo)
@@ -809,11 +804,11 @@ open class ObservationReferenceRange: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try age?.encode(on: &_container, forKey: .age)
 		try appliesTo?.encode(on: &_container, forKey: .appliesTo)
@@ -823,9 +818,9 @@ open class ObservationReferenceRange: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ObservationReferenceRange else {
 			return false
@@ -840,7 +835,7 @@ open class ObservationReferenceRange: BackboneElement {
 		    && text == _other.text
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(age)

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Payment Type codes.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/payment-type
  */
 public enum PaymentTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// The amount is partial or complete settlement of the amounts due.
 	case payment = "payment"
-	
+
 	/// The amount is an adjustment regarding claims already paid.
 	case adjustment = "adjustment"
-	
+
 	/// The amount is an advance against future claims.
 	case advance = "advance"
 }

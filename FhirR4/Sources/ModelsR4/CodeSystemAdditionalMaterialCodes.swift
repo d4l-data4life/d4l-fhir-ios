@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample additional material type codes.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/additionalmaterials
  */
 public enum AdditionalMaterialCodes: String, FHIRPrimitiveType {
-	
+
 	/// XRay
 	case xray = "xray"
-	
+
 	/// Image
 	case image = "image"
-	
+
 	/// Email
 	case email = "email"
-	
+
 	/// Model
 	case model = "model"
-	
+
 	/// Document
 	case document = "document"
-	
+
 	/// Other
 	case other = "other"
 }

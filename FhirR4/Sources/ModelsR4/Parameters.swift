@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Operation Request or Response.
  
@@ -26,25 +24,24 @@
  It has no other use, and there is no RESTful endpoint associated with it.
  */
 open class Parameters: Resource {
-	
+
 	override open class var resourceType: ResourceType { return .parameters }
-	
+
 	/// Operation Parameter
 	public var parameter: [ParametersParameter]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							id: FHIRPrimitive<FHIRString>? = nil,
 							implicitRules: FHIRPrimitive<FHIRURI>? = nil,
 							language: FHIRPrimitive<FHIRString>? = nil,
 							meta: Meta? = nil,
-							parameter: [ParametersParameter]? = nil)
-	{
+							parameter: [ParametersParameter]? = nil) {
 		self.init()
 		self.id = id
 		self.implicitRules = implicitRules
@@ -52,33 +49,33 @@ open class Parameters: Resource {
 		self.meta = meta
 		self.parameter = parameter
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case parameter
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.parameter = try [ParametersParameter](from: _container, forKeyIfPresent: .parameter)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try parameter?.encode(on: &_container, forKey: .parameter)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Parameters else {
 			return false
@@ -88,7 +85,7 @@ open class Parameters: Resource {
 		}
 		return parameter == _other.parameter
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(parameter)
@@ -101,7 +98,7 @@ open class Parameters: Resource {
  A parameter passed to or received from the operation.
  */
 open class ParametersParameter: BackboneElement {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case address(Address)
@@ -155,26 +152,26 @@ open class ParametersParameter: BackboneElement {
 		case usageContext(UsageContext)
 		case uuid(FHIRPrimitive<FHIRURI>)
 	}
-	
+
 	/// Name from the definition
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// If parameter is a data type
 	/// One of `value[x]`
 	public var value: ValueX?
-	
+
 	/// If parameter is a whole resource
 	public var resource: ResourceProxy?
-	
+
 	/// Named part of a multi-part parameter
 	public var part: [ParametersParameter]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(name: FHIRPrimitive<FHIRString>) {
 		self.name = name
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -183,8 +180,7 @@ open class ParametersParameter: BackboneElement {
 							name: FHIRPrimitive<FHIRString>,
 							part: [ParametersParameter]? = nil,
 							resource: ResourceProxy? = nil,
-							value: ValueX? = nil)
-	{
+							value: ValueX? = nil) {
 		self.init(name: name)
 		self.`extension` = `extension`
 		self.id = id
@@ -193,9 +189,9 @@ open class ParametersParameter: BackboneElement {
 		self.resource = resource
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case name; case _name
 		case part
@@ -251,16 +247,16 @@ open class ParametersParameter: BackboneElement {
 		case valueUsageContext
 		case valueUuid; case _valueUuid
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.name = try FHIRPrimitive<FHIRString>(from: _container, forKey: .name, auxiliaryKey: ._name)
 		self.part = try [ParametersParameter](from: _container, forKeyIfPresent: .part)
 		self.resource = try ResourceProxy(from: _container, forKeyIfPresent: .resource)
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueBase64Binary = try FHIRPrimitive<Base64Binary>(from: _container, forKeyIfPresent: .valueBase64Binary, auxiliaryKey: ._valueBase64Binary) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueBase64Binary, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -564,11 +560,11 @@ open class ParametersParameter: BackboneElement {
 		self.value = _t_value
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try name.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
 		try part?.encode(on: &_container, forKey: .part)
@@ -679,9 +675,9 @@ open class ParametersParameter: BackboneElement {
 		}
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ParametersParameter else {
 			return false
@@ -694,7 +690,7 @@ open class ParametersParameter: BackboneElement {
 		    && resource == _other.resource
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(name)

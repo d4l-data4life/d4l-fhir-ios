@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Type of alerts/updates the primary source can send
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-push-type-available
  */
 public enum PushTypeAvailable: String, FHIRPrimitiveType {
-	
+
 	/// specific
 	case specific = "specific"
-	
+
 	/// any
 	case any = "any"
-	
+
 	/// source
 	case source = "source"
 }

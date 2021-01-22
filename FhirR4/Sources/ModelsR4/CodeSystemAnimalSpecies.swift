@@ -17,21 +17,19 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This example value set defines a set of codes that can be used to indicate species of animal patients.
  
  URL: http://hl7.org/fhir/animal-species
  */
 public enum AnimalSpecies: String, FHIRPrimitiveType {
-	
+
 	/// Canis lupus familiaris
 	case canislf = "canislf"
-	
+
 	/// Ovis aries
 	case ovisa = "ovisa"
-	
+
 	/// Serinus canaria domestica
 	case serinuscd = "serinuscd"
 }

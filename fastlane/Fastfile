@@ -7,7 +7,7 @@ podspec_stu3_path = '../Data4LifeFHIR.podspec'
 podspec_r4_path = '../ModelsR4.podspec'
 private_podspec_repo_name = 'd4l-data4life'
 private_podspect_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
-device = "iPhone X (12.0)"
+device = "iPhone 11"
 
 platform :ios do
   desc "Run unit tests"
@@ -21,6 +21,12 @@ platform :ios do
       devices: device,
       clean: true
     )
+    scan(
+      scheme: "ModelsR4",
+      derived_data_path: "build/DerivedData",
+      devices: device,
+      clean: false
+    )
   end
 
   desc "Run linter and autocorrect issues"
@@ -31,13 +37,27 @@ platform :ios do
       )
   end
 
-  desc "Generate FHIR models"
-  desc "#### Options"
-  desc " * **`embed`** (optional): Should embed newly generated models into Xcode project? defaults to true"
-  lane :generate_models do | options |
-      embed = options[:embed] ||= true
-      fhir xcode:embed
+  desc "Generate All FHIR code"
+  lane :generate_all do | options |
+      fhir_stu3 xcode:true
+      fhir_r4_helpers
+      fhir_r4_tests
       lint
+  end
+
+  desc "Generate FHIR STU3 models"
+  lane :generate_stu3_models do | options |
+      fhir_stu3 xcode:true
+  end
+
+  desc "Generate FHIR R4 Extesnions"
+  lane :generate_r4_helpers do | options |
+      fhir_r4_helpers
+  end
+
+  desc "Generate FHIR R4 tests"
+  lane :generate_r4_tests do | options |
+      fhir_r4_tests
   end
 
   desc "Package and release framework"

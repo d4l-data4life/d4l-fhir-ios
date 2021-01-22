@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Flags an element as having unlimited repetitions.
  
@@ -26,7 +24,7 @@
  ValueSet: http://hl7.org/fhir/ValueSet/question-max-occurs
  */
 public enum MaxOccurs: String, FHIRPrimitiveType {
-	
+
 	/// Element can repeat an unlimited number of times.
 	case max = "*"
 }

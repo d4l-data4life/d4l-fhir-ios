@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Structure Definition Use Codes / Keywords
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/definition-use
  */
 public enum DefinitionUseCodes: String, FHIRPrimitiveType {
-	
+
 	/// This structure is defined as part of the base FHIR Specification
 	case fhirStructure = "fhir-structure"
-	
+
 	/// This structure is intended to be treated like a FHIR resource (e.g. on the FHIR API)
 	case customResource = "custom-resource"
-	
+
 	/// This structure captures an analysis of a domain
 	case dam = "dam"
-	
+
 	/// This structure represents and existing structure (e.g. CDA, HL7 v2)
 	case wireFormat = "wire-format"
-	
+
 	/// This structure captures an analysis of a domain
 	case archetype = "archetype"
-	
+
 	/// This structure is a template (n.b: 'template' has many meanings)
 	case template = "template"
 }

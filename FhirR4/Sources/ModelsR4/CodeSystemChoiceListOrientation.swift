@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Direction in which lists of possible answers should be displayed.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/choice-list-orientation
  */
 public enum ChoiceListOrientation: String, FHIRPrimitiveType {
-	
+
 	/// List choices along the horizontal axis.
 	case horizontal = "horizontal"
-	
+
 	/// List choices down the vertical axis.
 	case vertical = "vertical"
 }

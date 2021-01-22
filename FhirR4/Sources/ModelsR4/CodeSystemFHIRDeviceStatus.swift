@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The availability status of the device.
  
@@ -26,18 +24,18 @@
  ValueSet: http://hl7.org/fhir/ValueSet/device-status
  */
 public enum FHIRDeviceStatus: String, FHIRPrimitiveType {
-	
+
 	/// The device is available for use.  Note: For *implanted devices*  this means that the device is implanted in the
 	/// patient.
 	case active = "active"
-	
+
 	/// The device is no longer available for use (e.g. lost, expired, damaged).  Note: For *implanted devices*  this
 	/// means that the device has been removed from the patient.
 	case inactive = "inactive"
-	
+
 	/// The device was entered in error and voided.
 	case enteredInError = "entered-in-error"
-	
+
 	/// The status of the device has not been determined.
 	case unknown = "unknown"
 }

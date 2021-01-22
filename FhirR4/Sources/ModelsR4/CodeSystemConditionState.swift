@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Enumeration indicating whether the condition is currently active, inactive, or has been resolved.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/condition-state
  */
 public enum ConditionState: String, FHIRPrimitiveType {
-	
+
 	/// The condition is active.
 	case active = "active"
-	
+
 	/// The condition is inactive, but not resolved.
 	case inactive = "inactive"
-	
+
 	/// The condition is resolved.
 	case resolved = "resolved"
 }

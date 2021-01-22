@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Contract Term Type codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/contract-term-type
  */
 public enum ContractTermTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// Based on specialized statutes that deal with particular subjects.
 	case statutory = "statutory"
-	
+
 	/// Execution of the term in the contract is conditional on the execution of other actions.
 	case subjectTo = "subject-to"
 }

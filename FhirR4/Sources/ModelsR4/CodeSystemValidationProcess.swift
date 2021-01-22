@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The primary process by which the target is validated
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-validation-process
  */
 public enum ValidationProcess: String, FHIRPrimitiveType {
-	
+
 	/// editCheck
 	case editCheck = "edit-check"
-	
+
 	/// valueset
 	case valueset = "valueset"
-	
+
 	/// primary
 	case primary = "primary"
-	
+
 	/// multi
 	case multi = "multi"
-	
+
 	/// standalone
 	case standalone = "standalone"
-	
+
 	/// inContext
 	case inContext = "in-context"
 }

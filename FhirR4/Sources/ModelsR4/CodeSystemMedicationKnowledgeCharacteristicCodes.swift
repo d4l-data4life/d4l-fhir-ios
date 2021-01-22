@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  MedicationKnowledge Characteristic Codes
  
@@ -26,25 +24,25 @@
  ValueSet: http://hl7.org/fhir/ValueSet/medicationknowledge-characteristic
  */
 public enum MedicationKnowledgeCharacteristicCodes: String, FHIRPrimitiveType {
-	
+
 	/// Identyifying marks on product
 	case imprintcd = "imprintcd"
-	
+
 	/// Description of size of the product
 	case size = "size"
-	
+
 	/// Description of the shape of the product
 	case shape = "shape"
-	
+
 	/// Description of the color of the product
 	case color = "color"
-	
+
 	/// Description of the coating of the product
 	case coating = "coating"
-	
+
 	/// Description of the scoring of the product
 	case scoring = "scoring"
-	
+
 	/// Description of the Logo of the product
 	case logo = "logo"
 }

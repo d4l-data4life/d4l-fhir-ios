@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Whether the application produces or consumes documents.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/document-mode
  */
 public enum DocumentMode: String, FHIRPrimitiveType {
-	
+
 	/// The application produces documents of the specified type.
 	case producer = "producer"
-	
+
 	/// The application consumes documents of the specified type.
 	case consumer = "consumer"
 }

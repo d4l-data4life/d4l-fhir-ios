@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The validation status of the target
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-status
  */
 public enum Status: String, FHIRPrimitiveType {
-	
+
 	/// ***TODO***
 	case attested = "attested"
-	
+
 	/// ***TODO***
 	case validated = "validated"
-	
+
 	/// ***TODO***
 	case inProcess = "in-process"
-	
+
 	/// ***TODO***
 	case reqRevalid = "req-revalid"
-	
+
 	/// ***TODO***
 	case valFail = "val-fail"
-	
+
 	/// ***TODO***
 	case revalFail = "reval-fail"
 }

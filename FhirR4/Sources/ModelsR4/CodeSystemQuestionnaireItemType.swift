@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Distinguishes groups from questions and display text and indicates data type for questions.
  
@@ -26,58 +24,58 @@
  ValueSet: http://hl7.org/fhir/ValueSet/item-type
  */
 public enum QuestionnaireItemType: String, FHIRPrimitiveType {
-	
+
 	/// An item with no direct answer but should have at least one child item.
 	case group = "group"
-	
+
 	/// Text for display that will not capture an answer or have child items.
 	case display = "display"
-	
+
 	/// An item that defines a specific answer to be captured, and which may have child items. (the answer provided in
 	/// the QuestionnaireResponse should be of the defined datatype).
 	case question = "question"
-	
+
 	/// Question with a yes/no answer (valueBoolean).
 	case boolean = "boolean"
-	
+
 	/// Question with is a real number answer (valueDecimal).
 	case decimal = "decimal"
-	
+
 	/// Question with an integer answer (valueInteger).
 	case integer = "integer"
-	
+
 	/// Question with a date answer (valueDate).
 	case date = "date"
-	
+
 	/// Question with a date and time answer (valueDateTime).
 	case dateTime = "dateTime"
-	
+
 	/// Question with a time (hour:minute:second) answer independent of date. (valueTime).
 	case time = "time"
-	
+
 	/// Question with a short (few words to short sentence) free-text entry answer (valueString).
 	case string = "string"
-	
+
 	/// Question with a long (potentially multi-paragraph) free-text entry answer (valueString).
 	case text = "text"
-	
+
 	/// Question with a URL (website, FTP site, etc.) answer (valueUri).
 	case url = "url"
-	
+
 	/// Question with a Coding drawn from a list of possible answers (specified in either the answerOption property, or
 	/// via the valueset referenced in the answerValueSet property) as an answer (valueCoding).
 	case choice = "choice"
-	
+
 	/// Answer is a Coding drawn from a list of possible answers (as with the choice type) or a free-text entry in a
 	/// string (valueCoding or valueString).
 	case openChoice = "open-choice"
-	
+
 	/// Question with binary content such as an image, PDF, etc. as an answer (valueAttachment).
 	case attachment = "attachment"
-	
+
 	/// Question with a reference to another resource (practitioner, organization, etc.) as an answer (valueReference).
 	case reference = "reference"
-	
+
 	/// Question with a combination of a numeric value and unit, potentially with a comparator (<, >, etc.) as an
 	/// answer. (valueQuantity) There is an extension 'http://hl7.org/fhir/StructureDefinition/questionnaire-unit' that
 	/// can be used to define what unit should be captured (or the unit that has a ucum conversion from the provided

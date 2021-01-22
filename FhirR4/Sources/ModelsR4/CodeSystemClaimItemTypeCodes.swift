@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Item Type codes.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/fm-itemtype
  */
 public enum ClaimItemTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// A group of products and/or Services, amount ar the summary or detail level products and services.
 	case group = "group"
-	
+
 	/// A billed product line item.
 	case product = "product"
-	
+
 	/// A billed service line item.
 	case service = "service"
 }

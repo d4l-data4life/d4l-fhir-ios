@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes identifying the lifecycle stage of a request.
  
@@ -26,29 +24,29 @@
  ValueSet: http://hl7.org/fhir/ValueSet/request-status
  */
 public enum RequestStatus: String, FHIRPrimitiveType {
-	
+
 	/// The request has been created but is not yet complete or ready for action.
 	case draft = "draft"
-	
+
 	/// The request is in force and ready to be acted upon.
 	case active = "active"
-	
+
 	/// The request (and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in
 	/// the future.
 	case onHold = "on-hold"
-	
+
 	/// The request (and any implicit authorization to act) has been terminated prior to the known full completion of
 	/// the intended actions.  No further activity should occur.
 	case revoked = "revoked"
-	
+
 	/// The activity described by the request has been fully performed.  No further activity will occur.
 	case completed = "completed"
-	
+
 	/// This request should never have existed and should be considered 'void'.  (It is possible that real-world
 	/// decisions were based on it.  If real-world activity has occurred, the status should be "revoked" rather than
 	/// "entered-in-error".).
 	case enteredInError = "entered-in-error"
-	
+
 	/// The authoring/source system does not know which of the status values currently applies for this request.  Note:
 	/// This concept is not to be used for "other" - one of the listed statuses is presumed to apply,  but the
 	/// authoring/source system does not know which.

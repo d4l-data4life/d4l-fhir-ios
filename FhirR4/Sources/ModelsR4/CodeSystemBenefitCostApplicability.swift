@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Whether the cost applies to in-network or out-of-network providers.
  
@@ -26,15 +24,15 @@
  ValueSet: http://hl7.org/fhir/ValueSet/insuranceplan-applicability
  */
 public enum BenefitCostApplicability: String, FHIRPrimitiveType {
-	
+
 	/// Provider is contracted with the health insurance company to provide services to plan members for specific pre-
 	/// negotiated rates
 	case inNetwork = "in-network"
-	
+
 	/// Provider is  not contracted with the health insurance company to provide services to plan members for specific
 	/// pre-negotiated rates
 	case outOfNetwork = "out-of-network"
-	
+
 	/// Other applicability
 	case other = "other"
 }

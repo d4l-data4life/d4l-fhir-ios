@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Identifies the style of unique identifier used to identify a namespace.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/namingsystem-identifier-type
  */
 public enum NamingSystemIdentifierType: String, FHIRPrimitiveType {
-	
+
 	/// An ISO object identifier; e.g. 1.2.3.4.5.
 	case oid = "oid"
-	
+
 	/// A universally unique identifier of the form a5afddf4-e880-459b-876e-e4591b0acc11.
 	case uuid = "uuid"
-	
+
 	/// A uniform resource identifier (ideally a URL - uniform resource locator); e.g. http://unitsofmeasure.org.
 	case uri = "uri"
-	
+
 	/// Some other type of unique identifier; e.g. HL7-assigned reserved string such as LN for LOINC.
 	case other = "other"
 }

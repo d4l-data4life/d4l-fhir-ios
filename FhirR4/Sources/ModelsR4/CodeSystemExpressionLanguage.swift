@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The media type of the expression language.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/expression-language
  */
 public enum ExpressionLanguage: String, FHIRPrimitiveType {
-	
+
 	/// Clinical Quality Language.
 	case textCql = "text/cql"
-	
+
 	/// FHIRPath.
 	case textFhirpath = "text/fhirpath"
-	
+
 	/// FHIR's RESTful query syntax - typically independent of base URL.
 	case applicationXFhirQuery = "application/x-fhir-query"
 }

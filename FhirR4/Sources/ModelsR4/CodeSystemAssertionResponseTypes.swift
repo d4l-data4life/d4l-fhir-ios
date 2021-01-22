@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The type of response code to use for assertion.
  
@@ -26,40 +24,40 @@
  ValueSet: http://hl7.org/fhir/ValueSet/assert-response-code-types
  */
 public enum AssertionResponseTypes: String, FHIRPrimitiveType {
-	
+
 	/// Response code is 200.
 	case okay = "okay"
-	
+
 	/// Response code is 201.
 	case created = "created"
-	
+
 	/// Response code is 204.
 	case noContent = "noContent"
-	
+
 	/// Response code is 304.
 	case notModified = "notModified"
-	
+
 	/// Response code is 400.
 	case bad = "bad"
-	
+
 	/// Response code is 403.
 	case forbidden = "forbidden"
-	
+
 	/// Response code is 404.
 	case notFound = "notFound"
-	
+
 	/// Response code is 405.
 	case methodNotAllowed = "methodNotAllowed"
-	
+
 	/// Response code is 409.
 	case conflict = "conflict"
-	
+
 	/// Response code is 410.
 	case gone = "gone"
-	
+
 	/// Response code is 412.
 	case preconditionFailed = "preconditionFailed"
-	
+
 	/// Response code is 422.
 	case unprocessable = "unprocessable"
 }

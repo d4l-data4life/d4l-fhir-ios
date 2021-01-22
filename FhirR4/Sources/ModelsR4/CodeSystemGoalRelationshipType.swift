@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Types of relationships between two goals.
  
@@ -26,19 +24,19 @@
  ValueSet: http://hl7.org/fhir/ValueSet/goal-relationship-type
  */
 public enum GoalRelationshipType: String, FHIRPrimitiveType {
-	
+
 	/// Indicates that the target goal is one which must be met before striving for the current goal.
 	case predecessor = "predecessor"
-	
+
 	/// Indicates that the target goal is a desired objective once the current goal is met.
 	case successor = "successor"
-	
+
 	/// Indicates that this goal has been replaced by the target goal.
 	case replacement = "replacement"
-	
+
 	/// Indicates that the target goal is considered to be a "piece" of attaining this goal.
 	case milestone = "milestone"
-	
+
 	/// Indicates that the relationship is not covered by one of the pre-defined codes.  (An extension may convey more
 	/// information about the meaning of the relationship.).
 	case other = "other"

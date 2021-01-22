@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set captures the set of indicator codes defined by the CDS Hooks specification.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/cdshooks-indicator
  */
 public enum Indicator: String, FHIRPrimitiveType {
-	
+
 	/// info
 	case info = "info"
-	
+
 	/// warning
 	case warning = "warning"
-	
+
 	/// critical
 	case critical = "critical"
 }

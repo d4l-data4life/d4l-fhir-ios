@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The possible types of research elements (E.g. Population, Exposure, Outcome).
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/research-element-type
  */
 public enum ResearchElementType: String, FHIRPrimitiveType {
-	
+
 	/// The element defines the population that forms the basis for research.
 	case population = "population"
-	
+
 	/// The element defines an exposure within the population that is being researched.
 	case exposure = "exposure"
-	
+
 	/// The element defines an outcome within the population that is being researched.
 	case outcome = "outcome"
 }

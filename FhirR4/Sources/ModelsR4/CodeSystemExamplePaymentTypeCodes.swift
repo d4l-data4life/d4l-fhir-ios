@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes example Payment Type codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/ex-paymenttype
  */
 public enum ExamplePaymentTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// Complete (final) payment of the benefit under the Claim less any adjustments.
 	case complete = "complete"
-	
+
 	/// Partial payment of the benefit under the Claim less any adjustments.
 	case partial = "partial"
 }

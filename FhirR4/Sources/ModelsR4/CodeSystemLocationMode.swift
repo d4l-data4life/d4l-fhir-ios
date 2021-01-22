@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Indicates whether a resource instance represents a specific location or a class of locations.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/location-mode
  */
 public enum LocationMode: String, FHIRPrimitiveType {
-	
+
 	/// The Location resource represents a specific instance of a location (e.g. Operating Theatre 1A).
 	case instance = "instance"
-	
+
 	/// The Location represents a class of locations (e.g. Any Operating Theatre) although this class of locations could
 	/// be constrained within a specific boundary (such as organization, or parent location, address etc.).
 	case kind = "kind"

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Identifies the level of importance to be assigned to actioning the request.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/request-priority
  */
 public enum RequestPriority: String, FHIRPrimitiveType {
-	
+
 	/// The request has normal priority.
 	case routine = "routine"
-	
+
 	/// The request should be actioned promptly - higher priority than routine.
 	case urgent = "urgent"
-	
+
 	/// The request should be actioned as soon as possible - higher priority than urgent.
 	case asap = "asap"
-	
+
 	/// The request should be actioned immediately - highest possible priority.  E.g. an emergency.
 	case stat = "stat"
 }

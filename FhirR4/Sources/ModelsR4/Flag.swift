@@ -17,41 +17,39 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Key information to flag to healthcare providers.
  
  Prospective warnings of potential issues when providing care to the patient.
  */
 open class Flag: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .flag }
-	
+
 	/// Business identifier
 	public var identifier: [Identifier]?
-	
+
 	/// Supports basic workflow.
 	public var status: FHIRPrimitive<FlagStatus>
-	
+
 	/// Clinical, administrative, etc.
 	public var category: [CodeableConcept]?
-	
+
 	/// Coded or textual message to display to user
 	public var code: CodeableConcept
-	
+
 	/// Who/What is flag about?
 	public var subject: Reference
-	
+
 	/// Time period when flag is active
 	public var period: Period?
-	
+
 	/// Alert relevant during encounter
 	public var encounter: Reference?
-	
+
 	/// Flag creator
 	public var author: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept, status: FHIRPrimitive<FlagStatus>, subject: Reference) {
 		self.code = code
@@ -59,7 +57,7 @@ open class Flag: DomainResource {
 		self.subject = subject
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							author: Reference? = nil,
@@ -77,8 +75,7 @@ open class Flag: DomainResource {
 							period: Period? = nil,
 							status: FHIRPrimitive<FlagStatus>,
 							subject: Reference,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(code: code, status: status, subject: subject)
 		self.author = author
 		self.category = category
@@ -94,9 +91,9 @@ open class Flag: DomainResource {
 		self.period = period
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case author
 		case category
@@ -107,11 +104,11 @@ open class Flag: DomainResource {
 		case status; case _status
 		case subject
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.author = try Reference(from: _container, forKeyIfPresent: .author)
 		self.category = try [CodeableConcept](from: _container, forKeyIfPresent: .category)
@@ -123,11 +120,11 @@ open class Flag: DomainResource {
 		self.subject = try Reference(from: _container, forKey: .subject)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try author?.encode(on: &_container, forKey: .author)
 		try category?.encode(on: &_container, forKey: .category)
@@ -139,9 +136,9 @@ open class Flag: DomainResource {
 		try subject.encode(on: &_container, forKey: .subject)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Flag else {
 			return false
@@ -158,7 +155,7 @@ open class Flag: DomainResource {
 		    && status == _other.status
 		    && subject == _other.subject
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(author)

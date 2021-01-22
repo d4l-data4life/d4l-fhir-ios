@@ -18,14 +18,13 @@
 
 import Foundation
 
-
 extension FHIRDate: ExpressibleAsNSDate {
-	
+
 	public func asNSDate() throws -> Date {
 		let dateComponents = FHIRDateComponents(year: year, month: month, day: day)
 		return try dateComponents.asNSDate()
 	}
-	
+
 	public init(date: Date, timeZone: TimeZone = TimeZone.current) throws {
 		(self.year, self.month, self.day) = try FHIRDateComponents.dateComponents(from: date, with: timeZone)
 	}

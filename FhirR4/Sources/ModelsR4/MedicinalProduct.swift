@@ -17,81 +17,79 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).
  */
 open class MedicinalProduct: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .medicinalProduct }
-	
+
 	/// Business identifier for this product. Could be an MPID
 	public var identifier: [Identifier]?
-	
+
 	/// Regulatory type, e.g. Investigational or Authorized
 	public var type: CodeableConcept?
-	
+
 	/// If this medicine applies to human or veterinary uses
 	public var domain: Coding?
-	
+
 	/// The dose form for a single part product, or combined form of a multiple part product
 	public var combinedPharmaceuticalDoseForm: CodeableConcept?
-	
+
 	/// The legal status of supply of the medicinal product as classified by the regulator
 	public var legalStatusOfSupply: CodeableConcept?
-	
+
 	/// Whether the Medicinal Product is subject to additional monitoring for regulatory reasons
 	public var additionalMonitoringIndicator: CodeableConcept?
-	
+
 	/// Whether the Medicinal Product is subject to special measures for regulatory reasons
 	public var specialMeasures: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// If authorised for use in children
 	public var paediatricUseIndicator: CodeableConcept?
-	
+
 	/// Allows the product to be classified by various systems
 	public var productClassification: [CodeableConcept]?
-	
+
 	/// Marketing status of the medicinal product, in contrast to marketing authorizaton
 	public var marketingStatus: [MarketingStatus]?
-	
+
 	/// Pharmaceutical aspects of product
 	public var pharmaceuticalProduct: [Reference]?
-	
+
 	/// Package representation for the product
 	public var packagedMedicinalProduct: [Reference]?
-	
+
 	/// Supporting documentation, typically for regulatory submission
 	public var attachedDocument: [Reference]?
-	
+
 	/// A master file for to the medicinal product (e.g. Pharmacovigilance System Master File)
 	public var masterFile: [Reference]?
-	
+
 	/// A product specific contact, person (in a role), or an organization
 	public var contact: [Reference]?
-	
+
 	/// Clinical trials or studies that this product is involved in
 	public var clinicalTrial: [Reference]?
-	
+
 	/// The product's name, including full name and possibly coded parts
 	public var name: [MedicinalProductName]
-	
+
 	/// Reference to another product, e.g. for linking authorised to investigational product
 	public var crossReference: [Identifier]?
-	
+
 	/// An operation applied to the product, for manufacturing or adminsitrative purpose
 	public var manufacturingBusinessOperation: [MedicinalProductManufacturingBusinessOperation]?
-	
+
 	/// Indicates if the medicinal product has an orphan designation for the treatment of a rare disease
 	public var specialDesignation: [MedicinalProductSpecialDesignation]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(name: [MedicinalProductName]) {
 		self.name = name
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							additionalMonitoringIndicator: CodeableConcept? = nil,
@@ -121,8 +119,7 @@ open class MedicinalProduct: DomainResource {
 							specialDesignation: [MedicinalProductSpecialDesignation]? = nil,
 							specialMeasures: [FHIRPrimitive<FHIRString>]? = nil,
 							text: Narrative? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init(name: name)
 		self.additionalMonitoringIndicator = additionalMonitoringIndicator
 		self.attachedDocument = attachedDocument
@@ -152,9 +149,9 @@ open class MedicinalProduct: DomainResource {
 		self.text = text
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case additionalMonitoringIndicator
 		case attachedDocument
@@ -177,11 +174,11 @@ open class MedicinalProduct: DomainResource {
 		case specialMeasures; case _specialMeasures
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.additionalMonitoringIndicator = try CodeableConcept(from: _container, forKeyIfPresent: .additionalMonitoringIndicator)
 		self.attachedDocument = try [Reference](from: _container, forKeyIfPresent: .attachedDocument)
@@ -205,11 +202,11 @@ open class MedicinalProduct: DomainResource {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try additionalMonitoringIndicator?.encode(on: &_container, forKey: .additionalMonitoringIndicator)
 		try attachedDocument?.encode(on: &_container, forKey: .attachedDocument)
@@ -233,9 +230,9 @@ open class MedicinalProduct: DomainResource {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProduct else {
 			return false
@@ -264,7 +261,7 @@ open class MedicinalProduct: DomainResource {
 		    && specialMeasures == _other.specialMeasures
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(additionalMonitoringIndicator)
@@ -294,30 +291,30 @@ open class MedicinalProduct: DomainResource {
  An operation applied to the product, for manufacturing or adminsitrative purpose.
  */
 open class MedicinalProductManufacturingBusinessOperation: BackboneElement {
-	
+
 	/// The type of manufacturing operation
 	public var operationType: CodeableConcept?
-	
+
 	/// Regulatory authorization reference number
 	public var authorisationReferenceNumber: Identifier?
-	
+
 	/// Regulatory authorization date
 	public var effectiveDate: FHIRPrimitive<DateTime>?
-	
+
 	/// To indicate if this proces is commercially confidential
 	public var confidentialityIndicator: CodeableConcept?
-	
+
 	/// The manufacturer or establishment associated with the process
 	public var manufacturer: [Reference]?
-	
+
 	/// A regulator which oversees the operation
 	public var regulator: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							authorisationReferenceNumber: Identifier? = nil,
@@ -328,8 +325,7 @@ open class MedicinalProductManufacturingBusinessOperation: BackboneElement {
 							manufacturer: [Reference]? = nil,
 							modifierExtension: [Extension]? = nil,
 							operationType: CodeableConcept? = nil,
-							regulator: Reference? = nil)
-	{
+							regulator: Reference? = nil) {
 		self.init()
 		self.authorisationReferenceNumber = authorisationReferenceNumber
 		self.confidentialityIndicator = confidentialityIndicator
@@ -341,9 +337,9 @@ open class MedicinalProductManufacturingBusinessOperation: BackboneElement {
 		self.operationType = operationType
 		self.regulator = regulator
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case authorisationReferenceNumber
 		case confidentialityIndicator
@@ -352,11 +348,11 @@ open class MedicinalProductManufacturingBusinessOperation: BackboneElement {
 		case operationType
 		case regulator
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.authorisationReferenceNumber = try Identifier(from: _container, forKeyIfPresent: .authorisationReferenceNumber)
 		self.confidentialityIndicator = try CodeableConcept(from: _container, forKeyIfPresent: .confidentialityIndicator)
@@ -366,11 +362,11 @@ open class MedicinalProductManufacturingBusinessOperation: BackboneElement {
 		self.regulator = try Reference(from: _container, forKeyIfPresent: .regulator)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try authorisationReferenceNumber?.encode(on: &_container, forKey: .authorisationReferenceNumber)
 		try confidentialityIndicator?.encode(on: &_container, forKey: .confidentialityIndicator)
@@ -380,9 +376,9 @@ open class MedicinalProductManufacturingBusinessOperation: BackboneElement {
 		try regulator?.encode(on: &_container, forKey: .regulator)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductManufacturingBusinessOperation else {
 			return false
@@ -397,7 +393,7 @@ open class MedicinalProductManufacturingBusinessOperation: BackboneElement {
 		    && operationType == _other.operationType
 		    && regulator == _other.regulator
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(authorisationReferenceNumber)
@@ -413,22 +409,22 @@ open class MedicinalProductManufacturingBusinessOperation: BackboneElement {
  The product's name, including full name and possibly coded parts.
  */
 open class MedicinalProductName: BackboneElement {
-	
+
 	/// The full product name
 	public var productName: FHIRPrimitive<FHIRString>
-	
+
 	/// Coding words or phrases of the name
 	public var namePart: [MedicinalProductNameNamePart]?
-	
+
 	/// Country where the name applies
 	public var countryLanguage: [MedicinalProductNameCountryLanguage]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(productName: FHIRPrimitive<FHIRString>) {
 		self.productName = productName
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							countryLanguage: [MedicinalProductNameCountryLanguage]? = nil,
@@ -436,8 +432,7 @@ open class MedicinalProductName: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							namePart: [MedicinalProductNameNamePart]? = nil,
-							productName: FHIRPrimitive<FHIRString>)
-	{
+							productName: FHIRPrimitive<FHIRString>) {
 		self.init(productName: productName)
 		self.countryLanguage = countryLanguage
 		self.`extension` = `extension`
@@ -445,39 +440,39 @@ open class MedicinalProductName: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.namePart = namePart
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case countryLanguage
 		case namePart
 		case productName; case _productName
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.countryLanguage = try [MedicinalProductNameCountryLanguage](from: _container, forKeyIfPresent: .countryLanguage)
 		self.namePart = try [MedicinalProductNameNamePart](from: _container, forKeyIfPresent: .namePart)
 		self.productName = try FHIRPrimitive<FHIRString>(from: _container, forKey: .productName, auxiliaryKey: ._productName)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try countryLanguage?.encode(on: &_container, forKey: .countryLanguage)
 		try namePart?.encode(on: &_container, forKey: .namePart)
 		try productName.encode(on: &_container, forKey: .productName, auxiliaryKey: ._productName)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductName else {
 			return false
@@ -489,7 +484,7 @@ open class MedicinalProductName: BackboneElement {
 		    && namePart == _other.namePart
 		    && productName == _other.productName
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(countryLanguage)
@@ -502,23 +497,23 @@ open class MedicinalProductName: BackboneElement {
  Country where the name applies.
  */
 open class MedicinalProductNameCountryLanguage: BackboneElement {
-	
+
 	/// Country code for where this name applies
 	public var country: CodeableConcept
-	
+
 	/// Jurisdiction code for where this name applies
 	public var jurisdiction: CodeableConcept?
-	
+
 	/// Language code for this name
 	public var language: CodeableConcept
-	
+
 	/// Designated initializer taking all required properties
 	public init(country: CodeableConcept, language: CodeableConcept) {
 		self.country = country
 		self.language = language
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							country: CodeableConcept,
@@ -526,47 +521,46 @@ open class MedicinalProductNameCountryLanguage: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							jurisdiction: CodeableConcept? = nil,
 							language: CodeableConcept,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(country: country, language: language)
 		self.`extension` = `extension`
 		self.id = id
 		self.jurisdiction = jurisdiction
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case country
 		case jurisdiction
 		case language
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.country = try CodeableConcept(from: _container, forKey: .country)
 		self.jurisdiction = try CodeableConcept(from: _container, forKeyIfPresent: .jurisdiction)
 		self.language = try CodeableConcept(from: _container, forKey: .language)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try country.encode(on: &_container, forKey: .country)
 		try jurisdiction?.encode(on: &_container, forKey: .jurisdiction)
 		try language.encode(on: &_container, forKey: .language)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductNameCountryLanguage else {
 			return false
@@ -578,7 +572,7 @@ open class MedicinalProductNameCountryLanguage: BackboneElement {
 		    && jurisdiction == _other.jurisdiction
 		    && language == _other.language
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(country)
@@ -591,63 +585,62 @@ open class MedicinalProductNameCountryLanguage: BackboneElement {
  Coding words or phrases of the name.
  */
 open class MedicinalProductNameNamePart: BackboneElement {
-	
+
 	/// A fragment of a product name
 	public var part: FHIRPrimitive<FHIRString>
-	
+
 	/// Idenifying type for this part of the name (e.g. strength part)
 	public var type: Coding
-	
+
 	/// Designated initializer taking all required properties
 	public init(part: FHIRPrimitive<FHIRString>, type: Coding) {
 		self.part = part
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							part: FHIRPrimitive<FHIRString>,
-							type: Coding)
-	{
+							type: Coding) {
 		self.init(part: part, type: type)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case part; case _part
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.part = try FHIRPrimitive<FHIRString>(from: _container, forKey: .part, auxiliaryKey: ._part)
 		self.type = try Coding(from: _container, forKey: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try part.encode(on: &_container, forKey: .part, auxiliaryKey: ._part)
 		try type.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductNameNamePart else {
 			return false
@@ -658,7 +651,7 @@ open class MedicinalProductNameNamePart: BackboneElement {
 		return part == _other.part
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(part)
@@ -670,40 +663,40 @@ open class MedicinalProductNameNamePart: BackboneElement {
  Indicates if the medicinal product has an orphan designation for the treatment of a rare disease.
  */
 open class MedicinalProductSpecialDesignation: BackboneElement {
-	
+
 	/// All possible types for "indication[x]"
 	public enum IndicationX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Identifier for the designation, or procedure number
 	public var identifier: [Identifier]?
-	
+
 	/// The type of special designation, e.g. orphan drug, minor use
 	public var type: CodeableConcept?
-	
+
 	/// The intended use of the product, e.g. prevention, treatment
 	public var intendedUse: CodeableConcept?
-	
+
 	/// Condition for which the medicinal use applies
 	/// One of `indication[x]`
 	public var indication: IndicationX?
-	
+
 	/// For example granted, pending, expired or withdrawn
 	public var status: CodeableConcept?
-	
+
 	/// Date when the designation was granted
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Animal species for which this applies
 	public var species: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							date: FHIRPrimitive<DateTime>? = nil,
@@ -715,8 +708,7 @@ open class MedicinalProductSpecialDesignation: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							species: CodeableConcept? = nil,
 							status: CodeableConcept? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.date = date
 		self.`extension` = `extension`
@@ -729,9 +721,9 @@ open class MedicinalProductSpecialDesignation: BackboneElement {
 		self.status = status
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case date; case _date
 		case identifier
@@ -742,15 +734,15 @@ open class MedicinalProductSpecialDesignation: BackboneElement {
 		case status
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.date = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
 		self.identifier = try [Identifier](from: _container, forKeyIfPresent: .identifier)
-		var _t_indication: IndicationX? = nil
+		var _t_indication: IndicationX?
 		if let indicationCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .indicationCodeableConcept) {
 			if _t_indication != nil {
 				throw DecodingError.dataCorruptedError(forKey: .indicationCodeableConcept, in: _container, debugDescription: "More than one value provided for \"indication\"")
@@ -770,11 +762,11 @@ open class MedicinalProductSpecialDesignation: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
 		try identifier?.encode(on: &_container, forKey: .identifier)
@@ -792,9 +784,9 @@ open class MedicinalProductSpecialDesignation: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductSpecialDesignation else {
 			return false
@@ -810,7 +802,7 @@ open class MedicinalProductSpecialDesignation: BackboneElement {
 		    && status == _other.status
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(date)

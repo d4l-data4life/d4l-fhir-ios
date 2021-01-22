@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Types of resources that are part of group.
  
@@ -26,22 +24,22 @@
  ValueSet: http://hl7.org/fhir/ValueSet/group-type
  */
 public enum GroupType: String, FHIRPrimitiveType {
-	
+
 	/// Group contains "person" Patient resources.
 	case person = "person"
-	
+
 	/// Group contains "animal" Patient resources.
 	case animal = "animal"
-	
+
 	/// Group contains healthcare practitioner resources (Practitioner or PractitionerRole).
 	case practitioner = "practitioner"
-	
+
 	/// Group contains Device resources.
 	case device = "device"
-	
+
 	/// Group contains Medication resources.
 	case medication = "medication"
-	
+
 	/// Group contains Substance resources.
 	case substance = "substance"
 }

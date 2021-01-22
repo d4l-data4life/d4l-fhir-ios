@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set defines a set of codes that are used to indicate the profile type of a test system when acting as the
  origin within a TestScript.
@@ -27,10 +25,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/testscript-profile-origin-types
  */
 public enum TestScriptProfileOriginType: String, FHIRPrimitiveType {
-	
+
 	/// General FHIR client used to initiate operations against a FHIR server.
 	case fHIRClient = "FHIR-Client"
-	
+
 	/// A FHIR client acting as a Structured Data Capture Form Filler.
 	case fHIRSDCFormFiller = "FHIR-SDC-FormFiller"
 }

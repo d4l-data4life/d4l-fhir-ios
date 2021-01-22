@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Type of the validation primary source
  
@@ -26,31 +24,31 @@
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-primary-source-type
  */
 public enum PrimarySourceType: String, FHIRPrimitiveType {
-	
+
 	/// licBoard
 	case licBoard = "lic-board"
-	
+
 	/// prim
 	case prim = "prim"
-	
+
 	/// contEd
 	case contEd = "cont-ed"
-	
+
 	/// postServ
 	case postServ = "post-serv"
-	
+
 	/// relOwn
 	case relOwn = "rel-own"
-	
+
 	/// regAuth
 	case regAuth = "reg-auth"
-	
+
 	/// legal
 	case legal = "legal"
-	
+
 	/// issuer
 	case issuer = "issuer"
-	
+
 	/// authSource
 	case authSource = "auth-source"
 }

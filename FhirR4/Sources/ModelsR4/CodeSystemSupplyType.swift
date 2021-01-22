@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value sets refers to a Category of supply.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/supplyrequest-kind
  */
 public enum SupplyType: String, FHIRPrimitiveType {
-	
+
 	/// Supply is stored and requested from central supply.
 	case central = "central"
-	
+
 	/// Supply is not onsite and must be requested from an outside vendor using a non-stock requisition.
 	case nonstock = "nonstock"
 }

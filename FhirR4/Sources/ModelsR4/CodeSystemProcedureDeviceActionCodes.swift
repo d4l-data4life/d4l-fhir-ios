@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Example codes indicating the change that happened to the device during the procedure.  Note that these are in no way
  complete and might not even be appropriate for some uses.
@@ -26,13 +24,13 @@
  URL: http://hl7.org/fhir/device-action
  */
 public enum ProcedureDeviceActionCodes: String, FHIRPrimitiveType {
-	
+
 	/// The device was implanted in the patient during the procedure.
 	case implanted = "implanted"
-	
+
 	/// The device was explanted from the patient during the procedure.
 	case explanted = "explanted"
-	
+
 	/// The device remains in the patient, but its location, settings, or functionality was changed.
 	case manipulated = "manipulated"
 }

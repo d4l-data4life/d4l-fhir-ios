@@ -17,40 +17,38 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Kind of specimen.
  
  A kind of specimen with associated set of requirements.
  */
 open class SpecimenDefinition: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .specimenDefinition }
-	
+
 	/// Business identifier of a kind of specimen
 	public var identifier: Identifier?
-	
+
 	/// Kind of material to collect
 	public var typeCollected: CodeableConcept?
-	
+
 	/// Patient preparation for collection
 	public var patientPreparation: [CodeableConcept]?
-	
+
 	/// Time aspect for collection
 	public var timeAspect: FHIRPrimitive<FHIRString>?
-	
+
 	/// Specimen collection procedure
 	public var collection: [CodeableConcept]?
-	
+
 	/// Specimen in container intended for testing by lab
 	public var typeTested: [SpecimenDefinitionTypeTested]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							collection: [CodeableConcept]? = nil,
@@ -66,8 +64,7 @@ open class SpecimenDefinition: DomainResource {
 							text: Narrative? = nil,
 							timeAspect: FHIRPrimitive<FHIRString>? = nil,
 							typeCollected: CodeableConcept? = nil,
-							typeTested: [SpecimenDefinitionTypeTested]? = nil)
-	{
+							typeTested: [SpecimenDefinitionTypeTested]? = nil) {
 		self.init()
 		self.collection = collection
 		self.contained = contained
@@ -84,9 +81,9 @@ open class SpecimenDefinition: DomainResource {
 		self.typeCollected = typeCollected
 		self.typeTested = typeTested
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case collection
 		case identifier
@@ -95,11 +92,11 @@ open class SpecimenDefinition: DomainResource {
 		case typeCollected
 		case typeTested
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.collection = try [CodeableConcept](from: _container, forKeyIfPresent: .collection)
 		self.identifier = try Identifier(from: _container, forKeyIfPresent: .identifier)
@@ -109,11 +106,11 @@ open class SpecimenDefinition: DomainResource {
 		self.typeTested = try [SpecimenDefinitionTypeTested](from: _container, forKeyIfPresent: .typeTested)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try collection?.encode(on: &_container, forKey: .collection)
 		try identifier?.encode(on: &_container, forKey: .identifier)
@@ -123,9 +120,9 @@ open class SpecimenDefinition: DomainResource {
 		try typeTested?.encode(on: &_container, forKey: .typeTested)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SpecimenDefinition else {
 			return false
@@ -140,7 +137,7 @@ open class SpecimenDefinition: DomainResource {
 		    && typeCollected == _other.typeCollected
 		    && typeTested == _other.typeTested
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(collection)
@@ -158,37 +155,37 @@ open class SpecimenDefinition: DomainResource {
  Specimen conditioned in a container as expected by the testing laboratory.
  */
 open class SpecimenDefinitionTypeTested: BackboneElement {
-	
+
 	/// Primary or secondary specimen
 	public var isDerived: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Type of intended specimen
 	public var type: CodeableConcept?
-	
+
 	/// The preference for this type of conditioned specimen.
 	public var preference: FHIRPrimitive<SpecimenContainedPreference>
-	
+
 	/// The specimen's container
 	public var container: SpecimenDefinitionTypeTestedContainer?
-	
+
 	/// Specimen requirements
 	public var requirement: FHIRPrimitive<FHIRString>?
-	
+
 	/// Specimen retention time
 	public var retentionTime: Duration?
-	
+
 	/// Rejection criterion
 	public var rejectionCriterion: [CodeableConcept]?
-	
+
 	/// Specimen handling before testing
 	public var handling: [SpecimenDefinitionTypeTestedHandling]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(preference: FHIRPrimitive<SpecimenContainedPreference>) {
 		self.preference = preference
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							container: SpecimenDefinitionTypeTestedContainer? = nil,
@@ -201,8 +198,7 @@ open class SpecimenDefinitionTypeTested: BackboneElement {
 							rejectionCriterion: [CodeableConcept]? = nil,
 							requirement: FHIRPrimitive<FHIRString>? = nil,
 							retentionTime: Duration? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init(preference: preference)
 		self.container = container
 		self.`extension` = `extension`
@@ -215,9 +211,9 @@ open class SpecimenDefinitionTypeTested: BackboneElement {
 		self.retentionTime = retentionTime
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case container
 		case handling
@@ -228,11 +224,11 @@ open class SpecimenDefinitionTypeTested: BackboneElement {
 		case retentionTime
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.container = try SpecimenDefinitionTypeTestedContainer(from: _container, forKeyIfPresent: .container)
 		self.handling = try [SpecimenDefinitionTypeTestedHandling](from: _container, forKeyIfPresent: .handling)
@@ -244,11 +240,11 @@ open class SpecimenDefinitionTypeTested: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try container?.encode(on: &_container, forKey: .container)
 		try handling?.encode(on: &_container, forKey: .handling)
@@ -260,9 +256,9 @@ open class SpecimenDefinitionTypeTested: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SpecimenDefinitionTypeTested else {
 			return false
@@ -279,7 +275,7 @@ open class SpecimenDefinitionTypeTested: BackboneElement {
 		    && retentionTime == _other.retentionTime
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(container)
@@ -297,43 +293,43 @@ open class SpecimenDefinitionTypeTested: BackboneElement {
  The specimen's container.
  */
 open class SpecimenDefinitionTypeTestedContainer: BackboneElement {
-	
+
 	/// All possible types for "minimumVolume[x]"
 	public enum MinimumVolumeX: Hashable {
 		case quantity(Quantity)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Container material
 	public var material: CodeableConcept?
-	
+
 	/// Kind of container associated with the kind of specimen
 	public var type: CodeableConcept?
-	
+
 	/// Color of container cap
 	public var cap: CodeableConcept?
-	
+
 	/// Container description
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Container capacity
 	public var capacity: Quantity?
-	
+
 	/// Minimum volume
 	/// One of `minimumVolume[x]`
 	public var minimumVolume: MinimumVolumeX?
-	
+
 	/// Additive associated with container
 	public var additive: [SpecimenDefinitionTypeTestedContainerAdditive]?
-	
+
 	/// Specimen container preparation
 	public var preparation: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							additive: [SpecimenDefinitionTypeTestedContainerAdditive]? = nil,
@@ -346,8 +342,7 @@ open class SpecimenDefinitionTypeTestedContainer: BackboneElement {
 							minimumVolume: MinimumVolumeX? = nil,
 							modifierExtension: [Extension]? = nil,
 							preparation: FHIRPrimitive<FHIRString>? = nil,
-							type: CodeableConcept? = nil)
-	{
+							type: CodeableConcept? = nil) {
 		self.init()
 		self.additive = additive
 		self.cap = cap
@@ -361,9 +356,9 @@ open class SpecimenDefinitionTypeTestedContainer: BackboneElement {
 		self.preparation = preparation
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case additive
 		case cap
@@ -375,18 +370,18 @@ open class SpecimenDefinitionTypeTestedContainer: BackboneElement {
 		case preparation; case _preparation
 		case type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.additive = try [SpecimenDefinitionTypeTestedContainerAdditive](from: _container, forKeyIfPresent: .additive)
 		self.cap = try CodeableConcept(from: _container, forKeyIfPresent: .cap)
 		self.capacity = try Quantity(from: _container, forKeyIfPresent: .capacity)
 		self.description_fhir = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .description_fhir, auxiliaryKey: ._description_fhir)
 		self.material = try CodeableConcept(from: _container, forKeyIfPresent: .material)
-		var _t_minimumVolume: MinimumVolumeX? = nil
+		var _t_minimumVolume: MinimumVolumeX?
 		if let minimumVolumeQuantity = try Quantity(from: _container, forKeyIfPresent: .minimumVolumeQuantity) {
 			if _t_minimumVolume != nil {
 				throw DecodingError.dataCorruptedError(forKey: .minimumVolumeQuantity, in: _container, debugDescription: "More than one value provided for \"minimumVolume\"")
@@ -404,11 +399,11 @@ open class SpecimenDefinitionTypeTestedContainer: BackboneElement {
 		self.type = try CodeableConcept(from: _container, forKeyIfPresent: .type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try additive?.encode(on: &_container, forKey: .additive)
 		try cap?.encode(on: &_container, forKey: .cap)
@@ -427,9 +422,9 @@ open class SpecimenDefinitionTypeTestedContainer: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SpecimenDefinitionTypeTestedContainer else {
 			return false
@@ -446,7 +441,7 @@ open class SpecimenDefinitionTypeTestedContainer: BackboneElement {
 		    && preparation == _other.preparation
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(additive)
@@ -467,54 +462,53 @@ open class SpecimenDefinitionTypeTestedContainer: BackboneElement {
  Citrate, EDTA.
  */
 open class SpecimenDefinitionTypeTestedContainerAdditive: BackboneElement {
-	
+
 	/// All possible types for "additive[x]"
 	public enum AdditiveX: Hashable {
 		case codeableConcept(CodeableConcept)
 		case reference(Reference)
 	}
-	
+
 	/// Additive associated with container
 	/// One of `additive[x]`
 	public var additive: AdditiveX
-	
+
 	/// Designated initializer taking all required properties
 	public init(additive: AdditiveX) {
 		self.additive = additive
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							additive: AdditiveX,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(additive: additive)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case additiveCodeableConcept
 		case additiveReference
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.additiveCodeableConcept) || _container.contains(CodingKeys.additiveReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.additiveCodeableConcept, CodingKeys.additiveReference], debugDescription: "Must have at least one value for \"additive\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_additive: AdditiveX? = nil
+		var _t_additive: AdditiveX?
 		if let additiveCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .additiveCodeableConcept) {
 			if _t_additive != nil {
 				throw DecodingError.dataCorruptedError(forKey: .additiveCodeableConcept, in: _container, debugDescription: "More than one value provided for \"additive\"")
@@ -530,25 +524,25 @@ open class SpecimenDefinitionTypeTestedContainerAdditive: BackboneElement {
 		self.additive = _t_additive!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch additive {
 			case .codeableConcept(let _value):
 				try _value.encode(on: &_container, forKey: .additiveCodeableConcept)
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .additiveReference)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SpecimenDefinitionTypeTestedContainerAdditive else {
 			return false
@@ -558,7 +552,7 @@ open class SpecimenDefinitionTypeTestedContainerAdditive: BackboneElement {
 		}
 		return additive == _other.additive
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(additive)
@@ -572,24 +566,24 @@ open class SpecimenDefinitionTypeTestedContainerAdditive: BackboneElement {
  process.
  */
 open class SpecimenDefinitionTypeTestedHandling: BackboneElement {
-	
+
 	/// Temperature qualifier
 	public var temperatureQualifier: CodeableConcept?
-	
+
 	/// Temperature range
 	public var temperatureRange: Range?
-	
+
 	/// Maximum preservation time
 	public var maxDuration: Duration?
-	
+
 	/// Preservation instruction
 	public var instruction: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -598,8 +592,7 @@ open class SpecimenDefinitionTypeTestedHandling: BackboneElement {
 							maxDuration: Duration? = nil,
 							modifierExtension: [Extension]? = nil,
 							temperatureQualifier: CodeableConcept? = nil,
-							temperatureRange: Range? = nil)
-	{
+							temperatureRange: Range? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.id = id
@@ -609,20 +602,20 @@ open class SpecimenDefinitionTypeTestedHandling: BackboneElement {
 		self.temperatureQualifier = temperatureQualifier
 		self.temperatureRange = temperatureRange
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case instruction; case _instruction
 		case maxDuration
 		case temperatureQualifier
 		case temperatureRange
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.instruction = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .instruction, auxiliaryKey: ._instruction)
 		self.maxDuration = try Duration(from: _container, forKeyIfPresent: .maxDuration)
@@ -630,11 +623,11 @@ open class SpecimenDefinitionTypeTestedHandling: BackboneElement {
 		self.temperatureRange = try Range(from: _container, forKeyIfPresent: .temperatureRange)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try instruction?.encode(on: &_container, forKey: .instruction, auxiliaryKey: ._instruction)
 		try maxDuration?.encode(on: &_container, forKey: .maxDuration)
@@ -642,9 +635,9 @@ open class SpecimenDefinitionTypeTestedHandling: BackboneElement {
 		try temperatureRange?.encode(on: &_container, forKey: .temperatureRange)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SpecimenDefinitionTypeTestedHandling else {
 			return false
@@ -657,7 +650,7 @@ open class SpecimenDefinitionTypeTestedHandling: BackboneElement {
 		    && temperatureQualifier == _other.temperatureQualifier
 		    && temperatureRange == _other.temperatureRange
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(instruction)

@@ -17,82 +17,80 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Potential outcomes for a subject with likelihood.
  
  An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.
  */
 open class RiskAssessment: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .riskAssessment }
-	
+
 	/// All possible types for "occurrence[x]"
 	public enum OccurrenceX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
 		case period(Period)
 	}
-	
+
 	/// Unique identifier for the assessment
 	public var identifier: [Identifier]?
-	
+
 	/// Request fulfilled by this assessment
 	public var basedOn: Reference?
-	
+
 	/// Part of this occurrence
 	public var parent: Reference?
-	
+
 	/// The status of the RiskAssessment, using the same statuses as an Observation.
 	public var status: FHIRPrimitive<ObservationStatus>
-	
+
 	/// Evaluation mechanism
 	public var method: CodeableConcept?
-	
+
 	/// Type of assessment
 	public var code: CodeableConcept?
-	
+
 	/// Who/what does assessment apply to?
 	public var subject: Reference
-	
+
 	/// Where was assessment performed?
 	public var encounter: Reference?
-	
+
 	/// When was assessment made?
 	/// One of `occurrence[x]`
 	public var occurrence: OccurrenceX?
-	
+
 	/// Condition assessed
 	public var condition: Reference?
-	
+
 	/// Who did assessment?
 	public var performer: Reference?
-	
+
 	/// Why the assessment was necessary?
 	public var reasonCode: [CodeableConcept]?
-	
+
 	/// Why the assessment was necessary?
 	public var reasonReference: [Reference]?
-	
+
 	/// Information used in assessment
 	public var basis: [Reference]?
-	
+
 	/// Outcome predicted
 	public var prediction: [RiskAssessmentPrediction]?
-	
+
 	/// How to reduce risk
 	public var mitigation: FHIRPrimitive<FHIRString>?
-	
+
 	/// Comments on the risk assessment
 	public var note: [Annotation]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(status: FHIRPrimitive<ObservationStatus>, subject: Reference) {
 		self.status = status
 		self.subject = subject
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							basedOn: Reference? = nil,
@@ -119,8 +117,7 @@ open class RiskAssessment: DomainResource {
 							reasonReference: [Reference]? = nil,
 							status: FHIRPrimitive<ObservationStatus>,
 							subject: Reference,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(status: status, subject: subject)
 		self.basedOn = basedOn
 		self.basis = basis
@@ -146,9 +143,9 @@ open class RiskAssessment: DomainResource {
 		self.reasonReference = reasonReference
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case basedOn
 		case basis
@@ -169,11 +166,11 @@ open class RiskAssessment: DomainResource {
 		case status; case _status
 		case subject
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.basedOn = try Reference(from: _container, forKeyIfPresent: .basedOn)
 		self.basis = try [Reference](from: _container, forKeyIfPresent: .basis)
@@ -184,7 +181,7 @@ open class RiskAssessment: DomainResource {
 		self.method = try CodeableConcept(from: _container, forKeyIfPresent: .method)
 		self.mitigation = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .mitigation, auxiliaryKey: ._mitigation)
 		self.note = try [Annotation](from: _container, forKeyIfPresent: .note)
-		var _t_occurrence: OccurrenceX? = nil
+		var _t_occurrence: OccurrenceX?
 		if let occurrenceDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .occurrenceDateTime, auxiliaryKey: ._occurrenceDateTime) {
 			if _t_occurrence != nil {
 				throw DecodingError.dataCorruptedError(forKey: .occurrenceDateTime, in: _container, debugDescription: "More than one value provided for \"occurrence\"")
@@ -207,11 +204,11 @@ open class RiskAssessment: DomainResource {
 		self.subject = try Reference(from: _container, forKey: .subject)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try basedOn?.encode(on: &_container, forKey: .basedOn)
 		try basis?.encode(on: &_container, forKey: .basis)
@@ -239,9 +236,9 @@ open class RiskAssessment: DomainResource {
 		try subject.encode(on: &_container, forKey: .subject)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? RiskAssessment else {
 			return false
@@ -267,7 +264,7 @@ open class RiskAssessment: DomainResource {
 		    && status == _other.status
 		    && subject == _other.subject
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(basedOn)
@@ -296,44 +293,44 @@ open class RiskAssessment: DomainResource {
  Describes the expected outcome for the subject.
  */
 open class RiskAssessmentPrediction: BackboneElement {
-	
+
 	/// All possible types for "probability[x]"
 	public enum ProbabilityX: Hashable {
 		case decimal(FHIRPrimitive<FHIRDecimal>)
 		case range(Range)
 	}
-	
+
 	/// All possible types for "when[x]"
 	public enum WhenX: Hashable {
 		case period(Period)
 		case range(Range)
 	}
-	
+
 	/// Possible outcome for the subject
 	public var outcome: CodeableConcept?
-	
+
 	/// Likelihood of specified outcome
 	/// One of `probability[x]`
 	public var probability: ProbabilityX?
-	
+
 	/// Likelihood of specified outcome as a qualitative value
 	public var qualitativeRisk: CodeableConcept?
-	
+
 	/// Relative likelihood
 	public var relativeRisk: FHIRPrimitive<FHIRDecimal>?
-	
+
 	/// Timeframe or age range
 	/// One of `when[x]`
 	public var when: WhenX?
-	
+
 	/// Explanation of prediction
 	public var rationale: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -344,8 +341,7 @@ open class RiskAssessmentPrediction: BackboneElement {
 							qualitativeRisk: CodeableConcept? = nil,
 							rationale: FHIRPrimitive<FHIRString>? = nil,
 							relativeRisk: FHIRPrimitive<FHIRDecimal>? = nil,
-							when: WhenX? = nil)
-	{
+							when: WhenX? = nil) {
 		self.init()
 		self.`extension` = `extension`
 		self.id = id
@@ -357,9 +353,9 @@ open class RiskAssessmentPrediction: BackboneElement {
 		self.relativeRisk = relativeRisk
 		self.when = when
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case outcome
 		case probabilityDecimal; case _probabilityDecimal
@@ -370,14 +366,14 @@ open class RiskAssessmentPrediction: BackboneElement {
 		case whenPeriod
 		case whenRange
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.outcome = try CodeableConcept(from: _container, forKeyIfPresent: .outcome)
-		var _t_probability: ProbabilityX? = nil
+		var _t_probability: ProbabilityX?
 		if let probabilityDecimal = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .probabilityDecimal, auxiliaryKey: ._probabilityDecimal) {
 			if _t_probability != nil {
 				throw DecodingError.dataCorruptedError(forKey: .probabilityDecimal, in: _container, debugDescription: "More than one value provided for \"probability\"")
@@ -394,7 +390,7 @@ open class RiskAssessmentPrediction: BackboneElement {
 		self.qualitativeRisk = try CodeableConcept(from: _container, forKeyIfPresent: .qualitativeRisk)
 		self.rationale = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .rationale, auxiliaryKey: ._rationale)
 		self.relativeRisk = try FHIRPrimitive<FHIRDecimal>(from: _container, forKeyIfPresent: .relativeRisk, auxiliaryKey: ._relativeRisk)
-		var _t_when: WhenX? = nil
+		var _t_when: WhenX?
 		if let whenPeriod = try Period(from: _container, forKeyIfPresent: .whenPeriod) {
 			if _t_when != nil {
 				throw DecodingError.dataCorruptedError(forKey: .whenPeriod, in: _container, debugDescription: "More than one value provided for \"when\"")
@@ -410,11 +406,11 @@ open class RiskAssessmentPrediction: BackboneElement {
 		self.when = _t_when
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try outcome?.encode(on: &_container, forKey: .outcome)
 		if let _enum = probability {
@@ -438,9 +434,9 @@ open class RiskAssessmentPrediction: BackboneElement {
 		}
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? RiskAssessmentPrediction else {
 			return false
@@ -455,7 +451,7 @@ open class RiskAssessmentPrediction: BackboneElement {
 		    && relativeRisk == _other.relativeRisk
 		    && when == _other.when
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(outcome)

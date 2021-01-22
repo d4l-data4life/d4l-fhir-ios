@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The frequency with which the target must be validated
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-need
  */
 public enum Need: String, FHIRPrimitiveType {
-	
+
 	/// ***TODO***
 	case none = "none"
-	
+
 	/// ***TODO***
 	case initial = "initial"
-	
+
 	/// ***TODO***
 	case periodic = "periodic"
 }

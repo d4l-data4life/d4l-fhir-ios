@@ -17,69 +17,67 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A Map of relationships between 2 structures that can be used to transform data.
  */
 open class StructureMap: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .structureMap }
-	
+
 	/// Canonical identifier for this structure map, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>
-	
+
 	/// Additional identifier for the structure map
 	public var identifier: [Identifier]?
-	
+
 	/// Business version of the structure map
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this structure map (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// Name for this structure map (human friendly)
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// The status of this structure map. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// For testing purposes, not real usage
 	public var experimental: FHIRPrimitive<FHIRBool>?
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the structure map
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for structure map (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Why this structure map is defined
 	public var purpose: FHIRPrimitive<FHIRString>?
-	
+
 	/// Use and/or publishing restrictions
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// Structure Definition used by this map
 	public var structure: [StructureMapStructure]?
-	
+
 	/// Other maps used by this map (canonical URLs)
 	public var `import`: [FHIRPrimitive<Canonical>]?
-	
+
 	/// Named sections for reader convenience
 	public var group: [StructureMapGroup]
-	
+
 	/// Designated initializer taking all required properties
 	public init(group: [StructureMapGroup], name: FHIRPrimitive<FHIRString>, status: FHIRPrimitive<PublicationStatus>, url: FHIRPrimitive<FHIRURI>) {
 		self.group = group
@@ -88,7 +86,7 @@ open class StructureMap: DomainResource {
 		self.url = url
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contact: [ContactDetail]? = nil,
@@ -116,8 +114,7 @@ open class StructureMap: DomainResource {
 							title: FHIRPrimitive<FHIRString>? = nil,
 							url: FHIRPrimitive<FHIRURI>,
 							useContext: [UsageContext]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(group: group, name: name, status: status, url: url)
 		self.contact = contact
 		self.contained = contained
@@ -142,9 +139,9 @@ open class StructureMap: DomainResource {
 		self.useContext = useContext
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case contact
 		case copyright; case _copyright
@@ -165,11 +162,11 @@ open class StructureMap: DomainResource {
 		case useContext
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.contact = try [ContactDetail](from: _container, forKeyIfPresent: .contact)
 		self.copyright = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .copyright, auxiliaryKey: ._copyright)
@@ -191,11 +188,11 @@ open class StructureMap: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try contact?.encode(on: &_container, forKey: .contact)
 		try copyright?.encode(on: &_container, forKey: .copyright, auxiliaryKey: ._copyright)
@@ -217,9 +214,9 @@ open class StructureMap: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureMap else {
 			return false
@@ -246,7 +243,7 @@ open class StructureMap: DomainResource {
 		    && useContext == _other.useContext
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(contact)
@@ -276,25 +273,25 @@ open class StructureMap: DomainResource {
  Organizes the mapping into manageable chunks for human review/ease of maintenance.
  */
 open class StructureMapGroup: BackboneElement {
-	
+
 	/// Human-readable label
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// Another group that this group adds rules to
 	public var extends: FHIRPrimitive<FHIRString>?
-	
+
 	/// If this is the default rule set to apply for the source type or this combination of types.
 	public var typeMode: FHIRPrimitive<StructureMapGroupTypeMode>
-	
+
 	/// Additional description/explanation for group
 	public var documentation: FHIRPrimitive<FHIRString>?
-	
+
 	/// Named instance provided when invoking the map
 	public var input: [StructureMapGroupInput]
-	
+
 	/// Transform Rule from source to target
 	public var rule: [StructureMapGroupRule]
-	
+
 	/// Designated initializer taking all required properties
 	public init(input: [StructureMapGroupInput], name: FHIRPrimitive<FHIRString>, rule: [StructureMapGroupRule], typeMode: FHIRPrimitive<StructureMapGroupTypeMode>) {
 		self.input = input
@@ -303,7 +300,7 @@ open class StructureMapGroup: BackboneElement {
 		self.typeMode = typeMode
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							documentation: FHIRPrimitive<FHIRString>? = nil,
@@ -314,8 +311,7 @@ open class StructureMapGroup: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							name: FHIRPrimitive<FHIRString>,
 							rule: [StructureMapGroupRule],
-							typeMode: FHIRPrimitive<StructureMapGroupTypeMode>)
-	{
+							typeMode: FHIRPrimitive<StructureMapGroupTypeMode>) {
 		self.init(input: input, name: name, rule: rule, typeMode: typeMode)
 		self.documentation = documentation
 		self.extends = extends
@@ -323,9 +319,9 @@ open class StructureMapGroup: BackboneElement {
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case documentation; case _documentation
 		case extends; case _extends
@@ -334,11 +330,11 @@ open class StructureMapGroup: BackboneElement {
 		case rule
 		case typeMode; case _typeMode
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.documentation = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
 		self.extends = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .extends, auxiliaryKey: ._extends)
@@ -348,11 +344,11 @@ open class StructureMapGroup: BackboneElement {
 		self.typeMode = try FHIRPrimitive<StructureMapGroupTypeMode>(from: _container, forKey: .typeMode, auxiliaryKey: ._typeMode)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
 		try extends?.encode(on: &_container, forKey: .extends, auxiliaryKey: ._extends)
@@ -362,9 +358,9 @@ open class StructureMapGroup: BackboneElement {
 		try typeMode.encode(on: &_container, forKey: .typeMode, auxiliaryKey: ._typeMode)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureMapGroup else {
 			return false
@@ -379,7 +375,7 @@ open class StructureMapGroup: BackboneElement {
 		    && rule == _other.rule
 		    && typeMode == _other.typeMode
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(documentation)
@@ -397,26 +393,26 @@ open class StructureMapGroup: BackboneElement {
  A name assigned to an instance of data. The instance must be provided when the mapping is invoked.
  */
 open class StructureMapGroupInput: BackboneElement {
-	
+
 	/// Name for this instance of data
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// Type for this instance of data
 	public var type: FHIRPrimitive<FHIRString>?
-	
+
 	/// Mode for this instance of data.
 	public var mode: FHIRPrimitive<StructureMapInputMode>
-	
+
 	/// Documentation for this instance of data
 	public var documentation: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(mode: FHIRPrimitive<StructureMapInputMode>, name: FHIRPrimitive<FHIRString>) {
 		self.mode = mode
 		self.name = name
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							documentation: FHIRPrimitive<FHIRString>? = nil,
@@ -425,8 +421,7 @@ open class StructureMapGroupInput: BackboneElement {
 							mode: FHIRPrimitive<StructureMapInputMode>,
 							modifierExtension: [Extension]? = nil,
 							name: FHIRPrimitive<FHIRString>,
-							type: FHIRPrimitive<FHIRString>? = nil)
-	{
+							type: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(mode: mode, name: name)
 		self.documentation = documentation
 		self.`extension` = `extension`
@@ -434,20 +429,20 @@ open class StructureMapGroupInput: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.type = type
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case documentation; case _documentation
 		case mode; case _mode
 		case name; case _name
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.documentation = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
 		self.mode = try FHIRPrimitive<StructureMapInputMode>(from: _container, forKey: .mode, auxiliaryKey: ._mode)
@@ -455,11 +450,11 @@ open class StructureMapGroupInput: BackboneElement {
 		self.type = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
 		try mode.encode(on: &_container, forKey: .mode, auxiliaryKey: ._mode)
@@ -467,9 +462,9 @@ open class StructureMapGroupInput: BackboneElement {
 		try type?.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureMapGroupInput else {
 			return false
@@ -482,7 +477,7 @@ open class StructureMapGroupInput: BackboneElement {
 		    && name == _other.name
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(documentation)
@@ -496,32 +491,32 @@ open class StructureMapGroupInput: BackboneElement {
  Transform Rule from source to target.
  */
 open class StructureMapGroupRule: BackboneElement {
-	
+
 	/// Name of the rule for internal references
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// Source inputs to the mapping
 	public var source: [StructureMapGroupRuleSource]
-	
+
 	/// Content to create because of this mapping rule
 	public var target: [StructureMapGroupRuleTarget]?
-	
+
 	/// Rules contained in this rule
 	public var rule: [StructureMapGroupRule]?
-	
+
 	/// Which other rules to apply in the context of this rule
 	public var dependent: [StructureMapGroupRuleDependent]?
-	
+
 	/// Documentation for this instance of data
 	public var documentation: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(name: FHIRPrimitive<FHIRString>, source: [StructureMapGroupRuleSource]) {
 		self.name = name
 		self.source = source
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							dependent: [StructureMapGroupRuleDependent]? = nil,
@@ -532,8 +527,7 @@ open class StructureMapGroupRule: BackboneElement {
 							name: FHIRPrimitive<FHIRString>,
 							rule: [StructureMapGroupRule]? = nil,
 							source: [StructureMapGroupRuleSource],
-							target: [StructureMapGroupRuleTarget]? = nil)
-	{
+							target: [StructureMapGroupRuleTarget]? = nil) {
 		self.init(name: name, source: source)
 		self.dependent = dependent
 		self.documentation = documentation
@@ -543,9 +537,9 @@ open class StructureMapGroupRule: BackboneElement {
 		self.rule = rule
 		self.target = target
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case dependent
 		case documentation; case _documentation
@@ -554,11 +548,11 @@ open class StructureMapGroupRule: BackboneElement {
 		case source
 		case target
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.dependent = try [StructureMapGroupRuleDependent](from: _container, forKeyIfPresent: .dependent)
 		self.documentation = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
@@ -568,11 +562,11 @@ open class StructureMapGroupRule: BackboneElement {
 		self.target = try [StructureMapGroupRuleTarget](from: _container, forKeyIfPresent: .target)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try dependent?.encode(on: &_container, forKey: .dependent)
 		try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
@@ -582,9 +576,9 @@ open class StructureMapGroupRule: BackboneElement {
 		try target?.encode(on: &_container, forKey: .target)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureMapGroupRule else {
 			return false
@@ -599,7 +593,7 @@ open class StructureMapGroupRule: BackboneElement {
 		    && source == _other.source
 		    && target == _other.target
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(dependent)
@@ -615,63 +609,62 @@ open class StructureMapGroupRule: BackboneElement {
  Which other rules to apply in the context of this rule.
  */
 open class StructureMapGroupRuleDependent: BackboneElement {
-	
+
 	/// Name of a rule or group to apply
 	public var name: FHIRPrimitive<FHIRString>
-	
+
 	/// Variable to pass to the rule or group
 	public var variable: [FHIRPrimitive<FHIRString>]
-	
+
 	/// Designated initializer taking all required properties
 	public init(name: FHIRPrimitive<FHIRString>, variable: [FHIRPrimitive<FHIRString>]) {
 		self.name = name
 		self.variable = variable
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							name: FHIRPrimitive<FHIRString>,
-							variable: [FHIRPrimitive<FHIRString>])
-	{
+							variable: [FHIRPrimitive<FHIRString>]) {
 		self.init(name: name, variable: variable)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case name; case _name
 		case variable; case _variable
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.name = try FHIRPrimitive<FHIRString>(from: _container, forKey: .name, auxiliaryKey: ._name)
 		self.variable = try [FHIRPrimitive<FHIRString>](from: _container, forKey: .variable, auxiliaryKey: ._variable)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try name.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
 		try variable.encode(on: &_container, forKey: .variable, auxiliaryKey: ._variable)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureMapGroupRuleDependent else {
 			return false
@@ -682,7 +675,7 @@ open class StructureMapGroupRuleDependent: BackboneElement {
 		return name == _other.name
 		    && variable == _other.variable
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(name)
@@ -694,7 +687,7 @@ open class StructureMapGroupRuleDependent: BackboneElement {
  Source inputs to the mapping.
  */
 open class StructureMapGroupRuleSource: BackboneElement {
-	
+
 	/// All possible types for "defaultValue[x]"
 	public enum DefaultValueX: Hashable {
 		case address(Address)
@@ -748,47 +741,47 @@ open class StructureMapGroupRuleSource: BackboneElement {
 		case usageContext(UsageContext)
 		case uuid(FHIRPrimitive<FHIRURI>)
 	}
-	
+
 	/// Type or variable this rule applies to
 	public var context: FHIRPrimitive<FHIRString>
-	
+
 	/// Specified minimum cardinality
 	public var min: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// Specified maximum cardinality (number or *)
 	public var max: FHIRPrimitive<FHIRString>?
-	
+
 	/// Rule only applies if source has this type
 	public var type: FHIRPrimitive<FHIRString>?
-	
+
 	/// Default value if no value exists
 	/// One of `defaultValue[x]`
 	public var defaultValue: DefaultValueX?
-	
+
 	/// Optional field for this source
 	public var element: FHIRPrimitive<FHIRString>?
-	
+
 	/// How to handle the list mode for this element.
 	public var listMode: FHIRPrimitive<StructureMapSourceListMode>?
-	
+
 	/// Named context for field, if a field is specified
 	public var variable: FHIRPrimitive<FHIRString>?
-	
+
 	/// FHIRPath expression  - must be true or the rule does not apply
 	public var condition: FHIRPrimitive<FHIRString>?
-	
+
 	/// FHIRPath expression  - must be true or the mapping engine throws an error instead of completing
 	public var check: FHIRPrimitive<FHIRString>?
-	
+
 	/// Message to put in log if source exists (FHIRPath)
 	public var logMessage: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(context: FHIRPrimitive<FHIRString>) {
 		self.context = context
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							check: FHIRPrimitive<FHIRString>? = nil,
@@ -804,8 +797,7 @@ open class StructureMapGroupRuleSource: BackboneElement {
 							min: FHIRPrimitive<FHIRInteger>? = nil,
 							modifierExtension: [Extension]? = nil,
 							type: FHIRPrimitive<FHIRString>? = nil,
-							variable: FHIRPrimitive<FHIRString>? = nil)
-	{
+							variable: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(context: context)
 		self.check = check
 		self.condition = condition
@@ -821,9 +813,9 @@ open class StructureMapGroupRuleSource: BackboneElement {
 		self.type = type
 		self.variable = variable
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case check; case _check
 		case condition; case _condition
@@ -886,16 +878,16 @@ open class StructureMapGroupRuleSource: BackboneElement {
 		case type; case _type
 		case variable; case _variable
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.check = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .check, auxiliaryKey: ._check)
 		self.condition = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .condition, auxiliaryKey: ._condition)
 		self.context = try FHIRPrimitive<FHIRString>(from: _container, forKey: .context, auxiliaryKey: ._context)
-		var _t_defaultValue: DefaultValueX? = nil
+		var _t_defaultValue: DefaultValueX?
 		if let defaultValueBase64Binary = try FHIRPrimitive<Base64Binary>(from: _container, forKeyIfPresent: .defaultValueBase64Binary, auxiliaryKey: ._defaultValueBase64Binary) {
 			if _t_defaultValue != nil {
 				throw DecodingError.dataCorruptedError(forKey: .defaultValueBase64Binary, in: _container, debugDescription: "More than one value provided for \"defaultValue\"")
@@ -1206,11 +1198,11 @@ open class StructureMapGroupRuleSource: BackboneElement {
 		self.variable = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .variable, auxiliaryKey: ._variable)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try check?.encode(on: &_container, forKey: .check, auxiliaryKey: ._check)
 		try condition?.encode(on: &_container, forKey: .condition, auxiliaryKey: ._condition)
@@ -1328,9 +1320,9 @@ open class StructureMapGroupRuleSource: BackboneElement {
 		try variable?.encode(on: &_container, forKey: .variable, auxiliaryKey: ._variable)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureMapGroupRuleSource else {
 			return false
@@ -1350,7 +1342,7 @@ open class StructureMapGroupRuleSource: BackboneElement {
 		    && type == _other.type
 		    && variable == _other.variable
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(check)
@@ -1371,36 +1363,36 @@ open class StructureMapGroupRuleSource: BackboneElement {
  Content to create because of this mapping rule.
  */
 open class StructureMapGroupRuleTarget: BackboneElement {
-	
+
 	/// Type or variable this rule applies to
 	public var context: FHIRPrimitive<FHIRString>?
-	
+
 	/// How to interpret the context.
 	public var contextType: FHIRPrimitive<StructureMapContextType>?
-	
+
 	/// Field to create in the context
 	public var element: FHIRPrimitive<FHIRString>?
-	
+
 	/// Named context for field, if desired, and a field is specified
 	public var variable: FHIRPrimitive<FHIRString>?
-	
+
 	/// If field is a list, how to manage the list.
 	public var listMode: [FHIRPrimitive<StructureMapTargetListMode>]?
-	
+
 	/// Internal rule reference for shared list items
 	public var listRuleId: FHIRPrimitive<FHIRString>?
-	
+
 	/// How the data is copied / created.
 	public var transform: FHIRPrimitive<StructureMapTransform>?
-	
+
 	/// Parameters to the transform
 	public var parameter: [StructureMapGroupRuleTargetParameter]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							context: FHIRPrimitive<FHIRString>? = nil,
@@ -1413,8 +1405,7 @@ open class StructureMapGroupRuleTarget: BackboneElement {
 							modifierExtension: [Extension]? = nil,
 							parameter: [StructureMapGroupRuleTargetParameter]? = nil,
 							transform: FHIRPrimitive<StructureMapTransform>? = nil,
-							variable: FHIRPrimitive<FHIRString>? = nil)
-	{
+							variable: FHIRPrimitive<FHIRString>? = nil) {
 		self.init()
 		self.context = context
 		self.contextType = contextType
@@ -1428,9 +1419,9 @@ open class StructureMapGroupRuleTarget: BackboneElement {
 		self.transform = transform
 		self.variable = variable
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case context; case _context
 		case contextType; case _contextType
@@ -1441,11 +1432,11 @@ open class StructureMapGroupRuleTarget: BackboneElement {
 		case transform; case _transform
 		case variable; case _variable
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.context = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .context, auxiliaryKey: ._context)
 		self.contextType = try FHIRPrimitive<StructureMapContextType>(from: _container, forKeyIfPresent: .contextType, auxiliaryKey: ._contextType)
@@ -1457,11 +1448,11 @@ open class StructureMapGroupRuleTarget: BackboneElement {
 		self.variable = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .variable, auxiliaryKey: ._variable)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try context?.encode(on: &_container, forKey: .context, auxiliaryKey: ._context)
 		try contextType?.encode(on: &_container, forKey: .contextType, auxiliaryKey: ._contextType)
@@ -1473,9 +1464,9 @@ open class StructureMapGroupRuleTarget: BackboneElement {
 		try variable?.encode(on: &_container, forKey: .variable, auxiliaryKey: ._variable)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureMapGroupRuleTarget else {
 			return false
@@ -1492,7 +1483,7 @@ open class StructureMapGroupRuleTarget: BackboneElement {
 		    && transform == _other.transform
 		    && variable == _other.variable
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(context)
@@ -1510,7 +1501,7 @@ open class StructureMapGroupRuleTarget: BackboneElement {
  Parameters to the transform.
  */
 open class StructureMapGroupRuleTargetParameter: BackboneElement {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case boolean(FHIRPrimitive<FHIRBool>)
@@ -1519,32 +1510,31 @@ open class StructureMapGroupRuleTargetParameter: BackboneElement {
 		case integer(FHIRPrimitive<FHIRInteger>)
 		case string(FHIRPrimitive<FHIRString>)
 	}
-	
+
 	/// Parameter value - variable or literal
 	/// One of `value[x]`
 	public var value: ValueX
-	
+
 	/// Designated initializer taking all required properties
 	public init(value: ValueX) {
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							value: ValueX)
-	{
+							value: ValueX) {
 		self.init(value: value)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case valueBoolean; case _valueBoolean
 		case valueDecimal; case _valueDecimal
@@ -1552,18 +1542,18 @@ open class StructureMapGroupRuleTargetParameter: BackboneElement {
 		case valueInteger; case _valueInteger
 		case valueString; case _valueString
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.valueBoolean) || _container.contains(CodingKeys.valueDecimal) || _container.contains(CodingKeys.valueId) || _container.contains(CodingKeys.valueInteger) || _container.contains(CodingKeys.valueString) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.valueBoolean, CodingKeys.valueDecimal, CodingKeys.valueId, CodingKeys.valueInteger, CodingKeys.valueString], debugDescription: "Must have at least one value for \"value\" but have none"))
 		}
-		
+
 		// Decode all our properties
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueId = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .valueId, auxiliaryKey: ._valueId) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueId, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -1597,13 +1587,13 @@ open class StructureMapGroupRuleTargetParameter: BackboneElement {
 		self.value = _t_value!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
-		
+
 			switch value {
 			case .id(let _value):
 				try _value.encode(on: &_container, forKey: .valueId, auxiliaryKey: ._valueId)
@@ -1616,12 +1606,12 @@ open class StructureMapGroupRuleTargetParameter: BackboneElement {
 			case .decimal(let _value):
 				try _value.encode(on: &_container, forKey: .valueDecimal, auxiliaryKey: ._valueDecimal)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureMapGroupRuleTargetParameter else {
 			return false
@@ -1631,7 +1621,7 @@ open class StructureMapGroupRuleTargetParameter: BackboneElement {
 		}
 		return value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(value)
@@ -1645,26 +1635,26 @@ open class StructureMapGroupRuleTargetParameter: BackboneElement {
  instances that are produced.
  */
 open class StructureMapStructure: BackboneElement {
-	
+
 	/// Canonical reference to structure definition
 	public var url: FHIRPrimitive<Canonical>
-	
+
 	/// How the referenced structure is used in this mapping.
 	public var mode: FHIRPrimitive<StructureMapModelMode>
-	
+
 	/// Name for type in this map
 	public var alias: FHIRPrimitive<FHIRString>?
-	
+
 	/// Documentation on use of structure
 	public var documentation: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(mode: FHIRPrimitive<StructureMapModelMode>, url: FHIRPrimitive<Canonical>) {
 		self.mode = mode
 		self.url = url
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							alias: FHIRPrimitive<FHIRString>? = nil,
@@ -1673,8 +1663,7 @@ open class StructureMapStructure: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							mode: FHIRPrimitive<StructureMapModelMode>,
 							modifierExtension: [Extension]? = nil,
-							url: FHIRPrimitive<Canonical>)
-	{
+							url: FHIRPrimitive<Canonical>) {
 		self.init(mode: mode, url: url)
 		self.alias = alias
 		self.documentation = documentation
@@ -1682,20 +1671,20 @@ open class StructureMapStructure: BackboneElement {
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case alias; case _alias
 		case documentation; case _documentation
 		case mode; case _mode
 		case url; case _url
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.alias = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .alias, auxiliaryKey: ._alias)
 		self.documentation = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
@@ -1703,11 +1692,11 @@ open class StructureMapStructure: BackboneElement {
 		self.url = try FHIRPrimitive<Canonical>(from: _container, forKey: .url, auxiliaryKey: ._url)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try alias?.encode(on: &_container, forKey: .alias, auxiliaryKey: ._alias)
 		try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
@@ -1715,9 +1704,9 @@ open class StructureMapStructure: BackboneElement {
 		try url.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? StructureMapStructure else {
 			return false
@@ -1730,7 +1719,7 @@ open class StructureMapStructure: BackboneElement {
 		    && mode == _other.mode
 		    && url == _other.url
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(alias)

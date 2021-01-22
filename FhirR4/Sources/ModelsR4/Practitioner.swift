@@ -17,53 +17,51 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A person with a  formal responsibility in the provisioning of healthcare or related services.
  
  A person who is directly or indirectly involved in the provisioning of healthcare.
  */
 open class Practitioner: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .practitioner }
-	
+
 	/// An identifier for the person as this agent
 	public var identifier: [Identifier]?
-	
+
 	/// Whether this practitioner's record is in active use
 	public var active: FHIRPrimitive<FHIRBool>?
-	
+
 	/// The name(s) associated with the practitioner
 	public var name: [HumanName]?
-	
+
 	/// A contact detail for the practitioner (that apply to all roles)
 	public var telecom: [ContactPoint]?
-	
+
 	/// Address(es) of the practitioner that are not role specific (typically home address)
 	public var address: [Address]?
-	
+
 	/// Administrative Gender - the gender that the person is considered to have for administration and record keeping
 	/// purposes.
 	public var gender: FHIRPrimitive<AdministrativeGender>?
-	
+
 	/// The date  on which the practitioner was born
 	public var birthDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// Image of the person
 	public var photo: [Attachment]?
-	
+
 	/// Certification, licenses, or training pertaining to the provision of care
 	public var qualification: [PractitionerQualification]?
-	
+
 	/// A language the practitioner can use in patient communication
 	public var communication: [CodeableConcept]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							active: FHIRPrimitive<FHIRBool>? = nil,
@@ -83,8 +81,7 @@ open class Practitioner: DomainResource {
 							photo: [Attachment]? = nil,
 							qualification: [PractitionerQualification]? = nil,
 							telecom: [ContactPoint]? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init()
 		self.active = active
 		self.address = address
@@ -105,9 +102,9 @@ open class Practitioner: DomainResource {
 		self.telecom = telecom
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case active; case _active
 		case address
@@ -120,11 +117,11 @@ open class Practitioner: DomainResource {
 		case qualification
 		case telecom
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.active = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .active, auxiliaryKey: ._active)
 		self.address = try [Address](from: _container, forKeyIfPresent: .address)
@@ -138,11 +135,11 @@ open class Practitioner: DomainResource {
 		self.telecom = try [ContactPoint](from: _container, forKeyIfPresent: .telecom)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try active?.encode(on: &_container, forKey: .active, auxiliaryKey: ._active)
 		try address?.encode(on: &_container, forKey: .address)
@@ -156,9 +153,9 @@ open class Practitioner: DomainResource {
 		try telecom?.encode(on: &_container, forKey: .telecom)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Practitioner else {
 			return false
@@ -177,7 +174,7 @@ open class Practitioner: DomainResource {
 		    && qualification == _other.qualification
 		    && telecom == _other.telecom
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(active)
@@ -201,25 +198,25 @@ open class Practitioner: DomainResource {
  medicine within a certian locality.
  */
 open class PractitionerQualification: BackboneElement {
-	
+
 	/// An identifier for this qualification for the practitioner
 	public var identifier: [Identifier]?
-	
+
 	/// Coded representation of the qualification
 	public var code: CodeableConcept
-	
+
 	/// Period during which the qualification is valid
 	public var period: Period?
-	
+
 	/// Organization that regulates and issues the qualification
 	public var issuer: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept,
@@ -228,8 +225,7 @@ open class PractitionerQualification: BackboneElement {
 							identifier: [Identifier]? = nil,
 							issuer: Reference? = nil,
 							modifierExtension: [Extension]? = nil,
-							period: Period? = nil)
-	{
+							period: Period? = nil) {
 		self.init(code: code)
 		self.`extension` = `extension`
 		self.id = id
@@ -238,20 +234,20 @@ open class PractitionerQualification: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.period = period
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case identifier
 		case issuer
 		case period
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKey: .code)
 		self.identifier = try [Identifier](from: _container, forKeyIfPresent: .identifier)
@@ -259,11 +255,11 @@ open class PractitionerQualification: BackboneElement {
 		self.period = try Period(from: _container, forKeyIfPresent: .period)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code)
 		try identifier?.encode(on: &_container, forKey: .identifier)
@@ -271,9 +267,9 @@ open class PractitionerQualification: BackboneElement {
 		try period?.encode(on: &_container, forKey: .period)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? PractitionerQualification else {
 			return false
@@ -286,7 +282,7 @@ open class PractitionerQualification: BackboneElement {
 		    && issuer == _other.issuer
 		    && period == _other.period
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)

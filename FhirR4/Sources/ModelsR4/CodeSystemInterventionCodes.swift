@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Intervention codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/intervention
  */
 public enum InterventionCodes: String, FHIRPrimitiveType {
-	
+
 	/// Unknown
 	case unknown = "unknown"
-	
+
 	/// Other
 	case other = "other"
 }

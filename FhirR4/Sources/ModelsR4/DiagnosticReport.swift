@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A Diagnostic report - a combination of request information, atomic results, images, interpretation, as well as
  formatted reports.
@@ -29,77 +27,77 @@
  reports.
  */
 open class DiagnosticReport: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .diagnosticReport }
-	
+
 	/// All possible types for "effective[x]"
 	public enum EffectiveX: Hashable {
 		case dateTime(FHIRPrimitive<DateTime>)
 		case period(Period)
 	}
-	
+
 	/// Business identifier for report
 	public var identifier: [Identifier]?
-	
+
 	/// What was requested
 	public var basedOn: [Reference]?
-	
+
 	/// The status of the diagnostic report.
 	public var status: FHIRPrimitive<DiagnosticReportStatus>
-	
+
 	/// Service category
 	public var category: [CodeableConcept]?
-	
+
 	/// Name/Code for this diagnostic report
 	public var code: CodeableConcept
-	
+
 	/// The subject of the report - usually, but not always, the patient
 	public var subject: Reference?
-	
+
 	/// Health care event when test ordered
 	public var encounter: Reference?
-	
+
 	/// Clinically relevant time/time-period for report
 	/// One of `effective[x]`
 	public var effective: EffectiveX?
-	
+
 	/// DateTime this version was made
 	public var issued: FHIRPrimitive<Instant>?
-	
+
 	/// Responsible Diagnostic Service
 	public var performer: [Reference]?
-	
+
 	/// Primary result interpreter
 	public var resultsInterpreter: [Reference]?
-	
+
 	/// Specimens this report is based on
 	public var specimen: [Reference]?
-	
+
 	/// Observations
 	public var result: [Reference]?
-	
+
 	/// Reference to full details of imaging associated with the diagnostic report
 	public var imagingStudy: [Reference]?
-	
+
 	/// Key images associated with this report
 	public var media: [DiagnosticReportMedia]?
-	
+
 	/// Clinical conclusion (interpretation) of test results
 	public var conclusion: FHIRPrimitive<FHIRString>?
-	
+
 	/// Codes for the clinical conclusion of test results
 	public var conclusionCode: [CodeableConcept]?
-	
+
 	/// Entire report as issued
 	public var presentedForm: [Attachment]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept, status: FHIRPrimitive<DiagnosticReportStatus>) {
 		self.code = code
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							basedOn: [Reference]? = nil,
@@ -127,8 +125,7 @@ open class DiagnosticReport: DomainResource {
 							specimen: [Reference]? = nil,
 							status: FHIRPrimitive<DiagnosticReportStatus>,
 							subject: Reference? = nil,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(code: code, status: status)
 		self.basedOn = basedOn
 		self.category = category
@@ -155,9 +152,9 @@ open class DiagnosticReport: DomainResource {
 		self.subject = subject
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case basedOn
 		case category
@@ -179,18 +176,18 @@ open class DiagnosticReport: DomainResource {
 		case status; case _status
 		case subject
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.basedOn = try [Reference](from: _container, forKeyIfPresent: .basedOn)
 		self.category = try [CodeableConcept](from: _container, forKeyIfPresent: .category)
 		self.code = try CodeableConcept(from: _container, forKey: .code)
 		self.conclusion = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .conclusion, auxiliaryKey: ._conclusion)
 		self.conclusionCode = try [CodeableConcept](from: _container, forKeyIfPresent: .conclusionCode)
-		var _t_effective: EffectiveX? = nil
+		var _t_effective: EffectiveX?
 		if let effectiveDateTime = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .effectiveDateTime, auxiliaryKey: ._effectiveDateTime) {
 			if _t_effective != nil {
 				throw DecodingError.dataCorruptedError(forKey: .effectiveDateTime, in: _container, debugDescription: "More than one value provided for \"effective\"")
@@ -218,11 +215,11 @@ open class DiagnosticReport: DomainResource {
 		self.subject = try Reference(from: _container, forKeyIfPresent: .subject)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try basedOn?.encode(on: &_container, forKey: .basedOn)
 		try category?.encode(on: &_container, forKey: .category)
@@ -251,9 +248,9 @@ open class DiagnosticReport: DomainResource {
 		try subject?.encode(on: &_container, forKey: .subject)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DiagnosticReport else {
 			return false
@@ -280,7 +277,7 @@ open class DiagnosticReport: DomainResource {
 		    && status == _other.status
 		    && subject == _other.subject
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(basedOn)
@@ -311,63 +308,62 @@ open class DiagnosticReport: DomainResource {
  may be directly of the patient, or of treated specimens (i.e. slides of interest).
  */
 open class DiagnosticReportMedia: BackboneElement {
-	
+
 	/// Comment about the image (e.g. explanation)
 	public var comment: FHIRPrimitive<FHIRString>?
-	
+
 	/// Reference to the image source
 	public var link: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(link: Reference) {
 		self.link = link
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							comment: FHIRPrimitive<FHIRString>? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							link: Reference,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(link: link)
 		self.comment = comment
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case comment; case _comment
 		case link
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.comment = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .comment, auxiliaryKey: ._comment)
 		self.link = try Reference(from: _container, forKey: .link)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try comment?.encode(on: &_container, forKey: .comment, auxiliaryKey: ._comment)
 		try link.encode(on: &_container, forKey: .link)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? DiagnosticReportMedia else {
 			return false
@@ -378,7 +374,7 @@ open class DiagnosticReportMedia: BackboneElement {
 		return comment == _other.comment
 		    && link == _other.link
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(comment)

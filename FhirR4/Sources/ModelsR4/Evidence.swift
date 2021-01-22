@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A research context or question.
  
@@ -26,100 +24,100 @@
  population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about.
  */
 open class Evidence: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .evidence }
-	
+
 	/// Canonical identifier for this evidence, represented as a URI (globally unique)
 	public var url: FHIRPrimitive<FHIRURI>?
-	
+
 	/// Additional identifier for the evidence
 	public var identifier: [Identifier]?
-	
+
 	/// Business version of the evidence
 	public var version: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this evidence (computer friendly)
 	public var name: FHIRPrimitive<FHIRString>?
-	
+
 	/// Name for this evidence (human friendly)
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// Title for use in informal contexts
 	public var shortTitle: FHIRPrimitive<FHIRString>?
-	
+
 	/// Subordinate title of the Evidence
 	public var subtitle: FHIRPrimitive<FHIRString>?
-	
+
 	/// The status of this evidence. Enables tracking the life-cycle of the content.
 	public var status: FHIRPrimitive<PublicationStatus>
-	
+
 	/// Date last changed
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Name of the publisher (organization or individual)
 	public var publisher: FHIRPrimitive<FHIRString>?
-	
+
 	/// Contact details for the publisher
 	public var contact: [ContactDetail]?
-	
+
 	/// Natural language description of the evidence
 	public var description_fhir: FHIRPrimitive<FHIRString>?
-	
+
 	/// Used for footnotes or explanatory notes
 	public var note: [Annotation]?
-	
+
 	/// The context that the content is intended to support
 	public var useContext: [UsageContext]?
-	
+
 	/// Intended jurisdiction for evidence (if applicable)
 	public var jurisdiction: [CodeableConcept]?
-	
+
 	/// Use and/or publishing restrictions
 	public var copyright: FHIRPrimitive<FHIRString>?
-	
+
 	/// When the evidence was approved by publisher
 	public var approvalDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the evidence was last reviewed
 	public var lastReviewDate: FHIRPrimitive<FHIRDate>?
-	
+
 	/// When the evidence is expected to be used
 	public var effectivePeriod: Period?
-	
+
 	/// The category of the Evidence, such as Education, Treatment, Assessment, etc.
 	public var topic: [CodeableConcept]?
-	
+
 	/// Who authored the content
 	public var author: [ContactDetail]?
-	
+
 	/// Who edited the content
 	public var editor: [ContactDetail]?
-	
+
 	/// Who reviewed the content
 	public var reviewer: [ContactDetail]?
-	
+
 	/// Who endorsed the content
 	public var endorser: [ContactDetail]?
-	
+
 	/// Additional documentation, citations, etc.
 	public var relatedArtifact: [RelatedArtifact]?
-	
+
 	/// What population?
 	public var exposureBackground: Reference
-	
+
 	/// What exposure?
 	public var exposureVariant: [Reference]?
-	
+
 	/// What outcome?
 	public var outcome: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(exposureBackground: Reference, status: FHIRPrimitive<PublicationStatus>) {
 		self.exposureBackground = exposureBackground
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							approvalDate: FHIRPrimitive<FHIRDate>? = nil,
@@ -157,8 +155,7 @@ open class Evidence: DomainResource {
 							topic: [CodeableConcept]? = nil,
 							url: FHIRPrimitive<FHIRURI>? = nil,
 							useContext: [UsageContext]? = nil,
-							version: FHIRPrimitive<FHIRString>? = nil)
-	{
+							version: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(exposureBackground: exposureBackground, status: status)
 		self.approvalDate = approvalDate
 		self.author = author
@@ -195,9 +192,9 @@ open class Evidence: DomainResource {
 		self.useContext = useContext
 		self.version = version
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case approvalDate; case _approvalDate
 		case author
@@ -228,11 +225,11 @@ open class Evidence: DomainResource {
 		case useContext
 		case version; case _version
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.approvalDate = try FHIRPrimitive<FHIRDate>(from: _container, forKeyIfPresent: .approvalDate, auxiliaryKey: ._approvalDate)
 		self.author = try [ContactDetail](from: _container, forKeyIfPresent: .author)
@@ -264,11 +261,11 @@ open class Evidence: DomainResource {
 		self.version = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try approvalDate?.encode(on: &_container, forKey: .approvalDate, auxiliaryKey: ._approvalDate)
 		try author?.encode(on: &_container, forKey: .author)
@@ -300,9 +297,9 @@ open class Evidence: DomainResource {
 		try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Evidence else {
 			return false
@@ -339,7 +336,7 @@ open class Evidence: DomainResource {
 		    && useContext == _other.useContext
 		    && version == _other.version
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(approvalDate)

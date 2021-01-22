@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Codes identifying the category of observation range.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/observation-range-category
  */
 public enum ObservationRangeCategory: String, FHIRPrimitiveType {
-	
+
 	/// Reference (Normal) Range for Ordinal and Continuous Observations.
 	case reference = "reference"
-	
+
 	/// Critical Range for Ordinal and Continuous Observations.
 	case critical = "critical"
-	
+
 	/// Absolute Range for Ordinal and Continuous Observations. Results outside this range are not possible.
 	case absolute = "absolute"
 }

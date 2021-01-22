@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Contract Subtype codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/contract-subtype
  */
 public enum ContractSubtypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// Canadian health information disclosure policy.
 	case disclosureCa = "disclosure-ca"
-	
+
 	/// United States health information disclosure policy.
 	case disclosureUs = "disclosure-us"
 }

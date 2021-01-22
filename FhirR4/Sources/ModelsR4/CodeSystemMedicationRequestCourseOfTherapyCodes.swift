@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  MedicationRequest Course of Therapy Codes
  
@@ -26,15 +24,15 @@
  ValueSet: http://hl7.org/fhir/ValueSet/medicationrequest-course-of-therapy
  */
 public enum MedicationRequestCourseOfTherapyCodes: String, FHIRPrimitiveType {
-	
+
 	/// A medication which is expected to be continued beyond the present order and which the patient should be assumed
 	/// to be taking unless explicitly stopped.
 	case continuous = "continuous"
-	
+
 	/// A medication which the patient is only expected to consume for the duration of the current order and which is
 	/// not expected to be renewed.
 	case acute = "acute"
-	
+
 	/// A medication which is expected to be used on a part time basis at certain times of the year
 	case seasonal = "seasonal"
 }

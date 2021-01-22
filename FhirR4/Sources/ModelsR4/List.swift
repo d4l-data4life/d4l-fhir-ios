@@ -17,63 +17,61 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A list is a curated collection of resources.
  */
 open class List: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .list }
-	
+
 	/// Business identifier
 	public var identifier: [Identifier]?
-	
+
 	/// Indicates the current state of this list.
 	public var status: FHIRPrimitive<ListStatus>
-	
+
 	/// How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing
 	/// basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list
 	/// where items may be marked as added, modified or deleted.
 	public var mode: FHIRPrimitive<ListMode>
-	
+
 	/// Descriptive name for the list
 	public var title: FHIRPrimitive<FHIRString>?
-	
+
 	/// What the purpose of this list is
 	public var code: CodeableConcept?
-	
+
 	/// If all resources have the same subject
 	public var subject: Reference?
-	
+
 	/// Context in which list created
 	public var encounter: Reference?
-	
+
 	/// When the list was prepared
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Who and/or what defined the list contents (aka Author)
 	public var source: Reference?
-	
+
 	/// What order the list has
 	public var orderedBy: CodeableConcept?
-	
+
 	/// Comments about the list
 	public var note: [Annotation]?
-	
+
 	/// Entries in the list
 	public var entry: [ListEntry]?
-	
+
 	/// Why list is empty
 	public var emptyReason: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	public init(mode: FHIRPrimitive<ListMode>, status: FHIRPrimitive<ListStatus>) {
 		self.mode = mode
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept? = nil,
@@ -96,8 +94,7 @@ open class List: DomainResource {
 							status: FHIRPrimitive<ListStatus>,
 							subject: Reference? = nil,
 							text: Narrative? = nil,
-							title: FHIRPrimitive<FHIRString>? = nil)
-	{
+							title: FHIRPrimitive<FHIRString>? = nil) {
 		self.init(mode: mode, status: status)
 		self.code = code
 		self.contained = contained
@@ -119,9 +116,9 @@ open class List: DomainResource {
 		self.text = text
 		self.title = title
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case date; case _date
@@ -137,11 +134,11 @@ open class List: DomainResource {
 		case subject
 		case title; case _title
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKeyIfPresent: .code)
 		self.date = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
@@ -158,11 +155,11 @@ open class List: DomainResource {
 		self.title = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .title, auxiliaryKey: ._title)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code?.encode(on: &_container, forKey: .code)
 		try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
@@ -179,9 +176,9 @@ open class List: DomainResource {
 		try title?.encode(on: &_container, forKey: .title, auxiliaryKey: ._title)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? List else {
 			return false
@@ -203,7 +200,7 @@ open class List: DomainResource {
 		    && subject == _other.subject
 		    && title == _other.title
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -228,25 +225,25 @@ open class List: DomainResource {
  Entries in this list.
  */
 open class ListEntry: BackboneElement {
-	
+
 	/// Status/Workflow information about this item
 	public var flag: CodeableConcept?
-	
+
 	/// If this item is actually marked as deleted
 	public var deleted: FHIRPrimitive<FHIRBool>?
-	
+
 	/// When item added to list
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Actual entry
 	public var item: Reference
-	
+
 	/// Designated initializer taking all required properties
 	public init(item: Reference) {
 		self.item = item
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							date: FHIRPrimitive<DateTime>? = nil,
@@ -255,8 +252,7 @@ open class ListEntry: BackboneElement {
 							flag: CodeableConcept? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							item: Reference,
-							modifierExtension: [Extension]? = nil)
-	{
+							modifierExtension: [Extension]? = nil) {
 		self.init(item: item)
 		self.date = date
 		self.deleted = deleted
@@ -265,20 +261,20 @@ open class ListEntry: BackboneElement {
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case date; case _date
 		case deleted; case _deleted
 		case flag
 		case item
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.date = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
 		self.deleted = try FHIRPrimitive<FHIRBool>(from: _container, forKeyIfPresent: .deleted, auxiliaryKey: ._deleted)
@@ -286,11 +282,11 @@ open class ListEntry: BackboneElement {
 		self.item = try Reference(from: _container, forKey: .item)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
 		try deleted?.encode(on: &_container, forKey: .deleted, auxiliaryKey: ._deleted)
@@ -298,9 +294,9 @@ open class ListEntry: BackboneElement {
 		try item.encode(on: &_container, forKey: .item)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? ListEntry else {
 			return false
@@ -313,7 +309,7 @@ open class ListEntry: BackboneElement {
 		    && flag == _other.flag
 		    && item == _other.item
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(date)

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  What the target is validated against
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-validation-type
  */
 public enum ValidationType: String, FHIRPrimitiveType {
-	
+
 	/// nothing
 	case nothing = "nothing"
-	
+
 	/// primary
 	case primary = "primary"
-	
+
 	/// multiple
 	case multiple = "multiple"
 }

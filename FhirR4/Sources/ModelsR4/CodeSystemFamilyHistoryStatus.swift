@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A code that identifies the status of the family history record.
  
@@ -26,17 +24,17 @@
  ValueSet: http://hl7.org/fhir/ValueSet/history-status
  */
 public enum FamilyHistoryStatus: String, FHIRPrimitiveType {
-	
+
 	/// Some health information is known and captured, but not complete - see notes for details.
 	case partial = "partial"
-	
+
 	/// All available related health information is captured as of the date (and possibly time) when the family member
 	/// history was taken.
 	case completed = "completed"
-	
+
 	/// This instance should not have been part of this patient's medical record.
 	case enteredInError = "entered-in-error"
-	
+
 	/// Health information for this family member is unavailable/unknown.
 	case healthUnknown = "health-unknown"
 }

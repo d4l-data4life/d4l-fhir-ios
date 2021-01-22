@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Server push subscription criteria.
  
@@ -28,30 +26,30 @@
  appropriate action.
  */
 open class Subscription: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .subscription }
-	
+
 	/// The status of the subscription, which marks the server state for managing the subscription.
 	public var status: FHIRPrimitive<SubscriptionStatus>
-	
+
 	/// Contact details for source (e.g. troubleshooting)
 	public var contact: [ContactPoint]?
-	
+
 	/// When to automatically delete the subscription
 	public var end: FHIRPrimitive<Instant>?
-	
+
 	/// Description of why this subscription was created
 	public var reason: FHIRPrimitive<FHIRString>
-	
+
 	/// Rule for server push
 	public var criteria: FHIRPrimitive<FHIRString>
-	
+
 	/// Latest error note
 	public var error: FHIRPrimitive<FHIRString>?
-	
+
 	/// The channel on which to report matches to the criteria
 	public var channel: SubscriptionChannel
-	
+
 	/// Designated initializer taking all required properties
 	public init(channel: SubscriptionChannel, criteria: FHIRPrimitive<FHIRString>, reason: FHIRPrimitive<FHIRString>, status: FHIRPrimitive<SubscriptionStatus>) {
 		self.channel = channel
@@ -60,7 +58,7 @@ open class Subscription: DomainResource {
 		self.status = status
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							channel: SubscriptionChannel,
@@ -77,8 +75,7 @@ open class Subscription: DomainResource {
 							modifierExtension: [Extension]? = nil,
 							reason: FHIRPrimitive<FHIRString>,
 							status: FHIRPrimitive<SubscriptionStatus>,
-							text: Narrative? = nil)
-	{
+							text: Narrative? = nil) {
 		self.init(channel: channel, criteria: criteria, reason: reason, status: status)
 		self.contact = contact
 		self.contained = contained
@@ -92,9 +89,9 @@ open class Subscription: DomainResource {
 		self.modifierExtension = modifierExtension
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case channel
 		case contact
@@ -104,11 +101,11 @@ open class Subscription: DomainResource {
 		case reason; case _reason
 		case status; case _status
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.channel = try SubscriptionChannel(from: _container, forKey: .channel)
 		self.contact = try [ContactPoint](from: _container, forKeyIfPresent: .contact)
@@ -119,11 +116,11 @@ open class Subscription: DomainResource {
 		self.status = try FHIRPrimitive<SubscriptionStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try channel.encode(on: &_container, forKey: .channel)
 		try contact?.encode(on: &_container, forKey: .contact)
@@ -134,9 +131,9 @@ open class Subscription: DomainResource {
 		try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Subscription else {
 			return false
@@ -152,7 +149,7 @@ open class Subscription: DomainResource {
 		    && reason == _other.reason
 		    && status == _other.status
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(channel)
@@ -171,25 +168,25 @@ open class Subscription: DomainResource {
  Details where to send notifications when resources are received that meet the criteria.
  */
 open class SubscriptionChannel: BackboneElement {
-	
+
 	/// The type of channel to send notifications on.
 	public var type: FHIRPrimitive<SubscriptionChannelType>
-	
+
 	/// Where the channel points to
 	public var endpoint: FHIRPrimitive<FHIRURI>?
-	
+
 	/// MIME type to send, or omit for no payload
 	public var payload: FHIRPrimitive<FHIRString>?
-	
+
 	/// Usage depends on the channel type
 	public var header: [FHIRPrimitive<FHIRString>]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(type: FHIRPrimitive<SubscriptionChannelType>) {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							endpoint: FHIRPrimitive<FHIRURI>? = nil,
@@ -198,8 +195,7 @@ open class SubscriptionChannel: BackboneElement {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
 							payload: FHIRPrimitive<FHIRString>? = nil,
-							type: FHIRPrimitive<SubscriptionChannelType>)
-	{
+							type: FHIRPrimitive<SubscriptionChannelType>) {
 		self.init(type: type)
 		self.endpoint = endpoint
 		self.`extension` = `extension`
@@ -208,20 +204,20 @@ open class SubscriptionChannel: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.payload = payload
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case endpoint; case _endpoint
 		case header; case _header
 		case payload; case _payload
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.endpoint = try FHIRPrimitive<FHIRURI>(from: _container, forKeyIfPresent: .endpoint, auxiliaryKey: ._endpoint)
 		self.header = try [FHIRPrimitive<FHIRString>](from: _container, forKeyIfPresent: .header, auxiliaryKey: ._header)
@@ -229,11 +225,11 @@ open class SubscriptionChannel: BackboneElement {
 		self.type = try FHIRPrimitive<SubscriptionChannelType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try endpoint?.encode(on: &_container, forKey: .endpoint, auxiliaryKey: ._endpoint)
 		try header?.encode(on: &_container, forKey: .header, auxiliaryKey: ._header)
@@ -241,9 +237,9 @@ open class SubscriptionChannel: BackboneElement {
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? SubscriptionChannel else {
 			return false
@@ -256,7 +252,7 @@ open class SubscriptionChannel: BackboneElement {
 		    && payload == _other.payload
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(endpoint)

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  If this is the default rule set to apply for the source type, or this combination of types.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/map-group-type-mode
  */
 public enum StructureMapGroupTypeMode: String, FHIRPrimitiveType {
-	
+
 	/// This group is not a default group for the types.
 	case none = "none"
-	
+
 	/// This group is a default mapping group for the specified types and for the primary source type.
 	case types = "types"
-	
+
 	/// This group is a default mapping group for the specified types.
 	case typeAndTypes = "type-and-types"
 }

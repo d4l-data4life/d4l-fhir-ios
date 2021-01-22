@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Describes the context of use for a conformance or knowledge resource.
  
@@ -27,7 +25,7 @@
  (e.g., venue, care setting, provider of care).
  */
 open class UsageContext: Element {
-	
+
 	/// All possible types for "value[x]"
 	public enum ValueX: Hashable {
 		case codeableConcept(CodeableConcept)
@@ -35,35 +33,34 @@ open class UsageContext: Element {
 		case range(Range)
 		case reference(Reference)
 	}
-	
+
 	/// Type of context being specified
 	public var code: Coding
-	
+
 	/// Value that defines the context
 	/// One of `value[x]`
 	public var value: ValueX
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: Coding, value: ValueX) {
 		self.code = code
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: Coding,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
-							value: ValueX)
-	{
+							value: ValueX) {
 		self.init(code: code, value: value)
 		self.`extension` = `extension`
 		self.id = id
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case valueCodeableConcept
@@ -71,19 +68,19 @@ open class UsageContext: Element {
 		case valueRange
 		case valueReference
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Validate that we have at least one of the mandatory properties for expanded properties
 		guard _container.contains(CodingKeys.valueCodeableConcept) || _container.contains(CodingKeys.valueQuantity) || _container.contains(CodingKeys.valueRange) || _container.contains(CodingKeys.valueReference) else {
 			throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.valueCodeableConcept, CodingKeys.valueQuantity, CodingKeys.valueRange, CodingKeys.valueReference], debugDescription: "Must have at least one value for \"value\" but have none"))
 		}
-		
+
 		// Decode all our properties
 		self.code = try Coding(from: _container, forKey: .code)
-		var _t_value: ValueX? = nil
+		var _t_value: ValueX?
 		if let valueCodeableConcept = try CodeableConcept(from: _container, forKeyIfPresent: .valueCodeableConcept) {
 			if _t_value != nil {
 				throw DecodingError.dataCorruptedError(forKey: .valueCodeableConcept, in: _container, debugDescription: "More than one value provided for \"value\"")
@@ -111,14 +108,14 @@ open class UsageContext: Element {
 		self.value = _t_value!
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code)
-		
+
 			switch value {
 			case .codeableConcept(let _value):
 				try _value.encode(on: &_container, forKey: .valueCodeableConcept)
@@ -129,12 +126,12 @@ open class UsageContext: Element {
 			case .reference(let _value):
 				try _value.encode(on: &_container, forKey: .valueReference)
 			}
-		
+
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? UsageContext else {
 			return false
@@ -145,7 +142,7 @@ open class UsageContext: Element {
 		return code == _other.code
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)

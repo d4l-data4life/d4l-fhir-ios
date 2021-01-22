@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes example Procedure Type codes.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/ex-procedure-type
  */
 public enum ExampleProcedureTypeCodes: String, FHIRPrimitiveType {
-	
+
 	/// The first procedure in a series required to produce and overall patient outcome.
 	case primary = "primary"
-	
+
 	/// The second procedure in a series required to produce and overall patient outcome.
 	case secondary = "secondary"
 }

@@ -18,49 +18,48 @@
 
 import Foundation
 
-
 /**
  A stream of bytes, base64 encoded (RFC 4648)
  
  http://hl7.org/fhir/datatypes.html#base64Binary
  */
 public struct Base64Binary: FHIRPrimitiveType {
-	
+
 	public var dataString: String
-	
+
 	/**
 	 Designated initializer.
 	 */
 	public init(_ dataString: String) {
 		self.dataString = dataString
 	}
-	
+
 	public init?(with data: Data) {
 		guard let string = String(data: data, encoding: .utf8) else {
 			return nil
 		}
 		self.dataString = string
 	}
-	
+
 	public func data(using encoding: String.Encoding = .utf8) -> Data? {
 		return dataString.data(using: encoding)
 	}
 }
 
 extension Base64Binary: ExpressibleByStringLiteral {
-	
+
 	public init(stringLiteral value: StringLiteralType) {
 		self.init(value)
 	}
 }
 
 extension Base64Binary: Codable {
-	
+
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
 		self.dataString = try container.decode(String.self)
 	}
-	
+
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.singleValueContainer()
 		try container.encode(dataString)
@@ -68,7 +67,7 @@ extension Base64Binary: Codable {
 }
 
 extension Base64Binary: Equatable {
-	
+
 	public static func ==(l: Base64Binary, r: Base64Binary) -> Bool {
 		return l.dataString == r.dataString
 	}

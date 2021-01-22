@@ -17,43 +17,41 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A pharmaceutical product described in terms of its composition and dose form.
  */
 open class MedicinalProductPharmaceutical: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .medicinalProductPharmaceutical }
-	
+
 	/// An identifier for the pharmaceutical medicinal product
 	public var identifier: [Identifier]?
-	
+
 	/// The administrable dose form, after necessary reconstitution
 	public var administrableDoseForm: CodeableConcept
-	
+
 	/// Todo
 	public var unitOfPresentation: CodeableConcept?
-	
+
 	/// Ingredient
 	public var ingredient: [Reference]?
-	
+
 	/// Accompanying device
 	public var device: [Reference]?
-	
+
 	/// Characteristics e.g. a products onset of action
 	public var characteristics: [MedicinalProductPharmaceuticalCharacteristics]?
-	
+
 	/// The path by which the pharmaceutical product is taken into or makes contact with the body
 	public var routeOfAdministration: [MedicinalProductPharmaceuticalRouteOfAdministration]
-	
+
 	/// Designated initializer taking all required properties
 	public init(administrableDoseForm: CodeableConcept, routeOfAdministration: [MedicinalProductPharmaceuticalRouteOfAdministration]) {
 		self.administrableDoseForm = administrableDoseForm
 		self.routeOfAdministration = routeOfAdministration
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							administrableDoseForm: CodeableConcept,
@@ -70,8 +68,7 @@ open class MedicinalProductPharmaceutical: DomainResource {
 							modifierExtension: [Extension]? = nil,
 							routeOfAdministration: [MedicinalProductPharmaceuticalRouteOfAdministration],
 							text: Narrative? = nil,
-							unitOfPresentation: CodeableConcept? = nil)
-	{
+							unitOfPresentation: CodeableConcept? = nil) {
 		self.init(administrableDoseForm: administrableDoseForm, routeOfAdministration: routeOfAdministration)
 		self.characteristics = characteristics
 		self.contained = contained
@@ -87,9 +84,9 @@ open class MedicinalProductPharmaceutical: DomainResource {
 		self.text = text
 		self.unitOfPresentation = unitOfPresentation
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case administrableDoseForm
 		case characteristics
@@ -99,11 +96,11 @@ open class MedicinalProductPharmaceutical: DomainResource {
 		case routeOfAdministration
 		case unitOfPresentation
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.administrableDoseForm = try CodeableConcept(from: _container, forKey: .administrableDoseForm)
 		self.characteristics = try [MedicinalProductPharmaceuticalCharacteristics](from: _container, forKeyIfPresent: .characteristics)
@@ -114,11 +111,11 @@ open class MedicinalProductPharmaceutical: DomainResource {
 		self.unitOfPresentation = try CodeableConcept(from: _container, forKeyIfPresent: .unitOfPresentation)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try administrableDoseForm.encode(on: &_container, forKey: .administrableDoseForm)
 		try characteristics?.encode(on: &_container, forKey: .characteristics)
@@ -129,9 +126,9 @@ open class MedicinalProductPharmaceutical: DomainResource {
 		try unitOfPresentation?.encode(on: &_container, forKey: .unitOfPresentation)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductPharmaceutical else {
 			return false
@@ -147,7 +144,7 @@ open class MedicinalProductPharmaceutical: DomainResource {
 		    && routeOfAdministration == _other.routeOfAdministration
 		    && unitOfPresentation == _other.unitOfPresentation
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(administrableDoseForm)
@@ -164,63 +161,62 @@ open class MedicinalProductPharmaceutical: DomainResource {
  Characteristics e.g. a products onset of action.
  */
 open class MedicinalProductPharmaceuticalCharacteristics: BackboneElement {
-	
+
 	/// A coded characteristic
 	public var code: CodeableConcept
-	
+
 	/// The status of characteristic e.g. assigned or pending
 	public var status: CodeableConcept?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							status: CodeableConcept? = nil)
-	{
+							status: CodeableConcept? = nil) {
 		self.init(code: code)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.status = status
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case status
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKey: .code)
 		self.status = try CodeableConcept(from: _container, forKeyIfPresent: .status)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code)
 		try status?.encode(on: &_container, forKey: .status)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductPharmaceuticalCharacteristics else {
 			return false
@@ -231,7 +227,7 @@ open class MedicinalProductPharmaceuticalCharacteristics: BackboneElement {
 		return code == _other.code
 		    && status == _other.status
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -243,39 +239,39 @@ open class MedicinalProductPharmaceuticalCharacteristics: BackboneElement {
  The path by which the pharmaceutical product is taken into or makes contact with the body.
  */
 open class MedicinalProductPharmaceuticalRouteOfAdministration: BackboneElement {
-	
+
 	/// Coded expression for the route
 	public var code: CodeableConcept
-	
+
 	/// The first dose (dose quantity) administered in humans can be specified, for a product under investigation, using
 	/// a numerical value and its unit of measurement
 	public var firstDose: Quantity?
-	
+
 	/// The maximum single dose that can be administered as per the protocol of a clinical trial can be specified using
 	/// a numerical value and its unit of measurement
 	public var maxSingleDose: Quantity?
-	
+
 	/// The maximum dose per day (maximum dose quantity to be administered in any one 24-h period) that can be
 	/// administered as per the protocol referenced in the clinical trial authorisation
 	public var maxDosePerDay: Quantity?
-	
+
 	/// The maximum dose per treatment period that can be administered as per the protocol referenced in the clinical
 	/// trial authorisation
 	public var maxDosePerTreatmentPeriod: Ratio?
-	
+
 	/// The maximum treatment period during which an Investigational Medicinal Product can be administered as per the
 	/// protocol referenced in the clinical trial authorisation
 	public var maxTreatmentPeriod: Duration?
-	
+
 	/// A species for which this route applies
 	public var targetSpecies: [MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept,
@@ -287,8 +283,7 @@ open class MedicinalProductPharmaceuticalRouteOfAdministration: BackboneElement 
 							maxSingleDose: Quantity? = nil,
 							maxTreatmentPeriod: Duration? = nil,
 							modifierExtension: [Extension]? = nil,
-							targetSpecies: [MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies]? = nil)
-	{
+							targetSpecies: [MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies]? = nil) {
 		self.init(code: code)
 		self.`extension` = `extension`
 		self.firstDose = firstDose
@@ -300,9 +295,9 @@ open class MedicinalProductPharmaceuticalRouteOfAdministration: BackboneElement 
 		self.modifierExtension = modifierExtension
 		self.targetSpecies = targetSpecies
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case firstDose
@@ -312,11 +307,11 @@ open class MedicinalProductPharmaceuticalRouteOfAdministration: BackboneElement 
 		case maxTreatmentPeriod
 		case targetSpecies
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKey: .code)
 		self.firstDose = try Quantity(from: _container, forKeyIfPresent: .firstDose)
@@ -327,11 +322,11 @@ open class MedicinalProductPharmaceuticalRouteOfAdministration: BackboneElement 
 		self.targetSpecies = try [MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies](from: _container, forKeyIfPresent: .targetSpecies)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code)
 		try firstDose?.encode(on: &_container, forKey: .firstDose)
@@ -342,9 +337,9 @@ open class MedicinalProductPharmaceuticalRouteOfAdministration: BackboneElement 
 		try targetSpecies?.encode(on: &_container, forKey: .targetSpecies)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductPharmaceuticalRouteOfAdministration else {
 			return false
@@ -360,7 +355,7 @@ open class MedicinalProductPharmaceuticalRouteOfAdministration: BackboneElement 
 		    && maxTreatmentPeriod == _other.maxTreatmentPeriod
 		    && targetSpecies == _other.targetSpecies
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -377,63 +372,62 @@ open class MedicinalProductPharmaceuticalRouteOfAdministration: BackboneElement 
  A species for which this route applies.
  */
 open class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies: BackboneElement {
-	
+
 	/// Coded expression for the species
 	public var code: CodeableConcept
-	
+
 	/// A species specific time during which consumption of animal product is not appropriate
 	public var withdrawalPeriod: [MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept) {
 		self.code = code
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							withdrawalPeriod: [MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod]? = nil)
-	{
+							withdrawalPeriod: [MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod]? = nil) {
 		self.init(code: code)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.withdrawalPeriod = withdrawalPeriod
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case withdrawalPeriod
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKey: .code)
 		self.withdrawalPeriod = try [MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod](from: _container, forKeyIfPresent: .withdrawalPeriod)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code)
 		try withdrawalPeriod?.encode(on: &_container, forKey: .withdrawalPeriod)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies else {
 			return false
@@ -444,7 +438,7 @@ open class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies: Bac
 		return code == _other.code
 		    && withdrawalPeriod == _other.withdrawalPeriod
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -456,23 +450,23 @@ open class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies: Bac
  A species specific time during which consumption of animal product is not appropriate.
  */
 open class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod: BackboneElement {
-	
+
 	/// Coded expression for the type of tissue for which the withdrawal period applues, e.g. meat, milk
 	public var tissue: CodeableConcept
-	
+
 	/// A value for the time
 	public var value: Quantity
-	
+
 	/// Extra information about the withdrawal period
 	public var supportingInformation: FHIRPrimitive<FHIRString>?
-	
+
 	/// Designated initializer taking all required properties
 	public init(tissue: CodeableConcept, value: Quantity) {
 		self.tissue = tissue
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							`extension`: [Extension]? = nil,
@@ -480,47 +474,46 @@ open class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithd
 							modifierExtension: [Extension]? = nil,
 							supportingInformation: FHIRPrimitive<FHIRString>? = nil,
 							tissue: CodeableConcept,
-							value: Quantity)
-	{
+							value: Quantity) {
 		self.init(tissue: tissue, value: value)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 		self.supportingInformation = supportingInformation
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case supportingInformation; case _supportingInformation
 		case tissue
 		case value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.supportingInformation = try FHIRPrimitive<FHIRString>(from: _container, forKeyIfPresent: .supportingInformation, auxiliaryKey: ._supportingInformation)
 		self.tissue = try CodeableConcept(from: _container, forKey: .tissue)
 		self.value = try Quantity(from: _container, forKey: .value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try supportingInformation?.encode(on: &_container, forKey: .supportingInformation, auxiliaryKey: ._supportingInformation)
 		try tissue.encode(on: &_container, forKey: .tissue)
 		try value.encode(on: &_container, forKey: .value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod else {
 			return false
@@ -532,7 +525,7 @@ open class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithd
 		    && tissue == _other.tissue
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(supportingInformation)

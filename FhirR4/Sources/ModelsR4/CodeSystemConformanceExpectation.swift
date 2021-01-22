@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Indicates the degree of adherence to a specified behavior or capability expected for a system to be deemed conformant
  with a specification.
@@ -27,18 +25,18 @@
  ValueSet: http://hl7.org/fhir/ValueSet/conformance-expectation
  */
 public enum ConformanceExpectation: String, FHIRPrimitiveType {
-	
+
 	/// Support for the specified capability is required to be considered conformant.
 	case SHALL = "SHALL"
-	
+
 	/// Support for the specified capability is strongly encouraged, and failure to support it should only occur after
 	/// careful consideration.
 	case SHOULD = "SHOULD"
-	
+
 	/// Support for the specified capability is not necessary to be considered conformant, and the requirement should be
 	/// considered strictly optional.
 	case MAY = "MAY"
-	
+
 	/// Support for the specified capability is strongly discouraged and should occur only after careful consideration.
 	case SHOULDNOT = "SHOULD-NOT"
 }

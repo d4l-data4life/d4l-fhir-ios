@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The scoring type of the measure.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/measure-scoring
  */
 public enum MeasureScoring: String, FHIRPrimitiveType {
-	
+
 	/// The measure score is defined using a proportion.
 	case proportion = "proportion"
-	
+
 	/// The measure score is defined using a ratio.
 	case ratio = "ratio"
-	
+
 	/// The score is defined by a calculation of some quantity.
 	case continuousVariable = "continuous-variable"
-	
+
 	/// The measure is a cohort definition.
 	case cohort = "cohort"
 }

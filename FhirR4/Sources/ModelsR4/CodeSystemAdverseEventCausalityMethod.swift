@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  TODO.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-causality-method
  */
 public enum AdverseEventCausalityMethod: String, FHIRPrimitiveType {
-	
+
 	/// probabilityScale
 	case probabilityScale = "ProbabilityScale"
-	
+
 	/// bayesian
 	case bayesian = "Bayesian"
-	
+
 	/// checklist
 	case checklist = "Checklist"
 }

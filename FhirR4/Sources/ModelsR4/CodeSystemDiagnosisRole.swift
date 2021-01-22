@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set defines a set of codes that can be used to express the role of a diagnosis on the Encounter or
  EpisodeOfCare record.
@@ -27,25 +25,25 @@
  ValueSet: http://hl7.org/fhir/ValueSet/diagnosis-role
  */
 public enum DiagnosisRole: String, FHIRPrimitiveType {
-	
+
 	/// AD
 	case AD = "AD"
-	
+
 	/// DD
 	case DD = "DD"
-	
+
 	/// CC
 	case CC = "CC"
-	
+
 	/// CM
 	case CM = "CM"
-	
+
 	/// preOp
 	case preOp = "pre-op"
-	
+
 	/// postOp
 	case postOp = "post-op"
-	
+
 	/// billing
 	case billing = "billing"
 }

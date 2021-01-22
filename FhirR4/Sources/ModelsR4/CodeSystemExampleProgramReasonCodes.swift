@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes sample Program Reason Span codes.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/ex-program-code
  */
 public enum ExampleProgramReasonCodes: String, FHIRPrimitiveType {
-	
+
 	/// Child Asthma Program
 	case `as` = "as"
-	
+
 	/// Hemodialysis Program.
 	case hd = "hd"
-	
+
 	/// Autism Screening Program.
 	case auscr = "auscr"
-	
+
 	/// No program code applies.
 	case none = "none"
 }

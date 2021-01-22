@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Indicates the purpose of a bundle - how it is intended to be used.
  
@@ -26,32 +24,32 @@
  ValueSet: http://hl7.org/fhir/ValueSet/bundle-type
  */
 public enum BundleType: String, FHIRPrimitiveType {
-	
+
 	/// The bundle is a document. The first resource is a Composition.
 	case document = "document"
-	
+
 	/// The bundle is a message. The first resource is a MessageHeader.
 	case message = "message"
-	
+
 	/// The bundle is a transaction - intended to be processed by a server as an atomic commit.
 	case transaction = "transaction"
-	
+
 	/// The bundle is a transaction response. Because the response is a transaction response, the transaction has
 	/// succeeded, and all responses are error free.
 	case transactionResponse = "transaction-response"
-	
+
 	/// The bundle is a set of actions - intended to be processed by a server as a group of independent actions.
 	case batch = "batch"
-	
+
 	/// The bundle is a batch response. Note that as a batch, some responses may indicate failure and others success.
 	case batchResponse = "batch-response"
-	
+
 	/// The bundle is a list of resources from a history interaction on a server.
 	case history = "history"
-	
+
 	/// The bundle is a list of resources returned as a result of a search/query interaction, operation, or message.
 	case searchset = "searchset"
-	
+
 	/// The bundle is a set of resources collected into a single package for ease of distribution that imposes no
 	/// processing obligations or behavioral rules beyond persistence.
 	case collection = "collection"

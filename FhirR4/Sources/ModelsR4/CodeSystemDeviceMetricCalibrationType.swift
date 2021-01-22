@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Describes the type of a metric calibration.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/metric-calibration-type
  */
 public enum DeviceMetricCalibrationType: String, FHIRPrimitiveType {
-	
+
 	/// Metric calibration method has not been identified.
 	case unspecified = "unspecified"
-	
+
 	/// Offset metric calibration method.
 	case offset = "offset"
-	
+
 	/// Gain metric calibration method.
 	case gain = "gain"
-	
+
 	/// Two-point metric calibration method.
 	case twoPoint = "two-point"
 }

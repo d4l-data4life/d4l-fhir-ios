@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  High-level categorization of the definition, used for searching, sorting, and filtering.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/definition-topic
  */
 public enum DefinitionTopic: String, FHIRPrimitiveType {
-	
+
 	/// The definition is related to treatment of the patient.
 	case treatment = "treatment"
-	
+
 	/// The definition is related to education of the patient.
 	case education = "education"
-	
+
 	/// The definition is related to assessment of the patient.
 	case assessment = "assessment"
 }

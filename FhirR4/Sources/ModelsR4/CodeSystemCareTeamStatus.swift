@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Indicates the status of the care team.
  
@@ -26,21 +24,21 @@
  ValueSet: http://hl7.org/fhir/ValueSet/care-team-status
  */
 public enum CareTeamStatus: String, FHIRPrimitiveType {
-	
+
 	/// The care team has been drafted and proposed, but not yet participating in the coordination and delivery of
 	/// patient care.
 	case proposed = "proposed"
-	
+
 	/// The care team is currently participating in the coordination and delivery of care.
 	case active = "active"
-	
+
 	/// The care team is temporarily on hold or suspended and not participating in the coordination and delivery of
 	/// care.
 	case suspended = "suspended"
-	
+
 	/// The care team was, but is no longer, participating in the coordination and delivery of care.
 	case inactive = "inactive"
-	
+
 	/// The care team should have never existed.
 	case enteredInError = "entered-in-error"
 }

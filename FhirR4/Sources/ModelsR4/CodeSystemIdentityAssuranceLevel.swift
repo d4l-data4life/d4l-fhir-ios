@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The level of confidence that this link represents the same actual person, based on NIST Authentication Levels.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/identity-assuranceLevel
  */
 public enum IdentityAssuranceLevel: String, FHIRPrimitiveType {
-	
+
 	/// Little or no confidence in the asserted identity's accuracy.
 	case level1 = "level1"
-	
+
 	/// Some confidence in the asserted identity's accuracy.
 	case level2 = "level2"
-	
+
 	/// High confidence in the asserted identity's accuracy.
 	case level3 = "level3"
-	
+
 	/// Very high confidence in the asserted identity's accuracy.
 	case level4 = "level4"
 }

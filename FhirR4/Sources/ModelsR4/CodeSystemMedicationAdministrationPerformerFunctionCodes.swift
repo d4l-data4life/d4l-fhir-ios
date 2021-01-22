@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  MedicationAdministration Performer Function Codes
  
@@ -26,15 +24,15 @@
  ValueSet: http://hl7.org/fhir/ValueSet/med-admin-perform-function
  */
 public enum MedicationAdministrationPerformerFunctionCodes: String, FHIRPrimitiveType {
-	
+
 	/// A person, non-person living subject, organization or device that who actually and principally carries out the
 	/// action
 	case performer = "performer"
-	
+
 	/// A person who verifies the correctness and appropriateness of the service (plan, order, event, etc.) and hence
 	/// takes on accountability.
 	case verifier = "verifier"
-	
+
 	/// A person witnessing the action happening without doing anything. A witness is not necessarily aware, much less
 	/// approves of anything stated in the service event. Example for a witness is students watching an operation or an
 	/// advanced directive witness.

@@ -16,8 +16,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Class to represent FHIR primitives representing "string", "code", "id", "markdown" and "xhtml", officially:
 	
@@ -46,9 +44,9 @@
  http://hl7.org/fhir/datatypes.html#markdown
  */
 public struct FHIRString: FHIRPrimitiveType {
-	
+
 	public var string: String
-	
+
 	/**
 	 Designated initializer.
 	 */
@@ -58,19 +56,19 @@ public struct FHIRString: FHIRPrimitiveType {
 }
 
 extension FHIRString: ExpressibleByStringLiteral {
-	
+
 	public init(stringLiteral value: StringLiteralType) {
 		self.init(value)
 	}
 }
 
 extension FHIRString: Codable {
-	
+
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
 		self.string = try container.decode(String.self)
 	}
-	
+
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.singleValueContainer()
 		try container.encode(string)
@@ -78,22 +76,22 @@ extension FHIRString: Codable {
 }
 
 extension FHIRString: CustomStringConvertible {
-	
+
 	public var description: String {
 		return string
 	}
 }
 
 extension FHIRString: Equatable {
-	
+
 	public static func ==(l: FHIRString, r: FHIRString) -> Bool {
 		return l.string == r.string
 	}
-	
+
 	public static func ==(l: String, r: FHIRString) -> Bool {
 		return l == r.string
 	}
-	
+
 	public static func ==(l: FHIRString, r: String) -> Bool {
 		return l.string == r
 	}
@@ -102,7 +100,7 @@ extension FHIRString: Equatable {
 // MARK: -
 
 extension String {
-	
+
 	public func asFHIRStringPrimitive() -> FHIRPrimitive<FHIRString> {
 		return FHIRPrimitive(FHIRString(self))
 	}

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of
  or contains concepts to support describing the reason why an administered dose has been assigned a particular status.
@@ -28,21 +26,21 @@
  ValueSet: http://hl7.org/fhir/ValueSet/immunization-evaluation-dose-status-reason
  */
 public enum ImmunizationEvaluationDoseStatusReasonCodes: String, FHIRPrimitiveType {
-	
+
 	/// The product was stored in a manner inconsistent with manufacturer guidelines potentially reducing the
 	/// effectiveness of the product.
 	case advstorage = "advstorage"
-	
+
 	/// The product was stored at a temperature inconsistent with manufacturer guidelines potentially reducing the
 	/// effectiveness of the product.
 	case coldchbrk = "coldchbrk"
-	
+
 	/// The product was administered after the expiration date associated with lot of vaccine.
 	case explot = "explot"
-	
+
 	/// The product was administered at a time inconsistent with the documented schedule.
 	case outsidesched = "outsidesched"
-	
+
 	/// The product administered has been recalled by the manufacturer.
 	case prodrecall = "prodrecall"
 }

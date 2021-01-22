@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set defines a set of codes that can be used to indicate from where the patient came in.
  
@@ -26,36 +24,36 @@
  ValueSet: http://hl7.org/fhir/ValueSet/encounter-admit-source
  */
 public enum AdmitSource: String, FHIRPrimitiveType {
-	
+
 	/// The Patient has been transferred from another hospital for this encounter.
 	case hospTrans = "hosp-trans"
-	
+
 	/// The patient has been transferred from the emergency department within the hospital. This is typically used in
 	/// the transition to an inpatient encounter
 	case emd = "emd"
-	
+
 	/// The patient has been transferred from an outpatient department within the hospital.
 	case outp = "outp"
-	
+
 	/// The patient is a newborn and the encounter will track the baby related activities (as opposed to the Mothers
 	/// encounter - that may be associated using the newborn encounters partof property)
 	case born = "born"
-	
+
 	/// The patient has been admitted due to a referred from a General Practitioner.
 	case gp = "gp"
-	
+
 	/// The patient has been admitted due to a referred from a Specialist (as opposed to a General Practitioner).
 	case mp = "mp"
-	
+
 	/// The patient has been transferred from a nursing home.
 	case nursing = "nursing"
-	
+
 	/// The patient has been transferred from a psychiatric facility.
 	case psych = "psych"
-	
+
 	/// The patient has been transferred from a rehabilitation facility or clinic.
 	case rehab = "rehab"
-	
+
 	/// The patient has been admitted from a source otherwise not specified here.
 	case other = "other"
 }

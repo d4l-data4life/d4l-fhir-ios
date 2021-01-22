@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Results of a measure evaluation.
  
@@ -26,46 +24,46 @@
  resources involved in that calculation.
  */
 open class MeasureReport: DomainResource {
-	
+
 	override open class var resourceType: ResourceType { return .measureReport }
-	
+
 	/// Additional identifier for the MeasureReport
 	public var identifier: [Identifier]?
-	
+
 	/// The MeasureReport status. No data will be available until the MeasureReport status is complete.
 	public var status: FHIRPrimitive<MeasureReportStatus>
-	
+
 	/// The type of measure report. This may be an individual report, which provides the score for the measure for an
 	/// individual member of the population; a subject-listing, which returns the list of members that meet the various
 	/// criteria in the measure; a summary report, which returns a population count for each of the criteria in the
 	/// measure; or a data-collection, which enables the MeasureReport to be used to exchange the data-of-interest for a
 	/// quality measure.
 	public var type: FHIRPrimitive<MeasureReportType>
-	
+
 	/// What measure was calculated
 	public var measure: FHIRPrimitive<Canonical>
-	
+
 	/// What individual(s) the report is for
 	public var subject: Reference?
-	
+
 	/// When the report was generated
 	public var date: FHIRPrimitive<DateTime>?
-	
+
 	/// Who is reporting the data
 	public var reporter: Reference?
-	
+
 	/// What period the report covers
 	public var period: Period
-	
+
 	/// increase | decrease
 	public var improvementNotation: CodeableConcept?
-	
+
 	/// Measure results for each group
 	public var group: [MeasureReportGroup]?
-	
+
 	/// What data was used to calculate the measure score
 	public var evaluatedResource: [Reference]?
-	
+
 	/// Designated initializer taking all required properties
 	public init(measure: FHIRPrimitive<Canonical>, period: Period, status: FHIRPrimitive<MeasureReportStatus>, type: FHIRPrimitive<MeasureReportType>) {
 		self.measure = measure
@@ -74,7 +72,7 @@ open class MeasureReport: DomainResource {
 		self.type = type
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							contained: [ResourceProxy]? = nil,
@@ -95,8 +93,7 @@ open class MeasureReport: DomainResource {
 							status: FHIRPrimitive<MeasureReportStatus>,
 							subject: Reference? = nil,
 							text: Narrative? = nil,
-							type: FHIRPrimitive<MeasureReportType>)
-	{
+							type: FHIRPrimitive<MeasureReportType>) {
 		self.init(measure: measure, period: period, status: status, type: type)
 		self.contained = contained
 		self.date = date
@@ -114,9 +111,9 @@ open class MeasureReport: DomainResource {
 		self.subject = subject
 		self.text = text
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case date; case _date
 		case evaluatedResource
@@ -130,11 +127,11 @@ open class MeasureReport: DomainResource {
 		case subject
 		case type; case _type
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.date = try FHIRPrimitive<DateTime>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
 		self.evaluatedResource = try [Reference](from: _container, forKeyIfPresent: .evaluatedResource)
@@ -149,11 +146,11 @@ open class MeasureReport: DomainResource {
 		self.type = try FHIRPrimitive<MeasureReportType>(from: _container, forKey: .type, auxiliaryKey: ._type)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
 		try evaluatedResource?.encode(on: &_container, forKey: .evaluatedResource)
@@ -168,9 +165,9 @@ open class MeasureReport: DomainResource {
 		try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MeasureReport else {
 			return false
@@ -190,7 +187,7 @@ open class MeasureReport: DomainResource {
 		    && subject == _other.subject
 		    && type == _other.type
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(date)
@@ -213,24 +210,24 @@ open class MeasureReport: DomainResource {
  The results of the calculation, one for each population group in the measure.
  */
 open class MeasureReportGroup: BackboneElement {
-	
+
 	/// Meaning of the group
 	public var code: CodeableConcept?
-	
+
 	/// The populations in the group
 	public var population: [MeasureReportGroupPopulation]?
-	
+
 	/// What score this group achieved
 	public var measureScore: Quantity?
-	
+
 	/// Stratification results
 	public var stratifier: [MeasureReportGroupStratifier]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept? = nil,
@@ -239,8 +236,7 @@ open class MeasureReportGroup: BackboneElement {
 							measureScore: Quantity? = nil,
 							modifierExtension: [Extension]? = nil,
 							population: [MeasureReportGroupPopulation]? = nil,
-							stratifier: [MeasureReportGroupStratifier]? = nil)
-	{
+							stratifier: [MeasureReportGroupStratifier]? = nil) {
 		self.init()
 		self.code = code
 		self.`extension` = `extension`
@@ -250,20 +246,20 @@ open class MeasureReportGroup: BackboneElement {
 		self.population = population
 		self.stratifier = stratifier
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case measureScore
 		case population
 		case stratifier
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKeyIfPresent: .code)
 		self.measureScore = try Quantity(from: _container, forKeyIfPresent: .measureScore)
@@ -271,11 +267,11 @@ open class MeasureReportGroup: BackboneElement {
 		self.stratifier = try [MeasureReportGroupStratifier](from: _container, forKeyIfPresent: .stratifier)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code?.encode(on: &_container, forKey: .code)
 		try measureScore?.encode(on: &_container, forKey: .measureScore)
@@ -283,9 +279,9 @@ open class MeasureReportGroup: BackboneElement {
 		try stratifier?.encode(on: &_container, forKey: .stratifier)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MeasureReportGroup else {
 			return false
@@ -298,7 +294,7 @@ open class MeasureReportGroup: BackboneElement {
 		    && population == _other.population
 		    && stratifier == _other.stratifier
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -314,22 +310,22 @@ open class MeasureReportGroup: BackboneElement {
  The populations that make up the population group, one for each type of population appropriate for the measure.
  */
 open class MeasureReportGroupPopulation: BackboneElement {
-	
+
 	/// initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-
 	/// exception | measure-population | measure-population-exclusion | measure-observation
 	public var code: CodeableConcept?
-	
+
 	/// Size of the population
 	public var count: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// For subject-list reports, the subject results in this population
 	public var subjectResults: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept? = nil,
@@ -337,8 +333,7 @@ open class MeasureReportGroupPopulation: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							subjectResults: Reference? = nil)
-	{
+							subjectResults: Reference? = nil) {
 		self.init()
 		self.code = code
 		self.count = count
@@ -347,39 +342,39 @@ open class MeasureReportGroupPopulation: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.subjectResults = subjectResults
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case count; case _count
 		case subjectResults
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKeyIfPresent: .code)
 		self.count = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .count, auxiliaryKey: ._count)
 		self.subjectResults = try Reference(from: _container, forKeyIfPresent: .subjectResults)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code?.encode(on: &_container, forKey: .code)
 		try count?.encode(on: &_container, forKey: .count, auxiliaryKey: ._count)
 		try subjectResults?.encode(on: &_container, forKey: .subjectResults)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MeasureReportGroupPopulation else {
 			return false
@@ -391,7 +386,7 @@ open class MeasureReportGroupPopulation: BackboneElement {
 		    && count == _other.count
 		    && subjectResults == _other.subjectResults
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -407,26 +402,25 @@ open class MeasureReportGroupPopulation: BackboneElement {
  measure.
  */
 open class MeasureReportGroupStratifier: BackboneElement {
-	
+
 	/// What stratifier of the group
 	public var code: [CodeableConcept]?
-	
+
 	/// Stratum results, one for each unique value, or set of values, in the stratifier, or stratifier components
 	public var stratum: [MeasureReportGroupStratifierStratum]?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: [CodeableConcept]? = nil,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							stratum: [MeasureReportGroupStratifierStratum]? = nil)
-	{
+							stratum: [MeasureReportGroupStratifierStratum]? = nil) {
 		self.init()
 		self.code = code
 		self.`extension` = `extension`
@@ -434,36 +428,36 @@ open class MeasureReportGroupStratifier: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.stratum = stratum
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case stratum
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try [CodeableConcept](from: _container, forKeyIfPresent: .code)
 		self.stratum = try [MeasureReportGroupStratifierStratum](from: _container, forKeyIfPresent: .stratum)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code?.encode(on: &_container, forKey: .code)
 		try stratum?.encode(on: &_container, forKey: .stratum)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MeasureReportGroupStratifier else {
 			return false
@@ -474,7 +468,7 @@ open class MeasureReportGroupStratifier: BackboneElement {
 		return code == _other.code
 		    && stratum == _other.stratum
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -489,24 +483,24 @@ open class MeasureReportGroupStratifier: BackboneElement {
  administrative gender, there will be four strata, one for each possible gender value.
  */
 open class MeasureReportGroupStratifierStratum: BackboneElement {
-	
+
 	/// The stratum value, e.g. male
 	public var value: CodeableConcept?
-	
+
 	/// Stratifier component values
 	public var component: [MeasureReportGroupStratifierStratumComponent]?
-	
+
 	/// Population results in this stratum
 	public var population: [MeasureReportGroupStratifierStratumPopulation]?
-	
+
 	/// What score this stratum achieved
 	public var measureScore: Quantity?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							component: [MeasureReportGroupStratifierStratumComponent]? = nil,
@@ -515,8 +509,7 @@ open class MeasureReportGroupStratifierStratum: BackboneElement {
 							measureScore: Quantity? = nil,
 							modifierExtension: [Extension]? = nil,
 							population: [MeasureReportGroupStratifierStratumPopulation]? = nil,
-							value: CodeableConcept? = nil)
-	{
+							value: CodeableConcept? = nil) {
 		self.init()
 		self.component = component
 		self.`extension` = `extension`
@@ -526,20 +519,20 @@ open class MeasureReportGroupStratifierStratum: BackboneElement {
 		self.population = population
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case component
 		case measureScore
 		case population
 		case value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.component = try [MeasureReportGroupStratifierStratumComponent](from: _container, forKeyIfPresent: .component)
 		self.measureScore = try Quantity(from: _container, forKeyIfPresent: .measureScore)
@@ -547,11 +540,11 @@ open class MeasureReportGroupStratifierStratum: BackboneElement {
 		self.value = try CodeableConcept(from: _container, forKeyIfPresent: .value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try component?.encode(on: &_container, forKey: .component)
 		try measureScore?.encode(on: &_container, forKey: .measureScore)
@@ -559,9 +552,9 @@ open class MeasureReportGroupStratifierStratum: BackboneElement {
 		try value?.encode(on: &_container, forKey: .value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MeasureReportGroupStratifierStratum else {
 			return false
@@ -574,7 +567,7 @@ open class MeasureReportGroupStratifierStratum: BackboneElement {
 		    && population == _other.population
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(component)
@@ -590,63 +583,62 @@ open class MeasureReportGroupStratifierStratum: BackboneElement {
  A stratifier component value.
  */
 open class MeasureReportGroupStratifierStratumComponent: BackboneElement {
-	
+
 	/// What stratifier component of the group
 	public var code: CodeableConcept
-	
+
 	/// The stratum component value, e.g. male
 	public var value: CodeableConcept
-	
+
 	/// Designated initializer taking all required properties
 	public init(code: CodeableConcept, value: CodeableConcept) {
 		self.code = code
 		self.value = value
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept,
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							value: CodeableConcept)
-	{
+							value: CodeableConcept) {
 		self.init(code: code, value: value)
 		self.`extension` = `extension`
 		self.id = id
 		self.modifierExtension = modifierExtension
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case value
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKey: .code)
 		self.value = try CodeableConcept(from: _container, forKey: .value)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code.encode(on: &_container, forKey: .code)
 		try value.encode(on: &_container, forKey: .value)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MeasureReportGroupStratifierStratumComponent else {
 			return false
@@ -657,7 +649,7 @@ open class MeasureReportGroupStratifierStratumComponent: BackboneElement {
 		return code == _other.code
 		    && value == _other.value
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)
@@ -671,22 +663,22 @@ open class MeasureReportGroupStratifierStratumComponent: BackboneElement {
  The populations that make up the stratum, one for each type of population appropriate to the measure.
  */
 open class MeasureReportGroupStratifierStratumPopulation: BackboneElement {
-	
+
 	/// initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-
 	/// exception | measure-population | measure-population-exclusion | measure-observation
 	public var code: CodeableConcept?
-	
+
 	/// Size of the population
 	public var count: FHIRPrimitive<FHIRInteger>?
-	
+
 	/// For subject-list reports, the subject results in this population
 	public var subjectResults: Reference?
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: CodeableConcept? = nil,
@@ -694,8 +686,7 @@ open class MeasureReportGroupStratifierStratumPopulation: BackboneElement {
 							`extension`: [Extension]? = nil,
 							id: FHIRPrimitive<FHIRString>? = nil,
 							modifierExtension: [Extension]? = nil,
-							subjectResults: Reference? = nil)
-	{
+							subjectResults: Reference? = nil) {
 		self.init()
 		self.code = code
 		self.count = count
@@ -704,39 +695,39 @@ open class MeasureReportGroupStratifierStratumPopulation: BackboneElement {
 		self.modifierExtension = modifierExtension
 		self.subjectResults = subjectResults
 	}
-	
+
 	// MARK: - Codable
-	
+
 	private enum CodingKeys: String, CodingKey {
 		case code
 		case count; case _count
 		case subjectResults
 	}
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		let _container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Decode all our properties
 		self.code = try CodeableConcept(from: _container, forKeyIfPresent: .code)
 		self.count = try FHIRPrimitive<FHIRInteger>(from: _container, forKeyIfPresent: .count, auxiliaryKey: ._count)
 		self.subjectResults = try Reference(from: _container, forKeyIfPresent: .subjectResults)
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		var _container = encoder.container(keyedBy: CodingKeys.self)
-		
+
 		// Encode all our properties
 		try code?.encode(on: &_container, forKey: .code)
 		try count?.encode(on: &_container, forKey: .count, auxiliaryKey: ._count)
 		try subjectResults?.encode(on: &_container, forKey: .subjectResults)
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? MeasureReportGroupStratifierStratumPopulation else {
 			return false
@@ -748,7 +739,7 @@ open class MeasureReportGroupStratifierStratumPopulation: BackboneElement {
 		    && count == _other.count
 		    && subjectResults == _other.subjectResults
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 		hasher.combine(code)

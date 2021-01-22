@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  The code(s) that detail the conditions under which the healthcare service is available/offered.
  
@@ -26,13 +24,13 @@
  ValueSet: http://hl7.org/fhir/ValueSet/service-provision-conditions
  */
 public enum ServiceProvisionConditions: String, FHIRPrimitiveType {
-	
+
 	/// This service is available for no patient cost.
 	case free = "free"
-	
+
 	/// There are discounts available on this service for qualifying patients.
 	case disc = "disc"
-	
+
 	/// Fees apply for this service.
 	case cost = "cost"
 }

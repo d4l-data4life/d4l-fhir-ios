@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Defines how a compartment rule is used.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/graph-compartment-use
  */
 public enum GraphCompartmentUse: String, FHIRPrimitiveType {
-	
+
 	/// This compartment rule is a condition for whether the rule applies.
 	case condition = "condition"
-	
+
 	/// This compartment rule is enforced on any relationships that meet the conditions.
 	case requirement = "requirement"
 }

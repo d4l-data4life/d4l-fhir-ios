@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A measured or measurable amount.
  
@@ -26,12 +24,12 @@
  not precisely quantified, including amounts involving arbitrary units and floating currencies.
  */
 open class Count: Quantity {
-	
+
 	/// Designated initializer taking all required properties
 	override public init() {
 		super.init()
 	}
-	
+
 	/// Convenience initializer
 	public convenience init(
 							code: FHIRPrimitive<FHIRString>? = nil,
@@ -40,8 +38,7 @@ open class Count: Quantity {
 							id: FHIRPrimitive<FHIRString>? = nil,
 							system: FHIRPrimitive<FHIRURI>? = nil,
 							unit: FHIRPrimitive<FHIRString>? = nil,
-							value: FHIRPrimitive<FHIRDecimal>? = nil)
-	{
+							value: FHIRPrimitive<FHIRDecimal>? = nil) {
 		self.init()
 		self.code = code
 		self.comparator = comparator
@@ -51,21 +48,21 @@ open class Count: Quantity {
 		self.unit = unit
 		self.value = value
 	}
-	
+
 	// MARK: - Codable
-	
+
 	/// Initializer for Decodable
 	public required init(from decoder: Decoder) throws {
 		try super.init(from: decoder)
 	}
-	
+
 	/// Encodable
 	public override func encode(to encoder: Encoder) throws {
 		try super.encode(to: encoder)
 	}
-	
+
 	// MARK: - Equatable & Hashable
-	
+
 	public override func isEqual(to _other: Any?) -> Bool {
 		guard let _other = _other as? Count else {
 			return false
@@ -75,7 +72,7 @@ open class Count: Quantity {
 		}
 		return true
 	}
-	
+
 	public override func hash(into hasher: inout Hasher) {
 		super.hash(into: &hasher)
 	}

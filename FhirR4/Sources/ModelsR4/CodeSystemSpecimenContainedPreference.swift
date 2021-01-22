@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Degree of preference of a type of conditioned specimen.
  
@@ -26,10 +24,10 @@
  ValueSet: http://hl7.org/fhir/ValueSet/specimen-contained-preference
  */
 public enum SpecimenContainedPreference: String, FHIRPrimitiveType {
-	
+
 	/// This type of contained specimen is preferred to collect this kind of specimen.
 	case preferred = "preferred"
-	
+
 	/// This type of conditioned specimen is an alternate.
 	case alternate = "alternate"
 }

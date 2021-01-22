@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Overall seriousness of this event for the patient.
  
@@ -26,28 +24,28 @@
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-seriousness
  */
 public enum AdverseEventSeriousness: String, FHIRPrimitiveType {
-	
+
 	/// Non-serious.
 	case nonSerious = "Non-serious"
-	
+
 	/// Serious.
 	case serious = "Serious"
-	
+
 	/// Results in death.
 	case seriousResultsInDeath = "SeriousResultsInDeath"
-	
+
 	/// Is Life-threatening.
 	case seriousIsLifeThreatening = "SeriousIsLifeThreatening"
-	
+
 	/// Requires inpatient hospitalization or causes prolongation of existing hospitalization.
 	case seriousResultsInHospitalization = "SeriousResultsInHospitalization"
-	
+
 	/// Results in persistent or significant disability/incapacity.
 	case seriousResultsInDisability = "SeriousResultsInDisability"
-	
+
 	/// Is a congenital anomaly/birth defect.
 	case seriousIsBirthDefect = "SeriousIsBirthDefect"
-	
+
 	/// Requires intervention to prevent permanent impairment or damage (i.e., an important medical event that requires
 	/// medical judgement).
 	case seriousRequiresPreventImpairment = "SeriousRequiresPreventImpairment"

@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  Describes the state of a metric calibration.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/metric-calibration-state
  */
 public enum DeviceMetricCalibrationState: String, FHIRPrimitiveType {
-	
+
 	/// The metric has not been calibrated.
 	case notCalibrated = "not-calibrated"
-	
+
 	/// The metric needs to be calibrated.
 	case calibrationRequired = "calibration-required"
-	
+
 	/// The metric has been calibrated.
 	case calibrated = "calibrated"
-	
+
 	/// The state of calibration of this metric is unspecified.
 	case unspecified = "unspecified"
 }

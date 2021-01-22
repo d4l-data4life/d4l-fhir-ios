@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  This value set includes example Diagnosis on Admission codes.
  
@@ -26,16 +24,16 @@
  ValueSet: http://hl7.org/fhir/ValueSet/ex-diagnosis-on-admission
  */
 public enum ExampleDiagnosisOnAdmissionCodes: String, FHIRPrimitiveType {
-	
+
 	/// Diagnosis was present at time of inpatient admission.
 	case Y = "y"
-	
+
 	/// Diagnosis was not present at time of inpatient admission.
 	case N = "n"
-	
+
 	/// Documentation insufficient to determine if condition was present at the time of inpatient admission.
 	case U = "u"
-	
+
 	/// Clinically undetermined. Provider unable to clinically determine whether the condition was present at the time
 	/// of inpatient admission.
 	case W = "w"

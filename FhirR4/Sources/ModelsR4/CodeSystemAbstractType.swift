@@ -17,8 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-
 /**
  A list of the base types defined by this version of the FHIR specification - types that are defined, but for which only
  specializations actually are created.
@@ -26,10 +24,10 @@
  URL: http://hl7.org/fhir/abstract-types
  */
 public enum AbstractType: String, FHIRPrimitiveType {
-	
+
 	/// A place holder that means any kind of data type
 	case type = "Type"
-	
+
 	/// A place holder that means any kind of resource
 	case any = "Any"
 }
