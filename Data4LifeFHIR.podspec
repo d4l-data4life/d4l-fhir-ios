@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Data4LifeFHIR"
-  s.version          = "0.17.0"
+  s.version          = "0.18.0"
   s.summary          = "Minimal FHIR standard models and data types for iOS"
   s.homepage         = "https://github.com/d4l-data4life/d4l-fhir-ios/"
   s.license          = 'Private License'
