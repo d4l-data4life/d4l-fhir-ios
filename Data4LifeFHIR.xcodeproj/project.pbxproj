@@ -791,10 +791,6 @@
 		36242E3F12A1A5C8DEB29425 /* TaskExample4+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F6A32F140F3CD9D1AC2D16 /* TaskExample4+Test.swift */; };
 		36276F6107C30A866C1A17B3 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		363026E613F9674983A602CF /* DevicemetricExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8CFBC9704C116A07ECBAC1 /* DevicemetricExample+Test.swift */; };
-		363E7B9125E7F8E50052A3A8 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363E7B7F25E7F7FF0052A3A8 /* CryptoSwift.xcframework */; };
-		363E7B9225E7F8E50052A3A8 /* Data4LifeSDKUtils.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363E7B7E25E7F7FE0052A3A8 /* Data4LifeSDKUtils.xcframework */; };
-		363E7B9725E7F8FD0052A3A8 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363E7B7F25E7F7FF0052A3A8 /* CryptoSwift.xcframework */; };
-		363E7B9825E7F8FD0052A3A8 /* Data4LifeSDKUtils.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363E7B7E25E7F7FE0052A3A8 /* Data4LifeSDKUtils.xcframework */; };
 		3644855103613316274DAB79 /* devicemetric-example.json in Resources */ = {isa = PBXBuildFile; fileRef = 3504E33897C67C12A1B237F5 /* devicemetric-example.json */; };
 		364731CF25530172008825F0 /* ModelsR4.h in Headers */ = {isa = PBXBuildFile; fileRef = 364731CD25530172008825F0 /* ModelsR4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		364734F72553032C008825F0 /* CodeSystemCodeSystemContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3647326625530329008825F0 /* CodeSystemCodeSystemContentMode.swift */; };
@@ -1562,6 +1558,10 @@
 		36902E9008D16A16949C9E8E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		369913662524C53B00848252 /* Bundle+Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369913602524C4F900848252 /* Bundle+Package.swift */; };
 		36A6F8B9D7408F06ECABE4B9 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		36B82D4725F8CA7000F126A2 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 36B82D4625F8CA7000F126A2 /* CryptoSwift */; };
+		36B82D4925F8CA7000F126A2 /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 36B82D4825F8CA7000F126A2 /* Data4LifeSDKUtils */; };
+		36B82D4F25F8CA9700F126A2 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 36B82D4E25F8CA9700F126A2 /* CryptoSwift */; };
+		36B82D5125F8CA9700F126A2 /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 36B82D5025F8CA9700F126A2 /* Data4LifeSDKUtils */; };
 		36C9DB562AD4038DC6A1FC7B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		36CFB18C243B799800A8DCB8 /* SubscriptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFB18B243B799800A8DCB8 /* SubscriptTests.swift */; };
 		36DAE09975F853687FEF03DE /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -4515,8 +4515,6 @@
 		357259FE9DB4485F13C33143 /* FamilyMemberHistory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FamilyMemberHistory.swift; path = Models/FamilyMemberHistory.swift; sourceTree = "<group>"; };
 		35F0C43C7F7A1DDFB49ACA63 /* CompositionExample+Test.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CompositionExample+Test.swift"; path = "Generated/CompositionExample+Test.swift"; sourceTree = "<group>"; };
 		360972C7C8E56C079D5F2A59 /* diagnosticreport-examples-general.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "diagnosticreport-examples-general.json"; path = "Examples/diagnosticreport-examples-general.json"; sourceTree = "<group>"; };
-		363E7B7E25E7F7FE0052A3A8 /* Data4LifeSDKUtils.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Data4LifeSDKUtils.xcframework; path = Carthage/Build/Data4LifeSDKUtils.xcframework; sourceTree = "<group>"; };
-		363E7B7F25E7F7FF0052A3A8 /* CryptoSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoSwift.xcframework; path = Carthage/Build/CryptoSwift.xcframework; sourceTree = "<group>"; };
 		364731CB25530172008825F0 /* ModelsR4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModelsR4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		364731CD25530172008825F0 /* ModelsR4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelsR4.h; sourceTree = "<group>"; };
 		364731CE25530172008825F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -5722,8 +5720,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				363E7B9725E7F8FD0052A3A8 /* CryptoSwift.xcframework in Frameworks */,
-				363E7B9825E7F8FD0052A3A8 /* Data4LifeSDKUtils.xcframework in Frameworks */,
+				36B82D5125F8CA9700F126A2 /* Data4LifeSDKUtils in Frameworks */,
+				36B82D4F25F8CA9700F126A2 /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5739,8 +5737,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				363E7B9125E7F8E50052A3A8 /* CryptoSwift.xcframework in Frameworks */,
-				363E7B9225E7F8E50052A3A8 /* Data4LifeSDKUtils.xcframework in Frameworks */,
+				36B82D4925F8CA7000F126A2 /* Data4LifeSDKUtils in Frameworks */,
+				36B82D4725F8CA7000F126A2 /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6879,8 +6877,6 @@
 		3659BC9D23D87B5D009970DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				363E7B7F25E7F7FF0052A3A8 /* CryptoSwift.xcframework */,
-				363E7B7E25E7F7FE0052A3A8 /* Data4LifeSDKUtils.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -7324,6 +7320,10 @@
 			dependencies = (
 			);
 			name = ModelsR4;
+			packageProductDependencies = (
+				36B82D4E25F8CA9700F126A2 /* CryptoSwift */,
+				36B82D5025F8CA9700F126A2 /* Data4LifeSDKUtils */,
+			);
 			productName = AppleFhirR4;
 			productReference = 364731CB25530172008825F0 /* ModelsR4.framework */;
 			productType = "com.apple.product-type.framework";
@@ -7360,6 +7360,10 @@
 			dependencies = (
 			);
 			name = Data4LifeFHIR;
+			packageProductDependencies = (
+				36B82D4625F8CA7000F126A2 /* CryptoSwift */,
+				36B82D4825F8CA7000F126A2 /* Data4LifeSDKUtils */,
+			);
 			productName = HCFHIR;
 			productReference = CD97E0671FB9D774001AD324 /* Data4LifeFHIR.framework */;
 			productType = "com.apple.product-type.framework";
@@ -7421,6 +7425,9 @@
 				Base,
 			);
 			mainGroup = CD97E05D1FB9D774001AD324;
+			packageReferences = (
+				36B82D4525F8CA7000F126A2 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */,
+			);
 			productRefGroup = CD97E0681FB9D774001AD324 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -12290,6 +12297,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		36B82D4525F8CA7000F126A2 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:d4l-data4life/d4l-utils-ios.git";
+			requirement = {
+				branch = "feature/SDK-544/prepare-for-xcframeworks";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		36B82D4625F8CA7000F126A2 /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36B82D4525F8CA7000F126A2 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
+			productName = CryptoSwift;
+		};
+		36B82D4825F8CA7000F126A2 /* Data4LifeSDKUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36B82D4525F8CA7000F126A2 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
+			productName = Data4LifeSDKUtils;
+		};
+		36B82D4E25F8CA9700F126A2 /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36B82D4525F8CA7000F126A2 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
+			productName = CryptoSwift;
+		};
+		36B82D5025F8CA9700F126A2 /* Data4LifeSDKUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36B82D4525F8CA7000F126A2 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
+			productName = Data4LifeSDKUtils;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD97E05E1FB9D774001AD324 /* Project object */;
 }

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "ModelsR4"
-  s.version          = "0.18.0"
+  s.version          = "0.19.0"
   s.summary          = "Apple Models for FHIRR4"
   s.homepage         = "https://github.com/d4l-data4life/d4l-fhir-ios/"
   s.license          = 'Private License'
@@ -10,5 +10,6 @@ Pod::Spec.new do |s|
 
   s.platform         = :ios, '12.0'
   s.requires_arc     = true
-  s.source_files     = 'FhirR4/Sources/**/*.{swift,h,m}'
+  s.vendored_frameworks = 'xcframeworks/ModelsR4.xcframework'
+  s.dependency 'Data4LifeSDKUtils', '0.4.0'
 end

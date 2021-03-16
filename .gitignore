@@ -3,10 +3,13 @@
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## Build generated
-build/
+xcbuild/
 DerivedData/
 Index/
 vendor/
+Data4LifeFHIR-xcframework-*
+ModelsR4-xcframework-*
+XCFrameworks-*
 
 ## Various settings
 *.pbxuser

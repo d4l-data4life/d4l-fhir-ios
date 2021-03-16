@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Data4LifeSDKUtils",
+        "repositoryURL": "git@github.com:d4l-data4life/d4l-utils-ios.git",
+        "state": {
+          "branch": "feature/SDK-544/prepare-for-xcframeworks",
+          "revision": "d5d17317e9572e017f7c678c2f88e274a5f73a3e",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
