@@ -6,35 +6,32 @@ import PackageDescription
 let package = Package(
     name: "Data4LifeFHIR",
     platforms: [
-        .macOS(.v10_12),
         .iOS(.v12),
     ],
     products: [
         .library(
             name: "Data4LifeFHIR",
-            type: .dynamic,
             targets: ["Data4LifeFHIR"]),
         .library(
             name: "ModelsR4",
-            type: .dynamic,
             targets: ["ModelsR4"]),
     ],
     dependencies: [
-        .package(name: "Data4LifeSDKUtils", url: "git@github.com:d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.3.0"))
+        .package(name: "Data4LifeSDKUtils", url: "git@github.com:d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.4.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "Data4LifeFHIR",
-            dependencies: ["Data4LifeSDKUtils"],
-            path: "FhirStu3/Sources",
-            exclude: ["Info.plist"]),
-        .target(
+        .binaryTarget(
+          name: "Data4LifeFHIR",
+          url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.19.0/Data4LifeFHIR-xcframework-0.19.0.zip",
+          checksum: "aa3d871f5dc57fb6b1e359fa4275e1e36cd8e1535786f106478d7cfbcc4ced29"
+        ),
+        .binaryTarget(
             name: "ModelsR4",
-            dependencies: ["Data4LifeSDKUtils"],
-            path: "FhirR4/Sources",
-            exclude: ["Info.plist","Templates"]),
+            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.19.0/ModelsR4-xcframework-0.19.0.zip",
+            checksum: "fd900a118f796175f4c66f5ff3a73ac49552fcb8ec7f9eafba3b524e953eb0cc"
+        ),
         .testTarget(
             name: "Data4LifeFHIRTests",
             dependencies: ["Data4LifeFHIR"],
