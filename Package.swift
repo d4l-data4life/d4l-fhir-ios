@@ -16,9 +16,6 @@ let package = Package(
             name: "ModelsR4",
             targets: ["ModelsR4"]),
     ],
-    dependencies: [
-        .package(name: "Data4LifeSDKUtils", url: "git@github.com:d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.4.0"))
-    ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
@@ -32,17 +29,5 @@ let package = Package(
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.19.0/ModelsR4-xcframework-0.19.0.zip",
             checksum: "fd900a118f796175f4c66f5ff3a73ac49552fcb8ec7f9eafba3b524e953eb0cc"
         ),
-        .testTarget(
-            name: "Data4LifeFHIRTests",
-            dependencies: ["Data4LifeFHIR"],
-            path: "FhirStu3/Tests",
-            exclude: ["Info.plist"],
-            resources: [.process("Examples")]),
-        .testTarget(
-            name: "ModelsR4Tests",
-            dependencies: ["ModelsR4"],
-            path: "FhirR4/Tests",
-            exclude: ["Info.plist"],
-            resources: [.process("Resources")]),
     ]
 )
