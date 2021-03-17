@@ -11,7 +11,7 @@ let package = Package(
     products: [
         .library(
             name: "Data4LifeFHIR",
-            targets: ["Data4LifeFHIRFrameworks"]),
+            targets: ["Data4LifeFhirSPMFrameworks"]),
         .library(
             name: "ModelsR4",
             targets: ["ModelsR4"]),
@@ -34,7 +34,7 @@ let package = Package(
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.19.0/ModelsR4-xcframework-0.19.0.zip",
             checksum: "fd900a118f796175f4c66f5ff3a73ac49552fcb8ec7f9eafba3b524e953eb0cc"
         ),
-        .target(name: "Data4LifeFHIRFrameworks",
+        .target(name: "Data4LifeFhirSPMFrameworks",
                 dependencies: [
                     .product(name: "CryptoSwift",
                                          package: "Data4LifeSDKUtils",
