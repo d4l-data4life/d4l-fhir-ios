@@ -136,8 +136,6 @@ GEM
       xcodeproj (>= 1.13.0, < 2.0.0)
       xcpretty (~> 0.3.0)
       xcpretty-travis-formatter (>= 0.0.3)
-    fastlane-plugin-download_file (1.0.0)
-    fastlane-plugin-unzip (1.0.1)
     ffi (1.15.0)
     fourflusher (2.3.1)
     fuzzy_match (2.0.4)
@@ -266,8 +264,6 @@ DEPENDENCIES
   asciidoctor
   cocoapods (= 1.10.1)
   fastlane
-  fastlane-plugin-download_file
-  fastlane-plugin-unzip
   xcodeproj
 
 BUNDLED WITH
