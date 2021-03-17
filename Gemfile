@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "fastlane"
-gem "xcodeproj"
+gem "fastlane", "2.178.0"
+gem "xcodeproj", "1.19.0"
 gem "cocoapods", "1.10.1"
-gem "asciidoctor"
+gem "asciidoctor", "2.0.12"

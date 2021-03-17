@@ -261,10 +261,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  asciidoctor
+  asciidoctor (= 2.0.12)
   cocoapods (= 1.10.1)
-  fastlane
-  xcodeproj
+  fastlane (= 2.178.0)
+  xcodeproj (= 1.19.0)
 
 BUNDLED WITH
    2.1.4
