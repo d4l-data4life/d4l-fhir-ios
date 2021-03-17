@@ -15,6 +15,7 @@
 
 import Foundation
 import Data4LifeSDKUtils
+import Data4LifeFHIR
 
 extension Attachment {
     public static func with(title: String,

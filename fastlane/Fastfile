@@ -26,6 +26,7 @@ platform :ios do
       devices: device,
       clean: false
     )
+
   end
 
   desc "Run linter and autocorrect issues"
@@ -150,6 +151,9 @@ platform :ios do
       asset2: archiveStu3Path,
       asset3: archiveR4Path
     )
+
+    push_stu3_podspec
+    push_r4_podspec
   end
 
   desc "Build xcframework for distribution"

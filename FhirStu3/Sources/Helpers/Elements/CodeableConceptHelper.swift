@@ -13,13 +13,15 @@
 //  applications and/or if you’d like to contribute to the development of the SDK, please
 //  contact D4L by email to help@data4life.care.
 
+import Data4LifeFHIR
+
 extension Data4LifeFHIR.CodeableConcept {
     public convenience init(_ string: String) {
         self.init()
         self.text = string
     }
 
-    public  convenience init(code: String? = nil, display: String? = nil, system: String? = nil) {
+    public convenience init(code: String? = nil, display: String? = nil, system: String? = nil) {
         self.init()
         let coding = Data4LifeFHIR.Coding()
 

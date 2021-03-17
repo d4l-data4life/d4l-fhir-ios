@@ -13,6 +13,8 @@
 //  applications and/or if you’d like to contribute to the development of the SDK, please
 //  contact D4L by email to help@data4life.care.
 
+import Data4LifeFHIR
+
 extension Dosage {
     public static func with(value: Float, unit: String, when: String) -> Dosage {
         return with(quantity: Data4LifeFHIR.Quantity(value: value, unit: unit), when: when)
