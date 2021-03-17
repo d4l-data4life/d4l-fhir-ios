@@ -21,7 +21,7 @@ platform :ios do
       clean: true
     )
     scan(
-      scheme: "ModelsR4",
+      scheme: projectR4,
       derived_data_path: "build/DerivedData",
       devices: device,
       clean: false
