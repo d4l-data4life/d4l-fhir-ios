@@ -27,6 +27,9 @@ platform :ios do
       clean: false
     )
 
+    Dir.chdir("..") do
+      sh("pod spec lint --sources='git@github.com:d4l-data4life/d4l-cocoapods-specs.git,https://github.com/CocoaPods/Specs'")
+    end
   end
 
   desc "Run linter and autocorrect issues"

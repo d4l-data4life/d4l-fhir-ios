@@ -22,6 +22,8 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
+    - name: Install brew bundle
+      run: brew bundle
     - run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3

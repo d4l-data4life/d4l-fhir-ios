@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'LICENSE', :file => "LICENSE" }
   s.author           = { "D4L data4life gGmbH" => "contact@data4life.care" }
 
-  s.source           = { :http => 'https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.19.0/XCFrameworks-0.19.0.zip' }
+  s.source           = { :http => 'https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/' + s.version.to_s + '/XCFrameworks-' + s.version.to_s + '.zip' }
   s.swift_version    = '5.3'
   s.platform         = :ios, '12.0'
   s.requires_arc     = true
@@ -15,5 +15,4 @@ Pod::Spec.new do |s|
   s.vendored_frameworks = 'Data4LifeFHIR.xcframework'
   s.preserve_paths      = 'Data4LifeFHIR.xcframework', 'Data4LifeFHIR.dSYMs/Data4LifeFHIR.framework.ios-arm64.dSYM', 'Data4LifeFHIR.dSYMs/Data4LifeFHIR.framework.ios-arm64_x86_64-simulator.dSYM'
   s.dependency 'Data4LifeSDKUtils', '0.4.0'
-
 end
