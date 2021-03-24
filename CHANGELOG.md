@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.19.0] - 2021-03-24
+### Changed
+- Changes podspec url to public one and updates utils dependency
+
 ## [0.18.0] - 2021-22-01
 Adds `NSCopying` support for Fhir R4 Models
 Adds autogeneration of Copying extension and its Tests
