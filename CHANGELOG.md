@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.19.0] - 2021-03-24
+## [0.18.1] - 2021-03-24
 ### Changed
 - Changes podspec url to public one and updates utils dependency
 
@@ -153,7 +153,8 @@ Adds support down to iOS 12 for ModelsR4 framework
 ### Added
 - FHIR models using Codable protocol
 
-[Unreleased]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.18.0...master
+[Unreleased]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.18.1...main
+[0.18.1]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.18.1
 [0.18.0]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.18.0
 [0.17.0]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.17.0
 [0.16.1]: https://github.com/gesundheitscloud/hc-fhir-ios/releases/tag/0.16.1
