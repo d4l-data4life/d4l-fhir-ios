@@ -18,7 +18,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
-                 url: "git@github.com:d4l-data4life/d4l-utils-ios.git",
+                 url: "https://github.com/d4l-data4life/d4l-utils-ios.git",
                  .upToNextMinor(from: "0.4.0"))
     ],
     targets: [
@@ -44,6 +44,11 @@ let package = Package(
                              condition: .when(platforms: [.iOS])),
                     .target(name: "Data4LifeFHIR")
                 ],
-                path: "FhirSPMFrameworks")
+                path: "FhirSPMFrameworks"),
+        .testTarget(name: "Data4LifeFhirTests",
+                    dependencies: ["Data4LifeFhirSPMFrameworks"],
+                    path: "FhirStu3/Tests",
+                    exclude: ["Info.plist"],
+                    resources: [.process("Examples")])
     ]
 )

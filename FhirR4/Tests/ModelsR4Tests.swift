@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ModelsR4
+import ModelsR4
 import UIKit
 
 class ModelsR4Tests: XCTestCase {
