@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "Data4LifeSDKUtils",
-        "repositoryURL": "https://github.com/d4l-data4life/d4l-utils-ios.git",
+        "repositoryURL": "git@github.com:d4l-data4life/d4l-utils-ios.git",
         "state": {
           "branch": null,
           "revision": "c4c94e97e0a1847b9de78c32aa8858511e4b0bb8",
