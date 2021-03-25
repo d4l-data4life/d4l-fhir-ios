@@ -19,7 +19,7 @@ extension Data4LifeFHIR.CodeableConcept {
         self.text = string
     }
 
-    public  convenience init(code: String? = nil, display: String? = nil, system: String? = nil) {
+    public convenience init(code: String? = nil, display: String? = nil, system: String? = nil) {
         self.init()
         let coding = Data4LifeFHIR.Coding()
 

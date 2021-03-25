@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import Data4LifeFHIR
+import Data4LifeFHIR
 import XCTest
 
 class KeyedContainerTests: XCTestCase {

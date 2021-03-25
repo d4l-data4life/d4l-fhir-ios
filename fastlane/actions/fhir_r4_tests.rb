@@ -98,7 +98,7 @@ module Fastlane
 // contact D4L by email to help@data4life.care.
 
 import XCTest
-@testable import ModelsR4
+import ModelsR4
 
 
 extension ModelsR4Tests {

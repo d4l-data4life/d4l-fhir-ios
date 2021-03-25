@@ -1,14 +1,17 @@
 Pod::Spec.new do |s|
   s.name             = "ModelsR4"
-  s.version          = "0.18.1"
+  s.version          = "0.19.0"
   s.summary          = "Apple Models for FHIRR4"
   s.homepage         = "https://github.com/d4l-data4life/d4l-fhir-ios/"
   s.license          = 'Private License'
   s.author           = { "D4L data4life gGmbH" => "contact@data4life.care" }
-  s.source           = { :git => "https://github.com/d4l-data4life/d4l-fhir-ios.git", :tag => s.version }
-  s.swift_version    = '5.3'
 
+  s.source           = { :http => 'https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/' + s.version.to_s + '/XCFrameworks-' + s.version.to_s + '.zip' }
+  s.swift_version    = '5.3'
   s.platform         = :ios, '12.0'
   s.requires_arc     = true
-  s.source_files     = 'FhirR4/Sources/**/*.{swift,h,m}'
+  s.cocoapods_version = '>= 1.10.0'
+
+  s.vendored_frameworks = 'ModelsR4.xcframework'
+  s.preserve_paths      = 'ModelsR4.xcframework', 'ModelsR4.dSYMs/ModelsR4.framework.ios-arm64.dSYM', 'ModelsR4.dSYMs/ModelsR4.framework.ios-arm64_x86_64-simulator.dSYM'
 end

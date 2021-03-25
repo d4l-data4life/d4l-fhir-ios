@@ -1,6 +1,8 @@
 default_platform :ios
 
 project = "Data4LifeFHIR"
+projectR4 = "ModelsR4"
+
 repository = "d4l-data4life/d4l-fhir-ios"
 framework_binary_path = "build/" + project + ".framework.zip"
 podspec_stu3_path = '../Data4LifeFHIR.podspec'
@@ -12,9 +14,6 @@ device = "iPhone 11"
 platform :ios do
   desc "Run unit tests"
   lane :test do
-    Dir.chdir("..") do
-       sh "./wcarthage.sh bootstrap --platform ios --use-ssh --cache-builds"
-    end
     scan(
       scheme: project,
       derived_data_path: "build/DerivedData",
@@ -22,11 +21,15 @@ platform :ios do
       clean: true
     )
     scan(
-      scheme: "ModelsR4",
+      scheme: projectR4,
       derived_data_path: "build/DerivedData",
       devices: device,
       clean: false
     )
+
+    Dir.chdir("..") do
+      sh("pod spec lint --sources='git@github.com:d4l-data4life/d4l-cocoapods-specs.git,https://github.com/CocoaPods/Specs'")
+    end
   end
 
   desc "Run linter and autocorrect issues"
@@ -136,26 +139,141 @@ platform :ios do
       Helper.log.info "When finished, commit your changes and create your tag.".red
     end
 
-    build_framework_binary
+    build_xcframework(version: version)
+    archiveAllFrameworksPath = allXcFrameworksArchivePath(version)
+    archiveStu3Path = stu3XcFrameworkArchivePath(version)
+    archiveR4Path = r4XcFrameworkArchivePath(version)
+
+    # Post new release to GitHub
+    gh_release(
+      version: version,
+      api_token:options[:api_token],
+      changelog: changelog,
+      is_prerelease: is_prerelease,
+      asset1: archiveAllFrameworksPath,
+      asset2: archiveStu3Path,
+      asset3: archiveR4Path
+    )
+
+    push_stu3_podspec
+    push_r4_podspec
+  end
+
+  desc "Build xcframework for distribution"
+  lane :build_xcframework do |options|
+    if options[:version] == nil
+        raise "Missing release version".red
+    end
+
+    Dir.chdir("..") do
+      root = Dir.pwd
+      configuration = "Release"
+      buildPath = "xcbuild"
+
+      stu3xcFrameworkPath = "#{project}.xcframework"
+      r4xcFrameworkPath = "#{projectR4}.xcframework"
+
+      archiveAllFrameworksPath = allXcFrameworksArchivePath(options[:version])
+      archiveStu3Path = stu3XcFrameworkArchivePath(options[:version])
+      archiveR4Path = r4XcFrameworkArchivePath(options[:version])
+
+      if File.exist?(buildPath)
+        sh "rm -rf #{buildPath}"
+      end
+      if File.exist?(stu3xcFrameworkPath)
+        sh "rm -rf #{stu3xcFrameworkPath}"
+      end
+      if File.exist?(r4xcFrameworkPath)
+        sh "rm -rf #{r4xcFrameworkPath}"
+      end
+
+      if File.exist?(archiveAllFrameworksPath)
+        sh "rm #{archiveAllFrameworksPath}"
+      end
+      if File.exist?(archiveStu3Path)
+        sh "rm #{archiveStu3Path}"
+      end
+      if File.exist?(archiveR4Path)
+        sh "rm #{archiveR4Path}"
+      end
+
+      sh "rm -rf #{buildPath}"
+      sh "rm -rf #{stu3xcFrameworkPath}"
+      sh "xcodebuild archive -scheme #{project} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild archive -scheme #{project} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      symbolMapUUIDFile = Dir.children("./#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/").first()
+      sh "xcodebuild -create-xcframework \
+          -framework #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/dSYMs/#{project}.framework.dSYM' \
+          -framework #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/dSYMs/#{project}.framework.dSYM' \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
+          -output #{stu3xcFrameworkPath}"
+
+
+      sh "rm -rf #{buildPath}"
+      sh "rm -rf #{r4xcFrameworkPath}"
+      sh "xcodebuild archive -scheme #{projectR4} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectR4}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild archive -scheme #{projectR4} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      symbolMapUUIDFile = Dir.children("./#{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/BCSymbolMaps/").first()
+      sh "xcodebuild -create-xcframework \
+          -framework #{buildPath}/#{configuration}/#{projectR4}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{projectR4}.framework \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{projectR4}-iphonesimulator.xcarchive/dSYMs/#{projectR4}.framework.dSYM' \
+          -framework #{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/Products/Library/Frameworks/#{projectR4}.framework \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/dSYMs/#{projectR4}.framework.dSYM' \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
+          -output #{r4xcFrameworkPath}"
+
+        sh "zip -r #{archiveAllFrameworksPath} #{stu3xcFrameworkPath} #{r4xcFrameworkPath} LICENSE"
+        sh "zip -r #{archiveStu3Path} #{stu3xcFrameworkPath}"
+        sh "zip -r #{archiveR4Path} #{r4xcFrameworkPath}"
+        sh "rm -rf #{stu3xcFrameworkPath}"
+        sh "rm -rf #{r4xcFrameworkPath}"
+    end
+  end
+
+  desc "Upload to a github release"
+  lane :gh_release do |options|
+
+    if options[:version] == nil
+        raise "Missing release version".red
+    end
+
+    if options[:api_token] == nil
+        raise "Missing api token".red
+    end
+
+    if options[:asset1] == nil
+        raise "Missing asset".red
+    end
+
+    if options[:asset2] == nil
+        raise "Missing asset".red
+    end
+
+    if options[:asset3] == nil
+        raise "Missing asset".red
+    end
+
+    isPrerelease = options[:is_prerelease]
+    if isPrerelease == nil
+        isPrerelease = true
+    end
+
+    changelog = options[:changelog]
+    if changelog == nil
+       changelog = "Pre-release"
+    end
 
     set_github_release(
       repository_name: repository,
       api_token: options[:api_token],
-      name: "#{version}",
-      tag_name: version,
+      name: "#{options[:version]}",
+      tag_name: options[:version],
       description: changelog,
-      is_prerelease: is_prerelease,
-      upload_assets: [framework_binary_path]
+      is_prerelease: isPrerelease,
+      upload_assets: [options[:asset1], options[:asset2], options[:asset3]]
     )
-  end
-
-  desc "Build universal binary"
-  lane :build_framework_binary do
-    Dir.chdir("..") do
-      sh "rm -rf ./build"
-      sh "./wcarthage.sh build --platform ios --no-skip-current --cache-builds --configuration Release"
-      sh "./wcarthage.sh archive --output #{framework_binary_path}"
-    end
   end
 
   desc "Update podspecs version"
@@ -214,5 +332,17 @@ platform :ios do
     sh "rm -rf #{output_folder_path}"
     sh "mkdir #{output_folder_path}"
     sh "bundle exec asciidoctor -b html5 -d book -o #{output_final_path} -a #{arguments} #{input_path} "
+  end
+
+  def allXcFrameworksArchivePath(version)
+     return "XCFrameworks-#{version}.zip"
+  end
+
+  def stu3XcFrameworkArchivePath(version)
+     return "Data4LifeFHIR-xcframework-#{version}.zip"
+  end
+
+  def r4XcFrameworkArchivePath(version)
+     return "ModelsR4-xcframework-#{version}.zip"
   end
 end

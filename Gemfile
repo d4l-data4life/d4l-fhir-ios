@@ -1,9 +1,6 @@
 source "https://rubygems.org"
 
-gem "fastlane"
-gem "xcodeproj"
-gem "cocoapods", "1.9.3"
-gem "asciidoctor"
-
-plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
-eval_gemfile(plugins_path) if File.exist?(plugins_path)
+gem "fastlane", "2.178.0"
+gem "xcodeproj", "1.19.0"
+gem "cocoapods", "1.10.1"
+gem "asciidoctor", "2.0.12"

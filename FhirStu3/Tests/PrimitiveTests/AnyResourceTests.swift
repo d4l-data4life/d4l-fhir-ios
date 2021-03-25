@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Data4LifeFHIR
+import Data4LifeFHIR
 
 class AnyResourceTests: XCTestCase {
 
