@@ -20,9 +20,9 @@ import Foundation
 
 public struct FHIRParserErrorPosition: CustomStringConvertible {
 	public let string: String
-	public let location: Int
+    public let location: String.Index
 
-	public init(string: String, location: Int) {
+	public init(string: String, location: String.Index) {
 		self.string = string
 		self.location = location
 	}

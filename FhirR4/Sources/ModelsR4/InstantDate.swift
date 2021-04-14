@@ -69,33 +69,33 @@ public struct InstantDate: FHIRPrimitiveType {
 		let numbers = CharacterSet.decimalDigits
 
 		// Year
-		var scanLocation = scanner.scanLocation
+		var currentIndex = scanner.currentIndex
 		guard let scanned = scanner.hs_scanCharacters(from: numbers), scanned.count == 4, let year = Int(scanned), year > 0 else {
-			throw FHIRDateParserError.invalidYear(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.invalidYear(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		// Month
-		guard scanner.scanString("-", into: nil) else {
-			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanner.scanLocation))
+		guard scanner.scanString("-") != nil else {
+			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanner.currentIndex))
 		}
-		scanLocation = scanner.scanLocation
+		currentIndex = scanner.currentIndex
 		guard let scannedMonth = scanner.hs_scanCharacters(from: numbers), scannedMonth.count == 2, let month = UInt8(scannedMonth), (1...12).contains(month) else {
-			throw FHIRDateParserError.invalidMonth(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.invalidMonth(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		// Day
-		guard scanner.scanString("-", into: nil) else {
-			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanner.scanLocation))
+		guard scanner.scanString("-") != nil else {
+			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanner.currentIndex))
 		}
-		scanLocation = scanner.scanLocation
+		currentIndex = scanner.currentIndex
 		guard let scannedDay = scanner.hs_scanCharacters(from: numbers), scannedDay.count == 2, let day = UInt8(scannedDay), (1...31).contains(day) else {
-			throw FHIRDateParserError.invalidDay(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.invalidDay(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		// Finish
-		scanLocation = scanner.scanLocation
+		currentIndex = scanner.currentIndex
 		if expectAtEnd && !scanner.isAtEnd {    // it's OK if we don't `expectAtEnd` but the scanner actually is
-			throw FHIRDateParserError.additionalCharacters(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.additionalCharacters(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		return (year, month, day)
