@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version          = "0.20.0"
   s.summary          = "Minimal FHIR standard models and data types for iOS"
   s.homepage         = "https://github.com/d4l-data4life/d4l-fhir-ios/"
-  s.license          = { :type => 'LICENSE', :file => "Data4LifeFHIR.xcframework/LICENSE" }
+  s.license          = { :type => 'LICENSE', :file => "LICENSE" }
   s.author           = { "D4L data4life gGmbH" => "contact@data4life.care" }
 
   s.source           = { :http => 'https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/' + s.version.to_s + '/XCFrameworks-' + s.version.to_s + '.zip' }
