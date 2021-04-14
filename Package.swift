@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Data4LifeFHIR",
     platforms: [
-        .iOS(.v12),
+        .iOS(.v13),
     ],
     products: [
         .library(
@@ -19,26 +19,23 @@ let package = Package(
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
                  url: "git@github.com:d4l-data4life/d4l-utils-ios.git",
-                 .upToNextMinor(from: "0.4.0"))
+                 .upToNextMinor(from: "0.5.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
           name: "Data4LifeFHIR",
-          url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.19.0/Data4LifeFHIR-xcframework-0.19.0.zip",
-          checksum: "aa3d871f5dc57fb6b1e359fa4275e1e36cd8e1535786f106478d7cfbcc4ced29"
+          url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.20.0/Data4LifeFHIR-xcframework-0.20.0.zip",
+          checksum: "b3eb7e04981891017aec1050f1551621447d3a745193a40643c368ee60b84e16"
         ),
         .binaryTarget(
             name: "ModelsR4",
-            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.19.0/ModelsR4-xcframework-0.19.0.zip",
-            checksum: "fd900a118f796175f4c66f5ff3a73ac49552fcb8ec7f9eafba3b524e953eb0cc"
+            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.20.0/ModelsR4-xcframework-0.20.0.zip",
+            checksum: "af182810f0e2ab04d2b473f6929a0b1177214a0095630095e297106df09533a5"
         ),
         .target(name: "Data4LifeFhirSPMFrameworks",
                 dependencies: [
-                    .product(name: "CryptoSwift",
-                                         package: "Data4LifeSDKUtils",
-                                         condition: .when(platforms: [.iOS])),
                     .product(name: "Data4LifeSDKUtils",
                              package: "Data4LifeSDKUtils",
                              condition: .when(platforms: [.iOS])),
@@ -49,6 +46,11 @@ let package = Package(
                     dependencies: ["Data4LifeFhirSPMFrameworks"],
                     path: "FhirStu3/Tests",
                     exclude: ["Info.plist"],
-                    resources: [.process("Examples")])
+                    resources: [.process("Examples")]),
+        .testTarget(name: "ModelsR4Tests",
+                    dependencies: ["ModelsR4"],
+                    path: "FhirR4/Tests",
+                    exclude: ["Info.plist"],
+                    resources: [.process("Resources")])
     ]
 )

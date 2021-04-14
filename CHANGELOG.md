@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.20.0] - 2021-04-14
+### Removed
+- Support for iOS 12
+- CryptoSwift dependency
+
 ## [0.19.0] - 2021-03-17
 ### Added
 - XCFramework support for Cocoapods and Swift PM
@@ -158,7 +163,8 @@ Adds support down to iOS 12 for ModelsR4 framework
 ### Added
 - FHIR models using Codable protocol
 
-[Unreleased]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.19.0...master
+[Unreleased]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.20.0...master
+[0.20.0]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.20.0
 [0.19.0]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.19.0
 [0.18.1]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.18.1
 [0.18.0]: https://github.com/d4l-data4life/d4l-fhir-ios/releases/tag/0.18.0
