@@ -25,7 +25,7 @@ Required resources include:
 ## Usage
 ### Requirements
 * Xcode 12+
-* iOS 12.0+
+* iOS 13.0+
 * Swift 5.3+
 
 * [Python 3.3 - 3.7.x](https://www.python.org/)
