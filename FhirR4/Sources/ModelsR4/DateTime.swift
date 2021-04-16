@@ -81,7 +81,7 @@ public struct DateTime: FHIRPrimitiveType {
 		var timeZoneString: String?
 
 		// Time
-		if scanner.scanString("T", into: nil) {
+        if scanner.scanString("T") != nil {
 			time = try FHIRTime.parse(from: scanner, expectAtEnd: false)
 
 			// TimeZone
@@ -91,9 +91,9 @@ public struct DateTime: FHIRPrimitiveType {
 		}
 
 		// At end
-		let scanLocation = scanner.scanLocation
+		let currentIndex = scanner.currentIndex
 		if expectAtEnd && !scanner.isAtEnd {    // it's OK if we don't `expectAtEnd` but the scanner actually is
-			throw FHIRDateParserError.additionalCharacters(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.additionalCharacters(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		return (date, time, timeZone, timeZoneString)

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "ModelsR4"
-  s.version          = "0.19.0"
+  s.version          = "0.20.0"
   s.summary          = "Apple Models for FHIRR4"
   s.homepage         = "https://github.com/d4l-data4life/d4l-fhir-ios/"
   s.license          = 'Private License'
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
 
   s.source           = { :http => 'https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/' + s.version.to_s + '/XCFrameworks-' + s.version.to_s + '.zip' }
   s.swift_version    = '5.3'
-  s.platform         = :ios, '12.0'
+  s.platform         = :ios, '13.0'
   s.requires_arc     = true
   s.cocoapods_version = '>= 1.10.0'
 

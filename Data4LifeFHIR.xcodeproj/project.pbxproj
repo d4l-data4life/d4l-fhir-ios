@@ -788,7 +788,6 @@
 		35FC867193706FA9EACBEBC3 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		360ED7A4870B0B6C4AC6FF12 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		3611A9E17EA9EBACC418C358 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3613AB53260CB6940016474D /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3613AB52260CB6940016474D /* CryptoSwift */; };
 		3613AB55260CB6940016474D /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 3613AB54260CB6940016474D /* Data4LifeSDKUtils */; };
 		36242E3F12A1A5C8DEB29425 /* TaskExample4+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F6A32F140F3CD9D1AC2D16 /* TaskExample4+Test.swift */; };
 		36276F6107C30A866C1A17B3 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -5734,7 +5733,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3613AB55260CB6940016474D /* Data4LifeSDKUtils in Frameworks */,
-				3613AB53260CB6940016474D /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7355,7 +7353,6 @@
 			);
 			name = Data4LifeFHIR;
 			packageProductDependencies = (
-				3613AB52260CB6940016474D /* CryptoSwift */,
 				3613AB54260CB6940016474D /* Data4LifeSDKUtils */,
 			);
 			productName = HCFHIR;
@@ -11896,13 +11893,13 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FhirR4/Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.19.0;
+				MARKETING_VERSION = 0.20.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.ModelsR4;
@@ -11929,13 +11926,13 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FhirR4/Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.19.0;
+				MARKETING_VERSION = 0.20.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.ModelsR4;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -12130,14 +12127,14 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = FhirStu3/Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.19.0;
+				MARKETING_VERSION = 0.20.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.HCFHIR;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -12168,14 +12165,14 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = FhirStu3/Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.19.0;
+				MARKETING_VERSION = 0.20.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.HCFHIR;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -12292,17 +12289,12 @@
 			repositoryURL = "git@github.com:d4l-data4life/d4l-utils-ios.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.4.0;
+				minimumVersion = 0.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3613AB52260CB6940016474D /* CryptoSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
-			productName = CryptoSwift;
-		};
 		3613AB54260CB6940016474D /* Data4LifeSDKUtils */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;

@@ -1,7 +1,7 @@
 # d4l-fhir-ios
 Minimal FHIR standard models and data types for iOS
 
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v0.19.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v0.20.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
 [![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg?style=flat&colorA=28a745&&colorB=4E4E4E)](https://github.com/apple/swift-package-manager)
 [![License](https://img.shields.io/badge/license-PRIVATE-blue.svg)](https://github.com/d4l-data4life/d4l-fhir-ios/blob/main/LICENSE)
 
@@ -25,7 +25,7 @@ Required resources include:
 ## Usage
 ### Requirements
 * Xcode 12+
-* iOS 12.0+
+* iOS 13.0+
 * Swift 5.3+
 
 * [Python 3.3 - 3.7.x](https://www.python.org/)
@@ -41,8 +41,8 @@ To install with [CocoaPods](https://cocoapods.org/) add the following lines (acc
 ```ruby
 source 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
 
-pod 'Data4LifeFHIR', '~> 0.19.0'
-pod 'ModelsR4', '~> 0.19.0'
+pod 'Data4LifeFHIR', '~> 0.20.0'
+pod 'ModelsR4', '~> 0.20.0'
 ```
 
 **Note**: For more info check [README](https://github.com/d4l-data4life/d4l-cocoapods-specs/blob/master/README.md).
@@ -52,7 +52,7 @@ pod 'ModelsR4', '~> 0.19.0'
 To install with [Swift Package Manager](https://swift.org/package-manager/) add this package as a dependency in `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/d4l-data4life/d4l-fhir-ios.git", .upToNextMinor(from: "0.19.0"))
+.package(url: "https://github.com/d4l-data4life/d4l-fhir-ios.git", .upToNextMinor(from: "0.20.0"))
 ```
 
 ### Building
@@ -62,14 +62,14 @@ To install with [Swift Package Manager](https://swift.org/package-manager/) add 
 bundler install
 ```
 
+### Generating models
+
 #### Install Sourcery
 
 ```sh
 brew install sourcery
 ```
 *Note*: For other installation methods check [README](https://github.com/krzysztofzablocki/Sourcery).
-
-### Generating models
 
 #### Static files
 These directories are not generated and are not meant to be removed from the project. They include FHIR DateTime encoding/tests and helpers/tests for contained resources.

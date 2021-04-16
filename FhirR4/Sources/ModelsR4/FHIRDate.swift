@@ -76,32 +76,32 @@ public struct FHIRDate: FHIRPrimitiveType {
 		scanner.charactersToBeSkipped = nil
 		let numbers = CharacterSet.decimalDigits
 
-		var scanLocation = scanner.scanLocation
+		var currentIndex = scanner.currentIndex
 		guard let scanned = scanner.hs_scanCharacters(from: numbers), scanned.count == 4, let year = Int(scanned), year > 0 else {
-			throw FHIRDateParserError.invalidYear(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.invalidYear(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		var month: UInt8?
 		var day: UInt8?
-		if scanner.scanString("-", into: nil) {
-			scanLocation = scanner.scanLocation
+		if scanner.scanString("-") != nil {
+			currentIndex = scanner.currentIndex
 			guard let scanned = scanner.hs_scanCharacters(from: numbers), scanned.count == 2, let scanMonth = UInt8(scanned), (1...12).contains(scanMonth) else {
-				throw FHIRDateParserError.invalidMonth(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+				throw FHIRDateParserError.invalidMonth(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 			}
 			month = scanMonth
 
-			if scanner.scanString("-", into: nil) {
-				scanLocation = scanner.scanLocation
+            if scanner.scanString("-") != nil {
+				currentIndex = scanner.currentIndex
 				guard let scanned = scanner.hs_scanCharacters(from: numbers), scanned.count == 2, let scanDay = UInt8(scanned), (1...31).contains(scanDay) else {
-					throw FHIRDateParserError.invalidDay(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+					throw FHIRDateParserError.invalidDay(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 				}
 				day = scanDay
 			}
 		}
 
-		scanLocation = scanner.scanLocation
+		currentIndex = scanner.currentIndex
 		if expectAtEnd && !scanner.isAtEnd {    // it's OK if we don't `expectAtEnd` but the scanner actually is
-			throw FHIRDateParserError.additionalCharacters(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.additionalCharacters(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		return (year, month, day)

@@ -94,70 +94,70 @@ public struct FHIRTime: FHIRPrimitiveType {
 		let numbers = CharacterSet.decimalDigits
 
 		// Hours
-		var scanLocation = scanner.scanLocation
+		var currentIndex = scanner.currentIndex
 		guard let hourString = scanner.hs_scanCharacters(from: numbers) else {
-			throw FHIRDateParserError.invalidHour(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.invalidHour(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 		guard hourString.count == 2 else {
-			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanLocation + hourString.count))
+			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanner.string.index(currentIndex, offsetBy: hourString.count)))
 		}
 		guard let hour = UInt8(hourString), hour <= 23 else {
-			throw FHIRDateParserError.invalidHour(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.invalidHour(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
-		scanLocation = scanner.scanLocation
-		guard scanner.scanString(":", into: nil) else {
-			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+		currentIndex = scanner.currentIndex
+        guard scanner.scanString(":") != nil else {
+			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		// Minutes
-		scanLocation = scanner.scanLocation
+		currentIndex = scanner.currentIndex
 		guard let minuteString = scanner.hs_scanCharacters(from: numbers) else {
-			throw FHIRDateParserError.invalidMinute(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.invalidMinute(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 		guard minuteString.count == 2 else {
-			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanLocation + minuteString.count))
+			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanner.string.index(currentIndex, offsetBy: minuteString.count)))
 		}
 		guard let minute = UInt8(minuteString), minute <= 59 else {
-			throw FHIRDateParserError.invalidMinute(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.invalidMinute(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
-		scanLocation = scanner.scanLocation
-		guard scanner.scanString(":", into: nil) else {
-			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+		currentIndex = scanner.currentIndex
+        guard scanner.scanString(":") != nil else {
+			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		// Seconds
-		scanLocation = scanner.scanLocation
+		currentIndex = scanner.currentIndex
 		guard let fullSecondString = scanner.hs_scanCharacters(from: numbers) else {
-			throw FHIRDateParserError.invalidSecond(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.invalidSecond(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 		guard fullSecondString.count == 2 else {
-			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanLocation + fullSecondString.count))
+			throw FHIRDateParserError.invalidSeparator(FHIRParserErrorPosition(string: scanner.string, location: scanner.string.index(currentIndex, offsetBy: fullSecondString.count)))
 		}
 		guard let scanSecondAlone = Int(fullSecondString), scanSecondAlone <= 60 else {
-			throw FHIRDateParserError.invalidSecond(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.invalidSecond(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		let secondString: String
-		scanLocation = scanner.scanLocation
-		if scanner.scanString(".", into: nil) {
-			scanLocation = scanner.scanLocation
+		currentIndex = scanner.currentIndex
+		if scanner.scanString(".") != nil {
+			currentIndex = scanner.currentIndex
 			guard let subSecondString = scanner.hs_scanCharacters(from: numbers) else {
-				throw FHIRDateParserError.invalidSecond(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+				throw FHIRDateParserError.invalidSecond(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 			}
 			secondString = "\(fullSecondString).\(subSecondString)"
 		} else {
 			secondString = fullSecondString
 		}
 		guard let second = Decimal(string: secondString), second <= 60.0 else {
-			throw FHIRDateParserError.invalidSecond(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.invalidSecond(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		// End
-		scanLocation = scanner.scanLocation
+		currentIndex = scanner.currentIndex
 		if expectAtEnd && !scanner.isAtEnd {    // it's OK if we don't `expectAtEnd` but the scanner actually is
-			throw FHIRDateParserError.additionalCharacters(FHIRParserErrorPosition(string: scanner.string, location: scanLocation))
+			throw FHIRDateParserError.additionalCharacters(FHIRParserErrorPosition(string: scanner.string, location: currentIndex))
 		}
 
 		return (hour, minute, second, secondString)

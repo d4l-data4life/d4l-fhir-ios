@@ -823,12 +823,8 @@ extension Scanner {
     public func fhir_scanString(_ searchString: String) -> String? {
         #if os(Linux)
             return scanString(string: searchString)
-        #else
-            var str: NSString?
-            if scanString(searchString, into: &str) {
-                return str as String?
-            }
-            return nil
+        #else 
+            return scanString(searchString)
         #endif
     }
 
@@ -836,11 +832,7 @@ extension Scanner {
         #if os(Linux)
             return scanCharactersFromSet(set)
         #else
-            var str: NSString?
-            if scanCharacters(from: set, into: &str) {
-                return str as String?
-            }
-            return nil
+            return scanCharacters(from: set)
         #endif
     }
 
