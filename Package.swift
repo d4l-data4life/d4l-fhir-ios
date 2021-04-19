@@ -10,11 +10,14 @@ let package = Package(
     ],
     products: [
         .library(
+            name: "Data4LifeFHIRCore",
+            targets: ["Data4LifeFHIRCore"]),
+        .library(
             name: "Data4LifeFHIR",
             targets: ["Data4LifeFhirSPMFrameworks"]),
         .library(
             name: "ModelsR4",
-            targets: ["ModelsR4"]),
+            targets: ["ModelsR4SPMFrameworks"]),
     ],
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
@@ -25,23 +28,38 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
-          name: "Data4LifeFHIR",
-          url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.20.0/Data4LifeFHIR-xcframework-0.20.0.zip",
-          checksum: "b3eb7e04981891017aec1050f1551621447d3a745193a40643c368ee60b84e16"
+            name: "Data4LifeFHIRCore",
+            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.0/Data4LifeFHIRCore-xcframework-0.21.0.zip",
+            checksum: "7e2b7bc1e570cbc654bb05ebec856803dff003d0b0b33d6cc33ba3ddd9bc7942"
+        ),
+        .binaryTarget(
+            name: "Data4LifeFHIR",
+            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.0/Data4LifeFHIR-xcframework-0.21.0.zip",
+            checksum: "a500c9efdd2af180ed1a6827f625ec3c427ff0514054fd98e1f64f720820935d"
         ),
         .binaryTarget(
             name: "ModelsR4",
-            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.20.0/ModelsR4-xcframework-0.20.0.zip",
-            checksum: "af182810f0e2ab04d2b473f6929a0b1177214a0095630095e297106df09533a5"
+            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.0/ModelsR4-xcframework-0.21.0.zip",
+            checksum: "5f0c94a975ee0fcf32c9a4605a5c56aaced243f33199d6230099f8102d669318"
         ),
         .target(name: "Data4LifeFhirSPMFrameworks",
                 dependencies: [
                     .product(name: "Data4LifeSDKUtils",
                              package: "Data4LifeSDKUtils",
                              condition: .when(platforms: [.iOS])),
-                    .target(name: "Data4LifeFHIR")
+                    .target(name: "Data4LifeFHIR"),
+                    .target(name: "Data4LifeFHIRCore")
                 ],
                 path: "FhirSPMFrameworks"),
+        .target(name: "ModelsR4SPMFrameworks",
+                dependencies: [
+                    .product(name: "Data4LifeSDKUtils",
+                             package: "Data4LifeSDKUtils",
+                             condition: .when(platforms: [.iOS])),
+                    .target(name: "ModelsR4"),
+                    .target(name: "Data4LifeFHIRCore")
+                ],
+                path: "ModelsR4SPMFrameworks"),
         .testTarget(name: "Data4LifeFhirTests",
                     dependencies: ["Data4LifeFhirSPMFrameworks"],
                     path: "FhirStu3/Tests",
@@ -51,6 +69,10 @@ let package = Package(
                     dependencies: ["ModelsR4"],
                     path: "FhirR4/Tests",
                     exclude: ["Info.plist"],
-                    resources: [.process("Resources")])
+                    resources: [.process("Resources")]),
+        .testTarget(name: "Data4LifeFhirCoreTests",
+                    dependencies: ["Data4LifeFHIRCore", "Data4LifeFHIR", "ModelsR4"],
+                    path: "Data4LifeFhirCoreTests",
+                    exclude: ["Info.plist"])
     ]
 )
