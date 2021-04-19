@@ -6,7 +6,7 @@
 //  Copyright © 2021 HPS Gesundheitscloud gGmbH. All rights reserved.
 //
 
-import Data4LifeFHIRCore
+@_exported import Data4LifeFHIRCore
 
 public typealias FhirR4Resource = ModelsR4.DomainResource
 extension FhirR4Resource: AnyFhirResource {}

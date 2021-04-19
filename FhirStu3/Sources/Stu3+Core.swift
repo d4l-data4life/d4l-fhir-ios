@@ -13,7 +13,7 @@
 //  applications and/or if you’d like to contribute to the development of the SDK, please
 //  contact D4L by email to help@data4life.care.
 
-import Data4LifeFHIRCore
+@_exported import Data4LifeFHIRCore
 
 public typealias FhirStu3Resource = Data4LifeFHIR.DomainResource
 extension FhirStu3Resource: AnyFhirResource {}

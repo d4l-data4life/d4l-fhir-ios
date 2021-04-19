@@ -800,7 +800,6 @@
 		3631096C262AEB47008FDD57 /* PartnerIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631096B262AEB47008FDD57 /* PartnerIdentifiable.swift */; };
 		36310979262AEE14008FDD57 /* R4+Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36310978262AEE14008FDD57 /* R4+Core.swift */; };
 		36310985262AEE59008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */; };
-		36310986262AEE59008FDD57 /* Data4LifeFHIRCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3631098F262AEE61008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */; };
 		363109A0262AEED2008FDD57 /* Stu3+Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631099F262AEED2008FDD57 /* Stu3+Core.swift */; };
 		363109D7262D6F2B008FDD57 /* Data4LifeFHIR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD97E0671FB9D774001AD324 /* Data4LifeFHIR.framework */; };
@@ -1574,6 +1573,7 @@
 		36A6F8B9D7408F06ECABE4B9 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		36C9DB562AD4038DC6A1FC7B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		36CFB18C243B799800A8DCB8 /* SubscriptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFB18B243B799800A8DCB8 /* SubscriptTests.swift */; };
+		36D1E416262D752500824D45 /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 36D1E415262D752500824D45 /* Data4LifeSDKUtils */; };
 		36DAE09975F853687FEF03DE /* (null) in Sources */ = {isa = PBXBuildFile; };
 		36ECD1C7258B9A9500945F37 /* ModelsR4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364731CB25530172008825F0 /* ModelsR4.framework */; };
 		36F4CCE529B8BD31FE0F9056 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -4441,20 +4441,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		36310989262AEE5A008FDD57 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				36310986262AEE59008FDD57 /* Data4LifeFHIRCore.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		0033063AA3D42A7C1C6F859C /* StructureDefinitionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StructureDefinitionTests.swift; path = ModelTests/StructureDefinitionTests.swift; sourceTree = "<group>"; };
 		00E11B00207590FF1B49CE09 /* observation-example-body-temperature.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "observation-example-body-temperature.json"; path = "Examples/observation-example-body-temperature.json"; sourceTree = "<group>"; };
@@ -5807,6 +5793,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36D1E416262D752500824D45 /* Data4LifeSDKUtils in Frameworks */,
 				36310985262AEE59008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7497,7 +7484,6 @@
 				364731C725530172008825F0 /* Sources */,
 				364731C825530172008825F0 /* Frameworks */,
 				364731C925530172008825F0 /* Resources */,
-				36310989262AEE5A008FDD57 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -7506,6 +7492,7 @@
 			);
 			name = ModelsR4;
 			packageProductDependencies = (
+				36D1E415262D752500824D45 /* Data4LifeSDKUtils */,
 			);
 			productName = AppleFhirR4;
 			productReference = 364731CB25530172008825F0 /* ModelsR4.framework */;
@@ -12683,6 +12670,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		3613AB54260CB6940016474D /* Data4LifeSDKUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
+			productName = Data4LifeSDKUtils;
+		};
+		36D1E415262D752500824D45 /* Data4LifeSDKUtils */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
 			productName = Data4LifeSDKUtils;

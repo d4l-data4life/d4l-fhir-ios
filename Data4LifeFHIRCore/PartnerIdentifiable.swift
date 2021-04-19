@@ -29,8 +29,8 @@ public protocol CustomIdentifiable: PartnerIdentifiable {
     func makeIdentifier(with id: String, partnerId: String) -> FhirIdentifierType
 }
 
-extension CustomIdentifiable {
-    public func addAdditionalId(_ id: String, assignedTo partnerId: String) {
+public extension CustomIdentifiable {
+    @inlinable func addAdditionalId(_ id: String, assignedTo partnerId: String) {
         let newIdentifier = makeIdentifier(with: id, partnerId: partnerId)
         if var currentIdentifiers = customIdentifiers {
             currentIdentifiers.append(newIdentifier)
@@ -40,7 +40,7 @@ extension CustomIdentifiable {
         }
     }
 
-    public func setAdditionalIds(_ ids: [String], assignedTo partnerId: String) {
+    @inlinable func setAdditionalIds(_ ids: [String], assignedTo partnerId: String) {
         let newIds = ids.map { makeIdentifier(with: $0, partnerId: partnerId) }
         if let otherIds = customIdentifiers?.filter({ $0.assignerString != partnerId }) {
             customIdentifiers = otherIds + newIds
@@ -49,7 +49,7 @@ extension CustomIdentifiable {
         }
     }
 
-    public func getAdditionalIds(assignedTo partnerId: String) -> [String]? {
+    @inlinable func getAdditionalIds(assignedTo partnerId: String) -> [String]? {
         guard let identifiers = customIdentifiers?.filter({ $0.assignerString == partnerId }) else { return nil }
         let values = identifiers.compactMap({ $0.valueString })
         guard values.isEmpty == false else { return nil }
