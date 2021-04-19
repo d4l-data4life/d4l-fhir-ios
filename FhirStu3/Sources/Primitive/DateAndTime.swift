@@ -823,7 +823,7 @@ extension Scanner {
     public func fhir_scanString(_ searchString: String) -> String? {
         #if os(Linux)
             return scanString(string: searchString)
-        #else 
+        #else
             return scanString(searchString)
         #endif
     }
