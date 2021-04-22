@@ -211,26 +211,18 @@ platform :ios do
       sh "rm -rf #{coreXcFrameworkPath}"
       sh "xcodebuild archive -scheme #{project}Core -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}Core-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
       sh "xcodebuild archive -scheme #{project}Core -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}Core-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      symbolMapUUIDFile = Dir.children("./#{buildPath}/#{configuration}/#{project}Core-iphoneos.xcarchive/BCSymbolMaps/").first()
       sh "xcodebuild -create-xcframework \
           -framework #{buildPath}/#{configuration}/#{project}Core-iphonesimulator.xcarchive/Products/Library/Frameworks/#{project}Core.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}Core-iphonesimulator.xcarchive/dSYMs/#{project}Core.framework.dSYM' \
           -framework #{buildPath}/#{configuration}/#{project}Core-iphoneos.xcarchive/Products/Library/Frameworks/#{project}Core.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}Core-iphoneos.xcarchive/dSYMs/#{project}Core.framework.dSYM' \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}Core-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
           -output #{coreXcFrameworkPath}"
 
       sh "rm -rf #{buildPath}"
       sh "rm -rf #{stu3xcFrameworkPath}"
       sh "xcodebuild archive -scheme #{project} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
       sh "xcodebuild archive -scheme #{project} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      symbolMapUUIDFile = Dir.children("./#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/").first()
       sh "xcodebuild -create-xcframework \
           -framework #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{project}.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/dSYMs/#{project}.framework.dSYM' \
           -framework #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/Products/Library/Frameworks/#{project}.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/dSYMs/#{project}.framework.dSYM' \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
           -output #{stu3xcFrameworkPath}"
 
 
@@ -238,13 +230,9 @@ platform :ios do
       sh "rm -rf #{r4xcFrameworkPath}"
       sh "xcodebuild archive -scheme #{projectR4} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectR4}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
       sh "xcodebuild archive -scheme #{projectR4} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      symbolMapUUIDFile = Dir.children("./#{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/BCSymbolMaps/").first()
       sh "xcodebuild -create-xcframework \
           -framework #{buildPath}/#{configuration}/#{projectR4}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{projectR4}.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{projectR4}-iphonesimulator.xcarchive/dSYMs/#{projectR4}.framework.dSYM' \
           -framework #{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/Products/Library/Frameworks/#{projectR4}.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/dSYMs/#{projectR4}.framework.dSYM' \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
           -output #{r4xcFrameworkPath}"
 
         sh "zip -r #{archiveAllFrameworksPath} #{stu3xcFrameworkPath} #{r4xcFrameworkPath} #{coreXcFrameworkPath} LICENSE"
