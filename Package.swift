@@ -22,7 +22,7 @@ let package = Package(
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
                  url: "git@github.com:d4l-data4life/d4l-utils-ios.git",
-                 .upToNextMinor(from: "0.5.0"))
+                 .branch("remove-symbols")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
