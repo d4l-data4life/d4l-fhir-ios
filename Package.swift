@@ -10,11 +10,14 @@ let package = Package(
     ],
     products: [
         .library(
+            name: "Data4LifeFHIRCore",
+            targets: ["Data4LifeFHIRCore","Data4LifeSDKUtilsFHIR"]),
+        .library(
             name: "Data4LifeFHIR",
-            targets: ["Data4LifeFHIR","Data4LifeFHIRCore","Data4LifeSDKUtilsFHIR"]),
+            targets: ["Data4LifeFHIR"]),
         .library(
             name: "ModelsR4",
-            targets: ["ModelsR4","Data4LifeFHIRCore","Data4LifeSDKUtilsFHIR"]),
+            targets: ["ModelsR4"]),
     ],
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
