@@ -11,10 +11,10 @@ let package = Package(
     products: [
         .library(
             name: "Data4LifeFHIR",
-            targets: ["Data4LifeFHIR","Data4LifeFHIRCore","Data4LifeSDKUtils"]),
+            targets: ["Data4LifeFHIR","Data4LifeFHIRCore","Data4LifeSDKUtilsFHIR"]),
         .library(
             name: "ModelsR4",
-            targets: ["ModelsR4","Data4LifeFHIRCore","Data4LifeSDKUtils"]),
+            targets: ["ModelsR4","Data4LifeFHIRCore","Data4LifeSDKUtilsFHIR"]),
     ],
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
@@ -27,39 +27,39 @@ let package = Package(
         .binaryTarget(
             name: "Data4LifeFHIRCore",
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/Data4LifeFHIRCore-xcframework-0.21.1.zip",
-            checksum: "88d44f782c360ac811fe2a35afeda496c742074073b139927ae923153e9c1899"
+            checksum: "e599b5bc0e0ba27b595f8d1b0e4ce2aaa5741f968570f75cc5f61213bf2f9285"
         ),
         .binaryTarget(
             name: "Data4LifeFHIR",
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/Data4LifeFHIR-xcframework-0.21.1.zip",
-            checksum: "09268a6b0856219b5aa1a5bf4caec98b847529ff0dec38db49063ad8ff556df1"
+            checksum: "88d44f782c360ac811fe2a35afeda496c742074073b139927ae923153e9c1899"
         ),
         .binaryTarget(
             name: "ModelsR4",
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/ModelsR4-xcframework-0.21.1.zip",
             checksum: "1732c9c3e368fefcc6d7cba3203ec642b66ef52832901fd9c011eeaf88187697"
         ),
-        .target(name: "Data4LifeSDKUtils",
+        .target(name: "Data4LifeSDKUtilsFHIR",
                 dependencies: [
                     .product(name: "Data4LifeSDKUtils",
                              package: "Data4LifeSDKUtils",
                              condition: .when(platforms: [.iOS]))
                 ],
-                path: "FhirSPMFrameworks"),
+                path: "SwiftPMDummyTargets/SDKUtilsDependency"),
         .target(name: "Data4LifeFhirAllFrameworks",
                 dependencies: [
-                    .target(name: "Data4LifeSDKUtils")
+                    .target(name: "Data4LifeSDKUtilsFHIR"),
                     .target(name: "Data4LifeFHIR"),
                     .target(name: "Data4LifeFHIRCore")
                 ],
-                path: "FhirSPMFrameworks"),
+                path: "SwiftPMDummyTargets/FhirAllFrameworks"),
         .target(name: "ModelsR4AllFrameworks",
                 dependencies: [
-                    .target(name: "Data4LifeSDKUtils"),
+                    .target(name: "Data4LifeSDKUtilsFHIR"),
                     .target(name: "ModelsR4"),
                     .target(name: "Data4LifeFHIRCore"),
                 ],
-                path: "ModelsR4SPMFrameworks"),
+                path: "SwiftPMDummyTargets/ModelsR4AllFrameworks"),
         .testTarget(name: "Data4LifeFhirTests",
                     dependencies: ["Data4LifeFhirAllFrameworks"],
                     path: "FhirStu3/Tests",
