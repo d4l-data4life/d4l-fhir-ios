@@ -87,16 +87,21 @@ Upload to a github release
 fastlane ios update_podspec_version
 ```
 Update podspecs version
+### ios push_core_podspec
+```
+fastlane ios push_core_podspec
+```
+Push new core podspec to repo
 ### ios push_stu3_podspec
 ```
 fastlane ios push_stu3_podspec
 ```
-Push new podspec to repo
+Push new stu3 podspec to repo
 ### ios push_r4_podspec
 ```
 fastlane ios push_r4_podspec
 ```
-Push new podspec to repo
+Push new r4 podspec to repo
 ### ios generate_docs
 ```
 fastlane ios generate_docs
