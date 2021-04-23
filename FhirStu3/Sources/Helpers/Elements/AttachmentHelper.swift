@@ -14,7 +14,7 @@
 //  contact D4L by email to help@data4life.care.
 
 import Foundation
-import Data4LifeSDKUtils
+@_implementationOnly import Data4LifeSDKUtils
 
 extension Attachment {
     public static func with(title: String,
