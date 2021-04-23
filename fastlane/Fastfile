@@ -225,7 +225,6 @@ platform :ios do
           -framework #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/Products/Library/Frameworks/#{project}.framework \
           -output #{stu3xcFrameworkPath}"
 
-
       sh "rm -rf #{buildPath}"
       sh "rm -rf #{r4xcFrameworkPath}"
       sh "xcodebuild archive -scheme #{projectR4} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectR4}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
@@ -236,12 +235,51 @@ platform :ios do
           -output #{r4xcFrameworkPath}"
 
         sh "zip -r #{archiveAllFrameworksPath} #{stu3xcFrameworkPath} #{r4xcFrameworkPath} #{coreXcFrameworkPath} LICENSE"
+        sh "zip -r #{archiveCorePath} #{coreXcFrameworkPath}"
         sh "zip -r #{archiveStu3Path} #{stu3xcFrameworkPath}"
         sh "zip -r #{archiveR4Path} #{r4xcFrameworkPath}"
-        sh "zip -r #{archiveCorePath} #{coreXcFrameworkPath}"
+
         sh "rm -rf #{stu3xcFrameworkPath}"
         sh "rm -rf #{r4xcFrameworkPath}"
         sh "rm -rf #{coreXcFrameworkPath}"
+    end
+  end
+
+  desc "Build xcframework for distribution"
+  lane :build_fhir_xcframework_test do |options|
+    if options[:version] == nil
+        raise "Missing release version".red
+    end
+
+    Dir.chdir("..") do
+      root = Dir.pwd
+      configuration = "Release"
+      buildPath = "xcbuild"
+
+      stu3xcFrameworkPath = "#{project}.xcframework"
+      archiveStu3Path = stu3XcFrameworkArchivePath(options[:version])
+
+      if File.exist?(buildPath)
+        sh "rm -rf #{buildPath}"
+      end
+      if File.exist?(stu3xcFrameworkPath)
+        sh "rm -rf #{stu3xcFrameworkPath}"
+      end
+      if File.exist?(archiveStu3Path)
+        sh "rm #{archiveStu3Path}"
+      end
+
+      sh "rm -rf #{buildPath}"
+      sh "rm -rf #{stu3xcFrameworkPath}"
+      sh "xcodebuild archive -scheme #{project} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild archive -scheme #{project} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild -create-xcframework \
+          -framework #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -framework #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -output #{stu3xcFrameworkPath}"
+
+        sh "zip -r #{archiveStu3Path} #{stu3xcFrameworkPath}"
+        #sh "rm -rf #{stu3xcFrameworkPath}"
     end
   end
 
