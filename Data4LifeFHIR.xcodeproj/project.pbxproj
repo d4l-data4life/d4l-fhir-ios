@@ -775,7 +775,6 @@
 		35F13AC5E664950135766A2A /* SubstancenucleicacidExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E8F596E83C34AE993503A4 /* SubstancenucleicacidExample+Test.swift */; };
 		35FC867193706FA9EACBEBC3 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		360ED7A4870B0B6C4AC6FF12 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		3613AB55260CB6940016474D /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 3613AB54260CB6940016474D /* Data4LifeSDKUtils */; };
 		36242E3F12A1A5C8DEB29425 /* TaskExample4+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F6A32F140F3CD9D1AC2D16 /* TaskExample4+Test.swift */; };
 		363026E613F9674983A602CF /* DevicemetricExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8CFBC9704C116A07ECBAC1 /* DevicemetricExample+Test.swift */; };
 		36310930262AE8F7008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */; };
@@ -1495,10 +1494,11 @@
 		368C2A8BC67F9E06A469461C /* (null) in Resources */ = {isa = PBXBuildFile; };
 		36902E9008D16A16949C9E8E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		369913662524C53B00848252 /* Bundle+Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369913602524C4F900848252 /* Bundle+Package.swift */; };
+		36A6A13926331C8F00428DB9 /* Data4LifeSDKUtils.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A6A13826331C8F00428DB9 /* Data4LifeSDKUtils.xcframework */; };
+		36A6A13A26331C8F00428DB9 /* Data4LifeSDKUtils.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A6A13826331C8F00428DB9 /* Data4LifeSDKUtils.xcframework */; };
 		36A6F8B9D7408F06ECABE4B9 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		36C9DB562AD4038DC6A1FC7B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		36CFB18C243B799800A8DCB8 /* SubscriptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFB18B243B799800A8DCB8 /* SubscriptTests.swift */; };
-		36D1E416262D752500824D45 /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 36D1E415262D752500824D45 /* Data4LifeSDKUtils */; };
 		36ECD1C7258B9A9500945F37 /* ModelsR4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364731CB25530172008825F0 /* ModelsR4.framework */; };
 		36F4CCE529B8BD31FE0F9056 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		36FE70A32E752A7CCE05BF17 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -5147,6 +5147,7 @@
 		3685D40D2591184500F97F9E /* HumanNameHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumanNameHelper.swift; sourceTree = "<group>"; };
 		3685D40E2591184500F97F9E /* CodeableConceptHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeableConceptHelper.swift; sourceTree = "<group>"; };
 		369913602524C4F900848252 /* Bundle+Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Package.swift"; sourceTree = "<group>"; };
+		36A6A13826331C8F00428DB9 /* Data4LifeSDKUtils.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Data4LifeSDKUtils.xcframework; path = "../../../Library/Developer/Xcode/DerivedData/Data4LifeFHIR-djttndlyfccygrbprjngpdlubozf/SourcePackages/artifacts/Data4LifeSDKUtils/Data4LifeSDKUtils.xcframework"; sourceTree = "<group>"; };
 		36CFB18B243B799800A8DCB8 /* SubscriptTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptTests.swift; sourceTree = "<group>"; };
 		36ECD1C2258B9A9500945F37 /* ModelsR4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelsR4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36ECD1C4258B9A9500945F37 /* ModelsR4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsR4Tests.swift; sourceTree = "<group>"; };
@@ -5671,8 +5672,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36D1E416262D752500824D45 /* Data4LifeSDKUtils in Frameworks */,
 				36310985262AEE59008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */,
+				36A6A13A26331C8F00428DB9 /* Data4LifeSDKUtils.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5688,8 +5689,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3613AB55260CB6940016474D /* Data4LifeSDKUtils in Frameworks */,
 				3631098F262AEE61008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */,
+				36A6A13926331C8F00428DB9 /* Data4LifeSDKUtils.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6874,6 +6875,7 @@
 		3659BC9D23D87B5D009970DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				36A6A13826331C8F00428DB9 /* Data4LifeSDKUtils.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -7370,7 +7372,6 @@
 			);
 			name = ModelsR4;
 			packageProductDependencies = (
-				36D1E415262D752500824D45 /* Data4LifeSDKUtils */,
 			);
 			productName = AppleFhirR4;
 			productReference = 364731CB25530172008825F0 /* ModelsR4.framework */;
@@ -7410,7 +7411,6 @@
 			);
 			name = Data4LifeFHIR;
 			packageProductDependencies = (
-				3613AB54260CB6940016474D /* Data4LifeSDKUtils */,
 			);
 			productName = HCFHIR;
 			productReference = CD97E0671FB9D774001AD324 /* Data4LifeFHIR.framework */;
@@ -11903,7 +11903,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.21.0;
+				MARKETING_VERSION = 0.21.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.Data4LifeFHIRCore;
@@ -11936,7 +11936,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.21.0;
+				MARKETING_VERSION = 0.21.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.Data4LifeFHIRCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -12011,7 +12011,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.21.0;
+				MARKETING_VERSION = 0.21.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.ModelsR4;
@@ -12045,7 +12045,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.21.0;
+				MARKETING_VERSION = 0.21.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.ModelsR4;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -12248,7 +12248,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.21.0;
+				MARKETING_VERSION = 0.21.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.HCFHIR;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -12287,7 +12287,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.21.0;
+				MARKETING_VERSION = 0.21.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.HCFHIR;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -12427,19 +12427,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		3613AB54260CB6940016474D /* Data4LifeSDKUtils */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
-			productName = Data4LifeSDKUtils;
-		};
-		36D1E415262D752500824D45 /* Data4LifeSDKUtils */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
-			productName = Data4LifeSDKUtils;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD97E05E1FB9D774001AD324 /* Project object */;
 }

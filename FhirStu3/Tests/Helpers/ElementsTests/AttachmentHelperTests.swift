@@ -30,6 +30,7 @@
 
 import XCTest
 import Data4LifeFHIR
+import Data4LifeSDKUtils
 
 class AttachmentHelperTests: XCTestCase {
 

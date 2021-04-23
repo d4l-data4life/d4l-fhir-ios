@@ -10,14 +10,11 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Data4LifeFHIRCore",
-            targets: ["Data4LifeFHIRCore"]),
-        .library(
             name: "Data4LifeFHIR",
-            targets: ["Data4LifeFHIR"]),
+            targets: ["Data4LifeFHIR","Data4LifeFHIRCore","Data4LifeSDKUtils"]),
         .library(
             name: "ModelsR4",
-            targets: ["ModelsR4"]),
+            targets: ["ModelsR4","Data4LifeFHIRCore","Data4LifeSDKUtils"]),
     ],
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
@@ -29,44 +26,47 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
             name: "Data4LifeFHIRCore",
-            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.0/Data4LifeFHIRCore-xcframework-0.21.0.zip",
-            checksum: "931b3b9fe46cd2afddb4fbb2a163008ce8d46df4b6dc8abb988a4a22c7882f64"
+            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/Data4LifeFHIRCore-xcframework-0.21.1.zip",
+            checksum: "88d44f782c360ac811fe2a35afeda496c742074073b139927ae923153e9c1899"
         ),
         .binaryTarget(
             name: "Data4LifeFHIR",
-            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.0/Data4LifeFHIR-xcframework-0.21.0.zip",
+            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/Data4LifeFHIR-xcframework-0.21.1.zip",
             checksum: "09268a6b0856219b5aa1a5bf4caec98b847529ff0dec38db49063ad8ff556df1"
         ),
         .binaryTarget(
             name: "ModelsR4",
-            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.0/ModelsR4-xcframework-0.21.0.zip",
-            checksum: "77b62856cd9c45bcda1b1176131f3e8705669b99f55a69f5e1cc687c9423592f"
+            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/ModelsR4-xcframework-0.21.1.zip",
+            checksum: "1732c9c3e368fefcc6d7cba3203ec642b66ef52832901fd9c011eeaf88187697"
         ),
-        .target(name: "Data4LifeFhirDependencies",
+        .target(name: "Data4LifeSDKUtils",
                 dependencies: [
                     .product(name: "Data4LifeSDKUtils",
                              package: "Data4LifeSDKUtils",
-                             condition: .when(platforms: [.iOS])),
+                             condition: .when(platforms: [.iOS]))
+                ],
+                path: "FhirSPMFrameworks"),
+        .target(name: "Data4LifeFhirAllFrameworks",
+                dependencies: [
+                    .target(name: "Data4LifeSDKUtils")
                     .target(name: "Data4LifeFHIR"),
                     .target(name: "Data4LifeFHIRCore")
                 ],
                 path: "FhirSPMFrameworks"),
-        .target(name: "ModelsR4Dependencies",
+        .target(name: "ModelsR4AllFrameworks",
                 dependencies: [
-                    .product(name: "Data4LifeSDKUtils",
-                             package: "Data4LifeSDKUtils",
-                             condition: .when(platforms: [.iOS])),
+                    .target(name: "Data4LifeSDKUtils"),
                     .target(name: "ModelsR4"),
-                    .target(name: "Data4LifeFHIRCore")
+                    .target(name: "Data4LifeFHIRCore"),
                 ],
                 path: "ModelsR4SPMFrameworks"),
         .testTarget(name: "Data4LifeFhirTests",
-                    dependencies: ["Data4LifeFhirDependencies"],
+                    dependencies: ["Data4LifeFhirAllFrameworks"],
                     path: "FhirStu3/Tests",
                     exclude: ["Info.plist"],
                     resources: [.process("Examples")]),
         .testTarget(name: "ModelsR4Tests",
-                    dependencies: ["ModelsR4Dependencies"],
+                    dependencies: ["ModelsR4AllFrameworks"],
                     path: "FhirR4/Tests",
                     exclude: ["Info.plist"],
                     resources: [.process("Resources")]),
