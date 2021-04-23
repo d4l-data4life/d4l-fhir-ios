@@ -14,15 +14,15 @@ let package = Package(
             targets: ["Data4LifeFHIRCore"]),
         .library(
             name: "Data4LifeFHIR",
-            targets: ["Data4LifeFhirSPMFrameworks"]),
+            targets: ["Data4LifeFHIR"]),
         .library(
             name: "ModelsR4",
-            targets: ["ModelsR4SPMFrameworks"]),
+            targets: ["ModelsR4"]),
     ],
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
                  url: "git@github.com:d4l-data4life/d4l-utils-ios.git",
-                 .branch("remove-symbols")),
+                 .upToNextMinor(from: "0.6.0")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -42,7 +42,7 @@ let package = Package(
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.0/ModelsR4-xcframework-0.21.0.zip",
             checksum: "cb817c27563f323420abac138ebe5bd0feedebeb8319df224e16e99ae91cd36b"
         ),
-        .target(name: "Data4LifeFhirSPMFrameworks",
+        .target(name: "Data4LifeFhirDependencies",
                 dependencies: [
                     .product(name: "Data4LifeSDKUtils",
                              package: "Data4LifeSDKUtils",
@@ -51,7 +51,7 @@ let package = Package(
                     .target(name: "Data4LifeFHIRCore")
                 ],
                 path: "FhirSPMFrameworks"),
-        .target(name: "ModelsR4SPMFrameworks",
+        .target(name: "ModelsR4Dependencies",
                 dependencies: [
                     .product(name: "Data4LifeSDKUtils",
                              package: "Data4LifeSDKUtils",
@@ -61,12 +61,12 @@ let package = Package(
                 ],
                 path: "ModelsR4SPMFrameworks"),
         .testTarget(name: "Data4LifeFhirTests",
-                    dependencies: ["Data4LifeFhirSPMFrameworks"],
+                    dependencies: ["Data4LifeFhirDependencies"],
                     path: "FhirStu3/Tests",
                     exclude: ["Info.plist"],
                     resources: [.process("Examples")]),
         .testTarget(name: "ModelsR4Tests",
-                    dependencies: ["ModelsR4"],
+                    dependencies: ["ModelsR4Dependencies"],
                     path: "FhirR4/Tests",
                     exclude: ["Info.plist"],
                     resources: [.process("Resources")]),
