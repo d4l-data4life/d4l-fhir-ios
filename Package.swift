@@ -30,17 +30,17 @@ let package = Package(
         .binaryTarget(
             name: "Data4LifeFHIRCore",
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/Data4LifeFHIRCore-xcframework-0.21.1.zip",
-            checksum: "e599b5bc0e0ba27b595f8d1b0e4ce2aaa5741f968570f75cc5f61213bf2f9285"
+            checksum: "039b651664fc3227dc9c763740ea913992653a22ccdf8beb9d126884cd6f056c"
         ),
         .binaryTarget(
             name: "Data4LifeFHIR",
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/Data4LifeFHIR-xcframework-0.21.1.zip",
-            checksum: "88d44f782c360ac811fe2a35afeda496c742074073b139927ae923153e9c1899"
+            checksum: "3989145cb497142eb67fe782c5508b4f7eac8ce3a8b69eb5e0109e9e5baf7e57"
         ),
         .binaryTarget(
             name: "ModelsR4",
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/ModelsR4-xcframework-0.21.1.zip",
-            checksum: "1732c9c3e368fefcc6d7cba3203ec642b66ef52832901fd9c011eeaf88187697"
+            checksum: "7df1706f5d5087cd3112db011a19fa36586080aa0eda12b8af85abd8cb8f4903"
         ),
         .target(name: "Data4LifeSDKUtilsFHIR",
                 dependencies: [
