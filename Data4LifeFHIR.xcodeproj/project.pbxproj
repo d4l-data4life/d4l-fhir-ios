@@ -774,11 +774,11 @@
 		35E04B343359FBC8D80E8E00 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		35F13AC5E664950135766A2A /* SubstancenucleicacidExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E8F596E83C34AE993503A4 /* SubstancenucleicacidExample+Test.swift */; };
 		35FC867193706FA9EACBEBC3 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		360EC46C2636ECF600D8F8E9 /* FhirSPMWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 360EC46A2636ECF600D8F8E9 /* FhirSPMWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		360EC4792636ED0A00D8F8E9 /* FhirSPMWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360EC4682636ECF600D8F8E9 /* FhirSPMWrapper.framework */; };
-		360EC47E2636ED1600D8F8E9 /* FhirSPMWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360EC4682636ECF600D8F8E9 /* FhirSPMWrapper.framework */; };
-		360EC58C263709D100D8F8E9 /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 360EC58B263709D100D8F8E9 /* Data4LifeSDKUtils */; };
 		360ED7A4870B0B6C4AC6FF12 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		361E733526371DBB0064CCD8 /* FhirSPMDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361E733426371DBB0064CCD8 /* FhirSPMDependencies.swift */; };
+		361E734126371DC40064CCD8 /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 361E734026371DC40064CCD8 /* Data4LifeSDKUtils */; };
+		361E734226371DEB0064CCD8 /* libFhirSPMDependencies.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 361E733226371DBB0064CCD8 /* libFhirSPMDependencies.a */; };
+		361E734526371DF20064CCD8 /* libFhirSPMDependencies.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 361E733226371DBB0064CCD8 /* libFhirSPMDependencies.a */; };
 		36242E3F12A1A5C8DEB29425 /* TaskExample4+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F6A32F140F3CD9D1AC2D16 /* TaskExample4+Test.swift */; };
 		363026E613F9674983A602CF /* DevicemetricExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8CFBC9704C116A07ECBAC1 /* DevicemetricExample+Test.swift */; };
 		36310930262AE8F7008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */; };
@@ -4270,19 +4270,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		360EC47B2636ED0A00D8F8E9 /* PBXContainerItemProxy */ = {
+		361E734326371DEB0064CCD8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CD97E05E1FB9D774001AD324 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 360EC4672636ECF600D8F8E9;
-			remoteInfo = FhirSPMWrapper;
+			remoteGlobalIDString = 361E733126371DBB0064CCD8;
+			remoteInfo = FhirSPMDependencies;
 		};
-		360EC4802636ED1600D8F8E9 /* PBXContainerItemProxy */ = {
+		361E734626371DF20064CCD8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CD97E05E1FB9D774001AD324 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 360EC4672636ECF600D8F8E9;
-			remoteInfo = FhirSPMWrapper;
+			remoteGlobalIDString = 361E733126371DBB0064CCD8;
+			remoteInfo = FhirSPMDependencies;
 		};
 		36310931262AE8F7008FDD57 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -4334,6 +4334,18 @@
 			remoteInfo = HCFHIR;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		361E733026371DBB0064CCD8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0033063AA3D42A7C1C6F859C /* StructureDefinitionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StructureDefinitionTests.swift; path = ModelTests/StructureDefinitionTests.swift; sourceTree = "<group>"; };
@@ -4454,9 +4466,8 @@
 		357259FE9DB4485F13C33143 /* FamilyMemberHistory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FamilyMemberHistory.swift; path = Models/FamilyMemberHistory.swift; sourceTree = "<group>"; };
 		35F0C43C7F7A1DDFB49ACA63 /* CompositionExample+Test.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CompositionExample+Test.swift"; path = "Generated/CompositionExample+Test.swift"; sourceTree = "<group>"; };
 		360972C7C8E56C079D5F2A59 /* diagnosticreport-examples-general.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "diagnosticreport-examples-general.json"; path = "Examples/diagnosticreport-examples-general.json"; sourceTree = "<group>"; };
-		360EC4682636ECF600D8F8E9 /* FhirSPMWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FhirSPMWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		360EC46A2636ECF600D8F8E9 /* FhirSPMWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FhirSPMWrapper.h; sourceTree = "<group>"; };
-		360EC46B2636ECF600D8F8E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		361E733226371DBB0064CCD8 /* libFhirSPMDependencies.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFhirSPMDependencies.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		361E733426371DBB0064CCD8 /* FhirSPMDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FhirSPMDependencies.swift; sourceTree = "<group>"; };
 		36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data4LifeFHIRCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36310929262AE8F6008FDD57 /* Data4LifeFHIRCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data4LifeFHIRCore.h; sourceTree = "<group>"; };
 		3631092A262AE8F6008FDD57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -5669,11 +5680,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		360EC4652636ECF600D8F8E9 /* Frameworks */ = {
+		361E732F26371DBB0064CCD8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				360EC58C263709D100D8F8E9 /* Data4LifeSDKUtils in Frameworks */,
+				361E734126371DC40064CCD8 /* Data4LifeSDKUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5698,7 +5709,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				360EC4792636ED0A00D8F8E9 /* FhirSPMWrapper.framework in Frameworks */,
+				361E734226371DEB0064CCD8 /* libFhirSPMDependencies.a in Frameworks */,
 				36310985262AEE59008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5715,7 +5726,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				360EC47E2636ED1600D8F8E9 /* FhirSPMWrapper.framework in Frameworks */,
+				361E734526371DF20064CCD8 /* libFhirSPMDependencies.a in Frameworks */,
 				3631098F262AEE61008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6132,13 +6143,12 @@
 			name = Generated;
 			sourceTree = "<group>";
 		};
-		360EC4692636ECF600D8F8E9 /* FhirSPMWrapper */ = {
+		361E733326371DBB0064CCD8 /* FhirSPMDependencies */ = {
 			isa = PBXGroup;
 			children = (
-				360EC46A2636ECF600D8F8E9 /* FhirSPMWrapper.h */,
-				360EC46B2636ECF600D8F8E9 /* Info.plist */,
+				361E733426371DBB0064CCD8 /* FhirSPMDependencies.swift */,
 			);
-			path = FhirSPMWrapper;
+			path = FhirSPMDependencies;
 			sourceTree = "<group>";
 		};
 		36310928262AE8F6008FDD57 /* Data4LifeFHIRCore */ = {
@@ -7118,7 +7128,7 @@
 				364731CC25530172008825F0 /* FhirR4 */,
 				36310928262AE8F6008FDD57 /* Data4LifeFHIRCore */,
 				36310933262AE8F7008FDD57 /* Data4LifeFHIRCoreTests */,
-				360EC4692636ECF600D8F8E9 /* FhirSPMWrapper */,
+				361E733326371DBB0064CCD8 /* FhirSPMDependencies */,
 				CD97E0681FB9D774001AD324 /* Products */,
 				3659BC9D23D87B5D009970DA /* Frameworks */,
 			);
@@ -7133,7 +7143,7 @@
 				36ECD1C2258B9A9500945F37 /* ModelsR4Tests.xctest */,
 				36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */,
 				3631092F262AE8F7008FDD57 /* Data4LifeFHIRCoreTests.xctest */,
-				360EC4682636ECF600D8F8E9 /* FhirSPMWrapper.framework */,
+				361E733226371DBB0064CCD8 /* libFhirSPMDependencies.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -7327,14 +7337,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		360EC4632636ECF600D8F8E9 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				360EC46C2636ECF600D8F8E9 /* FhirSPMWrapper.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		36310922262AE8F6008FDD57 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -7362,26 +7364,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		360EC4672636ECF600D8F8E9 /* FhirSPMWrapper */ = {
+		361E733126371DBB0064CCD8 /* FhirSPMDependencies */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 360EC46F2636ECF600D8F8E9 /* Build configuration list for PBXNativeTarget "FhirSPMWrapper" */;
+			buildConfigurationList = 361E733626371DBB0064CCD8 /* Build configuration list for PBXNativeTarget "FhirSPMDependencies" */;
 			buildPhases = (
-				360EC4632636ECF600D8F8E9 /* Headers */,
-				360EC4642636ECF600D8F8E9 /* Sources */,
-				360EC4652636ECF600D8F8E9 /* Frameworks */,
-				360EC4662636ECF600D8F8E9 /* Resources */,
+				361E732E26371DBB0064CCD8 /* Sources */,
+				361E732F26371DBB0064CCD8 /* Frameworks */,
+				361E733026371DBB0064CCD8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = FhirSPMWrapper;
+			name = FhirSPMDependencies;
 			packageProductDependencies = (
-				360EC58B263709D100D8F8E9 /* Data4LifeSDKUtils */,
+				361E734026371DC40064CCD8 /* Data4LifeSDKUtils */,
 			);
-			productName = FhirSPMWrapper;
-			productReference = 360EC4682636ECF600D8F8E9 /* FhirSPMWrapper.framework */;
-			productType = "com.apple.product-type.framework";
+			productName = FhirSPMDependencies;
+			productReference = 361E733226371DBB0064CCD8 /* libFhirSPMDependencies.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		36310926262AE8F6008FDD57 /* Data4LifeFHIRCore */ = {
 			isa = PBXNativeTarget;
@@ -7434,7 +7435,7 @@
 			);
 			dependencies = (
 				36310988262AEE59008FDD57 /* PBXTargetDependency */,
-				360EC47C2636ED0A00D8F8E9 /* PBXTargetDependency */,
+				361E734426371DEB0064CCD8 /* PBXTargetDependency */,
 			);
 			name = ModelsR4;
 			packageProductDependencies = (
@@ -7474,7 +7475,7 @@
 			);
 			dependencies = (
 				36310992262AEE61008FDD57 /* PBXTargetDependency */,
-				360EC4812636ED1600D8F8E9 /* PBXTargetDependency */,
+				361E734726371DF20064CCD8 /* PBXTargetDependency */,
 			);
 			name = Data4LifeFHIR;
 			packageProductDependencies = (
@@ -7511,7 +7512,7 @@
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "HPS Gesundheitscloud gGmbH";
 				TargetAttributes = {
-					360EC4672636ECF600D8F8E9 = {
+					361E733126371DBB0064CCD8 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 					36310926262AE8F6008FDD57 = {
@@ -7563,19 +7564,12 @@
 				36ECD1C1258B9A9500945F37 /* ModelsR4Tests */,
 				36310926262AE8F6008FDD57 /* Data4LifeFHIRCore */,
 				3631092E262AE8F7008FDD57 /* Data4LifeFHIRCoreTests */,
-				360EC4672636ECF600D8F8E9 /* FhirSPMWrapper */,
+				361E733126371DBB0064CCD8 /* FhirSPMDependencies */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		360EC4662636ECF600D8F8E9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		36310925262AE8F6008FDD57 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -10147,10 +10141,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		360EC4642636ECF600D8F8E9 /* Sources */ = {
+		361E732E26371DBB0064CCD8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				361E733526371DBB0064CCD8 /* FhirSPMDependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11929,15 +11924,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		360EC47C2636ED0A00D8F8E9 /* PBXTargetDependency */ = {
+		361E734426371DEB0064CCD8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 360EC4672636ECF600D8F8E9 /* FhirSPMWrapper */;
-			targetProxy = 360EC47B2636ED0A00D8F8E9 /* PBXContainerItemProxy */;
+			target = 361E733126371DBB0064CCD8 /* FhirSPMDependencies */;
+			targetProxy = 361E734326371DEB0064CCD8 /* PBXContainerItemProxy */;
 		};
-		360EC4812636ED1600D8F8E9 /* PBXTargetDependency */ = {
+		361E734726371DF20064CCD8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 360EC4672636ECF600D8F8E9 /* FhirSPMWrapper */;
-			targetProxy = 360EC4802636ED1600D8F8E9 /* PBXContainerItemProxy */;
+			target = 361E733126371DBB0064CCD8 /* FhirSPMDependencies */;
+			targetProxy = 361E734626371DF20064CCD8 /* PBXContainerItemProxy */;
 		};
 		36310932262AE8F7008FDD57 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -11977,57 +11972,35 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		360EC46D2636ECF600D8F8E9 /* Debug */ = {
+		361E733726371DBB0064CCD8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = D2QJWMP9SU;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = FhirSPMWrapper/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.FhirSPMWrapper;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		360EC46E2636ECF600D8F8E9 /* Release */ = {
+		361E733826371DBB0064CCD8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = D2QJWMP9SU;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = FhirSPMWrapper/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.FhirSPMWrapper;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -12504,11 +12477,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		360EC46F2636ECF600D8F8E9 /* Build configuration list for PBXNativeTarget "FhirSPMWrapper" */ = {
+		361E733626371DBB0064CCD8 /* Build configuration list for PBXNativeTarget "FhirSPMDependencies" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				360EC46D2636ECF600D8F8E9 /* Debug */,
-				360EC46E2636ECF600D8F8E9 /* Release */,
+				361E733726371DBB0064CCD8 /* Debug */,
+				361E733826371DBB0064CCD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -12590,7 +12563,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		360EC58B263709D100D8F8E9 /* Data4LifeSDKUtils */ = {
+		361E734026371DC40064CCD8 /* Data4LifeSDKUtils */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 360EC581263709BF00D8F8E9 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
 			productName = Data4LifeSDKUtils;

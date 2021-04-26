@@ -11,7 +11,7 @@ let package = Package(
     products: [
         .library(
             name: "Data4LifeFHIRCore",
-            targets: ["Data4LifeFHIRCore","Data4LifeSDKUtilsFHIR"]),
+            targets: ["Data4LifeFHIRCore"]),
         .library(
             name: "Data4LifeFHIR",
             targets: ["Data4LifeFHIR"]),
@@ -21,8 +21,8 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
-                 url: "git@github.com:d4l-data4life/d4l-utils-ios.git", 
-                 .upToNextMinor(from: "0.6.0")), 
+                 url: "git@github.com:d4l-data4life/d4l-utils-ios.git",
+                 .upToNextMinor(from: "0.6.0")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -30,17 +30,17 @@ let package = Package(
         .binaryTarget(
             name: "Data4LifeFHIRCore",
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/Data4LifeFHIRCore-xcframework-0.21.1.zip",
-            checksum: "039b651664fc3227dc9c763740ea913992653a22ccdf8beb9d126884cd6f056c"
+            checksum: "4cc0edf173be50fb7199b73569cb38c5ae7ae11b552e0d30f1ce6c0d98113507"
         ),
         .binaryTarget(
             name: "Data4LifeFHIR",
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/Data4LifeFHIR-xcframework-0.21.1.zip",
-            checksum: "3989145cb497142eb67fe782c5508b4f7eac8ce3a8b69eb5e0109e9e5baf7e57"
+            checksum: "5bd2c88caf58a3c7e3dd0804c96bb46c9f84934271106f6f23cd85a05733e16b"
         ),
         .binaryTarget(
             name: "ModelsR4",
             url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/ModelsR4-xcframework-0.21.1.zip",
-            checksum: "7df1706f5d5087cd3112db011a19fa36586080aa0eda12b8af85abd8cb8f4903"
+            checksum: "60aee6c2bbfb67dbb94b3a19d991827ad4fdd8954710f19e5ae937b19861e8d5"
         ),
         .target(name: "Data4LifeSDKUtilsFHIR",
                 dependencies: [
