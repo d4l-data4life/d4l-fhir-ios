@@ -7465,7 +7465,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD97E07B1FB9D774001AD324 /* Build configuration list for PBXNativeTarget "Data4LifeFHIR" */;
 			buildPhases = (
-				365CD009263338E900658141 /* Copy imported framework */,
 				CD97E0641FB9D774001AD324 /* Headers */,
 				CD97E0621FB9D774001AD324 /* Sources */,
 				CD97E0631FB9D774001AD324 /* Frameworks */,
@@ -10131,24 +10130,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		365CD009263338E900658141 /* Copy imported framework */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Copy imported framework";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nDERIVED_DATA_BUILD_DIR=\"\"\nDERIVED_DATA_FOUND=false\n#for subPath in ${SYMROOT//\\//$'\\n'} ; do\n#    if [ \"$DERIVED_DATA_FOUND\" = true ] ;\n#    then\n#      DERIVED_DATA_BUILD_DIR+=\"/$subPath\";\n#      break\n#    else\n#      DERIVED_DATA_BUILD_DIR+=\"/$subPath\";\n#      if [ $subPath = \"DerivedData\" ] ;\n#      then\n#        DERIVED_DATA_FOUND=true;\n#      fi\n#    fi\n#done\n\n#echo $TEMP\n\n#rm -rf ${SRCROOT}/importedFrameworks/*\n#mkdir -p ${SRCROOT}/importedFrameworks\n\n#cp -r ${DERIVED_DATA_BUILD_DIR}/SourcePackages/artifacts/Data4LifeSDKUtils/Data4LifeSDKUtils.xcframework ${SRCROOT}/importedFrameworks\n";
-		};
 		CD9A87B61FC3195E00C42CAC /* Run Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
