@@ -11,6 +11,7 @@ Data4LifeFHIRCore-xcframework-*
 Data4LifeFHIR-xcframework-*
 ModelsR4-xcframework-*
 XCFrameworks-*
+importedFrameworks/*
 
 ## Various settings
 *.pbxuser
