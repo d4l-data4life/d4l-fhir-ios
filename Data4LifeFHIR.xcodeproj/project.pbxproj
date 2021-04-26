@@ -775,9 +775,9 @@
 		35F13AC5E664950135766A2A /* SubstancenucleicacidExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E8F596E83C34AE993503A4 /* SubstancenucleicacidExample+Test.swift */; };
 		35FC867193706FA9EACBEBC3 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		360EC46C2636ECF600D8F8E9 /* FhirSPMWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 360EC46A2636ECF600D8F8E9 /* FhirSPMWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		360EC4782636ECFE00D8F8E9 /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 360EC4772636ECFE00D8F8E9 /* Data4LifeSDKUtils */; };
 		360EC4792636ED0A00D8F8E9 /* FhirSPMWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360EC4682636ECF600D8F8E9 /* FhirSPMWrapper.framework */; };
 		360EC47E2636ED1600D8F8E9 /* FhirSPMWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360EC4682636ECF600D8F8E9 /* FhirSPMWrapper.framework */; };
+		360EC58C263709D100D8F8E9 /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 360EC58B263709D100D8F8E9 /* Data4LifeSDKUtils */; };
 		360ED7A4870B0B6C4AC6FF12 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		36242E3F12A1A5C8DEB29425 /* TaskExample4+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F6A32F140F3CD9D1AC2D16 /* TaskExample4+Test.swift */; };
 		363026E613F9674983A602CF /* DevicemetricExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8CFBC9704C116A07ECBAC1 /* DevicemetricExample+Test.swift */; };
@@ -5673,7 +5673,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				360EC4782636ECFE00D8F8E9 /* Data4LifeSDKUtils in Frameworks */,
+				360EC58C263709D100D8F8E9 /* Data4LifeSDKUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7377,7 +7377,7 @@
 			);
 			name = FhirSPMWrapper;
 			packageProductDependencies = (
-				360EC4772636ECFE00D8F8E9 /* Data4LifeSDKUtils */,
+				360EC58B263709D100D8F8E9 /* Data4LifeSDKUtils */,
 			);
 			productName = FhirSPMWrapper;
 			productReference = 360EC4682636ECF600D8F8E9 /* FhirSPMWrapper.framework */;
@@ -7551,7 +7551,7 @@
 			);
 			mainGroup = CD97E05D1FB9D774001AD324;
 			packageReferences = (
-				3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */,
+				360EC581263709BF00D8F8E9 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */,
 			);
 			productRefGroup = CD97E0681FB9D774001AD324 /* Products */;
 			projectDirPath = "";
@@ -12579,9 +12579,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */ = {
+		360EC581263709BF00D8F8E9 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:d4l-data4life/d4l-utils-ios.git";
+			repositoryURL = "https://github.com/d4l-data4life/d4l-utils-ios.git";
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 0.6.0;
@@ -12590,9 +12590,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		360EC4772636ECFE00D8F8E9 /* Data4LifeSDKUtils */ = {
+		360EC58B263709D100D8F8E9 /* Data4LifeSDKUtils */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
+			package = 360EC581263709BF00D8F8E9 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
 			productName = Data4LifeSDKUtils;
 		};
 /* End XCSwiftPackageProductDependency section */

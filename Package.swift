@@ -21,7 +21,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
-                 url: "git@github.com:d4l-data4life/d4l-utils-ios.git",
+                 url: "https://github.com/d4l-data4life/d4l-utils-ios.git",
                  .upToNextMinor(from: "0.6.0")),
     ],
     targets: [
