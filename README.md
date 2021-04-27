@@ -53,6 +53,7 @@ To install with [Swift Package Manager](https://swift.org/package-manager/) add 
 
 ```swift
 .package(url: "https://github.com/d4l-data4life/d4l-fhir-ios.git", .upToNextMinor(from: "0.21.1"))
+.package(url: "https://github.com/d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.6.0"))
 ```
 
 ### Building
