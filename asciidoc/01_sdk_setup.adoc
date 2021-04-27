@@ -43,8 +43,8 @@ It includes also some helpers to create some specific FHIR Elements in an easier
 === Software requirements
 The {app-plat} {sdk-name} has the following software requirements:
 
-* Xcode 12.0 or later
-* iOS 12.0 or later
+* Xcode 12.4 or later
+* iOS 13.0 or later
 * Swift 5.3 or later
 
 === Installing dependency managers
