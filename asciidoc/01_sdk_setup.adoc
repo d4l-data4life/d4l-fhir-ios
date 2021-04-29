@@ -43,8 +43,8 @@ It includes also some helpers to create some specific FHIR Elements in an easier
 === Software requirements
 The {app-plat} {sdk-name} has the following software requirements:
 
-* Xcode 12.0 or later
-* iOS 12.0 or later
+* Xcode 12.4 or later
+* iOS 13.0 or later
 * Swift 5.3 or later
 
 === Installing dependency managers
@@ -52,30 +52,24 @@ The {app-plat} {sdk-name} has the following software requirements:
 This section describes how you get the SDK up and running.
 Use the following for dependency management for the {app-plat} {sdk-name}:
 
-* *Carthage* is a dependency manager written in Swift.
+* *Swift Package Manager* is a Apple's dependency manager.
 It builds your dependencies and provides you with binary frameworks while you retain control over your project structure and setup.
 
 * *CocoaPods* is a dependency manager for Swift and Objective-C Cocoa projects.
 The file with the specification that describes the dependencies of the targets of one or more Xcode projects is called `Podfile`.
 
-==== Carthage
+==== Swift Package Manager
 
-To install with Carthage, use the following:
+To install with swiftpm, add the following dependencies:
 
 ----
-github "d4l-data4life/d4l-fhir-ios"
+.package(url: "https://github.com/d4l-data4life/d4l-fhir-ios.git", .upToNextMinor(from: "0.21.1"))
+.package(url: "https://github.com/d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.6.0"))
 ----
-
-[NOTE]
-====
-The framework has a few <<Dependencies of the SDK, dependencies>>.
-You must add them and link them manually with icon:external-link[] https://github.com/Carthage/Carthage#nested-dependencies[your project].
-====
-
 
 ==== CocoaPods
 
-To add a private CocoaPods specs repository to the `Podfile`, use the following:
+To add our CocoaPods specs repository to the `Podfile`, use the following:
 
 [source, ruby]
 ----

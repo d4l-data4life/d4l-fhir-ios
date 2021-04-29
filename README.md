@@ -1,7 +1,7 @@
 # d4l-fhir-ios
 Minimal FHIR standard models and data types for iOS
 
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v0.20.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v0.21.1-blue.svg)](https://github.com/CocoaPods/CocoaPods)
 [![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg?style=flat&colorA=28a745&&colorB=4E4E4E)](https://github.com/apple/swift-package-manager)
 [![License](https://img.shields.io/badge/license-PRIVATE-blue.svg)](https://github.com/d4l-data4life/d4l-fhir-ios/blob/main/LICENSE)
 
@@ -41,8 +41,8 @@ To install with [CocoaPods](https://cocoapods.org/) add the following lines (acc
 ```ruby
 source 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
 
-pod 'Data4LifeFHIR', '~> 0.20.0'
-pod 'ModelsR4', '~> 0.20.0'
+pod 'Data4LifeFHIR', '~> 0.21.1'
+pod 'ModelsR4', '~> 0.21.1'
 ```
 
 **Note**: For more info check [README](https://github.com/d4l-data4life/d4l-cocoapods-specs/blob/master/README.md).
@@ -52,7 +52,8 @@ pod 'ModelsR4', '~> 0.20.0'
 To install with [Swift Package Manager](https://swift.org/package-manager/) add this package as a dependency in `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/d4l-data4life/d4l-fhir-ios.git", .upToNextMinor(from: "0.20.0"))
+.package(url: "https://github.com/d4l-data4life/d4l-fhir-ios.git", .upToNextMinor(from: "0.21.1"))
+.package(url: "https://github.com/d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.6.0"))
 ```
 
 ### Building
