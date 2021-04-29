@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name             = "Data4LifeFHIR"
+  s.name             = "Data4LifeFHIRCore"
   s.version          = "0.21.0"
-  s.summary          = "Minimal FHIR standard models and data types for iOS"
+  s.summary          = "FHIR helpers for common fhir models"
   s.homepage         = "https://github.com/d4l-data4life/d4l-fhir-ios/"
   s.license          = { :type => 'LICENSE', :file => "LICENSE" }
   s.author           = { "D4L data4life gGmbH" => "contact@data4life.care" }
@@ -12,8 +12,7 @@ Pod::Spec.new do |s|
   s.requires_arc     = true
   s.cocoapods_version = '>= 1.10.0'
 
-  s.vendored_frameworks = 'Data4LifeFHIR.xcframework'
-  s.preserve_paths      = 'Data4LifeFHIR.xcframework'
-  s.dependency 'Data4LifeSDKUtils', '0.6.0'
-  s.dependency 'Data4LifeFHIRCore', '0.21.0'
+  s.vendored_frameworks = 'Data4LifeFHIRCore.xcframework'
+  s.preserve_paths      = 'Data4LifeFHIRCore.xcframework'
+  
 end

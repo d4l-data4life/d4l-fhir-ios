@@ -306,13 +306,11 @@
 		14480E66340B193C4BD0BC0F /* procedure-example-ambulation.json in Resources */ = {isa = PBXBuildFile; fileRef = FCE1C2D2B2303EEE01DC86DB /* procedure-example-ambulation.json */; };
 		14650FE88689A05C4630E798 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		146A12B57CE5AFE5ACAE89D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		146C4C22D468787FC8A6A705 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		14BA6ECF12E971BF21C22871 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		14BE4CA0552DB00D093D821F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		14DD9993B910B4C9A2D0C01D /* (null) in Sources */ = {isa = PBXBuildFile; };
 		15053242076465E57AA48B19 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		152508E5CA71D6F9317BD49F /* (null) in Sources */ = {isa = PBXBuildFile; };
-		152673FE9BA139802D042723 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		153CA4EE730FE56606614401 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		1573E9795325EDF3F90D9A7D /* (null) in Resources */ = {isa = PBXBuildFile; };
 		157AEE842C8167EFCCB2FF27 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -351,7 +349,6 @@
 		171AF8972998C8680CCE5A1A /* (null) in Resources */ = {isa = PBXBuildFile; };
 		1734B1DF5538DF624189D40A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		173C00F76382CF23AEFCF5F6 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		173C0E0C0E5AFC95ED220C85 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		174D7D2D402DC3B6F541899F /* ContactDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACAA74B2549B6AC9CF37771 /* ContactDetail.swift */; };
 		175BBF43FD9BB33456B399B0 /* observation-example-TPMT-haplotype-two.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CAAF278BA3052C5E03D0B0D /* observation-example-TPMT-haplotype-two.json */; };
 		176517820507FCD4FAD8234D /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -359,7 +356,6 @@
 		17910E9C68FA73923F914D56 /* procedurerequest-example-di.json in Resources */ = {isa = PBXBuildFile; fileRef = CD25C9BE33D46496AD0EECFF /* procedurerequest-example-di.json */; };
 		179447BDE484AD4EBD7213BA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		17A02FD16FA322291228278A /* (null) in Resources */ = {isa = PBXBuildFile; };
-		17AB3B773CF285FDC487A4C9 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		17C0D472B933874B075049CD /* (null) in Sources */ = {isa = PBXBuildFile; };
 		17DB4EE02B9F7C9BC5174393 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		17E57C98DD4B8701262E4ED6 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -392,7 +388,6 @@
 		1A787BE1B3E31A4CA4F2FCA0 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		1A947E877712CE3E56FB7A05 /* Age.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FC6414337A610116EF6BD /* Age.swift */; };
 		1AA5D2965766444DB30A464E /* (null) in Resources */ = {isa = PBXBuildFile; };
-		1AA6AEB39D80C66B6EBD5383 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		1ABEF76B4B37AC80CCB4EEA0 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		1AC2DB43099057839FFF3DC8 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		1ACE0B5343DE2F797C8C4538 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -462,7 +457,6 @@
 		2070ADC549ECEBF5F16FBBA7 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		2095B26D8991F01AAB642901 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		2095DA3A4A3E06A3BF585039 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		2096598D8F196DD8A508B669 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		20A05040E461CA33E731DCA6 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		20B23A7E0B33CF3549098626 /* SubscriptionExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537F8C918CA7A34B0EB8B81F /* SubscriptionExample+Test.swift */; };
 		20B8A3072B97A330EA90C00B /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -539,7 +533,6 @@
 		2586645F96EFFF04CD29B861 /* procedure-example.json in Resources */ = {isa = PBXBuildFile; fileRef = 682C78086ABBF87F4256DCDC /* procedure-example.json */; };
 		25C3EBA44D18463F07D7D7AA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		25C9D155E91112BF5C98240A /* (null) in Resources */ = {isa = PBXBuildFile; };
-		25E95F9AB8F4C1530A11C1CB /* (null) in Sources */ = {isa = PBXBuildFile; };
 		25F68C650AD4318B406F5F49 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		25FBA124F4871EAA6300A4A1 /* MedicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17E8DDB96AFF2FE20C6866 /* MedicationTests.swift */; };
 		26081030564077F9E98D1725 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -552,7 +545,6 @@
 		26630FBFE7F2802BA2940A44 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		2682F74875CF67178F44D15B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		268DC863F6FF12E3644E2143 /* ValuesetGoalAcceptanceStatus+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63146C50D4B004850C5FDE8 /* ValuesetGoalAcceptanceStatus+Test.swift */; };
-		26937546B6DC3918B00CF2C1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		26A87FDE51A78AF0C56DEE70 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		26BC685FD37EBE2E5D2490D0 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		26E353525E241DB376729BCB /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -575,7 +567,6 @@
 		27E1AD3C7A01797808740113 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		27EF8BD3A1EF0E058126A4EF /* (null) in Resources */ = {isa = PBXBuildFile; };
 		27FD523C62EF0FB34D740D32 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		2817A901A54782F2C22A63E6 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		281F42E807C377086BC8BC6A /* (null) in Resources */ = {isa = PBXBuildFile; };
 		2832C00D64C0101AB523032E /* valueset-example-intensional.json in Resources */ = {isa = PBXBuildFile; fileRef = F0A13D6742AB09EB1AE049DE /* valueset-example-intensional.json */; };
 		285B92C8FE566002FE112610 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -673,7 +664,6 @@
 		2ED112A7AFCD2B84E1CFC2C4 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		2ED625D00EA733D504421E55 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		2EE58801183838F53EBDD079 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		2F22229E348C339A0236FDD9 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		2F282CDD894C6347288B6191 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		2F28F7B0D5A89B50133804B6 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		2F2AC314650EF4C3D3346E97 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -696,7 +686,6 @@
 		3010014ADA049960469493D0 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		301EBDA81F2553EA41863F56 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		3022D9794007547E57461D91 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		30314395C15910E8381235FB /* (null) in Sources */ = {isa = PBXBuildFile; };
 		303EE598F53FF87CD79586FE /* (null) in Resources */ = {isa = PBXBuildFile; };
 		303F7A4785984F0D29EE3F40 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3050A8F8B0D9FB06B8B58969 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -741,7 +730,6 @@
 		32FDE32583712ADC23811AAF /* (null) in Resources */ = {isa = PBXBuildFile; };
 		33119C10163FAE361F3C8736 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		33178DD2694F1589B4EAF33C /* person-grahame.json in Resources */ = {isa = PBXBuildFile; fileRef = 031FD89E77E7CBA8E31DD240 /* person-grahame.json */; };
-		3332C282AC5AC0C5E36F39DA /* (null) in Sources */ = {isa = PBXBuildFile; };
 		334B58D3F9DAB9D5B473B50C /* (null) in Resources */ = {isa = PBXBuildFile; };
 		33623B3DC7415B7B545E51A4 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		33629F37B06FBC678535730B /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -787,11 +775,24 @@
 		35F13AC5E664950135766A2A /* SubstancenucleicacidExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E8F596E83C34AE993503A4 /* SubstancenucleicacidExample+Test.swift */; };
 		35FC867193706FA9EACBEBC3 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		360ED7A4870B0B6C4AC6FF12 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		3611A9E17EA9EBACC418C358 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3613AB55260CB6940016474D /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 3613AB54260CB6940016474D /* Data4LifeSDKUtils */; };
+		361E733526371DBB0064CCD8 /* FhirSPMDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361E733426371DBB0064CCD8 /* FhirSPMDependencies.swift */; };
+		361E734126371DC40064CCD8 /* Data4LifeSDKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 361E734026371DC40064CCD8 /* Data4LifeSDKUtils */; };
+		361E734226371DEB0064CCD8 /* libFhirSPMDependencies.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 361E733226371DBB0064CCD8 /* libFhirSPMDependencies.a */; };
+		361E734526371DF20064CCD8 /* libFhirSPMDependencies.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 361E733226371DBB0064CCD8 /* libFhirSPMDependencies.a */; };
 		36242E3F12A1A5C8DEB29425 /* TaskExample4+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F6A32F140F3CD9D1AC2D16 /* TaskExample4+Test.swift */; };
-		36276F6107C30A866C1A17B3 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		363026E613F9674983A602CF /* DevicemetricExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8CFBC9704C116A07ECBAC1 /* DevicemetricExample+Test.swift */; };
+		36310930262AE8F7008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */; };
+		36310935262AE8F7008FDD57 /* Data4LifeFHIRCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36310934262AE8F7008FDD57 /* Data4LifeFHIRCoreTests.swift */; };
+		36310937262AE8F7008FDD57 /* Data4LifeFHIRCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 36310929262AE8F6008FDD57 /* Data4LifeFHIRCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3631094E262AE916008FDD57 /* AnyFhirResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631094D262AE916008FDD57 /* AnyFhirResource.swift */; };
+		36310956262AE96F008FDD57 /* R4AttachmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36310955262AE96F008FDD57 /* R4AttachmentHelper.swift */; };
+		3631096C262AEB47008FDD57 /* PartnerIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631096B262AEB47008FDD57 /* PartnerIdentifiable.swift */; };
+		36310979262AEE14008FDD57 /* R4+Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36310978262AEE14008FDD57 /* R4+Core.swift */; };
+		36310985262AEE59008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */; };
+		3631098F262AEE61008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */; };
+		363109A0262AEED2008FDD57 /* Stu3+Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631099F262AEED2008FDD57 /* Stu3+Core.swift */; };
+		363109D7262D6F2B008FDD57 /* Data4LifeFHIR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD97E0671FB9D774001AD324 /* Data4LifeFHIR.framework */; };
+		363109D8262D6F2B008FDD57 /* ModelsR4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364731CB25530172008825F0 /* ModelsR4.framework */; };
 		3644855103613316274DAB79 /* devicemetric-example.json in Resources */ = {isa = PBXBuildFile; fileRef = 3504E33897C67C12A1B237F5 /* devicemetric-example.json */; };
 		364731CF25530172008825F0 /* ModelsR4.h in Headers */ = {isa = PBXBuildFile; fileRef = 364731CD25530172008825F0 /* ModelsR4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		364734F72553032C008825F0 /* CodeSystemCodeSystemContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3647326625530329008825F0 /* CodeSystemCodeSystemContentMode.swift */; };
@@ -1478,67 +1479,6 @@
 		367E12B4F75ECCF9B47E9DD1 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		3685D30C2590FA9300F97F9E /* ModelsR4Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365EC5A2258CBF34007A3849 /* ModelsR4Bundle.swift */; };
 		3685D3102590FA9500F97F9E /* ModelsR4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ECD1C4258B9A9500945F37 /* ModelsR4Tests.swift */; };
-		3685D3A025910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3A125910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3A225910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3A325910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3A425910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3A525910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3A625910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3A725910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3A825910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3A925910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3AA25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3AB25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3AC25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3AD25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3AE25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3AF25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3B025910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3B125910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3B225910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3B325910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3B425910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3B525910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3B625910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3B725910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3B825910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3B925910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3BA25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3BB25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3BC25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3BD25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3BE25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3BF25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3C025910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3C125910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3C225910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3C325910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3C425910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3C525910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3C625910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3C725910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3C825910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3C925910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3CA25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3CB25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3CC25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3CD25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3CE25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3CF25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3D025910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3D125910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3D225910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3D325910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3D425910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3D525910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3D625910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3D725910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3D825910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3D925910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3DA25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3DB25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3685D3DC25910C4400F97F9E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3685D40F2591184600F97F9E /* DomainResource+Contained.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3685D3FF2591184500F97F9E /* DomainResource+Contained.swift */; };
 		3685D4102591184600F97F9E /* AnyResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3685D4002591184500F97F9E /* AnyResource.swift */; };
 		3685D4112591184600F97F9E /* Data4LifeFHIRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3685D4012591184500F97F9E /* Data4LifeFHIRError.swift */; };
@@ -1561,7 +1501,6 @@
 		36A6F8B9D7408F06ECABE4B9 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		36C9DB562AD4038DC6A1FC7B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		36CFB18C243B799800A8DCB8 /* SubscriptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFB18B243B799800A8DCB8 /* SubscriptTests.swift */; };
-		36DAE09975F853687FEF03DE /* (null) in Sources */ = {isa = PBXBuildFile; };
 		36ECD1C7258B9A9500945F37 /* ModelsR4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364731CB25530172008825F0 /* ModelsR4.framework */; };
 		36F4CCE529B8BD31FE0F9056 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		36FE70A32E752A7CCE05BF17 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -1608,7 +1547,6 @@
 		3ADEA6C08AF6E1731F567535 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		3B01366404831349ED57F38D /* (null) in Resources */ = {isa = PBXBuildFile; };
 		3B36B225B3387CFB60E202B5 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3B46EAE5FD4DF3850E4FC80D /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3B6B14783682EBBA867FAFAA /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3B7EF7FE4FF29AC74E3116E3 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		3B8451F0584276A61F13EF24 /* substance-example-amoxicillin-clavulanate.json in Resources */ = {isa = PBXBuildFile; fileRef = 839FB943BFD0AEEBE3B8CE23 /* substance-example-amoxicillin-clavulanate.json */; };
@@ -1646,15 +1584,12 @@
 		3D71B4B9D2C2021AB6C01435 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3D8D278CC8D77BD8D9A7337B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		3D954FF2679957CE3EFE9BC0 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		3D9B2ECA58FE0EEDB0D85CAD /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3DAE2C5042ECF4C8D894D869 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		3DD1D0E7EFA879BD06013397 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E187DCE2BD73D9FF3330953 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		3E2CBA64CC7544F6F0A62C50 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E4797EC31094D22000E0EA0 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		3E628A20D53D19A073C81835 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E785BA22A41BD0AFE036594 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		3E8CFBD5F31366D442597E0D /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E91B925F99083E642EE2D04 /* condition-example-f002-lung.json in Resources */ = {isa = PBXBuildFile; fileRef = EA86F59F2A1C99F22EA1686C /* condition-example-f002-lung.json */; };
 		3EA45978BF8D0B23E077AE33 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		3EA65286FF2ABC21A09B9B68 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -1697,7 +1632,6 @@
 		421E1FD5122271CB3B43A7B6 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4251837FBB4DB9119BC052DA /* (null) in Sources */ = {isa = PBXBuildFile; };
 		42598278C9FCE5AF94024EF1 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		426E26BDD29A0A2E40CDB1EE /* (null) in Sources */ = {isa = PBXBuildFile; };
 		42868609DEAAB3EB3B8BB4AF /* (null) in Resources */ = {isa = PBXBuildFile; };
 		429E735551BFE2D345B383AE /* (null) in Sources */ = {isa = PBXBuildFile; };
 		429E8C555C89595A5C683DBE /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -1722,7 +1656,6 @@
 		44600834ACEC76CC4281BE37 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		4468658AD58994D27EC4EE0D /* (null) in Sources */ = {isa = PBXBuildFile; };
 		446E7B4F86F84DD33EF829F4 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		447E5CA3237761D38611CD18 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4499B80F0CD352FEE37F4B61 /* activitydefinition-supplyrequest-example.json in Resources */ = {isa = PBXBuildFile; fileRef = BD6C479CB4913B943A16DCB5 /* activitydefinition-supplyrequest-example.json */; };
 		449BE0790CB332E869869622 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		449FF6632A1B02FF7FDE2003 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -1943,7 +1876,6 @@
 		548725C627345D6285DC7178 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		54A2F5AF263A7AC3189781C3 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		54B912456C6E8C69F6AE0D9F /* (null) in Resources */ = {isa = PBXBuildFile; };
-		54BEED8E1B42D0C93D21542A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		54CC94D7C1AC827D30B51250 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		54CEB5AB72A3820820518310 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		54D8AAE821B046B3B43829E6 /* graphdefinition-example.json in Resources */ = {isa = PBXBuildFile; fileRef = DAE531DE88170A4A72F2B2BA /* graphdefinition-example.json */; };
@@ -2027,7 +1959,6 @@
 		59C440C8D4B4B2FDF2777F25 /* flag-example-encounter.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EB47368ADA33BE15EF887E6 /* flag-example-encounter.json */; };
 		59C789DD100E79AEF057B8FE /* MessagedefinitionPatientLinkResponse+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBFAC21457C787A09D17527 /* MessagedefinitionPatientLinkResponse+Test.swift */; };
 		59D59D1A19A62607246F4BF9 /* specimendefinition-example-serum-plasma.json in Resources */ = {isa = PBXBuildFile; fileRef = 4099922B6FE4C61276F2E626 /* specimendefinition-example-serum-plasma.json */; };
-		59EE5349C60C5738C2C46E29 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		59F13E358664167BAF1113A4 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		59F3067B4491CA8589F2EC38 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		5A0C0B75749606D9831DAEAA /* medicinalproductingredient-example.json in Resources */ = {isa = PBXBuildFile; fileRef = 752E260728F0E5F010E02FB7 /* medicinalproductingredient-example.json */; };
@@ -2073,7 +2004,6 @@
 		5CB4F999B8AD75C443201448 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		5CD460CB011D8A4E61A3BE61 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		5CF4B39F0FE5E4BBAB184696 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		5D1C4B095AD8329F75B17E05 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		5D2B218433F5F274319C8B10 /* organization-example-f001-burgers.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E310D17DE7FABF40CB0B2C7 /* organization-example-f001-burgers.json */; };
 		5D392A620AE0C34A50B759DA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		5D5F584A4E7D28FFEC89004B /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -2157,7 +2087,6 @@
 		62869F6E30CE71B2A218D36C /* goal-example-stop-smoking.json in Resources */ = {isa = PBXBuildFile; fileRef = 858090D2235D65B6782F19E1 /* goal-example-stop-smoking.json */; };
 		629244E111D1329BBB459416 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		62B61DD4FA67DB0A1AB04987 /* InsuranceplanExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C79198698D786C9328555 /* InsuranceplanExample+Test.swift */; };
-		62BCFA1E93F6093D084686D7 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		62EB535184669FD4F38C51DB /* (null) in Resources */ = {isa = PBXBuildFile; };
 		632B5057373E123A8F02E096 /* ReferralRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749880CF01FFD6E5FEB460C /* ReferralRequestTests.swift */; };
 		635BED03FB65B5DC65734195 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -2178,7 +2107,6 @@
 		63FD4A5921799133CA655EDF /* (null) in Resources */ = {isa = PBXBuildFile; };
 		6406A926C12915098B6449FF /* (null) in Sources */ = {isa = PBXBuildFile; };
 		641BAB4A9A7985723911AECA /* (null) in Resources */ = {isa = PBXBuildFile; };
-		6424F0159B32248F024C58F5 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		642EB73AFBED1D4D6D8BC36E /* (null) in Resources */ = {isa = PBXBuildFile; };
 		643E16CD028167A446350768 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		643F99DA55FC6E8A10F72CE2 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -2268,7 +2196,6 @@
 		6A2F2ABEBDACFF24B563FA60 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6A409717710618A173932DE0 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		6A5590DED1F49839314A54E9 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		6A682443971B135D92FEACDE /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6A8F4D8ED50FC12D0D1DDD89 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		6A90ED4BFB706FE584E9B6BE /* (null) in Resources */ = {isa = PBXBuildFile; };
 		6AAD1DCA598BD452DB5436B2 /* enrollmentrequest-example.json in Resources */ = {isa = PBXBuildFile; fileRef = D67F19942ADB93D9D1894770 /* enrollmentrequest-example.json */; };
@@ -2542,7 +2469,6 @@
 		7E8BA06976368BBD5DD127BA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		7E9AB597A3CAA44C760CC9AA /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7EB2900E036CFE20B244654C /* (null) in Resources */ = {isa = PBXBuildFile; };
-		7EC0A34842ED254CFF27BC22 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7EC17FFC75C7481019533020 /* medicinalproductpackaged-example.json in Resources */ = {isa = PBXBuildFile; fileRef = E2A5C33401E3E5ADD1983DC7 /* medicinalproductpackaged-example.json */; };
 		7ECA3CC61E1E2B699AAD43C0 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		7ECBC8D81363E90AE8A8272E /* structuredefinition-example.json in Resources */ = {isa = PBXBuildFile; fileRef = 12A148EE185E109A9EEC6D2A /* structuredefinition-example.json */; };
@@ -2603,7 +2529,6 @@
 		83AE5DB8D80EE964FAFB8FD3 /* practitioner-example-f001-evdb.json in Resources */ = {isa = PBXBuildFile; fileRef = DBC75C2CB74C54B20C992225 /* practitioner-example-f001-evdb.json */; };
 		83B2239007D83A8BAD3A9FD2 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		83C0BB9C991AFA3A495CD3AA /* (null) in Sources */ = {isa = PBXBuildFile; };
-		83D817CFEABE0239E4E6B10B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		83E0622C4A5306FBD055253A /* (null) in Resources */ = {isa = PBXBuildFile; };
 		83F449F86F579EF6A4726F74 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		83FDBCD5D336E62CD8732209 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -2651,7 +2576,6 @@
 		8665EE00220189359B7FBFBE /* (null) in Resources */ = {isa = PBXBuildFile; };
 		8672C09EB62E9B886A0E2E97 /* DocumentmanifestFmAttachment+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F27D6F0D0EE2ECB038596A /* DocumentmanifestFmAttachment+Test.swift */; };
 		868F45E015CAAEA6E1CF7116 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		869180C6009641A0DF7A0407 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		8697E32452437B6F5004A257 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		86B079269A928DDB53F9204E /* (null) in Resources */ = {isa = PBXBuildFile; };
 		86CEECCDC24B94C0B44E647B /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -2727,7 +2651,6 @@
 		8BE4C37C36F459E98A105241 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		8BFA18729482DC4BC4229A36 /* procedure-example-f001-heart.json in Resources */ = {isa = PBXBuildFile; fileRef = 92773B1BE9423E68B6491C14 /* procedure-example-f001-heart.json */; };
 		8BFA2BACDA06F204E8DBB83F /* (null) in Sources */ = {isa = PBXBuildFile; };
-		8C07892750CE7D0B11E59834 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		8C0FC51777D4DD7EBD94324D /* (null) in Resources */ = {isa = PBXBuildFile; };
 		8C24402DA3A73B5FD1AC824C /* (null) in Resources */ = {isa = PBXBuildFile; };
 		8C5505E026E4CEAF01BBA8DA /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -2778,7 +2701,6 @@
 		8F5AED73E94D32249C5F770B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		8F60EC2595B98931E0562439 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		8F8256D156DA67BBD8E13103 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		8F8A1220442F2AEFA3BC03E5 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		8F8B832BEBEE5B9B8C6B3286 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		8F941B0C2AC0C1CD78EDEDFE /* (null) in Sources */ = {isa = PBXBuildFile; };
 		8FA8CDC6C3163ABF9B994642 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -2845,7 +2767,6 @@
 		94A93144A3CB57D2CE6F51DA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		94C42846EB555843B663DB98 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		94D8B53DD26ECB33F02DB45C /* (null) in Sources */ = {isa = PBXBuildFile; };
-		94F0A47A9178778B65BB68DF /* (null) in Sources */ = {isa = PBXBuildFile; };
 		94F8AAA12B115D399F73AB94 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436AEA4F3AC002220EB9107 /* Questionnaire.swift */; };
 		94FA43B774B33D54CB8B4C50 /* ConditionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3639F76F4AB0F4ABD2418B8 /* ConditionTests.swift */; };
 		950D7E16407E941E1DD21CFF /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -3000,7 +2921,6 @@
 		9FD1F43C8A12E1A20422C8B8 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E61FE6CA2811ED6C60101D6 /* Reference.swift */; };
 		9FD9E755C1CC66B4DCA57D1E /* medicationadministrationexample3.json in Resources */ = {isa = PBXBuildFile; fileRef = 83ABA40C407B6FAAB68FD1BB /* medicationadministrationexample3.json */; };
 		9FED29FBC94BE08CA77BCC2A /* (null) in Resources */ = {isa = PBXBuildFile; };
-		9FEFDBF95935726FA3AD177B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A0069E4F3A2076031BF92BC3 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A015D18DD725AEDE804C3016 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A026505B9683830F55DD0D87 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -3041,7 +2961,6 @@
 		A295685F183112E958058E4E /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A29B9E53CA1FF03021289FD7 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A2B939D63EEA7EE81471AC83 /* observation-example-body-temperature.json in Resources */ = {isa = PBXBuildFile; fileRef = 00E11B00207590FF1B49CE09 /* observation-example-body-temperature.json */; };
-		A2BFBAAC964EC96A8F060208 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A2D2E5A9702CCBE6AE118F45 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A2E30CB62E62F1061044D847 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A2E6E9DD0753F249F8243183 /* procedurerequest-example-edu.json in Resources */ = {isa = PBXBuildFile; fileRef = 084B07A01B644128A826CA4E /* procedurerequest-example-edu.json */; };
@@ -3068,7 +2987,6 @@
 		A3B92744D5BFFC1F5F8B6AFD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A3BAE48D3FA8331919E74280 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A3C8FC6A779A32B98C9AA854 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		A3D4F06AED5AF4399E1FC026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A3F31F3B0C7D0C2AE5BD7B9C /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A3F87FB77119C138EDCF5E6F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A401B90B511991871EFA1BC4 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -3093,10 +3011,8 @@
 		A4E48A0955D697A39D345B07 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A4EC7B71BAF2224ECC09E71E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A56D58DB271E0A9039B63281 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		A592E4144F11CD35BA8CADA9 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A5A72628ABB365E92060BFB2 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A5A9348006D88F38340C50FF /* (null) in Resources */ = {isa = PBXBuildFile; };
-		A5B40DA8D7DCE452A47273EE /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A5C41AEBE7B0BBCCDB3EA000 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A5EC28E898FFADDD01759CBD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A5EE5BEBBBB3D7CAFD8656B4 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -3104,7 +3020,6 @@
 		A6246A1C8FEEC71DE85A6AD5 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A62AD7B699FFFA4579A7202B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A62B6CA07055E28499FA2BF0 /* AllergyintoleranceNkda+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E53DB6C344AC8DA5EAFE791 /* AllergyintoleranceNkda+Test.swift */; };
-		A63632CCC5CFB367D535233F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A6511A3F69753947B0FA5B86 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A668379978BEDF9F3AC85604 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A676750F2F704ADB6AABF5C0 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -3123,7 +3038,6 @@
 		A7D4F085DBBA1F7D57312CA8 /* requestgroup-example.json in Resources */ = {isa = PBXBuildFile; fileRef = B1A897FC7209DEBE7ED29AA7 /* requestgroup-example.json */; };
 		A7E179F7D62D6A89CB2384C5 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		A7E6D431AA460964A8FCE829 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		A7F5F5A2C3B8B5E9523053F9 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A7FB18EBDD42F353ACCAFA08 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A7FD2F3257A1D192ABA65630 /* SupplyrequestExampleSimpleorder+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83DE45BE94969EE0F77B7CF /* SupplyrequestExampleSimpleorder+Test.swift */; };
 		A83D5A70B16EC35CA6932D5B /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -3179,7 +3093,6 @@
 		AB885E6ED7930801CC43F683 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		AB9F49750BB6E13011CE5179 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		ABA6619043E593D9DB148D3B /* procedure-example-f003-abscess.json in Resources */ = {isa = PBXBuildFile; fileRef = C2BB70FEF6B812A65A1C8B77 /* procedure-example-f003-abscess.json */; };
-		ABA9EE4EC0ABD6162406CCCE /* (null) in Sources */ = {isa = PBXBuildFile; };
 		ABCD4E5987DABCA1A1A468EF /* (null) in Resources */ = {isa = PBXBuildFile; };
 		ABEF11561940B043B64E23ED /* (null) in Resources */ = {isa = PBXBuildFile; };
 		ABF1E3570158DA76DA9B730C /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D0BDCE9651715E511270A /* Medication.swift */; };
@@ -3238,7 +3151,6 @@
 		B0479A741576F923A846EBD9 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		B04BDCE11E266D7FCF56A3BA /* (null) in Sources */ = {isa = PBXBuildFile; };
 		B08BCCBD63E75C8F59268691 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		B08DB4FC01377AED35FC2F49 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		B09DADD81BC29326B9428897 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		B0AF5A4C70E2C62ECCCD97EF /* (null) in Resources */ = {isa = PBXBuildFile; };
 		B0EBD347EBF9ECEA6CCB87E7 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -3381,16 +3293,13 @@
 		BA2377C6D02D5AA02E5EDAEA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		BA37581B4DD4740138312A07 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		BA4D5CA188CFC5B7349C7DAA /* (null) in Resources */ = {isa = PBXBuildFile; };
-		BA5E4CC87BE2FD59CF6AB748 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		BA74FCD9FBCF92CBCA3D6091 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		BAA86EBEB8D027955FF015A3 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		BAAEE0ABEA99BC82FA223FA7 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		BAB5F389BF16D7957BD1FDA0 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		BAC2937AD9DCF32AB1CE000D /* (null) in Resources */ = {isa = PBXBuildFile; };
 		BAC637A45E3DA5DEEB828DBE /* invoice-example.json in Resources */ = {isa = PBXBuildFile; fileRef = 4219C8E3B5B313AB05E38758 /* invoice-example.json */; };
 		BAC7E22811E768EFA85774A0 /* riskevidencesynthesis-example.json in Resources */ = {isa = PBXBuildFile; fileRef = 51D0FB808BC6D862155EA3A2 /* riskevidencesynthesis-example.json */; };
 		BAD139D335D18768BA6B1B4B /* (null) in Resources */ = {isa = PBXBuildFile; };
-		BAD38312AFDADE0E9459D9FE /* (null) in Sources */ = {isa = PBXBuildFile; };
 		BAD9058FCD2159469480ABEF /* ValueSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7E135A0525BC83B405E832 /* ValueSet.swift */; };
 		BADA52AB64421AD21518DF00 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		BAF9CC1CCEA51C734434501E /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -3483,7 +3392,6 @@
 		C080CA5EADD361F91C4E5145 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		C0988A61083C908C766FE17F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		C09BD23ACF221F4134965F87 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		C09E3DC23EDF761B056136F4 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C0A0C9EB98EB7A775AC2D4CA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		C0A9B24EF5F46B0C23C1539A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C0A9EB11C92E312ADC2B40B1 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -3523,7 +3431,6 @@
 		C32C213A4642AF0AF4FD64E2 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		C330923C3802B6574BB8007E /* examplescenario-example.json in Resources */ = {isa = PBXBuildFile; fileRef = CBCA6D7F4AD868903F1E32C0 /* examplescenario-example.json */; };
 		C335BAD0E8C521825A768B03 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		C351F926EBBC25D0BE6A6BBD /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C38ED4D72655A6B64F33F439 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		C3A3832E51BA3AC43B587B6C /* (null) in Resources */ = {isa = PBXBuildFile; };
 		C3DE108D546C3C710BAF0F10 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -3574,7 +3481,6 @@
 		C67E58B7E2BD6DA5DE2B3E09 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		C68380822FBC9B2A0F7CB14C /* (null) in Resources */ = {isa = PBXBuildFile; };
 		C6A9511339CB360A088E333D /* (null) in Resources */ = {isa = PBXBuildFile; };
-		C6AA1F46C6C0B0323FD85ABA /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C6B59B718A9E18C32A409035 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		C6D5F33387887BE7D43F332B /* questionnaire-example-f201-lifelines.json in Resources */ = {isa = PBXBuildFile; fileRef = 7342754B6F2BE95E0D0F5B09 /* questionnaire-example-f201-lifelines.json */; };
 		C6DB4BE4F19A7267598500AF /* substance-example-f203-potassium.json in Resources */ = {isa = PBXBuildFile; fileRef = E59D89B352E56B3BB0C0DCE8 /* substance-example-f203-potassium.json */; };
@@ -3684,7 +3590,6 @@
 		CE165B9F5A85530B828D45B1 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		CE1E1DF1979672237587EE95 /* procedurerequest-example-ob.json in Resources */ = {isa = PBXBuildFile; fileRef = 99ABDF50300ADD4999D3B784 /* procedurerequest-example-ob.json */; };
 		CE1EF7856AFD5C02ACF31128 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		CE237D6C570F0C39B51BD6F8 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		CE2743E63F4B617908BD90C1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		CE29119B12D5EFB6CCBA6E0F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		CE2C9CC9E7B8607EC0963728 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -3716,7 +3621,6 @@
 		D0B2878A45DDEE0EB7A71969 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		D0B49E6DC2CF4D8F5993C445 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		D0D317A26663017DBCCD4166 /* ExplanationofbenefitExample2+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932276633D316B340DB7398 /* ExplanationofbenefitExample2+Test.swift */; };
-		D0D8C0B5AD6671777B82DBD8 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		D0DC2523E624AEF645484A10 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		D0EAA22FECFF62431C08E1DA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		D11587CE44E21AC7507405B0 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -3837,7 +3741,6 @@
 		D93F6BE528A267B7F31C4AB7 /* practitionerrole-example.json in Resources */ = {isa = PBXBuildFile; fileRef = FBFC6A3F67E28EB4A211B285 /* practitionerrole-example.json */; };
 		D94FD710877B7AEEFCE350A0 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		D9592E2C12F3ACE974C5334E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		D95C64473278A34B0C6060CF /* (null) in Sources */ = {isa = PBXBuildFile; };
 		D968992E4A9050E4310C06EC /* medicationadministration0302.json in Resources */ = {isa = PBXBuildFile; fileRef = 56DF822F5A616496678FDD72 /* medicationadministration0302.json */; };
 		D96C11367BCDA26151E18C0C /* observation-example-10minute-apgar-score.json in Resources */ = {isa = PBXBuildFile; fileRef = 20B450EF60F38196E502F743 /* observation-example-10minute-apgar-score.json */; };
 		D96D70970D25009241784BBE /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -3877,7 +3780,6 @@
 		DBC04BB9F26C81C9F8DB0823 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		DBC131F42C929C87860747EC /* (null) in Sources */ = {isa = PBXBuildFile; };
 		DBC8D5FA6C05E4C25BA4BD89 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		DBC94C7249F0329B143EA33D /* (null) in Sources */ = {isa = PBXBuildFile; };
 		DBF434B2A1FE98F36836DAAC /* medicationexample0321.json in Resources */ = {isa = PBXBuildFile; fileRef = 80922858F93EF86A0A35900D /* medicationexample0321.json */; };
 		DC169085979C06B2203D1195 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		DC219CD7D6187795B64A9019 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -3957,7 +3859,6 @@
 		E14E051A46C4310C8BD8972F /* careplan-example-obesity-narrative.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F51D873D02E6DA9F9156699 /* careplan-example-obesity-narrative.json */; };
 		E15B8E624658A5ADF136A97A /* (null) in Resources */ = {isa = PBXBuildFile; };
 		E19006213239A5B2540A6FBA /* (null) in Sources */ = {isa = PBXBuildFile; };
-		E198BDB05E5120CCD3010603 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E1A063C131F2DF3C8ACEEBD3 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		E1B80963598803A08AFC3CC6 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		E1BA8DE9690EEA7185D976DB /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -4054,7 +3955,6 @@
 		E847A8BBD6A138CBAE8693B3 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E84AE8C5DB2E18BC932358A6 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36750A4918CD263A3484E0B /* Patient.swift */; };
 		E881F307EF869AA9A42BA96C /* (null) in Resources */ = {isa = PBXBuildFile; };
-		E884E2DD1AF67DD0E8BF020B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E89B92B6068552D0F490DA00 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		E8A7F5165D19EA8DCAC499CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		E8E3447BA8A94B151C5C9D5A /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -4124,7 +4024,6 @@
 		EC0BB1FF93C07BB8A37BDD49 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		EC3A8F09FD17D37EC47A1E43 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		EC4EE975125019AFD1B0FFC5 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		EC56EBA963789875599B3144 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		EC6C73A2E76D0AB88311DA62 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		EC8440CDFBE9E0666DCC302B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		EC8E716017788B853045BE24 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -4183,7 +4082,6 @@
 		F10524DE6C942746AFFD0F68 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F118A93B7D48FDC03C3B2A4B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F138CCE048EEB7A9A26DE417 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		F146BB8B2886A3D12C265FCB /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F14A93C27E9DD5DE333D2C8A /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F14B28519F36BD784AC6047F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F175C20C84A65631FAA30629 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -4242,7 +4140,6 @@
 		F4DD5C4ABFEF0742A194A685 /* specimen-example-isolate.json in Resources */ = {isa = PBXBuildFile; fileRef = 018FEC940D9B5334C34FBD4F /* specimen-example-isolate.json */; };
 		F4F5554FD03461BE394BA174 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F50D1D09971E667E108103D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		F518300F8E48080ABA449A1F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F5272DEA88A7D2C565E63566 /* ClaimExamplePharmacyCompound+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7978EC8631D60411FDEFCF7 /* ClaimExamplePharmacyCompound+Test.swift */; };
 		F52BDC6F84C325BBEFF52832 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F559439DADAE00A4535C0A9E /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -4275,7 +4172,6 @@
 		F7C6B80B13D5E7E7692C3AA8 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F7CE4E0B2B21751D3A49DB2E /* endpoint-example.json in Resources */ = {isa = PBXBuildFile; fileRef = EFCED58B4ED2703D703FC98E /* endpoint-example.json */; };
 		F80017571D9F447ACC8ECDB7 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		F80120CCC391EB1EBE6DB2D9 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F809C62030B210EE9AB367C3 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F81D39ED9571FC1AC21D4BF7 /* observation-example-bmi.json in Resources */ = {isa = PBXBuildFile; fileRef = 25F33000BC01EA434E34569E /* observation-example-bmi.json */; };
 		F82C190F1EA106F70BD77B41 /* medicationexample15.json in Resources */ = {isa = PBXBuildFile; fileRef = B78EE4752FDC045063BBF05C /* medicationexample15.json */; };
@@ -4286,7 +4182,6 @@
 		F89D575F28D7D436D60DB23A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F8A118BA28B84AD707134238 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F8D82B35913DE7602AA85E06 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		F8EB67EADBE61254ED693C8F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F8EFFBE15854013319D58F28 /* PaymentnoticeExample+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E2E9B1972C3E22589687F5 /* PaymentnoticeExample+Test.swift */; };
 		F9250F2565127574B0D15680 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F939DCAC7C9E2B73E9E25A23 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -4318,7 +4213,6 @@
 		FBCF54CC1FB8DA7BB335C9F1 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		FBDFB7F7F661CE79E9C6AC83 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		FC00C538A7A9CCC3AE795EE0 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		FC08EC3FB1E482DD9FACC259 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		FC1B093FFF0A1D1E38E8456F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		FC279BC46D98317926244812 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		FC2D6EAE58C36C33D806D886 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -4337,7 +4231,6 @@
 		FCFB05DC810D0122F6668079 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		FCFEE8312E6EBE3CDB5B58D3 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		FD159C62AA593878D8CF27EA /* (null) in Resources */ = {isa = PBXBuildFile; };
-		FD2B1361F3F3B71C838B3903 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		FD5C552BE04337880BD35A97 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		FD66BE71F7BF22C397AE693D /* (null) in Resources */ = {isa = PBXBuildFile; };
 		FD71080758FE4D46B47C6BBE /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -4377,6 +4270,55 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		361E734326371DEB0064CCD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD97E05E1FB9D774001AD324 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 361E733126371DBB0064CCD8;
+			remoteInfo = FhirSPMDependencies;
+		};
+		361E734626371DF20064CCD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD97E05E1FB9D774001AD324 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 361E733126371DBB0064CCD8;
+			remoteInfo = FhirSPMDependencies;
+		};
+		36310931262AE8F7008FDD57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD97E05E1FB9D774001AD324 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36310926262AE8F6008FDD57;
+			remoteInfo = Data4LifeFHIRCore;
+		};
+		36310987262AEE59008FDD57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD97E05E1FB9D774001AD324 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36310926262AE8F6008FDD57;
+			remoteInfo = Data4LifeFHIRCore;
+		};
+		36310991262AEE61008FDD57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD97E05E1FB9D774001AD324 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36310926262AE8F6008FDD57;
+			remoteInfo = Data4LifeFHIRCore;
+		};
+		363109CE262D6F12008FDD57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD97E05E1FB9D774001AD324 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD97E0661FB9D774001AD324;
+			remoteInfo = Data4LifeFHIR;
+		};
+		363109D0262D6F12008FDD57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD97E05E1FB9D774001AD324 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 364731CA25530172008825F0;
+			remoteInfo = ModelsR4;
+		};
 		36ECD1C8258B9A9500945F37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CD97E05E1FB9D774001AD324 /* Project object */;
@@ -4392,6 +4334,18 @@
 			remoteInfo = HCFHIR;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		361E733026371DBB0064CCD8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0033063AA3D42A7C1C6F859C /* StructureDefinitionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StructureDefinitionTests.swift; path = ModelTests/StructureDefinitionTests.swift; sourceTree = "<group>"; };
@@ -4512,6 +4466,19 @@
 		357259FE9DB4485F13C33143 /* FamilyMemberHistory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FamilyMemberHistory.swift; path = Models/FamilyMemberHistory.swift; sourceTree = "<group>"; };
 		35F0C43C7F7A1DDFB49ACA63 /* CompositionExample+Test.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CompositionExample+Test.swift"; path = "Generated/CompositionExample+Test.swift"; sourceTree = "<group>"; };
 		360972C7C8E56C079D5F2A59 /* diagnosticreport-examples-general.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = "diagnosticreport-examples-general.json"; path = "Examples/diagnosticreport-examples-general.json"; sourceTree = "<group>"; };
+		361E733226371DBB0064CCD8 /* libFhirSPMDependencies.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFhirSPMDependencies.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		361E733426371DBB0064CCD8 /* FhirSPMDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FhirSPMDependencies.swift; sourceTree = "<group>"; };
+		36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data4LifeFHIRCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36310929262AE8F6008FDD57 /* Data4LifeFHIRCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data4LifeFHIRCore.h; sourceTree = "<group>"; };
+		3631092A262AE8F6008FDD57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3631092F262AE8F7008FDD57 /* Data4LifeFHIRCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Data4LifeFHIRCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		36310934262AE8F7008FDD57 /* Data4LifeFHIRCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data4LifeFHIRCoreTests.swift; sourceTree = "<group>"; };
+		36310936262AE8F7008FDD57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3631094D262AE916008FDD57 /* AnyFhirResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFhirResource.swift; sourceTree = "<group>"; };
+		36310955262AE96F008FDD57 /* R4AttachmentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R4AttachmentHelper.swift; sourceTree = "<group>"; };
+		3631096B262AEB47008FDD57 /* PartnerIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerIdentifiable.swift; sourceTree = "<group>"; };
+		36310978262AEE14008FDD57 /* R4+Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "R4+Core.swift"; sourceTree = "<group>"; };
+		3631099F262AEED2008FDD57 /* Stu3+Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stu3+Core.swift"; sourceTree = "<group>"; };
 		364731CB25530172008825F0 /* ModelsR4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModelsR4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		364731CD25530172008825F0 /* ModelsR4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelsR4.h; sourceTree = "<group>"; };
 		364731CE25530172008825F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -5713,10 +5680,37 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		361E732F26371DBB0064CCD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				361E734126371DC40064CCD8 /* Data4LifeSDKUtils in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36310924262AE8F6008FDD57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3631092C262AE8F7008FDD57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				363109D7262D6F2B008FDD57 /* Data4LifeFHIR.framework in Frameworks */,
+				363109D8262D6F2B008FDD57 /* ModelsR4.framework in Frameworks */,
+				36310930262AE8F7008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		364731C825530172008825F0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				361E734226371DEB0064CCD8 /* libFhirSPMDependencies.a in Frameworks */,
+				36310985262AEE59008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5732,7 +5726,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3613AB55260CB6940016474D /* Data4LifeSDKUtils in Frameworks */,
+				361E734526371DF20064CCD8 /* libFhirSPMDependencies.a in Frameworks */,
+				3631098F262AEE61008FDD57 /* Data4LifeFHIRCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6148,6 +6143,58 @@
 			name = Generated;
 			sourceTree = "<group>";
 		};
+		361E733326371DBB0064CCD8 /* FhirSPMDependencies */ = {
+			isa = PBXGroup;
+			children = (
+				361E733426371DBB0064CCD8 /* FhirSPMDependencies.swift */,
+			);
+			path = FhirSPMDependencies;
+			sourceTree = "<group>";
+		};
+		36310928262AE8F6008FDD57 /* Data4LifeFHIRCore */ = {
+			isa = PBXGroup;
+			children = (
+				36310929262AE8F6008FDD57 /* Data4LifeFHIRCore.h */,
+				3631092A262AE8F6008FDD57 /* Info.plist */,
+				3631094D262AE916008FDD57 /* AnyFhirResource.swift */,
+				3631096B262AEB47008FDD57 /* PartnerIdentifiable.swift */,
+			);
+			path = Data4LifeFHIRCore;
+			sourceTree = "<group>";
+		};
+		36310933262AE8F7008FDD57 /* Data4LifeFHIRCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				36310934262AE8F7008FDD57 /* Data4LifeFHIRCoreTests.swift */,
+				36310936262AE8F7008FDD57 /* Info.plist */,
+			);
+			path = Data4LifeFHIRCoreTests;
+			sourceTree = "<group>";
+		};
+		36310954262AE955008FDD57 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				36310955262AE96F008FDD57 /* R4AttachmentHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		36310977262AEDF3008FDD57 /* R4+Data4LifeFHIRCore */ = {
+			isa = PBXGroup;
+			children = (
+				36310978262AEE14008FDD57 /* R4+Core.swift */,
+			);
+			path = "R4+Data4LifeFHIRCore";
+			sourceTree = "<group>";
+		};
+		3631099E262AEEBD008FDD57 /* Stu3+Core */ = {
+			isa = PBXGroup;
+			children = (
+				3631099F262AEED2008FDD57 /* Stu3+Core.swift */,
+			);
+			name = "Stu3+Core";
+			sourceTree = "<group>";
+		};
 		364731CC25530172008825F0 /* FhirR4 */ = {
 			isa = PBXGroup;
 			children = (
@@ -6176,6 +6223,8 @@
 		364731E4255301BB008825F0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				36310977262AEDF3008FDD57 /* R4+Data4LifeFHIRCore */,
+				36310954262AE955008FDD57 /* Helpers */,
 				364731D72553019F008825F0 /* FMCore */,
 				3647326525530329008825F0 /* ModelsR4 */,
 				364731CD25530172008825F0 /* ModelsR4.h */,
@@ -7077,6 +7126,9 @@
 			children = (
 				3669121F25545734001BF716 /* FhirStu3 */,
 				364731CC25530172008825F0 /* FhirR4 */,
+				36310928262AE8F6008FDD57 /* Data4LifeFHIRCore */,
+				36310933262AE8F7008FDD57 /* Data4LifeFHIRCoreTests */,
+				361E733326371DBB0064CCD8 /* FhirSPMDependencies */,
 				CD97E0681FB9D774001AD324 /* Products */,
 				3659BC9D23D87B5D009970DA /* Frameworks */,
 			);
@@ -7089,6 +7141,9 @@
 				CD97E0701FB9D774001AD324 /* Data4LifeFHIRTests.xctest */,
 				364731CB25530172008825F0 /* ModelsR4.framework */,
 				36ECD1C2258B9A9500945F37 /* ModelsR4Tests.xctest */,
+				36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */,
+				3631092F262AE8F7008FDD57 /* Data4LifeFHIRCoreTests.xctest */,
+				361E733226371DBB0064CCD8 /* libFhirSPMDependencies.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -7108,6 +7163,7 @@
 		CD97E0841FB9D7F2001AD324 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3631099E262AEEBD008FDD57 /* Stu3+Core */,
 				3685D3FE2591184500F97F9E /* Helpers */,
 				CD97E0851FB9D7F2001AD324 /* Data4LifeFHIR.h */,
 				CD97E0861FB9D7F2001AD324 /* Info.plist */,
@@ -7281,6 +7337,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		36310922262AE8F6008FDD57 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36310937262AE8F7008FDD57 /* Data4LifeFHIRCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		364731C625530172008825F0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -7300,6 +7364,64 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		361E733126371DBB0064CCD8 /* FhirSPMDependencies */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 361E733626371DBB0064CCD8 /* Build configuration list for PBXNativeTarget "FhirSPMDependencies" */;
+			buildPhases = (
+				361E732E26371DBB0064CCD8 /* Sources */,
+				361E732F26371DBB0064CCD8 /* Frameworks */,
+				361E733026371DBB0064CCD8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FhirSPMDependencies;
+			packageProductDependencies = (
+				361E734026371DC40064CCD8 /* Data4LifeSDKUtils */,
+			);
+			productName = FhirSPMDependencies;
+			productReference = 361E733226371DBB0064CCD8 /* libFhirSPMDependencies.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		36310926262AE8F6008FDD57 /* Data4LifeFHIRCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3631093C262AE8F7008FDD57 /* Build configuration list for PBXNativeTarget "Data4LifeFHIRCore" */;
+			buildPhases = (
+				36310922262AE8F6008FDD57 /* Headers */,
+				36310923262AE8F6008FDD57 /* Sources */,
+				36310924262AE8F6008FDD57 /* Frameworks */,
+				36310925262AE8F6008FDD57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Data4LifeFHIRCore;
+			productName = Data4LifeFHIRCore;
+			productReference = 36310927262AE8F6008FDD57 /* Data4LifeFHIRCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3631092E262AE8F7008FDD57 /* Data4LifeFHIRCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3631093D262AE8F7008FDD57 /* Build configuration list for PBXNativeTarget "Data4LifeFHIRCoreTests" */;
+			buildPhases = (
+				3631092B262AE8F7008FDD57 /* Sources */,
+				3631092C262AE8F7008FDD57 /* Frameworks */,
+				3631092D262AE8F7008FDD57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				363109CF262D6F12008FDD57 /* PBXTargetDependency */,
+				363109D1262D6F12008FDD57 /* PBXTargetDependency */,
+				36310932262AE8F7008FDD57 /* PBXTargetDependency */,
+			);
+			name = Data4LifeFHIRCoreTests;
+			productName = Data4LifeFHIRCoreTests;
+			productReference = 3631092F262AE8F7008FDD57 /* Data4LifeFHIRCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		364731CA25530172008825F0 /* ModelsR4 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 364731D025530172008825F0 /* Build configuration list for PBXNativeTarget "ModelsR4" */;
@@ -7312,6 +7434,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				36310988262AEE59008FDD57 /* PBXTargetDependency */,
+				361E734426371DEB0064CCD8 /* PBXTargetDependency */,
 			);
 			name = ModelsR4;
 			packageProductDependencies = (
@@ -7342,18 +7466,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD97E07B1FB9D774001AD324 /* Build configuration list for PBXNativeTarget "Data4LifeFHIR" */;
 			buildPhases = (
+				CD97E0641FB9D774001AD324 /* Headers */,
 				CD97E0621FB9D774001AD324 /* Sources */,
 				CD97E0631FB9D774001AD324 /* Frameworks */,
-				CD97E0641FB9D774001AD324 /* Headers */,
 				CD9A87B61FC3195E00C42CAC /* Run Swiftlint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				36310992262AEE61008FDD57 /* PBXTargetDependency */,
+				361E734726371DF20064CCD8 /* PBXTargetDependency */,
 			);
 			name = Data4LifeFHIR;
 			packageProductDependencies = (
-				3613AB54260CB6940016474D /* Data4LifeSDKUtils */,
 			);
 			productName = HCFHIR;
 			productReference = CD97E0671FB9D774001AD324 /* Data4LifeFHIR.framework */;
@@ -7383,10 +7508,20 @@
 		CD97E05E1FB9D774001AD324 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "HPS Gesundheitscloud gGmbH";
 				TargetAttributes = {
+					361E733126371DBB0064CCD8 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					36310926262AE8F6008FDD57 = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
+					};
+					3631092E262AE8F7008FDD57 = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					364731CA25530172008825F0 = {
 						CreatedOnToolsVersion = 12.0;
 						ProvisioningStyle = Automatic;
@@ -7417,7 +7552,7 @@
 			);
 			mainGroup = CD97E05D1FB9D774001AD324;
 			packageReferences = (
-				3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */,
+				360EC581263709BF00D8F8E9 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */,
 			);
 			productRefGroup = CD97E0681FB9D774001AD324 /* Products */;
 			projectDirPath = "";
@@ -7427,11 +7562,28 @@
 				CD97E06F1FB9D774001AD324 /* Data4LifeFHIRTests */,
 				364731CA25530172008825F0 /* ModelsR4 */,
 				36ECD1C1258B9A9500945F37 /* ModelsR4Tests */,
+				36310926262AE8F6008FDD57 /* Data4LifeFHIRCore */,
+				3631092E262AE8F7008FDD57 /* Data4LifeFHIRCoreTests */,
+				361E733126371DBB0064CCD8 /* FhirSPMDependencies */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		36310925262AE8F6008FDD57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3631092D262AE8F7008FDD57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		364731C925530172008825F0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -9989,6 +10141,31 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		361E732E26371DBB0064CCD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				361E733526371DBB0064CCD8 /* FhirSPMDependencies.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36310923262AE8F6008FDD57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3631096C262AEB47008FDD57 /* PartnerIdentifiable.swift in Sources */,
+				3631094E262AE916008FDD57 /* AnyFhirResource.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3631092B262AE8F7008FDD57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36310935262AE8F7008FDD57 /* Data4LifeFHIRCoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		364731C725530172008825F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -10340,6 +10517,7 @@
 				364735562553032C008825F0 /* Attachment.swift in Sources */,
 				3647358A2553032C008825F0 /* CodeSystemSynthesisType.swift in Sources */,
 				364736592553032D008825F0 /* CodeSystemDiagnosticReportStatus.swift in Sources */,
+				36310956262AE96F008FDD57 /* R4AttachmentHelper.swift in Sources */,
 				364736412553032D008825F0 /* CodeSystemConditionClinicalStatusCodes.swift in Sources */,
 				364737012553032D008825F0 /* CodeSystemDeviceDefinitionParameterGroup.swift in Sources */,
 				3647364F2553032D008825F0 /* CodeSystemFeedingDeviceCodes.swift in Sources */,
@@ -10452,6 +10630,7 @@
 				364737842553032D008825F0 /* CodeSystemStrandType.swift in Sources */,
 				3647353E2553032C008825F0 /* MedicinalProductIngredient.swift in Sources */,
 				364736B42553032D008825F0 /* CodeSystemObservationCategoryCodes.swift in Sources */,
+				36310979262AEE14008FDD57 /* R4+Core.swift in Sources */,
 				3647366A2553032D008825F0 /* CodeSystemActionConditionKind.swift in Sources */,
 				364736D82553032D008825F0 /* MedicinalProductPharmaceutical.swift in Sources */,
 				364735FC2553032C008825F0 /* Appointment.swift in Sources */,
@@ -11520,137 +11699,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3685D3A025910C4400F97F9E /* (null) in Sources */,
-				3685D3A125910C4400F97F9E /* (null) in Sources */,
-				3685D3A225910C4400F97F9E /* (null) in Sources */,
-				3685D3A325910C4400F97F9E /* (null) in Sources */,
-				3685D3A425910C4400F97F9E /* (null) in Sources */,
-				3685D3A525910C4400F97F9E /* (null) in Sources */,
-				3685D3A625910C4400F97F9E /* (null) in Sources */,
-				3685D3A725910C4400F97F9E /* (null) in Sources */,
-				3685D3A825910C4400F97F9E /* (null) in Sources */,
-				3685D3A925910C4400F97F9E /* (null) in Sources */,
-				3685D3AA25910C4400F97F9E /* (null) in Sources */,
-				3685D3AB25910C4400F97F9E /* (null) in Sources */,
-				3685D3AC25910C4400F97F9E /* (null) in Sources */,
-				3685D3AD25910C4400F97F9E /* (null) in Sources */,
-				3685D3AE25910C4400F97F9E /* (null) in Sources */,
-				3685D3AF25910C4400F97F9E /* (null) in Sources */,
-				3685D3B025910C4400F97F9E /* (null) in Sources */,
-				3685D3B125910C4400F97F9E /* (null) in Sources */,
-				3685D3B225910C4400F97F9E /* (null) in Sources */,
-				3685D3B325910C4400F97F9E /* (null) in Sources */,
-				3685D3B425910C4400F97F9E /* (null) in Sources */,
-				3685D3B525910C4400F97F9E /* (null) in Sources */,
-				3685D3B625910C4400F97F9E /* (null) in Sources */,
-				3685D3B725910C4400F97F9E /* (null) in Sources */,
-				3685D3B825910C4400F97F9E /* (null) in Sources */,
-				3685D3B925910C4400F97F9E /* (null) in Sources */,
-				3685D3BA25910C4400F97F9E /* (null) in Sources */,
-				3685D3BB25910C4400F97F9E /* (null) in Sources */,
 				3685D4102591184600F97F9E /* AnyResource.swift in Sources */,
-				3685D3BC25910C4400F97F9E /* (null) in Sources */,
-				3685D3BD25910C4400F97F9E /* (null) in Sources */,
-				3685D3BE25910C4400F97F9E /* (null) in Sources */,
 				3685D4162591184600F97F9E /* MedicationIngredientHelper.swift in Sources */,
-				3685D3BF25910C4400F97F9E /* (null) in Sources */,
-				3685D3C025910C4400F97F9E /* (null) in Sources */,
-				3685D3C125910C4400F97F9E /* (null) in Sources */,
-				3685D3C225910C4400F97F9E /* (null) in Sources */,
-				3685D3C325910C4400F97F9E /* (null) in Sources */,
-				3685D3C425910C4400F97F9E /* (null) in Sources */,
-				3685D3C525910C4400F97F9E /* (null) in Sources */,
-				3685D3C625910C4400F97F9E /* (null) in Sources */,
-				3685D3C725910C4400F97F9E /* (null) in Sources */,
-				3685D3C825910C4400F97F9E /* (null) in Sources */,
-				3685D3C925910C4400F97F9E /* (null) in Sources */,
-				3685D3CA25910C4400F97F9E /* (null) in Sources */,
-				3685D3CB25910C4400F97F9E /* (null) in Sources */,
-				3685D3CC25910C4400F97F9E /* (null) in Sources */,
-				3685D3CD25910C4400F97F9E /* (null) in Sources */,
-				3685D3CE25910C4400F97F9E /* (null) in Sources */,
-				3685D3CF25910C4400F97F9E /* (null) in Sources */,
-				3685D3D025910C4400F97F9E /* (null) in Sources */,
-				3685D3D125910C4400F97F9E /* (null) in Sources */,
-				3685D3D225910C4400F97F9E /* (null) in Sources */,
-				3685D3D325910C4400F97F9E /* (null) in Sources */,
-				3685D3D425910C4400F97F9E /* (null) in Sources */,
-				3685D3D525910C4400F97F9E /* (null) in Sources */,
-				3685D3D625910C4400F97F9E /* (null) in Sources */,
 				3685D4152591184600F97F9E /* ContactPointHelper.swift in Sources */,
-				3685D3D725910C4400F97F9E /* (null) in Sources */,
-				3685D3D825910C4400F97F9E /* (null) in Sources */,
 				3685D4172591184600F97F9E /* ReferenceHelper.swift in Sources */,
-				3685D3D925910C4400F97F9E /* (null) in Sources */,
-				3685D3DA25910C4400F97F9E /* (null) in Sources */,
-				3685D3DB25910C4400F97F9E /* (null) in Sources */,
-				3685D3DC25910C4400F97F9E /* (null) in Sources */,
 				3685D4192591184600F97F9E /* DosageHelpers.swift in Sources */,
-				BA5E4CC87BE2FD59CF6AB748 /* (null) in Sources */,
-				FD2B1361F3F3B71C838B3903 /* (null) in Sources */,
-				54BEED8E1B42D0C93D21542A /* (null) in Sources */,
-				3E8CFBD5F31366D442597E0D /* (null) in Sources */,
-				2817A901A54782F2C22A63E6 /* (null) in Sources */,
 				3685D4122591184600F97F9E /* KeyedContainerProtocol.swift in Sources */,
-				F80120CCC391EB1EBE6DB2D9 /* (null) in Sources */,
-				BAD38312AFDADE0E9459D9FE /* (null) in Sources */,
-				2096598D8F196DD8A508B669 /* (null) in Sources */,
-				B08DB4FC01377AED35FC2F49 /* (null) in Sources */,
-				3E628A20D53D19A073C81835 /* (null) in Sources */,
-				BAA86EBEB8D027955FF015A3 /* (null) in Sources */,
-				3D9B2ECA58FE0EEDB0D85CAD /* (null) in Sources */,
-				5D1C4B095AD8329F75B17E05 /* (null) in Sources */,
-				F8EB67EADBE61254ED693C8F /* (null) in Sources */,
-				1AA6AEB39D80C66B6EBD5383 /* (null) in Sources */,
-				26937546B6DC3918B00CF2C1 /* (null) in Sources */,
-				36276F6107C30A866C1A17B3 /* (null) in Sources */,
-				D0D8C0B5AD6671777B82DBD8 /* (null) in Sources */,
-				8F8A1220442F2AEFA3BC03E5 /* (null) in Sources */,
-				94F0A47A9178778B65BB68DF /* (null) in Sources */,
-				C351F926EBBC25D0BE6A6BBD /* (null) in Sources */,
-				A3D4F06AED5AF4399E1FC026 /* (null) in Sources */,
-				59EE5349C60C5738C2C46E29 /* (null) in Sources */,
-				173C0E0C0E5AFC95ED220C85 /* (null) in Sources */,
-				2F22229E348C339A0236FDD9 /* (null) in Sources */,
-				E884E2DD1AF67DD0E8BF020B /* (null) in Sources */,
-				CE237D6C570F0C39B51BD6F8 /* (null) in Sources */,
-				EC56EBA963789875599B3144 /* (null) in Sources */,
-				DBC94C7249F0329B143EA33D /* (null) in Sources */,
-				83D817CFEABE0239E4E6B10B /* (null) in Sources */,
-				C09E3DC23EDF761B056136F4 /* (null) in Sources */,
-				A7F5F5A2C3B8B5E9523053F9 /* (null) in Sources */,
-				152673FE9BA139802D042723 /* (null) in Sources */,
-				F518300F8E48080ABA449A1F /* (null) in Sources */,
-				447E5CA3237761D38611CD18 /* (null) in Sources */,
-				A5B40DA8D7DCE452A47273EE /* (null) in Sources */,
-				6A682443971B135D92FEACDE /* (null) in Sources */,
-				7EC0A34842ED254CFF27BC22 /* (null) in Sources */,
-				36DAE09975F853687FEF03DE /* (null) in Sources */,
-				ABA9EE4EC0ABD6162406CCCE /* (null) in Sources */,
+				363109A0262AEED2008FDD57 /* Stu3+Core.swift in Sources */,
 				3685D4112591184600F97F9E /* Data4LifeFHIRError.swift in Sources */,
-				A63632CCC5CFB367D535233F /* (null) in Sources */,
-				3611A9E17EA9EBACC418C358 /* (null) in Sources */,
-				8C07892750CE7D0B11E59834 /* (null) in Sources */,
-				E198BDB05E5120CCD3010603 /* (null) in Sources */,
-				3332C282AC5AC0C5E36F39DA /* (null) in Sources */,
-				30314395C15910E8381235FB /* (null) in Sources */,
-				A592E4144F11CD35BA8CADA9 /* (null) in Sources */,
 				3685D41A2591184600F97F9E /* AddressHelper.swift in Sources */,
-				F146BB8B2886A3D12C265FCB /* (null) in Sources */,
-				869180C6009641A0DF7A0407 /* (null) in Sources */,
-				3B46EAE5FD4DF3850E4FC80D /* (null) in Sources */,
-				D95C64473278A34B0C6060CF /* (null) in Sources */,
-				62BCFA1E93F6093D084686D7 /* (null) in Sources */,
-				9FEFDBF95935726FA3AD177B /* (null) in Sources */,
-				146C4C22D468787FC8A6A705 /* (null) in Sources */,
 				3685D41C2591184600F97F9E /* HumanNameHelper.swift in Sources */,
-				426E26BDD29A0A2E40CDB1EE /* (null) in Sources */,
-				FC08EC3FB1E482DD9FACC259 /* (null) in Sources */,
-				25E95F9AB8F4C1530A11C1CB /* (null) in Sources */,
-				17AB3B773CF285FDC487A4C9 /* (null) in Sources */,
-				C6AA1F46C6C0B0323FD85ABA /* (null) in Sources */,
-				A2BFBAAC964EC96A8F060208 /* (null) in Sources */,
-				6424F0159B32248F024C58F5 /* (null) in Sources */,
 				3685D4142591184600F97F9E /* IdentifierHelper.swift in Sources */,
 				873A09E6F5E9A0D48AB5A95D /* FHIRAbstractResource.swift in Sources */,
 				88773B40767B685BD61859C2 /* FHIRPrimitive.swift in Sources */,
@@ -11866,6 +11924,41 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		361E734426371DEB0064CCD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 361E733126371DBB0064CCD8 /* FhirSPMDependencies */;
+			targetProxy = 361E734326371DEB0064CCD8 /* PBXContainerItemProxy */;
+		};
+		361E734726371DF20064CCD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 361E733126371DBB0064CCD8 /* FhirSPMDependencies */;
+			targetProxy = 361E734626371DF20064CCD8 /* PBXContainerItemProxy */;
+		};
+		36310932262AE8F7008FDD57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36310926262AE8F6008FDD57 /* Data4LifeFHIRCore */;
+			targetProxy = 36310931262AE8F7008FDD57 /* PBXContainerItemProxy */;
+		};
+		36310988262AEE59008FDD57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36310926262AE8F6008FDD57 /* Data4LifeFHIRCore */;
+			targetProxy = 36310987262AEE59008FDD57 /* PBXContainerItemProxy */;
+		};
+		36310992262AEE61008FDD57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36310926262AE8F6008FDD57 /* Data4LifeFHIRCore */;
+			targetProxy = 36310991262AEE61008FDD57 /* PBXContainerItemProxy */;
+		};
+		363109CF262D6F12008FDD57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD97E0661FB9D774001AD324 /* Data4LifeFHIR */;
+			targetProxy = 363109CE262D6F12008FDD57 /* PBXContainerItemProxy */;
+		};
+		363109D1262D6F12008FDD57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 364731CA25530172008825F0 /* ModelsR4 */;
+			targetProxy = 363109D0262D6F12008FDD57 /* PBXContainerItemProxy */;
+		};
 		36ECD1C9258B9A9500945F37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 364731CA25530172008825F0 /* ModelsR4 */;
@@ -11879,6 +11972,150 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		361E733726371DBB0064CCD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D2QJWMP9SU;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		361E733826371DBB0064CCD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D2QJWMP9SU;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		36310938262AE8F7008FDD57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = D2QJWMP9SU;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Data4LifeFHIRCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.21.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.Data4LifeFHIRCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		36310939262AE8F7008FDD57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = D2QJWMP9SU;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Data4LifeFHIRCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.21.1;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.Data4LifeFHIRCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3631093A262AE8F7008FDD57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D2QJWMP9SU;
+				INFOPLIST_FILE = Data4LifeFHIRCoreTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.Data4LifeFHIRCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3631093B262AE8F7008FDD57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D2QJWMP9SU;
+				INFOPLIST_FILE = Data4LifeFHIRCoreTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.Data4LifeFHIRCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		364731D125530172008825F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -11899,16 +12136,17 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.20.0;
+				MARKETING_VERSION = 0.21.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.ModelsR4;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				VALIDATE_WORKSPACE = YES;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Debug;
 		};
@@ -11932,15 +12170,16 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.20.0;
+				MARKETING_VERSION = 0.21.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.ModelsR4;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				VALIDATE_WORKSPACE = YES;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Release;
 		};
@@ -12039,7 +12278,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -12097,7 +12336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -12123,8 +12362,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_TESTING_SEARCH_PATHS = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = FhirStu3/Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -12134,7 +12373,8 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.20.0;
+				MARKETING_VERSION = 0.21.1;
+				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.HCFHIR;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -12143,7 +12383,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_WORKSPACE = YES;
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Debug;
 		};
@@ -12161,8 +12401,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_TESTING_SEARCH_PATHS = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = FhirStu3/Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -12172,7 +12412,8 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.20.0;
+				MARKETING_VERSION = 0.21.1;
+				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.HCFHIR;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -12180,7 +12421,7 @@
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_WORKSPACE = YES;
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Release;
 		};
@@ -12236,6 +12477,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		361E733626371DBB0064CCD8 /* Build configuration list for PBXNativeTarget "FhirSPMDependencies" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				361E733726371DBB0064CCD8 /* Debug */,
+				361E733826371DBB0064CCD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3631093C262AE8F7008FDD57 /* Build configuration list for PBXNativeTarget "Data4LifeFHIRCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36310938262AE8F7008FDD57 /* Debug */,
+				36310939262AE8F7008FDD57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3631093D262AE8F7008FDD57 /* Build configuration list for PBXNativeTarget "Data4LifeFHIRCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3631093A262AE8F7008FDD57 /* Debug */,
+				3631093B262AE8F7008FDD57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		364731D025530172008825F0 /* Build configuration list for PBXNativeTarget "ModelsR4" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -12284,20 +12552,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */ = {
+		360EC581263709BF00D8F8E9 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:d4l-data4life/d4l-utils-ios.git";
+			repositoryURL = "https://github.com/d4l-data4life/d4l-utils-ios.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.5.0;
+				minimumVersion = 0.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3613AB54260CB6940016474D /* Data4LifeSDKUtils */ = {
+		361E734026371DC40064CCD8 /* Data4LifeSDKUtils */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3613AB51260CB6940016474D /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
+			package = 360EC581263709BF00D8F8E9 /* XCRemoteSwiftPackageReference "d4l-utils-ios" */;
 			productName = Data4LifeSDKUtils;
 		};
 /* End XCSwiftPackageProductDependency section */

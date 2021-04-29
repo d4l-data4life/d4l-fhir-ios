@@ -67,11 +67,16 @@ Package and release framework
  * **`skip_git_pull`**: Skips pulling the git remote. Defaults to false
 
  * **`is_prerelease`**: Marks GitHub release as Pre-release. Defaults to false
-### ios build_xcframework
+### ios build_all_xcframeworks
 ```
-fastlane ios build_xcframework
+fastlane ios build_all_xcframeworks
 ```
 Build xcframework for distribution
+### ios build_project_xcframework
+```
+fastlane ios build_project_xcframework
+```
+Build any project xcframework
 ### ios gh_release
 ```
 fastlane ios gh_release
@@ -82,16 +87,21 @@ Upload to a github release
 fastlane ios update_podspec_version
 ```
 Update podspecs version
+### ios push_core_podspec
+```
+fastlane ios push_core_podspec
+```
+Push new core podspec to repo
 ### ios push_stu3_podspec
 ```
 fastlane ios push_stu3_podspec
 ```
-Push new podspec to repo
+Push new stu3 podspec to repo
 ### ios push_r4_podspec
 ```
 fastlane ios push_r4_podspec
 ```
-Push new podspec to repo
+Push new r4 podspec to repo
 ### ios generate_docs
 ```
 fastlane ios generate_docs

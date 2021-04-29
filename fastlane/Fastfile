@@ -7,8 +7,9 @@ repository = "d4l-data4life/d4l-fhir-ios"
 framework_binary_path = "build/" + project + ".framework.zip"
 podspec_stu3_path = '../Data4LifeFHIR.podspec'
 podspec_r4_path = '../ModelsR4.podspec'
-private_podspec_repo_name = 'd4l-data4life'
-private_podspect_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
+podspec_core_path = '../Data4LifeFHIRCore.podspec'
+podspec_repo_name = 'd4l-data4life'
+podspect_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
 device = "iPhone 12"
 
 platform :ios do
@@ -139,10 +140,12 @@ platform :ios do
       Helper.log.info "When finished, commit your changes and create your tag.".red
     end
 
-    build_xcframework(version: version)
+    build_all_xcframeworks(version: version)
+
     archiveAllFrameworksPath = allXcFrameworksArchivePath(version)
     archiveStu3Path = stu3XcFrameworkArchivePath(version)
     archiveR4Path = r4XcFrameworkArchivePath(version)
+    archiveCorePath = coreXcFrameworkArchivePath(version)
 
     # Post new release to GitHub
     gh_release(
@@ -152,17 +155,57 @@ platform :ios do
       is_prerelease: is_prerelease,
       asset1: archiveAllFrameworksPath,
       asset2: archiveStu3Path,
-      asset3: archiveR4Path
+      asset3: archiveR4Path,
+      asset4: archiveCorePath
     )
 
-    push_stu3_podspec
-    push_r4_podspec
+    push_podspec(podspecPath: podspec_core_path)
+    push_podspec(podspecPath: podspec_stu3_path)
+    push_podspec(podspecPath: podspec_r4_path)
   end
 
   desc "Build xcframework for distribution"
-  lane :build_xcframework do |options|
+  lane :build_all_xcframeworks do |options|
     if options[:version] == nil
         raise "Missing release version".red
+    end
+
+    coreXcFrameworkPath = "#{project}Core.xcframework"
+    stu3xcFrameworkPath = "#{project}.xcframework"
+    r4xcFrameworkPath = "#{projectR4}.xcframework"
+
+    build_project_xcframework(projectName: "#{project}Core", outputPath: coreXcFrameworkPath)
+    build_project_xcframework(projectName: "#{project}", outputPath: stu3xcFrameworkPath)
+    build_project_xcframework(projectName: "#{projectR4}", outputPath: r4xcFrameworkPath)
+
+    Dir.chdir("..") do
+      archiveAllFrameworksPath = allXcFrameworksArchivePath(options[:version])
+      archiveCorePath = coreXcFrameworkArchivePath(options[:version])
+      archiveStu3Path = stu3XcFrameworkArchivePath(options[:version])
+      archiveR4Path = r4XcFrameworkArchivePath(options[:version])
+
+      if File.exist?(archiveAllFrameworksPath)
+        sh "rm #{archiveAllFrameworksPath}"
+      end
+
+      sh "zip -r #{archiveAllFrameworksPath} #{stu3xcFrameworkPath} #{r4xcFrameworkPath} #{coreXcFrameworkPath} LICENSE"
+      sh "zip -r #{archiveCorePath} #{coreXcFrameworkPath}"
+      sh "zip -r #{archiveStu3Path} #{stu3xcFrameworkPath}"
+      sh "zip -r #{archiveR4Path} #{r4xcFrameworkPath}"
+
+      sh "rm -rf #{stu3xcFrameworkPath}"
+      sh "rm -rf #{r4xcFrameworkPath}"
+      sh "rm -rf #{coreXcFrameworkPath}"
+    end
+  end
+
+  desc "Build any project xcframework"
+  lane :build_project_xcframework do |options|
+    if options[:projectName] == nil
+        raise "Missing project name".red
+    end
+    if options[:outputPath] == nil
+        raise "Missing output path".red
     end
 
     Dir.chdir("..") do
@@ -170,65 +213,23 @@ platform :ios do
       configuration = "Release"
       buildPath = "xcbuild"
 
-      stu3xcFrameworkPath = "#{project}.xcframework"
-      r4xcFrameworkPath = "#{projectR4}.xcframework"
-
-      archiveAllFrameworksPath = allXcFrameworksArchivePath(options[:version])
-      archiveStu3Path = stu3XcFrameworkArchivePath(options[:version])
-      archiveR4Path = r4XcFrameworkArchivePath(options[:version])
+      projectName = options[:projectName]
+      outputPath = options[:outputPath]
 
       if File.exist?(buildPath)
         sh "rm -rf #{buildPath}"
       end
-      if File.exist?(stu3xcFrameworkPath)
-        sh "rm -rf #{stu3xcFrameworkPath}"
-      end
-      if File.exist?(r4xcFrameworkPath)
-        sh "rm -rf #{r4xcFrameworkPath}"
+      if File.exist?(outputPath)
+        sh "rm -rf #{outputPath}"
       end
 
-      if File.exist?(archiveAllFrameworksPath)
-        sh "rm #{archiveAllFrameworksPath}"
-      end
-      if File.exist?(archiveStu3Path)
-        sh "rm #{archiveStu3Path}"
-      end
-      if File.exist?(archiveR4Path)
-        sh "rm #{archiveR4Path}"
-      end
-
-      sh "rm -rf #{buildPath}"
-      sh "rm -rf #{stu3xcFrameworkPath}"
-      sh "xcodebuild archive -scheme #{project} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      sh "xcodebuild archive -scheme #{project} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      symbolMapUUIDFile = Dir.children("./#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/").first()
+      sh "rm -rf #{outputPath}"
+      sh "xcodebuild archive -scheme #{projectName} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectName}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild archive -scheme #{projectName} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectName}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
       sh "xcodebuild -create-xcframework \
-          -framework #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{project}.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/dSYMs/#{project}.framework.dSYM' \
-          -framework #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/Products/Library/Frameworks/#{project}.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/dSYMs/#{project}.framework.dSYM' \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
-          -output #{stu3xcFrameworkPath}"
-
-
-      sh "rm -rf #{buildPath}"
-      sh "rm -rf #{r4xcFrameworkPath}"
-      sh "xcodebuild archive -scheme #{projectR4} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectR4}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      sh "xcodebuild archive -scheme #{projectR4} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      symbolMapUUIDFile = Dir.children("./#{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/BCSymbolMaps/").first()
-      sh "xcodebuild -create-xcframework \
-          -framework #{buildPath}/#{configuration}/#{projectR4}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{projectR4}.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{projectR4}-iphonesimulator.xcarchive/dSYMs/#{projectR4}.framework.dSYM' \
-          -framework #{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/Products/Library/Frameworks/#{projectR4}.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/dSYMs/#{projectR4}.framework.dSYM' \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{projectR4}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
-          -output #{r4xcFrameworkPath}"
-
-        sh "zip -r #{archiveAllFrameworksPath} #{stu3xcFrameworkPath} #{r4xcFrameworkPath} LICENSE"
-        sh "zip -r #{archiveStu3Path} #{stu3xcFrameworkPath}"
-        sh "zip -r #{archiveR4Path} #{r4xcFrameworkPath}"
-        sh "rm -rf #{stu3xcFrameworkPath}"
-        sh "rm -rf #{r4xcFrameworkPath}"
+          -framework #{buildPath}/#{configuration}/#{projectName}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{projectName}.framework \
+          -framework #{buildPath}/#{configuration}/#{projectName}-iphoneos.xcarchive/Products/Library/Frameworks/#{projectName}.framework \
+          -output #{outputPath}"
     end
   end
 
@@ -255,6 +256,10 @@ platform :ios do
         raise "Missing asset".red
     end
 
+    if options[:asset4] == nil
+        raise "Missing asset".red
+    end
+
     isPrerelease = options[:is_prerelease]
     if isPrerelease == nil
         isPrerelease = true
@@ -272,7 +277,7 @@ platform :ios do
       tag_name: options[:version],
       description: changelog,
       is_prerelease: isPrerelease,
-      upload_assets: [options[:asset1], options[:asset2], options[:asset3]]
+      upload_assets: [options[:asset1], options[:asset2], options[:asset3], options[:asset4]]
     )
   end
 
@@ -280,6 +285,7 @@ platform :ios do
   lane :update_podspec_version do | options |
     UI.user_error!("Could not find podspec file at path #{podspec_stu3_path}") unless File.exist?(podspec_stu3_path)
     UI.user_error!("Could not find podspec file at path #{podspec_r4_path}") unless File.exist?(podspec_r4_path)
+    UI.user_error!("Could not find podspec file at path #{podspec_core_path}") unless File.exist?(podspec_core_path)
 
     if !options[:version]
       raise "No version specified!".red
@@ -294,26 +300,37 @@ platform :ios do
     podspec_r4_content = File.read(podspec_r4_path)
     updated = podspec_r4_content.gsub(/"([0-9]+)\.([0-9]+)\.([0-9]+)\-?([0-9a-zA-Z]*)\.?([0-9a-zA-Z]*)"/, "\"#{new_version}\"")
     File.write(podspec_r4_path, updated)
+
+    podspec_core_content = File.read(podspec_core_path)
+    updated = podspec_core_content.gsub(/"([0-9]+)\.([0-9]+)\.([0-9]+)\-?([0-9a-zA-Z]*)\.?([0-9a-zA-Z]*)"/, "\"#{new_version}\"")
+    File.write(podspec_core_path, updated)
   end
 
-  desc "Push new podspec to repo"
+  desc "Push new core podspec to repo"
+  lane :push_podspec do
+    if !options[:podspecPath]
+      raise "No podspec specified!".red
+    end
+
+    repo_list = sh "bundle exec pod repo list"
+    if !repo_list.include? podspec_repo_name
+     sh "bundle exec pod repo add #{podspec_repo_name} #{podspect_repo_url}"
+    end
+
+    sh "bundle exec pod repo push #{podspec_repo_name} #{options[:podspecPath]} --allow-warnings"
+  end
+
+  desc "Push new core podspec to repo"
+  lane :push_core_podspec do
+    push_podspec(podspecPath: podspec_core_path)
+  end
+  desc "Push new core podspec to repo"
   lane :push_stu3_podspec do
-    repo_list = sh "bundle exec pod repo list"
-    if !repo_list.include? private_podspec_repo_name
-     sh "bundle exec pod repo add #{private_podspec_repo_name} #{private_podspect_repo_url}"
-    end
-
-    sh "bundle exec pod repo push #{private_podspec_repo_name} #{podspec_stu3_path} --private --allow-warnings"
+    push_podspec(podspecPath: podspec_stu3_path)
   end
-
-  desc "Push new podspec to repo"
+  desc "Push new core podspec to repo"
   lane :push_r4_podspec do
-    repo_list = sh "bundle exec pod repo list"
-    if !repo_list.include? private_podspec_repo_name
-     sh "bundle exec pod repo add #{private_podspec_repo_name} #{private_podspect_repo_url}"
-    end
-
-    sh "bundle exec pod repo push #{private_podspec_repo_name} #{podspec_r4_path} --private --allow-warnings"
+    push_podspec(podspecPath: podspec_r4_path)
   end
 
   desc "Generate docs per version using Asciidoctor"
@@ -344,5 +361,9 @@ platform :ios do
 
   def r4XcFrameworkArchivePath(version)
      return "ModelsR4-xcframework-#{version}.zip"
+  end
+
+  def coreXcFrameworkArchivePath(version)
+     return "Data4LifeFHIRCore-xcframework-#{version}.zip"
   end
 end

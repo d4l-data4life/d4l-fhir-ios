@@ -13,22 +13,14 @@
 //  applications and/or if you’d like to contribute to the development of the SDK, please
 //  contact D4L by email to help@data4life.care.
 
-import XCTest
-import Data4LifeFHIR
+#import <Foundation/Foundation.h>
 
-class AnyResourceTests: XCTestCase {
+//! Project version number for Data4LifeFHIRCore.
+FOUNDATION_EXPORT double Data4LifeFHIRCoreVersionNumber;
 
-    var decoder: JSONDecoder { return JSONDecoder() }
-    var bundle: Bundle { Bundle.test }
+//! Project version string for Data4LifeFHIRCore.
+FOUNDATION_EXPORT const unsigned char Data4LifeFHIRCoreVersionString[];
 
-    func testAnyResource() {
-        do {
-            let data = try bundle.loadJSONData(named: "documentreference-example.json")
-            let genericResource = try decoder.decode(AnyResource.self, from: data)
-            let specializedResource = try decoder.decode(AnyResource<DocumentReference>.self, from: data)
-            XCTAssertEqual(genericResource.resource, specializedResource.resource)
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
-    }
-}
+// In this header, you should import all the public headers of your framework using statements like #import <Data4LifeFHIRCore/PublicHeader.h>
+
+
