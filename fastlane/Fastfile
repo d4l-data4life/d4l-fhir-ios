@@ -27,9 +27,15 @@ platform :ios do
       devices: device,
       clean: false
     )
+    scan(
+      scheme: "Data4LifeFHIRCore",
+      derived_data_path: "build/DerivedData",
+      devices: device,
+      clean: false
+    )
 
     Dir.chdir("..") do
-      sh("pod spec lint --sources='git@github.com:d4l-data4life/d4l-cocoapods-specs.git,https://github.com/CocoaPods/Specs'")
+      sh("pod spec lint --sources='https://github.com/d4l-data4life/d4l-cocoapods-specs,https://github.com/CocoaPods/Specs'")
     end
   end
 
