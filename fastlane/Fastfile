@@ -27,9 +27,15 @@ platform :ios do
       devices: device,
       clean: false
     )
+    scan(
+      scheme: "Data4LifeFHIRCore",
+      derived_data_path: "build/DerivedData",
+      devices: device,
+      clean: false
+    )
 
     Dir.chdir("..") do
-      sh("pod spec lint --sources='git@github.com:d4l-data4life/d4l-cocoapods-specs.git,https://github.com/CocoaPods/Specs'")
+      sh("pod spec lint --sources='https://github.com/d4l-data4life/d4l-cocoapods-specs,https://github.com/CocoaPods/Specs'")
     end
   end
 
@@ -140,7 +146,7 @@ platform :ios do
       Helper.log.info "When finished, commit your changes and create your tag.".red
     end
 
-    build_all_xcframeworks(version: version)
+    build_xcframeworks(version: version)
 
     archiveAllFrameworksPath = allXcFrameworksArchivePath(version)
     archiveStu3Path = stu3XcFrameworkArchivePath(version)
@@ -165,7 +171,7 @@ platform :ios do
   end
 
   desc "Build xcframework for distribution"
-  lane :build_all_xcframeworks do |options|
+  lane :build_xcframeworks do |options|
     if options[:version] == nil
         raise "Missing release version".red
     end
@@ -224,8 +230,8 @@ platform :ios do
       end
 
       sh "rm -rf #{outputPath}"
-      sh "xcodebuild archive -scheme #{projectName} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectName}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      sh "xcodebuild archive -scheme #{projectName} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectName}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild archive -scheme #{projectName} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectName}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO"
+      sh "xcodebuild archive -scheme #{projectName} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectName}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO"
       sh "xcodebuild -create-xcframework \
           -framework #{buildPath}/#{configuration}/#{projectName}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{projectName}.framework \
           -framework #{buildPath}/#{configuration}/#{projectName}-iphoneos.xcarchive/Products/Library/Frameworks/#{projectName}.framework \
@@ -307,7 +313,7 @@ platform :ios do
   end
 
   desc "Push new core podspec to repo"
-  lane :push_podspec do
+  lane :push_podspec do | options |
     if !options[:podspecPath]
       raise "No podspec specified!".red
     end
@@ -321,15 +327,24 @@ platform :ios do
   end
 
   desc "Push new core podspec to repo"
-  lane :push_core_podspec do
+  lane :push_all_podspecs do
+    push_core_podspec
+    push_stu3_podspec
+    push_r4_podspec
+  end
+
+  desc "Push new core podspec to repo"
+  lane :push_core_podspec do | options |
     push_podspec(podspecPath: podspec_core_path)
   end
+
   desc "Push new core podspec to repo"
-  lane :push_stu3_podspec do
+  lane :push_stu3_podspec do | options |
     push_podspec(podspecPath: podspec_stu3_path)
   end
+
   desc "Push new core podspec to repo"
-  lane :push_r4_podspec do
+  lane :push_r4_podspec do | options |
     push_podspec(podspecPath: podspec_r4_path)
   end
 
