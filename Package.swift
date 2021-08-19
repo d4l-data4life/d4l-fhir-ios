@@ -3,6 +3,7 @@
 
 import PackageDescription
 
+let version = "0.22.0"
 let package = Package(
     name: "Data4LifeFHIR",
     platforms: [
@@ -29,18 +30,18 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
             name: "Data4LifeFHIRCore",
-            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/Data4LifeFHIRCore-xcframework-0.21.1.zip",
-            checksum: "4cc0edf173be50fb7199b73569cb38c5ae7ae11b552e0d30f1ce6c0d98113507"
+            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/\(version)/Data4LifeFHIRCore-xcframework-\(version).zip",
+            checksum: "6be5c0f68d6179ce2391614c14b2a264ad7ef63dabda87fb28a6dda7e50c4165"
         ),
         .binaryTarget(
             name: "Data4LifeFHIR",
-            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/Data4LifeFHIR-xcframework-0.21.1.zip",
-            checksum: "5bd2c88caf58a3c7e3dd0804c96bb46c9f84934271106f6f23cd85a05733e16b"
+            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/\(version)/Data4LifeFHIR-xcframework-\(version).zip",
+            checksum: "b5253498cc4581eb9766d07bce7ba701cde48d659e8cf8d4c5f11251134502c4"
         ),
         .binaryTarget(
             name: "ModelsR4",
-            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/0.21.1/ModelsR4-xcframework-0.21.1.zip",
-            checksum: "60aee6c2bbfb67dbb94b3a19d991827ad4fdd8954710f19e5ae937b19861e8d5"
+            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/\(version)/ModelsR4-xcframework-\(version).zip",
+            checksum: "af66684d497583c637a6c81643c23b83298249680b444ac98745e6881c08b02d"
         ),
         .target(name: "Data4LifeSDKUtilsFHIR",
                 dependencies: [
