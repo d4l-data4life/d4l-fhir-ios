@@ -1,42 +1,33 @@
 default_platform :ios
 
-project = "Data4LifeFHIR"
-projectR4 = "ModelsR4"
-
 repository = "d4l-data4life/d4l-fhir-ios"
-framework_binary_path = "build/" + project + ".framework.zip"
-podspec_stu3_path = '../Data4LifeFHIR.podspec'
-podspec_r4_path = '../ModelsR4.podspec'
-podspec_core_path = '../Data4LifeFHIRCore.podspec'
-podspec_repo_name = 'd4l-data4life'
-podspect_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
+projectCore = "Data4LifeFHIRCore"
+projectSTU3 = "Data4LifeFHIR"
+projectR4 = "ModelsR4"
+buildPath = "build/DerivedData"
 device = "iPhone 12"
 
 platform :ios do
   desc "Run unit tests"
   lane :test do
     scan(
-      scheme: project,
-      derived_data_path: "build/DerivedData",
+      scheme: projectCore,
+      derived_data_path: buildPath,
       devices: device,
       clean: true
     )
     scan(
-      scheme: projectR4,
-      derived_data_path: "build/DerivedData",
+      scheme: projectSTU3,
+      derived_data_path: buildPath,
       devices: device,
       clean: false
     )
     scan(
-      scheme: "Data4LifeFHIRCore",
-      derived_data_path: "build/DerivedData",
+      scheme: projectR4,
+      derived_data_path: buildPath,
       devices: device,
       clean: false
     )
-
-    Dir.chdir("..") do
-      sh("pod spec lint --sources='https://github.com/d4l-data4life/d4l-cocoapods-specs,https://github.com/CocoaPods/Specs'")
-    end
   end
 
   desc "Run linter and autocorrect issues"
@@ -70,65 +61,51 @@ platform :ios do
       fhir_r4_tests
   end
 
-  desc "Package and release framework"
+  desc "Prepare release"
   desc "#### Options"
   desc " * **`version`** (required): The new version of the framework"
   desc " * **`api_token`** (required): Github API token"
-  desc " * **`allow_dirty_branch`**: Allows the git branch to be dirty before continuing. Defaults to false"
-  desc " * **`remote`**: The name of the git remote. Defaults to `origin`. (`DEPLOY_REMOTE`)"
-  desc " * **`allow_branch`**: The name of the branch to build from. Defaults to `main`. (`DEPLOY_BRANCH`)"
-  desc " * **`skip_git_pull`**: Skips pulling the git remote. Defaults to false"
-  desc " * **`is_prerelease`**: Marks GitHub release as Pre-release. Defaults to false"
-  lane :release_framework do | options |
-    if options[:allow_dirty_branch] != true
-      ensure_git_status_clean
-    end
-
-    # Update the version
+  lane :prepare_release do | options |
     if !options[:version]
-      raise "No version specified!".red
+      UI.user_error!("Please add required parameter version (eg. version:\"1.0.0\"")
     end
 
     if !options[:api_token]
-      raise "No api_token specified!".red
+      UI.user_error!("Please add required parameter version (eg. api_token:\"xxxxxxxxx\"")
     end
 
     version = options[:version]
-    is_prerelease = options[:is_prerelease] ||= false
+    apiToken = options[:api_token]
+    remote = "origin"
+    changelog = "v#{version}" # TODO parseAndCheckChangelog("../CHANGELOG.md", version)
+    archiveCorePath = frameworkPath(projectCore, options[:version])
+    archiveStu3Path = frameworkPath(projectSTU3, options[:version])
+    archiveR4Path = frameworkPath(projectR4, options[:version])
 
-    remote = options[:remote] ? options[:remote] : (ENV["DEPLOY_REMOTE"] ? ENV["DEPLOY_REMOTE"] : "origin")
-    allowed_branch = options[:allow_branch] ? options[:allow_branch] : (ENV["DEPLOY_BRANCH"] ? ENV["DEPLOY_BRANCH"] : "release/#{version}")
-    ensure_git_branch(branch: allowed_branch)
+    unless changelog 
+      UI.user_error!("Please add all changes of the version to the CHANGELOG.md file")
+    end 
 
-    if options[:skip_git_pull] != true
-      sh("git pull #{remote} #{allowed_branch}")
-    end
+    update_plist_versions(version: version)
+    # TODO update_readme_versions(version: version)
+    # TODO update_badge(version: version)
+    generate_docs(version: version)
+    build_fhir(version: version)
+    
+    Dir.chdir("..") do
+      upload_archive_to_s3(repository, archiveCorePath)
+      update_swift_package_file(repository, archiveCorePath)
+      upload_archive_to_s3(repository, archiveStu3Path)
+      update_swift_package_file(repository, archiveStu3Path)
+      upload_archive_to_s3(repository, archiveR4Path)
+      update_swift_package_file(repository, archiveR4Path)
+    end 
 
-    # Parse changelog data
-    changelog_path = options[:changelog_path] ? options[:changelog_path] : "../CHANGELOG.md"
-    changelog_data = File.read(changelog_path)
-    # Try to find all markdown headers and split
-    changelog_sections = changelog_data.split(/\#{2,3}\s/)
-    # Look out for new section of the newest version
-    current_changelog_index = changelog_sections.index { |h| h.start_with?("[#{version}]")}
+    # Ask for confirmation for github
+    if prompt(text: "#{version} has been prepped for release. If you have any additional changes you would like to make to the README or CHANGELOG, please do those before continuing. Would you like to commit, and push #{version} to #{remote}?".green, boolean: true, ci_input:"y")
 
-    unless current_changelog_index
-      UI.error("Please add all changes of the version to the CHANGELOG.md file")
-    end
-
-    # Get all split for this version and combine them again to one text
-    changelog_header_indices = changelog_sections.each_with_index.select {|s, _| s.match(/^\[([0-9]+)\.([0-9]+)\.([0-9]+)\]/) }.map(&:last)
-    next_changelog_index = changelog_header_indices.index { |h| h == current_changelog_index } + 1
-    changelog = "### " + changelog_sections[current_changelog_index + 1...changelog_header_indices[next_changelog_index]].join("### ")
-
-    if prompt(text: "#{version} has been prepped for release. If you have any additional changes you would like to make to the README or CHANGELOG, please do those before continuing. Would you like to commit, tag, and push #{version} to #{remote}?".green, boolean: true, ci_input:"y")
-      increment_version_number(
-        xcodeproj: "#{project}.xcodeproj",
-        version_number: version
-      )
-
-      update_podspec_version(version: version)
-
+      # Push all generated/modified files 
+      git_add
       git_commit(
         path: ".",
         message: "Preparing for the #{version} release"
@@ -139,62 +116,75 @@ platform :ios do
         tags: false
       )
 
-      add_git_tag(
-        tag: "#{version}"
+      # Make new draft release to GitHub
+      create_github_draft(
+        version: version,
+        api_token: apiToken,
+        changelog: changelog
       )
     else
-      Helper.log.info "When finished, commit your changes and create your tag.".red
+      UI.message("When finished, commit your changes.")
     end
-
-    build_xcframeworks(version: version)
-
-    archiveAllFrameworksPath = allXcFrameworksArchivePath(version)
-    archiveStu3Path = stu3XcFrameworkArchivePath(version)
-    archiveR4Path = r4XcFrameworkArchivePath(version)
-    archiveCorePath = coreXcFrameworkArchivePath(version)
-
-    # Post new release to GitHub
-    gh_release(
-      version: version,
-      api_token:options[:api_token],
-      changelog: changelog,
-      is_prerelease: is_prerelease,
-      asset1: archiveAllFrameworksPath,
-      asset2: archiveStu3Path,
-      asset3: archiveR4Path,
-      asset4: archiveCorePath
-    )
-
-    push_podspec(podspecPath: podspec_core_path)
-    push_podspec(podspecPath: podspec_stu3_path)
-    push_podspec(podspecPath: podspec_r4_path)
   end
 
-  desc "Build xcframework for distribution"
-  lane :build_xcframeworks do |options|
+  desc "Prepare snapshot"
+  lane :prepare_snapshot do 
+    snapshotName = current_git_branch().split("/").last 
+    remote = "origin"
+
+    archiveCorePath = frameworkPath(projectCore, options[:version])
+    archiveStu3Path = frameworkPath(projectSTU3, options[:version])
+    archiveR4Path = frameworkPath(projectR4, options[:version])
+
+    build_fhir(version: snapshotName)
+    
+    Dir.chdir("..") do
+      upload_archive_to_s3(repository, archiveCorePath)
+      update_swift_package_file(repository, archiveCorePath)
+      upload_archive_to_s3(repository, archiveStu3Path)
+      update_swift_package_file(repository, archiveStu3Path)
+      upload_archive_to_s3(repository, archiveR4Path)
+      update_swift_package_file(repository, archiveR4Path)
+    end 
+
+    # Ask for confirmation for github
+    if prompt(text: "#{snapshotName} has been prepped for snapshot-release. Would you like to commit, and push #{snapshotName} to #{remote}?".green, boolean: true, ci_input:"y")
+
+      # Push all generated/modified files 
+      git_add
+      git_commit(
+        path: ".",
+        message: "Preparing for the #{snapshotName} release"
+      )
+
+      push_to_git_remote(
+        remote: remote,
+        tags: false
+      )
+    else
+      UI.message("When finished, commit your changes.")
+    end
+  end
+
+  desc "Build all xcframeworks"
+  lane :build_fhir do |options|
     if options[:version] == nil
         raise "Missing release version".red
     end
 
-    coreXcFrameworkPath = "#{project}Core.xcframework"
-    stu3xcFrameworkPath = "#{project}.xcframework"
+    coreXcFrameworkPath = "#{projectCore}.xcframework"
+    stu3xcFrameworkPath = "#{projectSTU3}.xcframework"
     r4xcFrameworkPath = "#{projectR4}.xcframework"
 
-    build_project_xcframework(projectName: "#{project}Core", outputPath: coreXcFrameworkPath)
-    build_project_xcframework(projectName: "#{project}", outputPath: stu3xcFrameworkPath)
-    build_project_xcframework(projectName: "#{projectR4}", outputPath: r4xcFrameworkPath)
+    build_xcframework(projectName: "#{projectCore}", outputPath: coreXcFrameworkPath)
+    build_xcframework(projectName: "#{projectSTU3}", outputPath: stu3xcFrameworkPath)
+    build_xcframework(projectName: "#{projectR4}", outputPath: r4xcFrameworkPath)
 
     Dir.chdir("..") do
-      archiveAllFrameworksPath = allXcFrameworksArchivePath(options[:version])
-      archiveCorePath = coreXcFrameworkArchivePath(options[:version])
-      archiveStu3Path = stu3XcFrameworkArchivePath(options[:version])
-      archiveR4Path = r4XcFrameworkArchivePath(options[:version])
+      archiveCorePath = frameworkPath(projectCore, options[:version])
+      archiveStu3Path = frameworkPath(projectSTU3, options[:version])
+      archiveR4Path = frameworkPath(projectR4, options[:version])
 
-      if File.exist?(archiveAllFrameworksPath)
-        sh "rm #{archiveAllFrameworksPath}"
-      end
-
-      sh "zip -r #{archiveAllFrameworksPath} #{stu3xcFrameworkPath} #{r4xcFrameworkPath} #{coreXcFrameworkPath} LICENSE"
       sh "zip -r #{archiveCorePath} #{coreXcFrameworkPath}"
       sh "zip -r #{archiveStu3Path} #{stu3xcFrameworkPath}"
       sh "zip -r #{archiveR4Path} #{r4xcFrameworkPath}"
@@ -205,10 +195,43 @@ platform :ios do
     end
   end
 
+  desc "Update version numbers in README.adoc"
+  lane :update_readme_versions do | options |
+    if !options[:version]
+      raise "No version specified!".red
+    end
+
+    version = options[:version]
+    path = "../README.adoc"
+    numberOnlyVersion = version.split("-").first.delete_prefix("v")
+
+    if numberOnlyVersion.match(/\A\d+(?:\.\d+)*\z/) == nil
+        raise "Could not generate proper number only version format".red
+    end
+
+    readmeData = File.read(path)
+    readmeDataUpdated = readmeData.gsub(/ [0-9]+\.[0-9]+\.[0-9]+/, " #{numberOnlyVersion}")
+    File.write(path, readmeDataUpdated)
+  end
+
+  desc "Update readme badge"
+  lane :update_badge do |options|
+    if options[:version] == nil
+      UI.user_error!("Please add required parameter version (eg. version:\"1.0.0\"")
+    end
+    
+    Dir.chdir("..") do
+      sh "curl https://img.shields.io/badge/Release-#{options[:version]}-blueviolet.svg -s -o assets/images/badge-release-latest.svg"
+    end 
+  end 
+
   desc "Build any project xcframework"
-  lane :build_project_xcframework do |options|
-    if options[:projectName] == nil
-        raise "Missing project name".red
+  lane :build_xcframework do |options|
+    if options[:schemeName] == nil
+        raise "Missing scheme name".red
+    end
+    if options[:frameworkName] == nil
+        raise "Missing framework name".red
     end
     if options[:outputPath] == nil
         raise "Missing output path".red
@@ -219,7 +242,8 @@ platform :ios do
       configuration = "Release"
       buildPath = "xcbuild"
 
-      projectName = options[:projectName]
+      schemeName = options[:schemeName]
+      frameworkName = options[:frameworkName]
       outputPath = options[:outputPath]
 
       if File.exist?(buildPath)
@@ -230,122 +254,47 @@ platform :ios do
       end
 
       sh "rm -rf #{outputPath}"
-      sh "xcodebuild archive -scheme #{projectName} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectName}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO"
-      sh "xcodebuild archive -scheme #{projectName} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{projectName}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO"
-      sh "xcodebuild -create-xcframework \
-          -framework #{buildPath}/#{configuration}/#{projectName}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{projectName}.framework \
-          -framework #{buildPath}/#{configuration}/#{projectName}-iphoneos.xcarchive/Products/Library/Frameworks/#{projectName}.framework \
+      sh "xcodebuild archive -scheme #{schemeName} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{frameworkName}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES ENABLE_TESTABILITY=YES SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO"
+      sh "xcodebuild archive -scheme #{schemeName} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{frameworkName}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO"
+      sh "xcodebuild -create-xcframework -allow-internal-distribution \
+          -framework #{buildPath}/#{configuration}/#{frameworkName}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{frameworkName}.framework \
+          -framework #{buildPath}/#{configuration}/#{frameworkName}-iphoneos.xcarchive/Products/Library/Frameworks/#{frameworkName}.framework \
           -output #{outputPath}"
     end
   end
 
-  desc "Upload to a github release"
-  lane :gh_release do |options|
+  desc "Upload to a github release draft"
+  lane :create_github_draft do |options|
 
     if options[:version] == nil
-        raise "Missing release version".red
+      UI.user_error!("Please add required parameter version (eg. version:\"1.0.0\"")
     end
 
     if options[:api_token] == nil
-        raise "Missing api token".red
-    end
-
-    if options[:asset1] == nil
-        raise "Missing asset".red
-    end
-
-    if options[:asset2] == nil
-        raise "Missing asset".red
-    end
-
-    if options[:asset3] == nil
-        raise "Missing asset".red
-    end
-
-    if options[:asset4] == nil
-        raise "Missing asset".red
-    end
-
-    isPrerelease = options[:is_prerelease]
-    if isPrerelease == nil
-        isPrerelease = true
+      UI.user_error!("Please add required parameter api_token (eg. api_token:\"xxxxxxxxxx\"")
     end
 
     changelog = options[:changelog]
     if changelog == nil
-       changelog = "Pre-release"
+       changelog = "### #{version}"
     end
+
+    version = options[:version]
+    apiToken = options[:api_token]
 
     set_github_release(
       repository_name: repository,
-      api_token: options[:api_token],
-      name: "#{options[:version]}",
-      tag_name: options[:version],
+      api_token: apiToken,
+      name: version,
+      tag_name: version,
       description: changelog,
-      is_prerelease: isPrerelease,
-      upload_assets: [options[:asset1], options[:asset2], options[:asset3], options[:asset4]]
+      is_draft: true,
+      upload_assets: [
+        frameworkPath(projectCore, version),
+        frameworkPath(projectSTU3, version),
+        frameworkPath(projectR4, version)
+      ]
     )
-  end
-
-  desc "Update podspecs version"
-  lane :update_podspec_version do | options |
-    UI.user_error!("Could not find podspec file at path #{podspec_stu3_path}") unless File.exist?(podspec_stu3_path)
-    UI.user_error!("Could not find podspec file at path #{podspec_r4_path}") unless File.exist?(podspec_r4_path)
-    UI.user_error!("Could not find podspec file at path #{podspec_core_path}") unless File.exist?(podspec_core_path)
-
-    if !options[:version]
-      raise "No version specified!".red
-    end
-
-    new_version = options[:version]
-
-    podspec_stu3_content = File.read(podspec_stu3_path)
-    updated = podspec_stu3_content.gsub(/"([0-9]+)\.([0-9]+)\.([0-9]+)\-?([0-9a-zA-Z]*)\.?([0-9a-zA-Z]*)"/, "\"#{new_version}\"")
-    File.write(podspec_stu3_path, updated)
-
-    podspec_r4_content = File.read(podspec_r4_path)
-    updated = podspec_r4_content.gsub(/"([0-9]+)\.([0-9]+)\.([0-9]+)\-?([0-9a-zA-Z]*)\.?([0-9a-zA-Z]*)"/, "\"#{new_version}\"")
-    File.write(podspec_r4_path, updated)
-
-    podspec_core_content = File.read(podspec_core_path)
-    updated = podspec_core_content.gsub(/"([0-9]+)\.([0-9]+)\.([0-9]+)\-?([0-9a-zA-Z]*)\.?([0-9a-zA-Z]*)"/, "\"#{new_version}\"")
-    File.write(podspec_core_path, updated)
-  end
-
-  desc "Push new core podspec to repo"
-  lane :push_podspec do | options |
-    if !options[:podspecPath]
-      raise "No podspec specified!".red
-    end
-
-    repo_list = sh "bundle exec pod repo list"
-    if !repo_list.include? podspec_repo_name
-     sh "bundle exec pod repo add #{podspec_repo_name} #{podspect_repo_url}"
-    end
-
-    sh "bundle exec pod repo push #{podspec_repo_name} #{options[:podspecPath]} --allow-warnings"
-  end
-
-  desc "Push new core podspec to repo"
-  lane :push_all_podspecs do
-    push_core_podspec
-    push_stu3_podspec
-    push_r4_podspec
-  end
-
-  desc "Push new core podspec to repo"
-  lane :push_core_podspec do | options |
-    push_podspec(podspecPath: podspec_core_path)
-  end
-
-  desc "Push new core podspec to repo"
-  lane :push_stu3_podspec do | options |
-    push_podspec(podspecPath: podspec_stu3_path)
-  end
-
-  desc "Push new core podspec to repo"
-  lane :push_r4_podspec do | options |
-    push_podspec(podspecPath: podspec_r4_path)
   end
 
   desc "Generate docs per version using Asciidoctor"
@@ -366,19 +315,52 @@ platform :ios do
     sh "bundle exec asciidoctor -b html5 -d book -o #{output_final_path} -a #{arguments} #{input_path} "
   end
 
-  def allXcFrameworksArchivePath(version)
-     return "XCFrameworks-#{version}.zip"
+  def frameworkPath(name, version)
+     return "#{name}-xcframework-#{version}.zip"
   end
 
-  def stu3XcFrameworkArchivePath(version)
-     return "Data4LifeFHIR-xcframework-#{version}.zip"
+  def parseAndCheckChangelog(path, version)
+
+    changelogData = File.read(path)
+
+    changelogVersionsSeparator = "== link:{link-repository}/releases/tag/v"
+    changelogVersion = version.delete_prefix("v")
+    changelogSections = changelogData.split(changelogVersionsSeparator)
+    currentVersionSectionIndex = changelogSections.index { |section| section.include?("[#{changelogVersion}]")}
+
+    unless currentVersionSectionIndex
+      return nil
+    end
+
+    changelog = "## #{version}\n" + changelogSections[currentVersionSectionIndex].lines[1..-1].join
+    return changelog.gsub("=", "#")
   end
 
-  def r4XcFrameworkArchivePath(version)
-     return "ModelsR4-xcframework-#{version}.zip"
+  def update_swift_package_file(repository, path)
+    sh "swift package compute-checksum #{path}" do |status, result| 
+
+      checksum = result.chop
+      url = "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/#{s3_key(repository, path)}"
+
+      packageSwiftData = File.read("Package.swift")
+      updatedPackageSwiftData = packageSwiftData.gsub(/url: \"[a-zA-Z0-9:\-\/_.,\\()]+#{path}[a-zA-Z0-9:\-\/_.,\\()]+\"/, "url: \"#{url}\"")
+      updatedPackageSwiftData = updatedPackageSwiftData.gsub(/checksum: \"[a-zA-Z0-9]+\"/, "checksum: \"#{checksum}\"")
+    
+      File.write("Package.swift", updatedPackageSwiftData)
+    end
+  end 
+
+  def upload_archive_to_s3(repository, path)
+    sh "aws s3api put-object --bucket d4l-ios-artifact-repository --key #{s3_key(repository, path)} --body #{path}"
+  end 
+
+  def s3_key(repository, path)
+    return "#{repository}/#{path}"
   end
 
-  def coreXcFrameworkArchivePath(version)
-     return "Data4LifeFHIRCore-xcframework-#{version}.zip"
+  def current_git_branch()
+    sh "git branch --show-current" do |status, result|
+      return result.chop
+    end 
   end
 end
