@@ -46,72 +46,47 @@ Generate FHIR R4 Extesnions
 fastlane ios generate_r4_tests
 ```
 Generate FHIR R4 tests
-### ios release_framework
+### ios prepare_release
 ```
-fastlane ios release_framework
+fastlane ios prepare_release
 ```
-Package and release framework
+Prepare release
 
 #### Options
 
  * **`version`** (required): The new version of the framework
 
  * **`api_token`** (required): Github API token
-
- * **`allow_dirty_branch`**: Allows the git branch to be dirty before continuing. Defaults to false
-
- * **`remote`**: The name of the git remote. Defaults to `origin`. (`DEPLOY_REMOTE`)
-
- * **`allow_branch`**: The name of the branch to build from. Defaults to `main`. (`DEPLOY_BRANCH`)
-
- * **`skip_git_pull`**: Skips pulling the git remote. Defaults to false
-
- * **`is_prerelease`**: Marks GitHub release as Pre-release. Defaults to false
-### ios build_xcframeworks
+### ios prepare_snapshot
 ```
-fastlane ios build_xcframeworks
+fastlane ios prepare_snapshot
 ```
-Build xcframework for distribution
-### ios build_project_xcframework
+Prepare snapshot
+### ios build_fhir
 ```
-fastlane ios build_project_xcframework
+fastlane ios build_fhir
+```
+Build all xcframeworks
+### ios update_readme_versions
+```
+fastlane ios update_readme_versions
+```
+Update version numbers in README.adoc
+### ios update_badge
+```
+fastlane ios update_badge
+```
+Update readme badge
+### ios build_xcframework
+```
+fastlane ios build_xcframework
 ```
 Build any project xcframework
-### ios gh_release
+### ios create_github_draft
 ```
-fastlane ios gh_release
+fastlane ios create_github_draft
 ```
-Upload to a github release
-### ios update_podspec_version
-```
-fastlane ios update_podspec_version
-```
-Update podspecs version
-### ios push_podspec
-```
-fastlane ios push_podspec
-```
-Push new core podspec to repo
-### ios push_all_podspecs
-```
-fastlane ios push_all_podspecs
-```
-Push new core podspec to repo
-### ios push_core_podspec
-```
-fastlane ios push_core_podspec
-```
-Push new core podspec to repo
-### ios push_stu3_podspec
-```
-fastlane ios push_stu3_podspec
-```
-Push new core podspec to repo
-### ios push_r4_podspec
-```
-fastlane ios push_r4_podspec
-```
-Push new core podspec to repo
+Upload to a github release draft
 ### ios generate_docs
 ```
 fastlane ios generate_docs

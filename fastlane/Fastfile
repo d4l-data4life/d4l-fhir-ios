@@ -132,11 +132,13 @@ platform :ios do
     snapshotName = current_git_branch().split("/").last 
     remote = "origin"
 
-    archiveCorePath = frameworkPath(projectCore, options[:version])
-    archiveStu3Path = frameworkPath(projectSTU3, options[:version])
-    archiveR4Path = frameworkPath(projectR4, options[:version])
-
-    build_fhir(version: snapshotName)
+    if prompt(text: "#{snapshotName} fhir libs will be build. Would you like to go forward? (You can skip if already built)".green, boolean: true, ci_input:"y")
+      build_fhir(version: snapshotName)
+    end
+   
+    archiveCorePath = frameworkPath(projectCore, snapshotName)
+    archiveStu3Path = frameworkPath(projectSTU3, snapshotName)
+    archiveR4Path = frameworkPath(projectR4, snapshotName)
     
     Dir.chdir("..") do
       upload_archive_to_s3(repository, archiveCorePath)
@@ -176,9 +178,9 @@ platform :ios do
     stu3xcFrameworkPath = "#{projectSTU3}.xcframework"
     r4xcFrameworkPath = "#{projectR4}.xcframework"
 
-    build_xcframework(projectName: "#{projectCore}", outputPath: coreXcFrameworkPath)
-    build_xcframework(projectName: "#{projectSTU3}", outputPath: stu3xcFrameworkPath)
-    build_xcframework(projectName: "#{projectR4}", outputPath: r4xcFrameworkPath)
+    build_xcframework(schemeName: "#{projectCore}", frameworkName: "#{projectCore}", outputPath: coreXcFrameworkPath)
+    build_xcframework(schemeName: "#{projectSTU3}", frameworkName: "#{projectSTU3}", outputPath: stu3xcFrameworkPath)
+    build_xcframework(schemeName: "#{projectR4}", frameworkName: "#{projectR4}", outputPath: r4xcFrameworkPath)
 
     Dir.chdir("..") do
       archiveCorePath = frameworkPath(projectCore, options[:version])
