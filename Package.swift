@@ -30,12 +30,12 @@ let package = Package(
         .binaryTarget(
             name: "Data4LifeFHIRCore",
             url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIRCore-xcframework-update-release-script.zip",
-            checksum: "8cfab47f85e1746c3cb0a5ccbc35f8ea95be820558e89936e7a341401d9d205c"
+            checksum: "89952c1ab774130a5e93ce09de132c35fecd1f4f5e0e0399ba955f24911503ee"
         ),
         .binaryTarget(
             name: "Data4LifeFHIR",
             url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIR-xcframework-update-release-script.zip",
-            checksum: "8cfab47f85e1746c3cb0a5ccbc35f8ea95be820558e89936e7a341401d9d205c"
+            checksum: "11cb2d70b564e9f5b12dca49192d070e3f991c78d3c83685fdadc98f00ee0a85"
         ),
         .binaryTarget(
             name: "ModelsR4",
