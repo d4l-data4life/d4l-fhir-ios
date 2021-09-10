@@ -343,7 +343,7 @@ platform :ios do
 
   def remove_checksums_from_package
       packageSwiftData = File.read("Package.swift")
-      packageSwiftData = packageSwiftData.gsub(/checksum: \"[a-zA-Z0-9]+\",/,"")
+      packageSwiftData = packageSwiftData.gsub(/checksum: \"[a-zA-Z0-9]+\"/,"")
       packageSwiftData = packageSwiftData.gsub(/(\n\s*\n)+/, "\n")
       File.write("Package.swift", packageSwiftData)
   end 
@@ -355,7 +355,8 @@ platform :ios do
       url = "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/#{s3_key(repository, path)}"
 
       packageSwiftData = File.read("Package.swift")
-      packageSwiftData = packageSwiftData.gsub(/url: \"[a-zA-Z0-9:\-\/_.,\\()]+#{path}/, "url: \"#{url}\",\n            checksum: \"#{checksum}")
+      packageSwiftData = packageSwiftData.gsub(/url: \"[a-zA-Z0-9:\-\/_.,\\()]+#{path}\",/, "url: \"#{url}\",
+            checksum: \"#{checksum}\"")
       File.write("Package.swift", packageSwiftData)
     end
   end 
