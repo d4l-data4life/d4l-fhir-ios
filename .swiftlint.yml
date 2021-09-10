@@ -23,6 +23,7 @@ included: # paths to include during linting. `--path` is ignored if present.
   - FhirStu3/Tests
   - FhirR4/Sources
   - FhirR4/Tests
+  - Package.swift
 
 excluded:
   - FhirR4/Sources/ModelsR4
