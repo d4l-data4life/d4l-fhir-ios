@@ -95,11 +95,11 @@ platform :ios do
     Dir.chdir("..") do
       remove_checksums_from_package()
       upload_archive_to_s3(repository, archiveCorePath)
-      update_swift_package_file(repository, archiveCorePath)
+      update_swift_package_file(projectCore, repository, archiveCorePath)
       upload_archive_to_s3(repository, archiveStu3Path)
-      update_swift_package_file(repository, archiveStu3Path)
+      update_swift_package_file(projectSTU3, repository, archiveStu3Path)
       upload_archive_to_s3(repository, archiveR4Path)
-      update_swift_package_file(repository, archiveR4Path)
+      update_swift_package_file(projectR4, repository, archiveR4Path)
     end 
 
     # Ask for confirmation for github
@@ -380,7 +380,7 @@ platform :ios do
       url = "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/#{s3_key(repository, path)}"
 
       packageSwiftData = File.read("Package.swift")
-      packageSwiftData = packageSwiftData.gsub(/url: \"[a-zA-Z0-9:\-\/_.,\\()]+#{name}\",/, "url: \"#{url}\",
+      packageSwiftData = packageSwiftData.gsub(/url: \"[a-zA-Z0-9:\-\/_.,\\()]+#{name}-xcframework[a-zA-Z0-9:\-\/_.,\\()]+\",/, "url: \"#{url}\",
             checksum: \"#{checksum}\"")
       File.write("Package.swift", packageSwiftData)
     end
