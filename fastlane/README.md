@@ -72,6 +72,11 @@ Build all xcframeworks
 fastlane ios update_readme_versions
 ```
 Update version numbers in README.adoc
+### ios update_plist_versions
+```
+fastlane ios update_plist_versions
+```
+Update version number in project plists
 ### ios update_badge
 ```
 fastlane ios update_badge

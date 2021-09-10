@@ -88,7 +88,7 @@ platform :ios do
 
     update_plist_versions(version: version)
     # TODO update_readme_versions(version: version)
-    # TODO update_badge(version: version)
+    update_badge(version: version)
     generate_docs(version: version)
     build_fhir(version: version)
     
@@ -217,6 +217,31 @@ platform :ios do
     readmeData = File.read(path)
     readmeDataUpdated = readmeData.gsub(/ [0-9]+\.[0-9]+\.[0-9]+/, " #{numberOnlyVersion}")
     File.write(path, readmeDataUpdated)
+  end
+
+  desc "Update version number in project plists"
+  lane :update_plist_versions do |options|
+    if options[:version] == nil
+       UI.user_error!("Please add required parameter version (eg. version:\"1.0.0\"")
+    end
+
+    version = options[:version]
+    numberOnlyVersion = version.split("-").first.delete_prefix("v")
+
+    if numberOnlyVersion.match(/\A\d+(?:\.\d+)*\z/) == nil
+        raise "Could not generate proper version format".red
+    end
+
+    plists = ["FhirR4/Sources/Info.plist", "FhirStu3/Tests/Info.plist", "Data4LifeFHIRCore/Info.plist"]
+    plists.each { |path|
+      update_info_plist(
+        xcodeproj: "#{projectSTU3}.xcodeproj",
+        plist_path: path,
+        block: proc do |plist|
+          plist["CFBundleShortVersionString"] = numberOnlyVersion
+        end
+      )
+    }
   end
 
   desc "Update readme badge"
