@@ -38,7 +38,7 @@ Required resources include:
 To install with [Swift Package Manager](https://swift.org/package-manager/) add this package as a dependency in `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/d4l-data4life/d4l-fhir-ios.git", .upToNextMinor(from: "0.23.0"))
+.package(url: "https://github.com/d4l-data4life/d4l-fhir-ios.git", .upToNextMinor(from: "0.22.1"))
 .package(url: "https://github.com/d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.6.0"))
 ```
 
