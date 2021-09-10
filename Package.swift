@@ -27,17 +27,17 @@ let package = Package(
             name: "Data4LifeFHIRCore",
             url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIRCore-xcframework-update-release-script.zip",
             checksum: "58949559b5e79f740caaeacb84d2c0e988c12106d152a14df11b41cec88eebf6",
-        ),
+        )
         .binaryTarget(
             name: "Data4LifeFHIR",
             url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIR-xcframework-update-release-script.zip",
             checksum: "1f6421725a6e406ac51405df678c2974b4379bdccccc377ce7888a783a2d10f6",
-        ),
+        )
         .binaryTarget(
             name: "ModelsR4",
             url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/ModelsR4-xcframework-update-release-script.zip",
             checksum: "fa3e8a211e0cd0380b29b1c72b6ac5d845849e1104b422c57008b1739dff1f55",
-        ),
+        )
         .target(name: "Data4LifeSDKUtilsFHIR",
                 dependencies: [
                     .product(name: "Data4LifeSDKUtils",
