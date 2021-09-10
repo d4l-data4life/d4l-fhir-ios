@@ -1,9 +1,6 @@
 // swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
-
-let version = "0.22.0"
 let package = Package(
     name: "Data4LifeFHIR",
     platforms: [
@@ -26,22 +23,17 @@ let package = Package(
                  .upToNextMinor(from: "0.6.0")),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
             name: "Data4LifeFHIRCore",
-            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/\(version)/Data4LifeFHIRCore-xcframework-\(version).zip",
-            checksum: "6be5c0f68d6179ce2391614c14b2a264ad7ef63dabda87fb28a6dda7e50c4165"
+            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIRCore-xcframework-v0.23.0.zip",
         ),
         .binaryTarget(
             name: "Data4LifeFHIR",
-            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/\(version)/Data4LifeFHIR-xcframework-\(version).zip",
-            checksum: "b5253498cc4581eb9766d07bce7ba701cde48d659e8cf8d4c5f11251134502c4"
+            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIR-xcframework-v0.23.0.zip",
         ),
         .binaryTarget(
             name: "ModelsR4",
-            url: "https://github.com/d4l-data4life/d4l-fhir-ios/releases/download/\(version)/ModelsR4-xcframework-\(version).zip",
-            checksum: "af66684d497583c637a6c81643c23b83298249680b444ac98745e6881c08b02d"
+            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/ModelsR4-xcframework-v0.23.0.zip",
         ),
         .target(name: "Data4LifeSDKUtilsFHIR",
                 dependencies: [

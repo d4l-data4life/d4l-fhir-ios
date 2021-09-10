@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.12">
+<meta name="application-name" content="data4life">
+<meta name="description" content="FHIR Framework Reference documentation">
+<meta name="keywords" content="SDK iOS Swift FHIR">
+<meta name="author" content="&#169; 2019 D4L data4life gGmbH. All rights reserved.">
+<title>FHIR framework reference documentation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="styles/asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>FHIR framework reference documentation</h1>
+<div class="details">
+<span id="author" class="author">&#169; 2019 D4L data4life gGmbH. All rights reserved.</span><br>
+<span id="revnumber">version v0.22.1</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_using_the_ios_data4life_fhir_framework">Using the iOS data4life FHIR framework</a>
+<ul class="sectlevel2">
+<li><a href="#_software_requirements">Software requirements</a></li>
+<li><a href="#_installing_dependency_managers">Installing dependency managers</a>
+<ul class="sectlevel3">
+<li><a href="#_swift_package_manager">Swift Package Manager</a></li>
+<li><a href="#_cocoapods">CocoaPods</a></li>
+<li><a href="#_dependencies_of_the_fhir_framework">Dependencies of the FHIR Framework</a></li>
+</ul>
+</li>
+<li><a href="#_known_issues">Known Issues</a>
+<ul class="sectlevel3">
+<li><a href="#_fhir_standard">FHIR standard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_interoperability_fhir_and_helper_functions">Interoperability, FHIR, and helper functions</a>
+<ul class="sectlevel2">
+<li><a href="#_about_fhir_helpers">About FHIR helpers</a></li>
+<li><a href="#_list_of_fhir_helpers_in_the_ios_data4life_fhir_framework">List of FHIR helpers in the iOS data4life FHIR framework</a>
+<ul class="sectlevel3">
+<li><a href="#_dosage">Dosage</a></li>
+<li><a href="#_observationreferencerange">ObservationReferenceRange</a></li>
+<li><a href="#_attachment">Attachment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_fhir_helper_examples">FHIR helper examples</a>
+<ul class="sectlevel2">
+<li><a href="#_example_documentreference">Example: DocumentReference</a>
+<ul class="sectlevel3">
+<li><a href="#_creating_an_attachment">Creating an attachment</a></li>
+<li><a href="#_creating_a_codeableconcept">Creating a CodeableConcept.</a></li>
+<li><a href="#_creating_an_address">Creating an Address</a></li>
+<li><a href="#_creating_a_dosage">Creating a dosage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_copyright_and_license">Appendix A: Copyright and license</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document covers the iOS SDK project for the Personal Health Data Platform.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_the_ios_data4life_fhir_framework">Using the iOS data4life FHIR framework</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As part of our integration efforts with our partners, data4life provides frameworks for the following platforms:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>iOS (Swift)</p>
+</li>
+<li>
+<p>Android (Java)</p>
+</li>
+<li>
+<p>Web (JavaScript)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The data4life FHIR framework encapsulates a type safe definition of a minimal set of FHIR standard models and data types, to be used in iOS.
+It includes also some helpers to create some specific FHIR Elements in an easier way, for widely used use cases.</p>
+</div>
+<div class="sect2">
+<h3 id="_software_requirements">Software requirements</h3>
+<div class="paragraph">
+<p>The iOS data4life FHIR framework has the following software requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Xcode 12.4 or later</p>
+</li>
+<li>
+<p>iOS 13.0 or later</p>
+</li>
+<li>
+<p>Swift 5.3 or later</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installing_dependency_managers">Installing dependency managers</h3>
+<div class="paragraph">
+<p>This section describes how you get the SDK up and running.
+Use the following for dependency management for the iOS data4life FHIR framework:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Swift Package Manager</strong> is a Apple&#8217;s dependency manager.
+It builds your dependencies and provides you with binary frameworks while you retain control over your project structure and setup.</p>
+</li>
+<li>
+<p><strong>CocoaPods</strong> is a dependency manager for Swift and Objective-C Cocoa projects.
+The file with the specification that describes the dependencies of the targets of one or more Xcode projects is called <code>Podfile</code>.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_swift_package_manager">Swift Package Manager</h4>
+<div class="paragraph">
+<p>To install with swiftpm, add the following dependencies:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>.package(url: "https://github.com/d4l-data4life/d4l-fhir-ios.git", .upToNextMinor(from: "0.21.1"))
+.package(url: "https://github.com/d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.6.0"))</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_cocoapods">CocoaPods</h4>
+<div class="paragraph">
+<p>To add our CocoaPods specs repository to the <code>Podfile</code>, use the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="ruby">source 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To add the framework for STU3 support to the <code>Podfile</code>, use the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="ruby">pod 'Data4LifeFHIR'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To add the framework for R4 support to the <code>Podfile</code>, use the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="ruby">pod 'ModelsR4'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more info, see <span class="icon"><i class="fa fa-eye"></i></span> the <a href="https://github.com/d4l-data4life/d4l-cocoapods-specs/blob/master/README.md">CocoaPods specs repository</a> readme file.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dependencies_of_the_fhir_framework">Dependencies of the FHIR Framework</h4>
+<div class="paragraph">
+<p>The data4life FHIR framework has the following dependency:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/d4l-data4life/d4l-utils-ios">Data4LifeSDKUtils</a> <span class="icon"><i class="fa fa-external-link"></i></span> – data4life Set of private utils used in data4Life Frameworks</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_known_issues">Known Issues</h3>
+<div class="sect3">
+<h4 id="_fhir_standard">FHIR standard</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>String / Integer / Decimal / Bool / URL / Base64Binary should inherit Element</p>
+</li>
+<li>
+<p>All properties dealing with binary data are represented as base64 String</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_interoperability_fhir_and_helper_functions">Interoperability, FHIR, and helper functions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To ensure a high level of interoperability, data4life internally uses FHIR JSON resources to model the data. FHIR (Fast Healthcare Interoperability Resources) is a very elaborate standard.
+The data4life FHIR framework supports the FHIR standard and additionally offer developers simplified custom models.
+You can use them to abstract away much of the complexity of the FHIR standard.
+These custom models automatically handle data conversion to and from FHIR.
+They also provide a number of other tasks relevant to the proper handling of data.</p>
+</div>
+<div class="sect2">
+<h3 id="_about_fhir_helpers">About FHIR helpers</h3>
+<div class="paragraph">
+<p>FHIR models (Fast Healthcare Interoperability Resources) are used with generic methods to create resources.
+Each supported data model has helper methods to more easily create and fetch data.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_list_of_fhir_helpers_in_the_ios_data4life_fhir_framework">List of FHIR helpers in the iOS data4life FHIR framework</h3>
+<div class="paragraph">
+<p>This section describes some of the FHIR helpers available in the framework.</p>
+</div>
+<div class="sect3">
+<h4 id="_dosage">Dosage</h4>
+<div class="paragraph">
+<p>FHIR reference: <span class="icon"><i class="fa fa-external-link"></i></span> <a href="https://hl7.org/fhir/dosage.html">Dosage</a></p>
+</div>
+<div class="paragraph">
+<p>To create a medication dosage, use the <code>Dosage</code> resource.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="swift">static func with(value: Float, unit: String, when: String) -&gt; Dosage</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To access data stored in the <code>Dosage</code> resource more easily, use the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="swift">func getValue() -&gt; Float?
+func getUnit() -&gt; String?
+func getWhen() -&gt; String?</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_observationreferencerange">ObservationReferenceRange</h4>
+<div class="paragraph">
+<p>FHIR reference: <span class="icon"><i class="fa fa-external-link"></i></span> <a href="https://www.hl7.org/fhir/observation.html">ObservationReferenceRange</a></p>
+</div>
+<div class="paragraph">
+<p>To store observation reference range information, use the <code>ObservationReferenceRange</code> resource.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="swift">static func with(type: CodeableConcept, lowValue: Float?, highValue: Float?, unit: String) -&gt; ObservationReferenceRange</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="swift">static func with(type: CodeableConcept, lowQuantity: Data4LifeFHIR.Quantity?, highQuantity: Data4LifeFHIR.Quantity?) -&gt; ObservationReferenceRange</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To access data stored in the <code>ObservationReferenceRange</code> resource more easily, use the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="swift">func getHighQuantity() -&gt; Quantity?
+func getLowQuantity() -&gt; Quantity?
+func getLowValue() -&gt; Float?
+func getHighValue() -&gt; Float?
+func getUnit() -&gt; String?</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_attachment">Attachment</h4>
+<div class="paragraph">
+<p>FHIR reference: <span class="icon"><i class="fa fa-external-link"></i></span> <a href="https://www.hl7.org/fhir/datatypes.html#Attachment">Attachment</a></p>
+</div>
+<div class="paragraph">
+<p>To create an attachment element, use the <code>Attachment</code> resource.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="swift">static func with(title: String, creationDate: DateTime, contentType: String, data: Data) throws -&gt; Data4LifeFHIR.Attachment</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To access data stored in the <code>Attachment</code> resource more easily, use the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="swift">func getTitle() -&gt; String?
+func getCreationDate() -&gt; DateTime?
+func getContentType() -&gt; String?
+func getData() -&gt; Data?</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fhir_helper_examples">FHIR helper examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section shows you examples for FHIR helpers (Fast Healthcare Interoperability Resources).</p>
+</div>
+<div class="sect2">
+<h3 id="_example_documentreference">Example: DocumentReference</h3>
+<div class="paragraph">
+<p>Creating a document with attachments provided by an author.</p>
+</div>
+<div class="sect3">
+<h4 id="_creating_an_attachment">Creating an attachment</h4>
+<div class="paragraph">
+<p>To create an attachment, use the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="swift">let attachment = try Attachment.with(title: "Image", creationDate: .now, contentType: "image/png", data: image.pngData())</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_a_codeableconcept">Creating a CodeableConcept.</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="swift">let practiceSpeciality = CodeableConcept(code: "394612005", display: "Urology", system: "http://loinc.org")
+let documentType = CodeableConcept(code: "18782-3", display: "Radiology Study observation (findings)", system: "http://loinc.org")</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_an_address">Creating an Address</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="swift">let patient = Patient.with(firstname: "John", lastname: "Doe")
+let doctor = Practitioner.with(text: "Dr. John Miller, Practice for general medicine")</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_a_dosage">Creating a dosage</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="swift">let morningDosage = Dosage.with(value: 2, unit: "Piece", when: "morning")
+let eveningDosage = Dosage.with(value: 2, unit: "Piece", when: "evening")</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright_and_license">Appendix A: Copyright and license</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre>Copyright (c) 2020 D4L data4life gGmbH
+All rights reserved.
+
+D4L owns all legal rights, title and interest in and to the Software Development Kit ("SDK"),
+including any intellectual property rights that subsist in the SDK.
+
+The SDK and its documentation may be accessed and used for viewing/review purposes only.
+Any usage of the SDK for other purposes, including usage for the development of
+applications/third-party applications shall require the conclusion of a license agreement
+between you and D4L.
+
+If you are interested in licensing the SDK for your own applications/third-party
+applications and/or if you’d like to contribute to the development of the SDK, please
+contact D4L by email to help@data4life.care.</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version v0.22.1<br>
+Last updated 2020-12-01 17:28:39 +0100
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
+</body>
+</html>
