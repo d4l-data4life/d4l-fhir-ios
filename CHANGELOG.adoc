@@ -1,0 +1,171 @@
+= Changelog
+:link-repository: https://github.com/d4l-data4life/d4l-fhir-ios
+:doctype: article
+:toc: macro
+:toclevels: 1
+:toc-title:
+:icons: font
+:imagesdir: assets/images
+ifdef::env-github[]
+:warning-caption: :warning:
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+endif::[]
+
+All notable changes to this project will be documented in this file.
+
+The format is based on http://keepachangelog.com/en/1.0.0/[Keep a Changelog]
+and this project adheres to http://semver.org/spec/v2.0.0.html[Semantic Versioning].
+
+Template could be found here: link:https://github.com/d4l-data4life/hc-readme-template/blob/main/TEMPLATE_CHANGELOG.adoc[CHANGELOG]
+
+[discrete]
+==== Versions
+
+toc::[]
+
+== link:{link-repository}/releases/latest[Unreleased]
+
+See link:{link-repository}/compare/v1.16.0...main[changeset]
+
+=== Added
+
+=== Changed
+
+=== Removed
+
+=== Fixed
+
+=== Security
+
+=== Bumped
+
+=== Deprecated
+
+=== Migration
+
+== link:{link-repository}/releases/tag/v0.23.0[0.23.0]
+
+=== Fixed
+
+* LLDB is usable again
+
+== link:{link-repository}/releases/tag/0.22.0[0.22.0]
+
+=== Changed
+
+* Utils dependency on SwiftPM is now an https one
+
+== link:{link-repository}/releases/tag/0.21.1[0.21.1]
+
+=== Fixed
+
+* XcFramework is now installable via SwiftPM without nested frameworks error
+
+== link:{link-repository}/releases/tag/0.21.0[0.21.0]
+
+=== Added
+
+* Updated library to include helpers
+
+== link:{link-repository}/releases/tag/0.20.0[0.20.0]
+
+=== Removed
+
+* Support for iOS 12
+* CryptoSwift dependency
+
+== link:{link-repository}/releases/tag/0.22.0[0.19.0]
+
+=== Added
+
+* XCFramework support for Cocoapods and Swift PM
+* Removes support for Carthage
+
+== link:{link-repository}/releases/tag/0.18.1[0.18.1]
+
+=== Changed
+
+* Changes podspec url to public one and updates utils dependency
+
+== link:{link-repository}/releases/tag/0.18.0[0.18.0]
+
+Adds `NSCopying` support for Fhir R4 Models
+Adds autogeneration of Copying extension and its Tests
+
+== link:{link-repository}/releases/tag/0.17.0[0.17.0]
+
+Open sourced
+
+== link:{link-repository}/releases/tag/0.16.1[0.16.1]
+
+Adds support down to iOS 12 for ModelsR4 framework
+
+== link:{link-repository}/releases/tag/0.16.0[0.16.0]
+
+=== Changed
+
+* Reverts carthage support
+* Removes swiftPM dependecies in project
+* Adds Apples FHIR R4 models Libraries
+* Changes support for Swift PM to distribute 2 libraries (stu3 and R4 separately)
+* Changes support for Pod to distribute 2 libraries (stu3 and R4 separately)
+
+== link:{link-repository}/releases/tag/0.15.0[0.15.0]
+
+=== Added
+
+* Removes carthage support
+* Adds Swift PM support
+
+== link:{link-repository}/releases/tag/0.14.0[0.14.0]
+
+=== Added
+
+* Changes FHIR uri type mapping from URL to String for correct mapping in case uri doesnt conform to Swifts URL style
+
+== link:{link-repository}/releases/tag/0.13.0[0.13.0]
+
+=== Added
+
+* Adds Keypath support for accessing properties by name
+
+== link:{link-repository}/releases/tag/0.12.0[0.12.0]
+
+=== Added
+
+* Add `StructureDefinition` and `ElementDefinition` resources
+
+== link:{link-repository}/releases/tag/0.11.2[0.11.2]
+
+=== Changed
+
+* Updates utils to 0.1.6
+
+== link:{link-repository}/releases/tag/0.11.1[0.11.0]
+
+=== Changed
+
+* Updates utils to 0.1.5
+
+== link:{link-repository}/releases/tag/0.11.0[0.11.0]
+
+=== Changed
+
+* Adds Attachment Helpers with tests
+* Fixes Element Helper for Reference
+
+== link:{link-repository}/releases/tag/0.10.1[0.10.1]
+
+=== Changed
+
+* Adds Element Helpers
+
+== link:{link-repository}/releases/tag/0.10.0[0.10.0]
+
+=== Changed
+
+* Updates minimum iOS version to 11.0
+* Updates Swift version to 5
