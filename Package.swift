@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Data4LifeFHIR",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v13)
     ],
     products: [
         .library(
@@ -15,12 +15,12 @@ let package = Package(
             targets: ["Data4LifeFHIR"]),
         .library(
             name: "ModelsR4",
-            targets: ["ModelsR4"]),
+            targets: ["ModelsR4"])
     ],
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
                  url: "https://github.com/d4l-data4life/d4l-utils-ios.git",
-                 .upToNextMinor(from: "0.6.0")),
+                 .upToNextMinor(from: "0.7.0"))
     ],
     targets: [
         .binaryTarget(
@@ -56,7 +56,7 @@ let package = Package(
                 dependencies: [
                     .target(name: "Data4LifeSDKUtilsFHIR"),
                     .target(name: "ModelsR4"),
-                    .target(name: "Data4LifeFHIRCore"),
+                    .target(name: "Data4LifeFHIRCore")
                 ],
                 path: "SwiftPMDummyTargets/ModelsR4AllFrameworks"),
         .testTarget(name: "Data4LifeFhirTests",
