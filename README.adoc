@@ -1,4 +1,5 @@
 = Data4Life Core iOS SDK
+:link-repository: https://github.com/d4l-data4life/d4l-fhir-ios
 :library_version: 1.16.0
 :doctype: article
 :!showtitle:
@@ -7,7 +8,6 @@
 :toc-title:
 :icons: font
 :imagesdir: assets/images
-:link-repository: https://github.com/d4l-data4life/d4l-fhir-ios
 ifdef::env-github[]
 :warning-caption: :warning:
 :caution-caption: :fire:
@@ -16,13 +16,16 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 endif::[]
 
+
 ++++
 <div align="center">
     <p><!-- PROJECT LOGO -->
-        <a><img src="assets/images/d4l-logo.svg" width="150"/></a>
+        <a href="https://github.com/d4l-data4life/d4l-data4life/d4l-fhir-ios">
+            <img src="assets/images/d4l-logo.svg" width="150"/>
+        </a>
     </p>
     <p><!-- PROJECT TITLE -->
-        <h3>Data4Life Crypto iOS</h3>
+        <h3>Data4Life FHIR SDK</h3>
     </p>
     <p><!-- PROJECT DESCRIPTION -->
         Minimal FHIR standard models and data types for iOS
@@ -31,13 +34,13 @@ endif::[]
         <a href="README.adoc"><strong>Explore the docs »</strong></a>
     </p>
     <p><!-- PROJECT ISSUES/FEATURES -->
-        <a href="https://github.com/d4l-data4life/d4l-fhir-ios/issues">Report Bug</a>
+        <a href="https://github.com/d4l-data4life/d4l-data4life/d4l-fhir-ios/issues">Report Bug</a>
         ·
-        <a href="https://github.com/d4l-data4life/d4l-fhir-ios/issues">Request Feature</a>
+        <a href="https://github.com/d4l-data4life/d4l-data4life/d4l-fhir-ios/issues">Request Feature</a>
     </p>
     <p><!-- PROJECT BADGES see badges.adoc how to change them -->
-        <a href="https://github.com/d4l-data4life/d4l-fhir-ios/releases">
-            <img src="assets/images/badge-release-latest.svg" alt="Latest version"/>
+        <a href="https://github.com/d4l-data4life/d4l-data4life/d4l-fhir-ios/releases">
+            <img src="assets/images/badge-release-latest.svg" alt="Latest release"/>
         </a>
         <a href="https://github.com/d4l-data4life/d4l-fhir-ios/actions">
             <img src="https://github.com/d4l-data4life/d4l-fhir-ios/actions/workflows/pr-test.yml/badge.svg" alt="Build Status"/>
@@ -55,6 +58,7 @@ endif::[]
 </div>
 ++++
 
+
 [discrete]
 === Table Of Contents
 toc::[]
@@ -63,9 +67,9 @@ toc::[]
 
 Minimal FHIR standard models and data types for iOS.
 
-[Swift-FHIR](https://github.com/smart-on-fhir/Swift-FHIR) was used as inspiration for this project
+link:https://github.com/smart-on-fhir/Swift-FHIR[Swift-FHIR] was used as inspiration for this project
 
-[Apple-FHIR](https://github.com/apple/FHIRModels) R4 models were (tepmorarily) ported over.
+link:https://github.com/apple/FHIRModels[Apple-FHIR] R4 models were (temporarily) ported over.
 
 == Installation
 
