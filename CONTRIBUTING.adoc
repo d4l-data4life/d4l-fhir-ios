@@ -60,7 +60,7 @@ Please use our title pattern: `[{ticket id}] {type of change} {short description
 * `type of change`:
 - *Add* for new features or functionality
 - *Change* for changes in existing features or functionality
-- *Remove* | for removed features or functionality
+- *Remove* for removed features or functionality
 - *Fix* for any bug fixes
 - *Security* in case of vulnerabilities
 - *Bump* for dependency updates
