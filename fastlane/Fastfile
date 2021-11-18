@@ -77,7 +77,7 @@ platform :ios do
     version = options[:version]
     apiToken = options[:api_token]
     remote = "origin"
-    changelog = "v#{version}" # TODO parseAndCheckChangelog("../CHANGELOG.md", version)
+    changelog = parseAndCheckChangelog("../CHANGELOG.adoc", version)
     archiveCorePath = frameworkPath(projectCore, options[:version])
     archiveStu3Path = frameworkPath(projectSTU3, options[:version])
     archiveR4Path = frameworkPath(projectR4, options[:version])
@@ -87,7 +87,7 @@ platform :ios do
     end 
 
     update_plist_versions(version: version)
-    # TODO update_readme_versions(version: version)
+    update_readme_versions(version: version)
     update_badge(version: version)
     generate_docs(version: version)
     build_fhir(version: version)
