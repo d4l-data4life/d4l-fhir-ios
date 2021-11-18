@@ -1,5 +1,5 @@
 = Contributing
-:link-repository: https://github.com/d4l-data4life/d4l-sdk-ios
+:link-repository: https://github.com/d4l-data4life/d4l-fhir-ios
 :doctype: article
 :toc: macro
 :toclevels: 2
