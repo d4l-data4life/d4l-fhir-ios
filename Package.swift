@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Data4LifeFHIR",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v13)
     ],
     products: [
         .library(
@@ -15,28 +15,28 @@ let package = Package(
             targets: ["Data4LifeFHIR"]),
         .library(
             name: "ModelsR4",
-            targets: ["ModelsR4"]),
+            targets: ["ModelsR4"])
     ],
     dependencies: [
         .package(name: "Data4LifeSDKUtils",
                  url: "https://github.com/d4l-data4life/d4l-utils-ios.git",
-                 .upToNextMinor(from: "0.6.0")),
+                 .upToNextMinor(from: "0.7.0"))
     ],
     targets: [
         .binaryTarget(
             name: "Data4LifeFHIRCore",
-            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIRCore-xcframework-v0.22.1.zip",
-            checksum: "cf74007fe21d39414f80bdc986aaffb1b70a85a15aa1525d3524dbc34ec13f94"
+            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIRCore-xcframework-v0.23.0.zip",
+            checksum: "b0116aa688a312f2a437181451ceb4bfeb917ab8060e2a2c9991fc4f03ba818a"
         ),
         .binaryTarget(
             name: "Data4LifeFHIR",
-            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIR-xcframework-v0.22.1.zip",
-            checksum: "9ae680cfa89867f6062beb571c3ec4181c469ecc3ae95cada0b9cf5610464789"
+            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIR-xcframework-v0.23.0.zip",
+            checksum: "d08cb32e3c78ab9be38a3a37cd337d86c059437a0b91ce3c228737df79f0692a"
         ),
         .binaryTarget(
             name: "ModelsR4",
-            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/ModelsR4-xcframework-v0.22.1.zip",
-            checksum: "d965d9b1fceac60d1b01e6a44f193065692bc1177c22d1ed8da564367027b82e"
+            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/ModelsR4-xcframework-v0.23.0.zip",
+            checksum: "7cafd1b18107710b568edd19c5be2f415ed4f669aedf7626ffb3d84390199dae"
         ),
         .target(name: "Data4LifeSDKUtilsFHIR",
                 dependencies: [
@@ -56,7 +56,7 @@ let package = Package(
                 dependencies: [
                     .target(name: "Data4LifeSDKUtilsFHIR"),
                     .target(name: "ModelsR4"),
-                    .target(name: "Data4LifeFHIRCore"),
+                    .target(name: "Data4LifeFHIRCore")
                 ],
                 path: "SwiftPMDummyTargets/ModelsR4AllFrameworks"),
         .testTarget(name: "Data4LifeFhirTests",
