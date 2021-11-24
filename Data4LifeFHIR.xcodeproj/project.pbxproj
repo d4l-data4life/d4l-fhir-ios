@@ -12360,6 +12360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BITCODE_GENERATION_MODE = bitcode;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -12383,6 +12384,7 @@
 				);
 				MARKETING_VERSION = 0.21.1;
 				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -no-serialize-debugging-options";
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.HCFHIR;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -12401,6 +12403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BITCODE_GENERATION_MODE = bitcode;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -12424,6 +12427,7 @@
 				);
 				MARKETING_VERSION = 0.21.1;
 				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -no-serialize-debugging-options";
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.HCFHIR;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -12569,7 +12573,7 @@
 			repositoryURL = "https://github.com/d4l-data4life/d4l-utils-ios.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.7.0;
+				minimumVersion = 0.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

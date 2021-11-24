@@ -1,0 +1,11 @@
+framework module Data4LifeFHIR {
+  umbrella header "Data4LifeFHIR.h"
+
+  export *
+  module * { export * }
+}
+
+module Data4LifeFHIR.Swift {
+    header "Data4LifeFHIR-Swift.h"
+    requires objc
+}
