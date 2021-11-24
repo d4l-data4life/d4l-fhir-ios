@@ -12031,6 +12031,7 @@
 				MARKETING_VERSION = 0.21.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -no-serialize-debugging-options";
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.Data4LifeFHIRCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -12065,6 +12066,7 @@
 				);
 				MARKETING_VERSION = 0.21.1;
 				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -no-serialize-debugging-options";
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.Data4LifeFHIRCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -12124,6 +12126,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BITCODE_GENERATION_MODE = bitcode;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -12143,6 +12146,7 @@
 				MARKETING_VERSION = 0.21.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -no-serialize-debugging-options";
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.ModelsR4;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -12160,6 +12164,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BITCODE_GENERATION_MODE = bitcode;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -12178,6 +12183,7 @@
 				);
 				MARKETING_VERSION = 0.21.1;
 				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -no-serialize-debugging-options";
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.ModelsR4;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
