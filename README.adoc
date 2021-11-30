@@ -1,6 +1,6 @@
 = Data4Life FHIR iOS SDK
 :link-repository: https://github.com/d4l-data4life/d4l-fhir-ios
-:library_version: 0.23.0
+:library_version: 0.23.1
 :doctype: article
 :!showtitle:
 :toc: macro
