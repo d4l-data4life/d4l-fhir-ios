@@ -28,7 +28,7 @@ toc::[]
 
 == link:{link-repository}/releases/latest[Unreleased]
 
-See link:{link-repository}/compare/v0.23.0...main[changeset]
+See link:{link-repository}/compare/v0.23.1...main[changeset]
 
 === Added
 
@@ -45,6 +45,12 @@ See link:{link-repository}/compare/v0.23.0...main[changeset]
 === Deprecated
 
 === Migration
+
+== link:{link-repository}/releases/tag/v0.23.1[0.23.1]
+
+=== Fixed
+
+* Bitcode is forcefully enabled now
 
 == link:{link-repository}/releases/tag/v0.23.0[0.23.0]
 
