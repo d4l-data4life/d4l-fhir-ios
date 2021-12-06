@@ -28,7 +28,7 @@ toc::[]
 
 == link:{link-repository}/releases/latest[Unreleased]
 
-See link:{link-repository}/compare/v0.23.1...main[changeset]
+See link:{link-repository}/compare/v0.23.2...main[changeset]
 
 === Added
 
@@ -38,8 +38,6 @@ See link:{link-repository}/compare/v0.23.1...main[changeset]
 
 === Fixed
 
-* Disabled test search paths in main sdk
-
 === Security
 
 === Bumped
@@ -47,6 +45,12 @@ See link:{link-repository}/compare/v0.23.1...main[changeset]
 === Deprecated
 
 === Migration
+
+== link:{link-repository}/releases/tag/v0.23.2[0.23.2]
+
+=== Fixed
+
+* Disabled test search paths in main sdk
 
 == link:{link-repository}/releases/tag/v0.23.1[0.23.1]
 
