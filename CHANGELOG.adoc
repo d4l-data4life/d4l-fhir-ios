@@ -38,6 +38,8 @@ See link:{link-repository}/compare/v0.23.1...main[changeset]
 
 === Fixed
 
+* Disabled test search paths in main sdk
+
 === Security
 
 === Bumped
