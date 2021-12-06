@@ -25,18 +25,18 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "Data4LifeFHIRCore",
-            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIRCore-xcframework-v0.23.1.zip",
-            checksum: "5d3c61182269c831b0523476b65127e2d255b70745ed18758aea53b78a1995ea"
+            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIRCore-xcframework-v0.23.2.zip",
+            checksum: "eb99686172041361791243c11a2258989fc2a7778dc5fef27b691697e7d8fcc9"
         ),
         .binaryTarget(
             name: "Data4LifeFHIR",
-            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIR-xcframework-v0.23.1.zip",
-            checksum: "fab55ab7e09ef0aa772e87ea66778311d38b4fac37327ce2385d8bbda19c1b49"
+            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/Data4LifeFHIR-xcframework-v0.23.2.zip",
+            checksum: "c2ad9349fda0c2243fd07581b5b51c1c967b68742f567209682e1966c792c52c"
         ),
         .binaryTarget(
             name: "ModelsR4",
-            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/ModelsR4-xcframework-v0.23.1.zip",
-            checksum: "3c12a28802bcb20c645e3237bc57d269ebe0136e66fb04c00b23af122afb7b5a"
+            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-fhir-ios/ModelsR4-xcframework-v0.23.2.zip",
+            checksum: "2cb74624bedd7e36f6572255f376f24a25d1fc1b1e89e713dbe00ae973a0966a"
         ),
         .target(name: "Data4LifeSDKUtilsFHIR",
                 dependencies: [
