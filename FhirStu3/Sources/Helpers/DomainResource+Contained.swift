@@ -16,18 +16,18 @@
 import Foundation
 
 extension DomainResource {
-    open func containedResource<T: DomainResource>(_ ref: Reference) -> T? {
+    public func containedResource<T: DomainResource>(_ ref: Reference) -> T? {
         guard var referenceId = ref.reference, referenceId.removeFirst() == "#" else {
             return nil
         }
         return containedResource(referenceId)
     }
 
-    open func containedResource<T: DomainResource>(_ refId: String) -> T? {
+    public func containedResource<T: DomainResource>(_ refId: String) -> T? {
         return contained?.filter({ $0.id == refId }).first as? T
     }
 
-    open func contain(resource: Resource, withDisplay display: String? = nil) throws -> Reference {
+    public func contain(resource: Resource, withDisplay display: String? = nil) throws -> Reference {
         var cont = contained ?? [Resource]()
         cont.append(resource)
         contained = cont
